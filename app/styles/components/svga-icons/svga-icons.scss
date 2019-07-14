@@ -1,0 +1,30 @@
+/* ==============================================================
+    SVGA Regular Inline Icons
+    2019.6.27
+============================================================== */
+
+.svga-icon {
+    --base-line-height: 1.5;
+
+    display:    inline-flex;
+    justify-content: center;
+    align-content:   center;
+    align-items:     center;
+    vertical-align:  middle;
+    width:  1em;
+    height: 1em;
+
+    &:not(.base-size) {
+        margin-right:     calc( var(--base-line-height)*1em - 1em );
+        transform:        scale(var(--base-line-height));
+        transform-origin: left center;
+    }
+
+    &>svg {
+        width:  100%;
+        height: 100%;
+        fill:   currentColor;
+    }
+}
+
+/* EOF Regular Icons */

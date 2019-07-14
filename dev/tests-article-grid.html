@@ -1,0 +1,226 @@
+<!doctype html><!-- appart :: 8001 :: 2019.7.14 -->
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- ========================================= HEAD CONTENT -->
+
+
+    <title>Article grid</title>
+
+
+    <!-- ========================================= BOOT -->
+
+
+    <style> /* ༼°▽°༽ boot style */
+        body    { width: 100%; height: auto; overflow: hidden; }
+        img,svg { max-width: 100%; }
+    </style>
+
+
+    <!-- ========================================= DESIGN -->
+
+
+    <link
+        href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic"
+        rel="stylesheet">
+    <link
+        href="../app/styles/appart.css"
+        rel="stylesheet" type="text/css">
+
+
+    <!-- ========================================= APP CUSTOM -->
+
+    <style>
+        dl { margin: 0; }
+        dd { padding-bottom: 1rem; }
+    </style>
+
+    <!-- ========================================== ʕ⊙ᴥ⊙ʔ = -->
+    <!-- ========================================= END HEAD -->
+</head>
+<body>
+
+
+    <article class="article-grid is-chapter">
+        <header class="article-block-merge">
+            <h1 class="huge-title">Article grid usecases</h1>
+            <p class="subtitle">2019.7.11</p>
+        </header>
+
+        <h2 class="title">Mission</h2>
+        <ul class="article-block">
+            <li>Упростить вёрстку статей с большим количеством элементов оформления</li>
+            <li>Конструктор для уникальных вставок. Чтобы любой креатив вписывался в сетку.</li>
+            <li>Трёхколоночная модель — текст и примечания по обеим сторонам</li>
+            <li>Автоматическая адаптация под все экраны</li>
+        </ul>
+
+        <hr>
+
+        <section class="article-block">
+            <h2 class="title">CSS Classes</h2>
+            <dl>
+                <dt><strong>article-grid</strong></dt>
+                <dd>— parent</dd>
+
+                <dt><strong>article-block</strong></dt>
+                <dt><strong>article-box</strong></dt>
+                <dd>— main content</dd>
+
+
+                <dt><strong>article-block-west</strong></dt>
+                <dt><strong>article-block-east</strong></dt>
+                <dt><strong>article-box-west</strong></dt>
+                <dt><strong>article-box-east</strong></dt>
+                <br>
+
+                <dt><strong>article-eastside</strong></dt>
+                <dt><strong>article-westside</strong></dt>
+                <dd>— continues to screen borders</dd>
+
+                <dt><strong>article-block-merge</strong></dt>
+                <dt><strong>article-box-merge</strong></dt>
+                <dd>— merge all three columns</dd>
+
+                <dt><strong>article-block-merge-west</strong></dt>
+                <dt><strong>article-block-merge-east</strong></dt>
+                <dt><strong>article-box-merge-west</strong></dt>
+                <dt><strong>article-box-merge-east</strong></dt>
+                <br>
+
+                <dt><strong>keep-grid</strong></dt>
+                <dd>— additional class for columns</dd>
+            </dl>
+        </section>
+
+        <section class="article-block-east">
+            <h2 class="title">Terms</h2>
+            <ul class="article-block">
+                <li><strong>main</strong> — main column</li>
+                <li><strong>west</strong> — left column</li>
+                <li><strong>east</strong> — right column</li>
+                <li><strong>block</strong> — plain text content</li>
+                <li><strong>box</strong> — content with paddings (used with background-color)</li>
+            </ul>
+        </section>
+
+    </article>
+
+    <article class="article-grid is-chapter has-devlabels">
+        <header class="article-box-merge color-box">
+            <h2 class="big-title">Test Components</h2>
+        </header>
+
+        <div class="title">Blocks</div>
+
+        <div class="article-block-west color-text"><p class="auto"></p></div>
+        <div class="article-block-main">
+            <div>The user asked Petrovich to do something with some scientific data. It responds first by plotting the data and printing it. Since this is not what the user wanted, he punishes Petrovich, then tries again.<hr class="single-line">Manual space break with HR.</div>
+            <p class="auto"></p>
+            <p class="auto"></p>
+            <p class="auto"></p>
+        </div>
+        <div class="article-block-east color-text"><p class="auto"></p></div>
+
+        <div class="title">Boxes</div>
+
+        <div class="article-box-west color-box"><p class="auto"></p></div>
+        <div class="article-box-main color-box">
+            <p class="auto"></p>
+            <p class="auto"></p>
+            <p class="auto"></p>
+        </div>
+        <div class="article-box-east color-box"><p class="auto"></p></div>
+
+        <div class="title">Screen Sides</div>
+
+        <div class="article-westside color-box"><p class="auto"></p></div>
+        <div class="article-block-main">
+            <p class="auto"></p>
+            <p class="auto"></p>
+            <p class="auto"></p>
+        </div>
+        <div class="article-eastside color-box color-text"><p class="auto"></p></div>
+
+        <div class="title">Screen Sides + Keep Grid</div>
+
+        <div class="article-westside keep-grid color-box"><p class="auto"></p></div>
+        <div class="article-block-main">
+            <p class="auto"></p>
+            <p class="auto"></p>
+            <p class="auto"></p>
+        </div>
+        <div class="article-eastside keep-grid color-box color-text"><p class="auto"></p></div>
+
+        <div class="title">Merge East</div>
+
+        <div class="article-box-merge-east color-box"><p class="auto"></p></div>
+        <div class="article-block-west"><p class="auto"></p></div>
+        <div class="article-block-merge-east">
+            <p class="auto"></p>
+            <p class="auto"></p>
+            <p class="auto"></p>
+        </div>
+        <div class="article-box-merge-east keep-grid color-box">
+            <p class="auto"></p>
+            <div class="article-block-east"><p class="auto"></p></div>
+        </div>
+
+        <div class="title">Merge Both Sides</div>
+
+        <div class="article-box-merge color-box"><p class="auto"></p></div>
+        <div class="article-block-merge">
+            <p class="auto"></p>
+            <p class="auto"></p>
+            <p class="auto"></p>
+        </div>
+        <div class="article-box-merge keep-grid color-box">
+            <div class="article-block-west"><p class="auto"></p></div>
+            <p class="auto"></p>
+            <div class="article-block-east"><p class="auto"></p></div>
+        </div>
+
+        <div class="title">Merge West</div>
+
+        <div class="article-box-merge-west color-box"><p class="auto"></p></div>
+        <div class="article-block-merge-west">
+            <p class="auto"></p>
+            <p class="auto"></p>
+            <p class="auto"></p>
+        </div>
+        <div class="article-block-east"><p class="auto"></p></div>
+        <div class="article-box-merge-west keep-grid color-box">
+            <div class="article-block-west"><p class="auto"></p></div>
+            <p class="auto"></p>
+        </div>
+
+    </article>
+
+<!-- ========================================= PAGE CUSTOM -->
+
+<script>
+    // insert random content into paragraphs
+    function p() {
+        // const p = document.getElementsByTagName('p')
+        const p = document.querySelectorAll('.auto')
+        for ( let i in p ) {
+            let texts = [
+                'Les grandes personnes m’ont conseillé de laisser de côté les dessins de serpents boas ouverts ou fermés, et de m’intéresser plutôt à la géographie, à l’histoire, au calcul et à la grammaire. C’est ainsi que j’ai abandonné, à l’âge de six ans, une magnifique carrière de peintre.',
+                'J’avais été découragé par l’insuccès de mon dessin numéro 1 et de mon dessin numéro 2. Les grandes personnes ne comprennent jamais rien toutes seules, et c’est fatigant, pour les enfants, de toujours et toujours leur donner des explications.',
+                'J’ai donc dû choisir un autre métier et j’ai appris à piloter des avions. J’ai volé un peu partout dans le monde. Et la géographie, c’est exact, m’a beaucoup servi. Je savais reconnaître, du premier coup d’œil, la Chine de l’Arizona. C’est très utile, si l’on est égaré pendant la nuit.',
+                'J’ai ainsi eu, au cours de ma vie, des tas de contacts avec des tas de gens sérieux. J’ai beaucoup vécu chez les grandes personnes. Je les ai vues de très près. Ça n’a pas trop amélioré mon opinion.',
+                'Quand j’en rencontrais une qui me paraissait un peu lucide, je faisais l’expérience sur elle de mon dessin numéro 1 que j’ai toujours conservé. Je voulais savoir si elle était vraiment compréhensive. Mais toujours elle me répondait : « C’est un chapeau. »',
+                'Alors je ne lui parlais ni de serpents boas, ni de forêts vierges, ni d’étoiles. Je me mettais à sa portée. Je lui parlais de bridge, de golf, de politique et de cravates. Et la grande personne était bien contente de connaître un homme aussi raisonnable.'
+                ]
+            let text = texts[Math.floor(Math.random()*texts.length)]
+            let textnode = document.createTextNode(text)
+            if (p[i].appendChild) p[i].appendChild(textnode)
+        }
+    }
+    p()
+</script>
+
+</body>
+</html>

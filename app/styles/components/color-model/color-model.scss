@@ -1,0 +1,77 @@
+/*  Default color model
+ *  2019.7.14
+ */
+
+
+/* ------------------------------------- skup palettes */
+
+
+/* swed-design 2019 */
+
+:root {
+    --hsl-NobleBlack:            240, 15%, 12%;
+    --hsl-NobleBlue:             212, 34%, 29%;
+    --hsl-AccentBlue:            204, 22%, 55%;
+    --hsl-AccentBlux:            226, 17%, 20%;
+    --hsl-NobleWhite:            226, 27%, 90%;
+    --hsl-NobleHighWhite:        226, 32%, 75%;
+}
+
+
+/* ------------------------------------- color model */
+
+
+:root,
+.colors-as-special {
+    --background-color:          white;
+    --color:                     black;
+    --color--mark:               firebrick;
+    --background-color--mark:    lightgray;
+}
+.colors-as-primary {
+    --background-color:          hsl(var(--hsl-NobleBlack));
+    --color:                     hsl(var(--hsl-NobleWhite));
+    --color--mark:               hsl(var(--hsl-NobleHighWhite));
+    --background-color--mark:    hsl(var(--hsl-AccentBlux));
+}
+.colors-as-secondary {
+    --background-color:          hsl(var(--hsl-NobleBlue));
+    --color:                     hsl(var(--hsl-NobleWhite));
+    --color--mark:               hsl(var(--hsl-NobleHighWhite));
+}
+.colors-as-highlight {
+    --background-color:          hsl(var(--hsl-AccentBlux));
+    --color:                     hsl(var(--hsl-NobleWhite));
+    --color--mark:               hsl(var(--hsl-NobleHighWhite));
+}
+.colors-as-alternative {
+    --background-color:          hsl(var(--hsl-AccentBlue));
+    --color:                     hsl(204,  0%,  0%);
+    --color--mark:               hsl(204,  0%,  0%);
+}
+
+
+/* ------------------------------------- workers */
+
+.use-colors {
+    background-color: var(--background-color);
+    color:            var(--color);
+}
+.color-box {
+    background-color: var(--background-color--mark);
+}
+.color-text {
+    color:            var(--color--mark);
+}
+
+
+/* ------------------------------------- autorun */
+
+
+body {
+    background-color: var(--background-color);
+    color:            var(--color);
+}
+
+
+/*  EOF Default color model */

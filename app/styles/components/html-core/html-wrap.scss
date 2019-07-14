@@ -1,0 +1,106 @@
+/* ==============================================================
+    html wrap & base markup
+    2019.7.14
+============================================================== */
+
+
+
+/* ------------------------------------ minimal box model */
+
+
+*, *:before, *:after     { box-sizing: inherit; }
+html                     { box-sizing: border-box; height: 100%; }
+html, body               { margin: 0; padding: 0; }
+
+
+/* ------------------------------------ basic unit & font sizes */
+
+
+/* Leave font size to browser opinion */
+html { /*font-size: 16px;*/ }
+body { /*font-size: 16px;*/ line-height: 1.5; }
+
+
+/* ------------------------------------ improve design & UX */
+
+
+html    { cursor:     default; }
+body    { overflow-y: scroll;  }
+
+/* Single taps are dispatched immediately on clickable elements */
+a, area, button, input, label, select, summary, textarea, [tabindex] {
+   -ms-touch-action: manipulation;
+    touch-action:    manipulation;
+}
+
+
+/* -------------------- semantic markup without design affect */
+
+
+figure, figcaption, fieldset, legend {
+    display: block;
+    margin:  0;
+    padding: 0;
+    border:  0;
+    white-space: normal;
+}
+
+main, article, section, aside,
+header, footer,
+nav, code { display: block; }
+
+h1, h2, h3, h4, h5, h6,
+p, blockquote {
+    margin:  0;
+    padding: 0;
+    font-family: inherit;
+    font-size:   inherit;
+    line-height: inherit;
+    font-weight: inherit;
+}
+
+
+/* ---------------------------- images are used as illustrations */
+
+
+img, svg, canvas {
+    display:  block;
+    max-width: 100%;
+    height:    auto;
+    border:       0;
+}
+
+
+/* ------------------------------------ markup defaults */
+
+
+a { color: inherit; }
+
+ul, ol {
+    padding: 0;
+    margin:  0 0 0 1.5em;
+}
+
+hr {
+    background: transparent;
+    box-shadow: none;
+    border: 0;
+    margin: 0;
+
+    /* use as visual spacer */
+    display:    block;
+    font-size:  inherit;
+    height:     1rem;
+}
+
+td, th {
+    text-align:     left;
+    vertical-align: top;
+    padding-top:    0.25em;
+    padding-bottom: 0.25em;
+}
+
+[hidden], .hidden { display: none!important; }
+
+
+/* EOF html wrap */

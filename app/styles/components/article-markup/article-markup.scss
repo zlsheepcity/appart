@@ -1,0 +1,58 @@
+/*  Article markup
+ *  Shortcuts for faster article markup
+ *  2019.7.14
+ */
+
+
+/* ------------------------------------- layout */
+
+
+.west {
+    @extend .article-block-west;
+}
+.east {
+    @extend .article-block-east;
+}
+.block {
+    @extend .article-box;
+}
+
+.box {
+    @extend .article-box;
+    @extend .color-box;
+}
+.westbox {
+    @extend .article-box-west;
+    @extend .color-box;
+}
+.eastbox {
+    @extend .article-box-east;
+    @extend .color-box;
+}
+
+/* ------------------------------------- article */
+
+
+.chapter {
+    @extend .article-grid;
+    @extend .is-chapter;
+}
+
+h2 {
+    @extend .big-title;
+}
+h3 {
+    @extend .min-title;
+}
+
+
+/* ------------------------------------- design */
+
+
+.secondary-colors {
+    @extend .colors-as-secondary;
+    @extend .use-colors;
+}
+
+
+/*  EOF Article markup */

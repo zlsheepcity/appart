@@ -1,0 +1,51 @@
+@charset "UTF-8";
+
+/* Appart Styles */
+
+/*  Default styles index
+ *  2019.7.14
+ */
+
+// Compilation:
+// scss -C --sourcemap=none app/styles/appart.scss app/styles/appart.css
+// sass --no-source-map app/styles/appart.scss app/styles/appart.css
+
+
+
+// -------------------------------------------- Quick Prototyping
+
+
+//@import "components/prototype/prototype-sakura";
+
+
+// -------------------------------------------- HTML Setup
+
+
+@import "components/html-core/html-wrap";
+@import "components/html-core/html-typography";
+@import "components/html-core/css-workers";
+@import "components/color-model/color-model";
+
+
+// -------------------------------------------- Layout Components
+
+
+@import "components/article-grid/article-grid";
+@import "components/asidebar/asidebar";
+@import "components/data-table/data-table";
+
+
+// -------------------------------------------- Design Components
+
+
+@import "components/animate-css/required-animations";
+@import "components/svga-icons/svga-icons";
+
+
+// -------------------------------------------- Workers
+
+
+@import "components/article-markup/article-markup";
+
+
+/* EOF Default styles index */

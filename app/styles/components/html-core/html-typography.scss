@@ -1,0 +1,165 @@
+/*  All about font-sizes and line-heights
+ *  2019.7.14
+ */
+
+//* ------------------------------------ font collection
+
+/* font source
+@import url('https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic');
+*/
+
+// tufte 2018
+
+$font-list-collection--tufte-serif:
+    Vollkorn,
+    et-book,
+    Palatino,
+    "Palatino Linotype",
+    "Palatino LT STD",
+    "Book Antiqua",
+    Georgia,
+    serif;
+
+$font-list-collection--tufte-sans:
+    "Trebuchet MS",
+    "Gill Sans",
+    "Gill Sans MT",
+    sans-serif;
+
+// native font stack 2018
+
+$font-list-collection--native-sans-serif:
+  // Safari for macOS and iOS (San Francisco)
+  -apple-system,
+  // Chrome < 56 for macOS (San Francisco)
+  BlinkMacSystemFont,
+  // Windows
+  "Segoe UI",
+  // Android
+  "Roboto",
+  // Basic web fallback
+  "Helvetica Neue", Arial, sans-serif,
+  // Emoji fonts
+  "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
+
+// summary
+
+$font-list-serif: $font-list-collection--tufte-serif;
+$font-list-sans:  $font-list-collection--native-sans-serif;
+
+
+//* ------------------------------------ font-depended variables
+
+
+$fontSize:    100%;
+$fontRegular:  400;
+$fontSemibold: 400;
+$fontBolder:   700;
+
+
+//* ------------------------------------ body base
+
+
+body {
+    line-height: 1.5;
+    font-family: $font-list-serif;
+    font-weight: $fontRegular;
+}
+
+
+//* ------------------------------------ font-size model 2019
+
+
+%text-as-huge-title {
+    /* 64/64 */
+    font-size:   4em;
+    line-height: 1;
+}
+%text-as-big-title {
+    /* 40/48 */
+    font-size:   2.5em;
+    line-height: 1.2;
+}
+%text-as-mid-title {
+    /* 32/40 */
+    font-size:   2em;
+    line-height: 1.25;
+}
+%text-as-min-title {
+    /* 24/32 */
+    font-size:   1.5em;
+    line-height: 1.333333;
+}
+%text-as-bigger {
+    /* 20/24 */
+    font-size:   1.25em;
+    line-height: 1.2;
+}
+%text-as-regular {
+    /* 16/24 */
+    font-size:   1em;
+    line-height: 1.5;
+}
+%text-as-smaller {
+    /* 14/24 */
+    font-size:    0.875em;
+    line-height: 1.714286;
+}
+
+
+//* ------------------------------------ markup system 2019
+
+
+.big-title *,
+    .title *,
+.min-title *,
+ .subtitle * {
+    font-family: inherit;
+    font-size:   inherit;
+    line-height: inherit;
+    font-weight: inherit;
+}
+
+.huge-title      { @extend %text-as-huge-title; }
+.big-title       { @extend %text-as-big-title; }
+.mid-title       { @extend %text-as-mid-title; }
+.min-title       { @extend %text-as-min-title; }
+.title           { @extend %text-as-mid-title; }
+.subtitle        { @extend %text-as-bigger; }
+.text-is-bigger  { @extend %text-as-bigger; }
+.text-is-regular { @extend %text-as-regular; }
+.text-is-smaller { @extend %text-as-smaller; }
+
+.has-sans-text {
+    @extend      %text-as-smaller;
+    font-family: $font-list-sans;
+    letter-spacing: 0.03em;
+}
+
+td {
+    font-family: $font-list-sans;
+    @extend      %text-as-smaller;
+}
+
+
+//* ------------------------------------ extra features
+
+
+@supports (hanging-punctuation: first) {
+       * { hanging-punctuation: first; }
+}
+
+/* Font rendering */
+
+html {
+   -ms-text-size-adjust:     100%;
+   -webkit-text-size-adjust: 100%;
+}
+
+body {
+    text-rendering: optimizeLegibility;
+   -webkit-font-smoothing: antialiased;
+}
+
+
+/* EOF Typography */

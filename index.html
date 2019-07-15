@@ -13,10 +13,27 @@
     <!-- ========================================= BOOT -->
 
 
-    <style> /* ༼°▽°༽ boot style */
+    <style>
+        /* ༼°▽°༽ style boot */
         body    { width: 100%; height: auto; overflow: hidden; }
         img,svg { max-width: 100%; }
     </style>
+
+
+    <script>
+        /* ༼°▽°༽ app boot */
+        function BootKing() {
+            let  King = this
+            King.has = {
+                 Queens: ['mutate','onload'],
+                 Memory: [],
+                 toRemember: (something) => King.has.Memory.push(something) }
+            function KeepInMemory(responsible) {
+                 return (dna) => King.has.toRemember({dna,for:responsible}) }
+            King.has.Queens.map( (queen)=>King[queen]=KeepInMemory(queen) ) }
+
+        let app = new BootKing()
+    </script>
 
 
     <!-- ========================================= DESIGN -->

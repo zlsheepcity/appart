@@ -4,8 +4,6 @@
 ============================================================== */
 
 .svga-icon {
-    --base-line-height: 1.5;
-
     display:    inline-flex;
     justify-content: center;
     align-content:   center;
@@ -15,8 +13,8 @@
     height: 1em;
 
     &:not(.base-size) {
-        margin-right:     calc( var(--base-line-height)*1em - 1em );
-        transform:        scale(var(--base-line-height));
+        margin-right:     calc( var(--line-height, 1.5)*1em - 1em );
+        transform:        scale(var(--line-height, 1.5));
         transform-origin: left center;
     }
 

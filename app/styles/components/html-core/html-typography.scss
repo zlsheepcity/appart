@@ -1,5 +1,5 @@
 /*  All about font-sizes and line-heights
- *  2019.7.14
+ *  2019.7.16
  */
 
 //* ------------------------------------ font collection
@@ -42,28 +42,32 @@ $font-list-collection--native-sans-serif:
   // Emoji fonts
   "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
 
+
 // summary
 
-$font-list-serif: $font-list-collection--tufte-serif;
-$font-list-sans:  $font-list-collection--native-sans-serif;
+
+:root {
+    --font-family--main: #{$font-list-collection--tufte-serif};
+    --font-family--data: #{$font-list-collection--native-sans-serif};
+    --font-weight--main: 400;
+}
 
 
-//* ------------------------------------ font-depended variables
+//* ------------------------------------ font-based templates
 
 
-$fontSize:    100%;
-$fontRegular:  400;
-$fontSemibold: 400;
-$fontBolder:   700;
+.main-font-as-native-sans {
+    --font-family--main: #{$font-list-collection--native-sans-serif};
+}
 
 
 //* ------------------------------------ body base
 
 
 body {
-    line-height: 1.5;
-    font-family: $font-list-serif;
-    font-weight: $fontRegular;
+    line-height: var(--line-height, 1.5);
+    font-family: var(--font-family--main, sans-serif);
+    font-weight: var(--font-weight--main, 400);
 }
 
 
@@ -111,8 +115,9 @@ body {
 
 
 .big-title *,
-    .title *,
+.mid-title *,
 .min-title *,
+    .title *,
  .subtitle * {
     font-family: inherit;
     font-size:   inherit;
@@ -132,13 +137,13 @@ body {
 
 .has-sans-text {
     @extend      %text-as-smaller;
-    font-family: $font-list-sans;
+    font-family: var(--font-family--data, sans-serif);
     letter-spacing: 0.03em;
 }
 
 td {
-    font-family: $font-list-sans;
     @extend      %text-as-smaller;
+    font-family: var(--font-family--data, sans-serif);
 }
 
 

@@ -4,6 +4,16 @@
  *  2019.7.14
  */
 /* ==============================================================
+    css settings
+    2019.7.16
+============================================================== */
+:root {
+  --line-height: 1.5;
+  --row-space: 1rem;
+  --col-space: 1.25rem; }
+
+/* EOF css settings */
+/* ==============================================================
     html wrap & base markup
     2019.7.14
 ============================================================== */
@@ -20,13 +30,13 @@ html, body {
   padding: 0; }
 
 /* ------------------------------------ basic unit & font sizes */
-/* Leave font size to browser opinion */
+/* Let the browser decide the font size. */
 html {
   /*font-size: 16px;*/ }
 
 body {
   /*font-size: 16px;*/
-  line-height: 1.5; }
+  line-height: var(--line-height, 1.5); }
 
 /* ------------------------------------ improve design & UX */
 html {
@@ -85,7 +95,7 @@ hr {
   /* use as visual spacer */
   display: block;
   font-size: inherit;
-  height: 1rem; }
+  height: var(--row-space, 1rem); }
 
 td, th {
   text-align: left;
@@ -98,15 +108,23 @@ td, th {
 
 /* EOF html wrap */
 /*  All about font-sizes and line-heights
- *  2019.7.14
+ *  2019.7.16
  */
 /* font source
 @import url('https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic');
 */
+:root {
+  --font-family--main: Vollkorn, et-book, Palatino, Palatino Linotype, Palatino LT STD, Book Antiqua, Georgia, serif;
+  --font-family--data: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+  --font-weight--main: 400; }
+
+.main-font-as-native-sans {
+  --font-family--main: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol; }
+
 body {
-  line-height: 1.5;
-  font-family: Vollkorn, et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
-  font-weight: 400; }
+  line-height: var(--line-height, 1.5);
+  font-family: var(--font-family--main, sans-serif);
+  font-weight: var(--font-weight--main, 400); }
 
 .huge-title {
   /* 64/64 */
@@ -144,9 +162,10 @@ body {
   line-height: 1.714286; }
 
 .big-title *, h2 *,
-.title *,
+.mid-title *,
 .min-title *,
 h3 *,
+.title *,
 .subtitle * {
   font-family: inherit;
   font-size: inherit;
@@ -154,11 +173,11 @@ h3 *,
   font-weight: inherit; }
 
 .has-sans-text {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family: var(--font-family--data, sans-serif);
   letter-spacing: 0.03em; }
 
 td {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; }
+  font-family: var(--font-family--data, sans-serif); }
 
 @supports (hanging-punctuation: first) {
   * {
@@ -194,20 +213,20 @@ body {
   align-content: center; }
 
 .is-chapter:not(.is-on-top), .chapter:not(.is-on-top) {
-  padding-top: 2rem; }
+  padding-top: calc( 2*var(--row-space, 1rem) ); }
 
 .is-chapter:not(.is-on-bottom), .chapter:not(.is-on-bottom) {
-  padding-bottom: 2rem; }
+  padding-bottom: calc( 2*var(--row-space, 1rem) ); }
 
 /* ------------------------------------------ paddings */
 .pb {
-  padding-bottom: 1rem; }
+  padding-bottom: var(--row-space, 1rem); }
 
 .pt {
-  padding-top: 1rem; }
+  padding-top: var(--row-space, 1rem); }
 
 .has-paddings {
-  padding: 1rem; }
+  padding: var(--row-space, 1rem) var(--col-space, 1rem); }
 
 /* ------------------------------------------ univeral helpers */
 .is-centered {
@@ -288,9 +307,8 @@ body {
  * -------------------------------------------------------
  */
 :root {
-  --grid-base--row-gap: 1rem;
-  --grid-base--col-gap: 1.25rem;
-  /* side paddings */
+  --grid-base--row-gap: var(--row-space, 1rem);
+  --grid-base--col-gap: var(--col-space, 1.25rem);
   --grid-base--side-gap: 1rem;
   /* additional paddings between main and sides columns */
   --grid-base--main-width: 35rem;
@@ -845,7 +863,6 @@ body {
     2019.6.27
 ============================================================== */
 .svga-icon {
-  --base-line-height: 1.5;
   display: inline-flex;
   justify-content: center;
   align-content: center;
@@ -854,8 +871,8 @@ body {
   width: 1em;
   height: 1em; }
   .svga-icon:not(.base-size) {
-    margin-right: calc( var(--base-line-height)*1em - 1em );
-    transform: scale(var(--base-line-height));
+    margin-right: calc( var(--line-height, 1.5)*1em - 1em );
+    transform: scale(var(--line-height, 1.5));
     transform-origin: left center; }
   .svga-icon > svg {
     width: 100%;

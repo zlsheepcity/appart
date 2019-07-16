@@ -23,16 +23,16 @@
     align-content:   center;
 }
 
-.is-chapter:not(.is-on-top)    { padding-top:    2rem; }
-.is-chapter:not(.is-on-bottom) { padding-bottom: 2rem; }
+.is-chapter:not(.is-on-top)    { padding-top:    calc( 2*var(--row-space, 1rem) ); }
+.is-chapter:not(.is-on-bottom) { padding-bottom: calc( 2*var(--row-space, 1rem) ); }
 
 
 /* ------------------------------------------ paddings */
 
 
-.pb    { padding-bottom: 1rem; }
-.pt    { padding-top:    1rem; }
-.has-paddings { padding: 1rem; }
+.pb    { padding-bottom: var(--row-space, 1rem); }
+.pt    { padding-top:    var(--row-space, 1rem); }
+.has-paddings { padding: var(--row-space, 1rem) var(--col-space, 1rem); }
 
 
 /* ------------------------------------------ univeral helpers */

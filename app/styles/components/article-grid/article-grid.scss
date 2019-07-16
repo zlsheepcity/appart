@@ -12,8 +12,8 @@
 
 
 :root {
-  --grid-base--row-gap:       1rem;
-  --grid-base--col-gap:    1.25rem; /* side paddings */
+  --grid-base--row-gap:       var(--row-space, 1rem);
+  --grid-base--col-gap:       var(--col-space, 1.25rem);
   --grid-base--side-gap:      1rem; /* additional paddings between main and sides columns */
   --grid-base--main-width:   35rem;
   --grid-base--side-width:   16rem;

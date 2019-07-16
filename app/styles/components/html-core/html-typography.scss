@@ -132,6 +132,7 @@ body {
 .title           { @extend %text-as-mid-title; }
 .subtitle        { @extend %text-as-bigger; }
 .text-is-bigger  { @extend %text-as-bigger; }
+.text-is-larger  { @extend %text-as-bigger; }
 .text-is-regular { @extend %text-as-regular; }
 .text-is-smaller { @extend %text-as-smaller; }
 
@@ -167,4 +168,4 @@ body {
 }
 
 
-/* EOF Typography */
+/*  EOF Typography */

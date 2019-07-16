@@ -44,7 +44,7 @@
 
 
     <article class="article-grid is-chapter">
-        <header class="article-block-merge">
+        <header class="article-box-merge color-box">
             <h1 class="huge-title">Article grid usecases</h1>
             <p class="subtitle">2019.7.11</p>
         </header>
@@ -54,12 +54,12 @@
             <li>Упростить вёрстку статей с большим количеством элементов оформления</li>
             <li>Конструктор для уникальных вставок. Чтобы любой креатив вписывался в сетку.</li>
             <li>Трёхколоночная модель — текст и примечания по обеим сторонам</li>
-            <li>Автоматическая адаптация под все экраны</li>
+            <li>Адаптация под все экраны с сохранением направляющих линий</li>
         </ul>
 
         <hr>
 
-        <section class="article-block">
+        <section class="article-box color-box">
             <h2 class="title">CSS Classes</h2>
             <dl>
                 <dt><strong>article-grid</strong></dt>
@@ -123,7 +123,9 @@
         </div>
         <div class="article-block-east color-text"><p class="auto"></p></div>
 
-        <div class="title">Boxes</div>
+        <section class="article-box-merge keep-grid color-box">
+            <div class="title">Boxes</div>
+        </section>
 
         <div class="article-box-west color-box"><p class="auto"></p></div>
         <div class="article-box-main color-box">
@@ -155,19 +157,21 @@
 
         <div class="title">Merge East</div>
 
-        <div class="article-box-merge-east color-box"><p class="auto"></p></div>
-        <div class="article-block-west"><p class="auto"></p></div>
-        <div class="article-block-merge-east">
-            <p class="auto"></p>
-            <p class="auto"></p>
-            <p class="auto"></p>
-        </div>
-        <div class="article-box-merge-east keep-grid color-box">
-            <p class="auto"></p>
-            <div class="article-block-east"><p class="auto"></p></div>
-        </div>
+        <div class="article-block-west color-text"><p class="auto"></p></div>
+        <section class="article-box-merge-east">
+            <div class="article-box-merge-east color-box"><p class="auto"></p></div>
+            <div class="article-block-merge-east">
+                <p class="auto"></p>
+                <p class="auto"></p>
+                <p class="auto"></p>
+            </div>
+            <div class="article-box-merge-east keep-grid color-box">
+                <p class="auto"></p>
+                <div class="article-block-east color-text"><p class="auto"></p></div>
+            </div>
+        </section>
 
-        <div class="title">Merge Both Sides</div>
+        <div class="article-block-merge title">Merge Both Sides</div>
 
         <div class="article-box-merge color-box"><p class="auto"></p></div>
         <div class="article-block-merge">
@@ -176,24 +180,25 @@
             <p class="auto"></p>
         </div>
         <div class="article-box-merge keep-grid color-box">
-            <div class="article-block-west"><p class="auto"></p></div>
+            <div class="article-block-west color-text"><p class="auto"></p></div>
             <p class="auto"></p>
-            <div class="article-block-east"><p class="auto"></p></div>
+            <div class="article-block-east color-text"><p class="auto"></p></div>
         </div>
 
-        <div class="title">Merge West</div>
-
-        <div class="article-box-merge-west color-box"><p class="auto"></p></div>
-        <div class="article-block-merge-west">
-            <p class="auto"></p>
-            <p class="auto"></p>
-            <p class="auto"></p>
-        </div>
-        <div class="article-block-east"><p class="auto"></p></div>
-        <div class="article-box-merge-west keep-grid color-box">
-            <div class="article-block-west"><p class="auto"></p></div>
-            <p class="auto"></p>
-        </div>
+        <div class="article-block-merge-west title">Merge West</div>
+        <section class="article-box-merge-west">
+            <div class="article-box-merge-west color-box"><p class="auto"></p></div>
+            <div class="article-block-merge-west">
+                <p class="auto"></p>
+                <p class="auto"></p>
+                <p class="auto"></p>
+            </div>
+            <div class="article-box-merge-west keep-grid color-box">
+                <div class="article-block-west color-text"><p class="auto"></p></div>
+                <p class="auto"></p>
+            </div>
+        </section>
+        <div class="article-block-east color-text"><p class="auto"></p></div>
 
     </article>
 

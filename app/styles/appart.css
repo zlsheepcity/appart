@@ -3,20 +3,18 @@
 /*  Default styles index
  *  2019.7.14
  */
-/* ==============================================================
-    css settings
-    2019.7.16
-============================================================== */
+/*  base css settings
+ *  2019.7.16
+ */
 :root {
   --line-height: 1.5;
   --row-space: 1rem;
   --col-space: 1.25rem; }
 
-/* EOF css settings */
-/* ==============================================================
-    html wrap & base markup
-    2019.7.14
-============================================================== */
+/*  EOF base css settings */
+/*  html wrap & base markup
+ *  2019.7.14
+ */
 /* ------------------------------------ minimal box model */
 *, *:before, *:after {
   box-sizing: inherit; }
@@ -106,7 +104,7 @@ td, th {
 [hidden], .hidden {
   display: none !important; }
 
-/* EOF html wrap */
+/*  EOF html wrap */
 /*  All about font-sizes and line-heights
  *  2019.7.16
  */
@@ -146,7 +144,7 @@ body {
   font-size: 1.5em;
   line-height: 1.333333; }
 
-.subtitle, .text-is-bigger {
+.subtitle, .text-is-bigger, .text-is-larger {
   /* 20/24 */
   font-size: 1.25em;
   line-height: 1.2; }
@@ -191,7 +189,7 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased; }
 
-/* EOF Typography */
+/*  EOF Typography */
 /*  Universal helpers
  *  2019.7.14
  */
@@ -238,7 +236,7 @@ body {
   display: block;
   grid-column: full; }
 
-/* EOF Universal helpers */
+/*  EOF Universal helpers */
 /*  Default color model
  *  2019.7.14
  */
@@ -298,33 +296,19 @@ body {
   color: var(--color); }
 
 /*  EOF Default color model */
-/* -------------------------------------------------------
- * Article grid
- * 2019.7.13
- *
- * - 3 columns: west, main, east
- * - is mobile first
- * -------------------------------------------------------
- */
-:root {
+/*  Article grid, v2003 */
+.article-grid, .chapter {
   --grid-base--row-gap: var(--row-space, 1rem);
   --grid-base--col-gap: var(--col-space, 1.25rem);
-  --grid-base--side-gap: 1rem;
+  --grid-base--add-gap: 1rem;
   /* additional paddings between main and sides columns */
+  --grid-base--west-width: 11rem;
+  /* short prefix */
   --grid-base--main-width: 35rem;
-  --grid-base--side-width: 16rem; }
+  /* main text flow */
+  --grid-base--east-width: 16rem;
+  /* text-notes */ }
 
-/*
-    While we cant use var() in @media queries,
-    calculation should be manual
-
-    Step 1:
-        main-width + 2*col-gap = 37.5
-    Step 2:
-        step1 + side-width + 2*col-gap + side-gap = 57
-    Step 3:
-        step2 + side-width + 2*col-gap + side-gap = 76.5
-*/
 .article-grid, .chapter {
   --grid-formula--main-width: auto;
   --grid-formula--west-width: var(--grid-formula--main-width);
@@ -340,17 +324,17 @@ body {
         [overwest-start]
             var(--grid-base--col-gap)
         [west-start]
-            var(--grid-base--side-width)
+            var(--grid-base--west-width)
         [west-end]
             var(--grid-base--col-gap)
         [overwest-end]
-            var(--grid-base--side-gap);
+            var(--grid-base--add-gap);
   --grid-formula--east-insert:
-            var(--grid-base--side-gap)
+            var(--grid-base--add-gap)
         [overeast-start]
             var(--grid-base--col-gap)
         [east-start]
-            var(--grid-base--side-width)
+            var(--grid-base--east-width)
         [east-end]
             var(--grid-base--col-gap)
         [overeast-end]
@@ -413,13 +397,13 @@ body {
     --grid-part--END: var(--grid-formula--end-space); } }
 @media all and (min-width: 57rem) {
   .article-grid, .chapter {
-    --grid-formula--east-width: var(--grid-base--side-width);
+    --grid-formula--east-width: var(--grid-base--east-width);
     --grid-part--EAST: var(--grid-formula--east-insert);
     --grid-part--MAIN: var(--grid-formula--main-join-west);
     --grid-part--MAIN-join-WEST: var(--grid-formula--main-join-west); } }
-@media all and (min-width: 76.5rem) {
+@media all and (min-width: 71.5rem) {
   .article-grid, .chapter {
-    --grid-formula--west-width: var(--grid-base--side-width);
+    --grid-formula--west-width: var(--grid-base--west-width);
     --grid-part--WEST: var(--grid-formula--west-insert);
     --grid-part--MAIN: var(--grid-formula--main-single);
     --grid-part--MAIN-join-EAST: var(--grid-formula--main-join-east); } }
@@ -596,15 +580,12 @@ body {
   grid-template-columns: var(--grid-formula--start-hard) var(--grid-part--WEST) var(--grid-part--MAIN-join-EAST) var(--grid-formula--end-hard); }
 
 .article-grid, .chapter {
-  /* <HR> similar as row gap */
-  /* vertical paddings for columns with background-color */ }
-  .article-grid .single-line, .chapter .single-line {
-    min-height: var(--grid-base--row-gap); }
+  /* vertical paddings for boxes with background-color */ }
   .article-grid .color-box, .chapter .color-box, .article-grid .box, .chapter .box, .article-grid .westbox, .chapter .westbox, .article-grid .eastbox, .chapter .eastbox {
     padding-top: var(--grid-base--row-gap);
     padding-bottom: var(--grid-base--row-gap); }
 
-/* EOF article-grid */
+/*  EOF article-grid */
 /*  asidebar - screen side panel, visible when is-active
  *  2019.7.8
  */
@@ -674,48 +655,10 @@ body {
 .has-active-asidebar {
   overflow: hidden; }
 
-/* EOF asidebar */
-/* ==============================================================
-    Data Table - Responsive table format
-    2019.1.17
-
-    table
-        .has-data-titles = attr [data-title] will shown on mobile
-        .is-perfect = avoit mobile transformation
-        data-table-type="1str,2num,3txt" = content type for columns
-    td
-        .is-string/.is-number = content type alias
-
-============================================================== */
-/* EXAMPLE:
-
-    <table class="data-table has-data-titles" data-table-type="1str,2num,3txt">
-        <caption>
-            <h2>Has markup for data-title</h2>
-        </caption>
-        <thead>
-            <tr>
-                <th>Provider</th>
-                <th>Games</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th data-title="Provider">
-                    Microgaming
-                </th>
-                <td data-title="Games">
-                    590
-                </td>
-                <td data-title="Description with long value">
-                    The game is devoted to the Mighty Scandinavian god Thor, which gives out different symbols, such as Scatter Ram, to help a player win prizes. The option of additional gambling game is also available.
-                </td>
-            </tr>
-        </tbody>
-    </table>
-
-*/
+/*  EOF asidebar */
+/*  Data Table - Responsive <table> values
+ *  2019.1.17
+ */
 .data-table {
   /* table critical css */
   /* table addon - has compact mobile view */
@@ -804,7 +747,7 @@ body {
       text-overflow: ellipsis;
       overflow: hidden; } }
 
-/* EOF Data Table */
+/*  EOF Data Table */
 /*  Required animations
  *  2019.7.14
  */
@@ -857,7 +800,7 @@ body {
   -webkit-animation-name: pulse;
   animation-name: pulse; }
 
-/* EOF Required animations */
+/*  EOF Required animations */
 /* ==============================================================
     SVGA Regular Inline Icons
     2019.6.27
@@ -884,8 +827,5 @@ body {
  *  Shortcuts for faster article markup
  *  2019.7.14
  */
-/* ------------------------------------- layout */
-/* ------------------------------------- article */
-/* ------------------------------------- design */
 /*  EOF Article markup */
 /* EOF Default styles index */

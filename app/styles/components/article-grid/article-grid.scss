@@ -1,35 +1,43 @@
-/* -------------------------------------------------------
- * Article grid
- * 2019.7.13
- *
- * - 3 columns: west, main, east
- * - is mobile first
- * -------------------------------------------------------
- */
+/*  Article grid, v2003 */
+//  2019.7.16
+
+//  Features:
+//  - 3 columns: west, main, east
+//  - 4 screen breakpoints:
+//      mobile default
+//      mobile + side paddings
+//      main + east columns
+//      full layout
 
 
-// ------------------------------------------- General Settings
+// ------------------------------------------- Layout Settings
 
+// Sass vars for media queries
 
-:root {
-  --grid-base--row-gap:       var(--row-space, 1rem);
-  --grid-base--col-gap:       var(--col-space, 1.25rem);
-  --grid-base--side-gap:      1rem; /* additional paddings between main and sides columns */
-  --grid-base--main-width:   35rem;
-  --grid-base--side-width:   16rem;
+$row-gap:     1rem; // must be the same as --row-space
+$col-gap:  1.25rem; // must be the same as --col-space
+$add-gap:     1rem;
+$west-width: 11rem;
+$main-width: 35rem;
+$east-width: 16rem;
+
+$M: $main-width + 2 * $col-gap;
+$W: $west-width + 2 * $col-gap;
+$E: $east-width + 2 * $col-gap;
+
+$breakpoint--centered-content: "min-width: #{ $M }";                                 //  600px
+$breakpoint--east-col-appears: "min-width: #{ $M + $add-gap + $E }";                 //  912px
+$breakpoint--west-col-appears: "min-width: #{ $W + $add-gap + $M + $add-gap + $E }"; // 1144px
+
+.article-grid {
+  --grid-base--row-gap:    var(--row-space, #{$row-gap});
+  --grid-base--col-gap:    var(--col-space, #{$col-gap});
+  --grid-base--add-gap:    #{$add-gap}; /* additional paddings between main and sides columns */
+  --grid-base--west-width: #{$west-width}; /* short prefix */
+  --grid-base--main-width: #{$main-width}; /* main text flow */
+  --grid-base--east-width: #{$east-width}; /* text-notes */
 }
 
-/*
-    While we cant use var() in @media queries,
-    calculation should be manual
-
-    Step 1:
-        main-width + 2*col-gap = 37.5
-    Step 2:
-        step1 + side-width + 2*col-gap + side-gap = 57
-    Step 3:
-        step2 + side-width + 2*col-gap + side-gap = 76.5
-*/
 
 // ------------------------------------------- Grid Formula
 
@@ -58,17 +66,17 @@
         [overwest-start]
             var(--grid-base--col-gap)
         [west-start]
-            var(--grid-base--side-width)
+            var(--grid-base--west-width)
         [west-end]
             var(--grid-base--col-gap)
         [overwest-end]
-            var(--grid-base--side-gap);
+            var(--grid-base--add-gap);
   --grid-formula--east-insert:
-            var(--grid-base--side-gap)
+            var(--grid-base--add-gap)
         [overeast-start]
             var(--grid-base--col-gap)
         [east-start]
-            var(--grid-base--side-width)
+            var(--grid-base--east-width)
         [east-end]
             var(--grid-base--col-gap)
         [overeast-end]
@@ -138,9 +146,9 @@
   --grid-part--END:            var(--grid-formula--end-hard);
 }
 
-// screen paddings
+// centered content
 
-@media all and (min-width: 37.5rem) {
+@media all and ($breakpoint--centered-content) {
     .article-grid {
       --grid-formula--main-width:  var(--grid-base--main-width);
       --grid-part--START:          var(--grid-formula--start-space);
@@ -148,22 +156,22 @@
     }
 }
 
-// east column
+// east side appears
 
-@media all and (min-width: 57rem) {
+@media all and ($breakpoint--east-col-appears) {
     .article-grid {
-      --grid-formula--east-width:  var(--grid-base--side-width);
+      --grid-formula--east-width:  var(--grid-base--east-width);
       --grid-part--EAST:           var(--grid-formula--east-insert);
       --grid-part--MAIN:           var(--grid-formula--main-join-west);
       --grid-part--MAIN-join-WEST: var(--grid-formula--main-join-west);
     }
 }
 
-// both columns
+// both sides
 
-@media all and (min-width: 76.5rem) {
+@media all and ($breakpoint--west-col-appears) {
     .article-grid {
-      --grid-formula--west-width:  var(--grid-base--side-width);
+      --grid-formula--west-width:  var(--grid-base--west-width);
       --grid-part--WEST:           var(--grid-formula--west-insert);
       --grid-part--MAIN:           var(--grid-formula--main-single);
       --grid-part--MAIN-join-EAST: var(--grid-formula--main-join-east);
@@ -238,6 +246,7 @@
     grid-template-columns: var(--grid-template--content-block);
 }
 
+
 // general boxes
 
 .article-box-west   { grid-column: overwest; }
@@ -289,6 +298,7 @@
     @extend %article-grid-seed;
     grid-template-columns: var(--grid-template-columns--content-box);
 }
+
 
 
 // ------------------------------------------- Keep grid for columns
@@ -364,12 +374,8 @@
 
 .article-grid {
 
-    /* <HR> similar as row gap */
-    .single-line {
-        min-height: var(--grid-base--row-gap);
-    }
 
-    /* vertical paddings for columns with background-color */
+    /* vertical paddings for boxes with background-color */
     .color-box {
         padding-top:    var(--grid-base--row-gap);
         padding-bottom: var(--grid-base--row-gap);
@@ -378,4 +384,4 @@
 }
 
 
-/* EOF article-grid */
+/*  EOF article-grid */

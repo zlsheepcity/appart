@@ -25,7 +25,7 @@
         function BootKing() {
             let  King = this
             King.has = {
-                 Queens: ['mutate','onload'],
+                 Queens: ['mutate','onload','action'],
                  Memory: [],
                  toRemember: (something) => King.has.Memory.push(something) }
             function KeepInMemory(responsible) {
@@ -67,6 +67,19 @@
     <article class="chapter">
 
         <h2 class="west">Asidebar</h2>
+        <div>
+            <div class="open-side-menu">open menu</div>
+            <div id="SideMenu">menu</div>
+            <script>
+                function SideMenuOpening() {
+                    const kliker = document.querySelector('.open-side-menu')
+                    const target = document.getElementById('SideMenu')
+                    const toOpen = (e) => target.classList.toggle('is-active')
+                    kliker.addEventListener('click',toOpen)
+                }
+                SideMenuOpening()
+            </script>
+        </div>
 
     </article>
 

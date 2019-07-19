@@ -374,6 +374,9 @@ $breakpoint--west-col-appears: "min-width: #{ $W + $add-gap + $M + $add-gap + $E
 
 .article-grid {
 
+    max-width: 100%;
+    word-wrap: break-word;
+
 
     /* vertical paddings for boxes with background-color */
     .color-box {

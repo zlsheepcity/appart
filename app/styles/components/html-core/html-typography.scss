@@ -74,30 +74,60 @@ body {
 //* ------------------------------------ font-size model 2019
 
 
+$title-size-breakpoint: 'max-width: 38em';
+
+
 %text-as-huge-title {
     /* 64/64 */
     font-size:   4em;
     line-height: 1;
+    @media ($title-size-breakpoint) {
+        /* 32/40 */
+        font-size:   2em;
+        line-height: 1.25;
+    }
 }
 %text-as-big-title {
     /* 40/48 */
     font-size:   2.5em;
     line-height: 1.2;
+    @media ($title-size-breakpoint) {
+        /* 24/32 */
+        font-size:   1.5em;
+        line-height: 1.333333;
+    }
 }
 %text-as-mid-title {
     /* 32/40 */
     font-size:   2em;
     line-height: 1.25;
+    @media ($title-size-breakpoint) {
+        /* 20/24 */
+        font-size:   1.25em;
+        line-height: 1.2;
+    }
 }
 %text-as-min-title {
     /* 24/32 */
     font-size:   1.5em;
     line-height: 1.333333;
+    @media ($title-size-breakpoint) {
+        /* 16/24 */
+        font-size:   1em;
+        line-height: 1.5;
+        font-weight: bolder;
+    }
 }
 %text-as-bigger {
     /* 20/24 */
     font-size:   1.25em;
     line-height: 1.2;
+    @media ($title-size-breakpoint) {
+        /* 16/24 */
+        font-size:   1em;
+        line-height: 1.5;
+        font-weight: bolder;
+    }
 }
 %text-as-regular {
     /* 16/24 */

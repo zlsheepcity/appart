@@ -128,26 +128,53 @@ body {
   /* 64/64 */
   font-size: 4em;
   line-height: 1; }
+  @media (max-width: 38em) {
+    .huge-title {
+      /* 32/40 */
+      font-size: 2em;
+      line-height: 1.25; } }
 
 .big-title, h2 {
   /* 40/48 */
   font-size: 2.5em;
   line-height: 1.2; }
+  @media (max-width: 38em) {
+    .big-title, h2 {
+      /* 24/32 */
+      font-size: 1.5em;
+      line-height: 1.333333; } }
 
 .mid-title, .title {
   /* 32/40 */
   font-size: 2em;
   line-height: 1.25; }
+  @media (max-width: 38em) {
+    .mid-title, .title {
+      /* 20/24 */
+      font-size: 1.25em;
+      line-height: 1.2; } }
 
 .min-title, h3 {
   /* 24/32 */
   font-size: 1.5em;
   line-height: 1.333333; }
+  @media (max-width: 38em) {
+    .min-title, h3 {
+      /* 16/24 */
+      font-size: 1em;
+      line-height: 1.5;
+      font-weight: bolder; } }
 
 .subtitle, .text-is-bigger, .text-is-larger {
   /* 20/24 */
   font-size: 1.25em;
   line-height: 1.2; }
+  @media (max-width: 38em) {
+    .subtitle, .text-is-bigger, .text-is-larger {
+      /* 16/24 */
+      font-size: 1em;
+      line-height: 1.5;
+      font-weight: bolder; } }
 
 .text-is-regular {
   /* 16/24 */
@@ -580,6 +607,8 @@ body {
   grid-template-columns: var(--grid-formula--start-hard) var(--grid-part--WEST) var(--grid-part--MAIN-join-EAST) var(--grid-formula--end-hard); }
 
 .article-grid, .chapter {
+  max-width: 100%;
+  word-wrap: break-word;
   /* vertical paddings for boxes with background-color */ }
   .article-grid .color-box, .chapter .color-box, .article-grid .box, .chapter .box, .article-grid .westbox, .chapter .westbox, .article-grid .eastbox, .chapter .eastbox {
     padding-top: var(--grid-base--row-gap);

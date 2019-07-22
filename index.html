@@ -1,5 +1,5 @@
 <!doctype html><!-- appart :: 8001 :: 2019.7.14 -->
-<html lang="ru" class="has-offsidebar-overlay">
+<html lang="ru">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -74,27 +74,68 @@
                 <li>background отдельно от содержания панели, для эффектов анимации</li>
                 <li>ширина на больших экранах подстраивается под контент</li>
             </ul>
+            <button class="js-for-ChaptersBar">OffsideBar</button>
         </section>
-        <section class="offsidebar">
+        <section class="offsidebar ChaptersBar colors-as-special">
             <div class="offsidebar-overlay"></div>
             <div class="offsidebar-background"></div>
             <section class="sidepanel">
-                <header class="offsidebar-header">
+                <header class="sidepanel-header">
                     <h2>Offside bar</h2>
                 </header>
-                <section class="offsidebar-content">
+                <nav class="sidepanel-content">
                     <ul>
                         <li>Content</li>
                     </ul>
-                    <div style="height:150vh;"></div>
-                </section>
-                <footer class="offsidebar-footer">
+                    <div>background отдельно от содержания панели, для эффектов анимацииbackground отдельно от содержания панели, для эффектов анимацииbackground отдельно от содержания панели, для эффектов анимацииbackground отдельно от содержания панели, для эффектов анимацииbackground отдельно от содержания панели, для эффектов анимацииbackground отдельно от содержания панели, для эффектов анимацииbackground отдельно от содержания панели, для эффектов анимацииbackground отдельно от содержания панели, для эффектов анимацииbackground отдельно от содержания панели, для эффектов анимацииbackground отдельно от содержания панели, для эффектов анимацииbackground отдельно от содержания панели, для эффектов анимацииbackground отдельно от содержания панели, для эффектов анимацииbackground отдельно от содержания панели, для эффектов анимации</div>
+                    <div style="height:150vh;" hidden></div>
+                </nav>
+                <footer class="sidepanel-footer">
                     <div>Footer</div>
                 </footer>
             </section>
         </section>
    
     </article>
+
+    <!-- ActivateChaptersBar -->
+
+    <script>
+        function  ActivateChaptersBar () {
+
+            // cast
+            const asidebar = document.querySelector('.ChaptersBar')
+            const htmlwrap = document.querySelector('html')
+            const classActive      = 'is-active'
+            const classOverlayMark = 'has-offsidebar-overlay'
+            const cssTrigger       = '.js-for-ChaptersBar'
+            const doToggleAsidebarActivity = function (e) {
+                asidebar.classList.toggle(classActive)
+                if (asidebar.classList.contains(classActive))
+                    htmlwrap.classList.add(classOverlayMark)
+                else
+                    htmlwrap.classList.remove(classOverlayMark)
+            }
+
+            // find bartenders
+            const clickerActivation = (el)=>el.addEventListener('click', doToggleAsidebarActivity)
+
+            // activate bartenders
+            document.querySelectorAll(cssTrigger).forEach(clickerActivation)
+
+            // find/create shadow overlay
+            let overlay = asidebar.querySelector('.offsidebar-overlay')
+            if(!overlay) {
+                overlay = document.createElement('div')
+                overlay.classList.add('offsidebar-overlay')
+                asidebar.prepend(overlay)
+            }
+
+            // activate shadow overlay
+            clickerActivation(overlay)
+        }
+        (ActivateChaptersBar)()
+    </script>
 
     <article class="chapter">
 

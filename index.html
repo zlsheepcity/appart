@@ -43,7 +43,7 @@
         href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic"
         rel="stylesheet">
     <link
-        href="app/styles/appart.css?v2019.7.22.x3"
+        href="app/styles/appart.css?v2019.7.22.x4"
         rel="stylesheet" type="text/css">
 
 
@@ -74,31 +74,58 @@
                 <li>background отдельно от содержания панели, для эффектов анимации</li>
                 <li>ширина на больших экранах подстраивается под контент</li>
             </ul>
-            <button class="js-for-ChaptersBar">OffsideBar</button>
+            <div>
+                <button class="js-for-ChaptersBar">ChaptersBar</button>
+                <button class="js-for-MenuBar">MenuBar</button>
+            </div>
         </section>
-        <section class="offsidebar ChaptersBar colors-as-special">
-            <!-- div class="offsidebar-overlay"></div -->
-            <!-- div class="offsidebar-background"></div -->
+        <section class="offsidebar from-eastside ChaptersBar colors-as-secondary">
+            <!-- <div class="offsidebar-overlay"></div>    <-- auto insert -->
+            <!-- <div class="offsidebar-background"></div> <-- auto insert -->
             <section class="sidepanel">
+
                 <header class="sidepanel-header">
                     <h2>Offside bar</h2>
                 </header>
+
                 <nav class="sidepanel-content">
-                    <ul>
+                    <ul class="js-for-ChaptersBar">
                         <li>Content</li>
                     </ul>
-                    <div hidden>background отдельно от содержания панели, для эффектов анимацииbackground отдельно от содержания панели, для эффектов анимацииbackground отдельно от содержания панели, для эффектов анимацииbackground отдельно от содержания панели, для эффектов анимацииbackground отдельно от содержания панели, для эффектов анимацииbackground отдельно от содержания панели, для эффектов анимацииbackground отдельно от содержания панели, для эффектов анимацииbackground отдельно от содержания панели, для эффектов анимацииbackground отдельно от содержания панели, для эффектов анимацииbackground отдельно от содержания панели, для эффектов анимацииbackground отдельно от содержания панели, для эффектов анимацииbackground отдельно от содержания панели, для эффектов анимацииbackground отдельно от содержания панели, для эффектов анимации</div>
                     <div style="height:150vh;" hidden></div>
                 </nav>
+
                 <footer class="sidepanel-footer">
                     <div>Footer</div>
                 </footer>
+
+            </section>
+        </section>
+        <section class="offsidebar from-westside MenuBar colors-as-secondary">
+            <!-- <div class="offsidebar-overlay"></div>    <-- auto insert -->
+            <!-- <div class="offsidebar-background"></div> <-- auto insert -->
+            <section class="sidepanel">
+
+                <header class="sidepanel-header">
+                    <h2>Bar From Westside</h2>
+                </header>
+
+                <nav class="sidepanel-content">
+                    <ul class="js-for-ChaptersBar">
+                        <li>Content</li>
+                    </ul>
+                </nav>
+
+                <footer class="sidepanel-footer">
+                    <div>Footer</div>
+                </footer>
+
             </section>
         </section>
    
     </article>
 
-    <!-- ActivateChaptersBar -->
+    <!-- Activate Bar -->
 
     <script>
         function  ActivateChaptersBar () {
@@ -143,6 +170,50 @@
             clickerActivation(overlay)
         }
         (ActivateChaptersBar)()
+    </script>
+    <script>
+        function  ActivateMenuBar () {
+
+            // cast
+            const asidebar = document.querySelector('.MenuBar')
+            const htmlwrap = document.querySelector('html')
+            const classActive      = 'is-active'
+            const classOverlayMark = 'has-offsidebar-overlay'
+            const cssTrigger       = '.js-for-MenuBar'
+            const doToggleAsidebarActivity = function (e) {
+                asidebar.classList.toggle(classActive)
+                if (asidebar.classList.contains(classActive))
+                    htmlwrap.classList.add(classOverlayMark)
+                else
+                    htmlwrap.classList.remove(classOverlayMark)
+            }
+
+            // find bartenders
+            const clickerActivation = (el)=>el.addEventListener('click', doToggleAsidebarActivity)
+
+            // activate bartenders
+            document.querySelectorAll(cssTrigger).forEach(clickerActivation)
+
+            // find/create background
+            let background = asidebar.querySelector('.offsidebar-background')
+            if(!background) {
+                background = document.createElement('div')
+                background.classList.add('offsidebar-background')
+                asidebar.prepend(background)
+            }
+
+            // find/create shadow overlay
+            let overlay = asidebar.querySelector('.offsidebar-overlay')
+            if(!overlay) {
+                overlay = document.createElement('div')
+                overlay.classList.add('offsidebar-overlay')
+                asidebar.prepend(overlay)
+            }
+
+            // activate shadow overlay
+            clickerActivation(overlay)
+        }
+        (ActivateMenuBar)()
     </script>
 
     <article class="chapter">

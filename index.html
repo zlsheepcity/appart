@@ -1,5 +1,5 @@
 <!doctype html><!-- appart :: 8001 :: 2019.7.14 -->
-<html lang="ru">
+<html lang="ru" class="has-offsidebar-overlay">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -43,7 +43,7 @@
         href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic"
         rel="stylesheet">
     <link
-        href="app/styles/appart.css"
+        href="app/styles/appart.css?v2019.7.22"
         rel="stylesheet" type="text/css">
 
 
@@ -63,6 +63,38 @@
     </header>
 
     <!-- ----------------------------------------------------- Sidebar -->
+
+    <article class="chapter">
+
+        <h2 class="west">Offside bar</h2>
+        <section class="block">
+            <h3>Problems</h3>
+            <ul class="block">
+                <li>поведение chrome scroll-bar не должно нарушать layout страницы</li>
+                <li>background отдельно от содержания панели, для эффектов анимации</li>
+                <li>ширина на больших экранах подстраивается под контент</li>
+            </ul>
+        </section>
+        <section class="offsidebar">
+            <div class="offsidebar-overlay"></div>
+            <div class="offsidebar-background"></div>
+            <section class="sidepanel">
+                <header class="offsidebar-header">
+                    <h2>Offside bar</h2>
+                </header>
+                <section class="offsidebar-content">
+                    <ul>
+                        <li>Content</li>
+                    </ul>
+                    <div style="height:150vh;"></div>
+                </section>
+                <footer class="offsidebar-footer">
+                    <div>Footer</div>
+                </footer>
+            </section>
+        </section>
+   
+    </article>
 
     <article class="chapter">
 

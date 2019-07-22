@@ -77,6 +77,7 @@
             <div>
                 <button class="js-for-ChaptersBar">ChaptersBar</button>
                 <button class="js-for-MenuBar">MenuBar</button>
+                <button class="js-for-OverflowBar">Bar With Overflow</button>
             </div>
         </section>
         <section class="offsidebar from-eastside ChaptersBar colors-as-secondary">
@@ -101,9 +102,7 @@
 
             </section>
         </section>
-        <section class="offsidebar from-westside MenuBar colors-as-secondary">
-            <!-- <div class="offsidebar-overlay"></div>    <-- auto insert -->
-            <!-- <div class="offsidebar-background"></div> <-- auto insert -->
+        <section class="offsidebar from-westside MenuBar colors-as-special">
             <section class="sidepanel">
 
                 <header class="sidepanel-header">
@@ -111,9 +110,38 @@
                 </header>
 
                 <nav class="sidepanel-content">
-                    <ul class="js-for-ChaptersBar">
+                    <ul class="js-for-MenuBar">
                         <li>Content</li>
                     </ul>
+                </nav>
+
+                <footer class="sidepanel-footer">
+                    <div>Footer</div>
+                </footer>
+
+            </section>
+        </section>
+        <section class="offsidebar OverflowBar colors-as-secondary">
+            <section class="sidepanel">
+
+                <header class="sidepanel-header">
+                    <h2>Offside Bar With Overflow</h2>
+                </header>
+
+                <nav class="sidepanel-content">
+                    <ul class="js-for-OverflowBar">
+                        <li>Content</li>
+                    </ul>
+                    <div style="max-width:20em;">
+                        <p class="auto"></p>
+                        <p class="auto"></p>
+                        <p class="auto"></p>
+                        <p class="auto"></p>
+                        <p class="auto"></p>
+                        <p class="auto"></p>
+                        <p class="auto"></p>
+                        <p class="auto"></p>
+                    </div>
                 </nav>
 
                 <footer class="sidepanel-footer">
@@ -214,6 +242,50 @@
             clickerActivation(overlay)
         }
         (ActivateMenuBar)()
+    </script>
+    <script>
+        function  ActivateOverflowBar () {
+
+            // cast
+            const asidebar = document.querySelector('.OverflowBar')
+            const htmlwrap = document.querySelector('html')
+            const classActive      = 'is-active'
+            const classOverlayMark = 'has-offsidebar-overlay'
+            const cssTrigger       = '.js-for-OverflowBar'
+            const doToggleAsidebarActivity = function (e) {
+                asidebar.classList.toggle(classActive)
+                if (asidebar.classList.contains(classActive))
+                    htmlwrap.classList.add(classOverlayMark)
+                else
+                    htmlwrap.classList.remove(classOverlayMark)
+            }
+
+            // find bartenders
+            const clickerActivation = (el)=>el.addEventListener('click', doToggleAsidebarActivity)
+
+            // activate bartenders
+            document.querySelectorAll(cssTrigger).forEach(clickerActivation)
+
+            // find/create background
+            let background = asidebar.querySelector('.offsidebar-background')
+            if(!background) {
+                background = document.createElement('div')
+                background.classList.add('offsidebar-background')
+                asidebar.prepend(background)
+            }
+
+            // find/create shadow overlay
+            let overlay = asidebar.querySelector('.offsidebar-overlay')
+            if(!overlay) {
+                overlay = document.createElement('div')
+                overlay.classList.add('offsidebar-overlay')
+                asidebar.prepend(overlay)
+            }
+
+            // activate shadow overlay
+            clickerActivation(overlay)
+        }
+        (ActivateOverflowBar)()
     </script>
 
     <article class="chapter">
@@ -436,6 +508,30 @@
             <path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM277.3 415.7c-8.4 1.5-11.5-3.7-11.5-8 0-5.4.2-33 .2-55.3 0-15.6-5.2-25.5-11.3-30.7 37-4.1 76-9.2 76-73.1 0-18.2-6.5-27.3-17.1-39 1.7-4.3 7.4-22-1.7-45-13.9-4.3-45.7 17.9-45.7 17.9-13.2-3.7-27.5-5.6-41.6-5.6-14.1 0-28.4 1.9-41.6 5.6 0 0-31.8-22.2-45.7-17.9-9.1 22.9-3.5 40.6-1.7 45-10.6 11.7-15.6 20.8-15.6 39 0 63.6 37.3 69 74.3 73.1-4.8 4.3-9.1 11.7-10.6 22.3-9.5 4.3-33.8 11.7-48.3-13.9-9.1-15.8-25.5-17.1-25.5-17.1-16.2-.2-1.1 10.2-1.1 10.2 10.8 5 18.4 24.2 18.4 24.2 9.7 29.7 56.1 19.7 56.1 19.7 0 13.9.2 36.5.2 40.6 0 4.3-3 9.5-11.5 8-66-22.1-112.2-84.9-112.2-158.3 0-91.8 70.2-161.5 162-161.5S388 165.6 388 257.4c.1 73.4-44.7 136.3-110.7 158.3zm-98.1-61.1c-1.9.4-3.7-.4-3.9-1.7-.2-1.5 1.1-2.8 3-3.2 1.9-.2 3.7.6 3.9 1.9.3 1.3-1 2.6-3 3zm-9.5-.9c0 1.3-1.5 2.4-3.5 2.4-2.2.2-3.7-.9-3.7-2.4 0-1.3 1.5-2.4 3.5-2.4 1.9-.2 3.7.9 3.7 2.4zm-13.7-1.1c-.4 1.3-2.4 1.9-4.1 1.3-1.9-.4-3.2-1.9-2.8-3.2.4-1.3 2.4-1.9 4.1-1.5 2 .6 3.3 2.1 2.8 3.4zm-12.3-5.4c-.9 1.1-2.8.9-4.3-.6-1.5-1.3-1.9-3.2-.9-4.1.9-1.1 2.8-.9 4.3.6 1.3 1.3 1.8 3.3.9 4.1zm-9.1-9.1c-.9.6-2.6 0-3.7-1.5s-1.1-3.2 0-3.9c1.1-.9 2.8-.2 3.7 1.3 1.1 1.5 1.1 3.3 0 4.1zm-6.5-9.7c-.9.9-2.4.4-3.5-.6-1.1-1.3-1.3-2.8-.4-3.5.9-.9 2.4-.4 3.5.6 1.1 1.3 1.3 2.8.4 3.5zm-6.7-7.4c-.4.9-1.7 1.1-2.8.4-1.3-.6-1.9-1.7-1.5-2.6.4-.6 1.5-.9 2.8-.4 1.3.7 1.9 1.8 1.5 2.6z"/>
         </symbol>
     </svg>
+
+<!-- ========================================= PAGE CUSTOM -->
+
+<script>
+    // insert random content into paragraphs
+    function p() {
+        // const p = document.getElementsByTagName('p')
+        const p = document.querySelectorAll('.auto')
+        for ( let i in p ) {
+            let texts = [
+                'Les grandes personnes m’ont conseillé de laisser de côté les dessins de serpents boas ouverts ou fermés, et de m’intéresser plutôt à la géographie, à l’histoire, au calcul et à la grammaire. C’est ainsi que j’ai abandonné, à l’âge de six ans, une magnifique carrière de peintre.',
+                'J’avais été découragé par l’insuccès de mon dessin numéro 1 et de mon dessin numéro 2. Les grandes personnes ne comprennent jamais rien toutes seules, et c’est fatigant, pour les enfants, de toujours et toujours leur donner des explications.',
+                'J’ai donc dû choisir un autre métier et j’ai appris à piloter des avions. J’ai volé un peu partout dans le monde. Et la géographie, c’est exact, m’a beaucoup servi. Je savais reconnaître, du premier coup d’œil, la Chine de l’Arizona. C’est très utile, si l’on est égaré pendant la nuit.',
+                'J’ai ainsi eu, au cours de ma vie, des tas de contacts avec des tas de gens sérieux. J’ai beaucoup vécu chez les grandes personnes. Je les ai vues de très près. Ça n’a pas trop amélioré mon opinion.',
+                'Quand j’en rencontrais une qui me paraissait un peu lucide, je faisais l’expérience sur elle de mon dessin numéro 1 que j’ai toujours conservé. Je voulais savoir si elle était vraiment compréhensive. Mais toujours elle me répondait : « C’est un chapeau. »',
+                'Alors je ne lui parlais ni de serpents boas, ni de forêts vierges, ni d’étoiles. Je me mettais à sa portée. Je lui parlais de bridge, de golf, de politique et de cravates. Et la grande personne était bien contente de connaître un homme aussi raisonnable.'
+                ]
+            let text = texts[Math.floor(Math.random()*texts.length)]
+            let textnode = document.createTextNode(text)
+            if (p[i].appendChild) p[i].appendChild(textnode)
+        }
+    }
+    p()
+</script>
 
 </body>
 </html>

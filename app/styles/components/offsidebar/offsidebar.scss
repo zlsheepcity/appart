@@ -1,3 +1,8 @@
+/* offsidebar
+ * ideal
+ */
+
+
 /* -------------------------------- layout & behavior */
 
 .offsidebar {
@@ -5,6 +10,7 @@
   --z-index: 100;
   --left:    auto;
   --right:   0;
+  --transform-origin--horizontal: right;
 
     position:   fixed;
     z-index:    var(--z-index);
@@ -66,6 +72,13 @@
     opacity: 0;
 }
 
+.sidepanel-content,
+.sidepanel-header,
+.sidepanel-footer {
+    /* default inactive state */
+    opacity: 0;
+}
+
 .sidepanel-header {
     margin-top:    0;
     margin-bottom: 0;
@@ -93,8 +106,39 @@
 .offsidebar.is-active .offsidebar-overlay {
     opacity: 1;
 }
-.offsidebar.is-active .sidepanel {
+
+.offsidebar.is-active .sidepanel,
+.offsidebar.is-active .sidepanel-content,
+.offsidebar.is-active .sidepanel-header,
+.offsidebar.is-active .sidepanel-footer {
     opacity: 1;
+}
+
+
+/* -------------------------------- animation settings */
+
+
+@media screen and (min-width:800px) {
+    .offsidebar-background {
+        will-change: transform;
+    }
+    .offsidebar.is-active .offsidebar-background {
+        transition:  transform 240ms;
+        transition-timing-function: var(--timing-function--focusZoom);
+        transform-origin: var(--transform-origin--horizontal) center;
+    }
+    .offsidebar.is-active .sidepanel-content,
+    .offsidebar.is-active .sidepanel-header,
+    .offsidebar.is-active .sidepanel-footer {
+        will-change: opacity;
+    }
+    .offsidebar.is-active .sidepanel-content,
+    .offsidebar.is-active .sidepanel-header,
+    .offsidebar.is-active .sidepanel-footer {
+        transition:  opacity 120ms;
+        transition-delay:    240ms;
+        transition-timing-function: var(--timing-function--focusZoom);
+    }
 }
 
 
@@ -110,5 +154,6 @@
     background-color: var(--background-color--mark);
     color: var(--color--mark);
 }
+
 
 /*  EOF offsidebar */

@@ -73,6 +73,7 @@
                 <li>поведение chrome scroll-bar не должно нарушать layout страницы</li>
                 <li>background отдельно от содержания панели, для эффектов анимации</li>
                 <li>ширина на больших экранах подстраивается под контент</li>
+                <li>содержимое сайдбара скролится при необходимости</li>
             </ul>
             <div>
                 <button class="js-for-ChaptersBar">ChaptersBar</button>
@@ -81,19 +82,18 @@
             </div>
         </section>
         <section class="offsidebar from-eastside ChaptersBar colors-as-secondary">
-            <!-- <div class="offsidebar-overlay"></div>    <-- auto insert -->
-            <!-- <div class="offsidebar-background"></div> <-- auto insert -->
+            <!-- <div class="offsidebar-overlay"></div>    <!-- auto insert -->
+            <!-- <div class="offsidebar-background"></div> <!-- auto insert -->
             <section class="sidepanel">
 
                 <header class="sidepanel-header">
-                    <h2>Offside bar</h2>
+                    <div>Offside bar</div>
                 </header>
 
                 <nav class="sidepanel-content">
                     <ul class="js-for-ChaptersBar">
                         <li>Content</li>
                     </ul>
-                    <div style="height:150vh;" hidden></div>
                 </nav>
 
                 <footer class="sidepanel-footer">
@@ -106,7 +106,7 @@
             <section class="sidepanel">
 
                 <header class="sidepanel-header">
-                    <h2>Bar From Westside</h2>
+                    <div>Bar From Westside</div>
                 </header>
 
                 <nav class="sidepanel-content">
@@ -125,24 +125,21 @@
             <section class="sidepanel">
 
                 <header class="sidepanel-header">
-                    <h2>Offside Bar With Overflow</h2>
+                    <div>Offside Bar With Overflow</div>
                 </header>
 
-                <nav class="sidepanel-content">
-                    <ul class="js-for-OverflowBar">
-                        <li>Content</li>
-                    </ul>
-                    <div style="max-width:20em;">
-                        <p class="auto"></p>
-                        <p class="auto"></p>
-                        <p class="auto"></p>
-                        <p class="auto"></p>
-                        <p class="auto"></p>
-                        <p class="auto"></p>
-                        <p class="auto"></p>
-                        <p class="auto"></p>
+                <section class="sidepanel-content">
+                    <div class="block" style="max-width:20em;">
+                        <p auto-content></p>
+                        <p auto-content></p>
+                        <p auto-content></p>
+                        <p auto-content></p>
+                        <p auto-content></p>
+                        <p auto-content></p>
+                        <p auto-content></p>
+                        <p auto-content></p>
                     </div>
-                </nav>
+                </section>
 
                 <footer class="sidepanel-footer">
                     <div>Footer</div>
@@ -153,140 +150,60 @@
    
     </article>
 
-    <!-- Activate Bar -->
+    <!-- Activate Offside Bars -->
 
     <script>
-        function  ActivateChaptersBar () {
+        function InterfaceOffsideBar (barName) {
 
-            // cast
-            const asidebar = document.querySelector('.ChaptersBar')
+            const asidebar = document.querySelector('.'+barName)
             const htmlwrap = document.querySelector('html')
-            const classActive      = 'is-active'
-            const classOverlayMark = 'has-offsidebar-overlay'
-            const cssTrigger       = '.js-for-ChaptersBar'
-            const doToggleAsidebarActivity = function (e) {
-                asidebar.classList.toggle(classActive)
-                if (asidebar.classList.contains(classActive))
-                    htmlwrap.classList.add(classOverlayMark)
-                else
-                    htmlwrap.classList.remove(classOverlayMark)
+
+            const classActive     = 'is-active'
+            const classHasOverlay = 'has-offsidebar-overlay'
+            const cssBartender    ='.js-for-' + barName
+            const classOverlay    = 'offsidebar-overlay'
+            const classBackground = 'offsidebar-background'
+
+            const doClose  = () => {
+                asidebar.classList.remove(classActive)
+                htmlwrap.classList.remove(classHasOverlay) }
+            const doOpen   = () => {
+                asidebar.classList.add(classActive)
+                htmlwrap.classList.add(classHasOverlay) }
+            const doToggle = () => {
+                if (asidebar.classList.contains(classActive)) doClose()
+                else doOpen()
             }
 
-            // find bartenders
-            const clickerActivation = (el)=>el.addEventListener('click', doToggleAsidebarActivity)
-
-            // activate bartenders
-            document.querySelectorAll(cssTrigger).forEach(clickerActivation)
+            // find and activate bartenders
+            const bartenderFunction = (el, order) =>
+                  el.addEventListener('click', order === 'close' ? doClose : doToggle )
+            document.querySelectorAll(cssBartender).forEach(bartenderFunction)
 
             // find/create background
-            let background = asidebar.querySelector('.offsidebar-background')
+            let background = asidebar.querySelector('.'+classBackground)
             if(!background) {
                 background = document.createElement('div')
-                background.classList.add('offsidebar-background')
+                background.classList.add(classBackground)
                 asidebar.prepend(background)
             }
 
-            // find/create shadow overlay
-            let overlay = asidebar.querySelector('.offsidebar-overlay')
+            // find/create shadow overlay with functionality
+            let overlay = asidebar.querySelector('.'+classOverlay)
             if(!overlay) {
                 overlay = document.createElement('div')
-                overlay.classList.add('offsidebar-overlay')
+                overlay.classList.add(classOverlay)
                 asidebar.prepend(overlay)
             }
-
-            // activate shadow overlay
-            clickerActivation(overlay)
+            bartenderFunction(overlay, 'close')
         }
-        (ActivateChaptersBar)()
+        (function ActivateOffsideBars() {
+            InterfaceOffsideBar('ChaptersBar')
+            InterfaceOffsideBar('MenuBar')
+            InterfaceOffsideBar('OverflowBar')
+        })()
     </script>
-    <script>
-        function  ActivateMenuBar () {
 
-            // cast
-            const asidebar = document.querySelector('.MenuBar')
-            const htmlwrap = document.querySelector('html')
-            const classActive      = 'is-active'
-            const classOverlayMark = 'has-offsidebar-overlay'
-            const cssTrigger       = '.js-for-MenuBar'
-            const doToggleAsidebarActivity = function (e) {
-                asidebar.classList.toggle(classActive)
-                if (asidebar.classList.contains(classActive))
-                    htmlwrap.classList.add(classOverlayMark)
-                else
-                    htmlwrap.classList.remove(classOverlayMark)
-            }
-
-            // find bartenders
-            const clickerActivation = (el)=>el.addEventListener('click', doToggleAsidebarActivity)
-
-            // activate bartenders
-            document.querySelectorAll(cssTrigger).forEach(clickerActivation)
-
-            // find/create background
-            let background = asidebar.querySelector('.offsidebar-background')
-            if(!background) {
-                background = document.createElement('div')
-                background.classList.add('offsidebar-background')
-                asidebar.prepend(background)
-            }
-
-            // find/create shadow overlay
-            let overlay = asidebar.querySelector('.offsidebar-overlay')
-            if(!overlay) {
-                overlay = document.createElement('div')
-                overlay.classList.add('offsidebar-overlay')
-                asidebar.prepend(overlay)
-            }
-
-            // activate shadow overlay
-            clickerActivation(overlay)
-        }
-        (ActivateMenuBar)()
-    </script>
-    <script>
-        function  ActivateOverflowBar () {
-
-            // cast
-            const asidebar = document.querySelector('.OverflowBar')
-            const htmlwrap = document.querySelector('html')
-            const classActive      = 'is-active'
-            const classOverlayMark = 'has-offsidebar-overlay'
-            const cssTrigger       = '.js-for-OverflowBar'
-            const doToggleAsidebarActivity = function (e) {
-                asidebar.classList.toggle(classActive)
-                if (asidebar.classList.contains(classActive))
-                    htmlwrap.classList.add(classOverlayMark)
-                else
-                    htmlwrap.classList.remove(classOverlayMark)
-            }
-
-            // find bartenders
-            const clickerActivation = (el)=>el.addEventListener('click', doToggleAsidebarActivity)
-
-            // activate bartenders
-            document.querySelectorAll(cssTrigger).forEach(clickerActivation)
-
-            // find/create background
-            let background = asidebar.querySelector('.offsidebar-background')
-            if(!background) {
-                background = document.createElement('div')
-                background.classList.add('offsidebar-background')
-                asidebar.prepend(background)
-            }
-
-            // find/create shadow overlay
-            let overlay = asidebar.querySelector('.offsidebar-overlay')
-            if(!overlay) {
-                overlay = document.createElement('div')
-                overlay.classList.add('offsidebar-overlay')
-                asidebar.prepend(overlay)
-            }
-
-            // activate shadow overlay
-            clickerActivation(overlay)
-        }
-        (ActivateOverflowBar)()
-    </script>
 
     <article class="chapter">
 
@@ -515,7 +432,7 @@
     // insert random content into paragraphs
     function p() {
         // const p = document.getElementsByTagName('p')
-        const p = document.querySelectorAll('.auto')
+        const p = document.querySelectorAll('[auto-content]')
         for ( let i in p ) {
             let texts = [
                 'Les grandes personnes m’ont conseillé de laisser de côté les dessins de serpents boas ouverts ou fermés, et de m’intéresser plutôt à la géographie, à l’histoire, au calcul et à la grammaire. C’est ainsi que j’ai abandonné, à l’âge de six ans, une magnifique carrière de peintre.',

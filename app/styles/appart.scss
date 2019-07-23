@@ -6,7 +6,7 @@
  *  2019.7.14
  */
 
-// Compilation:
+// Compilation Shortcut:
 // scss -C --sourcemap=none app/styles/appart.scss app/styles/appart.css
 // sass --no-source-map app/styles/appart.scss app/styles/appart.css
 
@@ -21,11 +21,9 @@
 // -------------------------------------------- HTML Setup
 
 
-@import "components/html-core/css-settings";
 @import "components/html-core/html-wrap";
 @import "components/html-core/html-typography";
 @import "components/html-core/css-workers";
-@import "components/color-model/color-model";
 
 
 // -------------------------------------------- Layout Components
@@ -42,6 +40,15 @@
 
 @import "components/animate-css/required-animations";
 @import "components/svga-icons/svga-icons";
+
+
+// --------------------------------------------------------------
+// -------------------------------------------- Primary Settings
+// --------------------------------------------------------------
+
+
+@import "components/html-core/css-settings";
+@import "components/color-model/color-model";
 
 
 // -------------------------------------------- Workers

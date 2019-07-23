@@ -4,9 +4,19 @@
 
 
 :root {
-    --line-height:   1.5;
-    --row-space:    1rem;
-    --col-space: 1.25rem;
+
+  --line-height:   1.5;
+
+ /* Default vertical and horizontal spacing.
+    Are different to make equal visual spacing over text.  */
+
+  --row-space:    1rem;
+  --col-space: 1.25rem;
+
+ /* z-indexes order */
+
+  --z-index--sidebar: 100;
+
 }
 
 

@@ -23,7 +23,6 @@
 
 @import "components/html-core/html-wrap";
 @import "components/html-core/html-typography";
-@import "components/html-core/css-workers";
 
 
 // -------------------------------------------- Layout Components
@@ -54,6 +53,7 @@
 // -------------------------------------------- Workers
 
 
+@import "components/html-core/css-workers";
 @import "components/article-markup/article-markup";
 
 

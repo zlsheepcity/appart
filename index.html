@@ -43,7 +43,7 @@
         href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic"
         rel="stylesheet">
     <link
-        href="app/styles/appart.css?v2019.7.22.x4"
+        href="app/styles/appart.css?v2019.7.23"
         rel="stylesheet" type="text/css">
 
 
@@ -129,7 +129,7 @@
                 </header>
 
                 <section class="sidepanel-content">
-                    <div class="block" style="max-width:20em;">
+                    <div class="rows" style="max-width:20em;">
                         <p auto-content></p>
                         <p auto-content></p>
                         <p auto-content></p>
@@ -197,11 +197,11 @@
             }
             bartenderFunction(overlay, 'close')
         }
-        (function ActivateOffsideBars() {
-            InterfaceOffsideBar('ChaptersBar')
-            InterfaceOffsideBar('MenuBar')
-            InterfaceOffsideBar('OverflowBar')
-        })()
+
+        // Launch Activation
+        InterfaceOffsideBar('ChaptersBar')
+        InterfaceOffsideBar('MenuBar')
+        InterfaceOffsideBar('OverflowBar')
     </script>
 
 

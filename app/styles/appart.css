@@ -208,53 +208,6 @@ body {
   -webkit-font-smoothing: antialiased; }
 
 /*  EOF Typography */
-/*  Universal helpers
- *  2019.7.14
- */
-/* ------------------------------------------ layout */
-.group-wide {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  align-content: center; }
-
-.group-center {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  align-content: center; }
-
-.is-chapter:not(.is-on-top), .chapter:not(.is-on-top) {
-  padding-top: calc( 2*var(--row-space, 1rem) ); }
-
-.is-chapter:not(.is-on-bottom), .chapter:not(.is-on-bottom) {
-  padding-bottom: calc( 2*var(--row-space, 1rem) ); }
-
-/* ------------------------------------------ paddings */
-.pb {
-  padding-bottom: var(--row-space, 1rem); }
-
-.pt {
-  padding-top: var(--row-space, 1rem); }
-
-.has-paddings {
-  padding: var(--row-space, 1rem) var(--col-space, 1rem); }
-
-/* ------------------------------------------ univeral helpers */
-.is-centered {
-  text-align: center;
-  justify-content: center;
-  align-self: center; }
-
-.layer {
-  display: block;
-  grid-column: full; }
-
-/*  EOF Universal helpers */
 /*  Article grid, v2003 */
 .article-grid, .chapter {
   --grid-base--row-gap: var(--row-space, 1rem);
@@ -390,7 +343,8 @@ body {
 .article-block-east,
 .east,
 .article-block-main,
-.article-block, .article-box-west, .westbox,
+.article-block,
+.rows, .article-box-west, .westbox,
 .article-box-east,
 .eastbox,
 .article-box-main,
@@ -431,14 +385,15 @@ body {
 .article-block-main {
   grid-column: main; }
 
-.article-block {
+.article-block, .rows {
   grid-column: main; }
 
 .article-block-west, .west,
 .article-block-east,
 .east,
 .article-block-main,
-.article-block {
+.article-block,
+.rows {
   grid-template-columns: var(--grid-template--content-block); }
 
 .article-box-west, .westbox {
@@ -618,7 +573,7 @@ body {
 
 /*  EOF asidebar */
 /*  offsidebar - expandable side menu panel
- *  v2019.7.22
+ *  v2019.7.23
  */
 /* -------------------------------- default base settings */
 :root {
@@ -755,7 +710,7 @@ body {
   color: var(--color--mark); }
 
 .sidepanel-footer {
-  padding: var(--row-space) var(--col-space);
+  padding: 0.25em var(--col-space);
   background-color: var(--background-color--mark);
   color: var(--color--mark); }
 
@@ -1042,6 +997,56 @@ body {
   color: var(--color); }
 
 /*  EOF Default color model */
+/*  Universal helpers
+ *  2019.7.14
+ */
+/* ------------------------------------------ layout */
+.group-wide {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center; }
+
+.group-center {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center; }
+
+.is-chapter:not(.is-on-top), .chapter:not(.is-on-top) {
+  padding-top: calc( 2*var(--row-space, 1rem) ); }
+
+.is-chapter:not(.is-on-bottom), .chapter:not(.is-on-bottom) {
+  padding-bottom: calc( 2*var(--row-space, 1rem) ); }
+
+/* ------------------------------------------ paddings */
+.no-paddings {
+  padding: 0; }
+
+.has-paddings {
+  padding: var(--row-space, 1rem) var(--col-space, 1rem); }
+
+.pb {
+  padding-bottom: var(--row-space, 1rem); }
+
+.pt {
+  padding-top: var(--row-space, 1rem); }
+
+/* ------------------------------------------ univeral helpers */
+.is-centered {
+  text-align: center;
+  justify-content: center;
+  align-self: center; }
+
+.layer {
+  display: block;
+  grid-column: full; }
+
+/*  EOF Universal helpers */
 /*  Article markup
  *  Shortcuts for faster article markup
  *  2019.7.14

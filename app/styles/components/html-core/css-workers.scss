@@ -30,9 +30,12 @@
 /* ------------------------------------------ paddings */
 
 
+.no-paddings  { padding: 0; }
+.has-paddings { padding: var(--row-space, 1rem) var(--col-space, 1rem); }
 .pb    { padding-bottom: var(--row-space, 1rem); }
 .pt    { padding-top:    var(--row-space, 1rem); }
-.has-paddings { padding: var(--row-space, 1rem) var(--col-space, 1rem); }
+
+
 
 
 /* ------------------------------------------ univeral helpers */

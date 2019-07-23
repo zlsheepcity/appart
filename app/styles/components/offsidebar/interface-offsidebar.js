@@ -48,12 +48,8 @@ function InterfaceOffsideBar (barName) {
 }
 
 /*
-    // run example
-
-    (function ActivateOffsideBars() {
-        InterfaceOffsideBar('offsidebar')
-    })()
-
+    // Run
+    InterfaceOffsideBar('offsidebar')
 */
 
 /*  EOF Offside Bar */

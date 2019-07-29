@@ -512,7 +512,8 @@ body {
   --background-color--mark: lightgray;
   --row-space: 1rem;
   --col-space: 1.25rem;
-  --z-index--sidebar: 100; }
+  --z-index--sidebar: 100;
+  --direction: ltr; }
 
 /* -------------------------------- offsidebar settings */
 .offsidebar {
@@ -529,7 +530,8 @@ body {
   --right: 0;
   --close-icon-right: 100%;
   --transform-origin--horizontal: right;
-  --scroll-overflow-behavoir: scroll; }
+  --scroll-overflow-behavoir: scroll;
+  --scroll-direction: ltr; }
 
 .offsidebar.from-westside {
   /* from-westside */
@@ -537,7 +539,8 @@ body {
   --right: auto;
   --close-icon-right: calc( -1 * var(--empty-space-offset) );
   --transform-origin--horizontal: left;
-  --scroll-overflow-behavoir: auto; }
+  --scroll-overflow-behavoir: auto;
+  --scroll-direction: rtl; }
 
 /* -------------------------------- layout & behavior */
 .offsidebar {
@@ -596,11 +599,15 @@ body {
   height: 100%;
   overflow-x: visible;
   overflow-y: var(--scroll-overflow-behavoir);
+  direction: var(--scroll-direction);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-content: stretch;
   color: var(--color); }
+
+.sidepanel > * {
+  direction: var(--direction); }
 
 .sidepanel-header {
   margin-top: 0;
@@ -863,6 +870,7 @@ body {
      Are different to make equal visual spacing over text.  */
   --row-space: 1rem;
   --col-space: 1.25rem;
+  --all-space: var(--row-space) var(--col-space);
   /* z-indexes order */
   --z-index--sidebar: 100; }
 
@@ -886,18 +894,27 @@ body {
   --background-color: white;
   --color: black;
   --color--mark: firebrick;
-  --background-color--mark: lightgray; }
+  --background-color--mark: lightgray;
+  --color--action: firebrick;
+  --color--action-hover: darkred;
+  --color--action-text: white; }
 
 .colors-as-primary {
   --background-color: hsl(var(--hsl-NobleBlack));
   --color: hsl(var(--hsl-NobleWhite));
   --color--mark: hsl(var(--hsl-NobleHighWhite));
-  --background-color--mark: hsl(var(--hsl-AccentBlux)); }
+  --background-color--mark: hsl(var(--hsl-AccentBlux));
+  --color--action: hsl(359, 54%, 53%);
+  --color--action-hover: hsl(359, 59%, 43%);
+  --color--action-text: white; }
 
 .colors-as-secondary, .secondary-colors {
   --background-color: hsl(var(--hsl-NobleBlue));
   --color: hsl(var(--hsl-NobleWhite));
-  --color--mark: hsl(var(--hsl-NobleHighWhite)); }
+  --color--mark: hsl(var(--hsl-NobleHighWhite));
+  --color--action: hsl(359, 54%, 53%);
+  --color--action-hover: hsl(359, 59%, 43%);
+  --color--action-text: white; }
 
 .colors-as-highlight {
   --background-color: hsl(var(--hsl-AccentBlux));
@@ -945,6 +962,19 @@ body {
   justify-content: center;
   align-items: center;
   align-content: center; }
+
+.group-content {
+  display: grid;
+  align-items: start;
+  justify-content: start;
+  grid-auto-flow: row;
+  grid-auto-rows: min-content;
+  grid-row-gap: var(--row-space, 1rem);
+  grid-column-gap: 0;
+  grid-template-columns: [full] auto; }
+
+.group-content > * {
+  grid-column: full; }
 
 .is-chapter:not(.is-on-top), .chapter:not(.is-on-top) {
   padding-top: calc( 2*var(--row-space, 1rem) ); }

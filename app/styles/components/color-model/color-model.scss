@@ -27,17 +27,26 @@
     --color:                     black;
     --color--mark:               firebrick;
     --background-color--mark:    lightgray;
+    --color--action:             firebrick;
+    --color--action-hover:       darkred;
+    --color--action-text:        white;
 }
 .colors-as-primary {
     --background-color:          hsl(var(--hsl-NobleBlack));
     --color:                     hsl(var(--hsl-NobleWhite));
     --color--mark:               hsl(var(--hsl-NobleHighWhite));
     --background-color--mark:    hsl(var(--hsl-AccentBlux));
+    --color--action:             hsl(359, 54%, 53%);
+    --color--action-hover:       hsl(359, 59%, 43%);
+    --color--action-text:        white;
 }
 .colors-as-secondary {
     --background-color:          hsl(var(--hsl-NobleBlue));
     --color:                     hsl(var(--hsl-NobleWhite));
     --color--mark:               hsl(var(--hsl-NobleHighWhite));
+    --color--action:             hsl(359, 54%, 53%);
+    --color--action-hover:       hsl(359, 59%, 43%);
+    --color--action-text:        white;
 }
 .colors-as-highlight {
     --background-color:          hsl(var(--hsl-AccentBlux));

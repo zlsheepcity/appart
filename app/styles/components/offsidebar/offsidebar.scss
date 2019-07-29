@@ -15,6 +15,7 @@
   --row-space:       1rem;
   --col-space:    1.25rem;
   --z-index--sidebar: 100;
+  --direction:        ltr;
 }
 
 
@@ -40,6 +41,7 @@
   --close-icon-right:              100%;
   --transform-origin--horizontal: right;
   --scroll-overflow-behavoir:    scroll;
+  --scroll-direction:               ltr;
 }
 
 
@@ -49,6 +51,7 @@
   --close-icon-right:  calc( -1 * var(--empty-space-offset) );
   --transform-origin--horizontal: left;
   --scroll-overflow-behavoir:     auto;
+  --scroll-direction:              rtl;
 }
 
 
@@ -126,6 +129,7 @@
     height:     100%;
     overflow-x: visible;
     overflow-y: var(--scroll-overflow-behavoir);
+    direction:  var(--scroll-direction);
 
     display:         flex;
     flex-direction:  column;
@@ -133,6 +137,9 @@
     align-content:   stretch;
 
     color:  var(--color);
+}
+.sidepanel>*{
+    direction: var(--direction);
 }
 
 .sidepanel-header {

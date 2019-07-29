@@ -20,5 +20,16 @@
 
 }
 
+/*  avoid long text lines */
+:root {
+    --max-width--text:   42rem;
+    --min-width--text:   26rem;
+}
+@media (max-width: 42em) {
+    :root {
+        --max-width--text:   var(--min-width--text);
+    }
+}
+
 
 /*  EOF base css settings */

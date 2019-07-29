@@ -166,6 +166,10 @@ $title-size-breakpoint: 'max-width: 38em';
 .text-is-regular { @extend %text-as-regular; }
 .text-is-smaller { @extend %text-as-smaller; }
 
+.text-conent {
+    max-width: var(--max-width--text);
+}
+
 .has-sans-text {
     @extend      %text-as-smaller;
     font-family: var(--font-family--data, sans-serif);

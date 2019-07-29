@@ -1,0 +1,23 @@
+/*  swed-banner - promo blocks with button
+ *  v2017.7.29
+ */
+
+
+.banner {
+    /* group-center */
+    display:         flex;
+    flex-direction:  row;
+    flex-wrap:       wrap;
+    justify-content: center;
+    align-items:     center;
+    align-content:   center;
+    align-self:      stretch;
+
+    padding: calc( 2 * var(--row-space, 1rem) ) 0;
+}
+.banner>* {
+    margin:  var(--row-space, 1rem) var(--col-space, 1.25rem);
+}
+
+
+/*  EOF swed-banner */

@@ -3,6 +3,20 @@
  */
 
 
+/* ----------------------------------- settings */
+
+
+.banner {
+  --padding--banner:    calc( 2 * var(--row-space, 1rem) )
+                        0;
+  --margin--components: var(--row-space, 1rem)
+                        var(--col-space, 1.25rem);
+}
+
+
+/* ----------------------------------- main component */
+
+
 .banner {
     /* group-center */
     display:         flex;
@@ -13,11 +27,43 @@
     align-content:   center;
     align-self:      stretch;
 
-    padding: calc( 2 * var(--row-space, 1rem) ) 0;
+    padding: var(--padding--banner);
 }
 .banner>* {
-    margin:  var(--row-space, 1rem) var(--col-space, 1.25rem);
+    margin:  var(--margin--components);
 }
 
+
+/* ----------------------------------- design component */
+
+
+.swed-banner {
+    @extend .banner;
+    background-color: var(--background-color);
+               color: var(--color);
+}
+
+
+/* ----------------------------------- workers */
+
+
+.group-banner {
+    /* group-wide */
+    display:         flex;
+    flex-direction:  row;
+    flex-wrap:       wrap;
+    justify-content: space-between;
+    align-items:     center;
+    align-content:   center;
+}
+.group-banner>* {
+    flex-grow: 1;
+}
+@media (min-width: 38em) {
+    .group-banner:not(.is-big) { flex-wrap: nowrap; }
+}
+@media (min-width: 1200px) {
+    .group-banner { flex-wrap: nowrap; }
+}
 
 /*  EOF swed-banner */

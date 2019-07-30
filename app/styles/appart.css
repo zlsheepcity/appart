@@ -369,11 +369,11 @@ body {
 .article-grid, .chapter {
   grid-template-columns: var(--grid-template-columns--default); }
 
-.article-grid, .chapter {
-  grid-column: full; }
-
 .article-grid *, .chapter * {
   grid-column: main; }
+
+.article-grid, .chapter {
+  grid-column: full; }
 
 .article-layer {
   grid-column: full; }
@@ -791,7 +791,15 @@ body {
 /*  swed-banner - promo blocks with button
  *  v2017.7.29
  */
-.banner {
+/* ----------------------------------- settings */
+.banner, .swed-banner {
+  --padding--banner: calc( 2 * var(--row-space, 1rem) )
+                        0;
+  --margin--components: var(--row-space, 1rem)
+                        var(--col-space, 1.25rem); }
+
+/* ----------------------------------- main component */
+.banner, .swed-banner {
   /* group-center */
   display: flex;
   flex-direction: row;
@@ -800,63 +808,106 @@ body {
   align-items: center;
   align-content: center;
   align-self: stretch;
-  padding: calc( 2 * var(--row-space, 1rem) ) 0; }
+  padding: var(--padding--banner); }
 
-.banner > * {
-  margin: var(--row-space, 1rem) var(--col-space, 1.25rem); }
+.banner > *, .swed-banner > * {
+  margin: var(--margin--components); }
 
+/* ----------------------------------- design component */
+.swed-banner {
+  background-color: var(--background-color);
+  color: var(--color); }
+
+/* ----------------------------------- workers */
+.group-banner {
+  /* group-wide */
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center; }
+
+.group-banner > * {
+  flex-grow: 1; }
+
+@media (min-width: 38em) {
+  .group-banner:not(.is-big) {
+    flex-wrap: nowrap; } }
+@media (min-width: 1200px) {
+  .group-banner {
+    flex-wrap: nowrap; } }
 /*  EOF swed-banner */
 /*  swed-buttons - Nice Buttons
  *  2019.7.29
  */
+/* --------------------------------------- Customization */
 .swed-button {
   --background-color: var(--color--action, firebrick);
-  --color: var(--color--action-text, white);
   --background-hover: var(--color--action-hover, darkred );
-  --padding: calc( 0.5 * var(--row-space, 1rem) ) var(--col-space, 1.25rem);
+  --color: var(--color--action-text, white);
+  --padding: calc( 0.5 * var(--row-space, 1rem) )
+                      var(--col-space, 1.25rem);
+  --margin: 0.25rem;
   --border-radius: 4px;
-  --transform: scale(1.25, 1.25);
+  --transform-hover: scale(1.1, 1.1);
   --font-size: 1.5em;
   --line-height: 1.333; }
 
+.swed-button.is-big {
+  --padding: var(--row-space, 1rem)
+                      var(--col-space, 1.25rem); }
+
+/* --------------------------------------- Component */
 .swed-button {
   display: inline-block;
   width: auto;
   width: fit-content;
   padding: var(--padding);
+  margin: var(--margin);
   font-size: var(--font-size);
   line-height: var(--line-height);
   text-align: center;
-  text-decoration: none;
   border-radius: var(--border-radius);
   background-color: var(--background-color);
-  color: var(--color);
-  --opacity-state: 0;
-  --transform-state: none;
-  transform: var(--transform-state);
-  position: relative;
-  z-index: 1;
-  will-change: transform;
-  transition: all 0.6s var(--timing-function--focusZoom, ease-out); }
+  color: var(--color); }
 
-.swed-button::after {
-  content: '';
-  position: absolute;
-  z-index: -1;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: var(--opacity-state, 0);
-  box-shadow: 0 0.5rem 1rem var(--color--shadow, rgba(0, 0, 0, 0.3));
-  border-radius: inherit;
-  transition: inherit; }
+/* --------------------------------------- Reset unused styles */
+.swed-button {
+  border: 0;
+  text-decoration: none; }
 
-.swed-button:hover {
-  --background-color: var(--background-hover);
-  --transform-state: var(--transform);
-  --opacity-state: 1; }
+/* --------------------------------------- Hover effect */
+@media screen and (min-width: 900px) {
+  .swed-button {
+    --opacity-state: 0;
+    --transform-state: scale(1, 1);
+    transform: var(--transform-state);
+    position: relative;
+    z-index: 1;
+    will-change: transform;
+    transition: all 0.6s var(--timing-function--focusZoom, ease-out);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-smooth: always; }
 
+  .swed-button::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: var(--opacity-state, 0);
+    box-shadow: 0 0.5rem 1rem var(--color--shadow, rgba(0, 0, 0, 0.3));
+    border-radius: inherit;
+    transition: inherit; }
+
+  .swed-button:hover {
+    --background-color: var(--background-hover);
+    --transform-state: var(--transform-hover);
+    --opacity-state: 1; } }
 /*  EOF swed-buttons */
 /*  Required animations
  *  2019.7.14
@@ -970,48 +1021,6 @@ body {
   --hsl-NobleHighWhite: 226, 32%, 75%;
   --hsl-NobleAction: 359, 54%, 53%;
   --hsl-NobleHoverAction: 359, 59%, 43%; }
-
-/* eg palete */
-:root {
-  --hsl-sgBrand: 171, 55%, 71%;
-  --hsl-sgMinor: 201, 22%, 46%;
-  --hsl-sgAction: 0, 62%, 37%;
-  --hsl-sgHighlight: 176, 53%, 94%;
-  --hsl-egDark: 220, 56%, 24%;
-  --hsl-egLight: 207, 57%, 75%;
-  --hsl-egAccent: 11, 86%, 63%;
-  --hsl-egHoverAccent: 11, 90%, 43%;
-  --hsl-egReaccent: 207, 57%, 51%;
-  --hsl-egHoverReaccent: 207, 61%, 41%;
-  --hsl-egBlack: 240, 15%, 12%;
-  --hsl-egHighlight: 206, 57%, 95%; }
-
-.colors-as-eg {
-  --background-color: hsl(var(--hsl-egDark));
-  --color: white;
-  --color--mark: hsl(var(--hsl-egHighlight));
-  --background-color--mark: hsl(var(--hsl-egLight));
-  --color--action: hsl(var(--hsl-egAccent));
-  --color--action-hover: hsl(var(--hsl-egHoverAccent));
-  --color--action-text: white; }
-
-.colors-as-eg-accent {
-  --background-color: hsl(var(--hsl-egAccent));
-  --color: hsl(var(--hsl-egBlack));
-  --color--mark: hsl(var(--hsl-egHighlight));
-  --background-color--mark: hsl(var(--hsl-egHoverAccent));
-  --color--action: hsl(var(--hsl-egDark));
-  --color--action-hover: hsl(var(--hsl-egDark));
-  --color--action-text: white; }
-
-.colors-as-eg-reaccent {
-  --background-color: hsl(var(--hsl-egReaccent));
-  --color: white;
-  --color--mark: hsl(var(--hsl-egHighlight));
-  --background-color--mark: hsl(var(--hsl-egHoverReaccent));
-  --color--action: hsl(var(--hsl-egAccent));
-  --color--action-hover: hsl(var(--hsl-egHoverAccent));
-  --color--action-text: white; }
 
 /* ------------------------------------- color model */
 :root,

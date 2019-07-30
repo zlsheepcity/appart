@@ -1,0 +1,379 @@
+<!doctype html><!-- appart :: 8001 :: 2019.7.14 -->
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- ========================================= HEAD CONTENT -->
+
+
+    <title>Banners Usecases</title>
+
+
+    <!-- ========================================= BOOT -->
+
+
+    <style> /* ༼°▽°༽ boot style */
+        body    { width: 100%; height: auto; overflow: hidden; }
+        img,svg { max-width: 100%; }
+    </style>
+
+
+    <!-- ========================================= DESIGN -->
+
+
+    <link
+        href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic"
+        rel="stylesheet">
+    <link
+        href="../app/styles/appart.css"
+        rel="stylesheet" type="text/css">
+
+
+    <!-- ========================================= APP CUSTOM -->
+
+    <style>
+        /* eg palete */
+
+        :root {
+            --hsl-sgBrand:               171, 55%, 71%;
+            --hsl-sgMinor:               201, 22%, 46%;
+            --hsl-sgAction:                0, 62%, 37%;
+            --hsl-sgHighlight:           176, 53%, 94%;
+
+            --hsl-egDark:                220, 56%, 24%;
+            --hsl-egLight:               207, 57%, 75%;
+            --hsl-egAccent:               11, 86%, 63%;
+            --hsl-egHoverAccent:          11, 90%, 43%;
+            --hsl-egReaccent:            207, 57%, 51%;
+            --hsl-egHoverReaccent:       207, 61%, 41%;
+            --hsl-egBlack:               240, 15%, 12%;
+            --hsl-egHighlight:           206, 57%, 95%;
+        }
+        .colors-as-sg-brand {
+            --background-color:          hsl(var(--hsl-sgBrand));
+            --color:                     black;
+            --color--mark:               white;
+            --background-color--mark:    hsl(var(--hsl-sgHighlight));
+            --color--action:             hsl(var(--hsl-sgAction));
+            --color--action-hover:       hsl(var(--hsl-sgAction));
+            --color--action-text:        white;
+        }
+        .colors-as-sg-minor {
+            --background-color:          hsl(var(--hsl-sgMinor));
+            --color:                     white;
+            --color--mark:               white;
+            --background-color--mark:    hsl(var(--hsl-sgAction));
+            --color--action:             hsl(var(--hsl-sgAction));
+            --color--action-hover:       hsl(var(--hsl-sgAction));
+            --color--action-text:        white;
+        }
+        .colors-as-eg {
+            --background-color:          hsl(var(--hsl-egDark));
+            --color:                     white;
+            --color--mark:               hsl(var(--hsl-egHighlight));
+            --background-color--mark:    hsl(var(--hsl-egLight));
+            --color--action:             hsl(var(--hsl-egAccent));
+            --color--action-hover:       hsl(var(--hsl-egHoverAccent));
+            --color--action-text:        white;
+        }
+        .colors-as-eg-accent {
+            --background-color:          hsl(var(--hsl-egAccent));
+            --color:                     hsl(var(--hsl-egBlack));
+            --color--mark:               hsl(var(--hsl-egHighlight));
+            --background-color--mark:    hsl(var(--hsl-egHoverAccent));
+            --color--action:             hsl(var(--hsl-egDark));
+            --color--action-hover:       hsl(var(--hsl-egDark));
+            --color--action-text:        white;
+        }
+        .colors-as-eg-reaccent {
+            --background-color:          hsl(var(--hsl-egReaccent));
+            --color:                     white;
+            --color--mark:               hsl(var(--hsl-egHighlight));
+            --background-color--mark:    hsl(var(--hsl-egHoverReaccent));
+            --color--action:             hsl(var(--hsl-egAccent));
+            --color--action-hover:       hsl(var(--hsl-egHoverAccent));
+            --color--action-text:        white;
+        }
+    </style>
+
+    <!-- ========================================== ʕ⊙ᴥ⊙ʔ = -->
+    <!-- ========================================= END HEAD -->
+</head>
+<body class="colors-as-primary">
+
+
+    <!-- Icons -->
+
+    <div hidden>
+        <svg id="UsedIcons">
+            <symbol id="svg-chat" viewBox="-48 -48 624 624">
+                <!--title>Chat Bubble, font-awesome</title-->
+                <path fill="currentColor" d="M256 32C114.6 32 0 125.1 0 240c0 49.6 21.4 95 57 130.7C44.5 421.1 2.7 466 2.2 466.5c-2.2 2.3-2.8 5.7-1.5 8.7S4.8 480 8 480c66.3 0 116-31.8 140.6-51.4 32.7 12.3 69 19.4 107.4 19.4 141.4 0 256-93.1 256-208S397.4 32 256 32zM128 272c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm128 0c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm128 0c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32z"/>
+            </symbol>
+        </svg>
+    </div>
+
+
+
+
+    <!-- ----------------------------------------------------- Banners -->
+
+
+    <article class="chapter is-on-top">
+        <div class="layer">
+
+            <section class="swed-banner colors-as-secondary">
+                <header>
+                    <div class="huge-title">Banner</div>
+                </header>
+                <section>
+                    <h2 class="min-title">Features</h2>
+                    <ul>
+                        <li>Information message with image</li>
+                        <li>Action button</li>
+                        <li>Layout presets for grid and screen</li>
+                    </ul>
+                </section>
+                <footer>
+                    <a href="#" class="swed-button"><span>Action button</span></a>
+                </footer>
+            </section>
+
+            <div class="group-banner">
+
+                <section class="swed-banner colors-as-alternative">
+                    <figure>
+                        <img src="https://sheeptoday.github.io/appking/art/characters/king-crown.svg" alt="Logo" style="width:10em;">
+                    </figure>
+                    <section>
+                        <h2 class="min-title">Features</h2>
+                        <ul>
+                            <li>Information message with image</li>
+                            <li>Action button</li>
+                            <li>Layout presets for grid and screen</li>
+                        </ul>
+                    </section>
+                    <footer>
+                        <a href="#" class="swed-button"><span>Action button</span></a>
+                    </footer>
+                </section>
+
+                <section class="swed-banner colors-as-highlight">
+                    <figure>
+                        <img src="https://sheeptoday.github.io/appking/art/characters/king-crown.svg" alt="Logo" style="width:20vw;">
+                    </figure>
+                    <section>
+                        <h2 class="min-title">Features</h2>
+                        <ul>
+                            <li>Information message with image</li>
+                            <li>Action button</li>
+                            <li>Layout presets for grid and screen</li>
+                        </ul>
+                    </section>
+                    <footer>
+                        <a href="#" class="swed-button"><span>Action button</span></a>
+                    </footer>
+                </section>
+
+            </div>
+
+            <section class="swed-banner colors-as-secondary has-sans-text">
+                <figure>
+                    <img src="https://www.softgamings.com/content/uploads/igb-live.png" alt="IGB" style="width: 16em;">
+                </figure>
+                <section>
+                     <div class="min-title">Meet our team at <b>IGB LIVE</b></div>
+                     <div>16th - 19th July 2019 RAI, Amsterdam</div>
+                     <div>
+                         <b>Stand N1</b>,
+                         <a class="textlink" href="/blog/softgamings-is-attending-russian-gaming-week/">Read more...</a>
+                    </div>
+                </section>
+                <footer>
+                    <a href="#" class="swed-button is-big">
+                        <figure class="svga-icon"><svg><use xlink:href="#svg-chat"></use></svg></figure>
+                        <span>Book a meeting</span>
+                    </a>
+                </footer>
+            </section>
+
+            <section class="swed-banner colors-as-primary">
+                <section>
+                    <ul>
+                        <li>Information message with image</li>
+                        <li>Action button</li>
+                        <li>Layout presets for grid and screen</li>
+                    </ul>
+                </section>
+                <footer>
+                    <a href="#" class="swed-button"><span>Action button</span></a>
+                </footer>
+            </section>
+
+            <section class="swed-banner colors-as-alternative has-sans-text">
+                <header>
+                    <h2 class="mid-title">Casino Games Integration</h2>
+                </header>
+                <section class="text-conent">
+                     <p>Choose from our 50+ gaming providers and integrate games from all of them or pick only those you want. Our portfolio includes such top-tier providers as Evolution Gaming, NetEnt, BetSoft, Quickspin, Yggdrasil, BetRadar and Microgaming and all types of games – slots, Live casino, sports betting, scratch-cards, bingo, lottery, virtual sports and poker, all available via a single integration.</p>
+                </section>
+                <footer>
+                    <a href="#" class="swed-button"><span>Learn more</span></a>
+                </footer>
+            </section>
+
+            <div class="group-banner">
+
+                <section class="swed-banner colors-as-highlight has-sans-text">
+                    <header>
+                        <h2 class="mid-title">Slots Bundle</h2>
+                    </header>
+                    <section class="text-conent">
+                         <p>Get the package of all slots providers via a single integration at an attractive cost. The bundle includes games from NetEnt, BetSoft, Quickspin, Microgaming, Amatic, 1X2 Network, Playson, Endorphina, Pragmatic Play and more.</p>
+                    </section>
+                    <footer>
+                        <a href="#" class="swed-button"><span>Learn more</span></a>
+                    </footer>
+                </section>
+
+                <section class="swed-banner colors-as-secondary has-sans-text">
+                    <header>
+                        <h2 class="mid-title">Live Casino Bundle</h2>
+                    </header>
+                    <section class="text-conent">
+                         <p>Similar to the Slots Bundle, our Live Casino Bundle is available via a single integration. The portfolio of Live providers includes the top providers of live casino games: Evolution Gaming, NetEnt Live, BetGames, Ezugi, Authentic Gaming, Asia Gaming, Lucky Streak, SA Gaming and more.</p>
+                    </section>
+                    <footer>
+                        <a href="#" class="swed-button"><span>Learn more</span></a>
+                    </footer>
+                </section>
+
+            </div>
+
+            <section class="swed-banner colors-as-primary has-sans-text">
+                <header>
+                    <h2 class="mid-title">BonusSystem Standalone</h2>
+                </header>
+                <section class="text-conent">
+                     <p>Our bonus system is a unique solution which can be either integrated separately or as a part of our game platform. It includes loyalty and experience points, separate balances, customisable user levels, loyalty shop, free rounds, tournaments, gamification and much more. It is a proven player acquisition and retention tool.</p>
+                </section>
+                <footer>
+                    <a href="#" class="swed-button"><span>Learn more</span></a>
+                </footer>
+            </section>
+
+            <div class="group-banner">
+
+                <section class="swed-banner colors-as-eg-accent has-sans-text">
+                    <header>
+                        <h2 class="big-title">Sports Betting Software Providers</h2>
+                    </header>
+                    <section class="banner-text text-conent" hidden>
+                         <p>Our sportsbook solution is a complete package of all kinds of sports and unlimited customisation options based on the exclusive, top-tier BetRadar solution. Enjoy 70.000+ events monthly in 300+ markets.</p>
+                    </section>
+                    <footer>
+                        <a href="#" class="swed-button"><span>Learn more</span></a>
+                    </footer>
+                </section>
+
+                <section class="swed-banner colors-as-eg-reaccent has-sans-text">
+                    <header>
+                        <h2 class="big-title">Cryptocurrency payment solution</h2>
+                    </header>
+                    <section class="text-conent" hidden>
+                         <p>Many players prefer paying in cryptocurrencies, so it is a good idea to give them such an opportunity. By using cryptocurrencies, your players will remain anonymous and won’t spend much on transactions and you will receive your money quickly. Our in-house developed cryptocurrency payment system supports Bitcoin, Ethereum, Litecoin and many other Ethereum-based and Bitcoin-based currencies.</p>
+                    </section>
+                    <footer>
+                        <a href="#" class="swed-button"><span>Learn more</span></a>
+                    </footer>
+                </section>
+
+            </div>
+
+            <section class="swed-banner colors-as-eg has-sans-text">
+                <header>
+                    <h2 class="mid-title">Banking</h2>
+                </header>
+                <section class="text-conent">
+                     <p>Banking is a difficult question for gambling enterprises. With our assistance, however, you can open bank and credit card processing (VISA, MasterCard) accounts quickly and easily, thanks to our 10 years experience in dealing with the legal side of gambling business.</p>
+                </section>
+                <footer>
+                    <a href="#" class="swed-button"><span>Learn more</span></a>
+                </footer>
+            </section>
+
+            <div class="group-banner is-big">
+
+                <section class="swed-banner colors-as-sg-brand has-sans-text">
+                    <header>
+                        <h2 class="big-title">Licensing</h2>
+                    </header>
+                    <section class="text-conent">
+                         <p>Getting a gaming licence is also crucial, if you want to offer games from well-known providers and win the trust of your players. With us, you get a licence in 2 weeks, avoiding unnecessary complications.</p>
+                    </section>
+                    <footer>
+                        <a href="#" class="swed-button"><span>Learn more</span></a>
+                    </footer>
+                </section>
+
+                <section class="swed-banner colors-as-sg-minor has-sans-text">
+                    <header>
+                        <h2 class="big-title">Promotion & SEO</h2>
+                    </header>
+                    <section class="text-conent">
+                         <p>A crucial part of online gambling business. Good SEO & promotion is what differentiates successful casinos from failed enterprises. Get in touch with professionals with 10+ years of experience in online gambling SEO and promotion to ensure your business grows.</p>
+                    </section>
+                    <footer>
+                        <a href="#" class="swed-button"><span>Learn more</span></a>
+                    </footer>
+                </section>
+
+                <section class="swed-banner colors-as-eg-accent has-sans-text">
+                    <header>
+                        <h2 class="big-title">Hosting</h2>
+                    </header>
+                    <section class="text-conent">
+                         <p>Our gambling-friendly hosting functions 24/7/365, supports thousands of players simultaneously and is legal and secure. All data centres accept online gambling and have top-notch reputation and reliability.</p>
+                    </section>
+                    <footer>
+                        <a href="#" class="swed-button"><span>Learn more</span></a>
+                    </footer>
+                </section>
+
+            </div>
+
+        </div>
+    </article>
+
+
+
+
+
+
+<!-- ========================================= PAGE CUSTOM -->
+
+<script>
+    // insert random content into paragraphs
+    function p() {
+        // const p = document.getElementsByTagName('p')
+        const p = document.querySelectorAll('.auto')
+        for ( let i in p ) {
+            let texts = [
+                'Les grandes personnes m’ont conseillé de laisser de côté les dessins de serpents boas ouverts ou fermés, et de m’intéresser plutôt à la géographie, à l’histoire, au calcul et à la grammaire. C’est ainsi que j’ai abandonné, à l’âge de six ans, une magnifique carrière de peintre.',
+                'J’avais été découragé par l’insuccès de mon dessin numéro 1 et de mon dessin numéro 2. Les grandes personnes ne comprennent jamais rien toutes seules, et c’est fatigant, pour les enfants, de toujours et toujours leur donner des explications.',
+                'J’ai donc dû choisir un autre métier et j’ai appris à piloter des avions. J’ai volé un peu partout dans le monde. Et la géographie, c’est exact, m’a beaucoup servi. Je savais reconnaître, du premier coup d’œil, la Chine de l’Arizona. C’est très utile, si l’on est égaré pendant la nuit.',
+                'J’ai ainsi eu, au cours de ma vie, des tas de contacts avec des tas de gens sérieux. J’ai beaucoup vécu chez les grandes personnes. Je les ai vues de très près. Ça n’a pas trop amélioré mon opinion.',
+                'Quand j’en rencontrais une qui me paraissait un peu lucide, je faisais l’expérience sur elle de mon dessin numéro 1 que j’ai toujours conservé. Je voulais savoir si elle était vraiment compréhensive. Mais toujours elle me répondait : « C’est un chapeau. »',
+                'Alors je ne lui parlais ni de serpents boas, ni de forêts vierges, ni d’étoiles. Je me mettais à sa portée. Je lui parlais de bridge, de golf, de politique et de cravates. Et la grande personne était bien contente de connaître un homme aussi raisonnable.'
+                ]
+            let text = texts[Math.floor(Math.random()*texts.length)]
+            let textnode = document.createTextNode(text)
+            if (p[i].appendChild) p[i].appendChild(textnode)
+        }
+    }
+    p()
+</script>
+
+</body>
+</html>

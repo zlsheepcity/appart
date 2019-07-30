@@ -227,8 +227,8 @@ $breakpoint--west-col-appears: "min-width: #{ $W + $add-gap + $M + $add-gap + $E
     @extend %article-grid-seed;
     grid-template-columns: var(--grid-template-columns--default);
 }
-.article-grid       { grid-column: full; }
 .article-grid *     { grid-column: main; }
+.article-grid       { grid-column: full; }
 .article-layer      { grid-column: full; }
 
 // general blocks

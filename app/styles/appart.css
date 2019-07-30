@@ -837,6 +837,19 @@ body {
 @media (min-width: 1200px) {
   .group-banner {
     flex-wrap: nowrap; } }
+.autogrid {
+  --cell-size: var(--min-width--text, 24rem);
+  display: grid;
+  grid-gap: 0;
+  grid-template-columns: repeat(auto-fill, minmax(var(--cell-size, 24rem), 1fr)); }
+
+.autogrid > * {
+  grid-column: span 1; }
+
+@media (min-width: 48rem) {
+  .autogrid > .is-big {
+    --size: 2;
+    grid-column: span var(--size); } }
 /*  EOF swed-banner */
 /*  swed-buttons - Nice Buttons
  *  2019.7.29
@@ -1011,7 +1024,7 @@ body {
 /*  avoid long text lines */
 :root {
   --max-width--text: 42rem;
-  --min-width--text: 26rem; }
+  --min-width--text: 24rem; }
 
 @media (max-width: 42em) {
   :root {
@@ -1108,7 +1121,7 @@ body {
   align-items: center;
   align-content: center; }
 
-.group-content {
+.group-content-rows {
   display: grid;
   align-items: start;
   justify-content: start;
@@ -1118,7 +1131,7 @@ body {
   grid-column-gap: 0;
   grid-template-columns: [full] auto; }
 
-.group-content > * {
+.group-content-rows > * {
   grid-column: full; }
 
 .is-chapter:not(.is-on-top), .chapter:not(.is-on-top) {

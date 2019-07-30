@@ -23,7 +23,7 @@
 /*  avoid long text lines */
 :root {
     --max-width--text:   42rem;
-    --min-width--text:   26rem;
+    --min-width--text:   24rem;
 }
 @media (max-width: 42em) {
     :root {

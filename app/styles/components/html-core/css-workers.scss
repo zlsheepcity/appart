@@ -22,7 +22,8 @@
     align-items:     center;
     align-content:   center;
 }
-.group-content {
+
+.group-content-rows {
     display:         grid;
     align-items:     start;
     justify-content: start;
@@ -32,9 +33,10 @@
     grid-column-gap: 0;
     grid-template-columns: [full] auto;
 }
-.group-content>* {
-    grid-column: full;
-}
+    .group-content-rows>* {
+        grid-column: full;
+    }
+
 
 .is-chapter:not(.is-on-top)    { padding-top:    calc( 2*var(--row-space, 1rem) ); }
 .is-chapter:not(.is-on-bottom) { padding-bottom: calc( 2*var(--row-space, 1rem) ); }

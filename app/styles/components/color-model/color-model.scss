@@ -1,5 +1,5 @@
 /*  Default color model
- *  2019.7.14
+ *  v2019.7.31
  */
 
 
@@ -9,14 +9,14 @@
 /* swed-design 2019 */
 
 :root {
-    --hsl-NobleBlack:            240, 15%, 12%;
-    --hsl-NobleBlue:             212, 34%, 29%;
-    --hsl-AccentBlue:            204, 22%, 55%;
-    --hsl-AccentBlux:            226, 17%, 20%;
-    --hsl-NobleWhite:            226, 27%, 90%;
-    --hsl-NobleHighWhite:        226, 32%, 75%;
-    --hsl-NobleAction:           359, 54%, 53%;
-    --hsl-NobleHoverAction:      359, 59%, 43%;
+    --HSL-NobleBlack:            240, 15%, 12%;
+    --HSL-NobleBlue:             212, 34%, 29%;
+    --HSL-AccentBlue:            204, 22%, 55%;
+    --HSL-AccentBlux:            226, 17%, 20%;
+    --HSL-NobleWhite:            226, 27%, 90%;
+    --HSL-NobleHighWhite:        226, 32%, 75%;
+    --HSL-NobleAction:           359, 54%, 53%;
+    --HSL-NobleHoverAction:      359, 59%, 43%;
 }
 
 
@@ -25,41 +25,41 @@
 
 :root,
 .colors-as-special {
-    --background-color:          white;
-    --color:                     black;
-    --color--mark:               firebrick;
-    --background-color--mark:    lightgray;
-    --color--action:             firebrick;
-    --color--action-hover:       darkred;
-    --color--action-text:        white;
-    --color--shadow:             hsla(0, 0%, 0%, 0.3);
+    --background-color:           white;
+    --color:                      black;
+    --secondary-color:            firebrick;
+    --secondary-background-color: lightgray;
+    --action-color:               firebrick;
+    --action-color--hover:        darkred;
+    --action-color--text:         white;
+    --shadow-color:               hsla(0, 0%, 0%, 0.3);
 }
 .colors-as-primary {
-    --background-color:          hsl(var(--hsl-NobleBlack));
-    --color:                     hsl(var(--hsl-NobleWhite));
-    --color--mark:               hsl(var(--hsl-NobleHighWhite));
-    --background-color--mark:    hsl(var(--hsl-AccentBlux));
-    --color--action:             hsl(359, 54%, 53%);
-    --color--action-hover:       hsl(359, 59%, 43%);
-    --color--action-text:        white;
+    --background-color:           hsl(var(--HSL-NobleBlack));
+    --color:                      hsl(var(--HSL-NobleWhite));
+    --secondary-color:            hsl(var(--HSL-NobleHighWhite));
+    --secondary-background-color: hsl(var(--HSL-AccentBlux));
+    --action-color:               hsl(359, 54%, 53%);
+    --action-color--hover:        hsl(359, 59%, 43%);
+    --action-color--text:         white;
 }
 .colors-as-secondary {
-    --background-color:          hsl(var(--hsl-NobleBlue));
-    --color:                     hsl(var(--hsl-NobleWhite));
-    --color--mark:               hsl(var(--hsl-NobleHighWhite));
-    --color--action:             hsl(359, 54%, 53%);
-    --color--action-hover:       hsl(359, 59%, 43%);
-    --color--action-text:        white;
+    --background-color:           hsl(var(--HSL-NobleBlue));
+    --color:                      hsl(var(--HSL-NobleWhite));
+    --secondary-color:            hsl(var(--HSL-NobleHighWhite));
+    --action-color:               hsl(359, 54%, 53%);
+    --action-color--hover:        hsl(359, 59%, 43%);
+    --action-color--text:         white;
 }
 .colors-as-highlight {
-    --background-color:          hsl(var(--hsl-AccentBlux));
-    --color:                     hsl(var(--hsl-NobleWhite));
-    --color--mark:               hsl(var(--hsl-NobleHighWhite));
+    --background-color:           hsl(var(--HSL-AccentBlux));
+    --color:                      hsl(var(--HSL-NobleWhite));
+    --secondary-color:            hsl(var(--HSL-NobleHighWhite));
 }
 .colors-as-alternative {
-    --background-color:          hsl(var(--hsl-AccentBlue));
-    --color:                     hsl(204,  0%,  0%);
-    --color--mark:               hsl(204,  0%,  0%);
+    --background-color:           hsl(var(--HSL-AccentBlue));
+    --color:                      hsl(204,  0%,  0%);
+    --secondary-color:            hsl(204,  0%,  0%);
 }
 
 
@@ -71,10 +71,10 @@
     color:            var(--color);
 }
 .color-box {
-    background-color: var(--background-color--mark);
+    background-color: var(--secondary-background-color);
 }
 .color-text {
-    color:            var(--color--mark);
+    color:            var(--secondary-color);
 }
 
 

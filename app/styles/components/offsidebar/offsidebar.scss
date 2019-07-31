@@ -7,10 +7,10 @@
 
 
 :root {
-  --background-color:          white;
-  --color:                     black;
-  --color--mark:               firebrick;
-  --background-color--mark:    lightgray;
+  --background-color:           white;
+  --color:                      black;
+  --secondary-color:            firebrick;
+  --secondary-background-color: lightgray;
 
   --row-space:       1rem;
   --col-space:    1.25rem;
@@ -111,11 +111,10 @@
     /* click on overlay will force offsidebar to close */
     pointer-events:   none;
 
+    /* x-close white svg icon */
+    background-image:  url('data:image/svg+xml,%3Csvg fill="%23FFFFFF" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/%3E%3C/svg%3E');
     background-size:   contain;
     background-repeat: no-repeat;
-
- /* x-close white svg icon */
-    background-image:  url('data:image/svg+xml,%3Csvg fill="%23FFFFFF" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/%3E%3C/svg%3E');
 }
 
 
@@ -140,7 +139,6 @@
 .sidepanel>*{
     direction: var(--direction);
 }
-
 .sidepanel-header {
     margin-top:    0;
     margin-bottom: 0;
@@ -148,7 +146,6 @@
     top:      0;
     z-index:  1;
 }
-
 .sidepanel-footer {
     margin-top: auto;
     margin-bottom: 0;
@@ -156,7 +153,6 @@
     bottom:   0;
     z-index:  1;
 }
-
 
 /* default inactive state */
 
@@ -189,14 +185,14 @@
     align-items:    stretch;
 
 
-    background-color: var(--background-color--mark);
-    color: var(--color--mark);
+    background-color: var(--secondary-background-color);
+    color: var(--secondary-color);
 }
 
 .sidepanel-footer {
     padding: 0.25em var(--col-space);
-    background-color: var(--background-color--mark);
-    color: var(--color--mark);
+    background-color: var(--secondary-background-color);
+    color: var(--secondary-color);
 }
 
 
@@ -230,8 +226,6 @@
     transform: scaleX(1);
     opacity: 1;
 }
-
-
 
 
 /* -------------------------------- animation settings */

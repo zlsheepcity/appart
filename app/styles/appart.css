@@ -1,6 +1,6 @@
-/* Appart Styles */
-/*  Default styles index
- *  2019.7.14
+/*  Appart Styles
+ *  index file
+ *  v2019.7.31
  */
 /*  html wrap & base markup
  *  2019.7.14
@@ -511,8 +511,8 @@ body {
 :root {
   --background-color: white;
   --color: black;
-  --color--mark: firebrick;
-  --background-color--mark: lightgray;
+  --secondary-color: firebrick;
+  --secondary-background-color: lightgray;
   --row-space: 1rem;
   --col-space: 1.25rem;
   --z-index--sidebar: 100;
@@ -589,10 +589,10 @@ body {
   height: var(--empty-space-offset);
   /* click on overlay will force offsidebar to close */
   pointer-events: none;
-  background-size: contain;
-  background-repeat: no-repeat;
   /* x-close white svg icon */
-  background-image: url('data:image/svg+xml,%3Csvg fill="%23FFFFFF" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/%3E%3C/svg%3E'); }
+  background-image: url('data:image/svg+xml,%3Csvg fill="%23FFFFFF" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/%3E%3C/svg%3E');
+  background-size: contain;
+  background-repeat: no-repeat; }
 
 /* -------------------------------- content layout */
 .sidepanel {
@@ -647,13 +647,13 @@ body {
   justify-content: center;
   align-content: stretch;
   align-items: stretch;
-  background-color: var(--background-color--mark);
-  color: var(--color--mark); }
+  background-color: var(--secondary-background-color);
+  color: var(--secondary-color); }
 
 .sidepanel-footer {
   padding: 0.25em var(--col-space);
-  background-color: var(--background-color--mark);
-  color: var(--color--mark); }
+  background-color: var(--secondary-background-color);
+  color: var(--secondary-color); }
 
 /* -------------------------------- disable background scroll */
 /*html*/
@@ -807,10 +807,12 @@ body {
  */
 /* ----------------------------------- settings */
 .banner, .swed-banner {
-  --padding--banner: calc( 2 * var(--row-space, 1rem) )
-                        0;
-  --margin--components: var(--row-space, 1rem)
-                        var(--col-space, 1.25rem); }
+  --padding--banner:
+      calc( 2 * var(--row-space, 1rem) )
+      0;
+  --margin--components:
+      var(--row-space, 1rem)
+      var(--col-space, 1.25rem); }
 
 /* ----------------------------------- main component */
 .banner, .swed-banner {
@@ -851,29 +853,16 @@ body {
 @media (min-width: 1200px) {
   .group-banner {
     flex-wrap: nowrap; } }
-.autogrid {
-  --cell-size: var(--min-width--text, 24rem);
-  display: grid;
-  grid-gap: 0;
-  grid-template-columns: repeat(auto-fill, minmax(var(--cell-size, 24rem), 1fr)); }
-
-.autogrid > * {
-  grid-column: span 1; }
-
-@media (min-width: 48rem) {
-  .autogrid > .is-big {
-    --size: 2;
-    grid-column: span var(--size); } }
 /*  EOF swed-banner */
-/*  swed-buttons - Nice Buttons
+/*  swed-buttons - Nice buttons with hover effect
  *  2019.7.29
  */
 /* --------------------------------------- Customization */
 .swed-button {
-  --background-color: var(--color--action, firebrick);
-  --background-hover: var(--color--action-hover, darkred );
-  --color: var(--color--action-text, white);
-  --padding: calc( 0.5 * var(--row-space, 1rem) )
+  --background-color: var(--action-color, firebrick);
+  --background-hover: var(--action-color--hover, darkred);
+  --color: var(--action-color--text, white);
+  --padding: calc( var(--row-space, 1rem) * 0.5 )
                       var(--col-space, 1.25rem);
   --margin: 0.25rem;
   --border-radius: 4px;
@@ -911,7 +900,7 @@ body {
     --transform-state: scale(1, 1);
     transform: var(--transform-state);
     position: relative;
-    z-index: 1;
+    z-index: var(--opacity-state);
     will-change: transform;
     transition: all 0.6s var(--timing-function--focusZoom, ease-out);
     -webkit-font-smoothing: antialiased;
@@ -927,7 +916,7 @@ body {
     width: 100%;
     height: 100%;
     opacity: var(--opacity-state, 0);
-    box-shadow: 0 0.5rem 1rem var(--color--shadow, rgba(0, 0, 0, 0.3));
+    box-shadow: 0 0.5rem 1rem var(--shadow-color, rgba(0, 0, 0, 0.3));
     border-radius: inherit;
     transition: inherit; }
 
@@ -1055,53 +1044,53 @@ body {
 /* ------------------------------------- skup palettes */
 /* swed-design 2019 */
 :root {
-  --hsl-NobleBlack: 240, 15%, 12%;
-  --hsl-NobleBlue: 212, 34%, 29%;
-  --hsl-AccentBlue: 204, 22%, 55%;
-  --hsl-AccentBlux: 226, 17%, 20%;
-  --hsl-NobleWhite: 226, 27%, 90%;
-  --hsl-NobleHighWhite: 226, 32%, 75%;
-  --hsl-NobleAction: 359, 54%, 53%;
-  --hsl-NobleHoverAction: 359, 59%, 43%; }
+  --HSL-NobleBlack: 240, 15%, 12%;
+  --HSL-NobleBlue: 212, 34%, 29%;
+  --HSL-AccentBlue: 204, 22%, 55%;
+  --HSL-AccentBlux: 226, 17%, 20%;
+  --HSL-NobleWhite: 226, 27%, 90%;
+  --HSL-NobleHighWhite: 226, 32%, 75%;
+  --HSL-NobleAction: 359, 54%, 53%;
+  --HSL-NobleHoverAction: 359, 59%, 43%; }
 
 /* ------------------------------------- color model */
 :root,
 .colors-as-special {
   --background-color: white;
   --color: black;
-  --color--mark: firebrick;
-  --background-color--mark: lightgray;
-  --color--action: firebrick;
-  --color--action-hover: darkred;
-  --color--action-text: white;
-  --color--shadow: hsla(0, 0%, 0%, 0.3); }
+  --secondary-color: firebrick;
+  --secondary-background-color: lightgray;
+  --action-color: firebrick;
+  --action-color--hover: darkred;
+  --action-color--text: white;
+  --shadow-color: hsla(0, 0%, 0%, 0.3); }
 
 .colors-as-primary {
-  --background-color: hsl(var(--hsl-NobleBlack));
-  --color: hsl(var(--hsl-NobleWhite));
-  --color--mark: hsl(var(--hsl-NobleHighWhite));
-  --background-color--mark: hsl(var(--hsl-AccentBlux));
-  --color--action: hsl(359, 54%, 53%);
-  --color--action-hover: hsl(359, 59%, 43%);
-  --color--action-text: white; }
+  --background-color: hsl(var(--HSL-NobleBlack));
+  --color: hsl(var(--HSL-NobleWhite));
+  --secondary-color: hsl(var(--HSL-NobleHighWhite));
+  --secondary-background-color: hsl(var(--HSL-AccentBlux));
+  --action-color: hsl(359, 54%, 53%);
+  --action-color--hover: hsl(359, 59%, 43%);
+  --action-color--text: white; }
 
 .colors-as-secondary, .secondary-colors {
-  --background-color: hsl(var(--hsl-NobleBlue));
-  --color: hsl(var(--hsl-NobleWhite));
-  --color--mark: hsl(var(--hsl-NobleHighWhite));
-  --color--action: hsl(359, 54%, 53%);
-  --color--action-hover: hsl(359, 59%, 43%);
-  --color--action-text: white; }
+  --background-color: hsl(var(--HSL-NobleBlue));
+  --color: hsl(var(--HSL-NobleWhite));
+  --secondary-color: hsl(var(--HSL-NobleHighWhite));
+  --action-color: hsl(359, 54%, 53%);
+  --action-color--hover: hsl(359, 59%, 43%);
+  --action-color--text: white; }
 
 .colors-as-highlight {
-  --background-color: hsl(var(--hsl-AccentBlux));
-  --color: hsl(var(--hsl-NobleWhite));
-  --color--mark: hsl(var(--hsl-NobleHighWhite)); }
+  --background-color: hsl(var(--HSL-AccentBlux));
+  --color: hsl(var(--HSL-NobleWhite));
+  --secondary-color: hsl(var(--HSL-NobleHighWhite)); }
 
 .colors-as-alternative {
-  --background-color: hsl(var(--hsl-AccentBlue));
+  --background-color: hsl(var(--HSL-AccentBlue));
   --color: hsl(204, 0%, 0%);
-  --color--mark: hsl(204, 0%, 0%); }
+  --secondary-color: hsl(204, 0%, 0%); }
 
 /* ------------------------------------- workers */
 .use-colors, .secondary-colors {
@@ -1109,10 +1098,10 @@ body {
   color: var(--color); }
 
 .color-box, .box, .westbox, .eastbox {
-  background-color: var(--background-color--mark); }
+  background-color: var(--secondary-background-color); }
 
 .color-text {
-  color: var(--color--mark); }
+  color: var(--secondary-color); }
 
 /* ------------------------------------- autorun */
 body {
@@ -1153,6 +1142,19 @@ body {
 .group-content-rows > * {
   grid-column: full; }
 
+.autogrid {
+  --cell-size: var(--min-width--text, 24rem);
+  display: grid;
+  grid-gap: 0;
+  grid-template-columns: repeat(auto-fill, minmax(var(--cell-size, 24rem), 1fr)); }
+
+.autogrid > * {
+  grid-column: span 1; }
+
+@media (min-width: 48rem) {
+  .autogrid > .is-big {
+    --size: 2;
+    grid-column: span var(--size); } }
 .is-chapter:not(.is-on-top), .chapter:not(.is-on-top) {
   padding-top: calc( 2*var(--row-space, 1rem) ); }
 
@@ -1188,4 +1190,4 @@ body {
  *  2019.7.14
  */
 /*  EOF Article markup */
-/* EOF Default styles index */
+/*  EOF Appart Styles */

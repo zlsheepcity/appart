@@ -7,7 +7,18 @@
     <!-- ========================================= HEAD CONTENT -->
 
 
-    <title>App & Art</title>
+    <title>Appart</title>
+    <meta name="description" content="Frontend code templates" />
+    <meta name="author"      content="zl 2019, zl.sheepcity@gmail.com" />
+
+
+    <!-- FAVICON -->
+    <!-- 2019.1, best favicon service: https://realfavicongenerator.net/ -->
+    <meta name="theme-color" content="#E08E79">
+    <meta name="msapplication-TileColor" content="#E08E79">
+    <meta name="msapplication-TileImage" content="app/favicons/144x144.png">
+    <link href="app/favicons/180x180.png" sizes="180x180" rel="apple-touch-icon">
+    <link href="app/favicons/192x192.png" sizes="192x192" rel="icon" type="image/png">
 
 
     <!-- ========================================= BOOT -->
@@ -46,7 +57,12 @@
     </script>
 
 
+    <!-- ༼°▽°༽ prefetch boot -->
+    <link rel="preconnect"   href="//fonts.gstatic.com">
+
+
     <!-- ========================================= DESIGN -->
+
 
     <link
         href="app/styles/appart.css?v2019.7.23"
@@ -64,16 +80,9 @@
 </head>
 <body class="colors-as-primary">
 
-    <header class="el-site-header colors-as-primary use-colors">
-        <h1 class="min-title">Appart</h1>
-        <nav class="el-site-menu">
-            <ul>
-                <li>about the project</li>
-                <li>components</li>
-                <li><figure class="svga-icon base-size min-title js-for-WestsideBar"><svg><use xlink:href="#svg-menu"></use></svg></figure></li>
-            </ul>
-        </nav>
-    </header>
+
+    <!-- ----------------------------------------- Site Header -->
+
 
     <style>
         .el-site-header {
@@ -84,27 +93,40 @@
             align-items:     center;
             align-content:   center;
 
-            position: relative;
-            z-index:  10;
-            position: sticky;
-            top: 0;
+            background-color: var(--background-color);
+                       color: var(--color);
         }
-        .el-site-header>* {
-            margin: var(--all-space);
-        }
+        .el-site-header>h1 { font-size: 1.5em; line-height: 1; }
+        .el-site-header>*  { margin: var(--all-space); }
         .el-site-menu {
-            margin-right: auto;
-        }
-        .el-site-menu>ul {
-            list-style: none;
-            margin:     0;
-            padding:    0;
+            list-style:  none;
+            padding:     0;
 
             display:  grid;
             grid-gap: 0 var(--col-space);
             grid-auto-flow: column;
         }
     </style>
+    <header class="el-site-header">
+        <h1>
+            <span class="js-for-WestsideBar">Appart components</span>
+        </h1>
+        <ul class="el-site-menu">
+            <li>
+                <span>about the project</span>
+            </li>
+            <li>
+                <a href="https://github.com/zlsheepcity/appart">
+                    <figure class="svga-icon min-title">
+                        <svg><use xlink:href="#svg-github"></use></svg>
+                    </figure>
+                </a>
+            </li>
+        </ul>
+    </header>
+
+
+    <!-- ----------------------------------------- Project About -->
 
 
     <section class="chapter" hidden>
@@ -128,43 +150,38 @@
 
     </section>
 
-    <header class="chapter big-title color-box">
-        <h2 class="article-block-merge-west">Components</h2>
-        <div class="east">
-            <figure class="svga-icon base-size js-for-WestsideBar"><svg><use xlink:href="#svg-menu"></use></svg></figure>
-        </div>
-    </header>
 
-
-
-    <!-- ----------------------------------------------------- Banner -->
+    <!-- ----------------------------------------- Banner -->
 
 
     <article class="chapter is-on-top">
         <div class="layer">
 
             <section class="swed-banner colors-as-secondary">
+
                 <header>
-                    <div class="huge-title">Banner</div>
+                    <h2 class="huge-title">Banner</h2>
                 </header>
+
                 <section>
-                    <h2 class="min-title">Features</h2>
+                    <h3 class="min-title">Features</h3>
                     <ul>
-                        <li>Information message with caption/image</li>
-                        <li>Action button</li>
-                        <li>Grid and screen: auto-fit</li>
+                        <li>One-tag wrap</li>
+                        <li>Auto fit for any screen/area</li>
                     </ul>
                 </section>
+
                 <footer>
-                    <a href="dev/tests-banners.html" class="swed-button"><span>Test use-cases</span></a>
+                    <a href="dev/tests-banners.html" class="swed-button"><span>show use-cases</span></a>
                 </footer>
+
             </section>
 
         </div>
     </article>
 
 
-    <!-- ----------------------------------------------------- Autogrid -->
+    <!-- ----------------------------------------- Autogrid -->
 
 
     <article id="card-grid" class="chapter">

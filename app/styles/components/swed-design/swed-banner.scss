@@ -1,5 +1,5 @@
 /*  swed-banner - promo blocks with button
- *  v2017.7.29
+ *  v2019.7.31
  */
 
 
@@ -7,10 +7,14 @@
 
 
 .banner {
-  --padding--banner:    calc( 2 * var(--row-space, 1rem) )
-                        0;
-  --margin--components: var(--row-space, 1rem)
-                        var(--col-space, 1.25rem);
+
+  --padding--banner:
+      calc( 2 * var(--row-space, 1rem) )
+      0;
+
+  --margin--components:
+      var(--row-space, 1rem)
+      var(--col-space, 1.25rem);
 }
 
 
@@ -64,23 +68,6 @@
 }
 @media (min-width: 1200px) {
     .group-banner { flex-wrap: nowrap; }
-}
-
-
-.autogrid {
-  --cell-size: var(--min-width--text, 24rem);
-    display:  grid;
-    grid-gap: 0;
-    grid-template-columns: repeat(auto-fill, minmax(var(--cell-size, 24rem), 1fr));
-}
-.autogrid>* {
-    grid-column: span 1;
-}
-@media (min-width: 48rem) {
-    .autogrid>.is-big {
-      --size: 2;
-        grid-column: span var(--size);
-    }
 }
 
 

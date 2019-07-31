@@ -93,6 +93,11 @@
       --transform-state:  var(--transform-hover);
       --opacity-state:    1;
     }
+    .swed-button:focus-within {
+      --background-color: var(--background-hover);
+      --transform-state:  var(--transform-hover);
+      --opacity-state:    1;
+    }
 }
 
 

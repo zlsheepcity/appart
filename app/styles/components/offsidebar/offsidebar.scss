@@ -26,9 +26,8 @@
  /* bar is never full width, minimal gap  */
   --empty-space-offset:  3em;
 
- /* open animation with two steps  */
+ /* open animation time  */
   --transition-duration--slidein: 240ms;
-  --transition-duration--opacity:  40ms;
 }
 
 
@@ -158,12 +157,17 @@
     z-index:  1;
 }
 
-.offsidebar .sidepanel,
+
+/* default inactive state */
+
+.sidepanel {
+    opacity:   0;
+}
 .offsidebar .sidepanel-content,
 .offsidebar .sidepanel-header,
 .offsidebar .sidepanel-footer {
-    /* default inactive state */
-    opacity: 0;
+    transform: scaleX(0);
+    opacity:   0;
 }
 
 
@@ -217,18 +221,32 @@
     opacity: 1;
 }
 
-.offsidebar.is-active .sidepanel,
+.offsidebar.is-active .sidepanel {
+    opacity:   1;
+}
 .offsidebar.is-active .sidepanel-content,
 .offsidebar.is-active .sidepanel-header,
 .offsidebar.is-active .sidepanel-footer {
+    transform: scaleX(1);
     opacity: 1;
 }
+
+
 
 
 /* -------------------------------- animation settings */
 
 
-@media screen and (min-width:800px) {
+@media screen and (min-width:900px) {
+
+    /* animate overlay */
+
+    .offsidebar .offsidebar-overlay {
+        transition:  opacity var(--transition-duration--slidein);
+        transition-timing-function: var(--timing-function--focusZoom);
+    }
+
+    /* animate offsidebar */
 
     .offsidebar-background {
         will-change: transform;
@@ -237,21 +255,24 @@
         transition:  transform var(--transition-duration--slidein);
         transition-timing-function: var(--timing-function--focusZoom);
         transform-origin: var(--transform-origin--horizontal) center;
+        transition-delay: 50ms;
     }
+
+    /* animate content */
 
     .offsidebar .sidepanel-content,
     .offsidebar .sidepanel-header,
     .offsidebar .sidepanel-footer {
-        will-change: opacity;
+        will-change: transform;
     }
     .offsidebar.is-active .sidepanel-content,
     .offsidebar.is-active .sidepanel-header,
     .offsidebar.is-active .sidepanel-footer {
-        transition:  opacity var(--transition-duration--opacity);
-        transition-delay:    var(--transition-duration--slidein);
-        transition-timing-function: var(--timing-function--Welcome);
+        transition:  transform var(--transition-duration--slidein);
+        transition-timing-function: var(--timing-function--focusZoom);
+        transform-origin: var(--transform-origin--horizontal) center;
+        transition-delay: 50ms;
     }
-
 }
 
 

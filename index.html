@@ -64,10 +64,53 @@
 </head>
 <body class="colors-as-primary">
 
-    <section class="chapter">
+    <header class="el-site-header colors-as-primary use-colors">
+        <h1 class="min-title">Appart</h1>
+        <nav class="el-site-menu">
+            <ul>
+                <li>about the project</li>
+                <li>components</li>
+                <li><figure class="svga-icon base-size min-title js-for-WestsideBar"><svg><use xlink:href="#svg-menu"></use></svg></figure></li>
+            </ul>
+        </nav>
+    </header>
+
+    <style>
+        .el-site-header {
+            display:         flex;
+            flex-direction:  row;
+            flex-wrap:       wrap;
+            justify-content: space-between;
+            align-items:     center;
+            align-content:   center;
+
+            position: relative;
+            z-index:  10;
+            position: sticky;
+            top: 0;
+        }
+        .el-site-header>* {
+            margin: var(--all-space);
+        }
+        .el-site-menu {
+            margin-right: auto;
+        }
+        .el-site-menu>ul {
+            list-style: none;
+            margin:     0;
+            padding:    0;
+
+            display:  grid;
+            grid-gap: 0 var(--col-space);
+            grid-auto-flow: column;
+        }
+    </style>
+
+
+    <section class="chapter" hidden>
 
         <header class="article-box-merge color-box">
-            <h1 class="mid-title">Appart</h1>
+            <strong>appart</strong>
             <p>— (фр.) поиск подходящего партнёра</p>
         </header>
 

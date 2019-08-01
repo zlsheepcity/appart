@@ -84,33 +84,18 @@
     <!-- ----------------------------------------- Site Header -->
 
 
-    <style>
-        .el-site-header>h1 { font-size: 1.5em; }
-        .el-site-menu {
-            list-style:  none;
-            padding:     0;
-
-            display:  grid;
-            grid-gap: 0 var(--col-space);
-            grid-auto-flow: column;
-            align-items:    center;
-        }
-    </style>
-    <header class="el-site-header swed-site-header colors-as-primary">
-        <h1>Appart components</h1>
-        <ul class="el-site-menu">
+    <header class="swed-site-head colors-as-primary">
+        <h1 class="swed-site-logo"><span>Appart</span></h1>
+        <ul class="swed-site-meta">
             <li>
-                <span>about the project</span>
+                <span>index page</span>
             </li>
+        </ul>
+        <ul class="swed-site-menu">
             <li>
-                <a class="svga-icon" href="https://github.com/zlsheepcity/appart">
+                <a class="svga-icon" style="--size: 2;" href="https://github.com/zlsheepcity/appart">
                     <svg><use xlink:href="#svg-github"></use></svg>
                 </a>
-            </li>
-            <li>
-                <button class="svga-icon js-for-WestsideBar">
-                    <svg><use xlink:href="#svg-menu"></use></svg>
-                </button>
             </li>
         </ul>
     </header>
@@ -160,6 +145,166 @@
         </ul>
 
     </section>
+
+
+    <!-- ----------------------------------------- Sidemenu -->
+
+
+    <section class="swed-banner" style="--color:white; --background-color:hsla(196, 100%, 47%, 0.7);">
+        <h1 class="huge-title">What is a Gaming License?</h1>
+    </section>
+
+    <style>
+        .content-menu {
+            list-style: none;
+            padding:
+                calc( 0 * var(--row-space) )
+                0;
+            margin:
+                0
+                calc(  -1 * var(--col-space) );
+        }
+        .content-menu>li {
+            display: block;
+            padding:
+                calc( 0.5 * var(--row-space) )
+                calc(   1 * var(--col-space) );
+        }
+        .content-menu>li>a {
+            display: block;
+            margin:
+                calc(-0.5 * var(--row-space) )
+                calc(  -1 * var(--col-space) );
+            padding:
+                calc( 0.5 * var(--row-space) )
+                calc(   1 * var(--col-space) );
+        }
+        .content-menu>.is-current>a {
+            background-color: var(--active-color);
+                       color: var(--active-color--text);
+            text-decoration:  none;
+        }
+        .content-menu>li>a:hover {
+            background-color: var(--shadow-color);
+        }
+        .content-menu>li>a:focus-within {
+            background-color: var(--shadow-color);
+        }
+
+        .content-menu-toggler {
+            text-align: left;
+            border-bottom: 4px solid var(--shadow-color);
+            margin:
+                0
+                calc(  -1 * var(--col-space) );
+            padding:
+                calc( 0.5 * var(--row-space) )
+                calc(   1 * var(--col-space) );
+        }
+        .westmenu {
+            position: relative;
+        }
+        .westmenu .content-menu {
+            display: none;
+            background-color: var(--secondary-background-color);
+            position: absolute;
+            z-index: 10;
+        }
+        .westmenu:focus-within .content-menu {
+            display: block;
+        }
+        .westmenu:focus-within .content-menu-toggler {
+            pointer-events: none;
+        }
+    </style>
+
+    <section class="offsidebar from-westside GLBar colors-as-special" style="--active-color:hsl(85, 54%, 51%); --active-color--text:white; --secondary-color:white; --secondary-background-color:hsla(196, 100%, 47%, 0.7);">
+        <div class="offsidebar-overlay" hidden></div>
+        <section class="sidepanel">
+            <header class="sidepanel-header">
+                <h2 class="min-title">Articles</h2>
+            </header>
+
+            <nav class="sidepanel-content">
+                <ul class="content-menu"><li id="menu-item-395" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-33 current_page_item menu-item-395"><a href="https://www.gaminglicensing.com/what-is-a-gambling-licence/">What is a Gaming Licence?</a></li>
+                <li id="menu-item-398"><a href="https://www.gaminglicensing.com/gaming-licence-requirements/">Gaming Licence Requirements</a></li>
+                <li id="menu-item-399" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-399"><a href="https://www.gaminglicensing.com/gambling-licence-cost/">Gaming Licence Cost</a></li>
+                <li id="menu-item-400" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-400"><a href="https://www.gaminglicensing.com/quality-software-proper-payments-system/">Quality Software &amp; Proper Payment System</a></li>
+                <li id="menu-item-401" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-401"><a href="https://www.gaminglicensing.com/poker-licence/">Poker Licence</a></li>
+                <li id="menu-item-393" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-393"><a href="https://www.gaminglicensing.com/how-to-get-a-lottery-licence/">Lottery Licence</a></li>
+                <li id="menu-item-394" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-394"><a href="https://www.gaminglicensing.com/bingo-licence/">Bingo Licence</a></li>
+                <li id="menu-item-4493" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4493"><a href="https://www.gaminglicensing.com/betting-licence/">Betting Licence</a></li>
+                <li id="menu-item-396" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-396"><a href="https://www.gaminglicensing.com/open-a-bank-account/">Open a Bank Account</a></li>
+                <li id="menu-item-1600" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1600"><a href="https://www.gaminglicensing.com/cryptocurrency-solution/">Cryptocurrency solution</a></li>
+                <li id="menu-item-1781" class="is-current"><a href="https://www.gaminglicensing.com/hosting-service/">Hosting service</a></li>
+                <li id="menu-item-2170" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2170"><a href="https://www.gaminglicensing.com/registration-of-company-in-curacao/">Registration of Company in Curacao</a></li>
+                <li id="menu-item-2171" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2171"><a href="https://www.gaminglicensing.com/how-to-get-your-gaming-licence/">How to get your gaming licence</a></li>
+                <li id="menu-item-2193" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2193"><a href="https://www.gaminglicensing.com/licence-for-blockchain-projects/">Licence for Blockchain projects</a></li>
+                </ul>
+            </nav>
+
+            <footer class="sidepanel-footer">
+                <div>Footer</div>
+            </footer>
+
+        </section>
+    </section>
+
+
+
+    <article class="chapter color-mode--ivory-paper use-colors">
+        <div class="keep-grid article-westside westmenu">
+            <button class="content-menu-toggler">
+                <span>Show article list</span>
+                <figure class="svga-icon"><svg><use xlink:href="#svg-down"></use></svg></figure>
+            </button>
+            <ul class="content-menu text-is-smaller"><li id="menu-item-395" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-33 current_page_item menu-item-395"><a href="https://www.gaminglicensing.com/what-is-a-gambling-licence/">What is a Gaming Licence?</a></li>
+            <li id="menu-item-398"><a href="https://www.gaminglicensing.com/gaming-licence-requirements/">Gaming Licence Requirements</a></li>
+            <li id="menu-item-399" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-399"><a href="https://www.gaminglicensing.com/gambling-licence-cost/">Gaming Licence Cost</a></li>
+            <li id="menu-item-400" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-400"><a href="https://www.gaminglicensing.com/quality-software-proper-payments-system/">Quality Software &amp; Proper Payment System</a></li>
+            <li id="menu-item-401" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-401"><a href="https://www.gaminglicensing.com/poker-licence/">Poker Licence</a></li>
+            <li id="menu-item-393" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-393"><a href="https://www.gaminglicensing.com/how-to-get-a-lottery-licence/">Lottery Licence</a></li>
+            <li id="menu-item-394" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-394"><a href="https://www.gaminglicensing.com/bingo-licence/">Bingo Licence</a></li>
+            <li id="menu-item-4493" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4493"><a href="https://www.gaminglicensing.com/betting-licence/">Betting Licence</a></li>
+            <li id="menu-item-396" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-396"><a href="https://www.gaminglicensing.com/open-a-bank-account/">Open a Bank Account</a></li>
+            <li id="menu-item-1600" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1600"><a href="https://www.gaminglicensing.com/cryptocurrency-solution/">Cryptocurrency solution</a></li>
+            <li id="menu-item-1781" class="is-current"><a href="https://www.gaminglicensing.com/hosting-service/">Hosting service</a></li>
+            <li id="menu-item-2170" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2170"><a href="https://www.gaminglicensing.com/registration-of-company-in-curacao/">Registration of Company in Curacao</a></li>
+            <li id="menu-item-2171" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2171"><a href="https://www.gaminglicensing.com/how-to-get-your-gaming-licence/">How to get your gaming licence</a></li>
+            <li id="menu-item-2193" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2193"><a href="https://www.gaminglicensing.com/licence-for-blockchain-projects/">Licence for Blockchain projects</a></li>
+            </ul>
+        </div>
+        <div class="keep-grid article-box-merge-east">
+            <section class="block">
+                <p auto-content></p>
+                <p auto-content></p>
+                <p auto-content></p>
+            </section>
+            <section class="textnote">
+                <p>Je lui parlais de bridge, de golf, de <a href="#">politique et de cravates</a>.</p>
+                <p auto-content></p>
+            </section>
+            <section class="big-box">
+                <p auto-content></p>
+                <p auto-content></p>
+            </section>
+            <section class="block">
+                <p auto-content></p>
+            </section>
+            <section class="box">
+                <p auto-content></p>
+            </section>
+            <section class="block">
+                <p auto-content></p>
+                <p auto-content></p>
+            </section>
+            <section class="big-box accent">
+                <p auto-content></p>
+            </section>
+        </div>
+    </article>
+
+
 
 
     <!-- ----------------------------------------- Paper Colors -->
@@ -384,7 +529,7 @@
                 </header>
 
                 <nav class="sidepanel-content">
-                    <ul class="rows js-for-EastsideBar">
+                    <ul class="content-menu js-for-EastsideBar">
                         <li>Lorem ipsum</li>
                         <li>Pellentesque habitant</li>
                         <li>Morbi tristique senectus</li>
@@ -414,7 +559,7 @@
                 </header>
 
                 <nav class="sidepanel-content">
-                    <ul class="rows js-for-WestsideBar">
+                    <ul class="content-menu js-for-WestsideBar">
                         <li><a href="#offsidebar">Offside bar</a></li>
                         <li><a href="#color-model">Color Model</a></li>
                         <li><a href="#article-grid">Article Grid</a></li>

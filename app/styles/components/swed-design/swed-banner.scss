@@ -7,14 +7,14 @@
 
 
 .banner {
+  --v-space: var(--row-space, 1rem);
+  --h-space: var(--col-space, 1.25rem);
 
-  --padding--banner:
-      calc( 2 * var(--row-space, 1rem) )
+  --banner-padding:
+      calc( 2.5 * var(--v-space) )
+      0
+      calc( 1.5 * var(--v-space) )
       0;
-
-  --margin--components:
-      var(--row-space, 1rem)
-      var(--col-space, 1.25rem);
 }
 
 
@@ -31,10 +31,10 @@
     align-content:   center;
     align-self:      stretch;
 
-    padding: var(--padding--banner);
+    padding: var(--banner-padding);
 }
 .banner>* {
-    margin:  var(--margin--components);
+    margin:  0 var(--h-space) var(--v-space) var(--h-space);
 }
 
 
@@ -43,8 +43,8 @@
 
 .swed-banner {
     @extend .banner;
-    background-color: var(--background-color);
-               color: var(--color);
+    background-color: var(--background-color, inherit);
+               color: var(--color, inherit);
 }
 
 

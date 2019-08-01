@@ -75,6 +75,9 @@ img, svg, canvas {
     height:    auto;
     border:       0;
 }
+figure {
+    max-width: var(--max-width, 100%);
+}
 
 
 /* ------------------------------------ markup defaults */

@@ -380,4 +380,62 @@ $breakpoint--west-col-appears: "min-width: #{ $W + $add-gap + $M + $add-gap + $E
 }
 
 
+/* autobar west */
+
+.article-autobar-west {
+    @extend .article-box-west;
+}
+
+@media all and ($breakpoint--west-col-appears) {
+
+    /* reset offsidebar view */
+
+    .offsidebar.is-autobar {
+        position:   static;
+        z-index:    0;
+        max-width:  100%;
+        top:        auto;
+        bottom:     auto;
+        right:      auto;
+        left:       auto;
+        pointer-events: all;
+
+        .sidepanel {
+            opacity:     1;
+        }
+        .sidepanel-content,
+        .sidepanel-header,
+        .sidepanel-footer {
+            transform: scaleX(1);
+            opacity:   1;
+        }
+    }
+
+    /* hide button */
+
+    .article-autobar-west {
+        .for-autobar { display: none; }
+    }
+
+    /* modify menu */
+
+    .offsidebar.is-autobar {
+        grid-column: full;
+        .sidepanel-header {
+            background-color: transparent;
+            color: inherit;
+        }
+        .sidepanel-content {
+            padding-top:    0;
+            padding-bottom: 0;
+
+            /* 14/24 */
+            font-size:    0.875em;
+            line-height: 1.714286;
+        }
+    }
+
+}
+
+
 /*  EOF article-grid */

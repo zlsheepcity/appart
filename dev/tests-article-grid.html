@@ -35,6 +35,10 @@
     <style>
         dl { margin: 0; }
         dd { padding-bottom: 1rem; }
+        .article-grid .color-box {
+            padding-top:    var(--row-space);
+            padding-bottom: var(--row-space);
+        }
     </style>
 
     <!-- ========================================== ʕ⊙ᴥ⊙ʔ = -->
@@ -43,12 +47,11 @@
 <body class="main-font-as-native-sans">
 
 
-    <article class="article-grid is-chapter">
-        <header class="article-box-merge color-box">
+    <article class="chapter is-on-top">
+        <header class="article-layer swed-banner colors-as-secondary">
             <h1 class="huge-title">Article grid usecases</h1>
-            <p class="subtitle">2019.7.11</p>
         </header>
-
+        <p class="subtitle">2019.7.11</p>
         <h2 class="title">Mission</h2>
         <ul class="article-block">
             <li>Упростить вёрстку статей с большим количеством элементов оформления</li>
@@ -56,11 +59,72 @@
             <li>Трёхколоночная модель — текст и примечания по обеим сторонам</li>
             <li>Адаптация под все экраны с сохранением направляющих линий</li>
         </ul>
-
         <hr>
+    </article>
 
-        <section class="article-box color-box">
-            <h2 class="title">CSS Classes</h2>
+    <div class="swed-banner colors-as-secondary">
+        <h2>Markup shortcuts</h2>
+    </div>
+
+    <article class="chapter color-mode--ivory-paper use-colors">
+        <header>
+            <h3 class="big-title">.chapter</h3>
+            <p class="color-text">Markup shortcuts</p>
+        </header>
+        <div class="block">
+           <p><strong>.block</strong> <span class="auto"></span></p>
+            <p class="auto"></p>
+            <p class="auto"></p>
+        </div>
+        <div class="textnote">
+            <p><strong>.textnote</strong> <span class="auto"></span></p>
+        </div>
+        <div class="box">
+            <p><strong>.box</strong> <span class="auto"></span></p>
+            <p class="auto"></p>
+        </div>
+        <div class="big-box">
+            <p><strong>.big-box</strong> <span class="auto"></span></p>
+        </div>
+    </article>
+
+    <article class="chapter colors-as-primary use-colors">
+        <header>
+            <h2 class="big-title">What is a Gaming Licence?</h2>
+        </header>
+        <p>The first step in opening an online casino is obtaining the appropriate gaming licence. The permission issued by the special gambling committee is valid proof that the ongoing business is legitimate and the winnings payouts are guaranteed. The gambling licence is required for any gambling activity, including games with bets or luck: slots, poker, roulette, lottery and sports betting.</p>
+        <hr>
+        <div class="box">
+            <h3 class="min-title">A gaming licence for online casinos allows:</h3>
+            <ul class="rows">
+                <li>Buying a software from leading manufacturers;</li>
+                <li>Customising reliable payment systems on the website that allow receiving payments and getting prize money in various ways;</li>
+                <li>Running an honest and legal business;</li>
+                <li>Building trust with the audience: players will not deposit their money in a dubious casino that has no licence and thus does not guarantee the winnings payment. Moreover, the network has plenty of licensed online sources offering comfortable terms for mutual cooperation.</li>
+            </ul>
+        </div>
+        <hr>
+        <h3 class="mid-title">Rules and regulations</h3>
+        <p>In order to keep the gambling industry transparent, each jurisdiction has a set of rules and regulations that are codified by law. In order to obtain a gambling licence, the operator should be compliant both with the law and the licence conditions. E.g. for Curacao it’s National Ordinance Offshore Games of Hazard.</p>
+        <p>The number of rules and restrictions an operator needs to follow may also differ depending on the jurisdiction. For Curacao it includes:</p>
+        <ul class="rows">
+            <li>An operator’s liability to conduct a policy, which prevents a gambling addiction</li>
+            <li>The operator must always display a logo showcasing the type of license granted (master license or sub license)</li>
+            <li>RNG certification</li>
+        </ul>
+        <hr>
+        <h3 class="mid-title">Enforcement</h3>
+        <p>Any kind of enforcement activities is usually taken to protect the gamblers and keep the high standards of quality and transparency in the e-gambling industry. It may include formal enforcement, financial penalties, license suspension, and criminal enforcement.</p>
+
+        <p>Non-compliant Curacao gambling license holders usually experience administrative fines. However, various sanctions (including imprisonment) may be applied.</p>
+    </article>
+
+
+    <article class="chapter colors-as-secondary use-colors">
+        <header class="article-westside">
+            <h2 class="huge-title">CSS Classes</h2>
+        </header>
+        <section class="block">
             <dl>
                 <dt><strong>article-grid</strong></dt>
                 <dd>— parent</dd>

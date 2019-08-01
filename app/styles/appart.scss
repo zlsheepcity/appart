@@ -36,12 +36,19 @@
 @import "components/data-table/data-table";
 
 
+// -------------------------------------------- Support Components
+
+
+@import "components/animate-css/required-animations";
+@import "components/svga-icons/svga-icons";
+
+
 // -------------------------------------------- Design Components
+
 
 @import "components/swed-design/swed-banner";
 @import "components/swed-design/swed-button";
-@import "components/animate-css/required-animations";
-@import "components/svga-icons/svga-icons";
+@import "components/swed-design/swed-site-head";
 @import "components/catgrounds/catgrounds";
 
 

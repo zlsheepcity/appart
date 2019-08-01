@@ -93,10 +93,12 @@
             align-items:     center;
             align-content:   center;
 
+            line-height:     1rem;
+
             background-color: var(--background-color);
                        color: var(--color);
         }
-        .el-site-header>h1 { font-size: 1.5em; line-height: 1; }
+        .el-site-header>h1 { font-size: 1.5em; }
         .el-site-header>*  { margin: var(--all-space); }
         .el-site-menu {
             list-style:  none;
@@ -105,25 +107,48 @@
             display:  grid;
             grid-gap: 0 var(--col-space);
             grid-auto-flow: column;
+            align-items:    center;
         }
     </style>
     <header class="el-site-header">
-        <h1>
-            <span class="js-for-WestsideBar">Appart components</span>
-        </h1>
+        <h1>Appart components</h1>
         <ul class="el-site-menu">
             <li>
                 <span>about the project</span>
             </li>
             <li>
-                <a href="https://github.com/zlsheepcity/appart">
-                    <figure class="svga-icon min-title">
-                        <svg><use xlink:href="#svg-github"></use></svg>
-                    </figure>
+                <a class="svga-icon" href="https://github.com/zlsheepcity/appart">
+                    <svg><use xlink:href="#svg-github"></use></svg>
                 </a>
+            </li>
+            <li>
+                <button class="svga-icon js-for-WestsideBar">
+                    <svg><use xlink:href="#svg-menu"></use></svg>
+                </button>
             </li>
         </ul>
     </header>
+
+    <section class="swed-banner colors-as-secondary">
+        <h2 class="big-title">App <span class="color-text-accent">&</span> Art</h2>
+        <p class="text-is-bigger text-conent" style="--max-width--text:12em;">
+            Front-end components. Not a framework,
+            but reusable code templates.
+        </p>
+        <button class="svga-icon js-for-WestsideBar" style="--base: 3em;--size:1;">
+            <svg><use xlink:href="#svg-menu"></use></svg>
+        </button>
+    </section>
+
+
+    <section class="swed-banner">
+        <ul>
+            <li>article sidemenu</li>
+            <li>vertical menu</li>
+            <li>text-content width</li>
+        </ul>
+    </section>
+
 
 
     <!-- ----------------------------------------- Project About -->

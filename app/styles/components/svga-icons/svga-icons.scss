@@ -4,17 +4,21 @@
 ============================================================== */
 
 .svga-icon {
+  --base:   1em;
+  --size:   var(--line-height, 1.5);
+
+    width:  var(--base);
+    height: var(--base);
+
     display:    inline-flex;
     justify-content: center;
     align-content:   center;
     align-items:     center;
     vertical-align:  middle;
-    width:  1em;
-    height: 1em;
 
     &:not(.base-size) {
-        margin-right:     calc( var(--line-height, 1.5)*1em - 1em );
-        transform:        scale(var(--line-height, 1.5));
+        margin-right:     calc( var(--size)*var(--base) - var(--base) );
+        transform:        scale(var(--size));
         transform-origin: left center;
     }
 

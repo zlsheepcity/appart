@@ -80,15 +80,16 @@
 .color-box {
     background-color: var(--secondary-background-color);
 }
+.color-text {
+    color:            var(--secondary-color);
+}
+
 .color-box-accent {
     background-color: var(--action-color);
     color:            var(--action-color--text);
 }
-.color-text {
-    color:            var(--secondary-color);
-}
 .color-text-accent {
-    color:            var(--action-color--text);
+    color:            var(--action-color);
 }
 
 

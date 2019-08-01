@@ -29,6 +29,8 @@
     --color:                      black;
     --secondary-color:            firebrick;
     --secondary-background-color: lightgray;
+    --third-background-color:     lightgray;
+    --third-color:                firebrick;
     --action-color:               firebrick;
     --action-color--hover:        darkred;
     --action-color--text:         white;
@@ -67,6 +69,8 @@
     --color:                      hsl(204, 4%, 22%);
     --secondary-color:            hsl(53, 9%, 38%);
     --secondary-background-color: hsl(50, 32%, 66%);
+    --third-background-color:     hsl(26, 16%, 57%);
+    --third-color:                hsl(204, 4%, 22%);
     --shadow-color:               hsla(0, 0%, 0%, 0.1);
 }
 
@@ -91,6 +95,10 @@
 }
 .color-text-accent {
     color:            var(--action-color);
+}
+.alternative-colors {
+    background-color: var(--third-background-color);
+    color:            var(--third-color);
 }
 
 

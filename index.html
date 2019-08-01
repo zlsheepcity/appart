@@ -113,10 +113,9 @@
 
 
     <section class="swed-banner">
-        <ul>
-            <li>article sidemenu</li>
-            <li>vertical menu</li>
-            <li>text-content width</li>
+        <ul class="has-min-width" style="--min-width:16em;">
+            <li>Rich Article Grid Layout</li>
+            <li>Banners</li>
         </ul>
     </section>
 
@@ -149,10 +148,6 @@
 
     <!-- ----------------------------------------- Sidemenu -->
 
-
-    <section class="swed-banner" style="--color:white; --background-color:hsla(196, 100%, 47%, 0.7);">
-        <h1 class="huge-title">What is a Gaming License?</h1>
-    </section>
 
     <style>
         .content-menu {
@@ -207,38 +202,22 @@
                 0
                 calc(  -1 * var(--col-space) );
         }
-        .westmenu {
-            justify-content: unset;
-        }
-        .westmenu .content-menu {
-            display: none;
-            background-color: var(--action-color);
-            color: var(--action-color--text);
-            position: absolute;
-            z-index: 10;
-            left:  0;
-            max-width: 100%;
-            margin:  calc(  -1 * var(--row-space) ) 0 0 0;
-            padding: calc( 0.5 * var(--row-space) ) 0;
-        }
-        .westmenu:focus-within .content-menu {
-            display: block;
-        }
-        .westmenu:focus-within .content-menu-toggler {
-            pointer-events: none;
-        }
-    </style>
 
-    <style>
-        .offsidebar.is-autobar {}
     </style>
 
 
-    <article class="chapter color-mode--ivory-paper use-colors">
+
+    <article class="chapter is-on-top color-mode--ivory-paper use-colors">
+
+        <header class="article-layer swed-banner alternative-colors" style="background-color:#A39081;">
+            <h2 class="huge-title">Rich Article Grid Layout</h2>
+        </header>
+
+        <hr>
 
         <div class="article-autobar-west">
-            <button class="for-autobar js-for-GLBar">Display chapters</button>
-            <section class="offsidebar is-autobar from-westside GLBar colors-as-special" style="--active-color:hsl(85, 54%, 51%); --active-color--text:white; --secondary-color:white; --secondary-background-color:hsla(196, 100%, 47%, 0.7);">
+            <button class="for-autobar js-for-GLBar">Display chapters...</button>
+            <section class="offsidebar is-autobar from-westside GLBar">
                 <section class="sidepanel">
                     <header class="sidepanel-header">
                         <h3 class="min-title">Chapters</h3>
@@ -253,7 +232,7 @@
                         <li id="menu-item-394" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-394"><a href="https://www.gaminglicensing.com/bingo-licence/">Bingo Licence</a></li>
                         <li id="menu-item-4493" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4493"><a href="https://www.gaminglicensing.com/betting-licence/">Betting Licence</a></li>
                         <li id="menu-item-396" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-396"><a href="https://www.gaminglicensing.com/open-a-bank-account/">Open a Bank Account</a></li>
-                        <li id="menu-item-1600" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1600"><a href="https://www.gaminglicensing.com/cryptocurrency-solution/">Cryptocurrency solution</a></li>
+                        <li id="menu-item-1600" class="is-active"><a href="https://www.gaminglicensing.com/cryptocurrency-solution/">Cryptocurrency solution</a></li>
                         <li id="menu-item-2170" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2170"><a href="https://www.gaminglicensing.com/registration-of-company-in-curacao/">Registration of Company in Curacao</a></li>
                         <li id="menu-item-2171" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2171"><a href="https://www.gaminglicensing.com/how-to-get-your-gaming-licence/">How to get your gaming licence</a></li>
                         <li id="menu-item-2193" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2193"><a href="https://www.gaminglicensing.com/licence-for-blockchain-projects/">Licence for Blockchain projects</a></li>
@@ -263,38 +242,15 @@
             </section>
         </div>
 
-
-        <div class="keep-grid article-westside westmenu" hidden>
-            <button class="content-menu-toggler">
-                <span>Show article list</span>
-            </button>
-            <div class="content-menu-container">
-            <ul class="content-menu text-is-smaller"><li id="menu-item-395" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-33 current_page_item menu-item-395"><a href="https://www.gaminglicensing.com/what-is-a-gambling-licence/">What is a Gaming Licence?</a></li>
-            <li id="menu-item-398"><a href="https://www.gaminglicensing.com/gaming-licence-requirements/">Gaming Licence Requirements</a></li>
-            <li id="menu-item-399" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-399"><a href="https://www.gaminglicensing.com/gambling-licence-cost/">Gaming Licence Cost</a></li>
-            <li id="menu-item-400" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-400"><a href="https://www.gaminglicensing.com/quality-software-proper-payments-system/">Quality Software &amp; Proper Payment System</a></li>
-            <li id="menu-item-401" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-401"><a href="https://www.gaminglicensing.com/poker-licence/">Poker Licence</a></li>
-            <li id="menu-item-393" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-393"><a href="https://www.gaminglicensing.com/how-to-get-a-lottery-licence/">Lottery Licence</a></li>
-            <li id="menu-item-394" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-394"><a href="https://www.gaminglicensing.com/bingo-licence/">Bingo Licence</a></li>
-            <li id="menu-item-4493" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4493"><a href="https://www.gaminglicensing.com/betting-licence/">Betting Licence</a></li>
-            <li id="menu-item-396" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-396"><a href="https://www.gaminglicensing.com/open-a-bank-account/">Open a Bank Account</a></li>
-            <li id="menu-item-1600" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1600"><a href="https://www.gaminglicensing.com/cryptocurrency-solution/">Cryptocurrency solution</a></li>
-            <li id="menu-item-1781" class="is-current"><a href="https://www.gaminglicensing.com/hosting-service/">Hosting service</a></li>
-            <li id="menu-item-2170" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2170"><a href="https://www.gaminglicensing.com/registration-of-company-in-curacao/">Registration of Company in Curacao</a></li>
-            <li id="menu-item-2171" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2171"><a href="https://www.gaminglicensing.com/how-to-get-your-gaming-licence/">How to get your gaming licence</a></li>
-            <li id="menu-item-2193" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2193"><a href="https://www.gaminglicensing.com/licence-for-blockchain-projects/">Licence for Blockchain projects</a></li>
-            </ul>
-            </div>
-        </div>
         <div class="keep-grid article-box-merge-east">
             <section class="block">
                 <p auto-content></p>
-                <p auto-content></p>
+                <div class=""><p auto-content></p></div>
                 <p auto-content></p>
             </section>
             <section class="textnote">
-                <p>Je lui parlais de bridge, de golf, de <a href="#">politique et de cravates</a>.</p>
                 <p auto-content></p>
+                <a class="swed-button" href="dev/tests-article-grid.html"><span>Demo</span></a>
             </section>
             <section class="big-box">
                 <p auto-content></p>
@@ -310,45 +266,7 @@
                 <p auto-content></p>
                 <p auto-content></p>
             </section>
-            <section class="big-box accent">
-                <p auto-content></p>
-            </section>
         </div>
-    </article>
-
-
-
-
-    <!-- ----------------------------------------- Paper Colors -->
-
-
-    <article class="chapter color-mode--ivory-paper use-colors">
-        <section class="block">
-            <p auto-content></p>
-            <p auto-content></p>
-            <p auto-content></p>
-        </section>
-        <section class="textnote">
-            <p>Je lui parlais de bridge, de golf, de <a href="#">politique et de cravates</a>.</p>
-            <p auto-content></p>
-        </section>
-        <section class="big-box">
-            <p auto-content></p>
-            <p auto-content></p>
-        </section>
-        <section class="block">
-            <p auto-content></p>
-        </section>
-        <section class="box">
-            <p auto-content></p>
-        </section>
-        <section class="block">
-            <p auto-content></p>
-            <p auto-content></p>
-        </section>
-        <section class="big-box accent">
-            <p auto-content></p>
-        </section>
     </article>
 
 
@@ -364,7 +282,7 @@
                     <h2 class="huge-title">Banner</h2>
                 </header>
 
-                <section>
+                <section class="has-min-width" style="--min-width:16em;">
                     <h3 class="min-title">Features</h3>
                     <ul>
                         <li>One-tag wrap</li>
@@ -373,7 +291,7 @@
                 </section>
 
                 <footer>
-                    <a href="dev/tests-banners.html" class="swed-button"><span>show use-cases</span></a>
+                    <a href="dev/tests-banners.html" class="swed-button"><span>Demo</span></a>
                 </footer>
 
             </section>

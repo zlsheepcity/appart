@@ -7,11 +7,6 @@
 
 
 :root {
-  --background-color:           white;
-  --color:                      black;
-  --secondary-color:            firebrick;
-  --secondary-background-color: lightgray;
-
   --row-space:       1rem;
   --col-space:    1.25rem;
   --z-index--sidebar: 100;
@@ -23,6 +18,9 @@
 
 
 .offsidebar {
+  --sidepanel-color:            var(--color, black);
+  --sidepanel-background-color: var(--background-color, white);
+
  /* bar is never full width, minimal gap  */
   --empty-space-offset:  3em;
 
@@ -80,7 +78,7 @@
     height: 100%;
 
     /* default inactive state */
-    background-color: var(--background-color);
+    background-color: var(--sidepanel-background-color);
     transform: scaleX(0);
 }
 
@@ -134,7 +132,7 @@
     justify-content: flex-start;
     align-content:   stretch;
 
-    color:  var(--color);
+    color:  var(--sidepanel-color);
 }
 .sidepanel>*{
     direction: var(--direction);
@@ -185,14 +183,14 @@
     align-items:    stretch;
 
 
-    background-color: var(--secondary-background-color);
-               color: var(--secondary-color);
+    background-color: var(--sidepanel-color);
+               color: var(--sidepanel-background-color);
 }
 
 .sidepanel-footer {
     padding:   0.25em var(--col-space);
-    background-color: var(--secondary-background-color);
-               color: var(--secondary-color);
+    background-color: var(--sidepanel-color);
+               color: var(--sidepanel-background-color);
 }
 
 

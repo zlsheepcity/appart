@@ -385,6 +385,28 @@ $breakpoint--west-col-appears: "min-width: #{ $W + $add-gap + $M + $add-gap + $E
 .article-autobar-west {
     @extend .article-box-west;
 }
+.for-autobar {
+    position:      relative;
+    border-bottom: 4px solid var(--shadow-color);
+    color: var(--action-color);
+    margin-bottom: var(--row-space, 1rem);
+    &::before {
+        position:  absolute;
+        top:       50%;
+        left:      0;
+        width:     1em;
+        height:    1em;
+        transform: translateX(-1.2rem) translateY(-58%);
+
+        content:   "«";
+        font-size: 1em;
+        line-height: 1;
+        background-color: var(--action-color);
+        color: var(--action-color--text);
+        border-radius: 50%;
+        display: none;
+    }
+}
 
 @media all and ($breakpoint--west-col-appears) {
 
@@ -398,10 +420,10 @@ $breakpoint--west-col-appears: "min-width: #{ $W + $add-gap + $M + $add-gap + $E
         bottom:     auto;
         right:      auto;
         left:       auto;
-        pointer-events: all;
 
         .sidepanel {
-            opacity:     1;
+            opacity:   1;
+            pointer-events: all;
         }
         .sidepanel-content,
         .sidepanel-header,

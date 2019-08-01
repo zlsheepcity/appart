@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*  Appart Styles
  *  index file
  *  v2019.7.31
@@ -238,7 +239,11 @@ h3 *,
 }
 
 .text-conent {
-  max-width: var(--max-width--text);
+  max-width: var(--max-width, var(--max-width--text));
+}
+
+.has-min-width {
+  min-width: var(--min-width, 12em);
 }
 
 .has-sans-text {
@@ -604,6 +609,28 @@ body {
 }
 
 /* autobar west */
+.for-autobar {
+  position: relative;
+  border-bottom: 4px solid var(--shadow-color);
+  color: var(--action-color);
+  margin-bottom: var(--row-space, 1rem);
+}
+.for-autobar::before {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 1em;
+  height: 1em;
+  transform: translateX(-1.2rem) translateY(-58%);
+  content: "«";
+  font-size: 1em;
+  line-height: 1;
+  background-color: var(--action-color);
+  color: var(--action-color--text);
+  border-radius: 50%;
+  display: none;
+}
+
 @media all and (min-width: 71.5rem) {
   /* reset offsidebar view */
   .offsidebar.is-autobar {
@@ -614,10 +641,10 @@ body {
     bottom: auto;
     right: auto;
     left: auto;
-    pointer-events: all;
   }
   .offsidebar.is-autobar .sidepanel {
     opacity: 1;
+    pointer-events: all;
   }
   .offsidebar.is-autobar .sidepanel-content,
 .offsidebar.is-autobar .sidepanel-header,
@@ -653,10 +680,6 @@ body {
  */
 /* -------------------------------- default base settings */
 :root {
-  --background-color: white;
-  --color: black;
-  --secondary-color: firebrick;
-  --secondary-background-color: lightgray;
   --row-space: 1rem;
   --col-space: 1.25rem;
   --z-index--sidebar: 100;
@@ -665,6 +688,8 @@ body {
 
 /* -------------------------------- offsidebar settings */
 .offsidebar {
+  --sidepanel-color: var(--color, black);
+  --sidepanel-background-color: var(--background-color, white);
   /* bar is never full width, minimal gap  */
   --empty-space-offset: 3em;
   /* open animation time  */
@@ -713,7 +738,7 @@ body {
   width: 100%;
   height: 100%;
   /* default inactive state */
-  background-color: var(--background-color);
+  background-color: var(--sidepanel-background-color);
   transform: scaleX(0);
 }
 
@@ -758,7 +783,7 @@ body {
   flex-direction: column;
   justify-content: flex-start;
   align-content: stretch;
-  color: var(--color);
+  color: var(--sidepanel-color);
 }
 
 .sidepanel > * {
@@ -806,14 +831,14 @@ body {
   justify-content: center;
   align-content: stretch;
   align-items: stretch;
-  background-color: var(--secondary-background-color);
-  color: var(--secondary-color);
+  background-color: var(--sidepanel-color);
+  color: var(--sidepanel-background-color);
 }
 
 .sidepanel-footer {
   padding: 0.25em var(--col-space);
-  background-color: var(--secondary-background-color);
-  color: var(--secondary-color);
+  background-color: var(--sidepanel-color);
+  color: var(--sidepanel-background-color);
 }
 
 /* -------------------------------- disable background scroll */
@@ -1356,6 +1381,8 @@ body {
   --color: black;
   --secondary-color: firebrick;
   --secondary-background-color: lightgray;
+  --third-background-color: lightgray;
+  --third-color: firebrick;
   --action-color: firebrick;
   --action-color--hover: darkred;
   --action-color--text: white;
@@ -1398,6 +1425,8 @@ body {
   --color: hsl(204, 4%, 22%);
   --secondary-color: hsl(53, 9%, 38%);
   --secondary-background-color: hsl(50, 32%, 66%);
+  --third-background-color: hsl(26, 16%, 57%);
+  --third-color: hsl(204, 4%, 22%);
   --shadow-color: hsla(0, 0%, 0%, 0.1);
 }
 
@@ -1422,6 +1451,11 @@ body {
 
 .color-text-accent {
   color: var(--action-color);
+}
+
+.alternative-colors {
+  background-color: var(--third-background-color);
+  color: var(--third-color);
 }
 
 /* ------------------------------------- autorun */

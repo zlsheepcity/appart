@@ -201,14 +201,25 @@
                 calc( 0.5 * var(--row-space) )
                 calc(   1 * var(--col-space) );
         }
-        .westmenu {
+        .content-menu-container {
             position: relative;
+            margin:
+                0
+                calc(  -1 * var(--col-space) );
+        }
+        .westmenu {
+            justify-content: unset;
         }
         .westmenu .content-menu {
             display: none;
-            background-color: var(--secondary-background-color);
+            background-color: var(--action-color);
+            color: var(--action-color--text);
             position: absolute;
             z-index: 10;
+            left:  0;
+            max-width: 100%;
+            margin:  calc(  -1 * var(--row-space) ) 0 0 0;
+            padding: calc( 0.5 * var(--row-space) ) 0;
         }
         .westmenu:focus-within .content-menu {
             display: block;
@@ -256,8 +267,8 @@
         <div class="keep-grid article-westside westmenu">
             <button class="content-menu-toggler">
                 <span>Show article list</span>
-                <figure class="svga-icon"><svg><use xlink:href="#svg-down"></use></svg></figure>
             </button>
+            <div class="content-menu-container">
             <ul class="content-menu text-is-smaller"><li id="menu-item-395" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-33 current_page_item menu-item-395"><a href="https://www.gaminglicensing.com/what-is-a-gambling-licence/">What is a Gaming Licence?</a></li>
             <li id="menu-item-398"><a href="https://www.gaminglicensing.com/gaming-licence-requirements/">Gaming Licence Requirements</a></li>
             <li id="menu-item-399" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-399"><a href="https://www.gaminglicensing.com/gambling-licence-cost/">Gaming Licence Cost</a></li>
@@ -273,6 +284,7 @@
             <li id="menu-item-2171" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2171"><a href="https://www.gaminglicensing.com/how-to-get-your-gaming-licence/">How to get your gaming licence</a></li>
             <li id="menu-item-2193" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2193"><a href="https://www.gaminglicensing.com/licence-for-blockchain-projects/">Licence for Blockchain projects</a></li>
             </ul>
+            </div>
         </div>
         <div class="keep-grid article-box-merge-east">
             <section class="block">

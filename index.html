@@ -87,9 +87,7 @@
     <header class="swed-site-head colors-as-primary">
         <h1 class="swed-site-logo"><span>Appart</span></h1>
         <ul class="swed-site-meta">
-            <li>
-                <span>index page</span>
-            </li>
+            <li></li>
         </ul>
         <ul class="swed-site-menu">
             <li>
@@ -106,7 +104,7 @@
             Front-end components. Not a framework,
             but reusable code templates.
         </p>
-        <button class="svga-icon js-for-WestsideBar" style="--base: 3em;--size:1;">
+        <button hidden class="svga-icon js-for-WestsideBar" style="--base: 3em;--size:1;">
             <svg><use xlink:href="#svg-menu"></use></svg>
         </button>
     </section>
@@ -116,16 +114,25 @@
 
     <div class="autogrid">
 
-        <section class="swed-banner is-big">
-            <figure style="--max-width:10em;opacity:1;"><img src="art/component-icons/component-icon--article-grid.svg" alt="SVG icon for Article Grid"></figure>
+        <section class="swed-banner">
             <h3 class="huge-title is-centered"><div>Rich Article</div> <div>Grid Layout</div></h3>
-            <a class="swed-button" href="dev/tests-article-grid.html"><span>Demo</span></a>
+            <figure style="--max-width:10em;"><img src="art/component-icons/component-icon--article-grid.svg" alt="SVG icon for Article Grid"></figure>
+            <div><a class="swed-button" href="dev/tests-article-grid.html"><span>Demo</span></a></div>
         </section>
 
         <section class="swed-banner">
-            <figure style="--max-width:10em;opacity:1;"><img src="art/component-icons/component-icon--banners.svg" alt="SVG icon for Banners"></figure>
-            <h3 class="huge-title is-centered">Banners</h3>
-            <a class="swed-button" href="dev/tests-banners.html"><span>Demo</span></a>
+            <figure style="--max-width:10em;"><img src="art/component-icons/component-icon--banners.svg" alt="SVG icon for Banners"></figure>
+            <div class="is-centered">
+                <h3 class="huge-title is-centered">Banners</h3>
+                <p class="subtitle">wrap few tags</p>
+            </div>
+            <div><a class="swed-button" href="dev/tests-banners.html"><span>Demo</span></a></div>
+        </section>
+
+        <section class="swed-banner">
+            <figure style="--max-width:10em;"><img src="art/component-icons/component-icon--ofsidebar.svg" alt="SVG icon for Ofsidebar"></figure>
+            <h3 class="huge-title is-centered">Ofsidebar</h3>
+            <div><button class="swed-button js-for-EastsideBar"><span>Test bar</span></button></div>
         </section>
 
     </div>
@@ -157,7 +164,7 @@
     </section>
 
 
-    <!-- ----------------------------------------- Sidemenu -->
+    <!-- ----------------------------------------- Article Grid -->
 
 
     <style>
@@ -227,26 +234,18 @@
         <hr>
 
         <div class="article-autobar-west">
-            <button class="for-autobar js-for-GLBar">Display chapters...</button>
+            <button class="for-autobar js-for-GLBar">Display features...</button>
             <section class="offsidebar is-autobar from-westside GLBar">
                 <section class="sidepanel">
                     <header class="sidepanel-header">
-                        <h3 class="min-title">Chapters</h3>
+                        <h3 class="min-title">Features</h3>
                     </header>
                     <nav class="sidepanel-content">
-                        <ul class="content-menu"><li id="menu-item-395" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-33 current_page_item menu-item-395"><a href="https://www.gaminglicensing.com/what-is-a-gambling-licence/">What is a Gaming Licence?</a></li>
-                        <li id="menu-item-398"><a href="https://www.gaminglicensing.com/gaming-licence-requirements/">Gaming Licence Requirements</a></li>
-                        <li id="menu-item-399" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-399"><a href="https://www.gaminglicensing.com/gambling-licence-cost/">Gaming Licence Cost</a></li>
-                        <li id="menu-item-400" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-400"><a href="https://www.gaminglicensing.com/quality-software-proper-payments-system/">Quality Software &amp; Proper Payment System</a></li>
-                        <li id="menu-item-401" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-401"><a href="https://www.gaminglicensing.com/poker-licence/">Poker Licence</a></li>
-                        <li id="menu-item-393" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-393"><a href="https://www.gaminglicensing.com/how-to-get-a-lottery-licence/">Lottery Licence</a></li>
-                        <li id="menu-item-394" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-394"><a href="https://www.gaminglicensing.com/bingo-licence/">Bingo Licence</a></li>
-                        <li id="menu-item-4493" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4493"><a href="https://www.gaminglicensing.com/betting-licence/">Betting Licence</a></li>
-                        <li id="menu-item-396" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-396"><a href="https://www.gaminglicensing.com/open-a-bank-account/">Open a Bank Account</a></li>
-                        <li id="menu-item-1600" class="is-active"><a href="https://www.gaminglicensing.com/cryptocurrency-solution/">Cryptocurrency solution</a></li>
-                        <li id="menu-item-2170" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2170"><a href="https://www.gaminglicensing.com/registration-of-company-in-curacao/">Registration of Company in Curacao</a></li>
-                        <li id="menu-item-2171" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2171"><a href="https://www.gaminglicensing.com/how-to-get-your-gaming-licence/">How to get your gaming licence</a></li>
-                        <li id="menu-item-2193" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2193"><a href="https://www.gaminglicensing.com/licence-for-blockchain-projects/">Licence for Blockchain projects</a></li>
+                        <ul class="content-menu">
+                            <li><a href="dev/tests-article-grid.html">Three-column layout</a></li>
+                            <li><a href="dev/tests-article-grid.html">Easy for markup</a></li>
+                            <li><a href="dev/tests-article-grid.html">Easy for customize components</a></li>
+                            <li><a href="dev/tests-article-grid.html">Built in «auto hide menu»</a></li>
                         </ul>
                     </nav>
                 </section>
@@ -265,14 +264,13 @@
             </section>
             <section class="big-box">
                 <p auto-content></p>
-                <p auto-content></p>
             </section>
             <section class="block">
                 <p auto-content></p>
             </section>
-            <section class="box">
-                <p auto-content></p>
-            </section>
+            <figure class="block">
+                <img src="art/illustrations/austria.svg" alt="Castle in Austria, schematic illustration">
+            </figure>
             <section class="block">
                 <p auto-content></p>
                 <p auto-content></p>

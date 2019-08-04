@@ -47,18 +47,39 @@
 <body class="main-font-as-native-sans">
 
 
-    <article class="chapter is-on-top">
-        <header class="article-layer swed-banner colors-as-secondary">
-            <h1 class="huge-title">Article grid usecases</h1>
-        </header>
-        <p class="subtitle">2019.7.11</p>
-        <h2 class="title">Mission</h2>
-        <ul class="article-block">
-            <li>Упростить вёрстку статей с большим количеством элементов оформления</li>
-            <li>Конструктор для уникальных вставок. Чтобы любой креатив вписывался в сетку.</li>
-            <li>Трёхколоночная модель — текст и примечания по обеим сторонам</li>
-            <li>Адаптация под все экраны с сохранением направляющих линий</li>
+    <!-- ----------------------------------------- Site Header -->
+
+
+    <header class="swed-site-head colors-as-primary">
+        <div class="swed-site-logo"><a href="../index.html"><span>Appart</span></a></div>
+        <ul class="swed-site-meta">
+            <li>
+                <span>Front-end component «article-grid»</span>
+            </li>
         </ul>
+    </header>
+
+
+    <article class="chapter is-on-top colors-as-highlight use-colors">
+        <header class="article-layer swed-banner">
+            <h1 class="huge-title">Rich Article Grid Layout</h1>
+        </header>
+        <figure class="west">
+            <img src="../art/component-icons/component-icon--article-grid.svg" alt="SVG icon for Article Grid">
+        </figure>
+        <section class="block">
+            <p class="subtitle">2019.7.11</p>
+            <h2 class="title">Mission</h2>
+            <ul class="article-block">
+                <li>Упростить вёрстку статей с большим количеством элементов оформления</li>
+                <li>Конструктор для уникальных вставок. Чтобы любой креатив вписывался в сетку.</li>
+                <li>Трёхколоночная модель — текст и примечания по обеим сторонам</li>
+                <li>Адаптация под все экраны с сохранением направляющих линий</li>
+            </ul>
+        </section>
+        <div class="textnote">
+            <p>SCSS source in <a href="https://github.com/zlsheepcity/appart/blob/master/app/styles/components/article-grid/article-grid.scss">github repository</a></p>
+        </div>
         <hr>
     </article>
 
@@ -88,93 +109,10 @@
         </div>
     </article>
 
-    <article class="chapter colors-as-primary use-colors">
-        <header>
-            <h2 class="big-title">What is a Gaming Licence?</h2>
-        </header>
-        <p>The first step in opening an online casino is obtaining the appropriate gaming licence. The permission issued by the special gambling committee is valid proof that the ongoing business is legitimate and the winnings payouts are guaranteed. The gambling licence is required for any gambling activity, including games with bets or luck: slots, poker, roulette, lottery and sports betting.</p>
-        <hr>
-        <div class="box">
-            <h3 class="min-title">A gaming licence for online casinos allows:</h3>
-            <ul class="rows">
-                <li>Buying a software from leading manufacturers;</li>
-                <li>Customising reliable payment systems on the website that allow receiving payments and getting prize money in various ways;</li>
-                <li>Running an honest and legal business;</li>
-                <li>Building trust with the audience: players will not deposit their money in a dubious casino that has no licence and thus does not guarantee the winnings payment. Moreover, the network has plenty of licensed online sources offering comfortable terms for mutual cooperation.</li>
-            </ul>
-        </div>
-        <hr>
-        <h3 class="mid-title">Rules and regulations</h3>
-        <p>In order to keep the gambling industry transparent, each jurisdiction has a set of rules and regulations that are codified by law. In order to obtain a gambling licence, the operator should be compliant both with the law and the licence conditions. E.g. for Curacao it’s National Ordinance Offshore Games of Hazard.</p>
-        <p>The number of rules and restrictions an operator needs to follow may also differ depending on the jurisdiction. For Curacao it includes:</p>
-        <ul class="rows">
-            <li>An operator’s liability to conduct a policy, which prevents a gambling addiction</li>
-            <li>The operator must always display a logo showcasing the type of license granted (master license or sub license)</li>
-            <li>RNG certification</li>
-        </ul>
-        <hr>
-        <h3 class="mid-title">Enforcement</h3>
-        <p>Any kind of enforcement activities is usually taken to protect the gamblers and keep the high standards of quality and transparency in the e-gambling industry. It may include formal enforcement, financial penalties, license suspension, and criminal enforcement.</p>
-
-        <p>Non-compliant Curacao gambling license holders usually experience administrative fines. However, various sanctions (including imprisonment) may be applied.</p>
-    </article>
-
-
-    <article class="chapter colors-as-secondary use-colors">
-        <header class="article-westside">
-            <h2 class="huge-title">CSS Classes</h2>
-        </header>
-        <section class="block">
-            <dl>
-                <dt><strong>article-grid</strong></dt>
-                <dd>— parent</dd>
-
-                <dt><strong>article-block</strong></dt>
-                <dt><strong>article-box</strong></dt>
-                <dd>— main content</dd>
-
-
-                <dt><strong>article-block-west</strong></dt>
-                <dt><strong>article-block-east</strong></dt>
-                <dt><strong>article-box-west</strong></dt>
-                <dt><strong>article-box-east</strong></dt>
-                <br>
-
-                <dt><strong>article-eastside</strong></dt>
-                <dt><strong>article-westside</strong></dt>
-                <dd>— continues to screen borders</dd>
-
-                <dt><strong>article-block-merge</strong></dt>
-                <dt><strong>article-box-merge</strong></dt>
-                <dd>— merge all three columns</dd>
-
-                <dt><strong>article-block-merge-west</strong></dt>
-                <dt><strong>article-block-merge-east</strong></dt>
-                <dt><strong>article-box-merge-west</strong></dt>
-                <dt><strong>article-box-merge-east</strong></dt>
-                <br>
-
-                <dt><strong>keep-grid</strong></dt>
-                <dd>— additional class for columns</dd>
-            </dl>
-        </section>
-
-        <section class="article-block-east">
-            <h2 class="title">Terms</h2>
-            <ul class="article-block">
-                <li><strong>main</strong> — main column</li>
-                <li><strong>west</strong> — left column</li>
-                <li><strong>east</strong> — right column</li>
-                <li><strong>block</strong> — plain text content</li>
-                <li><strong>box</strong> — content with paddings (used with background-color)</li>
-            </ul>
-        </section>
-
-    </article>
 
     <article class="article-grid is-chapter has-devlabels">
         <header class="article-box-merge color-box">
-            <h2 class="big-title">Test Components</h2>
+            <h2 class="big-title">All Components</h2>
         </header>
 
         <div class="title">Blocks</div>
@@ -263,6 +201,59 @@
             </div>
         </section>
         <div class="article-block-east color-text"><p class="auto"></p></div>
+
+    </article>
+
+
+    <article class="chapter colors-as-secondary use-colors">
+        <header class="article-westside">
+            <h2 class="huge-title">CSS Classes</h2>
+        </header>
+        <section class="block">
+            <dl>
+                <dt><strong>article-grid</strong></dt>
+                <dd>— parent</dd>
+
+                <dt><strong>article-block</strong></dt>
+                <dt><strong>article-box</strong></dt>
+                <dd>— main content</dd>
+
+
+                <dt><strong>article-block-west</strong></dt>
+                <dt><strong>article-block-east</strong></dt>
+                <dt><strong>article-box-west</strong></dt>
+                <dt><strong>article-box-east</strong></dt>
+                <br>
+
+                <dt><strong>article-eastside</strong></dt>
+                <dt><strong>article-westside</strong></dt>
+                <dd>— continues to screen borders</dd>
+
+                <dt><strong>article-block-merge</strong></dt>
+                <dt><strong>article-box-merge</strong></dt>
+                <dd>— merge all three columns</dd>
+
+                <dt><strong>article-block-merge-west</strong></dt>
+                <dt><strong>article-block-merge-east</strong></dt>
+                <dt><strong>article-box-merge-west</strong></dt>
+                <dt><strong>article-box-merge-east</strong></dt>
+                <br>
+
+                <dt><strong>keep-grid</strong></dt>
+                <dd>— additional class for columns</dd>
+            </dl>
+        </section>
+
+        <section class="article-block-east">
+            <h2 class="title">Terms</h2>
+            <ul class="article-block">
+                <li><strong>main</strong> — main column</li>
+                <li><strong>west</strong> — left column</li>
+                <li><strong>east</strong> — right column</li>
+                <li><strong>block</strong> — plain text content</li>
+                <li><strong>box</strong> — content with paddings (used with background-color)</li>
+            </ul>
+        </section>
 
     </article>
 

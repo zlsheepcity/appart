@@ -1,21 +1,13 @@
-/*  Article grid, v2003 */
-//  2019.7.16
-
-//  Features:
-//  - 3 columns: west, main, east
-//  - 4 screen breakpoints:
-//      mobile default
-//      mobile + side paddings
-//      main + east columns
-//      full layout
+/*  Article grid, v2003
+ *  2019.7.16
+ */
 
 
 // ------------------------------------------- Layout Settings
 
-// Sass vars for media queries
 
-$row-gap:     1rem; // must be the same as --row-space
-$col-gap:  1.25rem; // must be the same as --col-space
+$row-gap:     1rem;
+$col-gap:  1.25rem;
 $add-gap:     1rem;
 $west-width: 11rem;
 $main-width: 35rem;
@@ -28,6 +20,7 @@ $E: $east-width + 2 * $col-gap;
 $breakpoint--centered-content: "min-width: #{ $M }";                                 //  600px
 $breakpoint--east-col-appears: "min-width: #{ $M + $add-gap + $E }";                 //  912px
 $breakpoint--west-col-appears: "min-width: #{ $W + $add-gap + $M + $add-gap + $E }"; // 1144px
+
 
 .article-grid {
   --grid-base--row-gap:    var(--row-space, #{$row-gap});

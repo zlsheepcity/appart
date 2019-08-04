@@ -125,6 +125,9 @@
                 <h3 class="big-title">.Catground</h3>
                 <p class="subtitle">classname brings «Magic Design»<br>into component</p>
             </div>
+            <footer>
+                <a href="catgrounds.html" class="swed-button">Project page</a>
+            </footer>
         </section>
 
         <section class="swed-banner">
@@ -210,6 +213,27 @@
         .catground-description-title {
             justify-content: flex-start;
         }
+        .el-catground-compare {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            align-content: stretch;
+            align-items: stretch;
+        }
+        .el-catground-compare > .el-comparer {
+            flex-grow: 1;
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-content: center;
+            align-items: center;
+            padding: var(--all-space);
+        }
+        .el-comparer .illustration {
+            margin: var(--row-space) 0;
+        }
     </style>
 
 
@@ -229,31 +253,34 @@
                    as background-images<br>
                    for visual attraction.</p>
             </div>
-            <div>
-                <p>· One shape available</p>
-                <p>· <a href="https://github.com/zlsheepcity/appart/blob/master/app/styles/components/catgrounds/catgrounds.scss">CSS code</a></p>
-                <p>· <a href="https://zlsheepcity.github.io/appart/">Demo page</a></p>
+            <footer>
+                <a href="catgrounds.html" class="swed-button">Project page</a>
+            </footer>
+        </section>
+
+        <!-- Catground Compare -->
+
+        <section class="article-layer el-catground-compare">
+            <div class="el-comparer">
+                <h4 class="color-text">
+                    <div class="text-is-normal">Example one</div>
+                    <div class="big-title">A little bit boring</div>
+                </h4>
+                <figure class="illustration">
+                    <img src="art/promo/no-catgrounds.png" alt="Screen sample without catground">
+                </figure>
+            </div>
+            <div class="el-comparer">
+                    <h4 class="color-text">
+                        <div class="text-is-normal">Example two</div>
+                        <div class="big-title">Catground!</div>
+                    </h4>
+                    <figure class="illustration">
+                        <img src="art/promo/has-catgrounds.png" alt="Screen sample with catground effect">
+                    </figure>
             </div>
         </section>
 
-        <h3 class="mid-title">Long description:</h3>
-
-        <div class="article-layer group-banner">
-            <section class="swed-banner">
-                <h4 class="color-text">
-                    <div class="text-is-normal">Example one</div>
-                    <div class="mid-title">A little bit boring</div>
-                </h4>
-                <figure><img src="art/promo/no-catgrounds.png" alt="Screen sample without catground"></figure>
-            </section>
-            <section class="swed-banner">
-                <h4 class="color-text">
-                    <div class="text-is-normal">Example two</div>
-                    <div class="mid-title">Catground!</div>
-                </h4>
-                <figure><img src="art/promo/has-catgrounds.png" alt="Screen sample with catground effect"></figure>
-            </section>
-        </div>
 
     </article>
 

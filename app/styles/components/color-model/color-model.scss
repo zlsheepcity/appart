@@ -19,6 +19,16 @@
     --HSL-NobleHoverAction:      359, 59%, 43%;
 }
 
+/* appking 2019 */
+
+:root {
+    --HSL-KingsBlue:             202, 81%, 23%;
+    --HSL-KingsAction:            15, 75%, 30%;
+    --HSL-KingsGold:              42, 79%, 53%;
+    --HSL-KingsGrass:            155, 31%, 62%;
+    --HSL-KingsLand:              34, 20%, 33%;
+}
+
 
 /* ------------------------------------- color model */
 
@@ -73,7 +83,18 @@
     --third-color:                hsl(53, 66%, 80%);
     --shadow-color:               hsla(0, 0%, 0%, 0.1);
 }
-
+.color-mode--appking {
+    --background-color:           hsl(var(--HSL-KingsBlue));
+    --color:                      white;
+    --secondary-color:            hsl(var(--HSL-KingsLand));
+    --secondary-background-color: hsl(var(--HSL-KingsGrass));
+    --third-background-color:     hsl(var(--HSL-KingsGold));
+    --third-color:                hsl(var(--HSL-KingsLand));
+    --action-color:               hsl(var(--HSL-KingsAction));
+    --action-color--hover:        hsl(var(--HSL-KingsAction));
+    --action-color--text:         white;
+    --shadow-color:               hsla(0, 0%, 0%, 0.1);
+}
 
 /* ------------------------------------- workers */
 
@@ -82,11 +103,30 @@
     background-color: var(--background-color);
     color:            var(--color);
 }
+.use-secondary-colors {
+    background-color: var(--secondary-background-color);
+    color:            var(--secondary-color);
+}
+.use-third-colors {
+    background-color: var(--third-background-color);
+    color:            var(--third-color);
+}
+.use-action-colors {
+    background-color: var(--action-color);
+    color:            var(--action-color--text);
+}
+.use-shadow-background {
+    background-color: var(--shadow-color);
+}
+
 .color-box {
     background-color: var(--secondary-background-color);
 }
 .color-text {
-    color:            var(--secondary-color);
+    color:            var(--alternative-text-color, var(--secondary-color));
+}
+.color-text-action {
+    color:            var(--action-color);
 }
 
 .color-box-accent {

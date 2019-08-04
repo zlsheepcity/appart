@@ -58,8 +58,8 @@
         }
     }
 
-.is-chapter:not(.is-on-top)    { padding-top:    calc( 2*var(--row-space, 1rem) ); }
-.is-chapter:not(.is-on-bottom) { padding-bottom: calc( 2*var(--row-space, 1rem) ); }
+.is-chapter:not(.isontop):not(.is-on-top)    { padding-top:    calc( 2*var(--row-space, 1rem) ); }
+.is-chapter:not(.isonbot):not(.is-on-bottom) { padding-bottom: calc( 2*var(--row-space, 1rem) ); }
 
 
 /* ------------------------------------------ paddings */

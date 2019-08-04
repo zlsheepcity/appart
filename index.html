@@ -123,7 +123,7 @@
             <figure style="--max-width:10em;"><img src="art/component-icons/component-icon--catgrounds.svg" alt="SVG icon for Catgrounds"></figure>
             <div class="is-centered">
                 <h3 class="big-title">.Catground</h3>
-                <p class="subtitle">Classname brings «Design»<br>into component</p>
+                <p class="subtitle">classname brings «Magic Design»<br>into component</p>
             </div>
         </section>
 
@@ -131,6 +131,9 @@
             <figure style="--max-width:10em;"><img src="art/component-icons/component-icon--ofsidebar.svg" alt="SVG icon for Ofsidebar"></figure>
             <div class="is-centered">
                 <h3 class="big-title is-centered">Ofsidebar</h3>
+                <p class="subtitle">pop-out panel<br>without content jumps</p>
+            </div>
+            <div>
                 <button class="swed-button js-for-EastsideBar"><span>Test bar</span></button>
             </div>
         </section>
@@ -184,6 +187,75 @@
         </section>
     </section>
 
+
+    <!-- ----------------------------------------- Catgrounds -->
+
+
+    <style>
+        .color-mode--catgrounds {
+            --background-color:           hsl(202, 85%, 17%);
+            --color:                      hsl(202, 11%, 93%);
+            --alternative-text-color:     hsl(var(--HSL-KingsGold));
+
+            --secondary-background-color: hsl(202, 92%, 13%);
+            --secondary-color:            hsl(202, 11%, 93%);
+
+            --third-background-color:     hsl(202, 81%, 23%);
+            --third-color:                hsl(202, 11%, 93%);
+
+            --action-color:               hsl(var(--HSL-KingsAction));
+            --action-color--hover:        hsl(var(--HSL-KingsAction));
+            --action-color--text:         white;
+        }
+    </style>
+
+
+    <article class="chapter isontop isonbot color-mode--catgrounds use-colors">
+
+        <section class="article-layer swed-banner use-secondary-colors">
+            <figure style="--max-width:10em;opacity:0.25;">
+                <img src="art/component-icons/component-icon--catgrounds.svg" alt="Catground SVG Icon">
+            </figure>
+            <h2 class="huge-title">Catgrounds</h2>
+        </section>
+
+
+            <section class="block">
+                <hr>
+                <h3 class="mid-title">Short description...</h3>
+                <p class="is-v-centered">An abstract shapes as background-images for visual attraction.</p>
+                <ul class="group-content-rows">
+                    <li>One shape available</li>
+                    <li>
+                        <a href="https://github.com/zlsheepcity/appart/blob/master/app/styles/components/catgrounds/catgrounds.scss">CSS code</a>
+                    </li>
+                    <li>
+                        <a href="https://zlsheepcity.github.io/appart/">Demo page</a>
+                    </li>
+                </ul>
+                <hr>
+            </section>
+
+            <h3 class="mid-title">Long description...</h3>
+
+        <div class="article-layer group-banner">
+            <section class="swed-banner">
+                <h4 class="color-text">
+                    <div class="text-is-normal">Example one</div>
+                    <div class="mid-title">A little bit boring</div>
+                </h4>
+                <figure><img src="art/promo/no-catgrounds.png" alt="Screen sample without catground"></figure>
+            </section>
+            <section class="swed-banner">
+                <h4 class="color-text">
+                    <div class="text-is-normal">Example two</div>
+                    <div class="mid-title">Catground!</div>
+                </h4>
+                <figure><img src="art/promo/has-catgrounds.png" alt="Screen sample with catground effect"></figure>
+            </section>
+        </div>
+
+    </article>
 
 
 
@@ -277,6 +349,9 @@
 
         <header class="article-layer swed-banner alternative-colors">
             <h2 class="huge-title">Rich Article Grid Layout</h2>
+            <figure style="--max-width:10em;opacity:0.25;">
+                <img src="art/component-icons/component-icon--article-grid.svg" alt="Grid SVG Icon">
+            </figure>
         </header>
 
         <hr>
@@ -330,9 +405,6 @@
     <!-- ----------------------------------------- Banner -->
 
 
-    <article class="chapter is-on-top">
-        <div class="layer">
-
             <section class="swed-banner colors-as-secondary">
 
                 <header>
@@ -353,33 +425,23 @@
 
             </section>
 
-        </div>
-    </article>
-
 
     <!-- ----------------------------------------- Autogrid -->
 
 
-    <article id="card-grid" class="chapter">
-        <h2 class="big-title">Autogrid</h2>
-        <div class="layer">
+    <article id="Autogrid" class="chapter isontop isonbot">
 
+        <header class="article-layer swed-banner">
+            <h2 class="huge-title">Autogrid filled with banners</h2>
+        </header>
+
+        <div class="layer">
             <div class="autogrid">
 
                 <section class="swed-banner colors-as-secondary">
-                    <header>
-                        <h2 class="min-title">Features</h2>
-                    </header>
-                    <section>
-                        <ul>
-                            <li>Information message with caption/image</li>
-                            <li>Action button</li>
-                            <li>Grid and screen: auto-fit</li>
-                        </ul>
-                    </section>
-                    <footer>
-                        <a href="dev/tests-banners.html" class="swed-button"><span>Test use-cases</span></a>
-                    </footer>
+                    <figure style="--max-width:10em;">
+                        <img src="art/component-icons/component-icon--banners.svg" alt="SVG icon for Banners">
+                    </figure>
                 </section>
 
 

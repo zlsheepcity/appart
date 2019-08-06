@@ -116,14 +116,29 @@
 
     <!-- ----------------------------------------- Components Promo -->
 
+    <style>
+        .promo-icon {
+            width: 10em;
+        }
+    </style>
+
 
     <div class="autogrid">
 
         <section class="swed-banner is-big">
-            <figure style="--max-width:10em;"><img src="art/component-icons/component-icon--catgrounds.svg" alt="SVG icon for Catgrounds"></figure>
+            <figure class="promo-icon">
+                <img
+                    src="art/component-icons/component-icon--catgrounds.svg"
+                    alt="SVG icon for Catgrounds">
+            </figure>
             <div class="is-centered">
-                <h3 class="big-title">.Catground</h3>
-                <p class="subtitle">classname brings «Magic Design»<br>into component</p>
+                <h3 class="big-title">
+                    .Catground
+                </h3>
+                <p class="subtitle">
+                    classname brings «Magic Design»<br>
+                    into component
+                </p>
             </div>
             <footer>
                 <a href="catgrounds.html" class="swed-button">Project page</a>
@@ -131,63 +146,145 @@
         </section>
 
         <section class="swed-banner">
-            <figure style="--max-width:10em;"><img src="art/component-icons/component-icon--ofsidebar.svg" alt="SVG icon for Ofsidebar"></figure>
+            <figure class="promo-icon">
+                <img
+                    src="art/component-icons/component-icon--ofsidebar.svg"
+                    alt="SVG icon for Ofsidebar">
+            </figure>
             <div class="is-centered">
-                <h3 class="big-title is-centered">Ofsidebar</h3>
-                <p class="subtitle">pop-out panel<br>without content jumps</p>
+                <h3 class="big-title">
+                    Ofsidebar
+                </h3>
+                <p class="subtitle">
+                    pop-out panel<br>
+                    without content jumps
+                </p>
             </div>
-            <div>
+            <footer>
                 <button class="swed-button js-for-EastsideBar"><span>Test bar</span></button>
-            </div>
+            </footer>
         </section>
 
         <section class="swed-banner">
-            <figure style="--max-width:10em;"><img src="art/component-icons/component-icon--banners.svg" alt="SVG icon for Banners"></figure>
+            <figure class="promo-icon">
+                <img
+                    src="art/component-icons/component-icon--banners.svg"
+                    alt="SVG icon for Banners">
+            </figure>
             <div class="is-centered">
-                <h3 class="big-title is-centered">Banners</h3>
-                <a class="swed-button" href="dev/tests-banners.html"><span>Demo</span></a>
+                <h3 class="big-title">
+                    Banners
+                </h3>
+                <a class="swed-button" href="dev/tests-banners.html"><span>Demo page</span></a>
             </div>
         </section>
 
         <section class="swed-banner is-big">
             <div class="is-centered">
-                <h3 class="big-title"><div>Rich Article</div> <div>Grid Layout</div></h3>
+                <h3 class="big-title">
+                    <div>Rich Article</div>
+                    <div>Grid Layout</div>
+                </h3>
             </div>
-            <figure style="--max-width:10em;"><img src="art/component-icons/component-icon--article-grid.svg" alt="SVG icon for Article Grid"></figure>
-            <div>
-                <a class="swed-button" href="dev/tests-article-grid.html"><span>Demo</span></a>
-            </div>
+            <figure class="promo-icon">
+                <img
+                    src="art/component-icons/component-icon--article-grid.svg"
+                    alt="SVG icon for Article Grid">
+            </figure>
+            <footer>
+                <a class="swed-button" href="dev/tests-article-grid.html"><span>Demo page</span></a>
+            </footer>
         </section>
 
     </div>
 
-    <section hidden>
+    <!-- ----------------------------------------- Components Fulllist -->
+
+    <style>
+        /* html>body>*:not(.show) { display: none!important; } */
+        .el-components-list {
+            column-width: 12rem;
+            column-gap:   calc( 2 * var(--col-space) );
+            padding:      0 var(--col-space);
+            margin:       0;
+        }
+        .el-components-list>li {
+            page-break-inside: avoid;
+                 break-inside: avoid;
+            margin-bottom:     var(--row-space);
+        }
+        .el-components-list>li>h4 {
+            font-weight: bolder;
+            color:       var(--action-color, currentColor);
+        }
+        .el-components {
+            max-width:   44rem;
+            margin-left:  auto;
+            margin-right: auto;
+        }
+        @media all and (max-width:30rem) {
+            .el-components-list>li {
+                max-width:   16rem;
+                margin-left:  auto;
+                margin-right: auto;
+            }
+        }
+    </style>
+
+    <section>
         <header class="banner">
             <div>
                 <h3 class="mid-title">All components</h3>
-                <p>Last update 2017.8.3</p>
+                <p class="has-sans-text">Last update 2019.8.5</p>
             </div>
         </header>
-        <section class="banner">
-                <ul>
+        <section class="el-components has-sans-text">
+                <ul class="el-components-list">
                     <li>
-                        <a href="dev/tests-article-grid.html">Rich Article Grid Layout</a>
+                        <h4>Rich Article Grid Layout</h4>
+                         <div class="text-is-smaller">
+                            <p><strong>sass component</strong></p>
+                            <p>CSS grid template for big articles with a lot of content, illustrations and creative visuals.</p>
+                        </div>
                     </li>
                     <li>
-                        <a href="dev/tests-banners.html">Banners</a>
+                        <h4>Banners</h4>
+                        <div class="text-is-smaller">
+                            <p><strong>css class</strong></p>
+                            <p>Wrapper for content grouping</p>
+                        </div>
                     </li>
                     <li>
-                        Catgrounds
+                        <h4>Catgrounds</h4>
+                        <div class="text-is-smaller">
+                            <p><strong>css class</strong></p>
+                            <p>Design trick to make boring content more interesting</p>
+                        </div>
                     </li>
                     <li>
-                        Offsidebar
+                        <h4>Offsidebar</h4>
+                        <div class="text-is-smaller">
+                            <p><strong>css component</strong></p>
+                            <p>Expandable side-panel prevents content jumps on call (google chrome issue)</p>
+                        </div>
                     </li>
-                </ul>
-                <ul>
-                    <li>Color-model</li>
-                    <li>SVG-icons</li>
+                    <li>
+                        <h4>Color-model</h4>
+                        <div class="text-is-smaller">
+                            <p><strong>css variables</strong></p>
+                            <p>Pattern for switching colors in markup</p>
+                        </div>
+                    </li>
+                    <li>
+                        <h4>SVG-icons</h4>
+                        <div class="text-is-smaller">
+                            <p><strong>css, svg</strong></p>
+                            <p>Markup shortcut and presets with common used icons.</p>
+                        </div>
+                    </li>
                 </ul>
         </section>
+        <hr><hr><hr>
     </section>
 
 
@@ -965,7 +1062,7 @@
     </div>
 
 
-    <!-- ----------------------------------------------------- SVG Icons -->
+    <!-- ----------------------------------------------------- Responsive Data Table -->
 
 
     <article id="data-table" class="chapter">
@@ -977,6 +1074,169 @@
         <p>Respsonsive table component</p>
 
     </article>
+
+
+
+    <!-- ----------------------------------------------------- Multicolumn list research -->
+
+    <style>
+        .collisting {
+          --max-width:   50rem;
+          --max-columns:     3;
+          --gap-space:  2.5rem;
+          --row-space:    1rem;
+
+            max-width:    var(--max-width);
+        }
+        .collisting>ul {
+            column-width: calc(
+                ( var(--max-width) - ( ( var(--max-columns) + 1 ) * var(--gap-space) ) )
+                / var(--max-columns)
+                );
+            column-gap: var(--gap-space);
+            padding:  0 var(--gap-space);
+            margin:   0;
+        }
+        .collisting>ul>li {
+            page-break-inside: avoid;
+                 break-inside: avoid;
+            margin-bottom:     var(--row-space);
+        }
+
+
+        .collisting.box>ul {
+            grid-column: full;
+        }
+        .auto-margin {
+            margin-left:  auto;
+            margin-right: auto;
+        }
+    </style>
+
+
+
+    <section class="show">
+        <header class="banner">
+            <div>
+                <h3 class="mid-title">Collisting</h3>
+            </div>
+        </header>
+        <div class="has-sans-text" >
+        <section class="collisting auto-margin">
+                <ul>
+                    <li>
+                        <h4>Rich Article Grid Layout</h4>
+                         <div class="text-is-smaller">
+                            <p><strong>sass component</strong></p>
+                            <p>CSS grid template for big articles with a lot of content, illustrations and creative visuals.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <h4>Banners</h4>
+                        <div class="text-is-smaller">
+                            <p><strong>css class</strong></p>
+                            <p>Wrapper for content grouping</p>
+                        </div>
+                    </li>
+                    <li>
+                        <h4>Catgrounds</h4>
+                        <div class="text-is-smaller">
+                            <p><strong>css class</strong></p>
+                            <p>Design trick to make boring content more interesting</p>
+                        </div>
+                    </li>
+                    <li>
+                        <h4>Offsidebar</h4>
+                        <div class="text-is-smaller">
+                            <p><strong>css component</strong></p>
+                            <p>Expandable side-panel prevents content jumps on call (google chrome issue)</p>
+                        </div>
+                    </li>
+                    <li>
+                        <h4>Color-model</h4>
+                        <div class="text-is-smaller">
+                            <p><strong>css variables</strong></p>
+                            <p>Pattern for switching colors in markup</p>
+                        </div>
+                    </li>
+                    <li>
+                        <h4>SVG-icons</h4>
+                        <div class="text-is-smaller">
+                            <p><strong>css, svg</strong></p>
+                            <p>Markup shortcut and presets with common used icons.</p>
+                        </div>
+                    </li>
+                </ul>
+        </section>
+        </div>
+    </section>
+
+
+
+    <section class="chapter show">
+        <div class="article-box-merge-east">
+            <section class="box collisting has-sans-text color-box">
+                    <ul>
+                        <li>
+                            <h4>Rich Article Grid Layout</h4>
+                             <div class="text-is-smaller">
+                                <p><strong>sass component</strong></p>
+                                <p>CSS grid template for big articles with a lot of content, illustrations and creative visuals.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <h4>Banners</h4>
+                            <div class="text-is-smaller">
+                                <p><strong>css class</strong></p>
+                                <p>Wrapper for content grouping</p>
+                            </div>
+                        </li>
+                        <li>
+                            <h4>Catgrounds</h4>
+                            <div class="text-is-smaller">
+                                <p><strong>css class</strong></p>
+                                <p>Design trick to make boring content more interesting</p>
+                            </div>
+                        </li>
+                        <li>
+                            <h4>Offsidebar</h4>
+                            <div class="text-is-smaller">
+                                <p><strong>css component</strong></p>
+                                <p>Expandable side-panel prevents content jumps on call (google chrome issue)</p>
+                            </div>
+                        </li>
+                        <li>
+                            <h4>Color-model</h4>
+                            <div class="text-is-smaller">
+                                <p><strong>css variables</strong></p>
+                                <p>Pattern for switching colors in markup</p>
+                            </div>
+                        </li>
+                        <li>
+                            <h4>SVG-icons</h4>
+                            <div class="text-is-smaller">
+                                <p><strong>css, svg</strong></p>
+                                <p>Markup shortcut and presets with common used icons.</p>
+                            </div>
+                        </li>
+                    </ul>
+            </section>
+
+        </div>
+        <section class="article-box-merge-east swed-banner catground-description-title">
+            <h3 class="mid-title">Short description:</h3>
+            <div class="color-text">
+                <p>An abstract shapes<br>
+                   as background-images<br>
+                   for visual attraction.</p>
+            </div>
+            <footer>
+                <a href="catgrounds.html" class="swed-button">Project page</a>
+            </footer>
+        </section>
+
+    </section>
+
 
 
 <!-- ========================================= PAGE CUSTOM -->

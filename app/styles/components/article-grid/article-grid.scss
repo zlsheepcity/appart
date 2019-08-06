@@ -185,14 +185,14 @@ $breakpoint--west-col-appears: "min-width: #{ $W + $add-gap + $M + $add-gap + $E
 
   --grid-template-columns--content-block:
         [full-start overwest-start overeast-start overmain-start main-start west-start east-start]
-            auto
+            1fr
         [full-end   overwest-end   overeast-end   overmain-end   main-end   west-end   east-end];
 
   --grid-template-columns--content-box:
         [full-start overwest-start overeast-start overmain-start]
             var(--grid-base--col-gap)
         [main-start west-start east-start]
-            auto
+            1fr
         [main-end   west-end   east-end]
             var(--grid-base--col-gap)
         [full-end   overwest-end   overeast-end   overmain-end];

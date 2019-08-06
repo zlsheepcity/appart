@@ -1,0 +1,135 @@
+<!doctype html><!-- appart :: 8001 :: 2019.8.6 -->
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- ========================================= HEAD CONTENT -->
+
+
+    <title>Grid Cases</title>
+
+
+    <!-- ========================================= BOOT -->
+
+
+    <style> /* ༼°▽°༽ boot style */
+        body    { width: 100%; height: auto; overflow: hidden; }
+        img,svg { max-width: 100%; }
+    </style>
+
+
+    <!-- ========================================= DESIGN -->
+
+
+    <link
+        href="../app/styles/appart.css"
+        rel="stylesheet" type="text/css">
+
+
+    <!-- ========================================= APP CUSTOM -->
+
+    <style>
+        article {
+            max-width: 50em;
+            margin: 0 auto;
+        }
+        .test * + * {
+            margin-top: 1rem;
+        }
+        h1 {
+            font-size: 3em;
+            line-height: 1;
+        }
+        h1+p, h2+p {
+            margin-top: 0;
+        }
+    </style>
+
+    <!-- ========================================== ʕ⊙ᴥ⊙ʔ = -->
+    <!-- ========================================= END HEAD -->
+</head>
+<body class="test main-font-as-native-sans">
+
+
+    <article>
+
+        <header>
+            <h1>The Grand Caption</h1>
+            <p>The Grand Caption has subtitle</p>
+        </header>
+
+
+        <section>
+            <p class="auto"></p>
+            <p class="auto"></p>
+            <p class="auto"></p>
+        </section>
+
+
+        <section>
+
+            <header>
+                <h2>Chapter title</h2>
+                <p>Chapter title has subtitle</p>
+            </header>
+
+            <section>
+                <p class="auto"></p>
+                <p class="auto"></p>
+                <p class="auto"></p>
+            </section>
+
+        </section>
+
+
+        <section>
+
+            <header>
+                <h2>Another chapter title</h2>
+            </header>
+
+            <section>
+                <p class="auto"></p>
+                <p class="auto"></p>
+                <p class="auto"></p>
+            </section>
+
+        </section>
+
+
+
+    </article>
+
+
+
+
+
+
+
+    <!-- ========================================= PAGE CUSTOM -->
+
+    <script>
+        // insert random content into paragraphs
+        function p() {
+            // const p = document.getElementsByTagName('p')
+            const p = document.querySelectorAll('.auto')
+            for ( let i in p ) {
+                let texts = [
+                    'Les grandes personnes m’ont conseillé de laisser de côté les dessins de serpents boas ouverts ou fermés, et de m’intéresser plutôt à la géographie, à l’histoire, au calcul et à la grammaire. C’est ainsi que j’ai abandonné, à l’âge de six ans, une magnifique carrière de peintre.',
+                    'J’avais été découragé par l’insuccès de mon dessin numéro 1 et de mon dessin numéro 2. Les grandes personnes ne comprennent jamais rien toutes seules, et c’est fatigant, pour les enfants, de toujours et toujours leur donner des explications.',
+                    'J’ai donc dû choisir un autre métier et j’ai appris à piloter des avions. J’ai volé un peu partout dans le monde. Et la géographie, c’est exact, m’a beaucoup servi. Je savais reconnaître, du premier coup d’œil, la Chine de l’Arizona. C’est très utile, si l’on est égaré pendant la nuit.',
+                    'J’ai ainsi eu, au cours de ma vie, des tas de contacts avec des tas de gens sérieux. J’ai beaucoup vécu chez les grandes personnes. Je les ai vues de très près. Ça n’a pas trop amélioré mon opinion.',
+                    'Quand j’en rencontrais une qui me paraissait un peu lucide, je faisais l’expérience sur elle de mon dessin numéro 1 que j’ai toujours conservé. Je voulais savoir si elle était vraiment compréhensive. Mais toujours elle me répondait : « C’est un chapeau. »',
+                    'Alors je ne lui parlais ni de serpents boas, ni de forêts vierges, ni d’étoiles. Je me mettais à sa portée. Je lui parlais de bridge, de golf, de politique et de cravates. Et la grande personne était bien contente de connaître un homme aussi raisonnable.'
+                    ]
+                let text = texts[Math.floor(Math.random()*texts.length)]
+                let textnode = document.createTextNode(text)
+                if (p[i].appendChild) p[i].appendChild(textnode)
+            }
+        }
+        p()
+    </script>
+
+</body>
+</html>

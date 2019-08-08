@@ -1,0 +1,246 @@
+<!doctype html><!-- appart :: 8002 :: 2019.8.8 -->
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- ========================================= HEAD CONTENT -->
+
+
+    <title>Color Model</title>
+
+
+    <!-- ========================================= BOOT -->
+
+
+    <style>
+        /* ༼°▽°༽ style boot */
+        body    { width: 100%; height: auto; overflow: hidden; }
+        img,svg { max-width: 100%; }
+    </style>
+
+
+    <script>
+        /* ༼°▽°༽ app boot */
+        function BootKing() {
+            let  King = this
+            King.has  =  {
+                 Queens: ['mutate','onload'],
+                 Memory: [],
+                 toRemember: (something) => King.has.Memory.push(something) }
+            function KeepInMemory(responsible) {
+                 return (dna) => King.has.toRemember({dna,for:responsible}) }
+            King.has.Queens.map( (queen)=>King[queen]=KeepInMemory(queen) ) }
+
+        let app = new BootKing()
+    </script>
+
+
+    <!-- ༼°▽°༽ prefetch boot -->
+    <link rel="preload"      href="../art/bergamot-just-browse-here.svg" as="image">
+    <link rel="preconnect"   href="//fonts.gstatic.com">
+    <!-- INFO: https://3perf.com/blog/link-rels/ -->
+
+
+    <!-- ========================================= DESIGN -->
+
+
+    <link
+        href="../app/styles/appart.css"
+        rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic"
+        rel="stylesheet">
+
+
+    <!-- ========================================= APP CUSTOM -->
+
+
+    <style>
+    /*
+        .colors--template {
+          --back-color:          #FFF;
+          --back-color--accent:  var(--back-color);
+          --back-color--descent: var(--back-color);
+
+          --text-color:          #000;
+          --text-color--accent:  var(--text-color);
+          --text-color--descent: var(--text-color);
+
+          --link-color:          #00C;
+          --link-color--accent:  var(--link-color);
+          --link-color--descent: var(--link-color);
+
+          --shadow-color:        hsla(0, 0%, 0%, 0.3);
+        }
+    */
+    </style>
+
+
+    <!-- ========================================== ʕ⊙ᴥ⊙ʔ = -->
+    <!-- ========================================= END HEAD -->
+</head>
+<body>
+
+
+    <article class="chapter colors--action use-colors">
+        <header class="mb">
+            <h3 class="big-title">.chapter</h3>
+            <p class="text-color-descent">Markup shortcuts</p>
+        </header>
+        <div class="block">
+            <p>
+                <span class="auto"></span>
+                <span class="text-color-accent">Text color accent.</span>
+                <span class="auto"></span>
+            </p>
+            <p>
+                <span class="auto"></span>
+                <span class="link-color">Link color accent.</span>
+                <span class="auto"></span>
+            </p>
+        </div>
+        <div class="textnote text-color-accent">
+            <p><span class="auto"></span></p>
+        </div>
+        <div class="box mt mb back-color-descent">
+            <p><span class="auto"></span></p>
+            <p class="auto"></p>
+        </div>
+        <div class="article-box-east mt pt pb text-is-smaller use-colors back-color-descent">
+            <p><span class="auto text-color-accent"></span></p>
+        </div>
+        <div class="big-box back-color-accent">
+            <p><span class="auto"></span></p>
+            <p><span class="auto"></span></p>
+        </div>
+        <div class="article-box-east mt pt pb text-is-smaller use-colors back-color-descent">
+            <p><span class="auto text-color-descent"></span></p>
+        </div>
+        <div class="big-box back-color-accent">
+            <p><span class="auto text-color-accent"></span></p>
+            <p><span class="auto text-color-descent"></span></p>
+            <p><span class="auto link-color"></span></p>
+        </div>
+        <div class="article-box-east mt pt pb text-is-smaller use-colors back-color-descent">
+            <p><span class="auto link-color"></span></p>
+        </div>
+    </article>
+
+    <article class="chapter colors--ivory use-colors">
+        <header class="mb">
+            <h3 class="big-title">.chapter</h3>
+            <p class="text-color-descent">Markup shortcuts</p>
+        </header>
+        <div class="block">
+            <p>
+                <span class="auto"></span>
+                <span class="text-color-accent">Text color accent.</span>
+                <span class="auto"></span>
+            </p>
+            <p>
+                <span class="auto"></span>
+                <span class="link-color">Link color accent.</span>
+                <span class="auto"></span>
+            </p>
+        </div>
+        <div class="textnote text-color-accent">
+            <p><span class="auto"></span></p>
+        </div>
+        <div class="box mt mb back-color-descent">
+            <p><span class="auto"></span></p>
+            <p class="auto"></p>
+        </div>
+        <div class="article-box-east mt pt pb text-is-smaller use-colors back-color-descent">
+            <p><span class="auto text-color-accent"></span></p>
+        </div>
+        <div class="big-box back-color-accent">
+            <p><span class="auto"></span></p>
+            <p><span class="auto"></span></p>
+        </div>
+        <div class="article-box-east mt pt pb text-is-smaller use-colors back-color-descent">
+            <p><span class="auto text-color-descent"></span></p>
+        </div>
+        <div class="big-box back-color-accent">
+            <p><span class="auto text-color-accent"></span></p>
+            <p><span class="auto text-color-descent"></span></p>
+            <p><span class="auto link-color"></span></p>
+        </div>
+        <div class="article-box-east mt pt pb text-is-smaller use-colors back-color-descent">
+            <p><span class="auto link-color"></span></p>
+        </div>
+    </article>
+
+    <article class="chapter colors--swed use-colors">
+        <header class="mb">
+            <h3 class="big-title">.chapter</h3>
+            <p class="text-color-descent">Markup shortcuts</p>
+        </header>
+        <div class="block">
+            <p>
+                <span class="auto"></span>
+                <span class="text-color-accent">Text color accent.</span>
+                <span class="auto"></span>
+            </p>
+            <p>
+                <span class="auto"></span>
+                <span class="link-color">Link color accent.</span>
+                <span class="auto"></span>
+            </p>
+        </div>
+        <div class="textnote text-color-accent">
+            <p><span class="auto"></span></p>
+        </div>
+        <div class="box mt mb back-color-descent">
+            <p><span class="auto"></span></p>
+            <p class="auto"></p>
+        </div>
+        <div class="article-box-east mt pt pb text-is-smaller use-colors back-color-descent">
+            <p><span class="auto text-color-accent"></span></p>
+        </div>
+        <div class="big-box back-color-accent">
+            <p><span class="auto"></span></p>
+            <p><span class="auto"></span></p>
+        </div>
+        <div class="article-box-east mt pt pb text-is-smaller use-colors back-color-descent">
+            <p><span class="auto text-color-descent"></span></p>
+        </div>
+        <div class="big-box back-color-accent">
+            <p><span class="auto text-color-accent"></span></p>
+            <p><span class="auto text-color-descent"></span></p>
+            <p><span class="auto link-color"></span></p>
+        </div>
+        <div class="article-box-east mt pt pb text-is-smaller use-colors back-color-descent">
+            <p><span class="auto link-color"></span></p>
+        </div>
+    </article>
+
+
+
+
+<!-- ========================================= PAGE CUSTOM -->
+
+<script>
+    // insert random content into paragraphs
+    function p() {
+        // const p = document.getElementsByTagName('p')
+        const p = document.querySelectorAll('.auto')
+        for ( let i in p ) {
+            let texts = [
+                'Les grandes personnes m’ont conseillé de laisser de côté les dessins de serpents boas ouverts ou fermés, et de m’intéresser plutôt à la géographie, à l’histoire, au calcul et à la grammaire. C’est ainsi que j’ai abandonné, à l’âge de six ans, une magnifique carrière de peintre.',
+                'J’avais été découragé par l’insuccès de mon dessin numéro 1 et de mon dessin numéro 2. Les grandes personnes ne comprennent jamais rien toutes seules, et c’est fatigant, pour les enfants, de toujours et toujours leur donner des explications.',
+                'J’ai donc dû choisir un autre métier et j’ai appris à piloter des avions. J’ai volé un peu partout dans le monde. Et la géographie, c’est exact, m’a beaucoup servi. Je savais reconnaître, du premier coup d’œil, la Chine de l’Arizona. C’est très utile, si l’on est égaré pendant la nuit.',
+                'J’ai ainsi eu, au cours de ma vie, des tas de contacts avec des tas de gens sérieux. J’ai beaucoup vécu chez les grandes personnes. Je les ai vues de très près. Ça n’a pas trop amélioré mon opinion.',
+                'Quand j’en rencontrais une qui me paraissait un peu lucide, je faisais l’expérience sur elle de mon dessin numéro 1 que j’ai toujours conservé. Je voulais savoir si elle était vraiment compréhensive. Mais toujours elle me répondait : « C’est un chapeau. »',
+                'Alors je ne lui parlais ni de serpents boas, ni de forêts vierges, ni d’étoiles. Je me mettais à sa portée. Je lui parlais de bridge, de golf, de politique et de cravates. Et la grande personne était bien contente de connaître un homme aussi raisonnable.'
+                ]
+            let text = texts[Math.floor(Math.random()*texts.length)]
+            let textnode = document.createTextNode(text)
+            if (p[i].appendChild) p[i].appendChild(textnode)
+        }
+    }
+    p()
+</script>
+
+</body>
+</html>

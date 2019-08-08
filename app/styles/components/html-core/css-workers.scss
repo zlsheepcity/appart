@@ -67,8 +67,23 @@
 
 .no-paddings  { padding: 0; }
 .has-paddings { padding: var(--row-space, 1rem) var(--col-space, 1rem); }
-.pb    { padding-bottom: var(--row-space, 1rem); }
-.pt    { padding-top:    var(--row-space, 1rem); }
+
+.pt, .pv {
+  --padding-top:    var(--row-space, 1rem);
+    padding-top:    var(--padding-top);
+}
+.pb, .pv {
+  --padding-bottom: var(--row-space, 1rem);
+    padding-bottom: var(--padding-bottom);
+}
+.mt, .mv {
+  --margin-top:     var(--row-space, 1rem);
+    margin-top:     var(--margin-top);
+}
+.mb, .mv {
+  --margin-bottom:  var(--row-space, 1rem);
+    margin-bottom:  var(--margin-bottom);
+}
 
 
 /* ------------------------------------------ univeral helpers */

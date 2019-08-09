@@ -30,18 +30,6 @@
     <!-- ========================================= APP CUSTOM -->
 
     <style>
-        article {
-            /*max-width: 57em;
-            margin: 0 auto 0 0;*/
-        }
-        /*
-        .test * + * {
-            margin-top: 1rem;
-        }
-        h1+p, h2+p {
-            margin-top: 0;
-        }
-        */
 
         .article-markup h1 {
             font-size: 3em;
@@ -50,16 +38,30 @@
         .article-markup p {
             max-width: 35em;
         }
+        .test .color-box {
+            background-color: var(--back-color--accent);
+            padding-top: calc( 1 * var(--sx) );
+            padding-bottom: calc( 1     * var(--sx) );
+        }
+        .test img {
+            display: block;
+            width: 100%;
+            min-height: 2em;
+            background-color: var(--shadow-color);
+            border: 0;
+            box-shadow: none;
+        }
 
         .test-grid {
             --sx: 1.5em;
             --sy: 1.5em;
+            --syx: var(--sy) var(--sx);
 
             --size-ma: 24em;
             --size-mb:  8em;
             --size-n:  16em;
 
-            --main-push:  0;
+            --is-current-layout--tiny: 0;
 
             --size-w:  minmax(0, auto);
             --size-e:  minmax(0, auto);
@@ -71,8 +73,12 @@
 
             --grid-part--main-content: var(--size-ma) [_ma] var(--sx) [_pma] 0 [pmb_] var(--sx) [mb_] var(--size-mb);
             --grid-part--note-column:  0 [pn_] var(--sx) [n_] var(--size-n) [_n] var(--sx) [_pn];
+            --grid-part--main-space: 0;
+
             --grid-part--full-start:   [full-start w_] var(--size-w) [_w] 0;
             --grid-part--full-end:     0 [e_] var(--size-e) [_e full-end];
+            --grid-part--empty-start:  [full-start w_ e_] 0;
+            --grid-part--empty-end:    0 [_w _e full-end];
 
 
         }
@@ -86,6 +92,9 @@
         }
         @media (max-width:47em) {
             .test-grid {
+            --is-current-layout--tiny: 1;
+
+
             --open-main-padding: pm_ pn_ pmb_;
             --open-main:          m_  n_  mb_;
             --stop-main:          _m  _n  _ma;
@@ -102,9 +111,10 @@
         }
 
         .figured,
-        .block,
-        .box,
+        .wide,
         .note,
+        .box,
+        .block,
         .test-grid {
 
             display:         grid;
@@ -119,7 +129,7 @@
                   var(--grid-part--full-start)
                 [ var(--open-main-padding) ]
                   var(--sx)
-                  var(--main-push)
+                  var(--grid-part--main-space)
                 [ var(--open-main) ]
                   var(--grid-part--main-content)
                 [ var(--stop-main) ]
@@ -134,24 +144,27 @@
         .block       { grid-column:   m_ / _m;   }
         .box         { grid-column:  pm_ / _pm;  }
         .note        { grid-column:  pn_ / _pn;  }
+        .wide        { grid-column:  pm_ / _pn;  }
+        .figured     { grid-column:  pm_ / _pn;  }
 
-        .block {
-            --grid-part--full-start:   [full-start w_ e_] 0;
-            --grid-part--full-end:     0 [_w _e full-end];
+        /*** figured component */
+            .figured {
+                --grid-part--full-start: var(--grid-part--empty-start);
+                --grid-part--full-end:   var(--grid-part--empty-end);
+            }
+            .figured *      { grid-column: m_ / _ma; }
+            .figured figure { grid-column: pmb_ / _pn; }
 
-            --open-main-padding: pm_ pn_ pmb_ m_  n_  mb_;
-            --open-main:          0;
-            --stop-main:          0;
-            --stop-main-padding: _pm _pn _pma _m  _n  _ma;
-
-            --grid-part--note-column:  0;
-            --grid-part--main-content: 1fr;
-        }
+        /*** note component */
+            .note {
+                --grid-part--main-space: calc( var(--sx, 1.5em) * var(--is-current-layout--tiny, 0) );
+            }
 
         .note,
+        .wide,
         .box {
-            --grid-part--full-start:   [full-start w_ e_] 0;
-            --grid-part--full-end:     0 [_w _e full-end];
+            --grid-part--full-start: var(--grid-part--empty-start);
+            --grid-part--full-end:   var(--grid-part--empty-end);
 
             --open-main-padding: pm_ pn_ pmb_;
             --open-main:          m_  n_  mb_;
@@ -162,21 +175,18 @@
             --grid-part--main-content: 1fr;
         }
 
-        @media (max-width:47em) {
-            .note {
-                --main-push: var(--sx);
-            }
+        .block {
+            --grid-part--full-start: var(--grid-part--empty-start);
+            --grid-part--full-end:   var(--grid-part--empty-end);
+
+            --open-main-padding: pm_ pn_ pmb_ m_  n_  mb_;
+            --open-main:          0;
+            --stop-main:          0;
+            --stop-main-padding: _pm _pn _pma _m  _n  _ma;
+
+            --grid-part--note-column:  0;
+            --grid-part--main-content: 1fr;
         }
-
-
-        .figured     { grid-column: pm_ / _pn; }
-        .figured {
-            --grid-part--full-start:   [full-start w_ e_] 0;
-            --grid-part--full-end:     0 [_w _e full-end];
-        }
-        .figured *      { grid-column: m_ / _ma; }
-        .figured figure { grid-column: pmb_ / _pn; }
-
 
     </style>
 
@@ -199,6 +209,18 @@
             <p>2019.8.9</p>
         </aside>
 
+        <!-- Text Block -->
+
+        <section class="block">
+            <p class="auto"></p>
+            <p class="auto"></p>
+            <p class="auto"></p>
+        </section>
+
+        <aside class="note text-color-accent">
+            <p class="auto"></p>
+        </aside>
+
         <!-- Figured with image -->
 
         <div class="figured">
@@ -207,7 +229,7 @@
                 <p class="auto"></p>
             </div>
 
-            <figure class="back-color-accent" style="padding: 1em var(--sx);">
+            <figure class="back-color-accent" style="padding: var(--syx);">
                 <img src="" alt="">
                 <figcaption>
                     <p class="auto"></p>
@@ -220,7 +242,7 @@
 
             <p class="auto pt"></p>
 
-            <figure class="back-color-accent" style="padding: 1em var(--sx);">
+            <figure class="back-color-accent" style="padding: var(--syx);">
                 <img src="" alt="">
                 <figcaption>
                     <p class="auto"></p>
@@ -229,17 +251,18 @@
 
         </div>
 
-        <!-- Text Block -->
+        <!-- Wide Illustration -->
 
-        <section class="block">
-            <p class="auto"></p>
-            <p class="auto"></p>
+        <section class="wide block back-color-descent">
             <p class="auto"></p>
         </section>
 
-        <aside class="note text-color-accent">
-            <p class="auto"></p>
-        </aside>
+        <figure class="wide color-box">
+            <img src="" alt="">
+            <figcaption>
+                <p class="auto"></p>
+            </figcaption>
+        </figure>
 
         <!-- Classic Chapter -->
 

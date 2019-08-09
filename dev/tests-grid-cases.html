@@ -86,8 +86,14 @@
             font-size:   1.25em;
             line-height: 1.2;
         }
+        .article-markup .caption {
+            margin-top: calc( 1 * var(--sy) );
+        }
         .article-markup p {
             max-width: 35em;
+        }
+        .article-markup .mini-text-block {
+            max-width: 18em;
         }
         .article-markup .codeblock {
             display: block;
@@ -102,6 +108,14 @@
             padding: calc( var(--sx) - 0.250em ) var(--sx);
             border-radius: calc( 0.25*var(--sx) );
             /* clip-path: Anti-arrow from right side */
+            clip-path: polygon(
+                0 0, 100% 0,
+                     100% calc( 100% - 1.6*var(--sx) ),
+                     calc( 100% - 0.4*var(--sx) ) calc( 100% - 1.3*var(--sx) ),
+                     100% calc( 100% - 1*var(--sx) ),
+                     100% 100%,
+                0 100%
+            );
             clip-path: polygon(
                 0 0, 100% 0,
                      100% calc( 1*var(--sx) ),
@@ -227,11 +241,13 @@
         /*** figured component */
             .figured {
                 grid-column:  pm_ / _pn;
+                margin-bottom: calc( var(--sy)*var(--if-grid-is-tiny) );
               --grid-part--full-start: var(--grid-part--empty-start);
               --grid-part--full-end:   var(--grid-part--empty-end);
             }
-            .figured *      { grid-column: m_ / _ma; }
-            .figured figure { grid-column: pmb_ / _pn; }
+            .figured>*      { grid-column: m_ / _ma;   order: calc( 2*var(--if-grid-is-tiny, 0) ); }
+            .figured>figure { grid-column: pmb_ / _pn; order: calc( 1*var(--if-grid-is-tiny, 0) ); }
+            .figured>.codeblock { order: 3; }
 
         /*** note component */
             .note {
@@ -315,7 +331,7 @@
     <!-- ========================================== ʕ⊙ᴥ⊙ʔ = -->
     <!-- ========================================= END HEAD -->
 </head>
-<body class="test main-font-as-native-sans colors--ivory use-colors">
+<body class="test -main-font-as-native-sans colors--ivory use-colors">
 
     <header class="swed-site-head colors-as-primary">
         <div class="swed-site-logo"><a href="../index.html"><span>Appart</span></a></div>
@@ -353,15 +369,17 @@
             <p class="auto"></p>
         </aside>
 
-        <!-- ---------------------------------------- Figured with image -->
+        <!-- ---------------------------------------- Figured -->
+
+        <h2 class="caption">Figured with image</h2>
+
+        <p class="auto"></p>
 
         <div class="figured">
-            <div class="block">
-                <p class="auto pt"></p>
-                <p class="auto"></p>
-            </div>
 
-            <figure class="back-color-descent" style="padding: var(--syx);">
+            <p class="auto"></p>
+
+            <figure class="block back-color-descent" style="padding: var(--syx);">
                 <img src="" alt="image">
                 <figcaption>
                     <p class="auto"></p>
@@ -372,13 +390,13 @@
 
         <div class="figured">
 
-            <p class="auto pt"></p>
+            <div class="block">
+                <h3>Figure title</h3>
+                <p class="auto"></p>
+            </div>
 
             <figure class="back-color-descent" style="padding: var(--syx);">
-                <img src="" alt="image">
-                <figcaption>
-                    <p class="auto"></p>
-                </figcaption>
+                <img src="" alt="image" style="height:8em;">
             </figure>
 
         </div>
@@ -388,6 +406,8 @@
         <section class="wide block back-color-accent">
             <p class="auto"></p>
         </section>
+
+        <h3 class="caption">Wide Illustration</h3>
 
         <figure class="wide color-box pb-t">
             <img src="" alt="image" style="min-height: 22em;">
@@ -403,7 +423,7 @@
         <section class="keep-grid">
 
             <header>
-                <h2>Classic variant A</h2>
+                <h2 class="caption">Classic variant A</h2>
                 <p>Chapter title has subtitle</p>
             </header>
 
@@ -437,7 +457,7 @@
 
             <section class="keep-grid">
 
-                <h3>Subtitle here</h3>
+                <h3 class="caption">Subtitle here</h3>
 
                 <p class="auto"></p>
 
@@ -498,13 +518,13 @@
 
         <section class="layer keep-grid">
 
-            <h2>Code Block</h2>
+            <h2 class="caption">Code Block</h2>
 
             <div class="figured">
                 <p class="auto"></p>
-                <figure>
-                    <code class="codeblock"><pre>[CODE.............
-                        ROWS]</pre></code>
+                <figure class="codeblock">
+                    <pre>[CODE.............
+                        ROWS]</pre>
                 </figure>
             </div>
 
@@ -514,15 +534,25 @@
 
         <section class="layer keep-grid">
 
+            <h2 class="caption">Dialogs</h2>
+
             <p class="auto"></p>
 
-            <blockquote cite="appking">
+            <blockquote cite="appking" class="se-align">
                 <q class="auto"></q>
             </blockquote>
 
-            <blockquote cite="bergamot">
+            <figure class="note nw-align">
+                <img src="" alt="image" style="height:5em; width:5em; border-radius: 50%;">
+            </figure>
+
+            <blockquote cite="bergamot" class="se-align">
                 <q class="auto"></q>
             </blockquote>
+
+            <figure class="note nw-align">
+                <img src="" alt="image" style="height:15em; width:15em; border-radius: 50%;">
+            </figure>
 
             <blockquote cite="appking">
                 <q class="auto"></q>
@@ -536,14 +566,15 @@
 
         </section>
 
-        <!-- Banner -->
+        <!-- ---------------------------------------- Banner -->
 
-        <section>
+        <section class="layer keep-grid">
+
             <p class="auto"></p>
 
-            <figure class="banner">
-                <p class="auto"></p>
-                <button>Button</button>
+            <figure class="banner expand">
+                <p class="auto mini-text-block"></p>
+                <button class="swed-button"><span>Button</span></button>
             </figure>
 
         </section>

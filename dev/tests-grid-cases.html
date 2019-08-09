@@ -39,12 +39,18 @@
             max-width: 35em;
         }
         .test .color-box {
+            --pv: calc( 1 * var(--sx) );
             background-color: var(--back-color--accent);
-            padding-top: calc( 1 * var(--sx) );
-            padding-bottom: calc( 1     * var(--sx) );
+            padding-top: var(--pv);
+            padding-bottom: var(--pv);
+            margin-top: var(--pv);
+            margin-bottom: var(--pv);
         }
         .test img {
-            display: block;
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            align-items: center;
             width: 100%;
             min-height: 2em;
             background-color: var(--shadow-color);
@@ -60,11 +66,10 @@
             --size-ma: 24em;
             --size-mb:  8em;
             --size-n:  16em;
-
-            --is-current-layout--tiny: 0;
-
             --size-w:  minmax(0, auto);
             --size-e:  minmax(0, auto);
+
+            --if-grid-is-tiny: 0;
 
             --open-main-padding: pm_;
             --open-main:          m_;
@@ -92,7 +97,7 @@
         }
         @media (max-width:47em) {
             .test-grid {
-            --is-current-layout--tiny: 1;
+            --if-grid-is-tiny: 1;
 
 
             --open-main-padding: pm_ pn_ pmb_;
@@ -115,6 +120,7 @@
         .note,
         .box,
         .block,
+        .keep-grid,
         .test-grid {
 
             display:         grid;
@@ -157,14 +163,30 @@
 
         /*** note component */
             .note {
-                --grid-part--main-space: calc( var(--sx, 1.5em) * var(--is-current-layout--tiny, 0) );
+                --grid-part--main-space: calc( var(--sx, 1.5em) * var(--if-grid-is-tiny, 0) );
+                /* 14/24 */
+                font-size:    0.875em;
+                line-height: 1.714286;
             }
+        .note p {
+            max-width: 16em;
+        }
+
+        /* --------------------------------- empty-start */
 
         .note,
         .wide,
-        .box {
+        .box,
+        .block {
             --grid-part--full-start: var(--grid-part--empty-start);
             --grid-part--full-end:   var(--grid-part--empty-end);
+        }
+
+        /* --------------------------------- reduce note */
+
+        .note,
+        .wide:not(.keep-grid),
+        .box {
 
             --open-main-padding: pm_ pn_ pmb_;
             --open-main:          m_  n_  mb_;
@@ -175,9 +197,9 @@
             --grid-part--main-content: 1fr;
         }
 
-        .block {
-            --grid-part--full-start: var(--grid-part--empty-start);
-            --grid-part--full-end:   var(--grid-part--empty-end);
+        /* --------------------------------- reduce content paddings */
+
+        .test-grid .block {
 
             --open-main-padding: pm_ pn_ pmb_ m_  n_  mb_;
             --open-main:          0;
@@ -187,6 +209,19 @@
             --grid-part--note-column:  0;
             --grid-part--main-content: 1fr;
         }
+
+        /* --------------------------------- workers */
+
+        /* -Align Compass: SELF */
+         .c-align { align-self: center; justify-self: center; }
+         .s-align { align-self: end;    justify-self: center; }
+         .n-align { align-self: start;  justify-self: center; }
+         .w-align { align-self: center; justify-self: start;  }
+         .e-align { align-self: center; justify-self: end;    }
+        .se-align { align-self: end;    justify-self: end;    }
+        .ne-align { align-self: start;  justify-self: end;    }
+        .sw-align { align-self: end;    justify-self: start;  }
+        .nw-align { align-self: start;  justify-self: start;  }
 
     </style>
 
@@ -198,18 +233,18 @@
 
     <article class="test-grid article-markup">
 
-        <!-- Huge Title -->
+        <!-- ---------------------------------------- Huge Title -->
 
         <header>
             <h1>The Grand Caption</h1>
             <p>The Grand Caption has subtitle</p>
         </header>
 
-        <aside class="note">
+        <aside class="note sw-align">
             <p>2019.8.9</p>
         </aside>
 
-        <!-- Text Block -->
+        <!-- ---------------------------------------- Text Block -->
 
         <section class="block">
             <p class="auto"></p>
@@ -221,7 +256,7 @@
             <p class="auto"></p>
         </aside>
 
-        <!-- Figured with image -->
+        <!-- ---------------------------------------- Figured with image -->
 
         <div class="figured">
             <div class="block">
@@ -230,7 +265,7 @@
             </div>
 
             <figure class="back-color-accent" style="padding: var(--syx);">
-                <img src="" alt="">
+                <img src="" alt="image">
                 <figcaption>
                     <p class="auto"></p>
                 </figcaption>
@@ -243,7 +278,7 @@
             <p class="auto pt"></p>
 
             <figure class="back-color-accent" style="padding: var(--syx);">
-                <img src="" alt="">
+                <img src="" alt="image">
                 <figcaption>
                     <p class="auto"></p>
                 </figcaption>
@@ -251,43 +286,48 @@
 
         </div>
 
-        <!-- Wide Illustration -->
+        <!-- ---------------------------------------- Wide Illustration -->
 
         <section class="wide block back-color-descent">
             <p class="auto"></p>
         </section>
 
         <figure class="wide color-box">
-            <img src="" alt="">
+            <img src="" alt="image">
             <figcaption>
                 <p class="auto"></p>
             </figcaption>
         </figure>
 
-        <!-- Classic Chapter -->
+        <!-- ---------------------------------------- Classic Chapter -->
 
-        <section>
+        <p class="auto"></p>
+
+        <section class="keep-grid">
 
             <header>
                 <h2>Classic variant A</h2>
                 <p>Chapter title has subtitle</p>
             </header>
 
-            <section>
+            <section class="block">
                 <p class="auto"></p>
                 <p class="auto"></p>
                 <p class="auto"></p>
             </section>
 
+            <aside class="note text-color-accent">
+                <p class="auto"></p>
+            </aside>
 
-            <figure>
-                <img src="" alt="">
-                <figcaption>
+            <figure class="wide keep-grid color-box">
+                <img src="" alt="image" style="height: 18em;">
+                <figcaption class="note block">
                     <p class="auto"></p>
                 </figcaption>
             </figure>
 
-            <!-- Expand Context -->
+            <!-- ---------------------------------------- Expand Context -->
 
             <section>
 
@@ -307,11 +347,11 @@
 
         </section>
 
-        <!-- Great Divider -->
+        <!-- ---------------------------------------- Great Divider -->
 
         <div class="hr">* * *</div>
 
-        <!-- Real Chapter -->
+        <!-- ---------------------------------------- Real Chapter -->
 
         <section>
 
@@ -329,7 +369,7 @@
             </aside>
 
             <figure class="big-figure">
-                <img src="" alt="">
+                <img src="" alt="image">
                 <figcaption>
                     <p class="auto"></p>
                 </figcaption>
@@ -349,7 +389,7 @@
                 <p class="auto"></p>
 
                 <figure>
-                    <img src="" alt="">
+                    <img src="" alt="image">
                     <figcaption>
                         <p class="auto"></p>
                     </figcaption>

@@ -31,28 +31,162 @@
 
     <style>
         article {
-            max-width: 50em;
-            margin: 0 auto;
+            /*max-width: 57em;
+            margin: 0 auto 0 0;*/
         }
+        /*
         .test * + * {
             margin-top: 1rem;
-        }
-        h1 {
-            font-size: 3em;
-            line-height: 1;
         }
         h1+p, h2+p {
             margin-top: 0;
         }
+        */
+
+        .article-markup h1 {
+            font-size: 3em;
+            line-height: 1;
+        }
+        .article-markup p {
+            max-width: 35em;
+        }
+
+        .test-grid {
+            --sx: 1.5em;
+            --sy: 1.5em;
+
+            --size-ma: 24em;
+            --size-mb:  8em;
+            --size-n:  16em;
+
+            --main-push:  0;
+
+            --size-w:  minmax(0, auto);
+            --size-e:  minmax(0, auto);
+
+            --open-main-padding: pm_;
+            --open-main:          m_;
+            --stop-main:          _m;
+            --stop-main-padding: _pm;
+
+            --grid-part--main-content: var(--size-ma) [_ma] var(--sx) [_pma] 0 [pmb_] var(--sx) [mb_] var(--size-mb);
+            --grid-part--note-column:  0 [pn_] var(--sx) [n_] var(--size-n) [_n] var(--sx) [_pn];
+            --grid-part--full-start:   [full-start w_] var(--size-w) [_w] 0;
+            --grid-part--full-end:     0 [e_] var(--size-e) [_e full-end];
+
+
+        }
+
+        @media (max-width:57em) {
+            .test-grid {
+            --size-ma: 3fr;
+            --size-mb: 1fr;
+            --size-n:  2fr;
+            }
+        }
+        @media (max-width:47em) {
+            .test-grid {
+            --open-main-padding: pm_ pn_ pmb_;
+            --open-main:          m_  n_  mb_;
+            --stop-main:          _m  _n  _ma;
+            --stop-main-padding: _pm _pn _pma;
+
+            --grid-part--note-column:  0;
+            --grid-part--main-content: 1fr;
+            }
+        }
+        @media (min-width:65em) {
+            .test-grid {
+            --size-w:   minmax(0, 4em);
+            }
+        }
+
+        .figured,
+        .block,
+        .box,
+        .note,
+        .test-grid {
+
+            display:         grid;
+            align-items:     start;
+            justify-content: start;
+            grid-auto-flow:  row;
+            grid-auto-rows:  min-content;
+            grid-row-gap:    var(--sy);
+            grid-column-gap: 0;
+
+            grid-template-columns:
+                  var(--grid-part--full-start)
+                [ var(--open-main-padding) ]
+                  var(--sx)
+                  var(--main-push)
+                [ var(--open-main) ]
+                  var(--grid-part--main-content)
+                [ var(--stop-main) ]
+                  var(--sx)
+                [ var(--stop-main-padding) ]
+                  var(--grid-part--note-column)
+                  var(--grid-part--full-end)
+                ;
+        }
+
+        .test-grid * { grid-column:   m_ / _m;   }
+        .block       { grid-column:   m_ / _m;   }
+        .box         { grid-column:  pm_ / _pm;  }
+        .note        { grid-column:  pn_ / _pn;  }
+
+        .block {
+            --grid-part--full-start:   [full-start w_ e_] 0;
+            --grid-part--full-end:     0 [_w _e full-end];
+
+            --open-main-padding: pm_ pn_ pmb_ m_  n_  mb_;
+            --open-main:          0;
+            --stop-main:          0;
+            --stop-main-padding: _pm _pn _pma _m  _n  _ma;
+
+            --grid-part--note-column:  0;
+            --grid-part--main-content: 1fr;
+        }
+
+        .note,
+        .box {
+            --grid-part--full-start:   [full-start w_ e_] 0;
+            --grid-part--full-end:     0 [_w _e full-end];
+
+            --open-main-padding: pm_ pn_ pmb_;
+            --open-main:          m_  n_  mb_;
+            --stop-main:          _m  _n  _ma;
+            --stop-main-padding: _pm _pn _pma;
+
+            --grid-part--note-column:  0;
+            --grid-part--main-content: 1fr;
+        }
+
+        @media (max-width:47em) {
+            .note {
+                --main-push: var(--sx);
+            }
+        }
+
+
+        .figured     { grid-column: pm_ / _pn; }
+        .figured {
+            --grid-part--full-start:   [full-start w_ e_] 0;
+            --grid-part--full-end:     0 [_w _e full-end];
+        }
+        .figured *      { grid-column: m_ / _ma; }
+        .figured figure { grid-column: pmb_ / _pn; }
+
+
     </style>
 
     <!-- ========================================== ʕ⊙ᴥ⊙ʔ = -->
     <!-- ========================================= END HEAD -->
 </head>
-<body class="test main-font-as-native-sans">
+<body class="test main-font-as-native-sans colors--ivory use-colors">
 
 
-    <article>
+    <article class="test-grid article-markup">
 
         <!-- Huge Title -->
 
@@ -61,13 +195,51 @@
             <p>The Grand Caption has subtitle</p>
         </header>
 
+        <aside class="note">
+            <p>2019.8.9</p>
+        </aside>
+
+        <!-- Figured with image -->
+
+        <div class="figured">
+            <div class="block">
+                <p class="auto pt"></p>
+                <p class="auto"></p>
+            </div>
+
+            <figure class="back-color-accent" style="padding: 1em var(--sx);">
+                <img src="" alt="">
+                <figcaption>
+                    <p class="auto"></p>
+                </figcaption>
+            </figure>
+
+        </div>
+
+        <div class="figured">
+
+            <p class="auto pt"></p>
+
+            <figure class="back-color-accent" style="padding: 1em var(--sx);">
+                <img src="" alt="">
+                <figcaption>
+                    <p class="auto"></p>
+                </figcaption>
+            </figure>
+
+        </div>
+
         <!-- Text Block -->
 
-        <section>
+        <section class="block">
             <p class="auto"></p>
             <p class="auto"></p>
             <p class="auto"></p>
         </section>
+
+        <aside class="note text-color-accent">
+            <p class="auto"></p>
+        </aside>
 
         <!-- Classic Chapter -->
 
@@ -83,6 +255,7 @@
                 <p class="auto"></p>
                 <p class="auto"></p>
             </section>
+
 
             <figure>
                 <img src="" alt="">

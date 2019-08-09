@@ -38,25 +38,56 @@
         .article-markup p {
             max-width: 35em;
         }
+        .test .box {
+            background-color: transparent;
+            padding: 0;
+        }
         .test .color-box {
-            --pv: calc( 1 * var(--sx) );
             background-color: var(--back-color--accent);
+            --pv: calc( 1 * var(--sx) );
             padding-top: var(--pv);
             padding-bottom: var(--pv);
             margin-top: var(--pv);
             margin-bottom: var(--pv);
+        }
+        .test .expand {
+            background-color: var(--back-color--accent);
+            --p2x: calc( 2 * var(--sx) );
+            --p1x: calc( 1 * var(--sx) );
+            padding-top: var(--p2x);
+            padding-bottom: var(--p2x);
+            margin-top: var(--p1x);
+            margin-bottom: var(--p1x);
+            padding-left: var(--p1x);
+            padding-right: var(--p1x);
+            /* 20/24 */
+            font-size:   1.25em;
+            line-height: 1.2;
         }
         .test img {
             display: flex;
             justify-content: center;
             align-content: center;
             align-items: center;
-            width: 100%;
             min-height: 2em;
             background-color: var(--shadow-color);
             border: 0;
             box-shadow: none;
         }
+        .test .hr {
+            text-align: center;
+            padding: 1em 0;
+            /* 40/48 */
+            font-size:   2.5em;
+            line-height: 1.2;
+        }
+        .test .illustration.wide {
+            padding:     calc(1.5*var(--sx)) 0;
+        }
+        .test .illustration.wide>*:not(figcaption) {
+            margin-left: calc(0.5*var(--sx));
+        }
+
 
         .test-grid {
             --sx: 1.5em;
@@ -147,6 +178,7 @@
         }
 
         .test-grid * { grid-column:   m_ / _m;   }
+        .keep-grid   { grid-column:    full;     }
         .block       { grid-column:   m_ / _m;   }
         .box         { grid-column:  pm_ / _pm;  }
         .note        { grid-column:  pn_ / _pn;  }
@@ -164,9 +196,14 @@
         /*** note component */
             .note {
                 --grid-part--main-space: calc( var(--sx, 1.5em) * var(--if-grid-is-tiny, 0) );
+            }
+            .note * {
                 /* 14/24 */
                 font-size:    0.875em;
                 line-height: 1.714286;
+            }
+            .note.color-box {
+                margin-top: 0;
             }
         .note p {
             max-width: 16em;
@@ -229,6 +266,15 @@
     <!-- ========================================= END HEAD -->
 </head>
 <body class="test main-font-as-native-sans colors--ivory use-colors">
+
+    <header class="swed-site-head colors-as-primary">
+        <div class="swed-site-logo"><a href="../index.html"><span>Appart</span></a></div>
+        <ul class="swed-site-meta">
+            <li>
+                <span>Front-end component « journal-grid »</span>
+            </li>
+        </ul>
+    </header>
 
 
     <article class="test-grid article-markup">
@@ -322,24 +368,29 @@
 
             <figure class="wide keep-grid color-box">
                 <img src="" alt="image" style="height: 18em;">
-                <figcaption class="note block">
+                <figcaption class="note">
+                    <p class="auto"></p>
+                </figcaption>
+            </figure>
+
+            <figure class="wide keep-grid color-box illustration">
+                <img src="" alt="image" style="height: 18em;">
+                <figcaption class="note">
                     <p class="auto"></p>
                 </figcaption>
             </figure>
 
             <!-- ---------------------------------------- Expand Context -->
 
-            <section>
+            <section class="keep-grid">
+
+                <h3>Subtitle here</h3>
 
                 <p class="auto"></p>
 
-                <div class="expand">
+                <div class="box expand">
                     <p class="auto"></p>
                 </div>
-
-                <aside class="expand">
-                    <p class="auto"></p>
-                </aside>
 
                 <p class="auto"></p>
 
@@ -353,27 +404,35 @@
 
         <!-- ---------------------------------------- Real Chapter -->
 
-        <section>
+        <section class="keep-grid">
 
             <header>
                 <h2>Classic variant B</h2>
             </header>
 
-            <section>
-                <p class="auto"></p>
-                <p class="auto"></p>
-            </section>
+            <!-- ---------------------------------------- Merge Expand Context -->
 
-            <aside>
+            <p class="auto"></p>
+
+            <div class="box wide expand">
+                <p class="auto"></p>
+            </div>
+
+            <div class="block">
+                <p class="auto"></p>
+                <p class="auto"></p>
+                <figure class="box color-box">
+                    <img src="" alt="image">
+                    <figcaption>
+                        <p class="auto"></p>
+                    </figcaption>
+                </figure>
+            </div>
+
+
+            <aside class="note color-box">
                 <p class="auto"></p>
             </aside>
-
-            <figure class="big-figure">
-                <img src="" alt="image">
-                <figcaption>
-                    <p class="auto"></p>
-                </figcaption>
-            </figure>
 
         </section>
 

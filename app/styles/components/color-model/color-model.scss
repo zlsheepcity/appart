@@ -191,8 +191,8 @@
         }
         .colors--ivory {
           --back-color:          hsl( 53, 66%, 80% );
-          --back-color--accent:  hsl( 53, 42%, 76% );
-          --back-color--descent: hsl( 53, 70%, 76% );
+          --back-color--accent:  hsl( 53, 70%, 76% );
+          --back-color--descent: hsla(53, 0%, 0%, 0.05);
 
           --text-color:          hsl( 204, 4%, 22% );
           --text-color--accent:  hsl( 204, 4%, 42% );
@@ -202,7 +202,7 @@
           --link-color--accent:  hsl( 359, 59%, 43% );
           --link-color--descent: var(--link-color);
 
-          --shadow-color:        hsla(0, 0%, 0%, 0.1);
+          --shadow-color:        hsla(0, 0%, 0%, 0.05);
         }
 
 

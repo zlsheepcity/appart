@@ -31,38 +31,22 @@
 
     <style>
 
-        .article-markup h1 {
+        .test h1 {
             font-size: 3em;
-            line-height: 1;
+            line-height: 1.25;
         }
-        .article-markup p {
-            max-width: 35em;
-        }
+        .test .auto { opacity: 0.25; }
         .test .box {
             background-color: transparent;
             padding: 0;
         }
         .test .color-box {
-            background-color: var(--back-color--accent);
+            background-color: var(--back-color--descent);
             --pv: calc( 1 * var(--sx) );
             padding-top: var(--pv);
             padding-bottom: var(--pv);
             margin-top: var(--pv);
             margin-bottom: var(--pv);
-        }
-        .test .expand {
-            background-color: var(--back-color--accent);
-            --p2x: calc( 2 * var(--sx) );
-            --p1x: calc( 1 * var(--sx) );
-            padding-top: var(--p2x);
-            padding-bottom: var(--p2x);
-            margin-top: var(--p1x);
-            margin-bottom: var(--p1x);
-            padding-left: var(--p1x);
-            padding-right: var(--p1x);
-            /* 20/24 */
-            font-size:   1.25em;
-            line-height: 1.2;
         }
         .test img {
             display: flex;
@@ -74,21 +58,75 @@
             border: 0;
             box-shadow: none;
         }
-        .test .hr {
+        .article-markup .the-great-divider {
             text-align: center;
             padding: 1em 0;
             /* 40/48 */
             font-size:   2.5em;
             line-height: 1.2;
         }
-        .test .illustration.wide {
-            padding:     calc(1.5*var(--sx)) 0;
+        .article-markup .the-great-divider::before { content: '* * *'; }
+        .article-markup .card-illustration.wide {
+            padding:     calc( 1 * var(--sx) * var(--if-grid-no-tiny, 1) + var(--sx) ) 0;
         }
-        .test .illustration.wide>*:not(figcaption) {
-            margin-left: calc(0.5*var(--sx));
+        .article-markup .card-illustration.wide>*:not(figcaption):not(.figcaption) {
+            margin-left: calc( 1 * var(--sx) * var(--if-grid-no-tiny, 1) );
         }
+        .article-markup .expand {
+            background-color: var(--back-color--accent);
+            --p2x: calc( 2 * var(--sx) );
+            --p1x: calc( 1 * var(--sx) );
+            padding-top: var(--p2x);
+            padding-bottom: var(--p2x);
+            margin-top: var(--p1x);
+            margin-bottom: var(--p1x);
+            padding-left: calc( var(--p1x) * var(--if-grid-no-tiny, 1) );
+            padding-right: calc( var(--p1x) * var(--if-grid-no-tiny, 1) );
+            /* 20/24 */
+            font-size:   1.25em;
+            line-height: 1.2;
+        }
+        .article-markup p {
+            max-width: 35em;
+        }
+        .article-markup .codeblock {
+            display: block;
+            background-color: var(--back-color--descent);
+            padding: calc( var(--sx) - 0.25em ) var(--sx);
+        }
+        .article-markup .codeblock pre {
+            margin: 0;
+        }
+        .article-markup blockquote {
+            background-color: var(--back-color--descent);
+            padding: calc( var(--sx) - 0.250em ) var(--sx);
+            border-radius: calc( 0.25*var(--sx) );
+            /* clip-path: Anti-arrow from right side */
+            clip-path: polygon(
+                0 0, 100% 0,
+                     100% calc( 1*var(--sx) ),
+                     calc( 100% - 0.4*var(--sx) ) calc( 1.3*var(--sx) ),
+                     100% calc( 1.6*var(--sx) ),
+                     100% 100%,
+                0 100%
+            );
+        }
+        .article-markup q {
+            --display: block;
+        }
+        .article-markup q::before {
+            position: absolute;
+            transform: translateX(-100%);
+        }
+        .article-markup q::after {
+            position: absolute;
+        }
+        .article-markup q::before { content: '« '; }
+        .article-markup q::after  { content: ' »'; }
 
+    </style>
 
+    <style id="grid-css">
         .test-grid {
             --sx: 1.5em;
             --sy: 1.5em;
@@ -101,6 +139,7 @@
             --size-e:  minmax(0, auto);
 
             --if-grid-is-tiny: 0;
+            --if-grid-no-tiny: 1;
 
             --open-main-padding: pm_;
             --open-main:          m_;
@@ -129,6 +168,7 @@
         @media (max-width:47em) {
             .test-grid {
             --if-grid-is-tiny: 1;
+            --if-grid-no-tiny: 0;
 
 
             --open-main-padding: pm_ pn_ pmb_;
@@ -178,24 +218,25 @@
         }
 
         .test-grid * { grid-column:   m_ / _m;   }
+        .layer       { grid-column:    full;     }
         .keep-grid   { grid-column:    full;     }
         .block       { grid-column:   m_ / _m;   }
         .box         { grid-column:  pm_ / _pm;  }
-        .note        { grid-column:  pn_ / _pn;  }
         .wide        { grid-column:  pm_ / _pn;  }
-        .figured     { grid-column:  pm_ / _pn;  }
 
         /*** figured component */
             .figured {
-                --grid-part--full-start: var(--grid-part--empty-start);
-                --grid-part--full-end:   var(--grid-part--empty-end);
+                grid-column:  pm_ / _pn;
+              --grid-part--full-start: var(--grid-part--empty-start);
+              --grid-part--full-end:   var(--grid-part--empty-end);
             }
             .figured *      { grid-column: m_ / _ma; }
             .figured figure { grid-column: pmb_ / _pn; }
 
         /*** note component */
             .note {
-                --grid-part--main-space: calc( var(--sx, 1.5em) * var(--if-grid-is-tiny, 0) );
+                grid-column:  pn_ / _pn;
+              --grid-part--main-space: calc( var(--sx, 1.5em) * var(--if-grid-is-tiny, 0) );
             }
             .note * {
                 /* 14/24 */
@@ -205,9 +246,9 @@
             .note.color-box {
                 margin-top: 0;
             }
-        .note p {
-            max-width: 16em;
-        }
+            .note p {
+                max-width: 16em;
+            }
 
         /* --------------------------------- empty-start */
 
@@ -260,6 +301,15 @@
         .sw-align { align-self: end;    justify-self: start;  }
         .nw-align { align-self: start;  justify-self: start;  }
 
+        .pt-t, .pv-t {
+          --padding-top:    calc( var(--sx, 0.250em) - 0.250em );
+            padding-top:    var(--padding-top, 1em);
+        }
+        .pb-t, .pv-t {
+          --padding-bottom: calc( var(--sx, 0.250em) - 0.250em );
+            padding-bottom: var(--padding-bottom, 1em);
+        }
+
     </style>
 
     <!-- ========================================== ʕ⊙ᴥ⊙ʔ = -->
@@ -271,15 +321,16 @@
         <div class="swed-site-logo"><a href="../index.html"><span>Appart</span></a></div>
         <ul class="swed-site-meta">
             <li>
-                <span>Front-end component « journal-grid »</span>
+                <span>Front-end component «  journal-grid  »</span>
             </li>
         </ul>
     </header>
 
-
     <article class="test-grid article-markup">
 
         <!-- ---------------------------------------- Huge Title -->
+
+        <div class="the-great-divider"></div>
 
         <header>
             <h1>The Grand Caption</h1>
@@ -310,7 +361,7 @@
                 <p class="auto"></p>
             </div>
 
-            <figure class="back-color-accent" style="padding: var(--syx);">
+            <figure class="back-color-descent" style="padding: var(--syx);">
                 <img src="" alt="image">
                 <figcaption>
                     <p class="auto"></p>
@@ -323,7 +374,7 @@
 
             <p class="auto pt"></p>
 
-            <figure class="back-color-accent" style="padding: var(--syx);">
+            <figure class="back-color-descent" style="padding: var(--syx);">
                 <img src="" alt="image">
                 <figcaption>
                     <p class="auto"></p>
@@ -334,12 +385,12 @@
 
         <!-- ---------------------------------------- Wide Illustration -->
 
-        <section class="wide block back-color-descent">
+        <section class="wide block back-color-accent">
             <p class="auto"></p>
         </section>
 
-        <figure class="wide color-box">
-            <img src="" alt="image">
+        <figure class="wide color-box pb-t">
+            <img src="" alt="image" style="min-height: 22em;">
             <figcaption>
                 <p class="auto"></p>
             </figcaption>
@@ -366,14 +417,16 @@
                 <p class="auto"></p>
             </aside>
 
-            <figure class="wide keep-grid color-box">
+            <!-- ---------------------------------------- illustration -->
+
+            <figure class="wide keep-grid">
                 <img src="" alt="image" style="height: 18em;">
                 <figcaption class="note">
                     <p class="auto"></p>
                 </figcaption>
             </figure>
 
-            <figure class="wide keep-grid color-box illustration">
+            <figure class="wide keep-grid color-box card-illustration">
                 <img src="" alt="image" style="height: 18em;">
                 <figcaption class="note">
                     <p class="auto"></p>
@@ -400,25 +453,28 @@
 
         <!-- ---------------------------------------- Great Divider -->
 
-        <div class="hr">* * *</div>
+        <div class="the-great-divider"></div>
 
-        <!-- ---------------------------------------- Real Chapter -->
+        <!-- ---------------------------------------- Inner Chapter -->
 
-        <section class="keep-grid">
+        <section class="layer keep-grid">
 
             <header>
                 <h2>Classic variant B</h2>
             </header>
 
-            <!-- ---------------------------------------- Merge Expand Context -->
-
             <p class="auto"></p>
+
+            <!-- ---------------------------------------- Merge Expand Context -->
 
             <div class="box wide expand">
                 <p class="auto"></p>
             </div>
 
+            <!-- ---------------------------------------- Note Color Box -->
+
             <div class="block">
+
                 <p class="auto"></p>
                 <p class="auto"></p>
                 <figure class="box color-box">
@@ -427,8 +483,9 @@
                         <p class="auto"></p>
                     </figcaption>
                 </figure>
-            </div>
+                <p class="auto"></p>
 
+            </div>
 
             <aside class="note color-box">
                 <p class="auto"></p>
@@ -437,42 +494,25 @@
         </section>
 
 
-        <!-- Figured Context -->
+        <!-- ---------------------------------------- codeblock -->
 
-        <section>
+        <section class="layer keep-grid">
 
-            <!-- Figured with image -->
-
-            <div class="figured">
-
-                <p class="auto"></p>
-
-                <figure>
-                    <img src="" alt="image">
-                    <figcaption>
-                        <p class="auto"></p>
-                    </figcaption>
-                </figure>
-
-            </div>
-
-            <!-- Figured with codeblock -->
+            <h2>Code Block</h2>
 
             <div class="figured">
-
                 <p class="auto"></p>
-
                 <figure>
-                    <code>[CODE]</code>
+                    <code class="codeblock"><pre>[CODE.............
+                        ROWS]</pre></code>
                 </figure>
-
             </div>
 
         </section>
 
-        <!-- Dialog -->
+        <!-- ---------------------------------------- Dialog -->
 
-        <section>
+        <section class="layer keep-grid">
 
             <p class="auto"></p>
 
@@ -541,7 +581,7 @@
                     'J’avais été découragé par l’insuccès de mon dessin numéro 1 et de mon dessin numéro 2. Les grandes personnes ne comprennent jamais rien toutes seules, et c’est fatigant, pour les enfants, de toujours et toujours leur donner des explications.',
                     'J’ai donc dû choisir un autre métier et j’ai appris à piloter des avions. J’ai volé un peu partout dans le monde. Et la géographie, c’est exact, m’a beaucoup servi. Je savais reconnaître, du premier coup d’œil, la Chine de l’Arizona. C’est très utile, si l’on est égaré pendant la nuit.',
                     'J’ai ainsi eu, au cours de ma vie, des tas de contacts avec des tas de gens sérieux. J’ai beaucoup vécu chez les grandes personnes. Je les ai vues de très près. Ça n’a pas trop amélioré mon opinion.',
-                    'Quand j’en rencontrais une qui me paraissait un peu lucide, je faisais l’expérience sur elle de mon dessin numéro 1 que j’ai toujours conservé. Je voulais savoir si elle était vraiment compréhensive. Mais toujours elle me répondait : « C’est un chapeau. »',
+                    'Quand j’en rencontrais une qui me paraissait un peu lucide, je faisais l’expérience sur elle de mon dessin numéro 1 que j’ai toujours conservé. Je voulais savoir si elle était vraiment compréhensive. Mais toujours elle me répondait : «  C’est un chapeau.  »',
                     'Alors je ne lui parlais ni de serpents boas, ni de forêts vierges, ni d’étoiles. Je me mettais à sa portée. Je lui parlais de bridge, de golf, de politique et de cravates. Et la grande personne était bien contente de connaître un homme aussi raisonnable.'
                     ]
                 let text = texts[Math.floor(Math.random()*texts.length)]

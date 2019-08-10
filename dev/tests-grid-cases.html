@@ -30,7 +30,11 @@
     <!-- ========================================= APP CUSTOM -->
 
     <style>
-
+        .test dfn {
+            font-style:  normal;
+            font-weight: bolder;
+            color: var(--text-color-accent);
+        }
         .test h1 {
             font-size: 3em;
             line-height: 1.25;
@@ -197,6 +201,7 @@
         @media (min-width:65em) {
             .test-grid {
             --size-w:   minmax(0, 4em);
+            --size-e:   minmax(0, 100vw);
             }
         }
 
@@ -245,8 +250,9 @@
               --grid-part--full-start: var(--grid-part--empty-start);
               --grid-part--full-end:   var(--grid-part--empty-end);
             }
-            .figured>*      { grid-column: m_ / _ma;   order: calc( 2*var(--if-grid-is-tiny, 0) ); }
-            .figured>figure { grid-column: pmb_ / _pn; order: calc( 1*var(--if-grid-is-tiny, 0) ); }
+            .figured>*          { grid-column: m_ / _ma;   order: calc( 2*var(--if-grid-is-tiny, 0) ); }
+            .figured>figure,
+            .figured>.figure    { grid-column: pmb_ / _pn; order: calc( 1*var(--if-grid-is-tiny, 0) ); }
             .figured>.codeblock { order: 3; }
 
         /*** note component */
@@ -293,7 +299,7 @@
 
         /* --------------------------------- reduce content paddings */
 
-        .test-grid .block {
+        .test-grid .block { /* +1 level */
 
             --open-main-padding: pm_ pn_ pmb_ m_  n_  mb_;
             --open-main:          0;
@@ -360,14 +366,79 @@
         <!-- ---------------------------------------- Text Block -->
 
         <section class="block">
-            <p class="auto"></p>
+            <p><dfn>.block</dfn> with three paragraphs. <span class="auto"></span></p>
             <p class="auto"></p>
             <p class="auto"></p>
         </section>
 
         <aside class="note text-color-accent">
-            <p class="auto"></p>
+            <p><dfn>.note</dfn> <span class="auto"></span></p>
         </aside>
+
+        <!-- ---------------------------------------- Terms list -->
+
+        <section class="keep-grid">
+            <h3 class="caption">Племена примитивов</h3>
+            <ul class="group-content-rows">
+                <li>Були (boolean) — очень примитивные примитивы. Обозначают только одно из двух — либо «да», либо «нет». Так и живут всю жизнь.</li>
+                <li>Нули (null) — казалось бы, кто может быть проще булей? А вот он Нуль. Нет данных. Ничего нет.</li>
+                <li>Намберы (number)</li>
+                <li>Стринги (string)</li>
+            </ul>
+            <div class="note"><p>https://developer.mozilla.org/en-US/docs/Glossary/Primitive</p></div>
+        </section>
+
+        <!-- ---------------------------------------- Fullscreen Layer -->
+
+        <section class="layer">
+            <img src="" alt="image" style="height: 20vw;">
+            <footer class="keep-grid back-color-accent">
+                <p><dfn>.layer</dfn> <span class="auto"></span> <span class="auto"></span></p>
+                <div class="note text-color-accent">
+                    <p><dfn>.note</dfn> <span class="auto"></span></p>
+                </div>
+            </footer>
+        </section>
+
+
+        <!-- ---------------------------------------- dialog codeblock -->
+
+        <section class="layer keep-grid">
+
+            <h2 class="caption">Dialogged Code Block</h2>
+
+            <div class="figured">
+                <blockquote>
+                    <p><dfn>.figured>blockquote</dfn> <span class="auto"></span></p>
+                </blockquote>
+                <figure class="codeblock">
+<pre>
+DnaModel = {
+    name: "Вы меня не остановите!",
+    get name() {
+        return "Константа"
+    }
+}
+</pre>
+                </figure>
+            </div>
+
+            <p class="auto"></p>
+            <h3 class="note"><span>"Шонталь"</span></h3>
+
+            <p>Встречный пожал плечами и указал на ящерку. Вместо ожидаемого имени совсем другое слово было в кавычках:</p>
+            <h3 class="note"><span>"Чик-Чирик"</span></h3>
+
+            <div class="figured">
+            <p>Ещё через мгновение, имя вновь поменялось:</p>
+            <h3 class="figure"><span>"Слоник прыгает в лавандовых полях"</span></h3>
+            </div>
+
+            <p class="auto"></p>
+
+        </section>
+
+
 
         <!-- ---------------------------------------- Figured -->
 
@@ -377,7 +448,7 @@
 
         <div class="figured">
 
-            <p class="auto"></p>
+            <p><dfn>.figured</dfn> <span class="auto"></span></p>
 
             <figure class="block back-color-descent" style="padding: var(--syx);">
                 <img src="" alt="image">
@@ -412,7 +483,7 @@
         <figure class="wide color-box pb-t">
             <img src="" alt="image" style="min-height: 22em;">
             <figcaption>
-                <p class="auto"></p>
+                <p><dfn>.wide</dfn> <span class="auto"></span></p>
             </figcaption>
         </figure>
 
@@ -442,14 +513,14 @@
             <figure class="wide keep-grid">
                 <img src="" alt="image" style="height: 18em;">
                 <figcaption class="note">
-                    <p class="auto"></p>
+                    <p><dfn>.wide.keep-grid</dfn> <span class="auto"></span></p>
                 </figcaption>
             </figure>
 
             <figure class="wide keep-grid color-box card-illustration">
                 <img src="" alt="image" style="height: 18em;">
                 <figcaption class="note">
-                    <p class="auto"></p>
+                    <p><dfn>.wide.keep-grid.card-illustration</dfn> <span class="auto"></span></p>
                 </figcaption>
             </figure>
 
@@ -462,7 +533,7 @@
                 <p class="auto"></p>
 
                 <div class="box expand">
-                    <p class="auto"></p>
+                    <p><dfn>.box.expand</dfn> <span class="auto"></span></p>
                 </div>
 
                 <p class="auto"></p>
@@ -488,7 +559,7 @@
             <!-- ---------------------------------------- Merge Expand Context -->
 
             <div class="box wide expand">
-                <p class="auto"></p>
+                <p><dfn>.box.wide.expand</dfn> <span class="auto"></span></p>
             </div>
 
             <!-- ---------------------------------------- Note Color Box -->
@@ -497,10 +568,11 @@
 
                 <p class="auto"></p>
                 <p class="auto"></p>
+                <p class="auto"></p>
                 <figure class="box color-box">
                     <img src="" alt="image">
                     <figcaption>
-                        <p class="auto"></p>
+                        <p><dfn>.box.color-box</dfn> <span class="auto"></span></p>
                     </figcaption>
                 </figure>
                 <p class="auto"></p>
@@ -508,7 +580,7 @@
             </div>
 
             <aside class="note color-box">
-                <p class="auto"></p>
+                <p><dfn>.note.color-box</dfn> <span class="auto"></span></p>
             </aside>
 
         </section>
@@ -521,10 +593,10 @@
             <h2 class="caption">Code Block</h2>
 
             <div class="figured">
-                <p class="auto"></p>
+                <p><dfn>.figured</dfn> <span class="auto"></span></p>
                 <figure class="codeblock">
-                    <pre>[CODE.............
-                        ROWS]</pre>
+                    <pre>.codeblock
+                         ...</pre>
                 </figure>
             </div>
 
@@ -539,7 +611,7 @@
             <p class="auto"></p>
 
             <blockquote cite="appking" class="se-align">
-                <q class="auto"></q>
+                <q><dfn>blockquote</dfn> <span class="auto"></span></q>
             </blockquote>
 
             <figure class="note nw-align">
@@ -573,7 +645,15 @@
             <p class="auto"></p>
 
             <figure class="banner expand">
-                <p class="auto mini-text-block"></p>
+                <p class="mini-text-block"><dfn>.banner.expand</dfn> <span class="auto"></span></p>
+                <button class="swed-button"><span>Button</span></button>
+            </figure>
+
+            <figure class="banner expand">
+                <label>
+                    <input type="checkbox">
+                    <span>— I agree</span>
+                </label>
                 <button class="swed-button"><span>Button</span></button>
             </figure>
 

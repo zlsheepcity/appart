@@ -145,7 +145,7 @@
     </style>
 
     <style id="grid-css">
-        .test-grid {
+        .journal-grid {
             --sx: 1.5em;
             --sy: 1.5em;
             --syx: var(--sy) var(--sx);
@@ -177,14 +177,14 @@
         }
 
         @media (max-width:57em) {
-            .test-grid {
+            .journal-grid {
             --size-ma: 3fr;
             --size-mb: 1fr;
             --size-n:  2fr;
             }
         }
         @media (max-width:47em) {
-            .test-grid {
+            .journal-grid {
             --if-grid-is-tiny: 1;
             --if-grid-no-tiny: 0;
 
@@ -199,7 +199,7 @@
             }
         }
         @media (min-width:65em) {
-            .test-grid {
+            .journal-grid {
             --size-w:   minmax(0, 4em);
             --size-e:   minmax(0, 100vw);
             }
@@ -211,7 +211,7 @@
         .box,
         .block,
         .keep-grid,
-        .test-grid {
+        .journal-grid {
 
             display:         grid;
             align-items:     start;
@@ -236,7 +236,7 @@
                 ;
         }
 
-        .test-grid * { grid-column:   m_ / _m;   }
+        .journal-grid * { grid-column:   m_ / _m;   }
         .layer       { grid-column:    full;     }
         .keep-grid   { grid-column:    full;     }
         .block       { grid-column:   m_ / _m;   }
@@ -250,10 +250,12 @@
               --grid-part--full-start: var(--grid-part--empty-start);
               --grid-part--full-end:   var(--grid-part--empty-end);
             }
-            .figured>*          { grid-column: m_ / _ma;   order: calc( 2*var(--if-grid-is-tiny, 0) ); }
+            .figured>*            { grid-column: m_ / _ma; }
             .figured>figure,
-            .figured>.figure    { grid-column: pmb_ / _pn; order: calc( 1*var(--if-grid-is-tiny, 0) ); }
-            .figured>.codeblock { order: 3; }
+            .figured>.figure      { grid-column: pmb_ / _pn; }
+            .figured.card>*       { order: calc( 2*var(--if-grid-is-tiny, 0) ); }
+            .figured.card>figure,
+            .figured.card>.figure { order: calc( 1*var(--if-grid-is-tiny, 0) ); }
 
         /*** note component */
             .note {
@@ -299,7 +301,7 @@
 
         /* --------------------------------- reduce content paddings */
 
-        .test-grid .block { /* +1 level */
+        .journal-grid .block { /* +1 level */
 
             --open-main-padding: pm_ pn_ pmb_ m_  n_  mb_;
             --open-main:          0;
@@ -348,7 +350,7 @@
         </ul>
     </header>
 
-    <article class="test-grid article-markup">
+    <article class="journal-grid article-markup">
 
         <!-- ---------------------------------------- Huge Title -->
 
@@ -431,7 +433,7 @@ DnaModel = {
 
             <div class="figured">
             <p>Ещё через мгновение, имя вновь поменялось:</p>
-            <h3 class="figure"><span>"Слоник прыгает в лавандовых полях"</span></h3>
+            <h3 class="note figure"><span>"Слоник прыгает в лавандовых полях"</span></h3>
             </div>
 
             <p class="auto"></p>
@@ -451,7 +453,7 @@ DnaModel = {
             <p><dfn>.figured</dfn> <span class="auto"></span></p>
 
             <figure class="block back-color-descent" style="padding: var(--syx);">
-                <img src="" alt="image">
+                <img src="" alt="figured image">
                 <figcaption>
                     <p class="auto"></p>
                 </figcaption>
@@ -459,15 +461,15 @@ DnaModel = {
 
         </div>
 
-        <div class="figured">
+        <div class="figured card">
 
             <div class="block">
-                <h3>Figure title</h3>
-                <p class="auto"></p>
+                <h3>.figured.card</h3>
+                <p>Order changing when mobile. <span class="auto"></span></p>
             </div>
 
             <figure class="back-color-descent" style="padding: var(--syx);">
-                <img src="" alt="image" style="height:8em;">
+                <img src="" alt="figured card image" style="height:8em;">
             </figure>
 
         </div>
@@ -663,23 +665,8 @@ DnaModel = {
     </article>
 
 
-    <footer>
-        <ul>
-            <li>aside</li>
-            <li>expand (strong)</li>
-            <li>figure</li>
-            <li>big-figure (expand figure)</li>
-            <li>figured</li>
-            <li>hr</li>
-            <li>code</li>
-            <li>blockquote</li>
-            <li>q</li>
-            <li>banner</li>
-        </ul>
-    </footer>
-
-
     <!-- ========================================= PAGE CUSTOM -->
+
 
     <script>
         // insert random content into paragraphs

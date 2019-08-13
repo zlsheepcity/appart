@@ -8,7 +8,10 @@
 
 .banner {
   --v-space: var(--row-space, 1rem);
-  --h-space: var(--col-space, 1.25rem);
+  --h-space: var(--col-space, 1rem);
+
+  --back-color: transparent;
+  --text-color: inherit;
 
   --banner-padding:
       calc( 2.5 * var(--v-space) )
@@ -43,8 +46,8 @@
 
 .swed-banner {
     @extend .banner;
-    background-color: var(--background-color, inherit);
-               color: var(--color, inherit);
+    background-color: var(--back-color);
+               color: var(--text-color);
 }
 
 

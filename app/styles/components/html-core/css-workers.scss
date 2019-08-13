@@ -62,11 +62,36 @@
 .is-chapter:not(.isonbot):not(.is-on-bottom) { padding-bottom: calc( 2*var(--row-space, 1rem) ); }
 
 
-/* ------------------------------------------ paddings */
+
+/* ------------------------------------------ paddings shortcuts */
 
 
 .no-paddings  { padding: 0; }
-.has-paddings { padding: var(--row-space, 1rem) var(--col-space, 1rem); }
+.has-paddings {
+  --padding-top:    var(--row-space, 1rem);
+  --padding-right:  var(--col-space, 1rem);
+  --padding-bottom: var(--row-space, 1rem);
+  --padding-left:   var(--col-space, 1rem);
+    padding:
+        var(--padding-top)
+        var(--padding-right)
+        var(--padding-bottom)
+        var(--padding-left);
+}
+.padding-vertical {
+  --padding-vertical:   var(--row-space, 1rem);
+  --padding-top:        var(--padding-vertical);
+  --padding-bottom:     var(--padding-vertical);
+    padding-top:    var(--padding-top);
+    padding-bottom: var(--padding-bottom);
+}
+.padding-horizontal {
+  --padding-horizontal: var(--col-space, 1rem);
+  --padding-right:      var(--padding-vertical);
+  --padding-left:       var(--padding-vertical);
+    padding-right:      var(--padding-right);
+    padding-left:       var(--padding-left);
+}
 
 .pt, .pv {
   --padding-top:    var(--row-space, 1rem);
@@ -85,6 +110,43 @@
     margin-bottom:  var(--margin-bottom);
 }
 
+:root {
+  ;
+}
+
+.pt-text, .pv-text {
+  --font-offset:    var(--font-visual-vertical-offset, 0.250em);
+  --padding-top:    calc( var(--col-space, 1em) - var(--font-offset) );
+    padding-top:    var(--padding-top);
+}
+.pb-text, .pv-text {
+  --font-offset:    var(--font-visual-vertical-offset, 0.250em);
+  --padding-bottom: calc( var(--col-space, 1em) - var(--font-offset) );
+    padding-bottom: var(--padding-bottom);
+}
+
+
+/* ------------------------------------------ align compass */
+
+
+ .s-align { align-self:    end; }
+ .n-align { align-self:  start; }
+ .w-align {                     justify-self:  start; }
+ .e-align {                     justify-self:    end; }
+.se-align { align-self:    end; justify-self:    end; }
+.ne-align { align-self:  start; justify-self:    end; }
+.sw-align { align-self:    end; justify-self:  start; }
+.nw-align { align-self:  start; justify-self:  start; }
+
+.sc-align { align-self:    end; justify-self: center; }
+.nc-align { align-self:  start; justify-self: center; }
+.wc-align { align-self: center; justify-self:  start; }
+.ec-align { align-self: center; justify-self:    end; }
+.cc-align { align-self: center; justify-self: center; }
+ .c-align,
+.hc-align {                     justify-self: center; }
+.vc-align { align-self: center; }
+
 
 /* ------------------------------------------ univeral helpers */
 
@@ -96,7 +158,6 @@
 }
 
 .layer {
-    display:     block;
     grid-column: full;
 }
 

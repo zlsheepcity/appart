@@ -7,9 +7,9 @@
 
 
 .swed-button {
-  --background-color: var(--action-color,        firebrick);
-  --background-hover: var(--action-color--hover, darkred);
-  --color:            var(--action-color--text,  white);
+  --background-color: var(--back-color,         hsl( 359, 54%, 53% ));
+  --background-hover: var(--back-color--accent, hsl(  53, 70%, 76% ));
+  --color:            var(--text-color,         hsl( 359, 0%, 100% ));
 
   --padding:          calc( var(--row-space, 1rem) * 0.5 )
                       var(--col-space, 1.25rem);
@@ -48,9 +48,17 @@
 
 /* --------------------------------------- Reset unused styles */
 
-.swed-button {
+.swed-button,
+.swed-button:link,
+.swed-button:visited,
+.swed-button:hover,
+.swed-button:active,
+.swed-button:focus,
+.swed-button:focus-within {
     border:           0;
     text-decoration:  none;
+    background-color: var(--background-color);
+               color: var(--color);
 }
 
 

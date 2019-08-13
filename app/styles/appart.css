@@ -956,7 +956,9 @@ body {
 /* ----------------------------------- settings */
 .banner, .swed-banner {
   --v-space: var(--row-space, 1rem);
-  --h-space: var(--col-space, 1.25rem);
+  --h-space: var(--col-space, 1rem);
+  --back-color: transparent;
+  --text-color: inherit;
   --banner-padding:
       calc( 2.5 * var(--v-space) )
       0
@@ -980,8 +982,8 @@ body {
 
 /* ----------------------------------- design component */
 .swed-banner {
-  background-color: var(--background-color, inherit);
-  color: var(--color, inherit); }
+  background-color: var(--back-color);
+  color: var(--text-color); }
 
 /* ----------------------------------- workers */
 .group-banner {
@@ -1008,9 +1010,9 @@ body {
  */
 /* --------------------------------------- Customization */
 .swed-button {
-  --background-color: var(--action-color, firebrick);
-  --background-hover: var(--action-color--hover, darkred);
-  --color: var(--action-color--text, white);
+  --background-color: var(--back-color, hsl( 359, 54%, 53% ));
+  --background-hover: var(--back-color--accent, hsl( 53, 70%, 76% ));
+  --color: var(--text-color, hsl( 359, 0%, 100% ));
   --padding: calc( var(--row-space, 1rem) * 0.5 )
                       var(--col-space, 1.25rem);
   --margin: 0.25rem;
@@ -1038,9 +1040,17 @@ body {
   color: var(--color); }
 
 /* --------------------------------------- Reset unused styles */
-.swed-button {
+.swed-button,
+.swed-button:link,
+.swed-button:visited,
+.swed-button:hover,
+.swed-button:active,
+.swed-button:focus,
+.swed-button:focus-within {
   border: 0;
-  text-decoration: none; }
+  text-decoration: none;
+  background-color: var(--background-color);
+  color: var(--color); }
 
 /* --------------------------------------- Hover effect */
 @media screen and (min-width: 900px) {
@@ -1302,7 +1312,7 @@ body {
 .colors--root {
   --back-color: #FFF;
   --back-color--accent: var(--back-color);
-  --back-color--descent: var(--back-color);
+  --back-color--descent: hsla(0, 0%, 0%, 0.025);
   --text-color: #000;
   --text-color--accent: var(--text-color);
   --text-color--descent: var(--text-color);
@@ -1321,6 +1331,18 @@ body {
   --link-color: hsl( 359, 54%, 53% );
   --link-color--accent: var(--link-color);
   --link-color--descent: var(--link-color); }
+
+.colors--swed-secondary {
+  --back-color: hsl(var(--HSL-NobleBlue));
+  --back-color--accent: hsla(0, 0%, 0%, 0.05);
+  --back-color--descent: hsla(0, 0%, 0%, 0.05);
+  --text-color: hsl(var(--HSL-NobleWhite));
+  --text-color--accent: hsl(var(--HSL-NobleHighWhite));
+  --text-color--descent: var(--text-color);
+  --link-color: hsl(359, 54%, 53%);
+  --link-color--accent: hsl(359, 59%, 43%);
+  --link-color--descent: var(--link-color);
+  --shadow-color: hsla(0, 0%, 0%, 0.3); }
 
 .colors--action {
   --back-color: hsl( 359, 54%, 53% );
@@ -1372,8 +1394,8 @@ body {
 
 /* ------------------------------------- autorun */
 body {
-  background-color: var(--background-color);
-  color: var(--color); }
+  background-color: var(--back-color);
+  color: var(--text-color); }
 
 /*  EOF Default color model */
 /*  Universal helpers
@@ -1431,12 +1453,30 @@ body {
 .is-chapter:not(.isonbot):not(.is-on-bottom), .chapter:not(.isonbot):not(.is-on-bottom) {
   padding-bottom: calc( 2*var(--row-space, 1rem) ); }
 
-/* ------------------------------------------ paddings */
+/* ------------------------------------------ paddings shortcuts */
 .no-paddings {
   padding: 0; }
 
 .has-paddings {
-  padding: var(--row-space, 1rem) var(--col-space, 1rem); }
+  --padding-top: var(--row-space, 1rem);
+  --padding-right: var(--col-space, 1rem);
+  --padding-bottom: var(--row-space, 1rem);
+  --padding-left: var(--col-space, 1rem);
+  padding: var(--padding-top) var(--padding-right) var(--padding-bottom) var(--padding-left); }
+
+.padding-vertical {
+  --padding-vertical: var(--row-space, 1rem);
+  --padding-top: var(--padding-vertical);
+  --padding-bottom: var(--padding-vertical);
+  padding-top: var(--padding-top);
+  padding-bottom: var(--padding-bottom); }
+
+.padding-horizontal {
+  --padding-horizontal: var(--col-space, 1rem);
+  --padding-right: var(--padding-vertical);
+  --padding-left: var(--padding-vertical);
+  padding-right: var(--padding-right);
+  padding-left: var(--padding-left); }
 
 .pt, .pv {
   --padding-top: var(--row-space, 1rem);
@@ -1454,6 +1494,72 @@ body {
   --margin-bottom: var(--row-space, 1rem);
   margin-bottom: var(--margin-bottom); }
 
+.pt-text, .pv-text {
+  --font-offset: var(--font-visual-vertical-offset, 0.250em);
+  --padding-top: calc( var(--col-space, 1em) - var(--font-offset) );
+  padding-top: var(--padding-top); }
+
+.pb-text, .pv-text {
+  --font-offset: var(--font-visual-vertical-offset, 0.250em);
+  --padding-bottom: calc( var(--col-space, 1em) - var(--font-offset) );
+  padding-bottom: var(--padding-bottom); }
+
+/* ------------------------------------------ align compass */
+.s-align {
+  align-self: end; }
+
+.n-align {
+  align-self: start; }
+
+.w-align {
+  justify-self: start; }
+
+.e-align {
+  justify-self: end; }
+
+.se-align {
+  align-self: end;
+  justify-self: end; }
+
+.ne-align {
+  align-self: start;
+  justify-self: end; }
+
+.sw-align {
+  align-self: end;
+  justify-self: start; }
+
+.nw-align {
+  align-self: start;
+  justify-self: start; }
+
+.sc-align {
+  align-self: end;
+  justify-self: center; }
+
+.nc-align {
+  align-self: start;
+  justify-self: center; }
+
+.wc-align {
+  align-self: center;
+  justify-self: start; }
+
+.ec-align {
+  align-self: center;
+  justify-self: end; }
+
+.cc-align {
+  align-self: center;
+  justify-self: center; }
+
+.c-align,
+.hc-align {
+  justify-self: center; }
+
+.vc-align {
+  align-self: center; }
+
 /* ------------------------------------------ univeral helpers */
 .is-centered {
   text-align: center;
@@ -1461,7 +1567,6 @@ body {
   align-self: center; }
 
 .layer {
-  display: block;
   grid-column: full; }
 
 /*  EOF Universal helpers */

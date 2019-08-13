@@ -149,7 +149,7 @@
         .colors--root {
           --back-color:          #FFF;
           --back-color--accent:  var(--back-color);
-          --back-color--descent: var(--back-color);
+          --back-color--descent: hsla(0, 0%, 0%, 0.025);
 
           --text-color:          #000;
           --text-color--accent:  var(--text-color);
@@ -173,6 +173,21 @@
           --link-color:          hsl( 359, 54%, 53% );
           --link-color--accent:  var(--link-color);
           --link-color--descent: var(--link-color);
+        }
+        .colors--swed-secondary {
+          --back-color:          hsl(var(--HSL-NobleBlue));
+          --back-color--accent:  hsla(0, 0%, 0%, 0.05);
+          --back-color--descent: hsla(0, 0%, 0%, 0.05);
+
+          --text-color:          hsl(var(--HSL-NobleWhite));
+          --text-color--accent:  hsl(var(--HSL-NobleHighWhite));
+          --text-color--descent: var(--text-color);
+
+          --link-color:          hsl(359, 54%, 53%);
+          --link-color--accent:  hsl(359, 59%, 43%);
+          --link-color--descent: var(--link-color);
+
+          --shadow-color:        hsla(0, 0%, 0%, 0.3);
         }
         .colors--action {
           --back-color:          hsl( 359, 54%, 53% );
@@ -208,31 +223,24 @@
             background-color: var(--back-color);
                        color: var(--text-color);
         }
-
         .text-color-accent  {
                        color: var(--text-color--accent);
         }
-
         .text-color-descent {
                        color: var(--text-color--descent);
         }
-
         .back-color-accent  {
             background-color: var(--back-color--accent);
         }
-
         .back-color-descent {
             background-color: var(--back-color--descent);
         }
-
         .link-color  {
                        color: var(--link-color);
         }
-
         .link-color-accent  {
                        color: var(--link-color--accent);
         }
-
         .link-color-descent {
                        color: var(--link-color--descent);
         }
@@ -243,8 +251,8 @@
 
 
 body {
-    background-color: var(--background-color);
-    color:            var(--color);
+            background-color: var(--back-color);
+                       color: var(--text-color);
 }
 
 

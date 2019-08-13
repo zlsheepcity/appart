@@ -1,0 +1,74 @@
+/*  === ༼°▽°༽ === CSS Varriors  */
+/*
+ *  atom classes for inline CSS
+ *  zl, 2019.8.13
+ */
+
+
+/*  ============== Usage Template */
+
+
+/*
+    1.
+    <div class="opacity" style="--opacity:0.5"></div>
+
+    2.
+    <section style="--opacity:0.5">
+        <div class="opacity"></div>
+    </section>
+ */
+
+
+/*  ============== Handmade CSS varriors */
+
+
+/*
+    .width      {      width: var(--width,      auto ); }
+    .max-width  {  max-width: var(--max-width,  100% ); }
+    .min-width  {  min-width: var(--min-width,     0 ); }
+    .height     {     height: var(--height,     auto ); }
+    .max-height { max-height: var(--max-height, 100% ); }
+    .min-height { min-height: var(--min-height,    0 ); }
+    .opacity    {    opacity: var(--opacity,       1 ); }
+*/
+
+
+/*  ============== Sass auto varriors */
+
+
+$DEFAULT-VARRIORS: (
+//  'property-name':    default-value,
+
+    'width':            auto,
+    'max-width':        100%,
+    'min-width':        0,
+
+    'height':           auto,
+    'max-height':       100%,
+    'min-height':       0,
+
+    'padding-top':      var(--row-space, 1rem),
+    'padding-bottom':   var(--row-space, 1rem),
+    'padding-left':     var(--col-space, 1rem),
+    'padding-right':    var(--col-space, 1rem),
+
+    'margin-top':       var(--row-space, 1rem),
+    'margin-bottom':    var(--row-space, 1rem),
+    'margin-left':      var(--col-space, 1rem),
+    'margin-right':     var(--col-space, 1rem),
+
+    'align-self':       center,
+    'justify-self':     center,
+
+    'opacity':          1,
+);
+@each $VAR, $DEF in $DEFAULT-VARRIORS {
+
+  // VARRIOR STANDART:
+  //.padding { padding: var(--padding, 0 ); }
+
+    .#{$VAR} { #{$VAR}: var(--#{$VAR}, #{$DEF}); }
+}
+
+
+/*  ============== EOF CSS Varriors */

@@ -224,273 +224,6 @@ body {
   -webkit-font-smoothing: antialiased; }
 
 /*  EOF Typography */
-/*  Universal helpers
- *  v2019.7.31
- */
-/* ------------------------------------------ layout */
-.group-wide {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  align-content: center; }
-
-.group-center {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  align-content: center; }
-
-.group-content-rows {
-  display: grid;
-  align-items: start;
-  justify-content: start;
-  grid-auto-flow: row;
-  grid-auto-rows: min-content;
-  grid-row-gap: var(--row-space, 1rem);
-  grid-column-gap: 0;
-  grid-template-columns: [full] auto; }
-
-.group-content-rows > * {
-  grid-column: full; }
-
-.autogrid {
-  --cell-size: 100%;
-  display: grid;
-  grid-gap: 0;
-  grid-template-columns: repeat(auto-fill, minmax(var(--cell-size), 1fr)); }
-
-.autogrid > * {
-  grid-column: span 1; }
-
-@media (min-width: 24rem) {
-  .autogrid {
-    --cell-size: var(--min-width--text, 24rem); } }
-@media (min-width: 48rem) {
-  .autogrid > .is-big {
-    --size: 2;
-    grid-column: span var(--size); } }
-.is-chapter:not(.isontop):not(.is-on-top), .chapter:not(.isontop):not(.is-on-top) {
-  padding-top: calc( 2*var(--row-space, 1rem) ); }
-
-.is-chapter:not(.isonbot):not(.is-on-bottom), .chapter:not(.isonbot):not(.is-on-bottom) {
-  padding-bottom: calc( 2*var(--row-space, 1rem) ); }
-
-/* ------------------------------------------ paddings shortcuts */
-.no-paddings {
-  padding: 0; }
-
-.has-paddings {
-  --padding-top: var(--row-space, 1rem);
-  --padding-right: var(--col-space, 1rem);
-  --padding-bottom: var(--row-space, 1rem);
-  --padding-left: var(--col-space, 1rem);
-  padding: var(--padding-top) var(--padding-right) var(--padding-bottom) var(--padding-left); }
-
-.padding-vertical {
-  --padding-vertical: var(--row-space, 1rem);
-  --padding-top: var(--padding-vertical);
-  --padding-bottom: var(--padding-vertical);
-  padding-top: var(--padding-top);
-  padding-bottom: var(--padding-bottom); }
-
-.padding-horizontal {
-  --padding-horizontal: var(--col-space, 1rem);
-  --padding-right: var(--padding-vertical);
-  --padding-left: var(--padding-vertical);
-  padding-right: var(--padding-right);
-  padding-left: var(--padding-left); }
-
-.pt, .pv {
-  --padding-top: var(--row-space, 1rem);
-  padding-top: var(--padding-top); }
-
-.pb, .pv {
-  --padding-bottom: var(--row-space, 1rem);
-  padding-bottom: var(--padding-bottom); }
-
-.mt, .mv {
-  --margin-top: var(--row-space, 1rem);
-  margin-top: var(--margin-top); }
-
-.mb, .mv {
-  --margin-bottom: var(--row-space, 1rem);
-  margin-bottom: var(--margin-bottom); }
-
-.pt-text, .pv-text {
-  --font-offset: var(--font-visual-vertical-offset, 0.250em);
-  --padding-top: calc( var(--col-space, 1em) - var(--font-offset) );
-  padding-top: var(--padding-top); }
-
-.pb-text, .pv-text {
-  --font-offset: var(--font-visual-vertical-offset, 0.250em);
-  --padding-bottom: calc( var(--col-space, 1em) - var(--font-offset) );
-  padding-bottom: var(--padding-bottom); }
-
-/* ------------------------------------------ align compass */
-.s-align {
-  align-self: end; }
-
-.n-align {
-  align-self: start; }
-
-.w-align {
-  justify-self: start; }
-
-.e-align {
-  justify-self: end; }
-
-.se-align {
-  align-self: end;
-  justify-self: end; }
-
-.ne-align {
-  align-self: start;
-  justify-self: end; }
-
-.sw-align {
-  align-self: end;
-  justify-self: start; }
-
-.nw-align {
-  align-self: start;
-  justify-self: start; }
-
-.sc-align {
-  align-self: end;
-  justify-self: center; }
-
-.nc-align {
-  align-self: start;
-  justify-self: center; }
-
-.wc-align {
-  align-self: center;
-  justify-self: start; }
-
-.ec-align {
-  align-self: center;
-  justify-self: end; }
-
-.cc-align {
-  align-self: center;
-  justify-self: center; }
-
-.c-align,
-.hc-align {
-  justify-self: center; }
-
-.vc-align {
-  align-self: center; }
-
-/* ------------------------------------------ univeral helpers */
-.is-centered {
-  text-align: center;
-  justify-content: center;
-  align-self: center; }
-
-.layer {
-  grid-column: full; }
-
-/*  EOF Universal helpers */
-/*  === ༼°▽°༽ === CSS Varriors  */
-                                 /*
-*
-*  Atom classes for maintainable inline CSS
-*  «Var never changes»
-*  zl, 2019.8.14
-*
-*/
-/*  ============== Usage Template */
-                                    /*
-
-
-## Option 1.
-
-<div
-    class="opacity"
-    style="--opacity:0.5;"
-    ></div>
-
-## Option 2.
-
-<section style="--opacity:0.5;">
-    <div class="opacity"></div>
-</section>
-
- */
-/*  ============== Handmade CSS varriors */
-/*
-.width      {      width: var(--width,      auto ); }
-.max-width  {  max-width: var(--max-width,  100% ); }
-.min-width  {  min-width: var(--min-width,     0 ); }
-.height     {     height: var(--height,     auto ); }
-.max-height { max-height: var(--max-height, 100% ); }
-.min-height { min-height: var(--min-height,    0 ); }
-.opacity    {    opacity: var(--opacity,       1 ); }
-*/
-/*  ============== Sass auto varriors */
-.width {
-  width: var(--width, auto); }
-
-.max-width {
-  max-width: var(--max-width, 100%); }
-
-.min-width {
-  min-width: var(--min-width, 0); }
-
-.height {
-  height: var(--height, auto); }
-
-.max-height {
-  max-height: var(--max-height, 100%); }
-
-.min-height {
-  min-height: var(--min-height, 0); }
-
-.padding {
-  padding: var(--padding, var(--row-space, 1rem) var(--col-space, 1rem)); }
-
-.padding-top {
-  padding-top: var(--padding-top, var(--row-space, 1rem)); }
-
-.padding-bottom {
-  padding-bottom: var(--padding-bottom, var(--row-space, 1rem)); }
-
-.padding-left {
-  padding-left: var(--padding-left, var(--col-space, 1rem)); }
-
-.padding-right {
-  padding-right: var(--padding-right, var(--col-space, 1rem)); }
-
-.margin {
-  margin: var(--margin, var(--row-space, 1rem) var(--col-space, 1rem)); }
-
-.margin-top {
-  margin-top: var(--margin-top, var(--row-space, 1rem)); }
-
-.margin-bottom {
-  margin-bottom: var(--margin-bottom, var(--row-space, 1rem)); }
-
-.margin-left {
-  margin-left: var(--margin-left, var(--col-space, 1rem)); }
-
-.margin-right {
-  margin-right: var(--margin-right, var(--col-space, 1rem)); }
-
-.align-self {
-  align-self: var(--align-self, center); }
-
-.justify-self {
-  justify-self: var(--justify-self, center); }
-
-.opacity {
-  opacity: var(--opacity, 1); }
-
-/*  ============== EOF CSS Varriors */
 /*  Article grid, v2003
  *  2019.7.16
  */
@@ -1271,9 +1004,13 @@ body {
  */
 /* --------------------------------------- Customization */
 .swed-button {
-  --background-color: var(--back-color, hsl( 359, 54%, 53% ));
-  --background-hover: var(--back-color--accent, hsl( 53, 70%, 76% ));
-  --color: var(--text-color, hsl( 359, 0%, 100% ));
+  --back-color: hsl( var(--HSL-NobleAction) );
+  --back-color-accent: hsl( var(--HSL-NobleHoverAction) );
+  --text-color: hsl( 359, 0%, 100% );
+  --shadow-color: var(--shadow-color-for-light-base);
+  --background-color: var(--back-color);
+  --background-hover: var(--back-color-accent);
+  --color: var(--text-color);
   --padding: calc( var(--row-space, 1rem) * 0.5 )
                       var(--col-space, 1.25rem);
   --margin: 0.25rem;
@@ -1638,6 +1375,273 @@ body {
   --light-shadow: var(--light-shadow--for-light-base); }
 
 /*  EOF color model */
+/*  Universal helpers
+ *  v2019.7.31
+ */
+/* ------------------------------------------ layout */
+.group-wide {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center; }
+
+.group-center {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center; }
+
+.group-content-rows {
+  display: grid;
+  align-items: start;
+  justify-content: start;
+  grid-auto-flow: row;
+  grid-auto-rows: min-content;
+  grid-row-gap: var(--row-space, 1rem);
+  grid-column-gap: 0;
+  grid-template-columns: [full] auto; }
+
+.group-content-rows > * {
+  grid-column: full; }
+
+.autogrid {
+  --cell-size: 100%;
+  display: grid;
+  grid-gap: 0;
+  grid-template-columns: repeat(auto-fill, minmax(var(--cell-size), 1fr)); }
+
+.autogrid > * {
+  grid-column: span 1; }
+
+@media (min-width: 24rem) {
+  .autogrid {
+    --cell-size: var(--min-width--text, 24rem); } }
+@media (min-width: 48rem) {
+  .autogrid > .is-big {
+    --size: 2;
+    grid-column: span var(--size); } }
+.is-chapter:not(.isontop):not(.is-on-top), .chapter:not(.isontop):not(.is-on-top) {
+  padding-top: calc( 2*var(--row-space, 1rem) ); }
+
+.is-chapter:not(.isonbot):not(.is-on-bottom), .chapter:not(.isonbot):not(.is-on-bottom) {
+  padding-bottom: calc( 2*var(--row-space, 1rem) ); }
+
+/* ------------------------------------------ paddings shortcuts */
+.no-paddings {
+  padding: 0; }
+
+.has-paddings {
+  --padding-top: var(--row-space, 1rem);
+  --padding-right: var(--col-space, 1rem);
+  --padding-bottom: var(--row-space, 1rem);
+  --padding-left: var(--col-space, 1rem);
+  padding: var(--padding-top) var(--padding-right) var(--padding-bottom) var(--padding-left); }
+
+.padding-vertical {
+  --padding-vertical: var(--row-space, 1rem);
+  --padding-top: var(--padding-vertical);
+  --padding-bottom: var(--padding-vertical);
+  padding-top: var(--padding-top);
+  padding-bottom: var(--padding-bottom); }
+
+.padding-horizontal {
+  --padding-horizontal: var(--col-space, 1rem);
+  --padding-right: var(--padding-vertical);
+  --padding-left: var(--padding-vertical);
+  padding-right: var(--padding-right);
+  padding-left: var(--padding-left); }
+
+.pt, .pv {
+  --padding-top: var(--row-space, 1rem);
+  padding-top: var(--padding-top); }
+
+.pb, .pv {
+  --padding-bottom: var(--row-space, 1rem);
+  padding-bottom: var(--padding-bottom); }
+
+.mt, .mv {
+  --margin-top: var(--row-space, 1rem);
+  margin-top: var(--margin-top); }
+
+.mb, .mv {
+  --margin-bottom: var(--row-space, 1rem);
+  margin-bottom: var(--margin-bottom); }
+
+.pt-text, .pv-text {
+  --font-offset: var(--font-visual-vertical-offset, 0.250em);
+  --padding-top: calc( var(--col-space, 1em) - var(--font-offset) );
+  padding-top: var(--padding-top); }
+
+.pb-text, .pv-text {
+  --font-offset: var(--font-visual-vertical-offset, 0.250em);
+  --padding-bottom: calc( var(--col-space, 1em) - var(--font-offset) );
+  padding-bottom: var(--padding-bottom); }
+
+/* ------------------------------------------ align compass */
+.s-align {
+  align-self: end; }
+
+.n-align {
+  align-self: start; }
+
+.w-align {
+  justify-self: start; }
+
+.e-align {
+  justify-self: end; }
+
+.se-align {
+  align-self: end;
+  justify-self: end; }
+
+.ne-align {
+  align-self: start;
+  justify-self: end; }
+
+.sw-align {
+  align-self: end;
+  justify-self: start; }
+
+.nw-align {
+  align-self: start;
+  justify-self: start; }
+
+.sc-align {
+  align-self: end;
+  justify-self: center; }
+
+.nc-align {
+  align-self: start;
+  justify-self: center; }
+
+.wc-align {
+  align-self: center;
+  justify-self: start; }
+
+.ec-align {
+  align-self: center;
+  justify-self: end; }
+
+.cc-align {
+  align-self: center;
+  justify-self: center; }
+
+.c-align,
+.hc-align {
+  justify-self: center; }
+
+.vc-align {
+  align-self: center; }
+
+/* ------------------------------------------ univeral helpers */
+.is-centered {
+  text-align: center;
+  justify-content: center;
+  align-self: center; }
+
+.layer {
+  grid-column: full; }
+
+/*  EOF Universal helpers */
+/*  === ༼°▽°༽ === CSS Varriors  */
+                                 /*
+*
+*  Atom classes for maintainable inline CSS
+*  «Var never changes»
+*  zl, 2019.8.14
+*
+*/
+/*  ============== Usage Template */
+                                    /*
+
+
+## Option 1.
+
+<div
+    class="opacity"
+    style="--opacity:0.5;"
+    ></div>
+
+## Option 2.
+
+<section style="--opacity:0.5;">
+    <div class="opacity"></div>
+</section>
+
+ */
+/*  ============== Handmade CSS varriors */
+/*
+.width      {      width: var(--width,      auto ); }
+.max-width  {  max-width: var(--max-width,  100% ); }
+.min-width  {  min-width: var(--min-width,     0 ); }
+.height     {     height: var(--height,     auto ); }
+.max-height { max-height: var(--max-height, 100% ); }
+.min-height { min-height: var(--min-height,    0 ); }
+.opacity    {    opacity: var(--opacity,       1 ); }
+*/
+/*  ============== Sass auto varriors */
+.width {
+  width: var(--width, auto); }
+
+.max-width {
+  max-width: var(--max-width, 100%); }
+
+.min-width {
+  min-width: var(--min-width, 0); }
+
+.height {
+  height: var(--height, auto); }
+
+.max-height {
+  max-height: var(--max-height, 100%); }
+
+.min-height {
+  min-height: var(--min-height, 0); }
+
+.padding {
+  padding: var(--padding, var(--row-space, 1rem) var(--col-space, 1rem)); }
+
+.padding-top {
+  padding-top: var(--padding-top, var(--row-space, 1rem)); }
+
+.padding-bottom {
+  padding-bottom: var(--padding-bottom, var(--row-space, 1rem)); }
+
+.padding-left {
+  padding-left: var(--padding-left, var(--col-space, 1rem)); }
+
+.padding-right {
+  padding-right: var(--padding-right, var(--col-space, 1rem)); }
+
+.margin {
+  margin: var(--margin, var(--row-space, 1rem) var(--col-space, 1rem)); }
+
+.margin-top {
+  margin-top: var(--margin-top, var(--row-space, 1rem)); }
+
+.margin-bottom {
+  margin-bottom: var(--margin-bottom, var(--row-space, 1rem)); }
+
+.margin-left {
+  margin-left: var(--margin-left, var(--col-space, 1rem)); }
+
+.margin-right {
+  margin-right: var(--margin-right, var(--col-space, 1rem)); }
+
+.align-self {
+  align-self: var(--align-self, center); }
+
+.justify-self {
+  justify-self: var(--justify-self, center); }
+
+.opacity {
+  opacity: var(--opacity, 1); }
+
+/*  ============== EOF CSS Varriors */
 /*  Article markup
  *  Shortcuts for faster article markup
  *  2019.7.14

@@ -22,10 +22,6 @@
 @import "components/html-core/html-wrap";
 @import "components/html-core/html-typography";
 
-// -------------------------------------------- Workers
-
-@import "components/html-core/css-workers";
-@import "components/html-core/css-varriors";
 
 // -------------------------------------------- Layout Components
 
@@ -63,6 +59,12 @@
 
 @import "components/html-core/css-settings";
 @import "components/color-model/color-model";
+
+
+// -------------------------------------------- Workers
+
+@import "components/html-core/css-workers";
+@import "components/html-core/css-varriors";
 
 
 // -------------------------------------------- SCSS Overlays

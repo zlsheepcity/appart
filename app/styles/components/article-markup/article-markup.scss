@@ -1,85 +1,22 @@
 /*  Article markup
  *  Shortcuts for faster article markup
- *  2019.7.14
+ *  2019.8.14
  */
 
 
-//* ------------------------------------- layout
-
-/* 
-    deprecated by journal-grid
-    2019.8.14
-
-.block {
-    @extend .article-box;
-}
-.box {
-    @extend .article-box;
-    @extend .color-box;
-    padding-top:    var(--row-space);
-    padding-bottom: var(--row-space);
-}
-.big-box {
-    @extend .article-box;
-    @extend .color-box;
-    @extend .text-is-bigger;
-    padding: calc( var(--row-space) * 2 ) var(--col-space);
-    margin:  var(--row-space) 0;
-}
-.rows {
-    @extend .article-block;
-}
-.west {
-    @extend .article-block-west;
-}
-.east {
-    @extend .article-block-east;
-}
-
-.textnote {
-    @extend .article-box-east;
-    @extend .color-text;
-    @extend .text-is-smaller;
-}
-.accent {
-    @extend .color-box-accent;
-}
-
-
-.westbox {
-    @extend .article-box-west;
-    @extend .color-box;
-}
-.eastbox {
-    @extend .article-box-east;
-    @extend .color-box;
-}
-
-*/
-
 //* ------------------------------------- article
 
-
-.chapter {
-    @extend .article-grid;
-    @extend .is-chapter;
-}
-
 h2 {
-    @extend .big-title;
+    @extend .huge-title !optional;
+}
+h2 {
+    @extend .big-title !optional;
 }
 h3 {
-    @extend .min-title;
+    @extend .mid-title !optional;
 }
-
-
-//* ------------------------------------- design
-
-
-.secondary-colors {
-    @extend .colors-as-secondary;
-    @extend .use-colors;
+h4 {
+    @extend .min-title !optional;
 }
-
 
 /*  EOF Article markup */

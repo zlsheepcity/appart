@@ -164,7 +164,7 @@ body {
   --light-shadow: var(--light-shadow--for-dark-base);*/
 }
 
-
+.colors--primary,
 .colors--swed {
   --back-color:         hsl( var(--HSL-NobleBlack) );
   --back-color-accent:  hsl( var(--HSL-AccentBlux) );
@@ -181,6 +181,7 @@ body {
   --shadow-color: var(--shadow-color-for-dark-base);
   --light-shadow: var(--light-shadow--for-dark-base);
 }
+.colors--secondary,
 .colors--swed-secondary {
   --back-color:         hsl(var(--HSL-NobleBlue));
   --back-color-accent:  var(--light-shadow);

@@ -125,12 +125,12 @@ body {
   font-family: var(--font-family--main, sans-serif);
   font-weight: var(--font-weight--main, 400); }
 
-.huge-title {
+.huge-title, h2 {
   /* 64/64 */
   font-size: 4em;
   line-height: 1; }
   @media (max-width: 38em) {
-    .huge-title {
+    .huge-title, h2 {
       /* 32/40 */
       font-size: 2em;
       line-height: 1.25; } }
@@ -145,22 +145,22 @@ body {
       font-size: 1.5em;
       line-height: 1.333333; } }
 
-.mid-title, .title {
+.mid-title, h3, .title {
   /* 32/40 */
   font-size: 2em;
   line-height: 1.25; }
   @media (max-width: 38em) {
-    .mid-title, .title {
+    .mid-title, h3, .title {
       /* 20/24 */
       font-size: 1.25em;
       line-height: 1.2; } }
 
-.min-title, h3 {
+.min-title, h4 {
   /* 24/32 */
   font-size: 1.5em;
   line-height: 1.333333; }
   @media (max-width: 38em) {
-    .min-title, h3 {
+    .min-title, h4 {
       /* 16/24 */
       font-size: 1em;
       line-height: 1.5;
@@ -189,8 +189,9 @@ body {
 
 .big-title *, h2 *,
 .mid-title *,
-.min-title *,
 h3 *,
+.min-title *,
+h4 *,
 .title *,
 .subtitle * {
   font-family: inherit;
@@ -227,7 +228,7 @@ body {
 /*  Article grid, v2003
  *  2019.7.16
  */
-.article-grid, .chapter {
+.article-grid {
   --grid-base--row-gap: var(--row-space, 1rem);
   --grid-base--col-gap: var(--col-space, 1.25rem);
   --grid-base--add-gap: 1rem;
@@ -239,7 +240,7 @@ body {
   --grid-base--east-width: 16rem;
   /* text-notes */ }
 
-.article-grid, .chapter {
+.article-grid {
   --grid-formula--main-width: auto;
   --grid-formula--west-width: var(--grid-formula--main-width);
   --grid-formula--east-width: var(--grid-formula--main-width);
@@ -310,7 +311,7 @@ body {
         [overmain-end overwest-end]
             0; }
 
-.article-grid, .chapter {
+.article-grid {
   --grid-part--START: var(--grid-formula--start-hard);
   --grid-part--WEST: var(--grid-formula--west-skip);
   --grid-part--MAIN: var(--grid-formula--main-join-all);
@@ -321,23 +322,23 @@ body {
   --grid-part--END: var(--grid-formula--end-hard); }
 
 @media all and (min-width: 37.5rem) {
-  .article-grid, .chapter {
+  .article-grid {
     --grid-formula--main-width: var(--grid-base--main-width);
     --grid-part--START: var(--grid-formula--start-space);
     --grid-part--END: var(--grid-formula--end-space); } }
 @media all and (min-width: 57rem) {
-  .article-grid, .chapter {
+  .article-grid {
     --grid-formula--east-width: var(--grid-base--east-width);
     --grid-part--EAST: var(--grid-formula--east-insert);
     --grid-part--MAIN: var(--grid-formula--main-join-west);
     --grid-part--MAIN-join-WEST: var(--grid-formula--main-join-west); } }
 @media all and (min-width: 71.5rem) {
-  .article-grid, .chapter {
+  .article-grid {
     --grid-formula--west-width: var(--grid-base--west-width);
     --grid-part--WEST: var(--grid-formula--west-insert);
     --grid-part--MAIN: var(--grid-formula--main-single);
     --grid-part--MAIN-join-EAST: var(--grid-formula--main-join-east); } }
-.article-grid, .chapter {
+.article-grid {
   --grid-template-columns--default:
         var(--grid-part--START)
         var(--grid-part--WEST)
@@ -357,7 +358,7 @@ body {
             var(--grid-base--col-gap)
         [full-end overwest-end overeast-end overmain-end]; }
 
-.article-grid, .chapter, .article-block-west,
+.article-grid, .article-block-west,
 .article-block-east,
 .article-block-main,
 .article-block, .article-box-west, .article-autobar-west,
@@ -377,13 +378,13 @@ body {
   grid-row-gap: var(--grid-base--row-gap);
   grid-column-gap: 0; }
 
-.article-grid, .chapter {
+.article-grid {
   grid-template-columns: var(--grid-template-columns--default); }
 
-.article-grid *, .chapter * {
+.article-grid * {
   grid-column: main; }
 
-.article-grid, .chapter {
+.article-grid {
   grid-column: full; }
 
 .article-layer {
@@ -501,7 +502,7 @@ body {
 .article-box-merge-west.keep-grid {
   grid-template-columns: var(--grid-formula--start-hard) var(--grid-part--WEST) var(--grid-part--MAIN-join-EAST) var(--grid-formula--end-hard); }
 
-.article-grid, .chapter {
+.article-grid {
   max-width: 100%;
   word-wrap: break-word; }
 
@@ -1004,15 +1005,18 @@ body {
  */
 /* --------------------------------------- Customization */
 .swed-button {
+  /* default colors */
   --back-color: hsl( var(--HSL-NobleAction) );
   --back-color-accent: hsl( var(--HSL-NobleHoverAction) );
   --text-color: hsl( 359, 0%, 100% );
-  --shadow-color: var(--shadow-color-for-light-base);
+  --shadow-color: var(--shadow-color-for-light-base); }
+
+.swed-button {
   --background-color: var(--back-color);
   --background-hover: var(--back-color-accent);
   --color: var(--text-color);
   --padding: calc( var(--row-space, 1rem) * 0.5 )
-                      var(--col-space, 1.25rem);
+                      var(--col-space, 1rem);
   --margin: 0.25rem;
   --border-radius: 4px;
   --transform-hover: scale(1.1, 1.1);
@@ -1090,12 +1094,23 @@ body {
 /*  swed-site-head - slim header
  *  v2019.8.1
  */
+/*  markup template
+
+    <header class="swed-site-head colors--primary">
+        <h1 class="swed-site-logo">...</h1>
+        <ul class="swed-site-meta">...</ul>
+        <ul class="swed-site-menu">...</ul>
+    </header>
+
+*/
 .swed-site-head {
   --line-height: 1rem;
-  --head-background: var(--background-color, inherit);
-  --head-text-color: var(--color, inherit);
-  --head-shadow: hsla(0, 0%, 100%, 0.25);
-  padding-top: var(--row-space, 1rem);
+  --sx: var(--col-space, 1rem);
+  --sy: var(--row-space, 1rem);
+  --head-background: var(--back-color, inherit);
+  --head-text-color: var(--text-color, inherit);
+  --head-shadow: var(--shadow-color, hsla(0, 0%, 100%, 0.25));
+  padding-top: var(--sy, 1rem);
   background-color: var(--head-background);
   color: var(--head-text-color);
   display: flex;
@@ -1107,15 +1122,15 @@ body {
 
 .swed-site-head > * {
   line-height: var(--line-height);
-  margin: 0 var(--col-space, 1.25rem) var(--row-space, 1rem) var(--col-space, 1.25rem); }
+  margin: 0 var(--sx) var(--sy) var(--sx); }
 
 .swed-site-meta,
 .swed-site-menu {
   list-style: none;
   padding: 0;
   display: grid;
-  grid-row-gap: var(--row-space, 1rem);
-  grid-column-gap: var(--col-space, 1.25rem);
+  grid-row-gap: var(--sy);
+  grid-column-gap: var(--sx);
   grid-auto-flow: column;
   align-items: center; }
 
@@ -1218,7 +1233,7 @@ body {
   color: var(--text-color); }
 
 /* ------------------------------------- atom classes */
-.use-colors, .secondary-colors {
+.use-colors {
   background-color: var(--back-color);
   color: var(--text-color); }
 
@@ -1309,6 +1324,7 @@ body {
   /*--shadow-color: var(--shadow-color-for-dark-base);
     --light-shadow: var(--light-shadow--for-dark-base);*/ }
 
+.colors--primary,
 .colors--swed {
   --back-color: hsl( var(--HSL-NobleBlack) );
   --back-color-accent: hsl( var(--HSL-AccentBlux) );
@@ -1322,6 +1338,7 @@ body {
   --shadow-color: var(--shadow-color-for-dark-base);
   --light-shadow: var(--light-shadow--for-dark-base); }
 
+.colors--secondary,
 .colors--swed-secondary {
   --back-color: hsl(var(--HSL-NobleBlue));
   --back-color-accent: var(--light-shadow);
@@ -1424,10 +1441,10 @@ body {
   .autogrid > .is-big {
     --size: 2;
     grid-column: span var(--size); } }
-.is-chapter:not(.isontop):not(.is-on-top), .chapter:not(.isontop):not(.is-on-top) {
+.is-chapter:not(.isontop):not(.is-on-top) {
   padding-top: calc( 2*var(--row-space, 1rem) ); }
 
-.is-chapter:not(.isonbot):not(.is-on-bottom), .chapter:not(.isonbot):not(.is-on-bottom) {
+.is-chapter:not(.isonbot):not(.is-on-bottom) {
   padding-bottom: calc( 2*var(--row-space, 1rem) ); }
 
 /* ------------------------------------------ paddings shortcuts */
@@ -1644,58 +1661,8 @@ body {
 /*  ============== EOF CSS Varriors */
 /*  Article markup
  *  Shortcuts for faster article markup
- *  2019.7.14
+ *  2019.8.14
  */
-/* 
-    deprecated by journal-grid
-    2019.8.14
-
-.block {
-    @extend .article-box;
-}
-.box {
-    @extend .article-box;
-    @extend .color-box;
-    padding-top:    var(--row-space);
-    padding-bottom: var(--row-space);
-}
-.big-box {
-    @extend .article-box;
-    @extend .color-box;
-    @extend .text-is-bigger;
-    padding: calc( var(--row-space) * 2 ) var(--col-space);
-    margin:  var(--row-space) 0;
-}
-.rows {
-    @extend .article-block;
-}
-.west {
-    @extend .article-block-west;
-}
-.east {
-    @extend .article-block-east;
-}
-
-.textnote {
-    @extend .article-box-east;
-    @extend .color-text;
-    @extend .text-is-smaller;
-}
-.accent {
-    @extend .color-box-accent;
-}
-
-
-.westbox {
-    @extend .article-box-west;
-    @extend .color-box;
-}
-.eastbox {
-    @extend .article-box-east;
-    @extend .color-box;
-}
-
-*/
 /*  EOF Article markup */
 .colors-as-primary {
   --background-color: hsl(var(--HSL-NobleBlack));
@@ -1706,7 +1673,7 @@ body {
   --action-color--hover: hsl(359, 59%, 43%);
   --action-color--text: white; }
 
-.colors-as-secondary, .secondary-colors {
+.colors-as-secondary {
   --background-color: hsl(var(--HSL-NobleBlue));
   --color: hsl(var(--HSL-NobleWhite));
   --secondary-color: hsl(var(--HSL-NobleHighWhite));
@@ -1780,4 +1747,59 @@ body {
   background-color: var(--third-background-color);
   color: var(--third-color); }
 
+/*
+    deprecated by journal-grid
+    2019.8.14
+
+.block {
+    @extend .article-box;
+}
+.box {
+    @extend .article-box;
+    @extend .color-box;
+    padding-top:    var(--row-space);
+    padding-bottom: var(--row-space);
+}
+.big-box {
+    @extend .article-box;
+    @extend .color-box;
+    @extend .text-is-bigger;
+    padding: calc( var(--row-space) * 2 ) var(--col-space);
+    margin:  var(--row-space) 0;
+}
+.rows {
+    @extend .article-block;
+}
+.west {
+    @extend .article-block-west;
+}
+.east {
+    @extend .article-block-east;
+}
+
+.textnote {
+    @extend .article-box-east;
+    @extend .color-text;
+    @extend .text-is-smaller;
+}
+.accent {
+    @extend .color-box-accent;
+}
+
+
+.westbox {
+    @extend .article-box-west;
+    @extend .color-box;
+}
+.eastbox {
+    @extend .article-box-east;
+    @extend .color-box;
+}
+
+.chapter {
+    @extend .article-grid;
+    @extend .is-chapter;
+}
+
+*/
 /*  EOF Appart Styles */

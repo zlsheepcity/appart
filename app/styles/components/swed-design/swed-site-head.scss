@@ -2,12 +2,26 @@
  *  v2019.8.1
  */
 
+/*  markup template
+
+    <header class="swed-site-head colors--primary">
+        <h1 class="swed-site-logo">...</h1>
+        <ul class="swed-site-meta">...</ul>
+        <ul class="swed-site-menu">...</ul>
+    </header>
+
+*/
+
 .swed-site-head {
   --line-height:      1rem;
-  --head-background:  var(--background-color, inherit);
-  --head-text-color:  var(--color, inherit);
-  --head-shadow:      hsla(0, 0%, 100%, 0.25);
-    padding-top:      var(--row-space, 1rem);
+  --sx:               var(--col-space, 1rem);
+  --sy:               var(--row-space, 1rem);
+
+  --head-background:  var(--back-color,   inherit);
+  --head-text-color:  var(--text-color,   inherit);
+  --head-shadow:      var(--shadow-color, hsla(0, 0%, 100%, 0.25));
+
+    padding-top:      var(--sy, 1rem);
     background-color: var(--head-background);
                color: var(--head-text-color);
 
@@ -20,35 +34,31 @@
 }
 .swed-site-head>* {
     line-height: var(--line-height);
-    margin:
-        0
-        var(--col-space, 1.25rem)
-        var(--row-space, 1rem)
-        var(--col-space, 1.25rem);
+    margin:    0 var(--sx) var(--sy) var(--sx);
 }
 .swed-site-meta,
 .swed-site-menu {
-    list-style:      none;
-    padding:         0;
+    list-style:       none;
+    padding:          0;
 
-    display:         grid;
-    grid-row-gap:    var(--row-space, 1rem);
-    grid-column-gap: var(--col-space, 1.25rem);
-    grid-auto-flow:  column;
-    align-items:     center;
+    display:          grid;
+    grid-row-gap:     var(--sy);
+    grid-column-gap:  var(--sx);
+    grid-auto-flow:   column;
+    align-items:      center;
 }
 .swed-site-menu {
-    margin-left:  auto;
+    margin-left:      auto;
 }
 .swed-site-logo {
-    flex-grow:    0;
+    flex-grow:        0;
 }
 .swed-site-logo a {
-    color:     var(--head-shadow);
+    color:            var(--head-shadow);
 }
 .swed-site-logo span {
-    font-size: 1.5em;
-    color:     var(--head-text-color);
+    font-size:        1.5em;
+    color:            var(--head-text-color);
 }
 
 /*  EOF swed-site-head */

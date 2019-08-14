@@ -19,4 +19,14 @@ h4 {
     @extend .min-title !optional;
 }
 
+
+//* ------------------------------------- special cases
+
+
+td {
+    @extend      %text-as-smaller !optional;
+    font-family: var(--font-family--data, sans-serif);
+}
+
+
 /*  EOF Article markup */

@@ -1,5 +1,8 @@
 /*  All about font-sizes and line-heights
  *  2019.7.16
+ *
+ * CSS, SCSS
+ *
  */
 
 //* ------------------------------------ font collection
@@ -144,9 +147,11 @@ $title-size-breakpoint: 'max-width: 38em';
 //* ------------------------------------ markup system 2019
 
 
+.huge-title *,
 .big-title *,
 .mid-title *,
 .min-title *,
+.sub-title *,
     .title *,
  .subtitle * {
     font-family: inherit;
@@ -166,23 +171,36 @@ $title-size-breakpoint: 'max-width: 38em';
 .text-is-regular { @extend %text-as-regular; }
 .text-is-smaller { @extend %text-as-smaller; }
 
-.text-conent {
-    max-width: var(--max-width, var(--max-width--text));
-}
-.has-min-width {
-    min-width: var(--min-width, 12em)
-}
-
 .has-sans-text {
     @extend      %text-as-smaller;
     font-family: var(--font-family--data, sans-serif);
     letter-spacing: 0.03em;
 }
 
-td {
-    @extend      %text-as-smaller;
-    font-family: var(--font-family--data, sans-serif);
+
+//* ------------------------------------ width limits of text
+
+
+:root {
+  --optimal-text-row-width--max: 42rem;
+  --optimal-text-row-width--mid: 24rem;
+  --optimal-text-row-width--min: 12rem;
 }
+
+.text-row-width,
+.text-row-width-max {
+  --max-width: var(--optimal-text-row-width--max);
+    max-width: var(--max-width);
+}
+.text-row-width-mid {
+  --max-width: var(--optimal-text-row-width--mid);
+    max-width: var(--max-width);
+}
+.text-row-width-min {
+  --max-width: var(--optimal-text-row-width--min);
+    max-width: var(--max-width);
+}
+
 
 
 //* ------------------------------------ extra features

@@ -221,4 +221,13 @@
 */
 
 
+// removed from typography
+
+.text-conent {
+    max-width: var(--max-width, var(--max-width--text));
+}
+.has-min-width {
+    min-width: var(--min-width, 12em)
+}
+
 /*  EOF Appart Styles */

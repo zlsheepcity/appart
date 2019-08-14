@@ -108,6 +108,9 @@ td, th {
 /*  EOF html wrap */
 /*  All about font-sizes and line-heights
  *  2019.7.16
+ *
+ * CSS, SCSS
+ *
  */
 /* font source
 @import url('https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic');
@@ -187,11 +190,14 @@ body {
   font-size: 0.875em;
   line-height: 1.714286; }
 
-.big-title *, h2 *,
+.huge-title *, h2 *,
+.big-title *,
+h2 *,
 .mid-title *,
 h3 *,
 .min-title *,
 h4 *,
+.sub-title *,
 .title *,
 .subtitle * {
   font-family: inherit;
@@ -199,18 +205,27 @@ h4 *,
   line-height: inherit;
   font-weight: inherit; }
 
-.text-conent {
-  max-width: var(--max-width, var(--max-width--text)); }
-
-.has-min-width {
-  min-width: var(--min-width, 12em); }
-
 .has-sans-text {
   font-family: var(--font-family--data, sans-serif);
   letter-spacing: 0.03em; }
 
-td {
-  font-family: var(--font-family--data, sans-serif); }
+:root {
+  --optimal-text-row-width--max: 42rem;
+  --optimal-text-row-width--mid: 24rem;
+  --optimal-text-row-width--min: 12rem; }
+
+.text-row-width,
+.text-row-width-max {
+  --max-width: var(--optimal-text-row-width--max);
+  max-width: var(--max-width); }
+
+.text-row-width-mid {
+  --max-width: var(--optimal-text-row-width--mid);
+  max-width: var(--max-width); }
+
+.text-row-width-min {
+  --max-width: var(--optimal-text-row-width--min);
+  max-width: var(--max-width); }
 
 @supports (hanging-punctuation: first) {
   * {
@@ -1663,6 +1678,9 @@ body {
  *  Shortcuts for faster article markup
  *  2019.8.14
  */
+td {
+  font-family: var(--font-family--data, sans-serif); }
+
 /*  EOF Article markup */
 .colors-as-primary {
   --background-color: hsl(var(--HSL-NobleBlack));
@@ -1802,4 +1820,10 @@ body {
 }
 
 */
+.text-conent {
+  max-width: var(--max-width, var(--max-width--text)); }
+
+.has-min-width {
+  min-width: var(--min-width, 12em); }
+
 /*  EOF Appart Styles */

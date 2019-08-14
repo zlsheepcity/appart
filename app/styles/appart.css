@@ -166,12 +166,12 @@ body {
       line-height: 1.5;
       font-weight: bolder; } }
 
-.subtitle, .text-is-bigger, .big-box, .text-is-larger {
+.subtitle, .text-is-bigger, .text-is-larger {
   /* 20/24 */
   font-size: 1.25em;
   line-height: 1.2; }
   @media (max-width: 38em) {
-    .subtitle, .text-is-bigger, .big-box, .text-is-larger {
+    .subtitle, .text-is-bigger, .text-is-larger {
       /* 16/24 */
       font-size: 1em;
       line-height: 1.5;
@@ -182,7 +182,7 @@ body {
   font-size: 1em;
   line-height: 1.5; }
 
-.text-is-smaller, .textnote, .has-sans-text, td {
+.text-is-smaller, .has-sans-text, td {
   /* 14/24 */
   font-size: 0.875em;
   line-height: 1.714286; }
@@ -224,6 +224,273 @@ body {
   -webkit-font-smoothing: antialiased; }
 
 /*  EOF Typography */
+/*  Universal helpers
+ *  v2019.7.31
+ */
+/* ------------------------------------------ layout */
+.group-wide {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center; }
+
+.group-center {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center; }
+
+.group-content-rows {
+  display: grid;
+  align-items: start;
+  justify-content: start;
+  grid-auto-flow: row;
+  grid-auto-rows: min-content;
+  grid-row-gap: var(--row-space, 1rem);
+  grid-column-gap: 0;
+  grid-template-columns: [full] auto; }
+
+.group-content-rows > * {
+  grid-column: full; }
+
+.autogrid {
+  --cell-size: 100%;
+  display: grid;
+  grid-gap: 0;
+  grid-template-columns: repeat(auto-fill, minmax(var(--cell-size), 1fr)); }
+
+.autogrid > * {
+  grid-column: span 1; }
+
+@media (min-width: 24rem) {
+  .autogrid {
+    --cell-size: var(--min-width--text, 24rem); } }
+@media (min-width: 48rem) {
+  .autogrid > .is-big {
+    --size: 2;
+    grid-column: span var(--size); } }
+.is-chapter:not(.isontop):not(.is-on-top), .chapter:not(.isontop):not(.is-on-top) {
+  padding-top: calc( 2*var(--row-space, 1rem) ); }
+
+.is-chapter:not(.isonbot):not(.is-on-bottom), .chapter:not(.isonbot):not(.is-on-bottom) {
+  padding-bottom: calc( 2*var(--row-space, 1rem) ); }
+
+/* ------------------------------------------ paddings shortcuts */
+.no-paddings {
+  padding: 0; }
+
+.has-paddings {
+  --padding-top: var(--row-space, 1rem);
+  --padding-right: var(--col-space, 1rem);
+  --padding-bottom: var(--row-space, 1rem);
+  --padding-left: var(--col-space, 1rem);
+  padding: var(--padding-top) var(--padding-right) var(--padding-bottom) var(--padding-left); }
+
+.padding-vertical {
+  --padding-vertical: var(--row-space, 1rem);
+  --padding-top: var(--padding-vertical);
+  --padding-bottom: var(--padding-vertical);
+  padding-top: var(--padding-top);
+  padding-bottom: var(--padding-bottom); }
+
+.padding-horizontal {
+  --padding-horizontal: var(--col-space, 1rem);
+  --padding-right: var(--padding-vertical);
+  --padding-left: var(--padding-vertical);
+  padding-right: var(--padding-right);
+  padding-left: var(--padding-left); }
+
+.pt, .pv {
+  --padding-top: var(--row-space, 1rem);
+  padding-top: var(--padding-top); }
+
+.pb, .pv {
+  --padding-bottom: var(--row-space, 1rem);
+  padding-bottom: var(--padding-bottom); }
+
+.mt, .mv {
+  --margin-top: var(--row-space, 1rem);
+  margin-top: var(--margin-top); }
+
+.mb, .mv {
+  --margin-bottom: var(--row-space, 1rem);
+  margin-bottom: var(--margin-bottom); }
+
+.pt-text, .pv-text {
+  --font-offset: var(--font-visual-vertical-offset, 0.250em);
+  --padding-top: calc( var(--col-space, 1em) - var(--font-offset) );
+  padding-top: var(--padding-top); }
+
+.pb-text, .pv-text {
+  --font-offset: var(--font-visual-vertical-offset, 0.250em);
+  --padding-bottom: calc( var(--col-space, 1em) - var(--font-offset) );
+  padding-bottom: var(--padding-bottom); }
+
+/* ------------------------------------------ align compass */
+.s-align {
+  align-self: end; }
+
+.n-align {
+  align-self: start; }
+
+.w-align {
+  justify-self: start; }
+
+.e-align {
+  justify-self: end; }
+
+.se-align {
+  align-self: end;
+  justify-self: end; }
+
+.ne-align {
+  align-self: start;
+  justify-self: end; }
+
+.sw-align {
+  align-self: end;
+  justify-self: start; }
+
+.nw-align {
+  align-self: start;
+  justify-self: start; }
+
+.sc-align {
+  align-self: end;
+  justify-self: center; }
+
+.nc-align {
+  align-self: start;
+  justify-self: center; }
+
+.wc-align {
+  align-self: center;
+  justify-self: start; }
+
+.ec-align {
+  align-self: center;
+  justify-self: end; }
+
+.cc-align {
+  align-self: center;
+  justify-self: center; }
+
+.c-align,
+.hc-align {
+  justify-self: center; }
+
+.vc-align {
+  align-self: center; }
+
+/* ------------------------------------------ univeral helpers */
+.is-centered {
+  text-align: center;
+  justify-content: center;
+  align-self: center; }
+
+.layer {
+  grid-column: full; }
+
+/*  EOF Universal helpers */
+/*  === ༼°▽°༽ === CSS Varriors  */
+                                 /*
+*
+*  Atom classes for maintainable inline CSS
+*  «Var never changes»
+*  zl, 2019.8.14
+*
+*/
+/*  ============== Usage Template */
+                                    /*
+
+
+## Option 1.
+
+<div
+    class="opacity"
+    style="--opacity:0.5;"
+    ></div>
+
+## Option 2.
+
+<section style="--opacity:0.5;">
+    <div class="opacity"></div>
+</section>
+
+ */
+/*  ============== Handmade CSS varriors */
+/*
+.width      {      width: var(--width,      auto ); }
+.max-width  {  max-width: var(--max-width,  100% ); }
+.min-width  {  min-width: var(--min-width,     0 ); }
+.height     {     height: var(--height,     auto ); }
+.max-height { max-height: var(--max-height, 100% ); }
+.min-height { min-height: var(--min-height,    0 ); }
+.opacity    {    opacity: var(--opacity,       1 ); }
+*/
+/*  ============== Sass auto varriors */
+.width {
+  width: var(--width, auto); }
+
+.max-width {
+  max-width: var(--max-width, 100%); }
+
+.min-width {
+  min-width: var(--min-width, 0); }
+
+.height {
+  height: var(--height, auto); }
+
+.max-height {
+  max-height: var(--max-height, 100%); }
+
+.min-height {
+  min-height: var(--min-height, 0); }
+
+.padding {
+  padding: var(--padding, var(--row-space, 1rem) var(--col-space, 1rem)); }
+
+.padding-top {
+  padding-top: var(--padding-top, var(--row-space, 1rem)); }
+
+.padding-bottom {
+  padding-bottom: var(--padding-bottom, var(--row-space, 1rem)); }
+
+.padding-left {
+  padding-left: var(--padding-left, var(--col-space, 1rem)); }
+
+.padding-right {
+  padding-right: var(--padding-right, var(--col-space, 1rem)); }
+
+.margin {
+  margin: var(--margin, var(--row-space, 1rem) var(--col-space, 1rem)); }
+
+.margin-top {
+  margin-top: var(--margin-top, var(--row-space, 1rem)); }
+
+.margin-bottom {
+  margin-bottom: var(--margin-bottom, var(--row-space, 1rem)); }
+
+.margin-left {
+  margin-left: var(--margin-left, var(--col-space, 1rem)); }
+
+.margin-right {
+  margin-right: var(--margin-right, var(--col-space, 1rem)); }
+
+.align-self {
+  align-self: var(--align-self, center); }
+
+.justify-self {
+  justify-self: var(--justify-self, center); }
+
+.opacity {
+  opacity: var(--opacity, 1); }
+
+/*  ============== EOF CSS Varriors */
 /*  Article grid, v2003
  *  2019.7.16
  */
@@ -357,20 +624,13 @@ body {
             var(--grid-base--col-gap)
         [full-end overwest-end overeast-end overmain-end]; }
 
-.article-grid, .chapter, .article-block-west, .west,
+.article-grid, .chapter, .article-block-west,
 .article-block-east,
-.east,
 .article-block-main,
-.article-block,
-.rows, .article-box-west, .article-autobar-west, .westbox,
+.article-block, .article-box-west, .article-autobar-west,
 .article-box-east,
-.textnote,
-.eastbox,
 .article-box-main,
-.article-box,
-.block,
-.box,
-.big-box, .article-westside,
+.article-box, .article-westside,
 .article-eastside, .article-block-merge-west,
 .article-block-merge-east,
 .article-block-merge, .article-box-merge-west,
@@ -396,47 +656,40 @@ body {
 .article-layer {
   grid-column: full; }
 
-.article-block-west, .west {
+.article-block-west {
   grid-column: west; }
 
-.article-block-east, .east {
+.article-block-east {
   grid-column: east; }
 
 .article-block-main {
   grid-column: main; }
 
-.article-block, .rows {
+.article-block {
   grid-column: main; }
 
-.article-block-west, .west,
+.article-block-west,
 .article-block-east,
-.east,
 .article-block-main,
-.article-block,
-.rows {
+.article-block {
   grid-template-columns: var(--grid-template--content-block); }
 
-.article-box-west, .article-autobar-west, .westbox {
+.article-box-west, .article-autobar-west {
   grid-column: overwest; }
 
-.article-box-east, .textnote, .eastbox {
+.article-box-east {
   grid-column: overeast; }
 
 .article-box-main {
   grid-column: overmain; }
 
-.article-box, .block, .box, .big-box {
+.article-box {
   grid-column: overmain; }
 
-.article-box-west, .article-autobar-west, .westbox,
+.article-box-west, .article-autobar-west,
 .article-box-east,
-.textnote,
-.eastbox,
 .article-box-main,
-.article-box,
-.block,
-.box,
-.big-box {
+.article-box {
   grid-template-columns: var(--grid-template-columns--content-box); }
 
 .article-westside {
@@ -1190,12 +1443,101 @@ body {
   :root {
     --max-width--text: var(--min-width--text); } }
 /*  EOF base css settings */
-/*  Default color model
- *  v2019.7.31
- */
+/** === ༼°▽°༽ === Color Model 3x3+2  */
+                                      /*
+*
+*  System based on eleven css vars
+*  zl, 2019.8.14
+*
+*  CSS
+*
+*/
+/* ------------------------------------- base */
+:root,
+.color-model,
+.colors--root {
+  --back-color: white;
+  --back-color-accent: var(--light-shadow);
+  --back-color-descent: var(--light-shadow);
+  --text-color: black;
+  --text-color-accent: var(--text-color);
+  --text-color-descent: var(--text-color);
+  --link-color: firebrick;
+  --link-color-accent: var(--link-color);
+  --link-color-descent: var(--link-color);
+  --shadow-color: var(--shadow-color--for-light-base);
+  --light-shadow: var(--light-shadow--for-light-base); }
+
+:root,
+.color-model {
+  --shadow-color--for-light-base: hsla( 0, 0%, 0%, 0.3);
+  --shadow-color--for-dark-base: hsla( 0, 0%, 100%, 0.2);
+  --light-shadow--for-light-base: hsla( 0, 0%, 0%, 0.05);
+  --light-shadow--for-dark-base: hsla( 0, 0%, 100%, 0.05); }
+
+/* ------------------------------------- autorun */
+body {
+  background-color: var(--back-color);
+  color: var(--text-color); }
+
+/* ------------------------------------- atom classes */
+.use-colors, .secondary-colors {
+  background-color: var(--back-color);
+  color: var(--text-color); }
+
+.text-color {
+  color: var(--text-color); }
+
+.text-color-accent {
+  color: var(--text-color-accent); }
+
+.text-color-descent {
+  color: var(--text-color-descent); }
+
+.back-color {
+  background-color: var(--back-color); }
+
+.back-color-accent {
+  background-color: var(--back-color-accent); }
+
+.back-color-descent {
+  background-color: var(--back-color-descent); }
+
+.link-color {
+  color: var(--link-color); }
+
+.link-color-accent {
+  color: var(--link-color-accent); }
+
+.link-color-descent {
+  color: var(--link-color-descent); }
+
+.back-color-transparent {
+  --back-color: transparent;
+  background-color: var(--back-color); }
+
+.back-color-hover:hover {
+  --back-color-hover: var(--back-color-accent);
+  background-color: var(--back-color-hover); }
+
+.text-color-hover:hover {
+  --text-color-hover: var(--text-color-accent);
+  color: var(--text-color-hover); }
+
+.link-color-hover:hover {
+  --link-color-hover: var(--link-color-accent);
+  color: var(--link-color-hover); }
+
+/*  === ༼°▽°༽ === Color Model Presets  */
+                                        /*
+*
+*  zl, 2019.8.14
+*
+*/
 /* ------------------------------------- skup palettes */
 /* swed-design 2019 */
-:root {
+:root,
+.color-model {
   --HSL-NobleBlack: 240, 15%, 12%;
   --HSL-NobleBlue: 212, 34%, 29%;
   --HSL-AccentBlue: 204, 22%, 55%;
@@ -1206,27 +1548,151 @@ body {
   --HSL-NobleHoverAction: 359, 59%, 43%; }
 
 /* appking 2019 */
-:root {
+:root,
+.color-model {
   --HSL-KingsBlue: 202, 81%, 23%;
   --HSL-KingsAction: 15, 75%, 30%;
   --HSL-KingsGold: 42, 79%, 53%;
   --HSL-KingsGrass: 155, 31%, 62%;
   --HSL-KingsLand: 34, 20%, 33%; }
 
-/* ------------------------------------- color model */
-:root,
-.colors-as-special {
-  --background-color: white;
-  --color: black;
-  --secondary-color: firebrick;
-  --secondary-background-color: lightgray;
-  --third-background-color: lightgray;
-  --third-color: firebrick;
-  --action-color: firebrick;
-  --action-color--hover: darkred;
-  --action-color--text: white;
-  --shadow-color: hsla(0, 0%, 0%, 0.3); }
+/* ------------------------------------- color themes */
+.colors--template {
+  --back-color: white;
+  --back-color-accent: var(--back-color);
+  --back-color-descent: var(--light-shadow);
+  --text-color: black;
+  --text-color-accent: var(--text-color);
+  --text-color-descent: var(--text-color);
+  --link-color: firebrick;
+  --link-color-accent: var(--link-color);
+  --link-color-descent: var(--link-color);
+  --shadow-color: var(--shadow-color-for-light-base);
+  --light-shadow: var(--light-shadow--for-light-base);
+  /*--shadow-color: var(--shadow-color-for-dark-base);
+    --light-shadow: var(--light-shadow--for-dark-base);*/ }
 
+.colors--swed {
+  --back-color: hsl( var(--HSL-NobleBlack) );
+  --back-color-accent: hsl( var(--HSL-AccentBlux) );
+  --back-color-descent: var(--light-shadow);
+  --text-color: hsl( var(--HSL-NobleWhite) );
+  --text-color-accent: hsl( var(--HSL-NobleHighWhite) );
+  --text-color-descent: var(--text-color);
+  --link-color: hsl( var(--HSL-NobleAction) );
+  --link-color-accent: hsl( var(--HSL-NobleHoverAction) );
+  --link-color-descent: var(--link-color);
+  --shadow-color: var(--shadow-color-for-dark-base);
+  --light-shadow: var(--light-shadow--for-dark-base); }
+
+.colors--swed-secondary {
+  --back-color: hsl(var(--HSL-NobleBlue));
+  --back-color-accent: var(--light-shadow);
+  --back-color-descent: var(--light-shadow);
+  --text-color: hsl(var(--HSL-NobleWhite));
+  --text-color-accent: hsl(var(--HSL-NobleHighWhite));
+  --text-color-descent: var(--text-color);
+  --link-color: hsl( var(--HSL-NobleAction) );
+  --link-color-accent: hsl( var(--HSL-NobleHoverAction) );
+  --link-color-descent: var(--link-color);
+  --shadow-color: var(--shadow-color-for-light-base);
+  --light-shadow: var(--light-shadow--for-light-base); }
+
+.colors--swed-third {
+  --back-color: hsl(var(--HSL-AccentBlue));
+  --back-color-accent: var(--light-shadow);
+  --back-color-descent: var(--light-shadow);
+  --text-color: hsl( var(--HSL-NobleBlack) );
+  --text-color-accent: var(--text-color);
+  --text-color-descent: var(--text-color);
+  --link-color: hsl(var(--HSL-NobleWhite));
+  --link-color-accent: hsl(var(--HSL-NobleHighWhite));
+  --link-color-descent: var(--link-color);
+  --shadow-color: var(--shadow-color-for-light-base);
+  --light-shadow: var(--light-shadow--for-light-base); }
+
+.colors--action {
+  --back-color: hsl( var(--HSL-NobleAction) );
+  --back-color-accent: hsl( var(--HSL-NobleHoverAction) );
+  --back-color-descent: var(--light-shadow);
+  --text-color: hsl( 359, 0%, 100% );
+  --text-color-accent: hsl( 359, 28%, 82% );
+  --text-color-descent: hsl( 359, 28%, 82% );
+  --link-color: hsl( 359, 0%, 100% );
+  --link-color-accent: var(--link-color);
+  --link-color-descent: var(--link-color);
+  --shadow-color: var(--shadow-color-for-light-base);
+  --light-shadow: var(--light-shadow--for-light-base); }
+
+.colors--ivory {
+  --back-color: hsl( 53, 66%, 80% );
+  --back-color-accent: hsl( 53, 70%, 76% );
+  --back-color-descent: var(--light-shadow);
+  --text-color: hsl( 204, 4%, 22% );
+  --text-color-accent: hsl( 204, 4%, 42% );
+  --text-color-descent: hsl( 204, 4%, 42% );
+  --link-color: hsl( 359, 54%, 53% );
+  --link-color-accent: hsl( 359, 59%, 43% );
+  --link-color-descent: var(--link-color);
+  --shadow-color: var(--shadow-color-for-light-base);
+  --light-shadow: var(--light-shadow--for-light-base); }
+
+/*  EOF color model */
+/*  Article markup
+ *  Shortcuts for faster article markup
+ *  2019.7.14
+ */
+/* 
+    deprecated by journal-grid
+    2019.8.14
+
+.block {
+    @extend .article-box;
+}
+.box {
+    @extend .article-box;
+    @extend .color-box;
+    padding-top:    var(--row-space);
+    padding-bottom: var(--row-space);
+}
+.big-box {
+    @extend .article-box;
+    @extend .color-box;
+    @extend .text-is-bigger;
+    padding: calc( var(--row-space) * 2 ) var(--col-space);
+    margin:  var(--row-space) 0;
+}
+.rows {
+    @extend .article-block;
+}
+.west {
+    @extend .article-block-west;
+}
+.east {
+    @extend .article-block-east;
+}
+
+.textnote {
+    @extend .article-box-east;
+    @extend .color-text;
+    @extend .text-is-smaller;
+}
+.accent {
+    @extend .color-box-accent;
+}
+
+
+.westbox {
+    @extend .article-box-west;
+    @extend .color-box;
+}
+.eastbox {
+    @extend .article-box-east;
+    @extend .color-box;
+}
+
+*/
+/*  EOF Article markup */
 .colors-as-primary {
   --background-color: hsl(var(--HSL-NobleBlack));
   --color: hsl(var(--HSL-NobleWhite));
@@ -1275,11 +1741,6 @@ body {
   --action-color--text: white;
   --shadow-color: hsla(0, 0%, 0%, 0.1); }
 
-/* ------------------------------------- workers */
-.use-colors, .secondary-colors {
-  background-color: var(--background-color);
-  color: var(--color); }
-
 .use-secondary-colors {
   background-color: var(--secondary-background-color);
   color: var(--secondary-color); }
@@ -1295,16 +1756,16 @@ body {
 .use-shadow-background {
   background-color: var(--shadow-color); }
 
-.color-box, .box, .big-box, .westbox, .eastbox {
+.color-box {
   background-color: var(--secondary-background-color); }
 
-.color-text, .textnote {
+.color-text {
   color: var(--alternative-text-color, var(--secondary-color)); }
 
 .color-text-action {
   color: var(--action-color); }
 
-.color-box-accent, .accent {
+.color-box-accent {
   background-color: var(--action-color);
   color: var(--action-color--text); }
 
@@ -1315,280 +1776,4 @@ body {
   background-color: var(--third-background-color);
   color: var(--third-color); }
 
-/* ------------------------------------- BTL color model */
-:root,
-.colors--root {
-  --back-color: #FFF;
-  --back-color--accent: var(--back-color);
-  --back-color--descent: hsla(0, 0%, 0%, 0.025);
-  --text-color: #000;
-  --text-color--accent: var(--text-color);
-  --text-color--descent: var(--text-color);
-  --link-color: #00C;
-  --link-color--accent: var(--link-color);
-  --link-color--descent: var(--link-color);
-  --shadow-color: hsla(0, 0%, 0%, 0.3); }
-
-.colors--swed {
-  --back-color: hsl( var(--HSL-NobleBlack) );
-  --back-color--accent: hsl( var(--HSL-NobleBlue) );
-  --back-color--descent: hsl( var(--HSL-AccentBlux) );
-  --text-color: hsl( var(--HSL-NobleWhite) );
-  --text-color--accent: hsl( var(--HSL-NobleHighWhite) );
-  --text-color--descent: hsl( var(--HSL-NobleHighWhite) );
-  --link-color: hsl( 359, 54%, 53% );
-  --link-color--accent: var(--link-color);
-  --link-color--descent: var(--link-color); }
-
-.colors--swed-secondary {
-  --back-color: hsl(var(--HSL-NobleBlue));
-  --back-color--accent: hsla(0, 0%, 0%, 0.05);
-  --back-color--descent: hsla(0, 0%, 0%, 0.05);
-  --text-color: hsl(var(--HSL-NobleWhite));
-  --text-color--accent: hsl(var(--HSL-NobleHighWhite));
-  --text-color--descent: var(--text-color);
-  --link-color: hsl(359, 54%, 53%);
-  --link-color--accent: hsl(359, 59%, 43%);
-  --link-color--descent: var(--link-color);
-  --shadow-color: hsla(0, 0%, 0%, 0.3); }
-
-.colors--action {
-  --back-color: hsl( 359, 54%, 53% );
-  --back-color--accent: hsl( 359, 59%, 43% );
-  --back-color--descent: var(--back-color);
-  --text-color: hsl( 359, 0%, 100% );
-  --text-color--accent: hsl( 359, 28%, 82% );
-  --text-color--descent: hsl( 359, 28%, 82% );
-  --link-color: hsl( 359, 0%, 100% );
-  --link-color--accent: var(--link-color);
-  --link-color--descent: var(--link-color);
-  --shadow-color: hsla(0, 0%, 0%, 0.3); }
-
-.colors--ivory {
-  --back-color: hsl( 53, 66%, 80% );
-  --back-color--accent: hsl( 53, 70%, 76% );
-  --back-color--descent: hsla(53, 0%, 0%, 0.05);
-  --text-color: hsl( 204, 4%, 22% );
-  --text-color--accent: hsl( 204, 4%, 42% );
-  --text-color--descent: hsl( 204, 4%, 42% );
-  --link-color: hsl( 359, 54%, 53% );
-  --link-color--accent: hsl( 359, 59%, 43% );
-  --link-color--descent: var(--link-color); }
-
-.use-colors, .secondary-colors {
-  background-color: var(--back-color);
-  color: var(--text-color); }
-
-.text-color-accent {
-  color: var(--text-color--accent); }
-
-.text-color-descent {
-  color: var(--text-color--descent); }
-
-.back-color-accent {
-  background-color: var(--back-color--accent); }
-
-.back-color-descent {
-  background-color: var(--back-color--descent); }
-
-.link-color {
-  color: var(--link-color); }
-
-.link-color-accent {
-  color: var(--link-color--accent); }
-
-.link-color-descent {
-  color: var(--link-color--descent); }
-
-/* ------------------------------------- autorun */
-body {
-  background-color: var(--back-color);
-  color: var(--text-color); }
-
-/*  EOF Default color model */
-/*  Universal helpers
- *  v2019.7.31
- */
-/* ------------------------------------------ layout */
-.group-wide {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  align-content: center; }
-
-.group-center {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  align-content: center; }
-
-.group-content-rows {
-  display: grid;
-  align-items: start;
-  justify-content: start;
-  grid-auto-flow: row;
-  grid-auto-rows: min-content;
-  grid-row-gap: var(--row-space, 1rem);
-  grid-column-gap: 0;
-  grid-template-columns: [full] auto; }
-
-.group-content-rows > * {
-  grid-column: full; }
-
-.autogrid {
-  --cell-size: 100%;
-  display: grid;
-  grid-gap: 0;
-  grid-template-columns: repeat(auto-fill, minmax(var(--cell-size), 1fr)); }
-
-.autogrid > * {
-  grid-column: span 1; }
-
-@media (min-width: 24rem) {
-  .autogrid {
-    --cell-size: var(--min-width--text, 24rem); } }
-@media (min-width: 48rem) {
-  .autogrid > .is-big {
-    --size: 2;
-    grid-column: span var(--size); } }
-.is-chapter:not(.isontop):not(.is-on-top), .chapter:not(.isontop):not(.is-on-top) {
-  padding-top: calc( 2*var(--row-space, 1rem) ); }
-
-.is-chapter:not(.isonbot):not(.is-on-bottom), .chapter:not(.isonbot):not(.is-on-bottom) {
-  padding-bottom: calc( 2*var(--row-space, 1rem) ); }
-
-/* ------------------------------------------ paddings shortcuts */
-.no-paddings {
-  padding: 0; }
-
-.has-paddings {
-  --padding-top: var(--row-space, 1rem);
-  --padding-right: var(--col-space, 1rem);
-  --padding-bottom: var(--row-space, 1rem);
-  --padding-left: var(--col-space, 1rem);
-  padding: var(--padding-top) var(--padding-right) var(--padding-bottom) var(--padding-left); }
-
-.padding-vertical {
-  --padding-vertical: var(--row-space, 1rem);
-  --padding-top: var(--padding-vertical);
-  --padding-bottom: var(--padding-vertical);
-  padding-top: var(--padding-top);
-  padding-bottom: var(--padding-bottom); }
-
-.padding-horizontal {
-  --padding-horizontal: var(--col-space, 1rem);
-  --padding-right: var(--padding-vertical);
-  --padding-left: var(--padding-vertical);
-  padding-right: var(--padding-right);
-  padding-left: var(--padding-left); }
-
-.pt, .pv {
-  --padding-top: var(--row-space, 1rem);
-  padding-top: var(--padding-top); }
-
-.pb, .pv {
-  --padding-bottom: var(--row-space, 1rem);
-  padding-bottom: var(--padding-bottom); }
-
-.mt, .mv {
-  --margin-top: var(--row-space, 1rem);
-  margin-top: var(--margin-top); }
-
-.mb, .mv {
-  --margin-bottom: var(--row-space, 1rem);
-  margin-bottom: var(--margin-bottom); }
-
-.pt-text, .pv-text {
-  --font-offset: var(--font-visual-vertical-offset, 0.250em);
-  --padding-top: calc( var(--col-space, 1em) - var(--font-offset) );
-  padding-top: var(--padding-top); }
-
-.pb-text, .pv-text {
-  --font-offset: var(--font-visual-vertical-offset, 0.250em);
-  --padding-bottom: calc( var(--col-space, 1em) - var(--font-offset) );
-  padding-bottom: var(--padding-bottom); }
-
-/* ------------------------------------------ align compass */
-.s-align {
-  align-self: end; }
-
-.n-align {
-  align-self: start; }
-
-.w-align {
-  justify-self: start; }
-
-.e-align {
-  justify-self: end; }
-
-.se-align {
-  align-self: end;
-  justify-self: end; }
-
-.ne-align {
-  align-self: start;
-  justify-self: end; }
-
-.sw-align {
-  align-self: end;
-  justify-self: start; }
-
-.nw-align {
-  align-self: start;
-  justify-self: start; }
-
-.sc-align {
-  align-self: end;
-  justify-self: center; }
-
-.nc-align {
-  align-self: start;
-  justify-self: center; }
-
-.wc-align {
-  align-self: center;
-  justify-self: start; }
-
-.ec-align {
-  align-self: center;
-  justify-self: end; }
-
-.cc-align {
-  align-self: center;
-  justify-self: center; }
-
-.c-align,
-.hc-align {
-  justify-self: center; }
-
-.vc-align {
-  align-self: center; }
-
-/* ------------------------------------------ univeral helpers */
-.is-centered {
-  text-align: center;
-  justify-content: center;
-  align-self: center; }
-
-.layer {
-  grid-column: full; }
-
-/*  EOF Universal helpers */
-/*  Article markup
- *  Shortcuts for faster article markup
- *  2019.7.14
- */
-.box {
-  padding-top: var(--row-space);
-  padding-bottom: var(--row-space); }
-
-.big-box {
-  padding: calc( var(--row-space) * 2 ) var(--col-space);
-  margin: var(--row-space) 0; }
-
-/*  EOF Article markup */
 /*  EOF Appart Styles */

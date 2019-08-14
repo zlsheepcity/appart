@@ -1,4 +1,4 @@
-/*  Offside Bar open/close events
+/*  Offside Bar open/close functions
  *  v2019.7.23
  */
 
@@ -24,12 +24,14 @@ function InterfaceOffsideBar (barName) {
         else doOpen()
     }
 
-    // find and activate bartenders
+ // find and activate bartenders
+
     const bartenderFunction = (el, order) =>
           el.addEventListener('click', order === 'close' ? doClose : doToggle )
     document.querySelectorAll(cssBartender).forEach(bartenderFunction)
 
-    // find/create background
+ // find/create background
+
     let background = asidebar.querySelector('.'+classBackground)
     if(!background) {
         background = document.createElement('div')
@@ -37,7 +39,8 @@ function InterfaceOffsideBar (barName) {
         asidebar.prepend(background)
     }
 
-    // find/create shadow overlay with functionality
+ // find/create shadow overlay with functionality
+
     let overlay = asidebar.querySelector('.'+classOverlay)
     if(!overlay) {
         overlay = document.createElement('div')
@@ -47,9 +50,8 @@ function InterfaceOffsideBar (barName) {
     bartenderFunction(overlay, 'close')
 }
 
-/*
-    // Run
-    InterfaceOffsideBar('offsidebar')
+/* // Run
+InterfaceOffsideBar('offsidebar-class-name')
 */
 
 /*  EOF Offside Bar */

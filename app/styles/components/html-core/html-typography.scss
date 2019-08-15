@@ -1,39 +1,36 @@
-/*  All about font-sizes and line-heights
- *  2019.7.16
+/** typography
+ *  All about font and line-height
+ *  2019.8.16
  *
  *  CSS
  *
  */
 
 
-/* ------------------------------------ base */
+/** ------------------------------------ font collections */
 
 
-:root {
-  --font-family:             var(--font-family--tufte-serif);
-  --font-family-secondary:   var(--font-family--tufte-sans);
-  --font-weight:             400;
-  --line-height:             1.5;
-}
+:root,
+.root-typography {
 
-body {
-    line-height: var(--line-height);
-    font-family: var(--font-family);
-    font-weight: var(--font-weight);
- /* font-size is default */
+/** Native font stack 2018 */
 
-  --base-line-height: var(--line-height);
-}
-
-
-/* ------------------------------------ font collections */
+  --font-family--native-sans:
+       -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        "Roboto",
+        "Helvetica Neue",
+        Arial,
+        sans-serif,
+        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 
 
-:root {
-
- /* Tufte 2018 */
- /* @import url('https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic'); */
-
+/** Tufte 2018 */
+/*
+    Book-style text
+    @import url('https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic');
+ */
   --font-family--tufte-serif:
         Vollkorn,
         et-book,
@@ -50,45 +47,38 @@ body {
         "Gill Sans MT",
         sans-serif,
         "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-
-
- /* Native font stack 2018 */
-
-  --font-family--native-sans:
-       -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        "Roboto",
-        "Helvetica Neue",
-        Arial,
-        sans-serif,
-        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-
 }
 
 
-/* ------------------------------------ paragraph-width */
-
+/** ------------------------------------ paragraph component */
 /*
     Readable text block has width limit,
-    approx ~ 42em, choise of design.
+    approx ~ 42em in most typefaces, choise of design.
 
-    
-*/
+    Minimal readable width for small paragraphs,
+    approx ~ 12em.
 
-:root {
+    Additional mid-value for cards/descriptions.
+    approx ~ 24em, wide range.
+ */
+
+
+:root,
+.root-typography {
   --paragraph-width--max: 42em;
   --paragraph-width--mid: 24em;
   --paragraph-width--min: 12em; }
 @media all and (min-width:12em) {
-  --paragraph-width--min: 100%;
+    :root,
+    .root-typography {
+      --paragraph-width--min: 100%;
+    }
 }
 
 body {
   --paragraph-width: var(--paragraph-width--max);
 }
 
-.p,
 .paragraph {
   --max-width: var(--paragraph-width);
     max-width: var(--max-width);
@@ -107,53 +97,142 @@ body {
 }
 
 
-/* ------------------------------------ font-size system */
+/** ------------------------------------ font-size system LH 1.5 */
 
+
+:root,
+.root-typography {
+    /* 64/80 */
+    --h1-font-size:    4em;
+    --h1-line-height:  1.25;
+
+    /* 48/60 */
+    --h2-font-size:    3em;
+    --h2-line-height:  1.25;
+
+    /* 36/48 */
+    --h3-font-size:    2.25em;
+    --h3-line-height:  calc(4/3);
+
+    /* 24/32 */
+    --h4-font-size:    1.5em;
+    --h4-line-height:  calc(4/3);
+
+    /* 16/24 */
+    --p-font-size:     1em;
+    --p-line-height:   1.5;
+
+    /* 20/24 */
+    --inc-font-size:   1.25em;
+    --inc-line-height: 1.2;
+
+    /* 12/16 */
+    --dec-font-size:   0.75em;
+    --dec-line-height: calc(4/3);
+}
+
+.h1 {
+    font-size:   var(--h1-font-size);
+    line-height: var(--h1-line-height);
+}
+.h2 {
+    font-size:   var(--h2-font-size);
+    line-height: var(--h2-line-height);
+}
+.h3 {
+    font-size:   var(--h3-font-size);
+    line-height: var(--h3-line-height);
+}
+.h4 {
+    font-size:   var(--h4-font-size);
+    line-height: var(--h4-line-height);
+}
+.h5 {
+    font-size:   var(--inc-font-size);
+    line-height: var(--inc-line-height);
+}
+.h6 {
+    font-size:   var(--p-font-size);
+    line-height: var(--p-line-height);
+}
 
 .text-inline-bigger {
-    /* 20/24 */
-    font-size:   1.25em;
-    line-height: 1.2;
+  --font-size:   var(--inc-font-size, 1.25em);
+    font-size:   var(--font-size);
+  --line-height: var(--inc-line-height, 1.2);
+    line-height: var(--line-height);
 }
 .text-block-bigger {
-    /* 20/30 */
-    font-size:   1.25em;
+  --font-size:   var(--inc-font-size, 1.25em);
+    font-size:   var(--font-size);
+    line-height: var(--line-height);
+}
+.text-inline-smaller,
+.text-block-smaller {
+  --font-size:   var(--dec-font-size, 0.75em);
+    font-size:   var(--font-size);
+  --line-height: var(--dec-line-height, calc(4/3));
     line-height: var(--line-height);
 }
 
-
-/* ------------------------------------ workers */
-
-
-.em-base {
-    font-size:   1rem;
-    line-height: var(--base-line-height);
-}
-.secondary-font {
-    font-family: var(--font-family-secondary);
-}
-.native-sans {
-    font-family: var(--font-family--native-sans);
+/** Reset em-value in element */
+.em-reset {
+    font-size:   var(--base-font-size,   1rem);
+    line-height: var(--base-line-height, 1.5);
 }
 
 
-/* ------------------------------------ extra features */
+/** ------------------------------------ workers */
+
+
+/** Typeface atoms */
+
+    .font-secondary {
+        font-family: var(--font-family-secondary);
+    }
+    .native-sans {
+        font-family: var(--font-family--native-sans);
+    }
+
+
+/** ------------------------------------ extra features */
 
 
 @supports (hanging-punctuation: first) {
        * { hanging-punctuation: first; }
 }
 
-/* Font rendering */
-
+/** Font rendering */
 html {
    -ms-text-size-adjust:     100%;
    -webkit-text-size-adjust: 100%;
 }
-
 body {
     text-rendering: optimizeLegibility;
    -webkit-font-smoothing: antialiased;
+}
+
+
+/** ------------------------------------ system base */
+
+
+:root,
+.root-typography {
+  --font-family:             var(--font-family--tufte-serif);
+  --font-family-secondary:   var(--font-family--tufte-sans);
+  --font-weight:             400;
+  --line-height:             1.5;
+}
+
+body {
+    line-height: var(--line-height);
+    font-family: var(--font-family);
+    font-weight: var(--font-weight);
+ /* font-size is unset */
+
+ /* save constant values */
+  --base-font-size:   1rem;
+  --base-line-height: var(--line-height);
 }
 
 

@@ -1,0 +1,1395 @@
+<!doctype html><!-- appart :: 8001 :: 2019.8.14 -->
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- ========================================= HEAD CONTENT -->
+
+
+    <title>App Tests</title>
+    <meta name="description" content="Frontend code templates" />
+    <meta name="author"      content="zl 2019, zl.sheepcity@gmail.com" />
+
+
+    <!-- FAVICON -->
+    <!-- 2019.1, best favicon service: https://realfavicongenerator.net/ -->
+    <meta name="theme-color" content="#314863">
+    <meta name="msapplication-TileColor" content="#314863">
+    <meta name="msapplication-TileImage" content="app/favicons/144x144.png">
+    <link href="app/favicons/180x180.png" sizes="180x180" rel="apple-touch-icon">
+    <link href="app/favicons/192x192.png" sizes="192x192" rel="icon" type="image/png">
+
+
+    <!-- ========================================= BOOT -->
+
+
+    <style>
+        /* ༼°▽°༽ style boot */
+        body    { width: 100%; height: auto; overflow: hidden; }
+        img,svg { max-width: 100%; }
+    </style>
+
+
+    <script>
+        /* ༼°▽°༽ app boot */
+        function BootKing() {
+            let  King = this
+            King.has = {
+                 Queens: ['mutate','onload','action'],
+                 Memory: [],
+                 toRemember: (something)=> King.has.Memory.push(something)
+                }
+            function KeepInMemory(responsible) {
+                 return (dna)=> King.has.toRemember({dna,for:responsible})
+                }
+            King.has.Queens.map( (queen)=>King[queen]=KeepInMemory(queen) )
+            King.Welcome = (dna)=> false
+        }
+
+        let app = new BootKing()
+        let run = function AfterWindowLoadReady (King) {
+            let ActivateInterface = () => King.Welcome()
+            setTimeout(ActivateInterface, 200)
+        }
+
+        window.onload = run(app)
+    </script>
+
+
+    <!-- ༼°▽°༽ prefetch boot -->
+    <link rel="preconnect"   href="//fonts.gstatic.com">
+
+
+    <!-- ========================================= DESIGN -->
+
+
+    <link
+        href="app/styles/appart.css?v2019.7.23"
+        rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic"
+        rel="stylesheet">
+
+
+    <!-- ========================================= APP CUSTOM -->
+
+
+    <!-- ========================================== ʕ⊙ᴥ⊙ʔ = -->
+    <!-- ========================================= END HEAD -->
+</head>
+<body class="colors--primary">
+
+
+    <!-- ----------------------------------------- Site Header -->
+
+
+    <header class="swed-site-head colors--primary">
+        <h1 class="swed-site-logo"><span>Appart</span></h1>
+        <ul class="swed-site-meta">
+            <li></li>
+        </ul>
+        <ul class="swed-site-menu">
+            <li>
+                <a
+                    class="svga-icon"
+                    style="--size: 2;"
+                    href="https://github.com/zlsheepcity/appart">
+                    <svg><use xlink:href="#svg-github"></use></svg>
+                </a>
+            </li>
+        </ul>
+    </header>
+
+    <!-- ----------------------------------------- Typography Demo -->
+
+    <style>
+        .screen {
+            min-height: 100vh;
+            padding: 10vh 0;
+        }
+    </style>
+
+
+    <section class="screen article-grid use-colors colors--ivory">
+
+        <div>
+            <h1>Font presets</h1>
+            <h2>Font presets</h2>
+            <h3>Font presets</h3>
+            <h4>Font presets</h4>
+            <p>Font presets</p>
+        </div>
+
+        <div style="font-family: var(--font-family--tufte-serif);">
+            <h2>tufte-serif</h2>
+            <p auto-content></p>
+        </div>
+        <div style="font-family: var(--font-family--tufte-sans);">
+            <h2>tufte-sans</h2>
+            <p auto-content></p>
+        </div>
+        <div style="font-family: var(--font-family--native-sans);">
+            <h2>native-sans</h2>
+            <p auto-content></p>
+        </div>
+
+        <h2>Bigger component</h2>
+
+        <div>
+            <p auto-content></p>
+            <p auto-content class="text-is-bigger"></p>
+            <p auto-content style="font-size:1.25em;line-height:1.2;"></p>
+            <p auto-content></p>
+        </div>
+
+        <div class="secondary-typeface">
+            <p auto-content></p>
+            <p auto-content class="text-is-bigger"></p>
+            <p auto-content style="font-size:1.25em;line-height:1.2;"></p>
+            <p auto-content></p>
+        </div>
+
+        <div class="native-sans">
+            <p auto-content></p>
+            <p auto-content class="text-is-bigger"></p>
+            <p auto-content style="font-size:1.25em;line-height:1.2;"></p>
+            <p auto-content></p>
+        </div>
+
+    </section>
+
+
+
+    <!-- ----------------------------------------- Project Header -->
+
+
+    <section class="swed-banner colors--swed-secondary">
+        <h2 class="big-title">App <span class="link-color">&</span> Art</h2>
+        <p class="text-is-bigger text-row-width-min">
+            Front-end components. Not a framework,
+            but reusable code templates.
+        </p>
+        <button hidden class="svga-icon js-for-WestsideBar" style="--base:3em; --size:1;">
+            <svg><use xlink:href="#svg-menu"></use></svg>
+        </button>
+    </section>
+
+
+    <!-- ----------------------------------------- Components Promo -->
+
+    <style>
+        .promo-icon {
+            width: 10em;
+        }
+    </style>
+
+
+    <div class="autogrid">
+
+        <section class="swed-banner is-big">
+            <figure class="promo-icon">
+                <img
+                    src="art/component-icons/component-icon--catgrounds.svg"
+                    alt="SVG icon for Catgrounds">
+            </figure>
+            <div class="is-centered">
+                <h3 class="big-title">
+                    .Catground
+                </h3>
+                <p class="subtitle">
+                    classname brings «Magic Design»<br>
+                    into component
+                </p>
+            </div>
+            <footer>
+                <a href="catgrounds.html" class="swed-button">Project page</a>
+            </footer>
+        </section>
+
+        <section class="swed-banner">
+            <figure class="promo-icon">
+                <img
+                    src="art/component-icons/component-icon--ofsidebar.svg"
+                    alt="SVG icon for Ofsidebar">
+            </figure>
+            <div class="is-centered">
+                <h3 class="big-title">
+                    Ofsidebar
+                </h3>
+                <p class="subtitle">
+                    pop-out panel<br>
+                    without content jumps
+                </p>
+            </div>
+            <footer>
+                <button class="swed-button js-for-EastsideBar"><span>Test bar</span></button>
+            </footer>
+        </section>
+
+        <section class="swed-banner">
+            <figure class="promo-icon">
+                <img
+                    src="art/component-icons/component-icon--banners.svg"
+                    alt="SVG icon for Banners">
+            </figure>
+            <div class="is-centered">
+                <h3 class="big-title">
+                    Banners
+                </h3>
+                <a class="swed-button" href="dev/tests-banners.html"><span>Demo page</span></a>
+            </div>
+        </section>
+
+        <section class="swed-banner is-big">
+            <div class="is-centered">
+                <h3 class="big-title">
+                    <div>Rich Article</div>
+                    <div>Grid Layout</div>
+                </h3>
+            </div>
+            <figure class="promo-icon">
+                <img
+                    src="art/component-icons/component-icon--article-grid.svg"
+                    alt="SVG icon for Article Grid">
+            </figure>
+            <footer>
+                <a class="swed-button" href="dev/tests-grid-cases.html"><span>v3/2019</span></a>
+                <a class="swed-button" href="dev/tests-article-grid.html"><span>v2/2019</span></a>
+            </footer>
+        </section>
+
+    </div>
+
+    <!-- ----------------------------------------- Components Fulllist -->
+
+    <style>
+        /* html>body>*:not(.show) { display: none!important; } */
+        .el-components-list {
+            column-width: 12rem;
+            column-gap:   calc( 2 * var(--col-space) );
+            padding:      0 var(--col-space);
+            margin:       0;
+        }
+        .el-components-list>li {
+            page-break-inside: avoid;
+                 break-inside: avoid;
+            margin-bottom:     var(--row-space);
+        }
+        .el-components-list>li>h4 {
+            font-weight: bolder;
+            color:       var(--link-color, currentColor);
+        }
+        .el-components {
+            max-width:   44rem;
+            margin-left:  auto;
+            margin-right: auto;
+        }
+        @media all and (max-width:30rem) {
+            .el-components-list>li {
+                max-width:   16rem;
+                margin-left:  auto;
+                margin-right: auto;
+            }
+        }
+    </style>
+
+    <section>
+        <header class="banner">
+            <div>
+                <h3 class="mid-title">All components</h3>
+                <p class="has-sans-text">Last update 2019.8.5</p>
+            </div>
+        </header>
+        <section class="el-components has-sans-text">
+                <ul class="el-components-list">
+                    <li>
+                        <h4>CSS Varriors</h4>
+                        <div class="text-is-smaller">
+                            <p>Atom classes for maintainable inline CSS</p>
+                            <p><strong>class="opacity"<br>style="--opacity:0.5;"</strong></p>
+                        </div>
+                    </li>
+                    <li>
+                        <h4>Catgrounds</h4>
+                        <div class="text-is-smaller">
+                            <p><strong>css class</strong></p>
+                            <p>Design trick to make boring content more interesting</p>
+                        </div>
+                    </li>
+                    <li>
+                        <h4>Offsidebar</h4>
+                        <div class="text-is-smaller">
+                            <p><strong>css component</strong></p>
+                            <p>Expandable side-panel prevents content jumps on call (google chrome issue)</p>
+                        </div>
+                    </li>
+
+                    <li>
+                        <h4>Rich Article Grid Layout</h4>
+                         <div class="text-is-smaller">
+                            <p><strong>sass component</strong></p>
+                            <p>CSS grid template for big articles with a lot of content, illustrations and creative visuals.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <h4>Banners</h4>
+                        <div class="text-is-smaller">
+                            <p><strong>css class</strong></p>
+                            <p>Wrapper for content grouping</p>
+                        </div>
+                    </li>
+
+                    <li>
+                        <h4>Color-model</h4>
+                        <div class="text-is-smaller">
+                            <p>CSS pattern for switching colors in markup</p>
+                        </div>
+                    </li>
+                    <li>
+                        <h4>SVG-icons</h4>
+                        <div class="text-is-smaller">
+                            <p><strong>css, svg</strong></p>
+                            <p>Markup shortcut and presets with common used icons.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <h4>Swed Design Components</h4>
+                        <div class="text-is-smaller">
+                            <p>Button</p>
+                        </div>
+                    </li>
+                </ul>
+        </section>
+        <hr><hr><hr>
+    </section>
+
+
+    <!-- ----------------------------------------- Catgrounds -->
+
+
+    <style>
+        .color-mode--catgrounds {
+            --background-color:           hsl(202, 85%, 17%);
+            --color:                      hsl(202, 11%, 93%);
+            --alternative-text-color:     hsl(var(--HSL-KingsGold));
+
+            --secondary-background-color: hsl(202, 92%, 13%);
+            --secondary-color:            hsl(202, 11%, 93%);
+
+            --third-background-color:     hsl(202, 81%, 23%);
+            --third-color:                hsl(202, 11%, 93%);
+
+            --action-color:               hsl(var(--HSL-KingsAction));
+            --action-color--hover:        hsl(var(--HSL-KingsAction));
+            --action-color--text:         white;
+        }
+        .catground-description-title {
+            justify-content: flex-start;
+        }
+        .el-catground-compare {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            align-content: stretch;
+            align-items: stretch;
+        }
+        .el-catground-compare > .el-comparer {
+            flex-grow: 1;
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-content: center;
+            align-items: center;
+            padding: var(--all-space);
+        }
+        .el-comparer .illustration {
+            margin: var(--row-space) 0;
+        }
+    </style>
+
+
+    <article class="chapter isontop isonbot color-mode--catgrounds use-colors">
+
+        <section class="article-layer swed-banner use-secondary-colors">
+            <figure style="--max-width:10em;opacity:0.25;">
+                <img src="art/component-icons/component-icon--catgrounds.svg" alt="Catground SVG Icon">
+            </figure>
+            <h2 class="huge-title">Catgrounds</h2>
+        </section>
+
+        <section class="article-box-merge-east swed-banner catground-description-title">
+            <h3 class="mid-title">Short description:</h3>
+            <div class="color-text">
+                <p>An abstract shapes<br>
+                   as background-images<br>
+                   for visual attraction.</p>
+            </div>
+            <footer>
+                <a href="catgrounds.html" class="swed-button">Project page</a>
+            </footer>
+        </section>
+
+        <!-- Catground Compare -->
+
+        <section class="article-layer el-catground-compare">
+            <div class="el-comparer">
+                <h4 class="color-text">
+                    <div class="text-is-normal">Example one</div>
+                    <div class="big-title">A little bit boring</div>
+                </h4>
+                <figure class="illustration">
+                    <img src="art/promo/no-catgrounds.png" alt="Screen sample without catground">
+                </figure>
+            </div>
+            <div class="el-comparer">
+                    <h4 class="color-text">
+                        <div class="text-is-normal">Example two</div>
+                        <div class="big-title">Catground!</div>
+                    </h4>
+                    <figure class="illustration">
+                        <img src="art/promo/has-catgrounds.png" alt="Screen sample with catground effect">
+                    </figure>
+            </div>
+        </section>
+
+
+    </article>
+
+
+
+    <!-- ----------------------------------------- Project About -->
+
+
+    <section class="chapter" hidden>
+
+        <header class="article-box-merge color-box">
+            <strong>appart</strong>
+            <p>— (фр.) поиск подходящего партнёра</p>
+        </header>
+
+        <h2 class="huge-title">App & Art</h2>
+
+        <p>App — от технического термина application, Art — творчество. Игра слов означает, что <em>технология</em> и <em>содержание</em> тесно связаны друг с другом.</p>
+
+        <p>Проект appart создаётся для упрощённой вёрстки содержания с большим количеством оригинальных идей. Создание происходит в одном непрерывном потоке, без разделения на «писать текст» и «программировать код».</p>
+
+
+        <h3>Правила appart</h3>
+        <ul>
+            <li>Компоненты изменяются сохраняя общие гайдлайны</li>
+        </ul>
+
+    </section>
+
+
+    <!-- ----------------------------------------- Article Grid -->
+
+
+    <style>
+        .content-menu {
+            list-style: none;
+            padding:
+                calc( 0 * var(--row-space) )
+                0;
+            margin:
+                0
+                calc(  -1 * var(--col-space) );
+        }
+        .content-menu>li {
+            display: block;
+            padding:
+                calc( 0.5 * var(--row-space) )
+                calc(   1 * var(--col-space) );
+        }
+        .content-menu>li>a {
+            display: block;
+            margin:
+                calc(-0.5 * var(--row-space) )
+                calc(  -1 * var(--col-space) );
+            padding:
+                calc( 0.5 * var(--row-space) )
+                calc(   1 * var(--col-space) );
+        }
+        .content-menu>.is-current>a {
+            background-color: var(--active-color);
+                       color: var(--active-color--text);
+            text-decoration:  none;
+        }
+        .content-menu>li>a:hover {
+            background-color: var(--shadow-color);
+        }
+        .content-menu>li>a:focus-within {
+            background-color: var(--shadow-color);
+        }
+
+        .content-menu-toggler {
+            text-align: left;
+            border-bottom: 4px solid var(--shadow-color);
+            margin:
+                0
+                calc(  -1 * var(--col-space) );
+            padding:
+                calc( 0.5 * var(--row-space) )
+                calc(   1 * var(--col-space) );
+        }
+        .content-menu-container {
+            position: relative;
+            margin:
+                0
+                calc(  -1 * var(--col-space) );
+        }
+
+    </style>
+
+
+
+    <article class="chapter is-on-top colors--ivory use-colors">
+
+        <header class="article-layer swed-banner back-color-descent">
+            <h2 class="huge-title">Rich Article Grid Layout</h2>
+            <figure style="--max-width:10em;opacity:0.25;">
+                <img src="art/component-icons/component-icon--article-grid.svg" alt="Grid SVG Icon">
+            </figure>
+        </header>
+
+        <hr>
+
+        <div class="article-autobar-west">
+            <button class="for-autobar js-for-GLBar">Display features...</button>
+            <section class="offsidebar is-autobar from-westside GLBar">
+                <section class="sidepanel">
+                    <header class="sidepanel-header">
+                        <h3 class="min-title">Features</h3>
+                    </header>
+                    <nav class="sidepanel-content">
+                        <ul class="content-menu">
+                            <li><a href="dev/tests-article-grid.html">Three-column layout</a></li>
+                            <li><a href="dev/tests-article-grid.html">Easy for markup</a></li>
+                            <li><a href="dev/tests-article-grid.html">Easy for customize components</a></li>
+                            <li><a href="dev/tests-article-grid.html">Built in «auto hide menu»</a></li>
+                        </ul>
+                    </nav>
+                </section>
+            </section>
+        </div>
+
+        <div class="keep-grid article-box-merge-east">
+            <section class="block">
+                <p auto-content></p>
+                <div class=""><p auto-content></p></div>
+                <p auto-content></p>
+            </section>
+            <section class="textnote">
+                <p auto-content></p>
+                <a class="swed-button" href="dev/tests-article-grid.html"><span>Demo</span></a>
+            </section>
+            <section class="big-box">
+                <p auto-content></p>
+            </section>
+            <section class="block">
+                <p auto-content></p>
+            </section>
+            <figure class="block">
+                <img src="art/illustrations/austria.svg" alt="Castle in Austria, schematic illustration">
+            </figure>
+            <section class="block">
+                <p auto-content></p>
+                <p auto-content></p>
+            </section>
+        </div>
+    </article>
+
+
+    <!-- ----------------------------------------- Banner -->
+
+
+            <section class="swed-banner colors-as-secondary">
+
+                <header>
+                    <h2 class="huge-title">Banner</h2>
+                </header>
+
+                <section class="has-min-width" style="--min-width:16em;">
+                    <h3 class="min-title">Features</h3>
+                    <ul>
+                        <li>One-tag wrap</li>
+                        <li>Auto fit for any screen/area</li>
+                    </ul>
+                </section>
+
+                <footer>
+                    <a href="dev/tests-banners.html" class="swed-button"><span>Demo</span></a>
+                </footer>
+
+            </section>
+
+
+    <!-- ----------------------------------------- Autogrid -->
+
+
+    <article id="Autogrid" class="chapter isontop isonbot">
+
+        <header class="article-layer swed-banner">
+            <h2 class="huge-title">Autogrid filled with banners</h2>
+        </header>
+
+        <div class="layer">
+            <div class="autogrid">
+
+                <section class="swed-banner colors-as-secondary">
+                    <figure style="--max-width:10em;">
+                        <img src="art/component-icons/component-icon--banners.svg" alt="SVG icon for Banners">
+                    </figure>
+                </section>
+
+
+                <section class="swed-banner colors-as-primary">
+                    <header>
+                        <div class="huge-title">Banner</div>
+                    </header>
+                    <section>
+                        <h2 class="min-title">Features</h2>
+                        <ul>
+                            <li>Information message with caption/image</li>
+                            <li>Action button</li>
+                            <li>Grid and screen: auto-fit</li>
+                        </ul>
+                    </section>
+                    <footer>
+                        <a href="dev/tests-banners.html" class="swed-button"><span>Test use-cases</span></a>
+                    </footer>
+                </section>
+
+
+                <section class="swed-banner colors-as-highlight">
+                    <section>
+                        <ul class="group-content-rows">
+                            <li>Information message with caption/image</li>
+                            <li>Action button</li>
+                            <li>Grid and screen: auto-fit</li>
+                        </ul>
+                    </section>
+                    <footer>
+                        <a href="dev/tests-banners.html" class="swed-button"><span>Test use-cases</span></a>
+                    </footer>
+                </section>
+
+                <section class="swed-banner colors-as-alternative">
+                    <section>
+                        <h2 class="min-title">Features</h2>
+                        <ul>
+                            <li>Information message with caption/image</li>
+                            <li>Action button</li>
+                            <li>Grid and screen: auto-fit</li>
+                        </ul>
+                    </section>
+                </section>
+
+                <section class="swed-banner colors-as-highlight has-sans-text catground is-big" >
+                    <header>
+                        <h2 class="big-title">Promotion & SEO</h2>
+                    </header>
+                    <section class="text-conent">
+                         <p>A crucial part of online gambling business. Good SEO & promotion is what differentiates successful casinos from failed enterprises. Get in touch with professionals with 10+ years of experience in online gambling SEO and promotion to ensure your business grows.</p>
+                    </section>
+                    <footer>
+                        <a href="#" class="swed-button"><span>Learn more</span></a>
+                    </footer>
+                </section>
+
+                <section class="swed-banner colors-as-primary">
+                    <header>
+                        <div class="huge-title">Banner</div>
+                    </header>
+                    <footer>
+                        <a href="dev/tests-banners.html" class="swed-button"><span>Test use-cases</span></a>
+                    </footer>
+                </section>
+
+                <section class="swed-banner colors-as-secondary is-big">
+                    <header>
+                        <div class="huge-title">Banner</div>
+                    </header>
+                    <section>
+                        <h2 class="min-title">Features</h2>
+                        <ul>
+                            <li>Information message with caption/image</li>
+                            <li>Action button</li>
+                            <li>Grid and screen: auto-fit</li>
+                        </ul>
+                    </section>
+                    <footer>
+                        <a href="dev/tests-banners.html" class="swed-button"><span>Test use-cases</span></a>
+                    </footer>
+                </section>
+
+            </div>
+
+        </div>
+    </article>
+
+
+
+    <!-- ----------------------------------------------------- Offside Bar -->
+
+
+    <article id="offsidebar" class="chapter">
+
+        <h2 class="">Offside bar</h2>
+
+        <section class="chapter">
+
+            <p>Боковая панель появляющаяся по вызову. Чаще всего, для навигационного меню.</p>
+            <p>В основе — очевидное решение с использованием <em>position:fixed</em>. Задача компонента — избавить от неприятных проблем, часто встречающихся на практике.</p>
+
+        </section>
+
+        <div class="article-box-merge keep-grid color-box">
+            <h3 class="mid-title">Перечень проблем</h3>
+            <ol class="block">
+                <li>Поведение chrome scroll-bar не должно нарушать layout страницы, любое «дёргание» содержания не допускаяется.</li>
+                <li>Background отделён от содержания панели, для оптимизированных эффектов анимации.</li>
+                <li>Содержимое панели подстраивается под содержание по горизонтали и скролится по вертикали при необходимости.</li>
+                <li>Отсутствие декоративной анимации на мобильных устройствах (ради экономии энергии батарей) не должно бросаться в глаза.</li>
+            </ol>
+        </div>
+
+        <div class="article-box-merge swed-banner colors-as-secondary">
+            <h3 class="huge-title">Примеры</h3>
+            <div class="is-centered">
+                <button class="swed-button js-for-EastsideBar">Default example</button>
+                <button class="swed-button js-for-WestsideBar">Bar from Westside</button>
+                <button class="swed-button js-for-OverflowBar">With content overflow</button>
+                <button class="swed-button js-for-OverflowBarWestside">Westside overflow</button>
+            </div>
+        </div>
+
+        <!-- Default Bar -->
+
+        <section class="offsidebar from-eastside EastsideBar colors-as-secondary">
+            <!-- <div class="offsidebar-overlay"></div>    <!-- auto insertion with js -->
+            <!-- <div class="offsidebar-background"></div> <!-- auto insertion with js -->
+            <div class="sidepanel">
+
+                <header class="sidepanel-header">
+                    <h2 class="min-title">Classic Bar</h2>
+                </header>
+
+                <nav class="sidepanel-content">
+                    <ul class="content-menu js-for-EastsideBar">
+                        <li>Lorem ipsum</li>
+                        <li>Pellentesque habitant</li>
+                        <li>Morbi tristique senectus</li>
+                        <li>Et netus et malesuada</li>
+                        <li>Fames ac turpis egestas</li>
+                        <li>Vestibulum tortor quam</li>
+                        <li>Feugiat vitae</li>
+                        <li>Ultricies eget</li>
+                        <li>Tempor sit amet</li>
+                    </ul>
+                </nav>
+
+                <footer class="sidepanel-footer">
+                    <div>Footer</div>
+                </footer>
+
+            </div>
+        </section>
+
+        <!-- Westside Bar -->
+
+        <section class="offsidebar from-westside WestsideBar colors-as-special">
+            <div class="sidepanel">
+
+                <header class="sidepanel-header">
+                    <h2 class="min-title">Components</h2>
+                </header>
+
+                <nav class="sidepanel-content">
+                    <ul class="content-menu js-for-WestsideBar">
+                        <li><a href="#offsidebar">Offside bar</a></li>
+                        <li><a href="#color-model">Color Model</a></li>
+                        <li><a href="#article-grid">Article Grid</a></li>
+                        <li><a href="#svga-icons">SVGA Icons</a></li>
+                        <li><a href="#data-table">Data Table</a></li>
+                    </ul>
+                </nav>
+
+                <footer class="sidepanel-footer">
+                    <div>Footer</div>
+                </footer>
+
+            </div>
+        </section>
+
+        <!-- Overflow Bar -->
+
+        <section class="offsidebar OverflowBar colors-as-secondary">
+            <section class="sidepanel">
+
+                <header class="sidepanel-header">
+                    <h2 class="min-title">Scroll Content</h2>
+                </header>
+
+                <section class="sidepanel-content">
+                    <div class="rows" style="max-width:20em;">
+                        <p auto-content></p>
+                        <p auto-content></p>
+                        <p auto-content></p>
+                        <p auto-content></p>
+                        <p auto-content></p>
+                        <p auto-content></p>
+                        <p auto-content></p>
+                        <p auto-content></p>
+                    </div>
+                </section>
+
+                <footer class="sidepanel-footer">
+                    <div>Footer</div>
+                </footer>
+
+            </section>
+        </section>
+
+        <!-- Overflow Bar Westside -->
+
+        <section class="offsidebar from-westside OverflowBarWestside colors-as-secondary">
+            <section class="sidepanel">
+
+                <header class="sidepanel-header">
+                    <h2 class="min-title">Scroll Content</h2>
+                </header>
+
+                <section class="sidepanel-content">
+                    <div class="rows" style="max-width:20em;">
+                        <p auto-content></p>
+                        <p auto-content></p>
+                        <p auto-content></p>
+                        <p auto-content></p>
+                        <p auto-content></p>
+                        <p auto-content></p>
+                        <p auto-content></p>
+                        <p auto-content></p>
+                    </div>
+                </section>
+
+                <footer class="sidepanel-footer">
+                    <div>Footer</div>
+                </footer>
+
+            </section>
+        </section>
+
+
+
+    </article>
+
+    <!-- Activate Offside Bars -->
+
+    <script>
+        function InterfaceOffsideBar (barName) {
+
+            const asidebar = document.querySelector('.'+barName)
+            const htmlwrap = document.querySelector('html')
+
+            const classActive     = 'is-active'
+            const classHasOverlay = 'has-offsidebar-overlay'
+            const cssBartender    ='.js-for-' + barName
+            const classOverlay    = 'offsidebar-overlay'
+            const classBackground = 'offsidebar-background'
+
+            const doClose  = () => {
+                asidebar.classList.remove(classActive)
+                htmlwrap.classList.remove(classHasOverlay) }
+            const doOpen   = () => {
+                asidebar.classList.add(classActive)
+                htmlwrap.classList.add(classHasOverlay) }
+            const doToggle = () => {
+                if (asidebar.classList.contains(classActive)) doClose()
+                else doOpen()
+            }
+
+            // find and activate bartenders
+            const bartenderFunction = (el, order) =>
+                  el.addEventListener('click', order === 'close' ? doClose : doToggle )
+            document.querySelectorAll(cssBartender).forEach(bartenderFunction)
+
+            // find/create background
+            let background = asidebar.querySelector('.'+classBackground)
+            if(!background) {
+                background = document.createElement('div')
+                background.classList.add(classBackground)
+                asidebar.prepend(background)
+            }
+
+            // find/create shadow overlay with functionality
+            let overlay = asidebar.querySelector('.'+classOverlay)
+            if(!overlay) {
+                overlay = document.createElement('div')
+                overlay.classList.add(classOverlay)
+                asidebar.prepend(overlay)
+            }
+            bartenderFunction(overlay, 'close')
+        }
+
+        // Launch Activation
+        InterfaceOffsideBar('EastsideBar')
+        InterfaceOffsideBar('WestsideBar')
+        InterfaceOffsideBar('OverflowBar')
+        InterfaceOffsideBar('OverflowBarWestside')
+        InterfaceOffsideBar('GLBar')
+    </script>
+
+
+    <!-- ----------------------------------------------------- Color Model -->
+
+
+    <article id="color-model" class="chapter secondary-colors">
+
+        <h2 class="west">Color Model</h2>
+
+        <section class="block">
+            <h3>Features</h3>
+            <ul>
+                <li>Предотвращает ситуацию «Использование <em>дополнительного цвета</em> внутри <em>дополнительного цвета</em>»</li>
+                <li>Упрощённое добавление новой цветовой схемы, переопределяя css-переменные</li>
+            </ul>
+        </section>
+        <footer>
+            <button class="swed-button">
+                <a href="dev/tests-color-model.html">Test page</a>
+            </button>
+        </footer>
+
+    </article>
+
+    <header id="color-model-tests" class="banner">
+        <h1 class="huge-title">Color Model Tests</h1>
+    </header>
+
+    <section class="banner use-colors colors--root">
+        <header>
+            <h2>colors--root</h2>
+            <p class="text-color-descent">Color Model 3x3</p>
+        </header>
+        <p class="back-color-descent back-color-hover link-color padding">Hover Me</p>
+    </section>
+    <section class="banner use-colors colors--swed">
+        <header>
+            <h2>colors--swed</h2>
+            <p class="text-color-descent">Color Model 3x3</p>
+        </header>
+        <p class="back-color-descent back-color-hover link-color padding">Hover Me</p>
+    </section>
+    <section class="banner use-colors colors--swed-secondary">
+        <header>
+            <h2>colors--swed-secondary</h2>
+            <p class="text-color-descent">Color Model 3x3</p>
+        </header>
+        <p class="back-color-descent back-color-hover link-color padding">Hover Me</p>
+    </section>
+    <section class="banner use-colors colors--swed-third">
+        <header>
+            <h2>colors--swed-third</h2>
+            <p class="text-color-descent">Color Model 3x3</p>
+        </header>
+        <p class="back-color-descent back-color-hover link-color padding">Hover Me</p>
+    </section>
+    <section class="banner use-colors colors--action">
+        <header>
+            <h2>colors--action</h2>
+            <p class="text-color-descent">Color Model 3x3</p>
+        </header>
+        <p class="back-color-descent back-color-hover link-color padding">Hover Me</p>
+    </section>
+    <section class="banner use-colors colors--ivory">
+        <header>
+            <h2>colors--ivory</h2>
+            <p class="text-color-descent">Color Model 3x3</p>
+        </header>
+        <p class="back-color-descent back-color-hover link-color padding">Hover Me</p>
+    </section>
+
+
+    <!-- ----------------------------------------------------- Article Grid -->
+
+
+    <article id="article-grid" class="chapter">
+
+        <h2 class="west">Article Grid</h2>
+
+        <section class="block">
+
+            <p>Трёхколоночная разметка для вёрстки статей, насыщенных информативными вставками — сносками, иллюстрациями, сменяемыми декорациями и т.д.</p>
+
+            <h3>Features</h3>
+            <ul class="block">
+                <li>Три ключевые колонки:
+                    <ul>
+                        <li>Основной текст</li>
+                        <li>Заметка слева</li>
+                        <li>Заметка справа</li>
+                    </ul>
+                </li>
+                <li>Дополнительные колонки соединяют основные в разных сочетаниях. Включая варианты «От края экрана».</li>
+                <li>Предусмотрены колонки для текста на другом фоне — добавляются поля, не меняя положение текста.</li>
+                <li>Адаптивная вёрстка следит за соблюдением правильных отступов и направляющих-линий</li>
+            </ul>
+
+        </section>
+
+        <div class="east">
+            <section>
+                <a href="dev/tests-article-grid.html">Article grid usecases</a>
+                <figure class="svga-icon color-text"><svg><use xlink:href="#svg-next"></use></svg></figure>
+            </section>
+        </div>
+
+    </article>
+
+
+    <!-- ----------------------------------------------------- SVGA Icons -->
+
+
+    <article id="svga-icons" class="chapter">
+
+        <header class="west">
+            <h2>SVGA Icons</h2>
+        </header>
+
+        <section class="block">
+
+            <ul>
+                <li>Inline markup</li>
+                <li>Customizable SVG presets</li>
+            </ul>
+
+            <div class="block text-is-bigger">
+                <section>
+                    <figure class="svga-icon"><svg><use xlink:href="#svg-next"></use></svg></figure>
+                    <figure class="svga-icon"><svg><use xlink:href="#svg-back"></use></svg></figure>
+                    <figure class="svga-icon"><svg><use xlink:href="#svg-down"></use></svg></figure>
+                    <figure class="svga-icon"><svg><use xlink:href="#svg-menu"></use></svg></figure>
+                    <figure class="svga-icon"><svg><use xlink:href="#svg-check"></use></svg></figure>
+                    <figure class="svga-icon"><svg><use xlink:href="#svg-close"></use></svg></figure>
+                </section>
+                <section>
+                    <figure class="svga-icon"><svg><use xlink:href="#svg-email"></use></svg></figure>
+                    <figure class="svga-icon"><svg><use xlink:href="#svg-phone"></use></svg></figure>
+                    <figure class="svga-icon"><svg><use xlink:href="#svg-chat"></use></svg></figure>
+                </section>
+                <section>
+                    <figure class="svga-icon"><svg><use xlink:href="#svg-linkedin"></use></svg></figure>
+                    <figure class="svga-icon"><svg><use xlink:href="#svg-twitter"></use></svg></figure>
+                    <figure class="svga-icon"><svg><use xlink:href="#svg-facebook"></use></svg></figure>
+                    <figure class="svga-icon"><svg><use xlink:href="#svg-instagram"></use></svg></figure>
+                    <figure class="svga-icon"><svg><use xlink:href="#svg-youtube"></use></svg></figure>
+                    <figure class="svga-icon"><svg><use xlink:href="#svg-github"></use></svg></figure>
+                    <figure class="svga-icon"><svg><use xlink:href="#svg-skype"></use></svg></figure>
+                    <figure class="svga-icon"><svg><use xlink:href="#svg-telegram"></use></svg></figure>
+                </section>
+            </div>
+
+        </section>
+
+        <div class="eastbox">
+            <h3>To Do:</h3>
+            <ul class="block">
+                <li>Нарисовать иконки по текущим шаблонам</li>
+                <li>Устранить слипание между строками</li>
+            </ul>
+        </div>
+
+    </article>
+
+    <!-- Icons -->
+
+    <div hidden>
+        <svg id="UsedIcons">
+            <symbol id="svg-next" viewBox="0 0 24 24">
+                <!--title>Arrow Next, material icons</title-->
+                <path d="M0 0h24v24H0z" fill="none"/>
+                <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
+            </symbol>
+            <symbol id="svg-back" viewBox="0 0 24 24">
+                <!--title>Arrow Back, material icons</title-->
+                <path d="M0 0h24v24H0z" fill="none"/>
+                <path d="M0 0h24v24H0z" fill="none"/><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+            </symbol>
+            <symbol id="svg-down" viewBox="0 0 24 24">
+                <!--title>Chevron Down, material icons</title-->
+                <path d="M0-.75h24v24H0z" fill="none"/>
+                <path d="M7.41 7.84L12 12.42l4.59-4.58L18 9.25l-6 6-6-6z"/>
+            </symbol>
+            <symbol id="svg-menu" viewBox="0 0 24 24">
+                <!--title>Hamburger, material icons</title-->
+                <path d="M0 0h24v24H0z" fill="none"/>
+                <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+            </symbol>
+            <symbol id="svg-check" viewBox="0 0 24 24">
+                <!--title>Check, material icons</title-->
+                <path d="M0 0h24v24H0z" fill="none"/>
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+            </symbol>
+            <symbol id="svg-close" viewBox="0 0 24 24">
+                <!--title>Close X, material icons</title-->
+                <path d="M0 0h24v24H0z" fill="none"/>
+                <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+            </symbol>
+
+            <symbol id="svg-email" viewBox="0 0 24 24">
+                <!--title>Email, material icons</title-->
+                <path d="M0 0h24v24H0z" fill="none"/>
+                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V8l8 5 8-5v10zm-8-7L4 6h16l-8 5z"/>
+            </symbol>
+            <symbol id="svg-phone" viewBox="0 0 24 24">
+                <!--title>Phone, material icons</title-->
+                <path d="M0 0h24v24H0z" fill="none"/>
+                <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+            </symbol>
+            <symbol id="svg-skype" viewBox="-12 -12 88 88">
+                <!--title>Skype, custom 2019.6.27</title-->
+                <path d="M61.7 37.3v.3l-.1-.6.1.3A29.3 29.3 0 0 0 60 20a29.7 29.7 0 0 0-16-16A29.5 29.5 0 0 0 32 1.6a32.1 32.1 0 0 0-5.7.5s.2 0 .3.2l-.7-.1.4-.1A18 18 0 0 0 5.2 5.3a17.8 17.8 0 0 0-3 21.3s0-.2.2-.3v.7l-.1-.4a31 31 0 0 0 2 17 29.7 29.7 0 0 0 16 16C23.8 61.2 27.8 62 32 62a28.2 28.2 0 0 0 5.3-.5l-.3-.2.6.1h-.3A17.2 17.2 0 0 0 46 64a17.9 17.9 0 0 0 15.6-26.6zm-29.6 13c-10.8 0-15.6-5.3-15.6-9.2 0-2 1.6-3.5 3.6-3.5 4.6 0 3.4 6.7 12 6.7 4.3 0 6.8-2.4 6.8-4.8 0-1.5-.8-3.1-3.6-3.8l-9.6-2.4c-7.7-1.9-9-6-9-10 0-8.1 7.6-11.1 14.7-11.1 6.6 0 14.4 3.6 14.4 8.5 0 2-1.8 3.2-3.9 3.2-4 0-3.2-5.4-11-5.4-4 0-6.1 1.7-6.1 4.3s3 3.3 5.8 4l7 1.5c7.8 1.8 9.8 6.2 9.8 10.5 0 6.6-5 11.5-15.3 11.5zm4.9 11c0 .2.1.2.3.3l.3-.1zm24.6-23.7l.1-.3-.1-.4zM2.3 26.3l-.1.3.2.4zm24.3-24l-.3-.1H26z"/>
+            </symbol>
+            <symbol id="svg-telegram" viewBox="-48 -48 624 624">
+                <!--title>Telegram Square, custom 2019.6.27</title-->
+                <path fill="currentColor" d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm121.8 169.9l-40.7 191.8c-3 13.6-11.1 16.9-22.4 10.5l-62-45.7-29.9 28.8c-3.3 3.3-6.1 6.1-12.5 6.1l4.4-63.1 114.9-103.8c5-4.4-1.1-6.9-7.7-2.5l-142 89.4-61.2-19.1c-13.3-4.2-13.6-13.3 2.8-19.7l239.1-92.2c11.1-4 20.8 2.7 17.2 19.5z"/>
+            </symbol>
+            <symbol id="svg-chat" viewBox="-48 -48 624 624">
+                <!--title>Chat Bubble, font-awesome</title-->
+                <path fill="currentColor" d="M256 32C114.6 32 0 125.1 0 240c0 49.6 21.4 95 57 130.7C44.5 421.1 2.7 466 2.2 466.5c-2.2 2.3-2.8 5.7-1.5 8.7S4.8 480 8 480c66.3 0 116-31.8 140.6-51.4 32.7 12.3 69 19.4 107.4 19.4 141.4 0 256-93.1 256-208S397.4 32 256 32zM128 272c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm128 0c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm128 0c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32z"/>
+            </symbol>
+
+            <symbol id="svg-linkedin" viewBox="0 0 448 512">
+                <!--title>Linkedin Square, font-awesome</title-->
+                <path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/>
+            </symbol>
+            <symbol id="svg-twitter" viewBox="0 0 448 512">
+                <!--title>Twitter Square, font-awesome</title-->
+                <path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-48.9 158.8c.2 2.8.2 5.7.2 8.5 0 86.7-66 186.6-186.6 186.6-37.2 0-71.7-10.8-100.7-29.4 5.3.6 10.4.8 15.8.8 30.7 0 58.9-10.4 81.4-28-28.8-.6-53-19.5-61.3-45.5 10.1 1.5 19.2 1.5 29.6-1.2-30-6.1-52.5-32.5-52.5-64.4v-.8c8.7 4.9 18.9 7.9 29.6 8.3a65.447 65.447 0 0 1-29.2-54.6c0-12.2 3.2-23.4 8.9-33.1 32.3 39.8 80.8 65.8 135.2 68.6-9.3-44.5 24-80.6 64-80.6 18.9 0 35.9 7.9 47.9 20.7 14.8-2.8 29-8.3 41.6-15.8-4.9 15.2-15.2 28-28.8 36.1 13.2-1.4 26-5.1 37.8-10.2-8.9 13.1-20.1 24.7-32.9 34z"/>
+            </symbol>
+            <symbol id="svg-facebook" viewBox="0 0 448 512">
+                <!--title>Facebook Square, font-awesome</title-->
+                <path d="M400 32H48A48 48 0 0 0 0 80v352a48 48 0 0 0 48 48h137.25V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.27c-30.81 0-40.42 19.12-40.42 38.73V256h68.78l-11 71.69h-57.78V480H400a48 48 0 0 0 48-48V80a48 48 0 0 0-48-48z"/>
+            </symbol>
+            <symbol id="svg-youtube" viewBox="0 0 448 512">
+                <!--title>Youtube Square, font-awesome</title-->
+                <path d="M186.8 202.1l95.2 54.1-95.2 54.1V202.1zM448 80v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V80c0-26.5 21.5-48 48-48h352c26.5 0 48 21.5 48 48zm-42 176.3s0-59.6-7.6-88.2c-4.2-15.8-16.5-28.2-32.2-32.4C337.9 128 224 128 224 128s-113.9 0-142.2 7.7c-15.7 4.2-28 16.6-32.2 32.4-7.6 28.5-7.6 88.2-7.6 88.2s0 59.6 7.6 88.2c4.2 15.8 16.5 27.7 32.2 31.9C110.1 384 224 384 224 384s113.9 0 142.2-7.7c15.7-4.2 28-16.1 32.2-31.9 7.6-28.5 7.6-88.1 7.6-88.1z"/>
+            </symbol>
+            <symbol id="svg-instagram" viewBox="0 0 448 512">
+                <!--title>Instagram, font-awesome</title-->
+                <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/>
+            </symbol>
+            <symbol id="svg-github" viewBox="0 0 448 512">
+                <!--title>Github Square, font-awesome</title-->
+                <path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM277.3 415.7c-8.4 1.5-11.5-3.7-11.5-8 0-5.4.2-33 .2-55.3 0-15.6-5.2-25.5-11.3-30.7 37-4.1 76-9.2 76-73.1 0-18.2-6.5-27.3-17.1-39 1.7-4.3 7.4-22-1.7-45-13.9-4.3-45.7 17.9-45.7 17.9-13.2-3.7-27.5-5.6-41.6-5.6-14.1 0-28.4 1.9-41.6 5.6 0 0-31.8-22.2-45.7-17.9-9.1 22.9-3.5 40.6-1.7 45-10.6 11.7-15.6 20.8-15.6 39 0 63.6 37.3 69 74.3 73.1-4.8 4.3-9.1 11.7-10.6 22.3-9.5 4.3-33.8 11.7-48.3-13.9-9.1-15.8-25.5-17.1-25.5-17.1-16.2-.2-1.1 10.2-1.1 10.2 10.8 5 18.4 24.2 18.4 24.2 9.7 29.7 56.1 19.7 56.1 19.7 0 13.9.2 36.5.2 40.6 0 4.3-3 9.5-11.5 8-66-22.1-112.2-84.9-112.2-158.3 0-91.8 70.2-161.5 162-161.5S388 165.6 388 257.4c.1 73.4-44.7 136.3-110.7 158.3zm-98.1-61.1c-1.9.4-3.7-.4-3.9-1.7-.2-1.5 1.1-2.8 3-3.2 1.9-.2 3.7.6 3.9 1.9.3 1.3-1 2.6-3 3zm-9.5-.9c0 1.3-1.5 2.4-3.5 2.4-2.2.2-3.7-.9-3.7-2.4 0-1.3 1.5-2.4 3.5-2.4 1.9-.2 3.7.9 3.7 2.4zm-13.7-1.1c-.4 1.3-2.4 1.9-4.1 1.3-1.9-.4-3.2-1.9-2.8-3.2.4-1.3 2.4-1.9 4.1-1.5 2 .6 3.3 2.1 2.8 3.4zm-12.3-5.4c-.9 1.1-2.8.9-4.3-.6-1.5-1.3-1.9-3.2-.9-4.1.9-1.1 2.8-.9 4.3.6 1.3 1.3 1.8 3.3.9 4.1zm-9.1-9.1c-.9.6-2.6 0-3.7-1.5s-1.1-3.2 0-3.9c1.1-.9 2.8-.2 3.7 1.3 1.1 1.5 1.1 3.3 0 4.1zm-6.5-9.7c-.9.9-2.4.4-3.5-.6-1.1-1.3-1.3-2.8-.4-3.5.9-.9 2.4-.4 3.5.6 1.1 1.3 1.3 2.8.4 3.5zm-6.7-7.4c-.4.9-1.7 1.1-2.8.4-1.3-.6-1.9-1.7-1.5-2.6.4-.6 1.5-.9 2.8-.4 1.3.7 1.9 1.8 1.5 2.6z"/>
+            </symbol>
+        </svg>
+    </div>
+
+
+    <!-- ----------------------------------------------------- Responsive Data Table -->
+
+
+    <article id="data-table" class="chapter">
+
+        <header class="west">
+            <h2>Data Table</h2>
+        </header>
+
+        <p>Respsonsive table component</p>
+
+    </article>
+
+
+
+    <!-- ----------------------------------------------------- Multicolumn list research -->
+
+    <style>
+        .collisting {
+          --max-width:   50rem;
+          --max-columns:     3;
+          --gap-space:  2.5rem;
+          --row-space:    1rem;
+
+            max-width:    var(--max-width);
+        }
+        .collisting>ul {
+            column-width: calc(
+                ( var(--max-width) - ( ( var(--max-columns) + 1 ) * var(--gap-space) ) )
+                / var(--max-columns)
+                );
+            column-gap: var(--gap-space);
+            padding:  0 var(--gap-space);
+            margin:   0;
+        }
+        .collisting>ul>li {
+            page-break-inside: avoid;
+                 break-inside: avoid;
+            margin-bottom:     var(--row-space);
+        }
+
+
+        .collisting.box>ul {
+            grid-column: full;
+        }
+        .auto-margin {
+            margin-left:  auto;
+            margin-right: auto;
+        }
+    </style>
+
+
+
+    <section class="show">
+        <header class="banner">
+            <div>
+                <h3 class="mid-title">Collisting</h3>
+            </div>
+        </header>
+        <div class="has-sans-text" >
+        <section class="collisting auto-margin">
+                <ul>
+                    <li>
+                        <h4>Rich Article Grid Layout</h4>
+                         <div class="text-is-smaller">
+                            <p><strong>sass component</strong></p>
+                            <p>CSS grid template for big articles with a lot of content, illustrations and creative visuals.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <h4>Banners</h4>
+                        <div class="text-is-smaller">
+                            <p><strong>css class</strong></p>
+                            <p>Wrapper for content grouping</p>
+                        </div>
+                    </li>
+                    <li>
+                        <h4>Catgrounds</h4>
+                        <div class="text-is-smaller">
+                            <p><strong>css class</strong></p>
+                            <p>Design trick to make boring content more interesting</p>
+                        </div>
+                    </li>
+                    <li>
+                        <h4>Offsidebar</h4>
+                        <div class="text-is-smaller">
+                            <p><strong>css component</strong></p>
+                            <p>Expandable side-panel prevents content jumps on call (google chrome issue)</p>
+                        </div>
+                    </li>
+                    <li>
+                        <h4>Color-model</h4>
+                        <div class="text-is-smaller">
+                            <p><strong>css variables</strong></p>
+                            <p>Pattern for switching colors in markup</p>
+                        </div>
+                    </li>
+                    <li>
+                        <h4>SVG-icons</h4>
+                        <div class="text-is-smaller">
+                            <p><strong>css, svg</strong></p>
+                            <p>Markup shortcut and presets with common used icons.</p>
+                        </div>
+                    </li>
+                </ul>
+        </section>
+        </div>
+    </section>
+
+
+
+    <section class="chapter show">
+        <div class="article-box-merge-east">
+            <section class="box collisting has-sans-text color-box">
+                    <ul>
+                        <li>
+                            <h4>Rich Article Grid Layout</h4>
+                             <div class="text-is-smaller">
+                                <p><strong>sass component</strong></p>
+                                <p>CSS grid template for big articles with a lot of content, illustrations and creative visuals.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <h4>Banners</h4>
+                            <div class="text-is-smaller">
+                                <p><strong>css class</strong></p>
+                                <p>Wrapper for content grouping</p>
+                            </div>
+                        </li>
+                        <li>
+                            <h4>Catgrounds</h4>
+                            <div class="text-is-smaller">
+                                <p><strong>css class</strong></p>
+                                <p>Design trick to make boring content more interesting</p>
+                            </div>
+                        </li>
+                        <li>
+                            <h4>Offsidebar</h4>
+                            <div class="text-is-smaller">
+                                <p><strong>css component</strong></p>
+                                <p>Expandable side-panel prevents content jumps on call (google chrome issue)</p>
+                            </div>
+                        </li>
+                        <li>
+                            <h4>Color-model</h4>
+                            <div class="text-is-smaller">
+                                <p><strong>css variables</strong></p>
+                                <p>Pattern for switching colors in markup</p>
+                            </div>
+                        </li>
+                        <li>
+                            <h4>SVG-icons</h4>
+                            <div class="text-is-smaller">
+                                <p><strong>css, svg</strong></p>
+                                <p>Markup shortcut and presets with common used icons.</p>
+                            </div>
+                        </li>
+                    </ul>
+            </section>
+
+        </div>
+        <section class="article-box-merge-east swed-banner catground-description-title">
+            <h3 class="mid-title">Short description:</h3>
+            <div class="color-text">
+                <p>An abstract shapes<br>
+                   as background-images<br>
+                   for visual attraction.</p>
+            </div>
+            <footer>
+                <a href="catgrounds.html" class="swed-button">Project page</a>
+            </footer>
+        </section>
+
+    </section>
+
+
+
+<!-- ========================================= PAGE CUSTOM -->
+
+<script>
+    // auto insert random content into paragraphs
+    function autofillParagraphs() {
+        const p = document.querySelectorAll('[auto-content]')
+        for ( let x in p ) {
+            let texts = [
+                'Les grandes personnes m’ont conseillé de laisser de côté les dessins de serpents boas ouverts ou fermés, et de m’intéresser plutôt à la géographie, à l’histoire, au calcul et à la grammaire. C’est ainsi que j’ai abandonné, à l’âge de six ans, une magnifique carrière de peintre.',
+                'J’avais été découragé par l’insuccès de mon dessin numéro 1 et de mon dessin numéro 2. Les grandes personnes ne comprennent jamais rien toutes seules, et c’est fatigant, pour les enfants, de toujours et toujours leur donner des explications.',
+                'J’ai donc dû choisir un autre métier et j’ai appris à piloter des avions. J’ai volé un peu partout dans le monde. Et la géographie, c’est exact, m’a beaucoup servi. Je savais reconnaître, du premier coup d’œil, la Chine de l’Arizona. C’est très utile, si l’on est égaré pendant la nuit.',
+                'J’ai ainsi eu, au cours de ma vie, des tas de contacts avec des tas de gens sérieux. J’ai beaucoup vécu chez les grandes personnes. Je les ai vues de très près. Ça n’a pas trop amélioré mon opinion.',
+                'Quand j’en rencontrais une qui me paraissait un peu lucide, je faisais l’expérience sur elle de mon dessin numéro 1 que j’ai toujours conservé. Je voulais savoir si elle était vraiment compréhensive. Mais toujours elle me répondait : « C’est un chapeau. »',
+                'Alors je ne lui parlais ni de serpents boas, ni de forêts vierges, ni d’étoiles. Je me mettais à sa portée. Je lui parlais de bridge, de golf, de politique et de cravates. Et la grande personne était bien contente de connaître un homme aussi raisonnable.'
+                ]
+            let text = texts[Math.floor(Math.random()*texts.length)]
+            let textnode = document.createTextNode(text)
+            if (p[x].appendChild) p[x].appendChild(textnode)
+        }
+    }
+    autofillParagraphs()
+</script>
+
+</body>
+</html>

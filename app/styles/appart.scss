@@ -230,4 +230,9 @@
     min-width: var(--min-width, 12em)
 }
 
+.main-font-as-native-sans {
+  --font-family: var(--font-family--native-sans);
+    font-family: var(--font-family);
+}
+
 /*  EOF Appart Styles */

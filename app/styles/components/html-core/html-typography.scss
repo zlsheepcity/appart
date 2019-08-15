@@ -10,16 +10,18 @@
 
 
 :root {
-    --font-family:             var(--font-family--tufte-serif);
-    --font-family-secondary:   var(--font-family--tufte-sans);
-    --font-weight:             400;
-    --line-height:             1.5;
+  --font-family:             var(--font-family--tufte-serif);
+  --font-family-secondary:   var(--font-family--tufte-sans);
+  --font-weight:             400;
+  --line-height:             1.5;
 }
 
 body {
     line-height: var(--line-height);
     font-family: var(--font-family);
     font-weight: var(--font-weight);
+
+  --base-line-height: var(--line-height);
 }
 
 
@@ -30,6 +32,7 @@ body {
 
  /* Tufte 2018 */
  /* @import url('https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic'); */
+
   --font-family--tufte-serif:
         Vollkorn,
         et-book,
@@ -48,7 +51,8 @@ body {
         "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 
 
- /* native font stack 2018 */
+ /* Native font stack 2018 */
+
   --font-family--native-sans:
        -apple-system,
         BlinkMacSystemFont,
@@ -62,158 +66,77 @@ body {
 }
 
 
-//* ------------------------------------ workers
+/* ------------------------------------ paragraph-width */
 
+/*
+    Readable text block has width limit,
+    approx ~ 42em, choise of design.
 
-.secondary-typeface {
-    font-family: var(--font-family-secondary);
+    
+*/
+
+:root {
+  --paragraph-width--max: 42em;
+  --paragraph-width--mid: 24em;
+  --paragraph-width--min: 12em; }
+@media all and (min-width:12em) {
+  --paragraph-width--min: 100%;
 }
-.native-sans {
-  --font-family: var(--font-family--native-sans);
-    font-family: var(--font-family);
+
+body {
+  --paragraph-width: var(--paragraph-width--max);
+}
+
+.p,
+.paragraph {
+  --max-width: var(--paragraph-width);
+    max-width: var(--max-width);
+  --min-width: var(--paragraph-width--min);
+    min-width: var(--min-width);
+}
+.midi-paragraph {
+  --max-width: var(--paragraph-width--mid);
+    max-width: var(--max-width);
+  --min-width: var(--paragraph-width--min);
+    min-width: var(--min-width);
+}
+.mini-paragraph {
+  --max-width: var(--paragraph-width--min);
+    max-width: var(--max-width);
 }
 
 
-
-//* ------------------------------------ font-size model 2019
-
-
-$title-size-breakpoint: 'max-width: 38em';
+/* ------------------------------------ font-size system */
 
 
-%text-as-huge-title {
-    /* 64/64 */
-    font-size:   4em;
-    line-height: 1;
-    @media ($title-size-breakpoint) {
-        /* 32/40 */
-        font-size:   2em;
-        line-height: 1.25;
-    }
-}
-%text-as-big-title {
-    /* 40/48 */
-    font-size:   2.5em;
-    line-height: 1.2;
-    @media ($title-size-breakpoint) {
-        /* 24/32 */
-        font-size:   1.5em;
-        line-height: 1.33333333;
-    }
-}
-%text-as-mid-title {
-    /* 32/40 */
-    font-size:   2em;
-    line-height: 1.25;
-    @media ($title-size-breakpoint) {
-        /* 20/24 */
-        font-size:   1.25em;
-        line-height: 1.2;
-    }
-}
-%text-as-min-title {
-    /* 24/32 */
-    font-size:   1.5em;
-    line-height: 1.33333333;
-    @media ($title-size-breakpoint) {
-        /* 16/24 */
-        font-size:   1em;
-        line-height: 1.5;
-        font-weight: bolder;
-    }
-}
-%text-as-bigger {
+.text-inline-bigger {
     /* 20/24 */
     font-size:   1.25em;
     line-height: 1.2;
-
-    @media ($title-size-breakpoint) {
-        /* 16/24 */
-        font-size:   1em;
-        line-height: 1.5;
-        font-weight: bolder;
-
-        /* 18/24 */
-        font-size:   1.125em;
-        line-height: calc( 32/24 );
-        font-weight: inherit;
-    }
-
 }
-%text-as-regular {
-    /* 16/24 */
-    font-size:   1em;
-    line-height: 1.5;
-}
-%text-as-smaller {
-    /* 14/24 */
-    font-size:    0.875em;
-    line-height: 1.714286;
+.text-block-bigger {
+    /* 20/30 */
+    font-size:   1.25em;
+    line-height: var(--line-height);
 }
 
 
-//* ------------------------------------ markup system 2019
+/* ------------------------------------ workers */
 
 
-.huge-title *,
-.big-title *,
-.mid-title *,
-.min-title *,
-.sub-title *,
-    .title *,
- .subtitle * {
-    font-family: inherit;
-    font-size:   inherit;
-    line-height: inherit;
-    font-weight: inherit;
+.rem-base {
+    font-size:   1rem;
+    line-height: var(--base-line-height);
 }
-
-.huge-title      { @extend %text-as-huge-title; }
-.big-title       { @extend %text-as-big-title; }
-.mid-title       { @extend %text-as-mid-title; }
-.min-title       { @extend %text-as-min-title; }
-
-.title           { @extend %text-as-mid-title; }
-.subtitle        { @extend %text-as-bigger; }
-
-.text-is-bigger  { @extend %text-as-bigger; }
-.text-is-larger  { @extend %text-as-bigger; }
-.text-is-regular { @extend %text-as-regular; }
-.text-is-smaller { @extend %text-as-smaller; }
-
-.has-sans-text {
-    @extend      %text-as-smaller;
-    font-family: var(--font-family--data, sans-serif);
-    letter-spacing: 0.03em;
+.typeface {
+    font-family: var(--font-family-secondary);
+}
+.native-sans {
+    font-family: var(--font-family--native-sans);
 }
 
 
-//* ------------------------------------ width limits of text
-
-
-:root {
-  --optimal-text-row-width--max: 42rem;
-  --optimal-text-row-width--mid: 24rem;
-  --optimal-text-row-width--min: 12rem;
-}
-
-.text-row-width,
-.text-row-width-max {
-  --max-width: var(--optimal-text-row-width--max);
-    max-width: var(--max-width);
-}
-.text-row-width-mid {
-  --max-width: var(--optimal-text-row-width--mid);
-    max-width: var(--max-width);
-}
-.text-row-width-min {
-  --max-width: var(--optimal-text-row-width--min);
-    max-width: var(--max-width);
-}
-
-
-
-//* ------------------------------------ extra features
+/* ------------------------------------ extra features */
 
 
 @supports (hanging-punctuation: first) {

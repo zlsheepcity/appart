@@ -113,7 +113,7 @@
 
     <section class="screen article-grid use-colors colors--ivory">
 
-        <div>
+        <div class="is-centered">
             <h1>Font presets</h1>
             <h2>Font presets</h2>
             <h3>Font presets</h3>
@@ -121,40 +121,76 @@
             <p>Font presets</p>
         </div>
 
-        <div style="font-family: var(--font-family--tufte-serif);">
+        <div class="rows" style="font-family: var(--font-family--tufte-serif);">
             <h2>tufte-serif</h2>
             <p auto-content></p>
+            <p auto-content class="text-block-bigger"></p>
         </div>
-        <div style="font-family: var(--font-family--tufte-sans);">
+        <div class="rows" style="font-family: var(--font-family--tufte-sans);">
             <h2>tufte-sans</h2>
             <p auto-content></p>
+            <p auto-content class="text-block-bigger"></p>
         </div>
-        <div style="font-family: var(--font-family--native-sans);">
+        <div class="rows" style="font-family: var(--font-family--native-sans);">
             <h2>native-sans</h2>
             <p auto-content></p>
+            <p auto-content class="text-block-bigger"></p>
         </div>
 
-        <h2>Bigger component</h2>
+        <h2>Font-size modifyers</h2>
 
-        <div>
-            <p auto-content></p>
-            <p auto-content class="text-is-bigger"></p>
-            <p auto-content style="font-size:1.25em;line-height:1.2;"></p>
-            <p auto-content></p>
+        <div class="rows">
+            <div>
+                <span auto-content></span>
+                <span class="text-inline-bigger">
+                    (<span class="link-color">.text-inline-bigger</span>)
+                    <span auto-content></span>
+                </span>
+                <span auto-content></span>
+            </div>
+            <div class="group-center">
+                <span class="back-color-descent">line height</span>
+                <span>—</span>
+                <span class="back-color-descent text-inline-bigger">line height</span>
+            </div>
+            <div class="text-block-bigger">
+                <span class="link-color">.text-block-bigger</span>
+                <span auto-content></span>
+            </div>
         </div>
 
-        <div class="secondary-typeface">
-            <p auto-content></p>
-            <p auto-content class="text-is-bigger"></p>
-            <p auto-content style="font-size:1.25em;line-height:1.2;"></p>
-            <p auto-content></p>
-        </div>
+        <div class="article-box-merge">
 
-        <div class="native-sans">
-            <p auto-content></p>
-            <p auto-content class="text-is-bigger"></p>
-            <p auto-content style="font-size:1.25em;line-height:1.2;"></p>
-            <p auto-content></p>
+            <h2>Paragraph width</h2>
+
+            <h3><span class="link-color">.paragraph</span> Max width limit</h3>
+            <div class="paragraph group-content-rows">
+                <div auto-content></div>
+                <div auto-content></div>
+            </div>
+
+            <h3><span class="link-color">.midi-paragraph</span> Optimal middle-size</h3>
+            <div class="midi-paragraph group-content-rows">
+                <div auto-content></div>
+                <div auto-content></div>
+            </div>
+
+            <h3><span class="link-color">.mini-paragraph</span> Minimal readable width</h3>
+
+            <section class="banner">
+                <div class="mini-paragraph group-content-rows">
+                    <div>Atom classes for maintainable inline CSS</div>
+                    <div>CSS grid template for big articles with a lot of content, illustrations and creative visuals.</div>
+                    <div>Expandable side-panel prevents content jumps on call (google chrome issue)</div>
+                </div>
+                <div class="text-inline-bigger mini-paragraph group-content-rows">
+                    <div>Atom classes for maintainable inline CSS</div>
+                    <div>CSS grid template for big articles with a lot of content, illustrations and creative visuals.</div>
+                    <div>Expandable side-panel prevents content jumps on call (google chrome issue)</div>
+                </div>
+            </section>
+
+
         </div>
 
     </section>
@@ -166,7 +202,7 @@
 
     <section class="swed-banner colors--swed-secondary">
         <h2 class="big-title">App <span class="link-color">&</span> Art</h2>
-        <p class="text-is-bigger text-row-width-min">
+        <p class="text-inline-bigger mini-paragraph">
             Front-end components. Not a framework,
             but reusable code templates.
         </p>

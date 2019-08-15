@@ -109,7 +109,7 @@ td, th {
 /*  All about font-sizes and line-heights
  *  2019.7.16
  *
- * CSS, SCSS
+ *  CSS
  *
  */
 /* ------------------------------------ base */
@@ -123,6 +123,7 @@ body {
   line-height: var(--line-height);
   font-family: var(--font-family);
   font-weight: var(--font-weight);
+  /* font-size is default */
   --base-line-height: var(--line-height); }
 
 /* ------------------------------------ font collections */
@@ -202,11 +203,11 @@ body {
   line-height: var(--line-height); }
 
 /* ------------------------------------ workers */
-.rem-base {
+.em-base {
   font-size: 1rem;
   line-height: var(--base-line-height); }
 
-.typeface {
+.secondary-font {
   font-family: var(--font-family-secondary); }
 
 .native-sans {
@@ -1709,16 +1710,6 @@ body {
   /* 20/24 */
   font-size: 1.25em;
   line-height: 1.2; }
-  @media (max-width: 38em) {
-    .subtitle, .text-is-bigger, .text-is-larger {
-      /* 16/24 */
-      font-size: 1em;
-      line-height: 1.5;
-      font-weight: bolder;
-      /* 18/24 */
-      font-size: 1.125em;
-      line-height: calc( 32/24 );
-      font-weight: inherit; } }
 
 .text-is-regular {
   /* 16/24 */

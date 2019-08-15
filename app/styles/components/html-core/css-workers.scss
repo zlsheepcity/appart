@@ -36,9 +36,6 @@
     .group-content-rows>* {
         grid-column: full;
     }
-.rows {
-    @extend .group-content-rows;
-}
 
 
 .autogrid {

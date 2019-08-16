@@ -252,6 +252,10 @@ body {
  /* save constant values */
   --base-font-size:   1rem;
   --base-line-height: var(--line-height);
+
+ /* Decrease vertical paddings by ratio value * 1em,
+    to make visually equal paddings over text paragraph. */
+  --base-font-square-ratio: 0.25;
 }
 
 

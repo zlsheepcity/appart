@@ -316,7 +316,10 @@ body {
   /* font-size is unset */
   /* save constant values */
   --base-font-size: 1rem;
-  --base-line-height: var(--line-height); }
+  --base-line-height: var(--line-height);
+  /* Decrease vertical paddings by ratio value * 1em,
+     to make visually equal paddings over text paragraph. */
+  --base-font-square-ratio: 0.25; }
 
 /*  EOF Typography */
 /*  Article grid, v2003
@@ -1274,8 +1277,8 @@ body {
   --line-height: 1.5;
   /* Default vertical and horizontal spacing.
      Are different to make equal visual spacing over text.  */
-  --row-space: 1rem;
-  --col-space: 1.25rem;
+  --row-space: 1.5rem;
+  --col-space: 1.5rem;
   --all-space: var(--row-space) var(--col-space);
   /* z-indexes order */
   --z-index--sidebar: 100; }

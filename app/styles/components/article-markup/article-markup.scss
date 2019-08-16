@@ -116,8 +116,19 @@ h4 { @extend .h4 !optional; }
 h5 { @extend .h5 !optional; }
 h6 { @extend .h6 !optional; }
 
+big   { @extend .text-inline-bigger  !optional; }
+small { @extend .text-inline-smaller !optional; }
+
+
+.book-of-chapters {
+    grid-row-gap: 0;
+}
+.chapter {
+    padding-top:    calc( 4 * var(--row-space, 1rem) );
+    padding-bottom: calc( 4 * var(--row-space, 1rem) );
+}
 .chapter-title {
-    margin-top: calc( 2 * var(--row-space, 1rem) );
+    margin-top:     calc( 2 * var(--row-space, 1rem) );
 }
 
 

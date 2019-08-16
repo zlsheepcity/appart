@@ -14,9 +14,9 @@
   --text-color: inherit;
 
   --banner-padding:
-      calc( 2.5 * var(--v-space) )
+      calc( 2 * var(--v-space) )
       0
-      calc( 1.5 * var(--v-space) )
+      var(--v-space)
       0;
 }
 

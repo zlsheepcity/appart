@@ -223,15 +223,15 @@ body {
 @media all and (max-width: 42em) {
   :root,
   .root-typography {
-    /* 36/48 */
+    /* 36/40 */
     --h1-font-size: 2.25em;
-    --h1-line-height: calc(4/3);
-    /* 32/48 */
+    --h1-line-height: calc(40/36);
+    /* 32/36 */
     --h2-font-size: 2em;
-    --h2-line-height: 1.5;
+    --h2-line-height: calc(36/32);
     /* 28/32 */
     --h3-font-size: 1.75em;
-    --h3-line-height: calc(8/7); } }
+    --h3-line-height: calc(32/28); } }
 .h1, h1 {
   font-size: var(--h1-font-size);
   line-height: var(--h1-line-height); }
@@ -1075,7 +1075,7 @@ body {
   color: var(--text-color); }
 
 /* ----------------------------------- workers */
-.group-banner {
+.group-banners {
   /* group-wide */
   display: flex;
   flex-direction: row;
@@ -1084,14 +1084,14 @@ body {
   align-items: center;
   align-content: center; }
 
-.group-banner > * {
+.group-banners > * {
   flex-grow: 1; }
 
 @media (min-width: 38em) {
-  .group-banner:not(.is-big) {
+  .group-banners:not(.is-big) {
     flex-wrap: nowrap; } }
 @media (min-width: 1200px) {
-  .group-banner {
+  .group-banners {
     flex-wrap: nowrap; } }
 /*  EOF swed-banner */
 /*  swed-buttons - Nice buttons with hover effect
@@ -1491,20 +1491,37 @@ body {
  */
 /* ------------------------------------------ layout */
 .group-wide {
+  --vertical-align: flex-start;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
-  align-items: center;
-  align-content: center; }
+  align-items: var(--vertical-align);
+  align-content: var(--vertical-align); }
 
 .group-center {
+  --vertical-align: flex-start;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: var(--vertical-align);
+  align-content: var(--vertical-align); }
+
+.group-banner {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  align-content: center; }
+  align-content: center;
+  align-self: stretch;
+  --v-space: var(--row-space, 1rem);
+  --h-space: var(--col-space, 1rem);
+  padding-top: var(--h-space); }
+
+.group-banner > * {
+  margin: 0 var(--h-space) var(--v-space) var(--h-space); }
 
 .group-content-rows, .rows {
   display: grid;
@@ -1519,6 +1536,12 @@ body {
 .group-content-rows > *, .rows > * {
   grid-column: full; }
 
+.banner-title {
+  width: 100%;
+  justify-content: center;
+  justify-self: center;
+  text-align: center; }
+
 .autogrid {
   --cell-size: 100%;
   display: grid;
@@ -1530,7 +1553,7 @@ body {
 
 @media (min-width: 24rem) {
   .autogrid {
-    --cell-size: var(--min-width--text, 24rem); } }
+    --cell-size: var(--paragraph-width--mid, 24rem); } }
 @media (min-width: 48rem) {
   .autogrid > .is-big {
     --size: 2;
@@ -1834,6 +1857,9 @@ body {
 .has-sans-text {
   font-family: var(--font-family--data, sans-serif);
   letter-spacing: 0.03em; }
+
+.chapter-title {
+  margin-top: calc( 2 * var(--row-space, 1rem) ); }
 
 td {
   font-family: var(--font-family-interface, sans-serif); }

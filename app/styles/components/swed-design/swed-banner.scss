@@ -54,7 +54,7 @@
 /* ----------------------------------- workers */
 
 
-.group-banner {
+.group-banners {
     /* group-wide */
     display:         flex;
     flex-direction:  row;
@@ -63,14 +63,14 @@
     align-items:     center;
     align-content:   center;
 }
-.group-banner>* {
+.group-banners>* {
     flex-grow: 1;
 }
 @media (min-width: 38em) {
-    .group-banner:not(.is-big) { flex-wrap: nowrap; }
+    .group-banners:not(.is-big) { flex-wrap: nowrap; }
 }
 @media (min-width: 1200px) {
-    .group-banner { flex-wrap: nowrap; }
+    .group-banners { flex-wrap: nowrap; }
 }
 
 

@@ -7,22 +7,37 @@
 
 
 .group-wide {
+  --vertical-align:  flex-start;
     display:         flex;
     flex-direction:  row;
     flex-wrap:       wrap;
     justify-content: space-between;
-    align-items:     center;
-    align-content:   center;
+    align-items:     var(--vertical-align);
+    align-content:   var(--vertical-align);
 }
 .group-center {
+  --vertical-align:  flex-start;
+    display:         flex;
+    flex-direction:  row;
+    flex-wrap:       wrap;
+    justify-content: center;
+    align-items:     var(--vertical-align);
+    align-content:   var(--vertical-align);
+}
+.group-banner {
     display:         flex;
     flex-direction:  row;
     flex-wrap:       wrap;
     justify-content: center;
     align-items:     center;
     align-content:   center;
+    align-self:      stretch;
+  --v-space: var(--row-space, 1rem);
+  --h-space: var(--col-space, 1rem);
+    padding-top:     var(--h-space);
+    } .group-banner>* {
+        margin:  0 var(--h-space) var(--v-space) var(--h-space);
 }
-
 .group-content-rows {
     display:         grid;
     align-items:     start;
@@ -32,32 +47,35 @@
     grid-row-gap:    var(--row-space, 1rem);
     grid-column-gap: 0;
     grid-template-columns: [full] auto;
-}
-    .group-content-rows>* {
+    } .group-content-rows>* {
         grid-column: full;
-    }
-
+}
+.banner-title {
+    width: 100%;
+    justify-content: center;
+    justify-self:    center;
+    text-align:      center;
+}
 
 .autogrid {
   --cell-size: 100%;
     display:   grid;
     grid-gap:  0;
     grid-template-columns: repeat(auto-fill, minmax(var(--cell-size), 1fr));
-}
-    .autogrid>* {
+    } .autogrid>* {
         grid-column: span 1;
+}
+@media (min-width: 24rem) {
+    .autogrid {
+      --cell-size: var(--paragraph-width--mid, 24rem);
     }
-    @media (min-width: 24rem) {
-        .autogrid {
-          --cell-size: var(--min-width--text, 24rem);
-        }
+}
+@media (min-width: 48rem) {
+    .autogrid>.is-big {
+      --size: 2;
+        grid-column: span var(--size);
     }
-    @media (min-width: 48rem) {
-        .autogrid>.is-big {
-          --size: 2;
-            grid-column: span var(--size);
-        }
-    }
+}
 
 .is-chapter:not(.isontop):not(.is-on-top)    { padding-top:    calc( 2*var(--row-space, 1rem) ); }
 .is-chapter:not(.isonbot):not(.is-on-bottom) { padding-bottom: calc( 2*var(--row-space, 1rem) ); }

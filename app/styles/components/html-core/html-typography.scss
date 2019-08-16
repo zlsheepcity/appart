@@ -126,9 +126,13 @@ body {
     --inc-font-size:   1.25em;
     --inc-line-height: 1.2;
 
-    /* 12/16 */
+    /* 13/16 */
+    --dec-font-size:   calc(13/16*1em);
+    --dec-line-height: calc(16/13);
+
+    /* 12/16
     --dec-font-size:   0.75em;
-    --dec-line-height: calc(4/3);
+    --dec-line-height: calc(4/3); */
 }
 @media all and (max-width:42em) {
     :root,

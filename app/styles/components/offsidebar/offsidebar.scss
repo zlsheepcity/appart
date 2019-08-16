@@ -1,20 +1,22 @@
-/*  === ༼°▽°༽ === Offsidebar  *//*
+/** === ༼°▽°༽ === Offsidebar  *//*
  *
- *  Expandable side-panel, css
+ *  Expandable side-panel
  *  Prevents content jumps when appears
  *  zl, 2019.8.14
+ *
+ *  PURE CSS
  *
  */
 
 
-/* -------------------------------- offsidebar settings */
+/** -------------------------------- offsidebar settings */
 
 
 .offsidebar {
 
  /* size units */
-  --sx:   var(--col-space, 1.25rem);
-  --sy:   var(--row-space,    1rem);
+  --sx:   var(--col-space, 1.5rem);
+  --sy:   var(--row-space, 1.5rem);
 
  /* color units */
   --text-color--sidepanel: var(--text-color, var(--color,            black));
@@ -32,7 +34,7 @@
 }
 
 
-/* -------------------------------- two sides options */
+/** -------------------------------- two sides difference */
 
 
 .offsidebar {       /* default, Eastside → */
@@ -55,7 +57,7 @@
 }
 
 
-/* -------------------------------- layout & behavior */
+/** -------------------------------- layout & behavior */
 
 
 .offsidebar {
@@ -97,7 +99,7 @@
     opacity: 0;
 }
 
-/* -------------------------------- close icon */
+/** -------------------------------- close icon */
 
 .offsidebar-background::before {
     content:  '';
@@ -111,14 +113,14 @@
  /* click on overlay will force offsidebar to close */
     pointer-events:   none;
 
- /* x-close white svg icon */
+ /* x-close — white svg icon */
     background-image:  url('data:image/svg+xml,%3Csvg fill="%23FFFFFF" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/%3E%3C/svg%3E');
     background-size:   contain;
     background-repeat: no-repeat;
 }
 
 
-/* -------------------------------- content layout */
+/** -------------------------------- content wrap */
 
 
 .sidepanel {
@@ -166,8 +168,7 @@
     opacity:   0;
 }
 
-
-/* -------------------------------- content design */
+/** -------------------------------- content design */
 
 
 .sidepanel-content {
@@ -200,7 +201,7 @@
 }
 
 
-/* -------------------------------- disable background scroll */
+/** -------------------------------- disable background scroll */
 
 
 /*html*/.has-offsidebar-overlay {
@@ -208,7 +209,7 @@
 }
 
 
-/* -------------------------------- active state */
+/** -------------------------------- active state */
 
 
 .offsidebar.is-active {
@@ -220,9 +221,8 @@
 .offsidebar.is-active .offsidebar-overlay {
     opacity: 1;
 }
-
 .offsidebar.is-active .sidepanel {
-    opacity:   1;
+    opacity: 1;
 }
 .offsidebar.is-active .sidepanel-content,
 .offsidebar.is-active .sidepanel-header,
@@ -232,31 +232,31 @@
 }
 
 
-/* -------------------------------- animation settings */
+/** -------------------------------- animation settings */
 
 
 @media screen and (min-width:900px) {
 
-    /* animate overlay */
+ /* Animate overlay */
 
     .offsidebar .offsidebar-overlay {
-        transition:  opacity var(--transition-duration--slidein);
+        transition: opacity var(--transition-duration--slidein);
         transition-timing-function: var(--timing-function--focusZoom);
     }
 
-    /* animate offsidebar */
+ /* Animate offsidebar */
 
     .offsidebar-background {
         will-change: transform;
     }
     .offsidebar.is-active .offsidebar-background {
-        transition:  transform var(--transition-duration--slidein);
+        transition: transform var(--transition-duration--slidein);
         transition-timing-function: var(--timing-function--focusZoom);
         transform-origin: var(--transform-origin--horizontal) center;
         transition-delay: 50ms;
     }
 
-    /* animate content */
+ /* Animate content */
 
     .offsidebar .sidepanel-content,
     .offsidebar .sidepanel-header,
@@ -266,7 +266,7 @@
     .offsidebar.is-active .sidepanel-content,
     .offsidebar.is-active .sidepanel-header,
     .offsidebar.is-active .sidepanel-footer {
-        transition:  transform var(--transition-duration--slidein);
+        transition: transform var(--transition-duration--slidein);
         transition-timing-function: var(--timing-function--focusZoom);
         transform-origin: var(--transform-origin--horizontal) center;
         transition-delay: 50ms;

@@ -823,19 +823,21 @@ body {
   order: calc( 1*var(--if-grid-is-tiny, 0) ); }
 
 /*  EOF journal-grid */
-/*  === ༼°▽°༽ === Offsidebar  */
+/** === ༼°▽°༽ === Offsidebar  */
                                /*
 *
-*  Expandable side-panel, css
+*  Expandable side-panel
 *  Prevents content jumps when appears
 *  zl, 2019.8.14
 *
+*  PURE CSS
+*
 */
-/* -------------------------------- offsidebar settings */
+/** -------------------------------- offsidebar settings */
 .offsidebar {
   /* size units */
-  --sx: var(--col-space, 1.25rem);
-  --sy: var(--row-space, 1rem);
+  --sx: var(--col-space, 1.5rem);
+  --sy: var(--row-space, 1.5rem);
   /* color units */
   --text-color--sidepanel: var(--text-color, var(--color, black));
   --back-color--sidepanel: var(--back-color, var(--background-color, white));
@@ -847,7 +849,7 @@ body {
   /* open animation time  */
   --transition-duration--slidein: 240ms; }
 
-/* -------------------------------- two sides options */
+/** -------------------------------- two sides difference */
 .offsidebar {
   /* default, Eastside → */
   --left: auto;
@@ -866,7 +868,7 @@ body {
   --scroll-overflow-behavoir: auto;
   --scroll-direction: rtl; }
 
-/* -------------------------------- layout & behavior */
+/** -------------------------------- layout & behavior */
 .offsidebar {
   position: fixed;
   z-index: var(--z-index--sidebar);
@@ -900,7 +902,7 @@ body {
   background-color: rgba(0, 0, 0, 0.9);
   opacity: 0; }
 
-/* -------------------------------- close icon */
+/** -------------------------------- close icon */
 .offsidebar-background::before {
   content: '';
   display: block;
@@ -911,12 +913,12 @@ body {
   height: var(--empty-space-offset);
   /* click on overlay will force offsidebar to close */
   pointer-events: none;
-  /* x-close white svg icon */
+  /* x-close — white svg icon */
   background-image: url('data:image/svg+xml,%3Csvg fill="%23FFFFFF" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/%3E%3C/svg%3E');
   background-size: contain;
   background-repeat: no-repeat; }
 
-/* -------------------------------- content layout */
+/** -------------------------------- content wrap */
 .sidepanel {
   position: relative;
   max-width: 100%;
@@ -957,7 +959,7 @@ body {
   transform: scaleX(0);
   opacity: 0; }
 
-/* -------------------------------- content design */
+/** -------------------------------- content design */
 .sidepanel-content {
   padding: var(--sy) var(--sx); }
 
@@ -980,12 +982,12 @@ body {
   background-color: var(--text-color--sidepanel);
   color: var(--back-color--sidepanel); }
 
-/* -------------------------------- disable background scroll */
+/** -------------------------------- disable background scroll */
 /*html*/
 .has-offsidebar-overlay {
   overflow: hidden; }
 
-/* -------------------------------- active state */
+/** -------------------------------- active state */
 .offsidebar.is-active {
   pointer-events: all; }
 
@@ -1004,14 +1006,14 @@ body {
   transform: scaleX(1);
   opacity: 1; }
 
-/* -------------------------------- animation settings */
+/** -------------------------------- animation settings */
 @media screen and (min-width: 900px) {
-  /* animate overlay */
+  /* Animate overlay */
   .offsidebar .offsidebar-overlay {
     transition: opacity var(--transition-duration--slidein);
     transition-timing-function: var(--timing-function--focusZoom); }
 
-  /* animate offsidebar */
+  /* Animate offsidebar */
   .offsidebar-background {
     will-change: transform; }
 
@@ -1021,7 +1023,7 @@ body {
     transform-origin: var(--transform-origin--horizontal) center;
     transition-delay: 50ms; }
 
-  /* animate content */
+  /* Animate content */
   .offsidebar .sidepanel-content,
   .offsidebar .sidepanel-header,
   .offsidebar .sidepanel-footer {

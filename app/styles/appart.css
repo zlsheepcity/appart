@@ -190,7 +190,7 @@ td, th {
   --paragraph-width--min: 12em;
 }
 
-@media all and (min-width: 12em) {
+@media all and (max-width: 12em) {
   :root,
 .root-typography {
     --paragraph-width--min: 100%;
@@ -245,32 +245,46 @@ body {
   --dec-line-height: calc(4/3);
 }
 
-.h1 {
+@media all and (max-width: 42em) {
+  :root,
+.root-typography {
+    /* 36/48 */
+    --h1-font-size: 2.25em;
+    --h1-line-height: calc(4/3);
+    /* 32/48 */
+    --h2-font-size: 2em;
+    --h2-line-height: 1.5;
+    /* 28/32 */
+    --h3-font-size: 1.75em;
+    --h3-line-height: calc(8/7);
+  }
+}
+.h1, h1 {
   font-size: var(--h1-font-size);
   line-height: var(--h1-line-height);
 }
 
-.h2 {
+.h2, h2 {
   font-size: var(--h2-font-size);
   line-height: var(--h2-line-height);
 }
 
-.h3 {
+.h3, h3 {
   font-size: var(--h3-font-size);
   line-height: var(--h3-line-height);
 }
 
-.h4 {
+.h4, h4 {
   font-size: var(--h4-font-size);
   line-height: var(--h4-line-height);
 }
 
-.h5 {
+.h5, h5 {
   font-size: var(--inc-font-size);
   line-height: var(--inc-line-height);
 }
 
-.h6 {
+.h6, h6 {
   font-size: var(--p-font-size);
   line-height: var(--p-line-height);
 }
@@ -334,6 +348,7 @@ body {
 .root-typography {
   --font-family: var(--font-family--tufte-serif);
   --font-family-secondary: var(--font-family--tufte-sans);
+  --font-family-interface: var(--font-family--native-sans);
   --font-weight: 400;
   --line-height: 1.5;
 }
@@ -2035,52 +2050,52 @@ body {
  *  Shortcuts for faster article markup
  *  2019.8.14
  */
-.huge-title, h1 {
+.huge-title {
   /* 64/64 */
   font-size: 4em;
   line-height: 1;
 }
 @media (max-width: 38em) {
-  .huge-title, h1 {
+  .huge-title {
     /* 32/40 */
     font-size: 2em;
     line-height: 1.25;
   }
 }
 
-.big-title, h2 {
+.big-title {
   /* 40/48 */
   font-size: 2.5em;
   line-height: 1.2;
 }
 @media (max-width: 38em) {
-  .big-title, h2 {
+  .big-title {
     /* 24/32 */
     font-size: 1.5em;
     line-height: 1.33333333;
   }
 }
 
-.title, .mid-title, h3 {
+.title, .mid-title {
   /* 32/40 */
   font-size: 2em;
   line-height: 1.25;
 }
 @media (max-width: 38em) {
-  .title, .mid-title, h3 {
+  .title, .mid-title {
     /* 20/24 */
     font-size: 1.25em;
     line-height: 1.2;
   }
 }
 
-.min-title, h4 {
+.min-title {
   /* 24/32 */
   font-size: 1.5em;
   line-height: 1.33333333;
 }
 @media (max-width: 38em) {
-  .min-title, h4 {
+  .min-title {
     /* 16/24 */
     font-size: 1em;
     line-height: 1.5;
@@ -2106,13 +2121,10 @@ td, .has-sans-text, .text-is-smaller {
   line-height: 1.714286;
 }
 
-.huge-title *, h1 *,
+.huge-title *,
 .big-title *,
-h2 *,
 .mid-title *,
-h3 *,
 .min-title *,
-h4 *,
 .sub-title *,
 .title *,
 .subtitle * {
@@ -2128,7 +2140,7 @@ h4 *,
 }
 
 td {
-  font-family: var(--font-family--data, sans-serif);
+  font-family: var(--font-family-interface, sans-serif);
 }
 
 /*  EOF Article markup */

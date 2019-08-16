@@ -108,29 +108,25 @@ $title-size-breakpoint: 'max-width: 38em';
 
 //* ------------------------------------- article
 
-h1 {
-    @extend .huge-title !optional;
-}
-h2 {
-    @extend .big-title !optional;
-}
-h3 {
-    @extend .mid-title !optional;
-}
-h4 {
-    @extend .min-title !optional;
-}
+
+h1 { @extend .h1 !optional; }
+h2 { @extend .h2 !optional; }
+h3 { @extend .h3 !optional; }
+h4 { @extend .h4 !optional; }
+h5 { @extend .h5 !optional; }
+h6 { @extend .h6 !optional; }
 
 .rows {
     @extend .group-content-rows !optional;
 }
+
 
 //* ------------------------------------- special cases
 
 
 td {
     @extend      %text-as-smaller !optional;
-    font-family: var(--font-family--data, sans-serif);
+    font-family: var(--font-family-interface, sans-serif);
 }
 
 

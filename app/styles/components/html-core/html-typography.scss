@@ -68,7 +68,7 @@
   --paragraph-width--max: 42em;
   --paragraph-width--mid: 24em;
   --paragraph-width--min: 12em; }
-@media all and (min-width:12em) {
+@media all and (max-width:12em) {
     :root,
     .root-typography {
       --paragraph-width--min: 100%;
@@ -129,6 +129,20 @@ body {
     /* 12/16 */
     --dec-font-size:   0.75em;
     --dec-line-height: calc(4/3);
+}
+@media all and (max-width:42em) {
+    :root,
+    .root-typography {
+        /* 36/48 */
+        --h1-font-size:    2.25em;
+        --h1-line-height:  calc(4/3);
+        /* 32/48 */
+        --h2-font-size:    2em;
+        --h2-line-height:  1.5;
+        /* 28/32 */
+        --h3-font-size:    1.75em;
+        --h3-line-height:  calc(8/7);
+    }
 }
 
 .h1 {
@@ -220,6 +234,7 @@ body {
 .root-typography {
   --font-family:             var(--font-family--tufte-serif);
   --font-family-secondary:   var(--font-family--tufte-sans);
+  --font-family-interface:   var(--font-family--native-sans);
   --font-weight:             400;
   --line-height:             1.5;
 }

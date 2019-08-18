@@ -188,11 +188,11 @@ body {
   --back-color-descent: var(--light-shadow);
 
   --text-color:         hsl(var(--HSL-NobleWhite));
-  --text-color-accent:  hsl(var(--HSL-NobleHighWhite));
-  --text-color-descent: var(--text-color);
+  --text-color-accent:  hsl(var(--HSL-NobleAction));
+  --text-color-descent: hsl(var(--HSL-NobleHighWhite));
 
-  --link-color:         hsl( var(--HSL-NobleAction) );
-  --link-color-accent:  hsl( var(--HSL-NobleHoverAction) );
+  --link-color:         hsl(var(--HSL-NobleAction));
+  --link-color-accent:  hsl(var(--HSL-NobleHoverAction));
   --link-color-descent: var(--link-color);
 
   --shadow-color: var(--shadow-color-for-light-base);
@@ -219,11 +219,11 @@ body {
   --back-color-accent:  hsl( var(--HSL-NobleHoverAction) );
   --back-color-descent: var(--light-shadow);
 
-  --text-color:         hsl( 359, 0%, 100% );
+  --text-color:         hsl( 359,  0%, 100% );
   --text-color-accent:  hsl( 359, 28%, 82% );
   --text-color-descent: hsl( 359, 28%, 82% );
 
-  --link-color:         hsl( 359, 0%, 100% );
+  --link-color:         hsl( 359,  0%, 100% );
   --link-color-accent:  var(--link-color);
   --link-color-descent: var(--link-color);
 
@@ -231,13 +231,13 @@ body {
   --light-shadow: var(--light-shadow--for-light-base);
 }
 .colors--ivory {
-  --back-color:         hsl( 53, 66%, 80% );
-  --back-color-accent:  hsl( 53, 70%, 76% );
+  --back-color:         hsl(  53, 66%, 80% );
+  --back-color-accent:  hsl(  53, 70%, 76% );
   --back-color-descent: var(--light-shadow);
 
-  --text-color:         hsl( 204, 4%, 22% );
-  --text-color-accent:  hsl( 204, 4%, 42% );
-  --text-color-descent: hsl( 204, 4%, 42% );
+  --text-color:         hsl( 204,  4%, 22% );
+  --text-color-accent:  hsl( 359, 59%, 43% );
+  --text-color-descent: hsl( 204,  4%, 42% );
 
   --link-color:         hsl( 359, 54%, 53% );
   --link-color-accent:  hsl( 359, 59%, 43% );

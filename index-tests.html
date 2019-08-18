@@ -115,7 +115,7 @@
                 <ul class="content-menu js-for-ChaptersMenuBar">
                     <li><a href="#Typography">Typography</a></li>
                     <li><a href="#color-model">Color model</a></li>
-                    <li>Morbi tristique senectus</li>
+                    <li><a href="#Offsidebar">Offsidebar</a></li>
                     <li>Et netus et malesuada</li>
                     <li>Fames ac turpis egestas</li>
                     <li>Vestibulum tortor quam</li>
@@ -206,23 +206,38 @@
 
         <h2 class="chapter-header">Facetype collections</h2>
 
-        <div class="block" style="font-family: var(--font-family--tufte-serif);">
+        <div class="keep-grid" style="font-family: var(--font-family--tufte-serif);">
             <h3 class="link-color">tufte-serif</h3>
-            <p auto-content></p>
-            <p auto-content class="text-block-bigger"></p>
-            <p auto-content class="text-block-smaller"></p>
+            <section class="block">
+                <p auto-content></p>
+                <p auto-content class="text-block-bigger"></p>
+                <p auto-content class="text-block-smaller"></p>
+            </section>
+            <div class="note keep-font-size">
+                <p>297351 years<br>&amp;#$@*</p>
+            </div>
         </div>
-        <div class="block" style="font-family: var(--font-family--tufte-sans);">
+        <div class="keep-grid" style="font-family: var(--font-family--tufte-sans);">
             <h3 class="link-color">tufte-sans</h3>
-            <p auto-content></p>
-            <p auto-content class="text-block-bigger"></p>
-            <p auto-content class="text-block-smaller"></p>
+            <section class="block">
+                <p auto-content></p>
+                <p auto-content class="text-block-bigger"></p>
+                <p auto-content class="text-block-smaller"></p>
+            </section>
+            <div class="note keep-font-size">
+                <p>297351 years<br>&amp;#$@*</p>
+            </div>
         </div>
-        <div class="block" style="font-family: var(--font-family--native-sans);">
+        <div class="keep-grid" style="font-family: var(--font-family--native-sans);">
             <h3 class="link-color">native-sans</h3>
-            <p auto-content></p>
-            <p auto-content class="text-block-bigger"></p>
-            <p auto-content class="text-block-smaller"></p>
+            <section class="block">
+                <p auto-content></p>
+                <p auto-content class="text-block-bigger"></p>
+                <p auto-content class="text-block-smaller"></p>
+            </section>
+            <div class="note keep-font-size">
+                <p>297351 years<br>&amp;#$@*</p>
+            </div>
         </div>
 
 
@@ -310,7 +325,7 @@
     <!-- ----------------------------------------------------- Color Model -->
 
 
-    <article id="color-model" class="chapter isontop">
+    <article id="color-model" class="chapter isontop isonbot">
 
         <header class="banner">
             <h2 class="h1">Color Model Tests</h2>
@@ -320,46 +335,210 @@
         <section class="banner use-colors colors--root">
             <header>
                 <h2>colors--root</h2>
-                <p class="text-color-descent">Color Model 3x3</p>
+                <p class="text-color-descent">Color Model 3×3+2</p>
             </header>
             <p class="back-color-descent back-color-hover link-color padding">Hover Me</p>
         </section>
         <section class="banner use-colors colors--action">
             <header>
                 <h2>colors--action</h2>
-                <p class="text-color-descent">Color Model 3x3</p>
+                <p class="text-color-descent">Color Model 3×3+2</p>
             </header>
             <p class="back-color-descent back-color-hover link-color padding">Hover Me</p>
         </section>
         <section class="banner use-colors colors--ivory">
             <header>
                 <h2>colors--ivory</h2>
-                <p class="text-color-descent">Color Model 3x3</p>
+                <p class="text-color-descent">Color Model 3×3+2</p>
             </header>
             <p class="back-color-descent back-color-hover link-color padding">Hover Me</p>
         </section>
         <section class="banner use-colors colors--swed">
             <header>
                 <h2>colors--swed</h2>
-                <p class="text-color-descent">Color Model 3x3</p>
+                <p class="text-color-descent">Color Model 3×3+2</p>
             </header>
             <p class="back-color-descent back-color-hover link-color padding">Hover Me</p>
         </section>
         <section class="banner use-colors colors--swed-secondary">
             <header>
                 <h2>colors--swed-secondary</h2>
-                <p class="text-color-descent">Color Model 3x3</p>
+                <p class="text-color-descent">Color Model 3×3+2</p>
             </header>
             <p class="back-color-descent back-color-hover link-color padding">Hover Me</p>
         </section>
         <section class="banner use-colors colors--swed-third">
             <header>
                 <h2>colors--swed-third</h2>
-                <p class="text-color-descent">Color Model 3x3</p>
+                <p class="text-color-descent">Color Model 3×3+2</p>
             </header>
             <p class="back-color-descent back-color-hover link-color padding">Hover Me</p>
         </section>
 
+
+    </article>
+
+
+    <!-- ----------------------------------------------------- Offside Bar -->
+
+
+    <article id="Offsidebar" class="chapter">
+
+        <header class="banner">
+            <figure class="mini-paragraph">
+                <img
+                    src="art/component-icons/component-icon--ofsidebar.svg"
+                    alt="SVG icon for Ofsidebar">
+            </figure>
+            <div>
+                <h2 class="h1">Offside bar</h2>
+                <p>Demo examples</p>
+            </div>
+            
+        </header>
+
+        <section class="banner">
+                <button class="swed-button js-for-EastsideBar">Default</button>
+                <button class="swed-button js-for-WestsideBar">From Westside</button>
+                <button class="swed-button js-for-OverflowBar">Content overflow</button>
+                <button class="swed-button js-for-OverflowBarWestside">Content overflow (westside)</button>
+        </section>
+
+        <!-- Demo Bars -->
+
+        <section>
+
+            <!-- Default Bar -->
+
+            <section class="EastsideBar offsidebar colors--secondary">
+                <!-- <div class="offsidebar-overlay"></div>    <!-- auto insertion with js -->
+                <!-- <div class="offsidebar-background"></div> <!-- auto insertion with js -->
+                <div class="sidepanel">
+
+                    <header class="sidepanel-header">
+                        <h4>Scroll Content</h4>
+                    </header>
+
+                    <nav class="sidepanel-content">
+                        <ul class="content-menu js-for-EastsideBar">
+                            <li>Lorem ipsum</li>
+                            <li>Pellentesque habitant</li>
+                            <li>Morbi tristique senectus</li>
+                            <li>Et netus et malesuada</li>
+                            <li>Fames ac turpis egestas</li>
+                            <li>Vestibulum tortor quam</li>
+                            <li>Feugiat vitae</li>
+                            <li>Ultricies eget</li>
+                            <li>Tempor sit amet</li>
+                        </ul>
+                    </nav>
+
+                    <footer class="sidepanel-footer">
+                        <div>Footer</div>
+                    </footer>
+
+                </div>
+            </section>
+
+            <!-- Westside Bar -->
+
+            <section class="WestsideBar offsidebar from-westside colors--secondary">
+                <div class="sidepanel">
+
+                    <header class="sidepanel-header">
+                        <h4>Scroll Content</h4>
+                    </header>
+
+                    <nav class="sidepanel-content">
+                        <ul class="content-menu js-for-WestsideBar">
+                            <li>Lorem ipsum</li>
+                            <li>Pellentesque habitant</li>
+                            <li>Morbi tristique senectus</li>
+                            <li>Et netus et malesuada</li>
+                            <li>Fames ac turpis egestas</li>
+                            <li>Vestibulum tortor quam</li>
+                            <li>Feugiat vitae</li>
+                            <li>Ultricies eget</li>
+                            <li>Tempor sit amet</li>
+                        </ul>
+                    </nav>
+
+                    <footer class="sidepanel-footer">
+                        <div>Footer</div>
+                    </footer>
+
+                </div>
+            </section>
+
+            <!-- Overflow Bar -->
+
+            <section class="OverflowBar offsidebar colors--secondary">
+                <section class="sidepanel">
+
+                    <header class="sidepanel-header">
+                        <h4>Scroll Content</h4>
+                    </header>
+
+                    <section class="sidepanel-content">
+                        <div class="rows midi-paragraph">
+                            <p auto-content></p>
+                            <p auto-content></p>
+                            <p auto-content></p>
+                            <p auto-content></p>
+                            <p auto-content></p>
+                            <p auto-content></p>
+                            <p auto-content></p>
+                            <p auto-content></p>
+                        </div>
+                    </section>
+
+                    <footer class="sidepanel-footer">
+                        <div>Footer</div>
+                    </footer>
+
+                </section>
+            </section>
+
+            <!-- Overflow Bar Westside -->
+
+            <section class="OverflowBarWestside offsidebar from-westside colors--secondary">
+                <section class="sidepanel">
+
+                    <header class="sidepanel-header">
+                        <h4>Scroll Content</h4>
+                    </header>
+
+                    <section class="sidepanel-content">
+                        <div class="rows midi-paragraph">
+                            <p auto-content></p>
+                            <p auto-content></p>
+                            <p auto-content></p>
+                            <p auto-content></p>
+                            <p auto-content></p>
+                            <p auto-content></p>
+                            <p auto-content></p>
+                            <p auto-content></p>
+                        </div>
+                    </section>
+
+                    <footer class="sidepanel-footer">
+                        <div>Footer</div>
+                    </footer>
+
+                </section>
+            </section>
+
+        </section>
+
+        <!-- Activate Offside Bars -->
+
+        <script>
+            // Demo Bars
+            InterfaceOffsideBar('EastsideBar')
+            InterfaceOffsideBar('WestsideBar')
+            InterfaceOffsideBar('OverflowBar')
+            InterfaceOffsideBar('OverflowBarWestside')
+        </script>
 
     </article>
 
@@ -895,175 +1074,6 @@
 
         </div>
     </article>
-
-
-
-    <!-- ----------------------------------------------------- Offside Bar -->
-
-
-    <article id="offsidebar" class="chapter">
-
-        <h2 class="">Offside bar</h2>
-
-        <section class="chapter">
-
-            <p>Боковая панель появляющаяся по вызову. Чаще всего, для навигационного меню.</p>
-            <p>В основе — очевидное решение с использованием <em>position:fixed</em>. Задача компонента — избавить от неприятных проблем, часто встречающихся на практике.</p>
-
-        </section>
-
-        <div class="article-box-merge keep-grid color-box">
-            <h3 class="mid-title">Перечень проблем</h3>
-            <ol class="block">
-                <li>Поведение chrome scroll-bar не должно нарушать layout страницы, любое «дёргание» содержания не допускаяется.</li>
-                <li>Background отделён от содержания панели, для оптимизированных эффектов анимации.</li>
-                <li>Содержимое панели подстраивается под содержание по горизонтали и скролится по вертикали при необходимости.</li>
-                <li>Отсутствие декоративной анимации на мобильных устройствах (ради экономии энергии батарей) не должно бросаться в глаза.</li>
-            </ol>
-        </div>
-
-        <div class="article-box-merge swed-banner colors-as-secondary">
-            <h3 class="huge-title">Примеры</h3>
-            <div class="is-centered">
-                <button class="swed-button js-for-EastsideBar">Default example</button>
-                <button class="swed-button js-for-WestsideBar">Bar from Westside</button>
-                <button class="swed-button js-for-OverflowBar">With content overflow</button>
-                <button class="swed-button js-for-OverflowBarWestside">Westside overflow</button>
-            </div>
-        </div>
-
-        <!-- Default Bar -->
-
-        <section class="offsidebar from-eastside EastsideBar colors-as-secondary">
-            <!-- <div class="offsidebar-overlay"></div>    <!-- auto insertion with js -->
-            <!-- <div class="offsidebar-background"></div> <!-- auto insertion with js -->
-            <div class="sidepanel">
-
-                <header class="sidepanel-header">
-                    <h2 class="min-title">Classic Bar</h2>
-                </header>
-
-                <nav class="sidepanel-content">
-                    <ul class="content-menu js-for-EastsideBar">
-                        <li>Lorem ipsum</li>
-                        <li>Pellentesque habitant</li>
-                        <li>Morbi tristique senectus</li>
-                        <li>Et netus et malesuada</li>
-                        <li>Fames ac turpis egestas</li>
-                        <li>Vestibulum tortor quam</li>
-                        <li>Feugiat vitae</li>
-                        <li>Ultricies eget</li>
-                        <li>Tempor sit amet</li>
-                    </ul>
-                </nav>
-
-                <footer class="sidepanel-footer">
-                    <div>Footer</div>
-                </footer>
-
-            </div>
-        </section>
-
-        <!-- Westside Bar -->
-
-        <section class="offsidebar from-westside WestsideBar colors-as-special">
-            <div class="sidepanel">
-
-                <header class="sidepanel-header">
-                    <h2 class="min-title">Components</h2>
-                </header>
-
-                <nav class="sidepanel-content">
-                    <ul class="content-menu js-for-WestsideBar">
-                        <li><a href="#offsidebar">Offside bar</a></li>
-                        <li><a href="#color-model">Color Model</a></li>
-                        <li><a href="#article-grid">Article Grid</a></li>
-                        <li><a href="#svga-icons">SVGA Icons</a></li>
-                        <li><a href="#data-table">Data Table</a></li>
-                    </ul>
-                </nav>
-
-                <footer class="sidepanel-footer">
-                    <div>Footer</div>
-                </footer>
-
-            </div>
-        </section>
-
-        <!-- Overflow Bar -->
-
-        <section class="offsidebar OverflowBar colors-as-secondary">
-            <section class="sidepanel">
-
-                <header class="sidepanel-header">
-                    <h2 class="min-title">Scroll Content</h2>
-                </header>
-
-                <section class="sidepanel-content">
-                    <div class="rows" style="max-width:20em;">
-                        <p auto-content></p>
-                        <p auto-content></p>
-                        <p auto-content></p>
-                        <p auto-content></p>
-                        <p auto-content></p>
-                        <p auto-content></p>
-                        <p auto-content></p>
-                        <p auto-content></p>
-                    </div>
-                </section>
-
-                <footer class="sidepanel-footer">
-                    <div>Footer</div>
-                </footer>
-
-            </section>
-        </section>
-
-        <!-- Overflow Bar Westside -->
-
-        <section class="offsidebar from-westside OverflowBarWestside colors-as-secondary">
-            <section class="sidepanel">
-
-                <header class="sidepanel-header">
-                    <h2 class="min-title">Scroll Content</h2>
-                </header>
-
-                <section class="sidepanel-content">
-                    <div class="rows" style="max-width:20em;">
-                        <p auto-content></p>
-                        <p auto-content></p>
-                        <p auto-content></p>
-                        <p auto-content></p>
-                        <p auto-content></p>
-                        <p auto-content></p>
-                        <p auto-content></p>
-                        <p auto-content></p>
-                    </div>
-                </section>
-
-                <footer class="sidepanel-footer">
-                    <div>Footer</div>
-                </footer>
-
-            </section>
-        </section>
-
-
-
-    </article>
-
-    <!-- Activate Offside Bars -->
-
-    <script>
-
-
-        // Launch Activation
-        InterfaceOffsideBar('EastsideBar')
-        InterfaceOffsideBar('WestsideBar')
-        InterfaceOffsideBar('OverflowBar')
-        InterfaceOffsideBar('OverflowBarWestside')
-        InterfaceOffsideBar('GLBar')
-    </script>
 
 
     <!-- ----------------------------------------------------- Article Grid -->

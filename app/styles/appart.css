@@ -914,6 +914,9 @@ body {
 .note {
   grid-column: pn_/_pn;
   --grid-part--main-space: calc( var(--sx)*var(--if-grid-is-tiny, 0) );
+}
+
+.note:not(.keep-font-size) {
   /* 13/16 */
   font-size: var(--dec-font-size, calc(13/16*1em));
   line-height: var(--dec-line-height, calc(16/13));
@@ -1856,7 +1859,7 @@ body {
   --link-color: hsl( var(--HSL-NobleAction) );
   --link-color-accent: hsl( var(--HSL-NobleHoverAction) );
   --link-color-descent: var(--link-color);
-  --shadow-color: var(--shadow-color-for-dark-base);
+  --shadow-color: var(--shadow-color--for-dark-base);
   --light-shadow: var(--light-shadow--for-dark-base);
 }
 
@@ -1871,7 +1874,7 @@ body {
   --link-color: hsl(var(--HSL-NobleAction));
   --link-color-accent: hsl(var(--HSL-NobleHoverAction));
   --link-color-descent: var(--link-color);
-  --shadow-color: var(--shadow-color-for-light-base);
+  --shadow-color: var(--shadow-color--for-light-base);
   --light-shadow: var(--light-shadow--for-light-base);
 }
 
@@ -1885,7 +1888,7 @@ body {
   --link-color: hsl(var(--HSL-NobleWhite));
   --link-color-accent: hsl(var(--HSL-NobleHighWhite));
   --link-color-descent: var(--link-color);
-  --shadow-color: var(--shadow-color-for-light-base);
+  --shadow-color: var(--shadow-color--for-light-base);
   --light-shadow: var(--light-shadow--for-light-base);
 }
 
@@ -1899,7 +1902,7 @@ body {
   --link-color: hsl( 359, 0%, 100% );
   --link-color-accent: var(--link-color);
   --link-color-descent: var(--link-color);
-  --shadow-color: var(--shadow-color-for-light-base);
+  --shadow-color: var(--shadow-color--for-light-base);
   --light-shadow: var(--light-shadow--for-light-base);
 }
 
@@ -1913,7 +1916,7 @@ body {
   --link-color: hsl( 359, 54%, 53% );
   --link-color-accent: hsl( 359, 59%, 43% );
   --link-color-descent: var(--link-color);
-  --shadow-color: var(--shadow-color-for-light-base);
+  --shadow-color: var(--shadow-color--for-light-base);
   --light-shadow: var(--light-shadow--for-light-base);
 }
 

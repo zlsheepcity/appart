@@ -178,7 +178,7 @@ body {
   --link-color-accent:  hsl( var(--HSL-NobleHoverAction) );
   --link-color-descent: var(--link-color);
 
-  --shadow-color: var(--shadow-color-for-dark-base);
+  --shadow-color: var(--shadow-color--for-dark-base);
   --light-shadow: var(--light-shadow--for-dark-base);
 }
 .colors--secondary,
@@ -195,7 +195,7 @@ body {
   --link-color-accent:  hsl(var(--HSL-NobleHoverAction));
   --link-color-descent: var(--link-color);
 
-  --shadow-color: var(--shadow-color-for-light-base);
+  --shadow-color: var(--shadow-color--for-light-base);
   --light-shadow: var(--light-shadow--for-light-base);
 }
 .colors--swed-third {
@@ -211,7 +211,7 @@ body {
   --link-color-accent:  hsl(var(--HSL-NobleHighWhite));
   --link-color-descent: var(--link-color);
 
-  --shadow-color: var(--shadow-color-for-light-base);
+  --shadow-color: var(--shadow-color--for-light-base);
   --light-shadow: var(--light-shadow--for-light-base);
 }
 .colors--action {
@@ -227,7 +227,7 @@ body {
   --link-color-accent:  var(--link-color);
   --link-color-descent: var(--link-color);
 
-  --shadow-color: var(--shadow-color-for-light-base);
+  --shadow-color: var(--shadow-color--for-light-base);
   --light-shadow: var(--light-shadow--for-light-base);
 }
 .colors--ivory {
@@ -243,7 +243,7 @@ body {
   --link-color-accent:  hsl( 359, 59%, 43% );
   --link-color-descent: var(--link-color);
 
-  --shadow-color: var(--shadow-color-for-light-base);
+  --shadow-color: var(--shadow-color--for-light-base);
   --light-shadow: var(--light-shadow--for-light-base);
 }
 

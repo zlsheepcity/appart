@@ -176,6 +176,8 @@
     .note {
         grid-column: pn_ / _pn;
       --grid-part--main-space: calc( var(--sx)*var(--if-grid-is-tiny, 0) );
+    }
+    .note:not(.keep-font-size) {
         /* 13/16 */
         font-size:   var(--dec-font-size,   calc(13/16*1em) );
         line-height: var(--dec-line-height, calc(16/13) );

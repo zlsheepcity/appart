@@ -118,7 +118,8 @@ h6 { @extend .h6 !optional; }
 
 big   { @extend .text-inline-bigger  !optional; }
 small { @extend .text-inline-smaller !optional; }
-mark  { color: var(--text-color-accent, inherit); background-color: transparent; }
+mark,
+.mark { color: var(--text-color-accent, inherit); background-color: transparent; }
 
 
 .book-of-chapters {

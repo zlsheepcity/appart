@@ -1,122 +1,186 @@
+/** dropdown UI component
+ *  2019.8.18
+ *
+ *  CSS
+ *
+ */
+
+
+/** ------------------------------------ settings */
+
+
 .swed-dropdown {
 
-    & {
-        position: relative;
-        z-index: 0;
-    }
+  --label-color:          inherit;
+  --hover-label-color:    var(--text-color-accent,  inherit);
 
-    .label {
-        position: relative;
-        z-index:  1;
+  --dropdown-back-color:  var(--back-color-accent,  rgba(255,255,255,0.1));
+  --hoverlink-back-color: var(--back-color-descent, rgba(255,255,255,0.25));
 
-        line-height: 1.5;
-        padding:
-            0.25em 0.5em;
+  --droplist-max-width:   var(--paragraph-width--mid, 24em);
 
-        // has marker
+  --label-arrow-image: url("data:image/svg+xml,%3Csvg fill%3D%22%23888888%22 width%3D%2224%22 height%3D%2224%22 viewBox%3D%220 0 24 24%22 xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E %3Cpath d%3D%22M7.41 7.84L12 12.42l4.59-4.58L18 9.25l-6 6-6-6z%22%2F%3E %3C%2Fsvg%3E");
+}
 
-        display:     flex;
-        align-items: center;
 
-        &::after {
-            content: '';
-            display: block;
-            width:   1.5em;
-            height:  1.5em;
-            background-size:  100%;
-            background-image: url("data:image/svg+xml,%3Csvg fill%3D%22white%22 width%3D%2224%22 height%3D%2224%22 viewBox%3D%220 0 24 24%22 xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E %3Cpath d%3D%22M7.41 7.84L12 12.42l4.59-4.58L18 9.25l-6 6-6-6z%22%2F%3E %3C%2Fsvg%3E");
-            transition: transform 240ms;
-            transform-origin: center center;
-        }
-    }
-    .droplist {
-        pointer-events: none;
+/** ------------------------------------ closed state (default) */
 
-        position: absolute;
-        z-index:  0;
-        top:     -0.25em;
-        left:    -0.25em;
-        min-width: 100%;
 
-        // background
+.swed-dropdown {
+  --z-index:         0;
+  --arrow-rotate:    none;
+  --pointer-events:  none;
+  --scale-timing:    var(--timing-function--closeJump);
+  --opacity-timing:  ease-out;
 
-        &::after {
-            background-color: rgba(255,255,255,0.1);
+ /* universal state flags */
+  --state-block:     none;
+  --state-value:     0;
+}
 
-            content:  '';
-            position: absolute;
-            z-index: -1;
-            top:      0;
-            right:    0;
-            bottom:   0;
-            left:     0;
 
-            transform:  scale(0);
-            transform-origin: 1em 1em;
-            transition: transform 240ms;
-            transition-timing-function: var(--timing-function--closeJump);
-        }
+/** ------------------------------------ open state */
 
-        // content
 
-        &>ul {
-            opacity: 0;
+.swed-dropdown:not(.no-hover):hover,
+.swed-dropdown.is-active {
+  --z-index:         1;
+  --arrow-rotate:    rotate(180deg);
+  --pointer-events:  all;
+  --scale-timing:    var(--timing-function--openJump);
+  --opacity-timing:  ease-in;
 
-            list-style: none;
-            margin:     0;
-            padding:    0;
-            margin-top: 2.5em;
-            padding-bottom: 0.5em;
+ /* universal state flags */
+  --state-block:     block;
+  --state-value:     1;
 
-            transition: opacity 240ms ease-out;
+ /* change colors */
+  --label-color:     var(--hover-label-color);
+}
 
-            &>li {
-                white-space: nowrap;
-                padding: 0.25em 0.75em;
-                &:hover { background-color: rgba(0,0,0,0.25); }
-                &:hover>span,
-                &:hover>a {
-                    display: block;
-                    transform:  translateX(0.25em);
-                    transition: transform 240ms ease-in;
-                    transition-timing-function: var(--timing-function--openJump);
-                }
-            }
-        }
-    }
 
-    /* display action */
+/** ------------------------------------ wrap */
 
-    &.has-hover-action:hover,
-    &.is-active {
-        .label            { color: hsl(2,45%,65%); }
-        .label::after     { transform: rotate(180deg); }
-        .droplist         { pointer-events: all; }
-        .droplist::after {
-            transform: scale(1);
-            transition-timing-function: var(--timing-function--openJump);
-        }
-        .droplist>ul {
-            opacity: 1;
-            transition: opacity 240ms ease-in;
-        }
-    }
 
-    /* usability */
+.swed-dropdown {
+    position: relative;
+    z-index:  var(--state-value);
+}
 
-    // transparent hover area around
-    &.has-hover-action {
-        .droplist::before {
-            display:  none;
-            content:  '';
-            position: absolute;
-            z-index: -2;
-            top:     -2em;
-            right:   -2em;
-            bottom:  -2em;
-            left:    -2em;
-        }
-        &:hover .droplist::before { display: block; }
-    }
+
+/** ------------------------------------ label */
+
+
+.swed-dropdown>.label {
+    position: relative;
+    z-index:  1;
+
+    line-height: 1.5;
+    padding:     0.25em 0.5em;
+    color:       var(--label-color);
+}
+
+/* has arrow-marker */
+
+.swed-dropdown>.label {
+    display:     flex;
+    align-items: center;
+}
+
+.swed-dropdown>.label::after {
+    content: '';
+    display: block;
+    width:   1.5em;
+    height:  1.5em;
+ /* v-shape icon */
+    background-image:    var(--label-arrow-image);
+    background-size:     100%;
+    background-repeat:   no-repeat;
+    background-position: center center;
+ /* active rotation */
+    transform:           var(--arrow-rotate);
+    transition:          transform 240ms;
+    transform-origin:    center center;
+}
+
+
+/** ------------------------------------ droplist wrap */
+
+
+.swed-dropdown>.droplist {
+    position: absolute;
+    z-index:  0;
+    top:     -0.25em;
+    left:    -0.25em;
+    min-width:  100%;
+    pointer-events: var(--pointer-events);
 
 }
+
+/* background */
+
+.swed-dropdown>.droplist::after {
+    content:  '';
+    position: absolute;
+    z-index: -1;
+    top:      0;
+    right:    0;
+    bottom:   0;
+    left:     0;
+
+    background-color: var(--dropdown-back-color);
+    transform:        scale(var(--state-value));
+    transform-origin: 1em 1em;
+    transition:       transform 240ms;
+    transition-timing-function: var(--state-timing-function);
+}
+
+
+/* better ux - transparent hover area around droplist */
+
+.swed-dropdown>.droplist::before {
+    display:  var(--state-block);
+    content:  '';
+    position: absolute;
+    z-index: -2;
+    top:      2em;
+    right:   -2em;
+    bottom:  -2em;
+    left:    -2em;
+}
+
+
+/** ------------------------------------ droplist UL content */
+
+
+.swed-dropdown>.droplist>ul {
+    list-style: none;
+    margin:     0;
+    padding:    0;
+    margin-top: 2.5em;
+    padding-bottom: 0.5em;
+
+    opacity:    var(--state-value);
+    transition: opacity 240ms var(--opacity-timing);
+}
+
+.swed-dropdown>.droplist>ul>li {
+  --background-color: transparent;
+    background-color: var(--background-color);
+    max-width:        var(--droplist-max-width);
+    white-space:      nowrap;
+    text-overflow:    ellipsis;
+    padding: 0.25em 0.75em;
+}
+.swed-dropdown>.droplist>ul>li:hover {
+  --background-color: var(--hoverlink-back-color);
+}
+.swed-dropdown>.droplist>ul>li:hover>* {
+    display: block;
+    transform:  translateX(0.25em);
+    transition: transform 240ms ease-in;
+    transition-timing-function: var(--timing-function--openJump);
+}
+
+
+/* EOF dropdown */

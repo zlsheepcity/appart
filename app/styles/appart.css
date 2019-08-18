@@ -1569,42 +1569,98 @@ body {
   }
 }
 /*  EOF swed-buttons */
+/** dropdown UI component
+ *  2019.8.18
+ *
+ *  CSS
+ *
+ */
+/** ------------------------------------ settings */
 .swed-dropdown {
-  /* display action */
-  /* usability */
+  --label-color: inherit;
+  --hover-label-color: var(--text-color-accent, inherit);
+  --dropdown-back-color: var(--back-color-accent, rgba(255,255,255,0.1));
+  --hoverlink-back-color: var(--back-color-descent, rgba(255,255,255,0.25));
+  --droplist-max-width: var(--paragraph-width--mid, 24em);
+  --label-arrow-image: url("data:image/svg+xml,%3Csvg fill%3D%22%23888888%22 width%3D%2224%22 height%3D%2224%22 viewBox%3D%220 0 24 24%22 xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E %3Cpath d%3D%22M7.41 7.84L12 12.42l4.59-4.58L18 9.25l-6 6-6-6z%22%2F%3E %3C%2Fsvg%3E");
 }
+
+/** ------------------------------------ closed state (default) */
+.swed-dropdown {
+  --z-index: 0;
+  --arrow-rotate: none;
+  --pointer-events: none;
+  --scale-timing: var(--timing-function--closeJump);
+  --opacity-timing: ease-out;
+  /* universal state flags */
+  --state-block: none;
+  --state-value: 0;
+}
+
+/** ------------------------------------ open state */
+.swed-dropdown:not(.no-hover):hover,
+.swed-dropdown.is-active {
+  --z-index: 1;
+  --arrow-rotate: rotate(180deg);
+  --pointer-events: all;
+  --scale-timing: var(--timing-function--openJump);
+  --opacity-timing: ease-in;
+  /* universal state flags */
+  --state-block: block;
+  --state-value: 1;
+  /* change colors */
+  --label-color: var(--hover-label-color);
+}
+
+/** ------------------------------------ wrap */
 .swed-dropdown {
   position: relative;
-  z-index: 0;
+  z-index: var(--state-value);
 }
-.swed-dropdown .label {
+
+/** ------------------------------------ label */
+.swed-dropdown > .label {
   position: relative;
   z-index: 1;
   line-height: 1.5;
   padding: 0.25em 0.5em;
+  color: var(--label-color);
+}
+
+/* has arrow-marker */
+.swed-dropdown > .label {
   display: flex;
   align-items: center;
 }
-.swed-dropdown .label::after {
+
+.swed-dropdown > .label::after {
   content: "";
   display: block;
   width: 1.5em;
   height: 1.5em;
+  /* v-shape icon */
+  background-image: var(--label-arrow-image);
   background-size: 100%;
-  background-image: url("data:image/svg+xml,%3Csvg fill%3D%22white%22 width%3D%2224%22 height%3D%2224%22 viewBox%3D%220 0 24 24%22 xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E %3Cpath d%3D%22M7.41 7.84L12 12.42l4.59-4.58L18 9.25l-6 6-6-6z%22%2F%3E %3C%2Fsvg%3E");
+  background-repeat: no-repeat;
+  background-position: center center;
+  /* active rotation */
+  transform: var(--arrow-rotate);
   transition: transform 240ms;
   transform-origin: center center;
 }
-.swed-dropdown .droplist {
-  pointer-events: none;
+
+/** ------------------------------------ droplist wrap */
+.swed-dropdown > .droplist {
   position: absolute;
   z-index: 0;
   top: -0.25em;
   left: -0.25em;
   min-width: 100%;
+  pointer-events: var(--pointer-events);
 }
-.swed-dropdown .droplist::after {
-  background-color: rgba(255, 255, 255, 0.1);
+
+/* background */
+.swed-dropdown > .droplist::after {
   content: "";
   position: absolute;
   z-index: -1;
@@ -1612,64 +1668,57 @@ body {
   right: 0;
   bottom: 0;
   left: 0;
-  transform: scale(0);
+  background-color: var(--dropdown-back-color);
+  transform: scale(var(--state-value));
   transform-origin: 1em 1em;
   transition: transform 240ms;
-  transition-timing-function: var(--timing-function--closeJump);
+  transition-timing-function: var(--state-timing-function);
 }
-.swed-dropdown .droplist > ul {
-  opacity: 0;
+
+/* better ux - transparent hover area around droplist */
+.swed-dropdown > .droplist::before {
+  display: var(--state-block);
+  content: "";
+  position: absolute;
+  z-index: -2;
+  top: 2em;
+  right: -2em;
+  bottom: -2em;
+  left: -2em;
+}
+
+/** ------------------------------------ droplist UL content */
+.swed-dropdown > .droplist > ul {
   list-style: none;
   margin: 0;
   padding: 0;
   margin-top: 2.5em;
   padding-bottom: 0.5em;
-  transition: opacity 240ms ease-out;
+  opacity: var(--state-value);
+  transition: opacity 240ms var(--opacity-timing);
 }
-.swed-dropdown .droplist > ul > li {
+
+.swed-dropdown > .droplist > ul > li {
+  --background-color: transparent;
+  background-color: var(--background-color);
+  max-width: var(--droplist-max-width);
   white-space: nowrap;
+  text-overflow: ellipsis;
   padding: 0.25em 0.75em;
 }
-.swed-dropdown .droplist > ul > li:hover {
-  background-color: rgba(0, 0, 0, 0.25);
+
+.swed-dropdown > .droplist > ul > li:hover {
+  --background-color: var(--hoverlink-back-color);
 }
-.swed-dropdown .droplist > ul > li:hover > span, .swed-dropdown .droplist > ul > li:hover > a {
+
+.swed-dropdown > .droplist > ul > li:hover > * {
   display: block;
   transform: translateX(0.25em);
   transition: transform 240ms ease-in;
   transition-timing-function: var(--timing-function--openJump);
 }
-.swed-dropdown.has-hover-action:hover .label, .swed-dropdown.is-active .label {
-  color: #ce807e;
-}
-.swed-dropdown.has-hover-action:hover .label::after, .swed-dropdown.is-active .label::after {
-  transform: rotate(180deg);
-}
-.swed-dropdown.has-hover-action:hover .droplist, .swed-dropdown.is-active .droplist {
-  pointer-events: all;
-}
-.swed-dropdown.has-hover-action:hover .droplist::after, .swed-dropdown.is-active .droplist::after {
-  transform: scale(1);
-  transition-timing-function: var(--timing-function--openJump);
-}
-.swed-dropdown.has-hover-action:hover .droplist > ul, .swed-dropdown.is-active .droplist > ul {
-  opacity: 1;
-  transition: opacity 240ms ease-in;
-}
-.swed-dropdown.has-hover-action .droplist::before {
-  display: none;
-  content: "";
-  position: absolute;
-  z-index: -2;
-  top: -2em;
-  right: -2em;
-  bottom: -2em;
-  left: -2em;
-}
-.swed-dropdown.has-hover-action:hover .droplist::before {
-  display: block;
-}
 
+/* EOF dropdown */
 /*  swed-site-head - slim header
  *  v2019.8.1
  */
@@ -1814,7 +1863,7 @@ body {
 .color-model,
 .colors--root {
   --back-color: white;
-  --back-color-accent: var(--light-shadow);
+  --back-color-accent: wheat;
   --back-color-descent: var(--light-shadow);
   --text-color: black;
   --text-color-accent: var(--text-color);

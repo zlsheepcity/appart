@@ -199,4 +199,9 @@
     .figured.card>.figure { order: calc( 1*var(--if-grid-is-tiny, 0) ); }
 
 
+/*** remove row gap, use custom layers each row */
+    .join-layers {
+        grid-row-gap: 0;
+    }
+
 /*  EOF journal-grid */

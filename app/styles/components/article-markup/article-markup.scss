@@ -125,11 +125,16 @@ mark  { color: var(--text-color-accent, inherit); background-color: transparent;
     grid-row-gap: 0;
 }
 .chapter {
-    padding-top:    calc( 4 * var(--row-space, 1rem) );
-    padding-bottom: calc( 4 * var(--row-space, 1rem) );
+  --padding-top:    calc( 4 * var(--row-space, 1rem) );
+    padding-top:    var(--padding-top);
+  --padding-bottom: calc( 4 * var(--row-space, 1rem) );
+    padding-bottom: var(--padding-bottom);
 }
-.chapter-title {
-    margin-top:     calc( 2 * var(--row-space, 1rem) );
+.chapter.isontop { --padding-top: 0; }
+.chapter.isonbot { --padding-bottom: 0; }
+.chapter-header {
+  --margin-top:     calc( 2 * var(--row-space, 1rem) );
+    margin-top:     var(--margin-top);
 }
 
 

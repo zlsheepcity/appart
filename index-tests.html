@@ -95,7 +95,7 @@
             <li>
                 <a
                     class="svga-icon js-for-ChaptersMenuBar"
-                    style="--size: 2;">
+                    style="--base:16px; --size: 3;">
                     <svg><use xlink:href="#svg-menu"></use></svg>
                 </a>
             </li>
@@ -114,7 +114,7 @@
             <nav class="sidepanel-content">
                 <ul class="content-menu js-for-ChaptersMenuBar">
                     <li><a href="#Typography">Typography</a></li>
-                    <li>Pellentesque habitant</li>
+                    <li><a href="#color-model">Color model</a></li>
                     <li>Morbi tristique senectus</li>
                     <li>Et netus et malesuada</li>
                     <li>Fames ac turpis egestas</li>
@@ -204,7 +204,7 @@
         </div>
 
 
-        <h2 class="chapter-title">Facetype collections</h2>
+        <h2 class="chapter-header">Facetype collections</h2>
 
         <div class="block" style="font-family: var(--font-family--tufte-serif);">
             <h3 class="link-color">tufte-serif</h3>
@@ -226,7 +226,7 @@
         </div>
 
 
-        <h2 class="chapter-title">Font-size modifyers</h2>
+        <h2 class="chapter-header">Font-size modifyers</h2>
 
         <div class="block">
             <div>
@@ -254,7 +254,7 @@
 
         <section class="wide">
 
-            <header class="chapter-title">
+            <header class="chapter-header">
                 <h2>Paragraph readable width</h2>
             </header>
 
@@ -305,6 +305,63 @@
         </section>
 
     </section>
+
+
+    <!-- ----------------------------------------------------- Color Model -->
+
+
+    <article id="color-model" class="chapter isontop">
+
+        <header class="banner">
+            <h2 class="h1">Color Model Tests</h2>
+        </header>
+
+
+        <section class="banner use-colors colors--root">
+            <header>
+                <h2>colors--root</h2>
+                <p class="text-color-descent">Color Model 3x3</p>
+            </header>
+            <p class="back-color-descent back-color-hover link-color padding">Hover Me</p>
+        </section>
+        <section class="banner use-colors colors--action">
+            <header>
+                <h2>colors--action</h2>
+                <p class="text-color-descent">Color Model 3x3</p>
+            </header>
+            <p class="back-color-descent back-color-hover link-color padding">Hover Me</p>
+        </section>
+        <section class="banner use-colors colors--ivory">
+            <header>
+                <h2>colors--ivory</h2>
+                <p class="text-color-descent">Color Model 3x3</p>
+            </header>
+            <p class="back-color-descent back-color-hover link-color padding">Hover Me</p>
+        </section>
+        <section class="banner use-colors colors--swed">
+            <header>
+                <h2>colors--swed</h2>
+                <p class="text-color-descent">Color Model 3x3</p>
+            </header>
+            <p class="back-color-descent back-color-hover link-color padding">Hover Me</p>
+        </section>
+        <section class="banner use-colors colors--swed-secondary">
+            <header>
+                <h2>colors--swed-secondary</h2>
+                <p class="text-color-descent">Color Model 3x3</p>
+            </header>
+            <p class="back-color-descent back-color-hover link-color padding">Hover Me</p>
+        </section>
+        <section class="banner use-colors colors--swed-third">
+            <header>
+                <h2>colors--swed-third</h2>
+                <p class="text-color-descent">Color Model 3x3</p>
+            </header>
+            <p class="back-color-descent back-color-hover link-color padding">Hover Me</p>
+        </section>
+
+
+    </article>
 
 
     <!-- ----------------------------------------- Components Promo -->
@@ -1007,76 +1064,6 @@
         InterfaceOffsideBar('OverflowBarWestside')
         InterfaceOffsideBar('GLBar')
     </script>
-
-
-    <!-- ----------------------------------------------------- Color Model -->
-
-
-    <article id="color-model" class="chapter secondary-colors">
-
-        <h2 class="west">Color Model</h2>
-
-        <section class="block">
-            <h3>Features</h3>
-            <ul>
-                <li>Предотвращает ситуацию «Использование <em>дополнительного цвета</em> внутри <em>дополнительного цвета</em>»</li>
-                <li>Упрощённое добавление новой цветовой схемы, переопределяя css-переменные</li>
-            </ul>
-        </section>
-        <footer>
-            <button class="swed-button">
-                <a href="dev/tests-color-model.html">Test page</a>
-            </button>
-        </footer>
-
-    </article>
-
-    <header id="color-model-tests" class="banner">
-        <h1 class="huge-title">Color Model Tests</h1>
-    </header>
-
-    <section class="banner use-colors colors--root">
-        <header>
-            <h2>colors--root</h2>
-            <p class="text-color-descent">Color Model 3x3</p>
-        </header>
-        <p class="back-color-descent back-color-hover link-color padding">Hover Me</p>
-    </section>
-    <section class="banner use-colors colors--swed">
-        <header>
-            <h2>colors--swed</h2>
-            <p class="text-color-descent">Color Model 3x3</p>
-        </header>
-        <p class="back-color-descent back-color-hover link-color padding">Hover Me</p>
-    </section>
-    <section class="banner use-colors colors--swed-secondary">
-        <header>
-            <h2>colors--swed-secondary</h2>
-            <p class="text-color-descent">Color Model 3x3</p>
-        </header>
-        <p class="back-color-descent back-color-hover link-color padding">Hover Me</p>
-    </section>
-    <section class="banner use-colors colors--swed-third">
-        <header>
-            <h2>colors--swed-third</h2>
-            <p class="text-color-descent">Color Model 3x3</p>
-        </header>
-        <p class="back-color-descent back-color-hover link-color padding">Hover Me</p>
-    </section>
-    <section class="banner use-colors colors--action">
-        <header>
-            <h2>colors--action</h2>
-            <p class="text-color-descent">Color Model 3x3</p>
-        </header>
-        <p class="back-color-descent back-color-hover link-color padding">Hover Me</p>
-    </section>
-    <section class="banner use-colors colors--ivory">
-        <header>
-            <h2>colors--ivory</h2>
-            <p class="text-color-descent">Color Model 3x3</p>
-        </header>
-        <p class="back-color-descent back-color-hover link-color padding">Hover Me</p>
-    </section>
 
 
     <!-- ----------------------------------------------------- Article Grid -->

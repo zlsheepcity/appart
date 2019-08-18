@@ -1581,11 +1581,11 @@ body {
 .swed-site-head {
   --line-height: 1rem;
   --sx: var(--col-space, 1rem);
-  --sy: var(--row-space, 1rem);
+  --sy: 1rem;
   --head-background: var(--back-color, inherit);
   --head-text-color: var(--text-color, inherit);
   --head-shadow: var(--shadow-color, hsla(0, 0%, 100%, 0.25));
-  padding-top: var(--sy, 1rem);
+  padding-top: var(--sy);
   background-color: var(--head-background);
   color: var(--head-text-color);
   display: flex;
@@ -1598,7 +1598,9 @@ body {
 
 .swed-site-head > * {
   line-height: var(--line-height);
+  height: var(--line-height);
   margin: 0 var(--sx) var(--sy) var(--sx);
+  overflow: visible;
 }
 
 .swed-site-meta,
@@ -1629,6 +1631,16 @@ body {
   color: var(--head-text-color);
 }
 
+@media all and (max-width: 24em) {
+  /* title and menu in top row */
+  .swed-site-meta {
+    order: 3;
+  }
+
+  .swed-site-menu {
+    order: 2;
+  }
+}
 /*  EOF swed-site-head */
 /*  catgrounds - decorative background shapes
  *  2019.7.30
@@ -2368,12 +2380,23 @@ mark {
 }
 
 .chapter {
-  padding-top: calc( 4 * var(--row-space, 1rem) );
-  padding-bottom: calc( 4 * var(--row-space, 1rem) );
+  --padding-top: calc( 4 * var(--row-space, 1rem) );
+  padding-top: var(--padding-top);
+  --padding-bottom: calc( 4 * var(--row-space, 1rem) );
+  padding-bottom: var(--padding-bottom);
 }
 
-.chapter-title {
-  margin-top: calc( 2 * var(--row-space, 1rem) );
+.chapter.isontop {
+  --padding-top: 0;
+}
+
+.chapter.isonbot {
+  --padding-bottom: 0;
+}
+
+.chapter-header {
+  --margin-top: calc( 2 * var(--row-space, 1rem) );
+  margin-top: var(--margin-top);
 }
 
 td {

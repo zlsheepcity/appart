@@ -15,13 +15,13 @@
 .swed-site-head {
   --line-height:      1rem;
   --sx:               var(--col-space, 1rem);
-  --sy:               var(--row-space, 1rem);
+  --sy:               1rem;
 
   --head-background:  var(--back-color,   inherit);
   --head-text-color:  var(--text-color,   inherit);
   --head-shadow:      var(--shadow-color, hsla(0, 0%, 100%, 0.25));
 
-    padding-top:      var(--sy, 1rem);
+    padding-top:      var(--sy);
     background-color: var(--head-background);
                color: var(--head-text-color);
 
@@ -34,7 +34,9 @@
 }
 .swed-site-head>* {
     line-height: var(--line-height);
+    height:      var(--line-height);
     margin:    0 var(--sx) var(--sy) var(--sx);
+    overflow:  visible;
 }
 .swed-site-meta,
 .swed-site-menu {
@@ -59,6 +61,12 @@
 .swed-site-logo span {
     font-size:        1.5em;
     color:            var(--head-text-color);
+}
+
+@media all and (max-width:24em) {
+  /* title and menu in top row */
+    .swed-site-meta { order: 3; }
+    .swed-site-menu { order: 2; }
 }
 
 /*  EOF swed-site-head */

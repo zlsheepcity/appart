@@ -19,14 +19,13 @@
   --background-hover: var(--back-color-accent);
   --color:            var(--text-color);
 
-  --padding:          calc( var(--row-space, 1rem) * 0.5 )
-                      var(--col-space, 1rem);
+  --padding:          calc(1em/3) var(--col-space, 1rem);
   --margin:           0.25rem;
   --border-radius:    4px;
   --transform-hover:  scale(1.1, 1.1);
 
   --font-size:        1.5em;
-  --line-height:      1.333;
+  --line-height:      calc(4/3);
 }
 .swed-button.is-big {
   --padding:          var(--row-space, 1rem)

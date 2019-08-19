@@ -37,23 +37,46 @@
 /** -------------------------------- two sides difference */
 
 
-.offsidebar {       /* default, Eastside → */
+/* Eastside → default */
+
+.offsidebar {
+ /* bar position */
   --left:  auto;
   --right: 0;
-  --close-icon-right:              100%;
   --transform-origin--horizontal: right;
+ /* close icon position */
+  --close-icon-right:              100%;
+ /* scrollbar position */
   --scroll-overflow-behavoir:    scroll;
   --scroll-direction:               ltr;
 }
 
+/* Westside ← */
 
-.offsidebar.from-westside {  /* Westside ← */
+.offsidebar.from-westside {
+ /* bar position */
   --left:  0;
   --right: auto;
-  --close-icon-right:  calc( -1 * var(--empty-space-offset) );
   --transform-origin--horizontal: left;
+ /* close icon position */
+  --close-icon-right:  calc( -1 * var(--empty-space-offset) );
+/* scrollbar position */
   --scroll-overflow-behavoir:     auto;
   --scroll-direction:              rtl;
+}
+
+
+/** ------------------------------------ closed/active states */
+
+
+.offsidebar {
+  --state-event: none;
+  --state-value: 0;
+}
+
+.offsidebar.is-active {
+  --state-event: all;
+  --state-value: 1;
 }
 
 
@@ -69,8 +92,7 @@
     left:       var(--left);
     max-width:  calc( 100% - var(--empty-space-offset) );
 
- /* default inactive state */
-    pointer-events: none;
+    pointer-events: var(--state-event);
 }
 
 .offsidebar-background {
@@ -81,9 +103,8 @@
     width:  100%;
     height: 100%;
 
- /* default inactive state */
     background-color: var(--back-color--sidepanel);
-    transform: scaleX(0);
+    transform: scaleX(var(--state-value));
 }
 
 .offsidebar-overlay {
@@ -94,9 +115,8 @@
     left:      0;
     right:     0;
 
- /* default inactive state */
     background-color: hsla(0, 0%, 0%, 0.9);
-    opacity: 0;
+    opacity: var(--state-value);
 }
 
 /** -------------------------------- close icon */
@@ -110,7 +130,7 @@
     width:    var(--empty-space-offset);
     height:   var(--empty-space-offset);
 
- /* click on overlay will force offsidebar to close */
+ /* click will be delegated to overlay div */
     pointer-events:   none;
 
  /* x-close — white svg icon */
@@ -136,7 +156,8 @@
     justify-content: flex-start;
     align-content:   stretch;
 
-    color:     var(--text-color--sidepanel);
+    color:      var(--text-color--sidepanel);
+    opacity:    var(--state-value);
 }
 .sidepanel>*{
     direction: var(--direction);
@@ -156,16 +177,13 @@
     z-index:  1;
 }
 
-/* default inactive state */
+/* change state for content */
 
-.sidepanel {
-    opacity:   0;
-}
 .offsidebar .sidepanel-content,
 .offsidebar .sidepanel-header,
 .offsidebar .sidepanel-footer {
-    transform: scaleX(0);
-    opacity:   0;
+    transform: scaleX(var(--state-value));
+    opacity:          var(--state-value);
 }
 
 /** -------------------------------- content design */
@@ -209,33 +227,8 @@
 }
 
 
-/** -------------------------------- active state */
-
-
-.offsidebar.is-active {
-    pointer-events: all;
-}
-.offsidebar.is-active .offsidebar-background {
-    transform: scaleX(1);
-}
-.offsidebar.is-active .offsidebar-overlay {
-    opacity: 1;
-}
-.offsidebar.is-active .sidepanel {
-    opacity: 1;
-}
-.offsidebar.is-active .sidepanel-content,
-.offsidebar.is-active .sidepanel-header,
-.offsidebar.is-active .sidepanel-footer {
-    transform: scaleX(1);
-    opacity: 1;
-}
-
-
 /** -------------------------------- animation settings */
 
-
-@media screen and (min-width:900px) {
 
  /* Animate overlay */
 
@@ -271,7 +264,6 @@
         transform-origin: var(--transform-origin--horizontal) center;
         transition-delay: 50ms;
     }
-}
 
 
 /*  EOF offsidebar */

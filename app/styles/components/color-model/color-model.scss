@@ -158,9 +158,9 @@ body {
   --link-color-accent:  var(--link-color);
   --link-color-descent: var(--link-color);
 
-  --shadow-color: var(--shadow-color-for-light-base);
+  --shadow-color: var(--shadow-color--for-light-base);
   --light-shadow: var(--light-shadow--for-light-base);
-/*--shadow-color: var(--shadow-color-for-dark-base);
+/*--shadow-color: var(--shadow-color--for-dark-base);
   --light-shadow: var(--light-shadow--for-dark-base);*/
 }
 

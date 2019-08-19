@@ -1603,6 +1603,8 @@ body {
 
 /** ------------------------------------ open state */
 .swed-dropdown:not(.no-hover):hover,
+.swed-dropdown:focus,
+.swed-dropdown:focus-within,
 .swed-dropdown.is-active {
   --z-index: 1;
   --arrow-rotate: rotate(180deg);
@@ -1659,7 +1661,7 @@ body {
   z-index: 0;
   top: -0.25em;
   left: -0.25em;
-  min-width: 100%;
+  min-width: calc( 100% + 0.25em + 0.25em );
   pointer-events: var(--pointer-events);
 }
 

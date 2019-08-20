@@ -1,7 +1,25 @@
-# appart
+# App &amp; Art (appart)
 
-App &amp; Art — front-end components.
+Front-end components.
+Not a framework, but
+reusable code templates.
 
-# components
+Pure CSS, SCSS, Vanilla JS
+
+
+## components web-page
 
 https://zlsheepcity.github.io/appart/
+
+
+## quick description (in russian)
+
+> appart — (фр.) поиск подходящего партнёра
+
+App — от технического термина application, Art — творчество. Игра слов означает, что написание кода и содержания тесно связаны друг с другом.
+
+Проект appart создаётся для упрощённой вёрстки оригинального неоднородного контента. Наибольшее внимание уделяется ликвидации «некрасивых» ошибок, таких как, дёргание контента при появлении модальных окон.
+
+Appart не фреймворк, а код для копирования в другие проекты. Все компоненты связаны общей системой, но должны либо работать самостоятельно, либо иметь настройки вынесенные в начало файлов.
+
+zl, August 2019

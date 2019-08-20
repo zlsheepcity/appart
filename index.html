@@ -1,4 +1,4 @@
-<!doctype html><!-- appart :: 8001 :: 2019.8.14 -->
+<!doctype html><!-- appart :: 8001 :: 2019.8.20 -->
 <html lang="ru">
 <head>
     <meta charset="utf-8">
@@ -85,7 +85,7 @@
 
 
     <header class="swed-site-head colors--primary">
-        <h1 class="swed-site-logo"><span>Appart</span></h1>
+        <h1 class="swed-site-logo h5"><span>Appart</span></h1>
         <ul class="swed-site-meta">
             <li></li>
         </ul>
@@ -98,332 +98,102 @@
                     <svg><use xlink:href="#svg-github"></use></svg>
                 </a>
             </li>
+            <li>
+                <a
+                    class="svga-icon js-for-ChaptersMenuBar"
+                    style="--base:16px; --size: 3;">
+                    <svg><use xlink:href="#svg-menu"></use></svg>
+                </a>
+            </li>
         </ul>
     </header>
+
+    <!-- Menu Bar -->
+
+    <section class="ChaptersMenuBar offsidebar colors--swed-secondary">
+        <div class="sidepanel">
+
+            <header class="sidepanel-header">
+                <h2 class="min-title">This page</h2>
+            </header>
+
+            <nav class="sidepanel-content">
+                <ul class="content-menu js-for-ChaptersMenuBar">
+                    <li>Fames ac turpis egestas</li>
+                    <li>Vestibulum tortor quam</li>
+                    <li>Feugiat vitae</li>
+                    <li>Ultricies eget</li>
+                    <li>Tempor sit amet</li>
+                </ul>
+            </nav>
+
+        </div>
+    </section>
+    <script>
+        function InterfaceOffsideBar (barName) {
+
+            const asidebar = document.querySelector('.'+barName)
+            const htmlwrap = document.querySelector('html')
+
+            const classActive     = 'is-active'
+            const classHasOverlay = 'has-offsidebar-overlay'
+            const cssBartender    ='.js-for-' + barName
+            const classOverlay    = 'offsidebar-overlay'
+            const classBackground = 'offsidebar-background'
+
+            const doClose  = () => {
+                asidebar.classList.remove(classActive)
+                htmlwrap.classList.remove(classHasOverlay) }
+            const doOpen   = () => {
+                asidebar.classList.add(classActive)
+                htmlwrap.classList.add(classHasOverlay) }
+            const doToggle = () => {
+                if (asidebar.classList.contains(classActive)) doClose()
+                else doOpen()
+            }
+
+            // find and activate bartenders
+            const bartenderFunction = (el, order) =>
+                  el.addEventListener('click', order === 'close' ? doClose : doToggle )
+            document.querySelectorAll(cssBartender).forEach(bartenderFunction)
+
+            // find/create background
+            let background = asidebar.querySelector('.'+classBackground)
+            if(!background) {
+                background = document.createElement('div')
+                background.classList.add(classBackground)
+                asidebar.prepend(background)
+            }
+
+            // find/create shadow overlay with functionality
+            let overlay = asidebar.querySelector('.'+classOverlay)
+            if(!overlay) {
+                overlay = document.createElement('div')
+                overlay.classList.add(classOverlay)
+                asidebar.prepend(overlay)
+            }
+            bartenderFunction(overlay, 'close')
+        }
+        InterfaceOffsideBar('ChaptersMenuBar')
+    </script>
 
 
     <!-- ----------------------------------------- Project Header -->
 
 
     <section class="swed-banner colors--swed-secondary">
-        <h2 class="big-title">App <span class="link-color">&</span> Art</h2>
-        <p class="text-is-bigger mini-paragraph">
+        <h2>App <mark>&</mark> Art</h2>
+        <p class="mini-paragraph text-inline-bigger">
             Front-end components. Not a framework,
             but reusable code templates.
         </p>
-        <button hidden class="svga-icon js-for-WestsideBar" style="--base:3em; --size:1;">
-            <svg><use xlink:href="#svg-menu"></use></svg>
-        </button>
     </section>
 
 
     <!-- ----------------------------------------- Components Promo -->
 
-    <style>
-        .promo-icon {
-            width: 10em;
-        }
-    </style>
 
-
-    <div class="autogrid">
-
-        <section class="swed-banner is-big">
-            <figure class="promo-icon">
-                <img
-                    src="art/component-icons/component-icon--catgrounds.svg"
-                    alt="SVG icon for Catgrounds">
-            </figure>
-            <div class="is-centered">
-                <h3 class="big-title">
-                    .Catground
-                </h3>
-                <p class="subtitle">
-                    classname brings «Magic Design»<br>
-                    into component
-                </p>
-            </div>
-            <footer>
-                <a href="catgrounds.html" class="swed-button">Project page</a>
-            </footer>
-        </section>
-
-        <section class="swed-banner">
-            <figure class="promo-icon">
-                <img
-                    src="art/component-icons/component-icon--ofsidebar.svg"
-                    alt="SVG icon for Ofsidebar">
-            </figure>
-            <div class="is-centered">
-                <h3 class="big-title">
-                    Ofsidebar
-                </h3>
-                <p class="subtitle">
-                    pop-out panel<br>
-                    without content jumps
-                </p>
-            </div>
-            <footer>
-                <button class="swed-button js-for-EastsideBar"><span>Test bar</span></button>
-            </footer>
-        </section>
-
-        <section class="swed-banner">
-            <figure class="promo-icon">
-                <img
-                    src="art/component-icons/component-icon--banners.svg"
-                    alt="SVG icon for Banners">
-            </figure>
-            <div class="is-centered">
-                <h3 class="big-title">
-                    Banners
-                </h3>
-                <a class="swed-button" href="dev/tests-banners.html"><span>Demo page</span></a>
-            </div>
-        </section>
-
-        <section class="swed-banner is-big">
-            <div class="is-centered">
-                <h3 class="big-title">
-                    <div>Rich Article</div>
-                    <div>Grid Layout</div>
-                </h3>
-            </div>
-            <figure class="promo-icon">
-                <img
-                    src="art/component-icons/component-icon--article-grid.svg"
-                    alt="SVG icon for Article Grid">
-            </figure>
-            <footer>
-                <a class="swed-button" href="dev/tests-grid-cases.html"><span>v3/2019</span></a>
-                <a class="swed-button" href="dev/tests-article-grid.html"><span>v2/2019</span></a>
-            </footer>
-        </section>
-
-    </div>
-
-    <!-- ----------------------------------------- Components Fulllist -->
-
-    <style>
-        /* html>body>*:not(.show) { display: none!important; } */
-        .el-components-list {
-            column-width: 12rem;
-            column-gap:   calc( 2 * var(--col-space) );
-            padding:      0 var(--col-space);
-            margin:       0;
-        }
-        .el-components-list>li {
-            page-break-inside: avoid;
-                 break-inside: avoid;
-            margin-bottom:     var(--row-space);
-        }
-        .el-components-list>li>h4 {
-            font-weight: bolder;
-            color:       var(--link-color, currentColor);
-        }
-        .el-components {
-            max-width:   44rem;
-            margin-left:  auto;
-            margin-right: auto;
-        }
-        @media all and (max-width:30rem) {
-            .el-components-list>li {
-                max-width:   16rem;
-                margin-left:  auto;
-                margin-right: auto;
-            }
-        }
-    </style>
-
-    <section>
-        <header class="banner">
-            <div>
-                <h3 class="mid-title">All components</h3>
-                <p class="has-sans-text">Last update 2019.8.5</p>
-            </div>
-        </header>
-        <section class="el-components has-sans-text">
-                <ul class="el-components-list">
-                    <li>
-                        <h4>CSS Varriors</h4>
-                        <div class="text-is-smaller">
-                            <p>Atom classes for maintainable inline CSS</p>
-                            <p><strong>class="opacity"<br>style="--opacity:0.5;"</strong></p>
-                        </div>
-                    </li>
-                    <li>
-                        <h4>Catgrounds</h4>
-                        <div class="text-is-smaller">
-                            <p><strong>css class</strong></p>
-                            <p>Design trick to make boring content more interesting</p>
-                        </div>
-                    </li>
-                    <li>
-                        <h4>Offsidebar</h4>
-                        <div class="text-is-smaller">
-                            <p><strong>css component</strong></p>
-                            <p>Expandable side-panel prevents content jumps on call (google chrome issue)</p>
-                        </div>
-                    </li>
-
-                    <li>
-                        <h4>Rich Article Grid Layout</h4>
-                         <div class="text-is-smaller">
-                            <p><strong>sass component</strong></p>
-                            <p>CSS grid template for big articles with a lot of content, illustrations and creative visuals.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <h4>Banners</h4>
-                        <div class="text-is-smaller">
-                            <p><strong>css class</strong></p>
-                            <p>Wrapper for content grouping</p>
-                        </div>
-                    </li>
-
-                    <li>
-                        <h4>Color-model</h4>
-                        <div class="text-is-smaller">
-                            <p>CSS pattern for switching colors in markup</p>
-                        </div>
-                    </li>
-                    <li>
-                        <h4>SVG-icons</h4>
-                        <div class="text-is-smaller">
-                            <p><strong>css, svg</strong></p>
-                            <p>Markup shortcut and presets with common used icons.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <h4>Swed Design Components</h4>
-                        <div class="text-is-smaller">
-                            <p>Button</p>
-                        </div>
-                    </li>
-                </ul>
-        </section>
-        <hr><hr><hr>
-    </section>
-
-
-    <!-- ----------------------------------------- Catgrounds -->
-
-
-    <style>
-        .color-mode--catgrounds {
-            --background-color:           hsl(202, 85%, 17%);
-            --color:                      hsl(202, 11%, 93%);
-            --alternative-text-color:     hsl(var(--HSL-KingsGold));
-
-            --secondary-background-color: hsl(202, 92%, 13%);
-            --secondary-color:            hsl(202, 11%, 93%);
-
-            --third-background-color:     hsl(202, 81%, 23%);
-            --third-color:                hsl(202, 11%, 93%);
-
-            --action-color:               hsl(var(--HSL-KingsAction));
-            --action-color--hover:        hsl(var(--HSL-KingsAction));
-            --action-color--text:         white;
-        }
-        .catground-description-title {
-            justify-content: flex-start;
-        }
-        .el-catground-compare {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: nowrap;
-            justify-content: space-between;
-            align-content: stretch;
-            align-items: stretch;
-        }
-        .el-catground-compare > .el-comparer {
-            flex-grow: 1;
-            width: 50%;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-content: center;
-            align-items: center;
-            padding: var(--all-space);
-        }
-        .el-comparer .illustration {
-            margin: var(--row-space) 0;
-        }
-    </style>
-
-
-    <article class="chapter isontop isonbot color-mode--catgrounds use-colors">
-
-        <section class="article-layer swed-banner use-secondary-colors">
-            <figure style="--max-width:10em;opacity:0.25;">
-                <img src="art/component-icons/component-icon--catgrounds.svg" alt="Catground SVG Icon">
-            </figure>
-            <h2 class="huge-title">Catgrounds</h2>
-        </section>
-
-        <section class="article-box-merge-east swed-banner catground-description-title">
-            <h3 class="mid-title">Short description:</h3>
-            <div class="color-text">
-                <p>An abstract shapes<br>
-                   as background-images<br>
-                   for visual attraction.</p>
-            </div>
-            <footer>
-                <a href="catgrounds.html" class="swed-button">Project page</a>
-            </footer>
-        </section>
-
-        <!-- Catground Compare -->
-
-        <section class="article-layer el-catground-compare">
-            <div class="el-comparer">
-                <h4 class="color-text">
-                    <div class="text-is-normal">Example one</div>
-                    <div class="big-title">A little bit boring</div>
-                </h4>
-                <figure class="illustration">
-                    <img src="art/promo/no-catgrounds.png" alt="Screen sample without catground">
-                </figure>
-            </div>
-            <div class="el-comparer">
-                    <h4 class="color-text">
-                        <div class="text-is-normal">Example two</div>
-                        <div class="big-title">Catground!</div>
-                    </h4>
-                    <figure class="illustration">
-                        <img src="art/promo/has-catgrounds.png" alt="Screen sample with catground effect">
-                    </figure>
-            </div>
-        </section>
-
-
-    </article>
-
-
-
-    <!-- ----------------------------------------- Project About -->
-
-
-    <section class="chapter" hidden>
-
-        <header class="article-box-merge color-box">
-            <strong>appart</strong>
-            <p>— (фр.) поиск подходящего партнёра</p>
-        </header>
-
-        <h2 class="huge-title">App & Art</h2>
-
-        <p>App — от технического термина application, Art — творчество. Игра слов означает, что <em>технология</em> и <em>содержание</em> тесно связаны друг с другом.</p>
-
-        <p>Проект appart создаётся для упрощённой вёрстки содержания с большим количеством оригинальных идей. Создание происходит в одном непрерывном потоке, без разделения на «писать текст» и «программировать код».</p>
-
-
-        <h3>Правила appart</h3>
-        <ul>
-            <li>Компоненты изменяются сохраняя общие гайдлайны</li>
-        </ul>
-
-    </section>
+    <!-- not yet -->
 
 
     <!-- ----------------------------------------- Article Grid -->
@@ -831,52 +601,6 @@
     <!-- Activate Offside Bars -->
 
     <script>
-        function InterfaceOffsideBar (barName) {
-
-            const asidebar = document.querySelector('.'+barName)
-            const htmlwrap = document.querySelector('html')
-
-            const classActive     = 'is-active'
-            const classHasOverlay = 'has-offsidebar-overlay'
-            const cssBartender    ='.js-for-' + barName
-            const classOverlay    = 'offsidebar-overlay'
-            const classBackground = 'offsidebar-background'
-
-            const doClose  = () => {
-                asidebar.classList.remove(classActive)
-                htmlwrap.classList.remove(classHasOverlay) }
-            const doOpen   = () => {
-                asidebar.classList.add(classActive)
-                htmlwrap.classList.add(classHasOverlay) }
-            const doToggle = () => {
-                if (asidebar.classList.contains(classActive)) doClose()
-                else doOpen()
-            }
-
-            // find and activate bartenders
-            const bartenderFunction = (el, order) =>
-                  el.addEventListener('click', order === 'close' ? doClose : doToggle )
-            document.querySelectorAll(cssBartender).forEach(bartenderFunction)
-
-            // find/create background
-            let background = asidebar.querySelector('.'+classBackground)
-            if(!background) {
-                background = document.createElement('div')
-                background.classList.add(classBackground)
-                asidebar.prepend(background)
-            }
-
-            // find/create shadow overlay with functionality
-            let overlay = asidebar.querySelector('.'+classOverlay)
-            if(!overlay) {
-                overlay = document.createElement('div')
-                overlay.classList.add(classOverlay)
-                asidebar.prepend(overlay)
-            }
-            bartenderFunction(overlay, 'close')
-        }
-
-        // Launch Activation
         InterfaceOffsideBar('EastsideBar')
         InterfaceOffsideBar('WestsideBar')
         InterfaceOffsideBar('OverflowBar')

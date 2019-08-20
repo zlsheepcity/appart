@@ -196,581 +196,164 @@
     <!-- not yet -->
 
 
-    <!-- ----------------------------------------- Article Grid -->
-
 
     <style>
-        .content-menu {
-            list-style: none;
-            padding:
-                calc( 0 * var(--row-space) )
-                0;
-            margin:
-                0
-                calc(  -1 * var(--col-space) );
-        }
-        .content-menu>li {
-            display: block;
-            padding:
-                calc( 0.5 * var(--row-space) )
-                calc(   1 * var(--col-space) );
-        }
-        .content-menu>li>a {
-            display: block;
-            margin:
-                calc(-0.5 * var(--row-space) )
-                calc(  -1 * var(--col-space) );
-            padding:
-                calc( 0.5 * var(--row-space) )
-                calc(   1 * var(--col-space) );
-        }
-        .content-menu>.is-current>a {
-            background-color: var(--active-color);
-                       color: var(--active-color--text);
-            text-decoration:  none;
-        }
-        .content-menu>li>a:hover {
-            background-color: var(--shadow-color);
-        }
-        .content-menu>li>a:focus-within {
-            background-color: var(--shadow-color);
-        }
-
-        .content-menu-toggler {
-            text-align: left;
-            border-bottom: 4px solid var(--shadow-color);
-            margin:
-                0
-                calc(  -1 * var(--col-space) );
-            padding:
-                calc( 0.5 * var(--row-space) )
-                calc(   1 * var(--col-space) );
-        }
-        .content-menu-container {
+        .chapter {
             position: relative;
-            margin:
-                0
-                calc(  -1 * var(--col-space) );
         }
-
+        .nav-header {
+            position: sticky;
+            top: 0;
+            background-color: var(--back-color-accent);
+        }
     </style>
 
 
+    <!-- ----------------------------------------- Typography Demo -->
 
-    <article class="chapter is-on-top colors--ivory use-colors">
 
-        <header class="article-layer swed-banner back-color-descent">
-            <h2 class="huge-title">Rich Article Grid Layout</h2>
-            <figure style="--max-width:10em;opacity:0.25;">
-                <img src="art/component-icons/component-icon--article-grid.svg" alt="Grid SVG Icon">
-            </figure>
+    <section id="Typography" class="chapter isontop journal-grid use-colors colors--ivory">
+
+        <header class="nav-header layer keep-grid use-colors">
+            <p>Web-Typography tests, <a href="https://github.com/zlsheepcity/appart/blob/master/app/styles/components/html-core/html-typography.scss">CSS source</a></p>
         </header>
 
-        <hr>
-
-        <div class="article-autobar-west">
-            <button class="for-autobar js-for-GLBar">Display features...</button>
-            <section class="offsidebar is-autobar from-westside GLBar">
-                <section class="sidepanel">
-                    <header class="sidepanel-header">
-                        <h3 class="min-title">Features</h3>
-                    </header>
-                    <nav class="sidepanel-content">
-                        <ul class="content-menu">
-                            <li><a href="dev/tests-article-grid.html">Three-column layout</a></li>
-                            <li><a href="dev/tests-article-grid.html">Easy for markup</a></li>
-                            <li><a href="dev/tests-article-grid.html">Easy for customize components</a></li>
-                            <li><a href="dev/tests-article-grid.html">Built in «auto hide menu»</a></li>
-                        </ul>
-                    </nav>
-                </section>
-            </section>
+        <div class="wide is-centered">
+            <div class="h1">Web-Typography testpage</div>
+            <div class="h2">Web-Typography testpage</div>
+            <div class="h3">Web-Typography testpage</div>
+            <div class="h4">Web-Typography testpage</div>
+            <div class="h5">Web-Typography testpage</div>
+            <div class="h6">Web-Typography testpage</div>
+            <small>Web-Typography testpage</small>
         </div>
 
-        <div class="keep-grid article-box-merge-east">
+
+        <h2 class="chapter-header">Facetype collections</h2>
+
+        <div class="keep-grid" style="font-family: var(--font-family--tufte-serif);">
+            <h3 class="mark">tufte-serif</h3>
             <section class="block">
                 <p auto-content></p>
-                <div class=""><p auto-content></p></div>
-                <p auto-content></p>
+                <p auto-content class="text-block-bigger"></p>
+                <p auto-content class="text-block-smaller"></p>
             </section>
-            <section class="textnote">
-                <p auto-content></p>
-                <a class="swed-button" href="dev/tests-article-grid.html"><span>Demo</span></a>
-            </section>
-            <section class="big-box">
-                <p auto-content></p>
-            </section>
+            <div class="note keep-font-size">
+                <p>297351 years<br>&amp;#$@*</p>
+            </div>
+        </div>
+        <div class="keep-grid" style="font-family: var(--font-family--tufte-sans);">
+            <h3 class="mark">tufte-sans</h3>
             <section class="block">
                 <p auto-content></p>
+                <p auto-content class="text-block-bigger"></p>
+                <p auto-content class="text-block-smaller"></p>
             </section>
-            <figure class="block">
-                <img src="art/illustrations/austria.svg" alt="Castle in Austria, schematic illustration">
-            </figure>
+            <div class="note keep-font-size">
+                <p>297351 years<br>&amp;#$@*</p>
+            </div>
+        </div>
+        <div class="keep-grid" style="font-family: var(--font-family--native-sans);">
+            <h3 class="mark">native-sans</h3>
             <section class="block">
                 <p auto-content></p>
-                <p auto-content></p>
+                <p auto-content class="text-block-bigger"></p>
+                <p auto-content class="text-block-smaller"></p>
             </section>
-        </div>
-    </article>
-
-
-    <!-- ----------------------------------------- Banner -->
-
-
-            <section class="swed-banner colors-as-secondary">
-
-                <header>
-                    <h2 class="huge-title">Banner</h2>
-                </header>
-
-                <section class="has-min-width" style="--min-width:16em;">
-                    <h3 class="min-title">Features</h3>
-                    <ul>
-                        <li>One-tag wrap</li>
-                        <li>Auto fit for any screen/area</li>
-                    </ul>
-                </section>
-
-                <footer>
-                    <a href="dev/tests-banners.html" class="swed-button"><span>Demo</span></a>
-                </footer>
-
-            </section>
-
-
-    <!-- ----------------------------------------- Autogrid -->
-
-
-    <article id="Autogrid" class="chapter isontop isonbot">
-
-        <header class="article-layer swed-banner">
-            <h2 class="huge-title">Autogrid filled with banners</h2>
-        </header>
-
-        <div class="layer">
-            <div class="autogrid">
-
-                <section class="swed-banner colors-as-secondary">
-                    <figure style="--max-width:10em;">
-                        <img src="art/component-icons/component-icon--banners.svg" alt="SVG icon for Banners">
-                    </figure>
-                </section>
-
-
-                <section class="swed-banner colors-as-primary">
-                    <header>
-                        <div class="huge-title">Banner</div>
-                    </header>
-                    <section>
-                        <h2 class="min-title">Features</h2>
-                        <ul>
-                            <li>Information message with caption/image</li>
-                            <li>Action button</li>
-                            <li>Grid and screen: auto-fit</li>
-                        </ul>
-                    </section>
-                    <footer>
-                        <a href="dev/tests-banners.html" class="swed-button"><span>Test use-cases</span></a>
-                    </footer>
-                </section>
-
-
-                <section class="swed-banner colors-as-highlight">
-                    <section>
-                        <ul class="group-content-rows">
-                            <li>Information message with caption/image</li>
-                            <li>Action button</li>
-                            <li>Grid and screen: auto-fit</li>
-                        </ul>
-                    </section>
-                    <footer>
-                        <a href="dev/tests-banners.html" class="swed-button"><span>Test use-cases</span></a>
-                    </footer>
-                </section>
-
-                <section class="swed-banner colors-as-alternative">
-                    <section>
-                        <h2 class="min-title">Features</h2>
-                        <ul>
-                            <li>Information message with caption/image</li>
-                            <li>Action button</li>
-                            <li>Grid and screen: auto-fit</li>
-                        </ul>
-                    </section>
-                </section>
-
-                <section class="swed-banner colors-as-highlight has-sans-text catground is-big" >
-                    <header>
-                        <h2 class="big-title">Promotion & SEO</h2>
-                    </header>
-                    <section class="text-conent">
-                         <p>A crucial part of online gambling business. Good SEO & promotion is what differentiates successful casinos from failed enterprises. Get in touch with professionals with 10+ years of experience in online gambling SEO and promotion to ensure your business grows.</p>
-                    </section>
-                    <footer>
-                        <a href="#" class="swed-button"><span>Learn more</span></a>
-                    </footer>
-                </section>
-
-                <section class="swed-banner colors-as-primary">
-                    <header>
-                        <div class="huge-title">Banner</div>
-                    </header>
-                    <footer>
-                        <a href="dev/tests-banners.html" class="swed-button"><span>Test use-cases</span></a>
-                    </footer>
-                </section>
-
-                <section class="swed-banner colors-as-secondary is-big">
-                    <header>
-                        <div class="huge-title">Banner</div>
-                    </header>
-                    <section>
-                        <h2 class="min-title">Features</h2>
-                        <ul>
-                            <li>Information message with caption/image</li>
-                            <li>Action button</li>
-                            <li>Grid and screen: auto-fit</li>
-                        </ul>
-                    </section>
-                    <footer>
-                        <a href="dev/tests-banners.html" class="swed-button"><span>Test use-cases</span></a>
-                    </footer>
-                </section>
-
-            </div>
-
-        </div>
-    </article>
-
-
-
-    <!-- ----------------------------------------------------- Offside Bar -->
-
-
-    <article id="offsidebar" class="chapter">
-
-        <h2 class="">Offside bar</h2>
-
-        <section class="chapter">
-
-            <p>Боковая панель появляющаяся по вызову. Чаще всего, для навигационного меню.</p>
-            <p>В основе — очевидное решение с использованием <em>position:fixed</em>. Задача компонента — избавить от неприятных проблем, часто встречающихся на практике.</p>
-
-        </section>
-
-        <div class="article-box-merge keep-grid color-box">
-            <h3 class="mid-title">Перечень проблем</h3>
-            <ol class="block">
-                <li>Поведение chrome scroll-bar не должно нарушать layout страницы, любое «дёргание» содержания не допускаяется.</li>
-                <li>Background отделён от содержания панели, для оптимизированных эффектов анимации.</li>
-                <li>Содержимое панели подстраивается под содержание по горизонтали и скролится по вертикали при необходимости.</li>
-                <li>Отсутствие декоративной анимации на мобильных устройствах (ради экономии энергии батарей) не должно бросаться в глаза.</li>
-            </ol>
-        </div>
-
-        <div class="article-box-merge swed-banner colors-as-secondary">
-            <h3 class="huge-title">Примеры</h3>
-            <div class="is-centered">
-                <button class="swed-button js-for-EastsideBar">Default example</button>
-                <button class="swed-button js-for-WestsideBar">Bar from Westside</button>
-                <button class="swed-button js-for-OverflowBar">With content overflow</button>
-                <button class="swed-button js-for-OverflowBarWestside">Westside overflow</button>
+            <div class="note keep-font-size">
+                <p>297351 years<br>&amp;#$@*</p>
             </div>
         </div>
 
-        <!-- Default Bar -->
 
-        <section class="offsidebar from-eastside EastsideBar colors-as-secondary">
-            <!-- <div class="offsidebar-overlay"></div>    <!-- auto insertion with js -->
-            <!-- <div class="offsidebar-background"></div> <!-- auto insertion with js -->
-            <div class="sidepanel">
+        <h2 class="chapter-header">Font-size modifyers</h2>
 
-                <header class="sidepanel-header">
-                    <h2 class="min-title">Classic Bar</h2>
-                </header>
-
-                <nav class="sidepanel-content">
-                    <ul class="content-menu js-for-EastsideBar">
-                        <li>Lorem ipsum</li>
-                        <li>Pellentesque habitant</li>
-                        <li>Morbi tristique senectus</li>
-                        <li>Et netus et malesuada</li>
-                        <li>Fames ac turpis egestas</li>
-                        <li>Vestibulum tortor quam</li>
-                        <li>Feugiat vitae</li>
-                        <li>Ultricies eget</li>
-                        <li>Tempor sit amet</li>
-                    </ul>
-                </nav>
-
-                <footer class="sidepanel-footer">
-                    <div>Footer</div>
-                </footer>
-
+        <div class="block">
+            <div>
+                <span auto-content></span>
+                <mark class="text-inline-bigger">[.text-inline-bigger]</mark>
+                <span auto-content class="text-inline-bigger"></span>
+                <span auto-content></span>
+                <mark class="text-inline-bigger">[.text-inline-smaller]</mark>
+                <span auto-content class="text-inline-smaller"></span>
+                <span auto-content></span>
             </div>
-        </section>
-
-        <!-- Westside Bar -->
-
-        <section class="offsidebar from-westside WestsideBar colors-as-special">
-            <div class="sidepanel">
-
-                <header class="sidepanel-header">
-                    <h2 class="min-title">Components</h2>
-                </header>
-
-                <nav class="sidepanel-content">
-                    <ul class="content-menu js-for-WestsideBar">
-                        <li><a href="#offsidebar">Offside bar</a></li>
-                        <li><a href="#color-model">Color Model</a></li>
-                        <li><a href="#article-grid">Article Grid</a></li>
-                        <li><a href="#svga-icons">SVGA Icons</a></li>
-                        <li><a href="#data-table">Data Table</a></li>
-                    </ul>
-                </nav>
-
-                <footer class="sidepanel-footer">
-                    <div>Footer</div>
-                </footer>
-
+            <div class="group-center">
+                <span class="back-color-descent">line height</span>
+                <span>—</span>
+                <span class="back-color-descent text-inline-bigger">line height</span>
             </div>
-        </section>
-
-        <!-- Overflow Bar -->
-
-        <section class="offsidebar OverflowBar colors-as-secondary">
-            <section class="sidepanel">
-
-                <header class="sidepanel-header">
-                    <h2 class="min-title">Scroll Content</h2>
-                </header>
-
-                <section class="sidepanel-content">
-                    <div class="rows" style="max-width:20em;">
-                        <p auto-content></p>
-                        <p auto-content></p>
-                        <p auto-content></p>
-                        <p auto-content></p>
-                        <p auto-content></p>
-                        <p auto-content></p>
-                        <p auto-content></p>
-                        <p auto-content></p>
-                    </div>
-                </section>
-
-                <footer class="sidepanel-footer">
-                    <div>Footer</div>
-                </footer>
-
-            </section>
-        </section>
-
-        <!-- Overflow Bar Westside -->
-
-        <section class="offsidebar from-westside OverflowBarWestside colors-as-secondary">
-            <section class="sidepanel">
-
-                <header class="sidepanel-header">
-                    <h2 class="min-title">Scroll Content</h2>
-                </header>
-
-                <section class="sidepanel-content">
-                    <div class="rows" style="max-width:20em;">
-                        <p auto-content></p>
-                        <p auto-content></p>
-                        <p auto-content></p>
-                        <p auto-content></p>
-                        <p auto-content></p>
-                        <p auto-content></p>
-                        <p auto-content></p>
-                        <p auto-content></p>
-                    </div>
-                </section>
-
-                <footer class="sidepanel-footer">
-                    <div>Footer</div>
-                </footer>
-
-            </section>
-        </section>
-
-
-
-    </article>
-
-    <!-- Activate Offside Bars -->
-
-    <script>
-        InterfaceOffsideBar('EastsideBar')
-        InterfaceOffsideBar('WestsideBar')
-        InterfaceOffsideBar('OverflowBar')
-        InterfaceOffsideBar('OverflowBarWestside')
-        InterfaceOffsideBar('GLBar')
-    </script>
-
-
-    <!-- ----------------------------------------------------- Color Model -->
-
-
-    <article id="color-model" class="chapter secondary-colors">
-
-        <h2 class="west">Color Model</h2>
-
-        <section class="block">
-            <h3>Features</h3>
-            <ul>
-                <li>Предотвращает ситуацию «Использование <em>дополнительного цвета</em> внутри <em>дополнительного цвета</em>»</li>
-                <li>Упрощённое добавление новой цветовой схемы, переопределяя css-переменные</li>
-            </ul>
-        </section>
-        <footer>
-            <button class="swed-button">
-                <a href="dev/tests-color-model.html">Test page</a>
-            </button>
-        </footer>
-
-    </article>
-
-    <header id="color-model-tests" class="banner">
-        <h1 class="huge-title">Color Model Tests</h1>
-    </header>
-
-    <section class="banner use-colors colors--root">
-        <header>
-            <h2>colors--root</h2>
-            <p class="text-color-descent">Color Model 3x3</p>
-        </header>
-        <p class="back-color-descent back-color-hover link-color padding">Hover Me</p>
-    </section>
-    <section class="banner use-colors colors--swed">
-        <header>
-            <h2>colors--swed</h2>
-            <p class="text-color-descent">Color Model 3x3</p>
-        </header>
-        <p class="back-color-descent back-color-hover link-color padding">Hover Me</p>
-    </section>
-    <section class="banner use-colors colors--swed-secondary">
-        <header>
-            <h2>colors--swed-secondary</h2>
-            <p class="text-color-descent">Color Model 3x3</p>
-        </header>
-        <p class="back-color-descent back-color-hover link-color padding">Hover Me</p>
-    </section>
-    <section class="banner use-colors colors--swed-third">
-        <header>
-            <h2>colors--swed-third</h2>
-            <p class="text-color-descent">Color Model 3x3</p>
-        </header>
-        <p class="back-color-descent back-color-hover link-color padding">Hover Me</p>
-    </section>
-    <section class="banner use-colors colors--action">
-        <header>
-            <h2>colors--action</h2>
-            <p class="text-color-descent">Color Model 3x3</p>
-        </header>
-        <p class="back-color-descent back-color-hover link-color padding">Hover Me</p>
-    </section>
-    <section class="banner use-colors colors--ivory">
-        <header>
-            <h2>colors--ivory</h2>
-            <p class="text-color-descent">Color Model 3x3</p>
-        </header>
-        <p class="back-color-descent back-color-hover link-color padding">Hover Me</p>
-    </section>
-
-
-    <!-- ----------------------------------------------------- Article Grid -->
-
-
-    <article id="article-grid" class="chapter">
-
-        <h2 class="west">Article Grid</h2>
-
-        <section class="block">
-
-            <p>Трёхколоночная разметка для вёрстки статей, насыщенных информативными вставками — сносками, иллюстрациями, сменяемыми декорациями и т.д.</p>
-
-            <h3>Features</h3>
-            <ul class="block">
-                <li>Три ключевые колонки:
-                    <ul>
-                        <li>Основной текст</li>
-                        <li>Заметка слева</li>
-                        <li>Заметка справа</li>
-                    </ul>
-                </li>
-                <li>Дополнительные колонки соединяют основные в разных сочетаниях. Включая варианты «От края экрана».</li>
-                <li>Предусмотрены колонки для текста на другом фоне — добавляются поля, не меняя положение текста.</li>
-                <li>Адаптивная вёрстка следит за соблюдением правильных отступов и направляющих-линий</li>
-            </ul>
-
-        </section>
-
-        <div class="east">
-            <section>
-                <a href="dev/tests-article-grid.html">Article grid usecases</a>
-                <figure class="svga-icon color-text"><svg><use xlink:href="#svg-next"></use></svg></figure>
-            </section>
+            <div class="text-block-bigger">
+                <mark>.text-block-bigger</mark>
+                <span auto-content></span>
+            </div>
+            <div class="text-block-smaller">
+                <mark>.text-block-smaller</mark>
+                <span auto-content></span>
+            </div>
         </div>
 
-    </article>
+
+
+        <section class="wide">
+
+            <header class="chapter-header">
+                <h2>Paragraph readable width</h2>
+            </header>
+
+            <h3>
+                <mark>.paragraph</mark>
+                Max width limit (42em)
+            </h3>
+            <div class="paragraph rows">
+                <div>
+                    <span auto-content></span>
+                    <span auto-content></span>
+                </div>
+                <div>
+                    <span auto-content></span>
+                    <span auto-content></span>
+                </div>
+            </div>
+
+            <h3>
+                <mark>.midi-paragraph</mark>
+                Optimal middle-size (24em)
+            </h3>
+            <div class="midi-paragraph rows">
+                <div auto-content></div>
+                <div auto-content></div>
+            </div>
+
+            <section class="group-banner">
+
+                <h3 class="banner-title">
+                    <mark>.mini-paragraph</mark>
+                    Minimal readable width (12em)
+                </h3>
+                <div class="mini-paragraph rows">
+                    <div>Front-end components. Not a framework, but reusable code templates.</div>
+                    <div>Atom classes for maintainable inline CSS</div>
+                    <div>CSS grid template for big articles with a lot of content, illustrations and creative visuals.</div>
+                </div>
+                <div class="text-inline-bigger mini-paragraph rows">
+                    <div>Front-end components. Not a framework, but reusable code templates.</div>
+                    <div>Atom classes for maintainable inline CSS</div>
+                    <div>CSS grid template for big articles with a lot of content, illustrations and creative visuals.</div>
+                </div>
+
+            </section>
+
+
+        </section>
+
+    </section>
+
+
 
 
     <!-- ----------------------------------------------------- SVGA Icons -->
 
-
-    <article id="svga-icons" class="chapter">
-
-        <header class="west">
-            <h2>SVGA Icons</h2>
-        </header>
-
-        <section class="block">
-
-            <ul>
-                <li>Inline markup</li>
-                <li>Customizable SVG presets</li>
-            </ul>
-
-            <div class="block text-is-bigger">
-                <section>
-                    <figure class="svga-icon"><svg><use xlink:href="#svg-next"></use></svg></figure>
-                    <figure class="svga-icon"><svg><use xlink:href="#svg-back"></use></svg></figure>
-                    <figure class="svga-icon"><svg><use xlink:href="#svg-down"></use></svg></figure>
-                    <figure class="svga-icon"><svg><use xlink:href="#svg-menu"></use></svg></figure>
-                    <figure class="svga-icon"><svg><use xlink:href="#svg-check"></use></svg></figure>
-                    <figure class="svga-icon"><svg><use xlink:href="#svg-close"></use></svg></figure>
-                </section>
-                <section>
-                    <figure class="svga-icon"><svg><use xlink:href="#svg-email"></use></svg></figure>
-                    <figure class="svga-icon"><svg><use xlink:href="#svg-phone"></use></svg></figure>
-                    <figure class="svga-icon"><svg><use xlink:href="#svg-chat"></use></svg></figure>
-                </section>
-                <section>
-                    <figure class="svga-icon"><svg><use xlink:href="#svg-linkedin"></use></svg></figure>
-                    <figure class="svga-icon"><svg><use xlink:href="#svg-twitter"></use></svg></figure>
-                    <figure class="svga-icon"><svg><use xlink:href="#svg-facebook"></use></svg></figure>
-                    <figure class="svga-icon"><svg><use xlink:href="#svg-instagram"></use></svg></figure>
-                    <figure class="svga-icon"><svg><use xlink:href="#svg-youtube"></use></svg></figure>
-                    <figure class="svga-icon"><svg><use xlink:href="#svg-github"></use></svg></figure>
-                    <figure class="svga-icon"><svg><use xlink:href="#svg-skype"></use></svg></figure>
-                    <figure class="svga-icon"><svg><use xlink:href="#svg-telegram"></use></svg></figure>
-                </section>
-            </div>
-
-        </section>
-
-        <div class="eastbox">
-            <h3>To Do:</h3>
-            <ul class="block">
-                <li>Нарисовать иконки по текущим шаблонам</li>
-                <li>Устранить слипание между строками</li>
-            </ul>
-        </div>
-
-    </article>
-
-    <!-- Icons -->
 
     <div hidden>
         <svg id="UsedIcons">
@@ -856,189 +439,12 @@
     </div>
 
 
-    <!-- ----------------------------------------------------- Responsive Data Table -->
-
-
-    <article id="data-table" class="chapter">
-
-        <header class="west">
-            <h2>Data Table</h2>
-        </header>
-
-        <p>Respsonsive table component</p>
-
-    </article>
-
-
-
-    <!-- ----------------------------------------------------- Multicolumn list research -->
-
-    <style>
-        .collisting {
-          --max-width:   50rem;
-          --max-columns:     3;
-          --gap-space:  2.5rem;
-          --row-space:    1rem;
-
-            max-width:    var(--max-width);
-        }
-        .collisting>ul {
-            column-width: calc(
-                ( var(--max-width) - ( ( var(--max-columns) + 1 ) * var(--gap-space) ) )
-                / var(--max-columns)
-                );
-            column-gap: var(--gap-space);
-            padding:  0 var(--gap-space);
-            margin:   0;
-        }
-        .collisting>ul>li {
-            page-break-inside: avoid;
-                 break-inside: avoid;
-            margin-bottom:     var(--row-space);
-        }
-
-
-        .collisting.box>ul {
-            grid-column: full;
-        }
-        .auto-margin {
-            margin-left:  auto;
-            margin-right: auto;
-        }
-    </style>
-
-
-
-    <section class="show">
-        <header class="banner">
-            <div>
-                <h3 class="mid-title">Collisting</h3>
-            </div>
-        </header>
-        <div class="has-sans-text" >
-        <section class="collisting auto-margin">
-                <ul>
-                    <li>
-                        <h4>Rich Article Grid Layout</h4>
-                         <div class="text-is-smaller">
-                            <p><strong>sass component</strong></p>
-                            <p>CSS grid template for big articles with a lot of content, illustrations and creative visuals.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <h4>Banners</h4>
-                        <div class="text-is-smaller">
-                            <p><strong>css class</strong></p>
-                            <p>Wrapper for content grouping</p>
-                        </div>
-                    </li>
-                    <li>
-                        <h4>Catgrounds</h4>
-                        <div class="text-is-smaller">
-                            <p><strong>css class</strong></p>
-                            <p>Design trick to make boring content more interesting</p>
-                        </div>
-                    </li>
-                    <li>
-                        <h4>Offsidebar</h4>
-                        <div class="text-is-smaller">
-                            <p><strong>css component</strong></p>
-                            <p>Expandable side-panel prevents content jumps on call (google chrome issue)</p>
-                        </div>
-                    </li>
-                    <li>
-                        <h4>Color-model</h4>
-                        <div class="text-is-smaller">
-                            <p><strong>css variables</strong></p>
-                            <p>Pattern for switching colors in markup</p>
-                        </div>
-                    </li>
-                    <li>
-                        <h4>SVG-icons</h4>
-                        <div class="text-is-smaller">
-                            <p><strong>css, svg</strong></p>
-                            <p>Markup shortcut and presets with common used icons.</p>
-                        </div>
-                    </li>
-                </ul>
-        </section>
-        </div>
-    </section>
-
-
-
-    <section class="chapter show">
-        <div class="article-box-merge-east">
-            <section class="box collisting has-sans-text color-box">
-                    <ul>
-                        <li>
-                            <h4>Rich Article Grid Layout</h4>
-                             <div class="text-is-smaller">
-                                <p><strong>sass component</strong></p>
-                                <p>CSS grid template for big articles with a lot of content, illustrations and creative visuals.</p>
-                            </div>
-                        </li>
-                        <li>
-                            <h4>Banners</h4>
-                            <div class="text-is-smaller">
-                                <p><strong>css class</strong></p>
-                                <p>Wrapper for content grouping</p>
-                            </div>
-                        </li>
-                        <li>
-                            <h4>Catgrounds</h4>
-                            <div class="text-is-smaller">
-                                <p><strong>css class</strong></p>
-                                <p>Design trick to make boring content more interesting</p>
-                            </div>
-                        </li>
-                        <li>
-                            <h4>Offsidebar</h4>
-                            <div class="text-is-smaller">
-                                <p><strong>css component</strong></p>
-                                <p>Expandable side-panel prevents content jumps on call (google chrome issue)</p>
-                            </div>
-                        </li>
-                        <li>
-                            <h4>Color-model</h4>
-                            <div class="text-is-smaller">
-                                <p><strong>css variables</strong></p>
-                                <p>Pattern for switching colors in markup</p>
-                            </div>
-                        </li>
-                        <li>
-                            <h4>SVG-icons</h4>
-                            <div class="text-is-smaller">
-                                <p><strong>css, svg</strong></p>
-                                <p>Markup shortcut and presets with common used icons.</p>
-                            </div>
-                        </li>
-                    </ul>
-            </section>
-
-        </div>
-        <section class="article-box-merge-east swed-banner catground-description-title">
-            <h3 class="mid-title">Short description:</h3>
-            <div class="color-text">
-                <p>An abstract shapes<br>
-                   as background-images<br>
-                   for visual attraction.</p>
-            </div>
-            <footer>
-                <a href="catgrounds.html" class="swed-button">Project page</a>
-            </footer>
-        </section>
-
-    </section>
-
-
-
 <!-- ========================================= PAGE CUSTOM -->
 
 <script>
     // auto insert random content into paragraphs
-    function autofillParagraphs() {
-        const p = document.querySelectorAll('[auto-content]')
+    function autofillParagraphs(rule) {
+        const p = document.querySelectorAll(rule)
         for ( let x in p ) {
             let texts = [
                 'Les grandes personnes m’ont conseillé de laisser de côté les dessins de serpents boas ouverts ou fermés, et de m’intéresser plutôt à la géographie, à l’histoire, au calcul et à la grammaire. C’est ainsi que j’ai abandonné, à l’âge de six ans, une magnifique carrière de peintre.',
@@ -1046,14 +452,19 @@
                 'J’ai donc dû choisir un autre métier et j’ai appris à piloter des avions. J’ai volé un peu partout dans le monde. Et la géographie, c’est exact, m’a beaucoup servi. Je savais reconnaître, du premier coup d’œil, la Chine de l’Arizona. C’est très utile, si l’on est égaré pendant la nuit.',
                 'J’ai ainsi eu, au cours de ma vie, des tas de contacts avec des tas de gens sérieux. J’ai beaucoup vécu chez les grandes personnes. Je les ai vues de très près. Ça n’a pas trop amélioré mon opinion.',
                 'Quand j’en rencontrais une qui me paraissait un peu lucide, je faisais l’expérience sur elle de mon dessin numéro 1 que j’ai toujours conservé. Je voulais savoir si elle était vraiment compréhensive. Mais toujours elle me répondait : « C’est un chapeau. »',
-                'Alors je ne lui parlais ni de serpents boas, ni de forêts vierges, ni d’étoiles. Je me mettais à sa portée. Je lui parlais de bridge, de golf, de politique et de cravates. Et la grande personne était bien contente de connaître un homme aussi raisonnable.'
+                'Alors je ne lui parlais ni de serpents boas, ni de forêts vierges, ni d’étoiles. Je me mettais à sa portée. Je lui parlais de bridge, de golf, de politique et de cravates. Et la grande personne était bien contente de connaître un homme aussi raisonnable.',
+                'Lorsque j’avais six ans j’ai vu, une fois, une magnifique image, dans un livre sur la Forêt Vierge qui s’appelait « Histoires Vécues ». Ça représentait un serpent boa qui avalait un fauve. Voilà la copie du dessin.',
+                'Et il s’enfonça dans une rêverie qui dura longtemps. Puis, sortant mon mouton de sa poche, il se plongea dans la contemplation de son trésor.',
+                'Heureusement pour la réputation de l’astéroïde B 612 un dictateur turc imposa à son peuple, sous peine de mort, de s’habiller à l’Européenne. L’astronome refit sa démonstration en 1920, dans un habit très élégant. Et cette fois-ci tout le monde fut de son avis.',
+                'Je fis remarquer au petit prince que les baobabs ne sont pas des arbustes, mais des arbres grands comme des églises et que, si même il emportait avec lui tout un troupeau d’éléphants, ce troupeau ne viendrait pas à bout d’un seul baobab.'
                 ]
             let text = texts[Math.floor(Math.random()*texts.length)]
             let textnode = document.createTextNode(text)
             if (p[x].appendChild) p[x].appendChild(textnode)
         }
     }
-    autofillParagraphs()
+    autofillParagraphs('[auto-content]')
+    autofillParagraphs('.auto')
 </script>
 
 </body>

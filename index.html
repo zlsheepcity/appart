@@ -119,11 +119,9 @@
 
             <nav class="sidepanel-content">
                 <ul class="content-menu js-for-ChaptersMenuBar">
-                    <li>Fames ac turpis egestas</li>
-                    <li>Vestibulum tortor quam</li>
-                    <li>Feugiat vitae</li>
-                    <li>Ultricies eget</li>
-                    <li>Tempor sit amet</li>
+                    <li><a href="#Offsidebar">Offsidebar</a></li>
+                    <li><a href="#Typography">Web-Typography</a></li>
+                    <li><a href="#color-model">Color-model</a></li>
                 </ul>
             </nav>
 
@@ -195,27 +193,181 @@
 
     <!-- not yet -->
 
+    <!-- ----------------------------------------- Offside Bar -->
 
 
-    <style>
-        .chapter {
-            position: relative;
-        }
-        .nav-header {
-            position: sticky;
-            top: 0;
-            background-color: var(--back-color-accent);
-        }
-    </style>
+    <article id="Offsidebar" class="chapter isontop">
+
+        <section class="nav-header journal-grid use-colors">
+            <p>→ Offside bar, <a href="https://github.com/zlsheepcity/appart/tree/master/app/styles/components/offsidebar">CSS+Markup+js</a></p>
+        </section>
+
+        <header class="banner">
+            <figure class="mini-paragraph">
+                <img
+                    src="art/component-icons/component-icon--ofsidebar.svg"
+                    alt="SVG icon for Ofsidebar">
+            </figure>
+            <div>
+                <h2 class="h1">Offside bar</h2>
+                <p>Demo examples</p>
+            </div>
+            
+        </header>
+
+        <section class="banner">
+                <button class="swed-button js-for-EastsideBar">Default</button>
+                <button class="swed-button js-for-WestsideBar">From Westside</button>
+                <button class="swed-button js-for-OverflowBar">Content overflow</button>
+                <button class="swed-button js-for-OverflowBarWestside">Content overflow (westside)</button>
+        </section>
+
+        <!-- Demo Bars -->
+
+        <section>
+
+            <!-- Default Bar -->
+
+            <section class="EastsideBar offsidebar colors--secondary">
+                <!-- <div class="offsidebar-overlay"></div>    <!-- auto insertion with js -->
+                <!-- <div class="offsidebar-background"></div> <!-- auto insertion with js -->
+                <div class="sidepanel">
+
+                    <header class="sidepanel-header">
+                        <h4>Scroll Content</h4>
+                    </header>
+
+                    <nav class="sidepanel-content">
+                        <ul class="content-menu js-for-EastsideBar">
+                            <li>Lorem ipsum</li>
+                            <li>Pellentesque habitant</li>
+                            <li>Morbi tristique senectus</li>
+                            <li>Et netus et malesuada</li>
+                            <li>Fames ac turpis egestas</li>
+                            <li>Vestibulum tortor quam</li>
+                            <li>Feugiat vitae</li>
+                            <li>Ultricies eget</li>
+                            <li>Tempor sit amet</li>
+                        </ul>
+                    </nav>
+
+                    <footer class="sidepanel-footer">
+                        <div>Footer</div>
+                    </footer>
+
+                </div>
+            </section>
+
+            <!-- Westside Bar -->
+
+            <section class="WestsideBar offsidebar from-westside colors--secondary">
+                <div class="sidepanel">
+
+                    <header class="sidepanel-header">
+                        <h4>Scroll Content</h4>
+                    </header>
+
+                    <nav class="sidepanel-content">
+                        <ul class="content-menu js-for-WestsideBar">
+                            <li>Lorem ipsum</li>
+                            <li>Pellentesque habitant</li>
+                            <li>Morbi tristique senectus</li>
+                            <li>Et netus et malesuada</li>
+                            <li>Fames ac turpis egestas</li>
+                            <li>Vestibulum tortor quam</li>
+                            <li>Feugiat vitae</li>
+                            <li>Ultricies eget</li>
+                            <li>Tempor sit amet</li>
+                        </ul>
+                    </nav>
+
+                    <footer class="sidepanel-footer">
+                        <div>Footer</div>
+                    </footer>
+
+                </div>
+            </section>
+
+            <!-- Overflow Bar -->
+
+            <section class="OverflowBar offsidebar colors--secondary">
+                <section class="sidepanel">
+
+                    <header class="sidepanel-header">
+                        <h4>Scroll Content</h4>
+                    </header>
+
+                    <section class="sidepanel-content">
+                        <div class="rows midi-paragraph">
+                            <p auto-content></p>
+                            <p auto-content></p>
+                            <p auto-content></p>
+                            <p auto-content></p>
+                            <p auto-content></p>
+                            <p auto-content></p>
+                            <p auto-content></p>
+                            <p auto-content></p>
+                        </div>
+                    </section>
+
+                    <footer class="sidepanel-footer">
+                        <div>Footer</div>
+                    </footer>
+
+                </section>
+            </section>
+
+            <!-- Overflow Bar Westside -->
+
+            <section class="OverflowBarWestside offsidebar from-westside colors--secondary">
+                <section class="sidepanel">
+
+                    <header class="sidepanel-header">
+                        <h4>Scroll Content</h4>
+                    </header>
+
+                    <section class="sidepanel-content">
+                        <div class="rows midi-paragraph">
+                            <p auto-content></p>
+                            <p auto-content></p>
+                            <p auto-content></p>
+                            <p auto-content></p>
+                            <p auto-content></p>
+                            <p auto-content></p>
+                            <p auto-content></p>
+                            <p auto-content></p>
+                        </div>
+                    </section>
+
+                    <footer class="sidepanel-footer">
+                        <div>Footer</div>
+                    </footer>
+
+                </section>
+            </section>
+
+        </section>
+
+        <!-- Activate Offside Bars -->
+
+        <script>
+            // Demo Bars
+            InterfaceOffsideBar('EastsideBar')
+            InterfaceOffsideBar('WestsideBar')
+            InterfaceOffsideBar('OverflowBar')
+            InterfaceOffsideBar('OverflowBarWestside')
+        </script>
+
+    </article>
 
 
     <!-- ----------------------------------------- Typography Demo -->
 
 
-    <section id="Typography" class="chapter isontop journal-grid use-colors colors--ivory">
+    <article id="Typography" class="chapter isontop journal-grid use-colors colors--ivory">
 
         <header class="nav-header layer keep-grid use-colors">
-            <p>Web-Typography tests, <a href="https://github.com/zlsheepcity/appart/blob/master/app/styles/components/html-core/html-typography.scss">CSS source</a></p>
+            <p>→ Web-Typography, <a href="https://github.com/zlsheepcity/appart/blob/master/app/styles/components/html-core/html-typography.scss">CSS source</a></p>
         </header>
 
         <div class="wide is-centered">
@@ -347,9 +499,67 @@
 
         </section>
 
-    </section>
+    </article>
 
 
+    <!-- ----------------------------------------- Color Model -->
+
+
+    <article id="color-model" class="chapter isontop isonbot">
+
+        <section class="nav-header journal-grid use-colors">
+            <p>→ Color Model, <a href="https://github.com/zlsheepcity/appart/blob/master/app/styles/components/color-model/color-model.scss">CSS source</a></p>
+        </section>
+
+        <header class="banner">
+            <h2 class="h1">Samples for Color Model</h2>
+        </header>
+
+
+        <section class="banner use-colors colors--root">
+            <header>
+                <h2>colors--root</h2>
+                <p class="text-color-descent">Color Model 3×3+2</p>
+            </header>
+            <p class="back-color-descent back-color-hover link-color padding">Hover Me</p>
+        </section>
+        <section class="banner use-colors colors--action">
+            <header>
+                <h2>colors--action</h2>
+                <p class="text-color-descent">Color Model 3×3+2</p>
+            </header>
+            <p class="back-color-descent back-color-hover link-color padding">Hover Me</p>
+        </section>
+        <section class="banner use-colors colors--ivory">
+            <header>
+                <h2>colors--ivory</h2>
+                <p class="text-color-descent">Color Model 3×3+2</p>
+            </header>
+            <p class="back-color-descent back-color-hover link-color padding">Hover Me</p>
+        </section>
+        <section class="banner use-colors colors--swed">
+            <header>
+                <h2>colors--swed</h2>
+                <p class="text-color-descent">Color Model 3×3+2</p>
+            </header>
+            <p class="back-color-descent back-color-hover link-color padding">Hover Me</p>
+        </section>
+        <section class="banner use-colors colors--swed-secondary">
+            <header>
+                <h2>colors--swed-secondary</h2>
+                <p class="text-color-descent">Color Model 3×3+2</p>
+            </header>
+            <p class="back-color-descent back-color-hover link-color padding">Hover Me</p>
+        </section>
+        <section class="banner use-colors colors--swed-third">
+            <header>
+                <h2>colors--swed-third</h2>
+                <p class="text-color-descent">Color Model 3×3+2</p>
+            </header>
+            <p class="back-color-descent back-color-hover link-color padding">Hover Me</p>
+        </section>
+
+    </article>
 
 
     <!-- ----------------------------------------------------- SVGA Icons -->

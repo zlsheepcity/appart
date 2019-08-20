@@ -130,6 +130,7 @@ mark,
     padding-top:    var(--padding-top);
   --padding-bottom: calc( 4 * var(--row-space, 1rem) );
     padding-bottom: var(--padding-bottom);
+    position: relative;
 }
 .chapter.isontop { --padding-top: 0; }
 .chapter.isonbot { --padding-bottom: 0; }
@@ -144,6 +145,12 @@ mark,
 
 .rows {
     @extend .group-content-rows !optional;
+}
+
+.nav-header {
+    position: sticky;
+    top: 0;
+    background-color: var(--back-color-accent);
 }
 
 

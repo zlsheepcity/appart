@@ -2180,7 +2180,8 @@ mark,
   --padding-top: calc( 4 * var(--row-space, 1rem) );
   padding-top: var(--padding-top);
   --padding-bottom: calc( 4 * var(--row-space, 1rem) );
-  padding-bottom: var(--padding-bottom); }
+  padding-bottom: var(--padding-bottom);
+  position: relative; }
 
 .chapter.isontop {
   --padding-top: 0; }
@@ -2191,6 +2192,11 @@ mark,
 .chapter-header {
   --margin-top: calc( 2 * var(--row-space, 1rem) );
   margin-top: var(--margin-top); }
+
+.nav-header {
+  position: sticky;
+  top: 0;
+  background-color: var(--back-color-accent); }
 
 td {
   font-family: var(--font-family-interface, sans-serif); }

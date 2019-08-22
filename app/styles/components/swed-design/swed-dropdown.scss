@@ -75,6 +75,10 @@
 }
 
 
+.swed-dropdown.use-hover:hover {
+  --label-events:    all;
+}
+
 /** -------------------------------- wrap */
 
 
@@ -163,8 +167,7 @@
 
 /* better ux - transparent hover area around droplist */
 
-.swed-dropdown.use-hover>.droplist::before {
-    display:  var(--state-block);
+.swed-dropdown.use-hover:hover>.droplist::before {
     content:  '';
     position: absolute;
     z-index: -2;
@@ -172,6 +175,8 @@
     right:   -2em;
     bottom:  -2em;
     left:    -2em;
+    display:  var(--state-block);
+    pointer-events: all;
 }
 
 

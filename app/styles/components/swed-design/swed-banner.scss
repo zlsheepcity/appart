@@ -14,13 +14,10 @@
   --v-space: var(--row-space, 1rem);
   --h-space: var(--col-space, 1rem);
 
-  --back-color: transparent;
-  --text-color: inherit;
-
   --banner-padding:
-      calc( 2 * var(--v-space) )
-      0
       var(--v-space)
+      0
+      0
       0;
 }
 
@@ -39,17 +36,10 @@
     align-self:      stretch;
 
     padding: var(--banner-padding);
-
-    background-color: var(--back-color);
-               color: var(--text-color);
 }
 .swed-banner>* {
   --margin:  0 var(--h-space) var(--v-space) var(--h-space);
     margin:    var(--margin);
-  --max-width: var(--paragraph-width, 100%);
-    max-width: var(--max-width);
-  --min-width: var(--paragraph-width--min, 0);
-    min-width: var(--min-width);
 }
 
 

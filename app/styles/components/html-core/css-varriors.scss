@@ -1,32 +1,34 @@
-/*  === ༼°▽°༽ === CSS Varriors  *//*
+/** === ༼°▽°༽ === CSS Varriors  *//*
  *
  *  Atom classes for maintainable inline CSS
  *  «Var never changes»
  *  zl, 2019.8.14
  *
+ *  SCSS
+ *
  */
 
 
-/*  ============== Usage Template *//*
+/** -------------------------------- Usage Template */
+/*
 
+    ## Option 1.
 
-## Option 1.
+    <div
+        class="opacity"
+        style="--opacity:0.5;"
+        ></div>
 
-<div
-    class="opacity"
-    style="--opacity:0.5;"
-    ></div>
+    ## Option 2.
 
-## Option 2.
-
-<section style="--opacity:0.5;">
-    <div class="opacity"></div>
-</section>
+    <section style="--opacity:0.5;">
+        <div class="opacity"></div>
+    </section>
 
  */
 
 
-/*  ============== Handmade CSS varriors */
+/** -------------------------------- Handmade CSS varriors */
 
 
     /*
@@ -40,7 +42,7 @@
     */
 
 
-/*  ============== Sass auto varriors */
+/** -------------------------------- Sass auto varriors */
 
 
 $DEFAULT-VARRIORS: (
@@ -81,4 +83,4 @@ $DEFAULT-VARRIORS: (
 }
 
 
-/*  ============== EOF CSS Varriors */
+/*  EOF CSS Varriors */

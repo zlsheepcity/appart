@@ -1,10 +1,15 @@
-/*  html wrap & base markup
- *  2019.7.14
+/** html wrap & base markup
+ *  2019.8.22
+ *
+ *  something like normalize
+ *  low-priority properties for html tags
+ *
+ *  CSS
+ *
  */
 
 
-
-/* ------------------------------------ minimal box model */
+/** -------------------------------- minimal box model */
 
 
 *, *:before, *:after     { box-sizing: inherit; }
@@ -12,15 +17,15 @@ html                     { box-sizing: border-box; height: 100%; }
 html, body               { margin: 0; padding: 0; }
 
 
-/* ------------------------------------ basic unit & font sizes */
+/** -------------------------------- basic unit & font sizes */
 
 
-/* Let the browser decide the font size. */
+/* Let the browser decide the font size */
 html { /*font-size: 16px;*/ }
-body { /*font-size: 16px;*/ line-height: var(--line-height, 1.5); }
+body { /*font-size: 16px;*/ }
 
 
-/* ------------------------------------ improve design & UX */
+/** -------------------------------- improve design & UX */
 
 
 html    { cursor:     default; }
@@ -33,7 +38,7 @@ a, area, button, input, label, select, summary, textarea, [tabindex] {
 }
 
 
-/* -------------------- semantic markup without design affect */
+/** -------------------------------- semantic markup without design affect */
 
 
 figure, figcaption, fieldset, legend {
@@ -66,21 +71,22 @@ button {
 }
 
 
-/* ---------------------------- images are used as illustrations */
+/** -------------------------------- images are used as illustrations */
 
 
 img, svg, canvas {
-    display:  block;
-    max-width: 100%;
+    display:   block;
+    max-width: var(--max-width, 100%);
+    min-width: var(--min-width, 0);
     height:    auto;
-    border:       0;
+    border:    0;
 }
 figure {
     max-width: var(--max-width, 100%);
 }
 
 
-/* ------------------------------------ markup defaults */
+/** -------------------------------- markup defaults */
 
 
 a { color: inherit; }
@@ -96,7 +102,7 @@ hr {
     border: 0;
     margin: 0;
 
-    /* use as visual spacer */
+ /* used as empty space */
     display:    block;
     font-size:  inherit;
     height:     var(--row-space, 1rem);
@@ -107,6 +113,13 @@ td, th {
     vertical-align: top;
     padding-top:    0.25em;
     padding-bottom: 0.25em;
+
+ /* Table data default font settings: sans, 13/16 */
+    font-family: var(--font-family-interface, sans-serif);
+  --font-size:   var(--dec-font-size, calc(13/16*1em));
+    font-size:   var(--font-size);
+  --line-height: var(--dec-line-height, calc(16/13));
+    line-height: var(--line-height);
 }
 
 [hidden], .hidden { display: none!important; }

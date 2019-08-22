@@ -7,7 +7,7 @@
  */
 
 
-/** ------------------------------------ font collections */
+/** -------------------------------- Typeface collections */
 
 
 :root,
@@ -28,7 +28,7 @@
 
 /** Tufte 2018 */
 /*
-    Book-style text
+    book-style content
     @import url('https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic');
  */
   --font-family--tufte-serif:
@@ -49,8 +49,17 @@
         "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
+/** Typeface atoms */
 
-/** ------------------------------------ paragraph component */
+.font-secondary {
+    font-family: var(--font-family-secondary);
+}
+.native-sans {
+    font-family: var(--font-family--native-sans);
+}
+
+
+/** -------------------------------- paragraph component */
 /*
     Readable text block has width limit,
     approx ~ 42em in most typefaces, choise of design.
@@ -97,7 +106,7 @@ body {
 }
 
 
-/** ------------------------------------ font-size system LH 1.5 */
+/** -------------------------------- font-size system LH 1.5 */
 
 
 :root,
@@ -130,9 +139,9 @@ body {
     --dec-font-size:   calc(13/16*1em);
     --dec-line-height: calc(16/13);
 
-    /* 12/16
-    --dec-font-size:   0.75em;
-    --dec-line-height: calc(4/3); */
+    /* 12/16 */
+    --doz-font-size:   0.75em;
+    --doz-line-height: calc(4/3);
 }
 @media all and (max-width:42em) {
     :root,
@@ -174,6 +183,8 @@ body {
     line-height: var(--p-line-height);
 }
 
+/** Font-size atoms */
+
 .text-inline-bigger {
   --font-size:   var(--inc-font-size, 1.25em);
     font-size:   var(--font-size);
@@ -194,26 +205,14 @@ body {
 }
 
 /** Reset em-value in element */
+
 .em-reset {
     font-size:   var(--base-font-size,   1rem);
     line-height: var(--base-line-height, 1.5);
 }
 
 
-/** ------------------------------------ workers */
-
-
-/** Typeface atoms */
-
-    .font-secondary {
-        font-family: var(--font-family-secondary);
-    }
-    .native-sans {
-        font-family: var(--font-family--native-sans);
-    }
-
-
-/** ------------------------------------ extra features */
+/** -------------------------------- extra features */
 
 
 @supports (hanging-punctuation: first) {
@@ -231,7 +230,7 @@ body {
 }
 
 
-/** ------------------------------------ system base */
+/** -------------------------------- system base */
 
 
 :root,

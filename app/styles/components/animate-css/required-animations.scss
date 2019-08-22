@@ -1,12 +1,17 @@
-/*  Required animations
+/** Animation functions
+ *  Settings for css-animations: easing functions, keyframes, etc
  *  2019.7.14
+ *
+ *  CSS
+ *
  */
 
 
-/* ------------------------------------- Easing */
+/** -------------------------------- Easing */
 
 
-:root {
+:root,
+.root-animations {
   --timing-function--focusZoom: cubic-bezier(0.165,  0.84,  0.44,  1);
   --timing-function--openJump:  cubic-bezier(0.175,  0.885, 0.320, 1.275);
   --timing-function--closeJump: cubic-bezier(0.600, -0.280, 0.735, 0.045);
@@ -14,7 +19,7 @@
 }
 
 
-/* ------------------------------------- Animations */
+/** -------------------------------- Basic Animations */
 
 
 @keyframes keyframes--SimpleRotation {
@@ -23,9 +28,12 @@
 }
 
 
-/*  Source: animate.css, http://daneden.me/animate
+/** -------------------------------- Animate.css */
+/*  Source: http://daneden.me/animate
+ *  List of animations:
  *  - pulse
  */
+
 
 .animated {
   -webkit-animation-duration: 1s;
@@ -37,6 +45,11 @@
 .animated.infinite {
   -webkit-animation-iteration-count: infinite;
   animation-iteration-count: infinite;
+}
+
+.pulse {
+  -webkit-animation-name: pulse;
+  animation-name: pulse;
 }
 
 
@@ -74,9 +87,5 @@
   }
 }
 
-.pulse {
-  -webkit-animation-name: pulse;
-  animation-name: pulse;
-}
 
 /*  EOF Required animations */

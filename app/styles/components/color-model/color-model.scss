@@ -1,6 +1,5 @@
-/** === ༼°▽°༽ === Color Model 3x3+2  *//*
- *
- *  System based on eleven css vars
+/** Color Model 3x3+2
+ *  System based on nine color values and two shadows
  *  zl, 2019.8.14
  *
  *  CSS
@@ -8,12 +7,12 @@
  */
 
 
-/* ------------------------------------- base */
+/** -------------------------------- base */
 
 
 :root,
-.color-model,
-.colors--root {
+.colors--root,
+.color-model {
   --back-color:         white;
   --back-color-accent:  wheat;
   --back-color-descent: var(--light-shadow);
@@ -39,7 +38,7 @@
 }
 
 
-/* ------------------------------------- autorun */
+/** -------------------------------- autorun */
 
 
 body {
@@ -48,7 +47,7 @@ body {
 }
 
 
-/* ------------------------------------- atom classes */
+/** -------------------------------- atom classes */
 
 
 .use-colors {
@@ -106,14 +105,14 @@ body {
 }
 
 
-/*  === ༼°▽°༽ === Color Model Presets  *//*
+/** === ༼°▽°༽ === Color Model Presets
  *
  *  zl, 2019.8.14
  *
  */
 
 
-/* ------------------------------------- skup palettes */
+/** -------------------------------- skup palettes */
 
 
 /* swed-design 2019 */
@@ -142,7 +141,7 @@ body {
 }
 
 
-/* ------------------------------------- color themes */
+/** -------------------------------- color themes */
 
 
 .colors--template {

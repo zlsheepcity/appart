@@ -1,16 +1,138 @@
 @charset "UTF-8";
 /*  Appart Styles
  *  index file
- *  v2019.7.31
+ *  2019.8.22
  */
 /** Compilation Shortcut:
     scss -C --sourcemap=none app/styles/appart.scss app/styles/appart.css
     sass --no-source-map app/styles/appart.scss app/styles/appart.css
  */
-/*  html wrap & base markup
- *  2019.7.14
+/** base css settings
+ *  2019.7.16
  */
-/* ------------------------------------ minimal box model */
+:root,
+.root-settings {
+  --line-height: 1.5;
+  /* Default vertical and horizontal spacing */
+  --row-space: 1.5rem;
+  --col-space: 1.5rem;
+  --all-space: var(--row-space) var(--col-space);
+  /* z-indexes order */
+  --z-index--sidebar: 100; }
+
+/*  EOF base css settings */
+/** === ༼°▽°༽ === CSS Varriors  */
+                                 /*
+*
+*  Atom classes for maintainable inline CSS
+*  «Var never changes»
+*  zl, 2019.8.14
+*
+*  SCSS
+*
+*/
+/** -------------------------------- Usage Template */
+/*
+
+    ## Option 1.
+
+    <div
+        class="opacity"
+        style="--opacity:0.5;"
+        ></div>
+
+    ## Option 2.
+
+    <section style="--opacity:0.5;">
+        <div class="opacity"></div>
+    </section>
+
+ */
+/** -------------------------------- Handmade CSS varriors */
+/*
+.width      {      width: var(--width,      auto ); }
+.max-width  {  max-width: var(--max-width,  100% ); }
+.min-width  {  min-width: var(--min-width,     0 ); }
+.height     {     height: var(--height,     auto ); }
+.max-height { max-height: var(--max-height, 100% ); }
+.min-height { min-height: var(--min-height,    0 ); }
+.opacity    {    opacity: var(--opacity,       1 ); }
+*/
+/** -------------------------------- Sass auto varriors */
+.width {
+  width: var(--width, auto); }
+
+.max-width {
+  max-width: var(--max-width, 100%); }
+
+.min-width {
+  min-width: var(--min-width, 0); }
+
+.height {
+  height: var(--height, auto); }
+
+.max-height {
+  max-height: var(--max-height, 100%); }
+
+.min-height {
+  min-height: var(--min-height, 0); }
+
+.padding {
+  padding: var(--padding, var(--row-space, 1rem) var(--col-space, 1rem)); }
+
+.padding-top {
+  padding-top: var(--padding-top, var(--row-space, 1rem)); }
+
+.padding-bottom {
+  padding-bottom: var(--padding-bottom, var(--row-space, 1rem)); }
+
+.padding-left {
+  padding-left: var(--padding-left, var(--col-space, 1rem)); }
+
+.padding-right {
+  padding-right: var(--padding-right, var(--col-space, 1rem)); }
+
+.margin {
+  margin: var(--margin, var(--row-space, 1rem) var(--col-space, 1rem)); }
+
+.margin-top {
+  margin-top: var(--margin-top, var(--row-space, 1rem)); }
+
+.margin-bottom {
+  margin-bottom: var(--margin-bottom, var(--row-space, 1rem)); }
+
+.margin-left {
+  margin-left: var(--margin-left, var(--col-space, 1rem)); }
+
+.margin-right {
+  margin-right: var(--margin-right, var(--col-space, 1rem)); }
+
+.align-self {
+  align-self: var(--align-self, center); }
+
+.justify-self {
+  justify-self: var(--justify-self, center); }
+
+.font-size {
+  font-size: var(--font-size, 1em); }
+
+.line-height {
+  line-height: var(--line-height, var(--line-height, 1.5)); }
+
+.opacity {
+  opacity: var(--opacity, 1); }
+
+/*  EOF CSS Varriors */
+/** html wrap & base markup
+ *  2019.8.22
+ *
+ *  something like normalize
+ *  low-priority properties for html tags
+ *
+ *  CSS
+ *
+ */
+/** -------------------------------- minimal box model */
 *, *:before, *:after {
   box-sizing: inherit; }
 
@@ -22,16 +144,15 @@ html, body {
   margin: 0;
   padding: 0; }
 
-/* ------------------------------------ basic unit & font sizes */
-/* Let the browser decide the font size. */
+/** -------------------------------- basic unit & font sizes */
+/* Let the browser decide the font size */
 html {
   /*font-size: 16px;*/ }
 
 body {
-  /*font-size: 16px;*/
-  line-height: var(--line-height, 1.5); }
+  /*font-size: 16px;*/ }
 
-/* ------------------------------------ improve design & UX */
+/** -------------------------------- improve design & UX */
 html {
   cursor: default; }
 
@@ -43,7 +164,7 @@ a, area, button, input, label, select, summary, textarea, [tabindex] {
   -ms-touch-action: manipulation;
   touch-action: manipulation; }
 
-/* -------------------- semantic markup without design affect */
+/** -------------------------------- semantic markup without design affect */
 figure, figcaption, fieldset, legend {
   display: block;
   margin: 0;
@@ -72,17 +193,18 @@ button {
   font: inherit;
   color: inherit; }
 
-/* ---------------------------- images are used as illustrations */
+/** -------------------------------- images are used as illustrations */
 img, svg, canvas {
   display: block;
-  max-width: 100%;
+  max-width: var(--max-width, 100%);
+  min-width: var(--min-width, 0);
   height: auto;
   border: 0; }
 
 figure {
   max-width: var(--max-width, 100%); }
 
-/* ------------------------------------ markup defaults */
+/** -------------------------------- markup defaults */
 a {
   color: inherit; }
 
@@ -95,7 +217,7 @@ hr {
   box-shadow: none;
   border: 0;
   margin: 0;
-  /* use as visual spacer */
+  /* used as empty space */
   display: block;
   font-size: inherit;
   height: var(--row-space, 1rem); }
@@ -104,7 +226,13 @@ td, th {
   text-align: left;
   vertical-align: top;
   padding-top: 0.25em;
-  padding-bottom: 0.25em; }
+  padding-bottom: 0.25em;
+  /* Table data default font settings: sans, 13/16 */
+  font-family: var(--font-family-interface, sans-serif);
+  --font-size: var(--dec-font-size, calc(13/16*1em));
+  font-size: var(--font-size);
+  --line-height: var(--dec-line-height, calc(16/13));
+  line-height: var(--line-height); }
 
 [hidden], .hidden {
   display: none !important; }
@@ -117,7 +245,7 @@ td, th {
  *  CSS
  *
  */
-/** ------------------------------------ font collections */
+/** -------------------------------- Typeface collections */
 :root,
 .root-typography {
   /** Native font stack 2018 */
@@ -132,7 +260,7 @@ td, th {
         "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   /** Tufte 2018 */
   /*
-      Book-style text
+      book-style content
       @import url('https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic');
    */
   --font-family--tufte-serif:
@@ -152,7 +280,14 @@ td, th {
         sans-serif,
         "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; }
 
-/** ------------------------------------ paragraph component */
+/** Typeface atoms */
+.font-secondary {
+  font-family: var(--font-family-secondary); }
+
+.native-sans {
+  font-family: var(--font-family--native-sans); }
+
+/** -------------------------------- paragraph component */
 /*
     Readable text block has width limit,
     approx ~ 42em in most typefaces, choise of design.
@@ -192,7 +327,7 @@ body {
   --max-width: var(--paragraph-width--min);
   max-width: var(--max-width); }
 
-/** ------------------------------------ font-size system LH 1.5 */
+/** -------------------------------- font-size system LH 1.5 */
 :root,
 .root-typography {
   /* 64/80 */
@@ -216,9 +351,9 @@ body {
   /* 13/16 */
   --dec-font-size: calc(13/16*1em);
   --dec-line-height: calc(16/13);
-  /* 12/16
-  --dec-font-size:   0.75em;
-  --dec-line-height: calc(4/3); */ }
+  /* 12/16 */
+  --doz-font-size: 0.75em;
+  --doz-line-height: calc(4/3); }
 
 @media all and (max-width: 42em) {
   :root,
@@ -256,6 +391,7 @@ body {
   font-size: var(--p-font-size);
   line-height: var(--p-line-height); }
 
+/** Font-size atoms */
 .text-inline-bigger, big {
   --font-size: var(--inc-font-size, 1.25em);
   font-size: var(--font-size);
@@ -279,15 +415,7 @@ body {
   font-size: var(--base-font-size, 1rem);
   line-height: var(--base-line-height, 1.5); }
 
-/** ------------------------------------ workers */
-/** Typeface atoms */
-.font-secondary {
-  font-family: var(--font-family-secondary); }
-
-.native-sans {
-  font-family: var(--font-family--native-sans); }
-
-/** ------------------------------------ extra features */
+/** -------------------------------- extra features */
 @supports (hanging-punctuation: first) {
   * {
     hanging-punctuation: first; } }
@@ -300,7 +428,7 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased; }
 
-/** ------------------------------------ system base */
+/** -------------------------------- system base */
 :root,
 .root-typography {
   --font-family: var(--font-family--tufte-serif);
@@ -322,344 +450,200 @@ body {
   --base-font-square-ratio: 0.25; }
 
 /*  EOF Typography */
-/*  Article grid, v2003
- *  2019.7.16
+/** Color Model 3x3+2
+ *  System based on nine color values and two shadows
+ *  zl, 2019.8.14
+ *
+ *  CSS
+ *
  */
-.article-grid {
-  --grid-base--row-gap: var(--row-space, 1rem);
-  --grid-base--col-gap: var(--col-space, 1.25rem);
-  --grid-base--add-gap: 1rem;
-  /* additional paddings between main and sides columns */
-  --grid-base--west-width: 11rem;
-  /* short prefix */
-  --grid-base--main-width: 35rem;
-  /* main text flow */
-  --grid-base--east-width: 16rem;
-  /* text-notes */ }
+/** -------------------------------- base */
+:root,
+.colors--root,
+.color-model {
+  --back-color: white;
+  --back-color-accent: wheat;
+  --back-color-descent: var(--light-shadow);
+  --text-color: black;
+  --text-color-accent: var(--text-color);
+  --text-color-descent: var(--text-color);
+  --link-color: firebrick;
+  --link-color-accent: var(--link-color);
+  --link-color-descent: var(--link-color);
+  --shadow-color: var(--shadow-color--for-light-base);
+  --light-shadow: var(--light-shadow--for-light-base); }
 
-.article-grid {
-  --grid-formula--main-width: auto;
-  --grid-formula--west-width: var(--grid-formula--main-width);
-  --grid-formula--east-width: var(--grid-formula--main-width);
-  --grid-formula--start-hard: [full-start] 0;
-  --grid-formula--end-hard: 0 [full-end];
-  --grid-formula--start-space: [full-start] minmax(0, 1fr);
-  --grid-formula--end-space: minmax(0, 1fr) [full-end];
-  --grid-formula--west-skip: 0;
-  --grid-formula--east-skip: 0;
-  --grid-formula--west-insert:
-            0
-        [overwest-start]
-            var(--grid-base--col-gap)
-        [west-start]
-            var(--grid-base--west-width)
-        [west-end]
-            var(--grid-base--col-gap)
-        [overwest-end]
-            var(--grid-base--add-gap);
-  --grid-formula--east-insert:
-            var(--grid-base--add-gap)
-        [overeast-start]
-            var(--grid-base--col-gap)
-        [east-start]
-            var(--grid-base--east-width)
-        [east-end]
-            var(--grid-base--col-gap)
-        [overeast-end]
-            0;
-  --grid-formula--main-single:
-            0
-        [overmain-start]
-            var(--grid-base--col-gap)
-        [main-start]
-            var(--grid-formula--main-width)
-        [main-end]
-            var(--grid-base--col-gap)
-        [overmain-end]
-            0;
-  --grid-formula--main-join-all:
-            0
-        [overmain-start overwest-start overeast-start]
-            var(--grid-base--col-gap)
-        [main-start west-start east-start]
-            var(--grid-formula--main-width)
-        [main-end west-end east-end]
-            var(--grid-base--col-gap)
-        [overmain-end overwest-end overeast-end]
-            0;
-  --grid-formula--main-join-east:
-            0
-        [overmain-start overeast-start]
-            var(--grid-base--col-gap)
-        [main-start east-start]
-            var(--grid-formula--main-width)
-        [main-end east-end]
-            var(--grid-base--col-gap)
-        [overmain-end overeast-end]
-            0;
-  --grid-formula--main-join-west:
-            0
-        [overmain-start overwest-start]
-            var(--grid-base--col-gap)
-        [main-start west-start]
-            var(--grid-formula--main-width)
-        [main-end west-end]
-            var(--grid-base--col-gap)
-        [overmain-end overwest-end]
-            0; }
+:root,
+.color-model {
+  --shadow-color--for-light-base: hsla( 0, 0%, 0%, 0.3);
+  --shadow-color--for-dark-base: hsla( 0, 0%, 100%, 0.2);
+  --light-shadow--for-light-base: hsla( 0, 0%, 0%, 0.05);
+  --light-shadow--for-dark-base: hsla( 0, 0%, 100%, 0.05); }
 
-.article-grid {
-  --grid-part--START: var(--grid-formula--start-hard);
-  --grid-part--WEST: var(--grid-formula--west-skip);
-  --grid-part--MAIN: var(--grid-formula--main-join-all);
-  --grid-part--MAIN-join-WEST: var(--grid-formula--main-join-all);
-  --grid-part--MAIN-join-EAST: var(--grid-formula--main-join-all);
-  --grid-part--MAIN-join-ALL: var(--grid-formula--main-join-all);
-  --grid-part--EAST: var(--grid-formula--east-skip);
-  --grid-part--END: var(--grid-formula--end-hard); }
+/** -------------------------------- autorun */
+body {
+  background-color: var(--back-color);
+  color: var(--text-color); }
 
-@media all and (min-width: 37.5rem) {
-  .article-grid {
-    --grid-formula--main-width: var(--grid-base--main-width);
-    --grid-part--START: var(--grid-formula--start-space);
-    --grid-part--END: var(--grid-formula--end-space); } }
-@media all and (min-width: 57rem) {
-  .article-grid {
-    --grid-formula--east-width: var(--grid-base--east-width);
-    --grid-part--EAST: var(--grid-formula--east-insert);
-    --grid-part--MAIN: var(--grid-formula--main-join-west);
-    --grid-part--MAIN-join-WEST: var(--grid-formula--main-join-west); } }
-@media all and (min-width: 71.5rem) {
-  .article-grid {
-    --grid-formula--west-width: var(--grid-base--west-width);
-    --grid-part--WEST: var(--grid-formula--west-insert);
-    --grid-part--MAIN: var(--grid-formula--main-single);
-    --grid-part--MAIN-join-EAST: var(--grid-formula--main-join-east); } }
-.article-grid {
-  --grid-template-columns--default:
-        var(--grid-part--START)
-        var(--grid-part--WEST)
-        var(--grid-part--MAIN)
-        var(--grid-part--EAST)
-        var(--grid-part--END);
-  --grid-template-columns--content-block:
-        [full-start overwest-start overeast-start overmain-start main-start west-start east-start]
-            1fr
-        [full-end overwest-end overeast-end overmain-end main-end west-end east-end];
-  --grid-template-columns--content-box:
-        [full-start overwest-start overeast-start overmain-start]
-            var(--grid-base--col-gap)
-        [main-start west-start east-start]
-            1fr
-        [main-end west-end east-end]
-            var(--grid-base--col-gap)
-        [full-end overwest-end overeast-end overmain-end]; }
+/** -------------------------------- atom classes */
+.use-colors {
+  background-color: var(--back-color);
+  color: var(--text-color); }
 
-.article-grid, .article-block-west,
-.article-block-east,
-.article-block-main,
-.article-block, .article-box-west, .article-autobar-west,
-.article-box-east,
-.article-box-main,
-.article-box, .article-westside,
-.article-eastside, .article-block-merge-west,
-.article-block-merge-east,
-.article-block-merge, .article-box-merge-west,
-.article-box-merge-east,
-.article-box-merge, .article-layer.keep-grid {
-  display: grid;
-  align-items: start;
-  justify-content: start;
-  grid-auto-flow: row;
-  grid-auto-rows: min-content;
-  grid-row-gap: var(--grid-base--row-gap);
-  grid-column-gap: 0; }
+.text-color {
+  color: var(--text-color); }
 
-.article-grid {
-  grid-template-columns: var(--grid-template-columns--default); }
+.text-color-accent {
+  color: var(--text-color-accent); }
 
-.article-grid * {
-  grid-column: main; }
+.text-color-descent {
+  color: var(--text-color-descent); }
 
-.article-grid {
-  grid-column: full; }
+.back-color {
+  background-color: var(--back-color); }
 
-.article-layer {
-  grid-column: full; }
+.back-color-accent {
+  background-color: var(--back-color-accent); }
 
-.article-block-west {
-  grid-column: west; }
+.back-color-descent {
+  background-color: var(--back-color-descent); }
 
-.article-block-east {
-  grid-column: east; }
+.link-color {
+  color: var(--link-color); }
 
-.article-block-main {
-  grid-column: main; }
+.link-color-accent {
+  color: var(--link-color-accent); }
 
-.article-block {
-  grid-column: main; }
+.link-color-descent {
+  color: var(--link-color-descent); }
 
-.article-block-west,
-.article-block-east,
-.article-block-main,
-.article-block {
-  grid-template-columns: var(--grid-template--content-block); }
+.back-color-transparent {
+  --back-color: transparent;
+  background-color: var(--back-color); }
 
-.article-box-west, .article-autobar-west {
-  grid-column: overwest; }
+.back-color-hover:hover {
+  --back-color-hover: var(--back-color-accent);
+  background-color: var(--back-color-hover); }
 
-.article-box-east {
-  grid-column: overeast; }
+.text-color-hover:hover {
+  --text-color-hover: var(--text-color-accent);
+  color: var(--text-color-hover); }
 
-.article-box-main {
-  grid-column: overmain; }
+.link-color-hover:hover {
+  --link-color-hover: var(--link-color-accent);
+  color: var(--link-color-hover); }
 
-.article-box {
-  grid-column: overmain; }
+/** === ༼°▽°༽ === Color Model Presets
+ *
+ *  zl, 2019.8.14
+ *
+ */
+/** -------------------------------- skup palettes */
+/* swed-design 2019 */
+:root,
+.color-model {
+  --HSL-NobleBlack: 240, 15%, 12%;
+  --HSL-NobleBlue: 212, 34%, 29%;
+  --HSL-AccentBlue: 204, 22%, 55%;
+  --HSL-AccentBlux: 226, 17%, 20%;
+  --HSL-NobleWhite: 226, 27%, 90%;
+  --HSL-NobleHighWhite: 226, 32%, 75%;
+  --HSL-NobleAction: 359, 54%, 53%;
+  --HSL-NobleHoverAction: 359, 59%, 43%; }
 
-.article-box-west, .article-autobar-west,
-.article-box-east,
-.article-box-main,
-.article-box {
-  grid-template-columns: var(--grid-template-columns--content-box); }
+/* appking 2019 */
+:root,
+.color-model {
+  --HSL-KingsBlue: 202, 81%, 23%;
+  --HSL-KingsAction: 15, 75%, 30%;
+  --HSL-KingsGold: 42, 79%, 53%;
+  --HSL-KingsGrass: 155, 31%, 62%;
+  --HSL-KingsLand: 34, 20%, 33%; }
 
-.article-westside {
-  grid-column: full-start / overwest-end; }
+/** -------------------------------- color themes */
+.colors--template {
+  --back-color: white;
+  --back-color-accent: var(--back-color);
+  --back-color-descent: var(--light-shadow);
+  --text-color: black;
+  --text-color-accent: var(--text-color);
+  --text-color-descent: var(--text-color);
+  --link-color: firebrick;
+  --link-color-accent: var(--link-color);
+  --link-color-descent: var(--link-color);
+  --shadow-color: var(--shadow-color--for-light-base);
+  --light-shadow: var(--light-shadow--for-light-base);
+  /*--shadow-color: var(--shadow-color--for-dark-base);
+    --light-shadow: var(--light-shadow--for-dark-base);*/ }
 
-.article-eastside {
-  grid-column: overeast-start / full-end; }
+.colors--primary,
+.colors--swed {
+  --back-color: hsl( var(--HSL-NobleBlack) );
+  --back-color-accent: hsl( var(--HSL-AccentBlux) );
+  --back-color-descent: var(--light-shadow);
+  --text-color: hsl( var(--HSL-NobleWhite) );
+  --text-color-accent: hsl( var(--HSL-NobleHighWhite) );
+  --text-color-descent: var(--text-color);
+  --link-color: hsl( var(--HSL-NobleAction) );
+  --link-color-accent: hsl( var(--HSL-NobleHoverAction) );
+  --link-color-descent: var(--link-color);
+  --shadow-color: var(--shadow-color--for-dark-base);
+  --light-shadow: var(--light-shadow--for-dark-base); }
 
-.article-westside,
-.article-eastside {
-  grid-template-columns: var(--grid-template-columns--content-box); }
+.colors--secondary,
+.colors--swed-secondary {
+  --back-color: hsl(var(--HSL-NobleBlue));
+  --back-color-accent: var(--light-shadow);
+  --back-color-descent: var(--light-shadow);
+  --text-color: hsl(var(--HSL-NobleWhite));
+  --text-color-accent: hsl(var(--HSL-NobleAction));
+  --text-color-descent: hsl(var(--HSL-NobleHighWhite));
+  --link-color: hsl(var(--HSL-NobleAction));
+  --link-color-accent: hsl(var(--HSL-NobleHoverAction));
+  --link-color-descent: var(--link-color);
+  --shadow-color: var(--shadow-color--for-light-base);
+  --light-shadow: var(--light-shadow--for-light-base); }
 
-.article-block-merge-west {
-  grid-column: west-start / main-end; }
+.colors--swed-third {
+  --back-color: hsl(var(--HSL-AccentBlue));
+  --back-color-accent: var(--light-shadow);
+  --back-color-descent: var(--light-shadow);
+  --text-color: hsl( var(--HSL-NobleBlack) );
+  --text-color-accent: var(--text-color);
+  --text-color-descent: var(--text-color);
+  --link-color: hsl(var(--HSL-NobleWhite));
+  --link-color-accent: hsl(var(--HSL-NobleHighWhite));
+  --link-color-descent: var(--link-color);
+  --shadow-color: var(--shadow-color--for-light-base);
+  --light-shadow: var(--light-shadow--for-light-base); }
 
-.article-block-merge-east {
-  grid-column: main-start / east-end; }
+.colors--action {
+  --back-color: hsl( var(--HSL-NobleAction) );
+  --back-color-accent: hsl( var(--HSL-NobleHoverAction) );
+  --back-color-descent: var(--light-shadow);
+  --text-color: hsl( 359, 0%, 100% );
+  --text-color-accent: hsl( 359, 28%, 82% );
+  --text-color-descent: hsl( 359, 28%, 82% );
+  --link-color: hsl( 359, 0%, 100% );
+  --link-color-accent: var(--link-color);
+  --link-color-descent: var(--link-color);
+  --shadow-color: var(--shadow-color--for-light-base);
+  --light-shadow: var(--light-shadow--for-light-base); }
 
-.article-block-merge {
-  grid-column: west-start / east-end; }
+.colors--ivory {
+  --back-color: hsl( 53, 66%, 80% );
+  --back-color-accent: hsl( 53, 70%, 76% );
+  --back-color-descent: var(--light-shadow);
+  --text-color: hsl( 204, 4%, 22% );
+  --text-color-accent: hsl( 359, 59%, 43% );
+  --text-color-descent: hsl( 204, 4%, 42% );
+  --link-color: hsl( 359, 54%, 53% );
+  --link-color-accent: hsl( 359, 59%, 43% );
+  --link-color-descent: var(--link-color);
+  --shadow-color: var(--shadow-color--for-light-base);
+  --light-shadow: var(--light-shadow--for-light-base); }
 
-.article-block-merge-west,
-.article-block-merge-east,
-.article-block-merge {
-  grid-template-columns: var(--grid-template-columns--content-block); }
-
-.article-box-merge-west {
-  grid-column: overwest-start / overmain-end; }
-
-.article-box-merge-east {
-  grid-column: overmain-start / overeast-end; }
-
-.article-box-merge {
-  grid-column: overwest-start / overeast-end; }
-
-.article-box-merge-west,
-.article-box-merge-east,
-.article-box-merge {
-  grid-template-columns: var(--grid-template-columns--content-box); }
-
-.article-layer.keep-grid {
-  grid-template-columns: var(--grid-template-columns--default); }
-
-.article-westside.keep-grid {
-  --grid-part--WEST-as-MAIN:
-            0
-        [overmain-start overwest-start overeast-start]
-            var(--grid-base--col-gap)
-        [main-start west-start east-start]
-            var(--grid-formula--west-width)
-        [main-end west-end east-end]
-            var(--grid-base--col-gap)
-        [overmain-end overwest-end overeast-end]
-            0;
-  grid-template-columns: var(--grid-part--START) var(--grid-part--WEST-as-MAIN) var(--grid-formula--end-hard); }
-
-.article-eastside.keep-grid {
-  --grid-part--EAST-as-MAIN:
-            0
-        [overmain-start overwest-start overeast-start]
-            var(--grid-base--col-gap)
-        [main-start west-start east-start]
-            var(--grid-formula--east-width)
-        [main-end west-end east-end]
-            var(--grid-base--col-gap)
-        [overmain-end overwest-end overeast-end]
-            0;
-  grid-template-columns: var(--grid-formula--start-hard) var(--grid-part--EAST-as-MAIN) var(--grid-part--END); }
-
-.article-box-merge.keep-grid {
-  grid-template-columns: var(--grid-formula--start-hard) var(--grid-part--WEST) var(--grid-part--MAIN) var(--grid-part--EAST) var(--grid-formula--end-hard); }
-
-.article-box-merge-east.keep-grid {
-  grid-template-columns: var(--grid-formula--start-hard) var(--grid-part--MAIN-join-WEST) var(--grid-part--EAST) var(--grid-formula--end-hard); }
-
-.article-box-merge-west.keep-grid {
-  grid-template-columns: var(--grid-formula--start-hard) var(--grid-part--WEST) var(--grid-part--MAIN-join-EAST) var(--grid-formula--end-hard); }
-
-.article-grid {
-  max-width: 100%;
-  word-wrap: break-word; }
-
-/* autobar west */
-.for-autobar {
-  position: relative;
-  border-bottom: 4px solid var(--shadow-color);
-  color: var(--action-color);
-  margin-bottom: var(--row-space, 1rem); }
-  .for-autobar::before {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    width: 1em;
-    height: 1em;
-    transform: translateX(-1.2rem) translateY(-58%);
-    content: "«";
-    font-size: 1em;
-    line-height: 1;
-    background-color: var(--action-color);
-    color: var(--action-color--text);
-    border-radius: 50%;
-    display: none; }
-
-@media all and (min-width: 71.5rem) {
-  /* reset offsidebar view */
-  .offsidebar.is-autobar {
-    position: static;
-    z-index: 0;
-    max-width: 100%;
-    top: auto;
-    bottom: auto;
-    right: auto;
-    left: auto; }
-    .offsidebar.is-autobar .sidepanel {
-      opacity: 1;
-      pointer-events: all; }
-    .offsidebar.is-autobar .sidepanel-content,
-    .offsidebar.is-autobar .sidepanel-header,
-    .offsidebar.is-autobar .sidepanel-footer {
-      transform: scaleX(1);
-      opacity: 1; }
-
-  /* hide button */
-  .article-autobar-west .for-autobar {
-    display: none; }
-
-  /* modify menu */
-  .offsidebar.is-autobar {
-    grid-column: full; }
-    .offsidebar.is-autobar .sidepanel-header {
-      background-color: transparent;
-      color: inherit; }
-    .offsidebar.is-autobar .sidepanel-content {
-      padding-top: 0;
-      padding-bottom: 0;
-      /* 14/24 */
-      font-size: 0.875em;
-      line-height: 1.714286; } }
-/*  EOF article-grid */
+/*  EOF color model */
 /** journal-grid
  *  book-style content layout
  *  2019.8.16
@@ -667,7 +651,7 @@ body {
  *  CSS
  *
  */
-/** ------------------------------------ grid settings */
+/** -------------------------------- grid settings */
 .journal-grid {
   /* space units */
   --sx: var(--col-space, 1.5rem);
@@ -680,7 +664,7 @@ body {
   --size-w: minmax(0, 4rem);
   --size-e: minmax(0, 100vw); }
 
-/** ------------------------------------ grid formula */
+/** -------------------------------- grid formula */
 .journal-grid {
   /* mobile state multiplyer */
   --if-grid-is-tiny: 0;
@@ -700,7 +684,7 @@ body {
   --grid-part--empty-start: [full-start w_ e_] 0;
   --grid-part--empty-end: 0 [_w _e full-end]; }
 
-/** ------------------------------------ mobile state */
+/** -------------------------------- mobile state */
 @media (max-width: 65rem) {
   .journal-grid {
     /* remove strict column sizes */
@@ -722,7 +706,7 @@ body {
     /* mobile layout behavoir */
     --grid-part--note-column: 0;
     --grid-part--main-content: 1fr; } }
-/** ------------------------------------ define grid */
+/** -------------------------------- define grid */
 /* components */
 .figured,
 .wide,
@@ -792,7 +776,7 @@ body {
   --grid-part--main-content: 1fr;
   --grid-part--main-gap: 0; }
 
-/** ------------------------------------ components */
+/** -------------------------------- components */
 /*** note component */
 .note {
   grid-column: pn_ / _pn;
@@ -880,7 +864,7 @@ body {
   --scroll-overflow-behavoir: auto;
   --scroll-direction: rtl; }
 
-/** ------------------------------------ closed/active states */
+/** -------------------------------- closed/active states */
 .offsidebar {
   --state-event: none;
   --state-value: 0; }
@@ -892,7 +876,7 @@ body {
 /** -------------------------------- layout & behavior */
 .offsidebar {
   position: fixed;
-  z-index: var(--z-index--sidebar);
+  z-index: var(--z-index--sidebar, 100);
   top: 0;
   bottom: 0;
   right: var(--right);
@@ -1034,115 +1018,30 @@ body {
   transition-delay: 50ms; }
 
 /*  EOF offsidebar */
-/*  Data Table - Responsive <table> values
- *  2019.1.17
- */
-.data-table {
-  /* table critical css */
-  /* table addon - has compact mobile view */
-  /* table addon -- has Data Titles */
-  /* table addon -- has type of content */ }
-  .data-table th,
-  .data-table td {
-    padding-left: 0.5em;
-    padding-right: 0.5em;
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
-    vertical-align: top; }
-  .data-table caption,
-  .data-table th {
-    text-align: left;
-    line-height: 1.25; }
-  @media all and (min-width: 601px) {
-    .data-table th:first-child,
-    .data-table td:first-child {
-      padding-left: 0.125em; }
-    .data-table th:last-child,
-    .data-table td:last-child {
-      padding-right: 0.125em; } }
-  @media all and (max-width: 600px) {
-    .data-table:not(.is-perfect),
-    .data-table:not(.is-perfect) caption,
-    .data-table:not(.is-perfect) thead,
-    .data-table:not(.is-perfect) tbody,
-    .data-table:not(.is-perfect) tfooter,
-    .data-table:not(.is-perfect) tr {
-      display: block; }
-    .data-table:not(.is-perfect) th,
-    .data-table:not(.is-perfect) td {
-      display: block;
-      text-align: left;
-      width: 100%;
-      padding-left: 0;
-      padding-right: 0;
-      border: 0; }
-    .data-table:not(.is-perfect)[data-table-type] table tr > * {
-      text-align: left; }
-    .data-table:not(.is-perfect)[data-table-type] table tr > *:not(th) {
-      font-family: inherit; }
-    .data-table:not(.is-perfect) thead th {
-      text-align: right;
-      padding-top: 0;
-      padding-bottom: 0; }
-    .data-table:not(.is-perfect) tr + tr *:first-child {
-      border-top: 2px dashed rgba(0, 0, 0, 0.15);
-      margin-top: 1em;
-      padding-top: 1em; }
-    .data-table:not(.is-perfect) tr:hover {
-      background-color: transparent; }
-    .data-table:not(.is-perfect)[data-table-type] tr > td, .data-table:not(.is-perfect)[data-table-type] tr > td,
-    .data-table:not(.is-perfect) .is-number {
-      text-align: left; } }
-  @media all and (max-width: 600px) {
-    .data-table.has-data-titles:not(.is-perfect) thead {
-      display: none; }
-    .data-table.has-data-titles:not(.is-perfect) th,
-    .data-table.has-data-titles:not(.is-perfect) td {
-      font-size: inherit;
-      line-height: inherit; }
-    .data-table.has-data-titles:not(.is-perfect) th[data-title],
-    .data-table.has-data-titles:not(.is-perfect) td[data-title] {
-      position: relative;
-      padding-left: 8em;
-      box-sizing: border-box; }
-    .data-table.has-data-titles:not(.is-perfect) th[data-title]:before,
-    .data-table.has-data-titles:not(.is-perfect) td[data-title]:before {
-      content: attr(data-title) ": ";
-      position: absolute;
-      display: block;
-      margin-left: -8em;
-      width: 7.5em; } }
-  .data-table[data-table-type*="1num"] tr > *:nth-child(1), .data-table[data-table-type*="2num"] tr > *:nth-child(2), .data-table[data-table-type*="3num"] tr > *:nth-child(3), .data-table[data-table-type*="4num"] tr > *:nth-child(4), .data-table[data-table-type*="5num"] tr > *:nth-child(5),
-  .data-table .is-number {
-    text-align: right; }
-  .data-table[data-table-type*="1num"] tr > *:not(th):nth-child(1), .data-table[data-table-type*="2num"] tr > *:not(th):nth-child(2), .data-table[data-table-type*="3num"] tr > *:not(th):nth-child(3), .data-table[data-table-type*="4num"] tr > *:not(th):nth-child(4), .data-table[data-table-type*="5num"] tr > *:not(th):nth-child(5),
-  .data-table .is-number:not(th) {
-    font-family: monospace; }
-  @media all and (min-width: 601px) {
-    .data-table[data-table-type*="1str"] tr > *:not(th):nth-child(1), .data-table[data-table-type*="2str"] tr > *:not(th):nth-child(2), .data-table[data-table-type*="3str"] tr > *:not(th):nth-child(3), .data-table[data-table-type*="4str"] tr > *:not(th):nth-child(4), .data-table[data-table-type*="5str"] tr > *:not(th):nth-child(5),
-    .data-table .is-string:not(th) {
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      overflow: hidden; } }
-
-/*  EOF Data Table */
-/*  Required animations
+/** Animation functions
+ *  Settings for css-animations: easing functions, keyframes, etc
  *  2019.7.14
+ *
+ *  CSS
+ *
  */
-/* ------------------------------------- Easing */
-:root {
+/** -------------------------------- Easing */
+:root,
+.root-animations {
   --timing-function--focusZoom: cubic-bezier(0.165, 0.84, 0.44, 1);
   --timing-function--openJump: cubic-bezier(0.175, 0.885, 0.320, 1.275);
   --timing-function--closeJump: cubic-bezier(0.600, -0.280, 0.735, 0.045);
   --timing-function--Welcome: cubic-bezier(0.6, 0.04, 0.98, 0.335); }
 
-/* ------------------------------------- Animations */
+/** -------------------------------- Basic Animations */
 @keyframes keyframes--SimpleRotation {
   from {
     transform: rotate(0deg); }
   to {
     transform: rotate(359deg); } }
-/*  Source: animate.css, http://daneden.me/animate
+/** -------------------------------- Animate.css */
+/*  Source: http://daneden.me/animate
+ *  List of animations:
  *  - pulse
  */
 .animated {
@@ -1154,6 +1053,10 @@ body {
 .animated.infinite {
   -webkit-animation-iteration-count: infinite;
   animation-iteration-count: infinite; }
+
+.pulse {
+  -webkit-animation-name: pulse;
+  animation-name: pulse; }
 
 @-webkit-keyframes pulse {
   from {
@@ -1175,18 +1078,21 @@ body {
   to {
     -webkit-transform: scale3d(1, 1, 1);
     transform: scale3d(1, 1, 1); } }
-.pulse {
-  -webkit-animation-name: pulse;
-  animation-name: pulse; }
-
 /*  EOF Required animations */
-/* ==============================================================
-    SVGA Regular Inline Icons
-    2019.6.27
-============================================================== */
+/** SVGA icons
+ *  inline component for svg icons
+ *  2019.6.27
+ *
+ *  CSS
+ *  + SVG file with common icons
+ *  + usage examples, md file
+ *
+ */
 .svga-icon {
   --base: 1em;
+  /* - inline height    */
   --size: var(--line-height, 1.5);
+  /* - scale multiplyer */
   width: var(--base);
   height: var(--base);
   display: inline-flex;
@@ -1203,12 +1109,16 @@ body {
     height: 100%;
     fill: currentColor; }
 
-/* EOF Regular Icons */
-/*  swed-banner - promo blocks with button
- *  v2019.7.31
+/*  EOF SVGA Icons */
+/** swed-banner
+ *  wrap anything for nice grouping
+ *  2019.8.22
+ *
+ *  CSS
+ *
  */
-/* ----------------------------------- settings */
-.banner, .swed-banner {
+/** -------------------------------- settings */
+.swed-banner, .banner {
   --v-space: var(--row-space, 1rem);
   --h-space: var(--col-space, 1rem);
   --back-color: transparent;
@@ -1219,8 +1129,8 @@ body {
       var(--v-space)
       0; }
 
-/* ----------------------------------- main component */
-.banner, .swed-banner {
+/** -------------------------------- main component */
+.swed-banner, .banner {
   /* group-center */
   display: flex;
   flex-direction: row;
@@ -1229,51 +1139,40 @@ body {
   align-items: center;
   align-content: center;
   align-self: stretch;
-  padding: var(--banner-padding); }
-
-.banner > *, .swed-banner > * {
-  margin: 0 var(--h-space) var(--v-space) var(--h-space); }
-
-/* ----------------------------------- design component */
-.swed-banner {
+  padding: var(--banner-padding);
   background-color: var(--back-color);
   color: var(--text-color); }
 
-/* ----------------------------------- workers */
-.group-banners {
-  /* group-wide */
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  align-content: center; }
+.swed-banner > *, .banner > * {
+  --margin: 0 var(--h-space) var(--v-space) var(--h-space);
+  margin: var(--margin);
+  --max-width: var(--paragraph-width, 100%);
+  max-width: var(--max-width);
+  --min-width: var(--paragraph-width--min, 0);
+  min-width: var(--min-width); }
 
-.group-banners > * {
-  flex-grow: 1; }
+/** -------------------------------- support components */
+.swed-banner-title, .banner-title {
+  width: 100%;
+  justify-content: center;
+  justify-self: center;
+  text-align: center; }
 
-@media (min-width: 38em) {
-  .group-banners:not(.is-big) {
-    flex-wrap: nowrap; } }
-@media (min-width: 1200px) {
-  .group-banners {
-    flex-wrap: nowrap; } }
 /*  EOF swed-banner */
-/*  swed-buttons - Nice buttons with hover effect
- *  v2019.7.31
+/** swed-button
+ *  Nice buttons with hover zoom
+ *  2019.8.22
+ *
+ *  CSS
+ *
  */
-/* --------------------------------------- Customization */
+/** -------------------------------- Customization */
 .swed-button {
   /* default colors */
   --back-color: hsl( var(--HSL-NobleAction) );
   --back-color-accent: hsl( var(--HSL-NobleHoverAction) );
-  --text-color: hsl( 359, 0%, 100% );
-  --shadow-color: var(--shadow-color-for-light-base); }
-
-.swed-button {
-  --background-color: var(--back-color);
-  --background-hover: var(--back-color-accent);
-  --color: var(--text-color);
+  --text-color: white;
+  --shadow-color: var(--shadow-color-for-light-base);
   --padding: calc(1em/3) var(--col-space, 1rem);
   --margin: 0.25rem;
   --border-radius: 4px;
@@ -1282,11 +1181,15 @@ body {
   --line-height: calc(4/3); }
 
 .swed-button.is-big {
-  --padding: var(--row-space, 1rem)
-                      var(--col-space, 1.25rem); }
+  --padding:
+        var(--row-space, 1rem)
+        var(--col-space, 1.25rem); }
 
-/* --------------------------------------- Component */
+/** -------------------------------- Component */
 .swed-button {
+  --background-color: var(--back-color);
+  --background-hover: var(--back-color-accent);
+  --color: var(--text-color);
   display: inline-block;
   width: auto;
   width: fit-content;
@@ -1299,7 +1202,7 @@ body {
   background-color: var(--background-color);
   color: var(--color); }
 
-/* --------------------------------------- Reset unused styles */
+/** -------------------------------- Reset unused styles */
 .swed-button,
 .swed-button:link,
 .swed-button:visited,
@@ -1312,50 +1215,58 @@ body {
   background-color: var(--background-color);
   color: var(--color); }
 
-/* --------------------------------------- Hover effect */
-@media screen and (min-width: 900px) {
-  .swed-button {
-    --opacity-state: 0;
-    --transform-state: scale(1, 1);
-    transform: var(--transform-state);
-    position: relative;
-    z-index: var(--opacity-state);
-    will-change: transform;
-    transition: all 0.6s var(--timing-function--focusZoom, ease-out);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    font-smooth: always; }
+/** -------------------------------- Hover effect */
+/* Do not disable animation on mobile devices */
+/* @media screen and (min-width: 900px) { */
+.swed-button {
+  --state-value: 0;
+  --state-transform: scale(1, 1);
+  transform: var(--state-transform);
+  position: relative;
+  z-index: var(--state-value);
+  will-change: transform;
+  transition: all 0.6s var(--timing-function--focusZoom, ease-out);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-smooth: always; }
 
-  .swed-button::after {
-    content: '';
-    position: absolute;
-    z-index: -1;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: var(--opacity-state, 0);
-    box-shadow: 0 0.5rem 1rem var(--shadow-color, rgba(0, 0, 0, 0.3));
-    border-radius: inherit;
-    transition: inherit; }
+.swed-button::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: var(--state-value);
+  box-shadow: 0 0.5rem 1rem var(--shadow-color, rgba(0, 0, 0, 0.3));
+  border-radius: inherit;
+  transition: inherit; }
 
-  .swed-button:hover {
-    --background-color: var(--background-hover);
-    --transform-state: var(--transform-hover);
-    --opacity-state: 1; }
+/* active state */
+.swed-button:hover,
+.swed-button:focus,
+.swed-button:active,
+.swed-button.is-active {
+  --background-color: var(--background-hover);
+  --state-transform: var(--transform-hover);
+  --state-value: 1; }
 
-  .swed-button:focus-within {
-    --background-color: var(--background-hover);
-    --transform-state: var(--transform-hover);
-    --opacity-state: 1; } }
-/*  EOF swed-buttons */
+/* dublicate in separate rule */
+.swed-button:focus-within {
+  --background-color: var(--background-hover);
+  --state-transform: var(--transform-hover);
+  --state-value: 1; }
+
+/* } */
+/*  EOF swed-button */
 /** dropdown UI component
  *  2019.8.18
  *
  *  CSS
  *
  */
-/** ------------------------------------ settings */
+/** -------------------------------- settings */
 .swed-dropdown {
   --label-color: inherit;
   --hover-label-color: var(--text-color-accent, inherit);
@@ -1363,9 +1274,8 @@ body {
   --hoverlink-back-color: var(--back-color-descent, rgba(255,255,255,0.25));
   --droplist-max-width: var(--paragraph-width--mid, 24em); }
 
-/** ------------------------------------ closed state (default) */
+/** -------------------------------- closed state (default) */
 .swed-dropdown {
-  --z-index: 0;
   --arrow-rotate: none;
   --pointer-events: none;
   --scale-timing: var(--timing-function--closeJump);
@@ -1374,12 +1284,11 @@ body {
   --state-block: none;
   --state-value: 0; }
 
-/** ------------------------------------ open state */
+/** -------------------------------- open state */
 .swed-dropdown:not(.no-hover):hover,
 .swed-dropdown:focus,
 .swed-dropdown:focus-within,
 .swed-dropdown.is-active {
-  --z-index: 1;
   --arrow-rotate: rotate(180deg);
   --pointer-events: all;
   --scale-timing: var(--timing-function--openJump);
@@ -1390,12 +1299,12 @@ body {
   /* change colors */
   --label-color: var(--hover-label-color); }
 
-/** ------------------------------------ wrap */
+/** -------------------------------- wrap */
 .swed-dropdown {
   position: relative;
   z-index: var(--state-value); }
 
-/** ------------------------------------ label */
+/** -------------------------------- label */
 .swed-dropdown > .label {
   position: relative;
   z-index: 1;
@@ -1423,7 +1332,7 @@ body {
   transition: transform 240ms;
   transform-origin: center center; }
 
-/** ------------------------------------ droplist wrap */
+/** -------------------------------- droplist wrap */
 .swed-dropdown > .droplist {
   position: absolute;
   z-index: 0;
@@ -1458,7 +1367,7 @@ body {
   bottom: -2em;
   left: -2em; }
 
-/** ------------------------------------ droplist UL content */
+/** -------------------------------- droplist UL content */
 .swed-dropdown > .droplist > ul {
   list-style: none;
   margin: 0;
@@ -1486,8 +1395,12 @@ body {
   transition-timing-function: var(--timing-function--openJump); }
 
 /* EOF dropdown */
-/*  swed-site-head - slim header
- *  v2019.8.1
+/** swed-site-head
+ *  short line at the top of the page
+ *  2019.8.1
+ *
+ *  CSS
+ *
  */
 /*  markup template
 
@@ -1552,11 +1465,12 @@ body {
   .swed-site-menu {
     order: 2; } }
 /*  EOF swed-site-head */
-/*  catgrounds - decorative background shapes
+/** catgrounds - decorative background shapes
  *  2019.7.30
  */
-/*  Each class contains:
- *  style="fill:black;opacity:0.08;"
+/*
+    Each class contains inline style
+    style="fill:black;opacity:0.08;"
  */
 .catground {
   background-size: contain;
@@ -1577,229 +1491,13 @@ body {
   background-image: url('data:image/svg+xml,%3Csvg version="1.1" id="borders-catground" xmlns="http://www.w3.org/2000/svg" width="1000" height="1000" viewBox="0 0 1000 1000"%3E%3Cpath style="fill:black;opacity:0.08;" d="M819,151.7c-8,1.6-3.4,20.2-8.5,24.8c-8.2-6.9-20.6-8.3-30.4-4.3c-16.6,6.6-9.1-3.5-19.4-17.6 c-6.7,1-15.8-5.9-16.5,3.8c-1,13,8,25.6,7.2,39.8c-0.5,9.6-3.5,20.5-10.1,27.8c-4,4.5-25.4,14.6-21.1-0.2 c2.9-9.9,15.2-13.3,18.4-25.1c1.8-6.9,1.6-31-8.6-33.4c-1.4,3.7-2.6,17.6-6.2,19c-7.8,3-20.5-9.6-33.3-3.5 c-0.5-12.6,1-29.3-16.2-27.5c-10.2,1-15.2,1.9-16.8,11.4c-0.5,3.4-0.5,25.9-2.6,27.4c-1.9,1.3-17.9-4.2-21.3-4 c-8.2,0.5-15.7,3.8-21.3,9.9c-4.3-7.5-2.6-17.8-8.5-24.6c-10.4,19.5,5.6,32.5,3.4,52.6c-1.1,9.4-20,42.7-33.1,28.8 c-1-1,23.4-28.3,20.8-40.2c-1.8-8-6.4-15.7-6.9-24c-0.5-10.7,6.4-19.5,5.6-30.2c-0.6,0-28.2,5.4-24.3,8.5 c-4.8-3.7-4.6-15.7-6.4-21.6c-3.4,0.2-12.8,44-14.1,48.8c-9.9-11-22.6-9.9-35-4.2c-2.9-5,0.8-19.2-0.3-25.4 c-6.9,6.4-8.6,19.4-11.4,27.8c0.5-1.3-30.4,8-33.6,9.6c-6.7-15.2-3.7-28.8-16.2-41.9c-8.3,12.5-14.1,26.2-19.7,40.2 c-14.9-8.2-28.6-8.5-44.6-2.7c-0.6-10.9,0.2-21.8-2.1-32.5c-19.2,19.2,3.7,30.7-4.5,50.7c-4.8,11.7-23.4,26.9-34.2,12.2 c-5.6-7.5,20.2-7,23.7-16c3.8-9.6-5.6-17.4-5.9-27.2c-0.2-4.6,9.4-21.4,7.7-24c-5.4-8.3-26.4,4-31.2,6.9c-1-1.8-1.8-3.8-2.1-5.9 c-3.2-0.3-8.3,20.8-11.2,24.2c-5.4-1.8-11.7-3.7-17.6-3c-2.9,0.3-17.9,9-18.9,8.5c-3.7-1.8-3.4-29.1-4.2-34.1 c-15.8,8.3-21.6,30.4-9.9,44.3c4,4.8,17.1,13.8,10.2,21.8c-3.8,4.3-8.5,2.7-11.4-1.6c-12-18.1-21.3-32.8-9.6-53.9 c17.6-31.8-21.8,0.2-27.5-1.9c-1.3-2.2-2.2-4.6-2.9-7.2c-5,0.3-16,21-19,25.3c-4.2,5.8-9.6-4.5-15.4-4.6c-19.5-1-9.9,25.9-3.2,33.1 c0.5,0.5-30.4,11-34.1,12.6c10.9,5.6,22.9,7.8,34.6,10.9c-1.4,3.7-13.4,32.8-1.4,32.2c16.3-1,27.7,15.4,44.6,12 c8.2-1.6,2.9,19.7-16.3,10.4c-14.6-6.9-17.6-11.8-33.4-5c2.7,12.2,16-6.2,11.8,9.4c-1.6,6.2,0.2,16.3,5.1,20.8 c1.4,1.3-25,7.7-25.4,7.8c2.1,4,31,9,28.8,13.8c-7.5,16.5,1,21.3,7.2,34.4c-11.4,5.4-27.7,5.1-40.2,8c7,4.8,15.7,7,23.2,11 c-4.6,4.2-7.7,13.3-6.4,19.4c0.6,2.7,8.5,14.4,7.8,16c-1.1,2.9-8.5,0.6-11.7,1.3c16.2,18.2,52.2-11,60,26.2 c3.7,17.6-26.2-8.8-26.9-9c-13.4-2.6-24.6,0.2-37.9-5.1c-0.2,13,18.6,23.4,4.6,26.4c3.5,5.6,23.4,3.7,25.3,10.4 c-1.8,3.4-3.7,6.7-5.8,9.8c-3.5,8.8-1,16.3,2.1,24.6c-9,2.1-18.1,4.2-27,6.2c-0.5,5.4,31.4,15.8,36.3,17.8 c-10.6,8.6-11.4,29.3-2.4,39c-12.2,5.9-24.3,11.8-36.5,17.8c17.9,13,4,0.5,6.9,23.7c0.2,1.8,6.9,13.9,4.5,14.6 c-10.1,2.6-19,6.2-28,11.4c16.8,11.8,41-4.8,58.7-5.9c6.6-0.3,45.8,7.8,31.2,20.2c-9.3,7.8-34.4-12.5-49.3-5 c-17,8.5-36.6,6.1-53.9,0.6c-2.1,5.1,26.7,13,31,14.2c-0.8-0.2-5.3,29.9-3.5,34.6c2.4,6.6,31.7,9.6,29.4,13.9 c-7.2,13.9-6.1,23.4-0.2,36.6c-10.1,3.5-20.3,6.1-30.1,10.7c5.6,2.4,25,5.1,28.2,9.8c1,1.4-2.9,26.1-2.7,29.4 c5.3-1.3,10.2-22.9,16.6-16.8c11,10.4,25.6,5.1,36.3-1.9c3.4,10.6,7.5,20.8,14.2,29.6c6.1-8.5,9.1-19.4,12.8-29 c1-2.7,14.4,9.9,15.4,10.4c23,13.1,14.2-29,9-39.4c-2.2-4.5-12.5-7.8-12.6-12.8c-0.3-8.2,10.4-9.4,15-5.8 c16.5,12.3,18.6,30.7,16.8,50.1c11.4-8.8,0.5-6.9,14.1-1.9c11,4,15.7-4.8,21.4-11.4c4.8,10.6,9.4,21.1,14.2,31.7 c7.4-11.4,4.5-40.3,19.8-26.1c-5.8-5.3,20-31.7,23.7-36.8c2.4-3.5,3.8-14.6,10.9-14.2c7.5,0.5,5.4,10.2,4.3,14.7 c-3.5,13.9-30.1,23.2-22.4,39.7c5.3-0.3,12.5-12,15.2-11.2c0.3,0.2,6.4,36.8,7.7,41.1c8.5,0.2,2.4-30.6,11-31.2 c12,16.3,24.2,4.2,36-2.1c0.8,6.6-1.1,40.6,8.5,40c3-13.3,3-30.1,8-42.6c11.8,17.1,28,5,39.8-2.9c2.1,4,5.9,29.4,9.1,29 c0.8-4.8,0.5-14.7,3.8-18.7c-1.4,1.6,18.7,8.5,17,8.3c11,1.1,14.7-4,22.4-9.9c5.8,9.1,5.6,21.8,14.6,29.1 c3.7-5.8,12.2-39.4,16.5-40.6c2.9-1,11.8,7.5,16.8,7.7c5.4,0.3,17.9-10.2,19.7-9.6c3.2,1.1,7,31,8,34.6c6.2-1,0.8-17.6,4.3-19.5 c1.3-0.6,10.2,5.3,9.4,4.8c8.8,4,18.2,1,25.9-3.8c14.2-9,5,1.3,15.7,6.2c3.7-22.6-34.6-58.7,2.6-76.3c17.8-8.5-2.7,27.7-2.4,31.4 c0.8,9.8,9.9,19.7,14.2,28c4.5,8.8-3,25.9,0.5,31.5c4.5-9.3,5.1-19.8,8-29.6c14.9,11.8,25,10.6,34.7-6.2c1.8,2.4,17.8,37,21.3,33.4 c15-14.9,15.7-25,5.3-43c9.3,0.5,18.4-0.6,27-4.2c-6.1-5.4-12.6-9.9-20.2-13c-5.3-2.2-30.1-4.3-32.2-8.6c-1.8-3.7,7.4-12.2,8.6-16.5 c3.4-12-2.1-19.7-8.8-29c11.5-3.7,24-6.4,33.3-14.6c-4.6-2.2-15-4-17.8-8.6c1,1.8,9.9-13,9.6-12.2c3.8-9.1,3.2-21-3-28.8 c-5.3-6.7-19.7-9-27.7-7.4c-10.2,2.2-12,17-20.6,17.1c-19.4,0.5,2.4-27.7,14.9-29.1c17.9-2.1,46.6,15.2,61.3-0.8 c-3-1.6-37.3-12-35.2-14.7c10.9-13.6,10.1-25.9,3.7-41.3c10.1-0.8,20.2-2.2,30.2-3.7c-10.7-7.8-34.2-8.8-27.2-21.8 c9.9-18.2,4.5-23.2,0-41.1c9.9-1.3,18.9-5.9,28.2-9.3c-12.2-9.4-34.4-1-22.9-19.2c5.1-8-1-31.5-0.3-32.3c3.4-4.3,24.3-5.3,30.2-6.6 c-22.4-24.6-73.4,26.2-88.5-17.4c-1.4-4.3,0.5-13.1,6.7-13c9,0.2,8,15.4,15.7,19.4c9.4,5,20,0.8,29-2.6c14.2-5.4,25.3-4.5,39.8-1.1 c-0.3-4-19.5-10.9-23.5-13.3c10.2-15.2,1.8-24.3-2.6-39c5.9,1.8,12,2.1,18.1,1c-2.4-8.6-23.7-12-30.1-16c11.2-8.5,9.3-21,1.9-31 c7.2,1,14.2,0.6,21.3-0.8c0.3-2.2-24-11.8-26.9-13.1c6.7-5.9,9.6-15.4,8.3-24c-0.6-4.8-8.6-12.3-8.3-16c0.2-2.2,29.4-1.1,32.8-1.8 c-7.4-7.8-19.4-11.2-28.3-17.3c8.8-11.5,6.1-17,1-30.2c4.5,1.1,9,1,13.3-0.6c-11-6.9-40-15.5-43.2,5.3c-4.8,30.6-26.7,1.6-8.6-16 c22.6-21.9,39.2-0.5,63-0.8c22.6-0.3,14.2-43-11.5-25.3C821,159.5,820,155.7,819,151.7C818.7,151.8,820,155.5,819,151.7z"/%3E%3C/svg%3E%0A'); }
 
 /*  EOF catgrounds */
-/*  base css settings
- *  2019.7.16
+/** Universal helpers
+ *  2019.8.22
+ *
+ *  CSS
+ *
  */
-:root {
-  --line-height: 1.5;
-  /* Default vertical and horizontal spacing.
-     Are different to make equal visual spacing over text.  */
-  --row-space: 1.5rem;
-  --col-space: 1.5rem;
-  --all-space: var(--row-space) var(--col-space);
-  /* z-indexes order */
-  --z-index--sidebar: 100; }
-
-/*  avoid long text lines */
-:root {
-  --max-width--text: 42rem;
-  --min-width--text: 24rem; }
-
-@media (max-width: 42em) {
-  :root {
-    --max-width--text: var(--min-width--text); } }
-/*  EOF base css settings */
-/** === ༼°▽°༽ === Color Model 3x3+2  */
-                                      /*
-*
-*  System based on eleven css vars
-*  zl, 2019.8.14
-*
-*  CSS
-*
-*/
-/* ------------------------------------- base */
-:root,
-.color-model,
-.colors--root {
-  --back-color: white;
-  --back-color-accent: wheat;
-  --back-color-descent: var(--light-shadow);
-  --text-color: black;
-  --text-color-accent: var(--text-color);
-  --text-color-descent: var(--text-color);
-  --link-color: firebrick;
-  --link-color-accent: var(--link-color);
-  --link-color-descent: var(--link-color);
-  --shadow-color: var(--shadow-color--for-light-base);
-  --light-shadow: var(--light-shadow--for-light-base); }
-
-:root,
-.color-model {
-  --shadow-color--for-light-base: hsla( 0, 0%, 0%, 0.3);
-  --shadow-color--for-dark-base: hsla( 0, 0%, 100%, 0.2);
-  --light-shadow--for-light-base: hsla( 0, 0%, 0%, 0.05);
-  --light-shadow--for-dark-base: hsla( 0, 0%, 100%, 0.05); }
-
-/* ------------------------------------- autorun */
-body {
-  background-color: var(--back-color);
-  color: var(--text-color); }
-
-/* ------------------------------------- atom classes */
-.use-colors {
-  background-color: var(--back-color);
-  color: var(--text-color); }
-
-.text-color {
-  color: var(--text-color); }
-
-.text-color-accent {
-  color: var(--text-color-accent); }
-
-.text-color-descent {
-  color: var(--text-color-descent); }
-
-.back-color {
-  background-color: var(--back-color); }
-
-.back-color-accent {
-  background-color: var(--back-color-accent); }
-
-.back-color-descent {
-  background-color: var(--back-color-descent); }
-
-.link-color {
-  color: var(--link-color); }
-
-.link-color-accent {
-  color: var(--link-color-accent); }
-
-.link-color-descent {
-  color: var(--link-color-descent); }
-
-.back-color-transparent {
-  --back-color: transparent;
-  background-color: var(--back-color); }
-
-.back-color-hover:hover {
-  --back-color-hover: var(--back-color-accent);
-  background-color: var(--back-color-hover); }
-
-.text-color-hover:hover {
-  --text-color-hover: var(--text-color-accent);
-  color: var(--text-color-hover); }
-
-.link-color-hover:hover {
-  --link-color-hover: var(--link-color-accent);
-  color: var(--link-color-hover); }
-
-/*  === ༼°▽°༽ === Color Model Presets  */
-                                        /*
-*
-*  zl, 2019.8.14
-*
-*/
-/* ------------------------------------- skup palettes */
-/* swed-design 2019 */
-:root,
-.color-model {
-  --HSL-NobleBlack: 240, 15%, 12%;
-  --HSL-NobleBlue: 212, 34%, 29%;
-  --HSL-AccentBlue: 204, 22%, 55%;
-  --HSL-AccentBlux: 226, 17%, 20%;
-  --HSL-NobleWhite: 226, 27%, 90%;
-  --HSL-NobleHighWhite: 226, 32%, 75%;
-  --HSL-NobleAction: 359, 54%, 53%;
-  --HSL-NobleHoverAction: 359, 59%, 43%; }
-
-/* appking 2019 */
-:root,
-.color-model {
-  --HSL-KingsBlue: 202, 81%, 23%;
-  --HSL-KingsAction: 15, 75%, 30%;
-  --HSL-KingsGold: 42, 79%, 53%;
-  --HSL-KingsGrass: 155, 31%, 62%;
-  --HSL-KingsLand: 34, 20%, 33%; }
-
-/* ------------------------------------- color themes */
-.colors--template {
-  --back-color: white;
-  --back-color-accent: var(--back-color);
-  --back-color-descent: var(--light-shadow);
-  --text-color: black;
-  --text-color-accent: var(--text-color);
-  --text-color-descent: var(--text-color);
-  --link-color: firebrick;
-  --link-color-accent: var(--link-color);
-  --link-color-descent: var(--link-color);
-  --shadow-color: var(--shadow-color--for-light-base);
-  --light-shadow: var(--light-shadow--for-light-base);
-  /*--shadow-color: var(--shadow-color--for-dark-base);
-    --light-shadow: var(--light-shadow--for-dark-base);*/ }
-
-.colors--primary,
-.colors--swed {
-  --back-color: hsl( var(--HSL-NobleBlack) );
-  --back-color-accent: hsl( var(--HSL-AccentBlux) );
-  --back-color-descent: var(--light-shadow);
-  --text-color: hsl( var(--HSL-NobleWhite) );
-  --text-color-accent: hsl( var(--HSL-NobleHighWhite) );
-  --text-color-descent: var(--text-color);
-  --link-color: hsl( var(--HSL-NobleAction) );
-  --link-color-accent: hsl( var(--HSL-NobleHoverAction) );
-  --link-color-descent: var(--link-color);
-  --shadow-color: var(--shadow-color--for-dark-base);
-  --light-shadow: var(--light-shadow--for-dark-base); }
-
-.colors--secondary,
-.colors--swed-secondary {
-  --back-color: hsl(var(--HSL-NobleBlue));
-  --back-color-accent: var(--light-shadow);
-  --back-color-descent: var(--light-shadow);
-  --text-color: hsl(var(--HSL-NobleWhite));
-  --text-color-accent: hsl(var(--HSL-NobleAction));
-  --text-color-descent: hsl(var(--HSL-NobleHighWhite));
-  --link-color: hsl(var(--HSL-NobleAction));
-  --link-color-accent: hsl(var(--HSL-NobleHoverAction));
-  --link-color-descent: var(--link-color);
-  --shadow-color: var(--shadow-color--for-light-base);
-  --light-shadow: var(--light-shadow--for-light-base); }
-
-.colors--swed-third {
-  --back-color: hsl(var(--HSL-AccentBlue));
-  --back-color-accent: var(--light-shadow);
-  --back-color-descent: var(--light-shadow);
-  --text-color: hsl( var(--HSL-NobleBlack) );
-  --text-color-accent: var(--text-color);
-  --text-color-descent: var(--text-color);
-  --link-color: hsl(var(--HSL-NobleWhite));
-  --link-color-accent: hsl(var(--HSL-NobleHighWhite));
-  --link-color-descent: var(--link-color);
-  --shadow-color: var(--shadow-color--for-light-base);
-  --light-shadow: var(--light-shadow--for-light-base); }
-
-.colors--action {
-  --back-color: hsl( var(--HSL-NobleAction) );
-  --back-color-accent: hsl( var(--HSL-NobleHoverAction) );
-  --back-color-descent: var(--light-shadow);
-  --text-color: hsl( 359, 0%, 100% );
-  --text-color-accent: hsl( 359, 28%, 82% );
-  --text-color-descent: hsl( 359, 28%, 82% );
-  --link-color: hsl( 359, 0%, 100% );
-  --link-color-accent: var(--link-color);
-  --link-color-descent: var(--link-color);
-  --shadow-color: var(--shadow-color--for-light-base);
-  --light-shadow: var(--light-shadow--for-light-base); }
-
-.colors--ivory {
-  --back-color: hsl( 53, 66%, 80% );
-  --back-color-accent: hsl( 53, 70%, 76% );
-  --back-color-descent: var(--light-shadow);
-  --text-color: hsl( 204, 4%, 22% );
-  --text-color-accent: hsl( 359, 59%, 43% );
-  --text-color-descent: hsl( 204, 4%, 42% );
-  --link-color: hsl( 359, 54%, 53% );
-  --link-color-accent: hsl( 359, 59%, 43% );
-  --link-color-descent: var(--link-color);
-  --shadow-color: var(--shadow-color--for-light-base);
-  --light-shadow: var(--light-shadow--for-light-base); }
-
-/*  EOF color model */
-/*  Universal helpers
- *  v2019.7.31
- */
-/* ------------------------------------------ layout */
+/** -------------------------------- layout */
 .group-wide {
   --vertical-align: flex-start;
   display: flex;
@@ -1846,12 +1544,6 @@ body {
 .group-content-rows > *, .rows > * {
   grid-column: full; }
 
-.banner-title {
-  width: 100%;
-  justify-content: center;
-  justify-self: center;
-  text-align: center; }
-
 .autogrid {
   --cell-size: 100%;
   display: grid;
@@ -1868,37 +1560,7 @@ body {
   .autogrid > .is-big {
     --size: 2;
     grid-column: span var(--size); } }
-.is-chapter:not(.isontop):not(.is-on-top) {
-  padding-top: calc( 2*var(--row-space, 1rem) ); }
-
-.is-chapter:not(.isonbot):not(.is-on-bottom) {
-  padding-bottom: calc( 2*var(--row-space, 1rem) ); }
-
-/* ------------------------------------------ paddings shortcuts */
-.no-paddings {
-  padding: 0; }
-
-.has-paddings {
-  --padding-top: var(--row-space, 1rem);
-  --padding-right: var(--col-space, 1rem);
-  --padding-bottom: var(--row-space, 1rem);
-  --padding-left: var(--col-space, 1rem);
-  padding: var(--padding-top) var(--padding-right) var(--padding-bottom) var(--padding-left); }
-
-.padding-vertical {
-  --padding-vertical: var(--row-space, 1rem);
-  --padding-top: var(--padding-vertical);
-  --padding-bottom: var(--padding-vertical);
-  padding-top: var(--padding-top);
-  padding-bottom: var(--padding-bottom); }
-
-.padding-horizontal {
-  --padding-horizontal: var(--col-space, 1rem);
-  --padding-right: var(--padding-vertical);
-  --padding-left: var(--padding-vertical);
-  padding-right: var(--padding-right);
-  padding-left: var(--padding-left); }
-
+/** -------------------------------- padding shortcuts */
 .pt, .pv {
   --padding-top: var(--row-space, 1rem);
   padding-top: var(--padding-top); }
@@ -1916,16 +1578,16 @@ body {
   margin-bottom: var(--margin-bottom); }
 
 .pt-text, .pv-text {
-  --font-offset: var(--font-visual-vertical-offset, 0.250em);
-  --padding-top: calc( var(--col-space, 1em) - var(--font-offset) );
+  --font-offset: calc( 1em * var(--base-font-square-ratio, 0.25) );
+  --padding-top: calc( var(--col-space, 1rem) - var(--font-offset) );
   padding-top: var(--padding-top); }
 
 .pb-text, .pv-text {
-  --font-offset: var(--font-visual-vertical-offset, 0.250em);
-  --padding-bottom: calc( var(--col-space, 1em) - var(--font-offset) );
+  --font-offset: calc( 1em * var(--base-font-square-ratio, 0.25) );
+  --padding-bottom: calc( var(--col-space, 1rem) - var(--font-offset) );
   padding-bottom: var(--padding-bottom); }
 
-/* ------------------------------------------ align compass */
+/** -------------------------------- align compass */
 .s-align {
   align-self: end; }
 
@@ -1981,7 +1643,7 @@ body {
 .vc-align {
   align-self: center; }
 
-/* ------------------------------------------ univeral helpers */
+/** -------------------------------- univeral helpers */
 .is-centered {
   text-align: center;
   justify-content: center;
@@ -1991,183 +1653,14 @@ body {
   grid-column: full; }
 
 /*  EOF Universal helpers */
-/*  === ༼°▽°༽ === CSS Varriors  */
-                                 /*
-*
-*  Atom classes for maintainable inline CSS
-*  «Var never changes»
-*  zl, 2019.8.14
-*
-*/
-/*  ============== Usage Template */
-                                    /*
-
-
-## Option 1.
-
-<div
-    class="opacity"
-    style="--opacity:0.5;"
-    ></div>
-
-## Option 2.
-
-<section style="--opacity:0.5;">
-    <div class="opacity"></div>
-</section>
-
+/** Article markup
+ *  Shortcuts for faster coding
+ *  2019.8.22
+ *
+ *  SCSS
+ *
  */
-/*  ============== Handmade CSS varriors */
-/*
-.width      {      width: var(--width,      auto ); }
-.max-width  {  max-width: var(--max-width,  100% ); }
-.min-width  {  min-width: var(--min-width,     0 ); }
-.height     {     height: var(--height,     auto ); }
-.max-height { max-height: var(--max-height, 100% ); }
-.min-height { min-height: var(--min-height,    0 ); }
-.opacity    {    opacity: var(--opacity,       1 ); }
-*/
-/*  ============== Sass auto varriors */
-.width {
-  width: var(--width, auto); }
-
-.max-width {
-  max-width: var(--max-width, 100%); }
-
-.min-width {
-  min-width: var(--min-width, 0); }
-
-.height {
-  height: var(--height, auto); }
-
-.max-height {
-  max-height: var(--max-height, 100%); }
-
-.min-height {
-  min-height: var(--min-height, 0); }
-
-.padding {
-  padding: var(--padding, var(--row-space, 1rem) var(--col-space, 1rem)); }
-
-.padding-top {
-  padding-top: var(--padding-top, var(--row-space, 1rem)); }
-
-.padding-bottom {
-  padding-bottom: var(--padding-bottom, var(--row-space, 1rem)); }
-
-.padding-left {
-  padding-left: var(--padding-left, var(--col-space, 1rem)); }
-
-.padding-right {
-  padding-right: var(--padding-right, var(--col-space, 1rem)); }
-
-.margin {
-  margin: var(--margin, var(--row-space, 1rem) var(--col-space, 1rem)); }
-
-.margin-top {
-  margin-top: var(--margin-top, var(--row-space, 1rem)); }
-
-.margin-bottom {
-  margin-bottom: var(--margin-bottom, var(--row-space, 1rem)); }
-
-.margin-left {
-  margin-left: var(--margin-left, var(--col-space, 1rem)); }
-
-.margin-right {
-  margin-right: var(--margin-right, var(--col-space, 1rem)); }
-
-.align-self {
-  align-self: var(--align-self, center); }
-
-.justify-self {
-  justify-self: var(--justify-self, center); }
-
-.font-size {
-  font-size: var(--font-size, 1em); }
-
-.line-height {
-  line-height: var(--line-height, var(--line-height, 1.5)); }
-
-.opacity {
-  opacity: var(--opacity, 1); }
-
-/*  ============== EOF CSS Varriors */
-/*  Article markup
- *  Shortcuts for faster article markup
- *  2019.8.14
- */
-.huge-title {
-  /* 64/64 */
-  font-size: 4em;
-  line-height: 1; }
-  @media (max-width: 38em) {
-    .huge-title {
-      /* 32/40 */
-      font-size: 2em;
-      line-height: 1.25; } }
-
-.big-title {
-  /* 40/48 */
-  font-size: 2.5em;
-  line-height: 1.2; }
-  @media (max-width: 38em) {
-    .big-title {
-      /* 24/32 */
-      font-size: 1.5em;
-      line-height: 1.33333333; } }
-
-.mid-title, .title {
-  /* 32/40 */
-  font-size: 2em;
-  line-height: 1.25; }
-  @media (max-width: 38em) {
-    .mid-title, .title {
-      /* 20/24 */
-      font-size: 1.25em;
-      line-height: 1.2; } }
-
-.min-title {
-  /* 24/32 */
-  font-size: 1.5em;
-  line-height: 1.33333333; }
-  @media (max-width: 38em) {
-    .min-title {
-      /* 16/24 */
-      font-size: 1em;
-      line-height: 1.5;
-      font-weight: bolder; } }
-
-.subtitle, .text-is-bigger, .text-is-larger {
-  /* 20/24 */
-  font-size: 1.25em;
-  line-height: 1.2; }
-
-.text-is-regular {
-  /* 16/24 */
-  font-size: 1em;
-  line-height: 1.5; }
-
-.text-is-smaller, .has-sans-text, td {
-  /* 14/24 */
-  font-size: 0.875em;
-  line-height: 1.714286; }
-
-.huge-title *,
-.big-title *,
-.mid-title *,
-.min-title *,
-.sub-title *,
-.title *,
-.subtitle * {
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit;
-  font-weight: inherit; }
-
-.has-sans-text {
-  font-family: var(--font-family--data, sans-serif);
-  letter-spacing: 0.03em; }
-
+/* ----------------------------------- swed-banner alias */
 mark,
 .mark {
   color: var(--text-color-accent, inherit);
@@ -2198,16 +1691,12 @@ mark,
   top: 0;
   background-color: var(--back-color-accent); }
 
-td {
-  font-family: var(--font-family-interface, sans-serif); }
-
 /*  EOF Article markup */
-/** Some Project Paletes  */
-                           /*
-*  zl, 2019.8.18
-*
-*/
-/* ------------------------------------- skup palettes */
+/** Some Project Paletes
+ *  zl, 2019.8.18
+ *
+ */
+/** ------------------------------------- skup palettes */
 /* EG 2019 */
 :root,
 .color-model {
@@ -2228,7 +1717,7 @@ td {
   --HSL-egBlack: 240, 15%, 12%;
   --HSL-egHighlight: 206, 57%, 95%; }
 
-/* ------------------------------------- color themes */
+/** ------------------------------------- color themes */
 .colors--EG-root {
   --back-color: white;
   --back-color-accent: hsl(var(--HSL-egLightReaccent));
@@ -2308,6 +1797,126 @@ td {
   --light-shadow: var(--light-shadow--for-light-base); }
 
 /*  EOF Project Paletes */
+.huge-title {
+  /* 64/64 */
+  font-size: 4em;
+  line-height: 1; }
+  @media (max-width: 38em) {
+    .huge-title {
+      /* 32/40 */
+      font-size: 2em;
+      line-height: 1.25; } }
+
+.big-title {
+  /* 40/48 */
+  font-size: 2.5em;
+  line-height: 1.2; }
+  @media (max-width: 38em) {
+    .big-title {
+      /* 24/32 */
+      font-size: 1.5em;
+      line-height: 1.33333333; } }
+
+.mid-title, .title {
+  /* 32/40 */
+  font-size: 2em;
+  line-height: 1.25; }
+  @media (max-width: 38em) {
+    .mid-title, .title {
+      /* 20/24 */
+      font-size: 1.25em;
+      line-height: 1.2; } }
+
+.min-title {
+  /* 24/32 */
+  font-size: 1.5em;
+  line-height: 1.33333333; }
+  @media (max-width: 38em) {
+    .min-title {
+      /* 16/24 */
+      font-size: 1em;
+      line-height: 1.5;
+      font-weight: bolder; } }
+
+.subtitle, .text-is-bigger, .text-is-larger {
+  /* 20/24 */
+  font-size: 1.25em;
+  line-height: 1.2; }
+
+.text-is-regular {
+  /* 16/24 */
+  font-size: 1em;
+  line-height: 1.5; }
+
+.text-is-smaller, .has-sans-text {
+  /* 14/24 */
+  font-size: 0.875em;
+  line-height: 1.714286; }
+
+.huge-title *,
+.big-title *,
+.mid-title *,
+.min-title *,
+.sub-title *,
+.title *,
+.subtitle * {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  font-weight: inherit; }
+
+.has-sans-text {
+  font-family: var(--font-family--data, sans-serif);
+  letter-spacing: 0.03em; }
+
+.group-banners {
+  /* group-wide */
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center; }
+
+.group-banners > * {
+  flex-grow: 1; }
+
+@media (min-width: 38em) {
+  .group-banners:not(.is-big) {
+    flex-wrap: nowrap; } }
+@media (min-width: 1200px) {
+  .group-banners {
+    flex-wrap: nowrap; } }
+.is-chapter:not(.isontop):not(.is-on-top) {
+  padding-top: calc( 2*var(--row-space, 1rem) ); }
+
+.is-chapter:not(.isonbot):not(.is-on-bottom) {
+  padding-bottom: calc( 2*var(--row-space, 1rem) ); }
+
+.no-paddings {
+  padding: 0; }
+
+.has-paddings {
+  --padding-top: var(--row-space, 1rem);
+  --padding-right: var(--col-space, 1rem);
+  --padding-bottom: var(--row-space, 1rem);
+  --padding-left: var(--col-space, 1rem);
+  padding: var(--padding-top) var(--padding-right) var(--padding-bottom) var(--padding-left); }
+
+.padding-vertical {
+  --padding-vertical: var(--row-space, 1rem);
+  --padding-top: var(--padding-vertical);
+  --padding-bottom: var(--padding-vertical);
+  padding-top: var(--padding-top);
+  padding-bottom: var(--padding-bottom); }
+
+.padding-horizontal {
+  --padding-horizontal: var(--col-space, 1rem);
+  --padding-right: var(--padding-vertical);
+  --padding-left: var(--padding-vertical);
+  padding-right: var(--padding-right);
+  padding-left: var(--padding-left); }
+
 .colors-as-primary {
   --background-color: hsl(var(--HSL-NobleBlack));
   --color: hsl(var(--HSL-NobleWhite));
@@ -2447,7 +2056,7 @@ td {
 
 */
 .text-conent {
-  max-width: var(--max-width, var(--max-width--text)); }
+  max-width: var(--max-width, 100%); }
 
 .has-min-width {
   min-width: var(--min-width, 12em); }
@@ -2456,4 +2065,4 @@ td {
   --font-family: var(--font-family--native-sans);
   font-family: var(--font-family); }
 
-/*  EOF Appart Styles */
+/*  EOF Appart style index */

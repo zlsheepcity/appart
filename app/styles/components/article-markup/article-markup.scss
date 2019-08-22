@@ -1,112 +1,20 @@
-/*  Article markup
- *  Shortcuts for faster article markup
- *  2019.8.14
+/** Article markup
+ *  Shortcuts for faster coding
+ *  2019.8.22
+ *
+ *  SCSS
+ *
  */
 
 
-
-//* ------------------------------------ font-size model 2019
-
-
-$title-size-breakpoint: 'max-width: 38em';
+/* ----------------------------------- swed-banner alias */
 
 
-%text-as-huge-title {
-    /* 64/64 */
-    font-size:   4em;
-    line-height: 1;
-    @media ($title-size-breakpoint) {
-        /* 32/40 */
-        font-size:   2em;
-        line-height: 1.25;
-    }
-}
-%text-as-big-title {
-    /* 40/48 */
-    font-size:   2.5em;
-    line-height: 1.2;
-    @media ($title-size-breakpoint) {
-        /* 24/32 */
-        font-size:   1.5em;
-        line-height: 1.33333333;
-    }
-}
-%text-as-mid-title {
-    /* 32/40 */
-    font-size:   2em;
-    line-height: 1.25;
-    @media ($title-size-breakpoint) {
-        /* 20/24 */
-        font-size:   1.25em;
-        line-height: 1.2;
-    }
-}
-%text-as-min-title {
-    /* 24/32 */
-    font-size:   1.5em;
-    line-height: 1.33333333;
-    @media ($title-size-breakpoint) {
-        /* 16/24 */
-        font-size:   1em;
-        line-height: 1.5;
-        font-weight: bolder;
-    }
-}
-%text-as-bigger {
-    /* 20/24 */
-    font-size:   1.25em;
-    line-height: 1.2;
-}
-%text-as-regular {
-    /* 16/24 */
-    font-size:   1em;
-    line-height: 1.5;
-}
-%text-as-smaller {
-    /* 14/24 */
-    font-size:    0.875em;
-    line-height: 1.714286;
-}
+.banner       { @extend .swed-banner         !optional; }
+.banner-title { @extend .swed-banner-title   !optional; }
 
 
-//* ------------------------------------ markup system 2019
-
-
-.huge-title *,
-.big-title *,
-.mid-title *,
-.min-title *,
-.sub-title *,
-    .title *,
- .subtitle * {
-    font-family: inherit;
-    font-size:   inherit;
-    line-height: inherit;
-    font-weight: inherit;
-}
-
-.huge-title      { @extend %text-as-huge-title; }
-.big-title       { @extend %text-as-big-title; }
-.mid-title       { @extend %text-as-mid-title; }
-.min-title       { @extend %text-as-min-title; }
-
-.title           { @extend %text-as-mid-title; }
-.subtitle        { @extend %text-as-bigger; }
-
-.text-is-bigger  { @extend %text-as-bigger; }
-.text-is-larger  { @extend %text-as-bigger; }
-.text-is-regular { @extend %text-as-regular; }
-.text-is-smaller { @extend %text-as-smaller; }
-
-.has-sans-text {
-    @extend      %text-as-smaller;
-    font-family: var(--font-family--data, sans-serif);
-    letter-spacing: 0.03em;
-}
-
-
-
-//* ------------------------------------- article
+//* ------------------------------------- html
 
 
 h1 { @extend .h1 !optional; }
@@ -120,6 +28,9 @@ big   { @extend .text-inline-bigger  !optional; }
 small { @extend .text-inline-smaller !optional; }
 mark,
 .mark { color: var(--text-color-accent, inherit); background-color: transparent; }
+
+
+//* ------------------------------------- article
 
 
 .book-of-chapters {
@@ -151,15 +62,6 @@ mark,
     position: sticky;
     top: 0;
     background-color: var(--back-color-accent);
-}
-
-
-//* ------------------------------------- special cases
-
-
-td {
-    @extend      %text-as-smaller !optional;
-    font-family: var(--font-family-interface, sans-serif);
 }
 
 

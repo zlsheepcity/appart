@@ -1,11 +1,17 @@
-/* ==============================================================
-    SVGA Regular Inline Icons
-    2019.6.27
-============================================================== */
+/** SVGA icons
+ *  inline component for svg icons
+ *  2019.6.27
+ *
+ *  CSS
+ *  + SVG file with common icons
+ *  + usage examples, md file
+ *
+ */
+
 
 .svga-icon {
-  --base:   1em;
-  --size:   var(--line-height, 1.5);
+  --base:   1em;                      /* - inline height    */
+  --size:   var(--line-height, 1.5);  /* - scale multiplyer */
 
     width:  var(--base);
     height: var(--base);
@@ -29,4 +35,4 @@
     }
 }
 
-/* EOF Regular Icons */
+/*  EOF SVGA Icons */

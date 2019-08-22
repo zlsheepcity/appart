@@ -1,12 +1,16 @@
-/*  swed-banner - promo blocks with button
- *  v2019.7.31
+/** swed-banner
+ *  wrap anything for nice grouping
+ *  2019.8.22
+ *
+ *  CSS
+ *
  */
 
 
-/* ----------------------------------- settings */
+/** -------------------------------- settings */
 
 
-.banner {
+.swed-banner {
   --v-space: var(--row-space, 1rem);
   --h-space: var(--col-space, 1rem);
 
@@ -21,11 +25,11 @@
 }
 
 
-/* ----------------------------------- main component */
+/** -------------------------------- main component */
 
 
-.banner {
-    /* group-center */
+.swed-banner {
+ /* group-center */
     display:         flex;
     flex-direction:  row;
     flex-wrap:       wrap;
@@ -35,42 +39,28 @@
     align-self:      stretch;
 
     padding: var(--banner-padding);
-}
-.banner>* {
-    margin:  0 var(--h-space) var(--v-space) var(--h-space);
-}
 
-
-/* ----------------------------------- design component */
-
-
-.swed-banner {
-    @extend .banner;
     background-color: var(--back-color);
                color: var(--text-color);
 }
-
-
-/* ----------------------------------- workers */
-
-
-.group-banners {
-    /* group-wide */
-    display:         flex;
-    flex-direction:  row;
-    flex-wrap:       wrap;
-    justify-content: space-between;
-    align-items:     center;
-    align-content:   center;
+.swed-banner>* {
+  --margin:  0 var(--h-space) var(--v-space) var(--h-space);
+    margin:    var(--margin);
+  --max-width: var(--paragraph-width, 100%);
+    max-width: var(--max-width);
+  --min-width: var(--paragraph-width--min, 0);
+    min-width: var(--min-width);
 }
-.group-banners>* {
-    flex-grow: 1;
-}
-@media (min-width: 38em) {
-    .group-banners:not(.is-big) { flex-wrap: nowrap; }
-}
-@media (min-width: 1200px) {
-    .group-banners { flex-wrap: nowrap; }
+
+
+/** -------------------------------- support components */
+
+
+.swed-banner-title {
+    width: 100%;
+    justify-content: center;
+    justify-self:    center;
+    text-align:      center;
 }
 
 

@@ -1,9 +1,12 @@
-/*  Universal helpers
- *  v2019.7.31
+/** Universal helpers
+ *  2019.8.22
+ *
+ *  CSS
+ *
  */
 
 
-/* ------------------------------------------ layout */
+/** -------------------------------- layout */
 
 
 .group-wide {
@@ -50,12 +53,6 @@
     } .group-content-rows>* {
         grid-column: full;
 }
-.banner-title {
-    width: 100%;
-    justify-content: center;
-    justify-self:    center;
-    text-align:      center;
-}
 
 .autogrid {
   --cell-size: 100%;
@@ -77,40 +74,10 @@
     }
 }
 
-.is-chapter:not(.isontop):not(.is-on-top)    { padding-top:    calc( 2*var(--row-space, 1rem) ); }
-.is-chapter:not(.isonbot):not(.is-on-bottom) { padding-bottom: calc( 2*var(--row-space, 1rem) ); }
 
 
+/** -------------------------------- padding shortcuts */
 
-/* ------------------------------------------ paddings shortcuts */
-
-
-.no-paddings  { padding: 0; }
-.has-paddings {
-  --padding-top:    var(--row-space, 1rem);
-  --padding-right:  var(--col-space, 1rem);
-  --padding-bottom: var(--row-space, 1rem);
-  --padding-left:   var(--col-space, 1rem);
-    padding:
-        var(--padding-top)
-        var(--padding-right)
-        var(--padding-bottom)
-        var(--padding-left);
-}
-.padding-vertical {
-  --padding-vertical:   var(--row-space, 1rem);
-  --padding-top:        var(--padding-vertical);
-  --padding-bottom:     var(--padding-vertical);
-    padding-top:    var(--padding-top);
-    padding-bottom: var(--padding-bottom);
-}
-.padding-horizontal {
-  --padding-horizontal: var(--col-space, 1rem);
-  --padding-right:      var(--padding-vertical);
-  --padding-left:       var(--padding-vertical);
-    padding-right:      var(--padding-right);
-    padding-left:       var(--padding-left);
-}
 
 .pt, .pv {
   --padding-top:    var(--row-space, 1rem);
@@ -129,23 +96,19 @@
     margin-bottom:  var(--margin-bottom);
 }
 
-:root {
-  ;
-}
-
 .pt-text, .pv-text {
-  --font-offset:    var(--font-visual-vertical-offset, 0.250em);
-  --padding-top:    calc( var(--col-space, 1em) - var(--font-offset) );
+  --font-offset:    calc( 1em * var(--base-font-square-ratio, 0.25)   );
+  --padding-top:    calc( var(--col-space, 1rem) - var(--font-offset) );
     padding-top:    var(--padding-top);
 }
 .pb-text, .pv-text {
-  --font-offset:    var(--font-visual-vertical-offset, 0.250em);
-  --padding-bottom: calc( var(--col-space, 1em) - var(--font-offset) );
+  --font-offset:    calc( 1em * var(--base-font-square-ratio, 0.25)   );
+  --padding-bottom: calc( var(--col-space, 1rem) - var(--font-offset) );
     padding-bottom: var(--padding-bottom);
 }
 
 
-/* ------------------------------------------ align compass */
+/** -------------------------------- align compass */
 
 
  .s-align { align-self:    end; }
@@ -167,7 +130,7 @@
 .vc-align { align-self: center; }
 
 
-/* ------------------------------------------ univeral helpers */
+/** -------------------------------- univeral helpers */
 
 
 .is-centered {

@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /*  Appart Styles
  *  index file
- *  v2019.7.31
+ *  2019.8.22
  */
 
 /** Compilation Shortcut:
@@ -10,32 +10,34 @@
  */
 
 
-
+// --------------------------------------------------------------
 // -------------------------------------------- Quick Prototyping
-
+// --------------------------------------------------------------
 
 //@import "components/prototype/prototype-sakura";
+
+
+// --------------------------------------------------------------
+// -------------------------------------------- Appart Defaults
+// --------------------------------------------------------------
 
 
 // -------------------------------------------- HTML Setup
 
 
+@import "components/html-core/css-settings";
+@import "components/html-core/css-varriors";
 @import "components/html-core/html-wrap";
 @import "components/html-core/html-typography";
+
+@import "components/color-model/color-model";
 
 
 // -------------------------------------------- Layout Components
 
 
-@import "components/article-grid/article-grid";
 @import "components/journal-grid/journal-grid";
 @import "components/offsidebar/offsidebar";
-
-
-// -------------------------------------------- Some Specific Cases
-
-
-@import "components/data-table/data-table";
 
 
 // -------------------------------------------- Support Components
@@ -52,198 +54,31 @@
 @import "components/swed-design/swed-button";
 @import "components/swed-design/swed-dropdown";
 @import "components/swed-design/swed-site-head";
+
 @import "components/catgrounds/catgrounds";
 
 
+// Some Specific Cases
+
+//@import "components/data-table/data-table";
+
+
 // --------------------------------------------------------------
-// -------------------------------------------- Primary Settings
+// -------------------------------------------- Higher priority
 // --------------------------------------------------------------
 
-
-@import "components/html-core/css-settings";
-@import "components/color-model/color-model";
-
-
-// -------------------------------------------- Workers
 
 @import "components/html-core/css-workers";
-@import "components/html-core/css-varriors";
-
-
-// -------------------------------------------- SCSS Overlays
-
-
 @import "components/article-markup/article-markup";
 
 
 // --------------------------------------------------------------
-// -------------------------------------------- Temporary
+// -------------------------------------------- Project
 // --------------------------------------------------------------
 
 
 @import "components/color-model/project-paletes";
+@import "appart-version-fallbacks";
 
 
-// -------------------------------------------- SCSS Fallbacks
-
-.colors-as-primary {
-    --background-color:           hsl(var(--HSL-NobleBlack));
-    --color:                      hsl(var(--HSL-NobleWhite));
-    --secondary-color:            hsl(var(--HSL-NobleHighWhite));
-    --secondary-background-color: hsl(var(--HSL-AccentBlux));
-    --action-color:               hsl(359, 54%, 53%);
-    --action-color--hover:        hsl(359, 59%, 43%);
-    --action-color--text:         white;
-}
-.colors-as-secondary {
-    --background-color:           hsl(var(--HSL-NobleBlue));
-    --color:                      hsl(var(--HSL-NobleWhite));
-    --secondary-color:            hsl(var(--HSL-NobleHighWhite));
-    --action-color:               hsl(359, 54%, 53%);
-    --action-color--hover:        hsl(359, 59%, 43%);
-    --action-color--text:         white;
-}
-.colors-as-highlight {
-    --background-color:           hsl(var(--HSL-AccentBlux));
-    --color:                      hsl(var(--HSL-NobleWhite));
-    --secondary-color:            hsl(var(--HSL-NobleHighWhite));
-}
-.colors-as-alternative {
-    --background-color:           hsl(var(--HSL-AccentBlue));
-    --color:                      hsl(204,  0%,  0%);
-    --secondary-color:            hsl(204,  0%,  0%);
-}
-
-.color-mode--ivory-paper {
-    --background-color:           hsl(53, 66%, 80%);
-    --color:                      hsl(204, 4%, 22%);
-    --secondary-color:            hsl(53, 9%, 38%);
-    --secondary-background-color: hsl(50, 32%, 66%);
-    --third-background-color:     hsl(53, 9%, 38%);
-    --third-color:                hsl(53, 66%, 80%);
-    --shadow-color:               hsla(0, 0%, 0%, 0.1);
-}
-.color-mode--appking {
-    --background-color:           hsl(var(--HSL-KingsBlue));
-    --color:                      white;
-    --secondary-color:            hsl(var(--HSL-KingsLand));
-    --secondary-background-color: hsl(var(--HSL-KingsGrass));
-    --third-background-color:     hsl(var(--HSL-KingsGold));
-    --third-color:                hsl(var(--HSL-KingsLand));
-    --action-color:               hsl(var(--HSL-KingsAction));
-    --action-color--hover:        hsl(var(--HSL-KingsAction));
-    --action-color--text:         white;
-    --shadow-color:               hsla(0, 0%, 0%, 0.1);
-}
-
-
-.use-secondary-colors {
-    background-color: var(--secondary-background-color);
-    color:            var(--secondary-color);
-}
-.use-third-colors {
-    background-color: var(--third-background-color);
-    color:            var(--third-color);
-}
-.use-action-colors {
-    background-color: var(--action-color);
-    color:            var(--action-color--text);
-}
-.use-shadow-background {
-    background-color: var(--shadow-color);
-}
-
-.color-box {
-    background-color: var(--secondary-background-color);
-}
-.color-text {
-    color:            var(--alternative-text-color, var(--secondary-color));
-}
-.color-text-action {
-    color:            var(--action-color);
-}
-
-.color-box-accent {
-    background-color: var(--action-color);
-    color:            var(--action-color--text);
-}
-.color-text-accent {
-    color:            var(--action-color);
-}
-.alternative-colors {
-    background-color: var(--third-background-color);
-    color:            var(--third-color);
-}
-
-/*
-    deprecated by journal-grid
-    2019.8.14
-
-.block {
-    @extend .article-box;
-}
-.box {
-    @extend .article-box;
-    @extend .color-box;
-    padding-top:    var(--row-space);
-    padding-bottom: var(--row-space);
-}
-.big-box {
-    @extend .article-box;
-    @extend .color-box;
-    @extend .text-is-bigger;
-    padding: calc( var(--row-space) * 2 ) var(--col-space);
-    margin:  var(--row-space) 0;
-}
-.rows {
-    @extend .article-block;
-}
-.west {
-    @extend .article-block-west;
-}
-.east {
-    @extend .article-block-east;
-}
-
-.textnote {
-    @extend .article-box-east;
-    @extend .color-text;
-    @extend .text-is-smaller;
-}
-.accent {
-    @extend .color-box-accent;
-}
-
-
-.westbox {
-    @extend .article-box-west;
-    @extend .color-box;
-}
-.eastbox {
-    @extend .article-box-east;
-    @extend .color-box;
-}
-
-.chapter {
-    @extend .article-grid;
-    @extend .is-chapter;
-}
-
-*/
-
-
-// removed from typography
-
-.text-conent {
-    max-width: var(--max-width, var(--max-width--text));
-}
-.has-min-width {
-    min-width: var(--min-width, 12em)
-}
-
-.main-font-as-native-sans {
-  --font-family: var(--font-family--native-sans);
-    font-family: var(--font-family);
-}
-
-/*  EOF Appart Styles */
+/*  EOF Appart style index */

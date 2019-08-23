@@ -33,23 +33,46 @@
 
     <script>
         /* ༼°▽°༽ app boot */
-        function BootKing() {
-            let  King = this
-            King.has = {
-                 Queens: ['mutate','onload','action'],
-                 Memory: [],
-                 toRemember: (something)=> King.has.Memory.push(something)
-                }
-            function KeepInMemory(responsible) {
-                 return (dna)=> King.has.toRemember({dna,for:responsible})
-                }
-            King.has.Queens.map( (queen)=>King[queen]=KeepInMemory(queen) )
-            King.Welcome = (dna)=> false
+        function AppKing() {
+            let app = this
+            app.Has = { Orders: [] }
+
+            function KeepOrder(responsible) {
+                return (dna) => app.Has.Orders.push({dna,for:responsible})
+            }
+            function DelegateOrder(order) {
+                if (typeof(app[order.for])==='function') app[order.for](order.dna)
+            }
+            function ReadOrders() {
+                let read  = app.Has.Orders.splice(0, app.Has.Orders.length) // all of them
+                read.map((order)=>DelegateOrder(order))
+            }
+            function QueenUpdate(dna) {
+                app[dna.name]=dna.f
+            }
+            function QueenOnload(dna) {
+                if (typeof(dna)==='function') dna();
+            }
+            app.Welcome = function RunApp() {
+                app.loaded = true
+                app.update = QueenUpdate
+                app.onload = QueenOnload
+                ReadOrders()
+            }
+            app.add = function AddNewFunction(dna) {
+                const action = app.loaded ? dna.f : KeepOrder(dna.name)
+                app[dna.name] = action
+                app.update(dna)
+            }
+
+            // use commands
+            app.Has.Queens = ['update','onload','mutate']
+            app.Has.Queens.map((queen)=>app[queen]=KeepOrder(queen))
         }
 
-        let app = new BootKing()
-        let run = function AfterWindowLoadReady (King) {
-            let ActivateInterface = () => King.Welcome()
+        let app = new AppKing()
+        let run = function apploader (app) {
+            let ActivateInterface = () => app.Welcome()
             setTimeout(ActivateInterface, 200)
         }
 
@@ -79,6 +102,40 @@
     <!-- ========================================= END HEAD -->
 </head>
 <body class="colors--primary">
+
+    <style>
+        screen {
+            display: block;
+            min-height: 100vh;
+            padding: 3rem;
+        }
+    </style>
+
+    <screen class="use-colors colors--root">
+        app test
+        <script>
+            console.group('AppKing add new function test')
+
+            const custom_function = function SomeFunction(dna){ console.log('FUNC:'+dna) }
+            app.add({name:'example', f:custom_function})
+            app.example('ok-example')
+
+            const custom_function2 = (dna) => app.example(dna)
+            app.add({name:'example2', f:custom_function2})
+            app.example2('ok-ok-example')
+
+            const custom_function4 = function() {
+                const custom_function3 = (dna) => app.example(dna)
+                app.add({name:'example3', f:custom_function3})
+                app.example3('ok-ok-ok-example')
+            }
+            app.add({name:'example4', f:custom_function4})
+            app.example4()
+
+            console.groupEnd()
+
+        </script>
+    </screen>
 
 
     <!-- ----------------------------------------- Site Header -->
@@ -172,7 +229,8 @@
             }
             bartenderFunction(overlay, 'close')
         }
-        InterfaceOffsideBar('ChaptersMenuBar')
+        app.add({name:'offsidebar', f:InterfaceOffsideBar})
+        app.offsidebar('ChaptersMenuBar')
     </script>
 
 
@@ -459,6 +517,7 @@
         <section class="swed-banner is-big">
             <figure class="promo-icon">
                 <img
+                    width="100" height="100"
                     src="art/component-icons/component-icon--catgrounds.svg"
                     alt="SVG icon for Catgrounds">
             </figure>
@@ -479,6 +538,7 @@
         <section class="swed-banner">
             <figure class="promo-icon">
                 <img
+                    width="100" height="100"
                     src="art/component-icons/component-icon--ofsidebar.svg"
                     alt="SVG icon for Ofsidebar">
             </figure>
@@ -499,6 +559,7 @@
         <section class="swed-banner">
             <figure class="promo-icon">
                 <img
+                    width="100" height="100"
                     src="art/component-icons/component-icon--banners.svg"
                     alt="SVG icon for Banners">
             </figure>
@@ -519,6 +580,7 @@
             </div>
             <figure class="promo-icon">
                 <img
+                    width="100" height="100"
                     src="art/component-icons/component-icon--article-grid.svg"
                     alt="SVG icon for Article Grid">
             </figure>
@@ -684,7 +746,7 @@
 
         <section class="article-layer swed-banner use-secondary-colors">
             <figure style="--max-width:10em;opacity:0.25;">
-                <img src="art/component-icons/component-icon--catgrounds.svg" alt="Catground SVG Icon">
+                <img width="100" height="100" src="art/component-icons/component-icon--catgrounds.svg" alt="Catground SVG Icon">
             </figure>
             <h2 class="huge-title">Catgrounds</h2>
         </section>
@@ -797,7 +859,7 @@
         <header class="article-layer swed-banner back-color-descent">
             <h2 class="huge-title">Rich Article Grid Layout</h2>
             <figure style="--max-width:10em;opacity:0.25;">
-                <img src="art/component-icons/component-icon--article-grid.svg" alt="Grid SVG Icon">
+                <img width="100" height="100" src="art/component-icons/component-icon--article-grid.svg" alt="Grid SVG Icon">
             </figure>
         </header>
 
@@ -839,7 +901,7 @@
                 <p auto-content></p>
             </section>
             <figure class="block">
-                <img src="art/illustrations/austria.svg" alt="Castle in Austria, schematic illustration">
+                <img width="400" height="100" src="art/illustrations/austria.svg" alt="Castle in Austria, schematic illustration">
             </figure>
             <section class="block">
                 <p auto-content></p>
@@ -887,7 +949,7 @@
 
                 <section class="swed-banner colors-as-secondary">
                     <figure style="--max-width:10em;">
-                        <img src="art/component-icons/component-icon--banners.svg" alt="SVG icon for Banners">
+                        <img width="100" height="100" src="art/component-icons/component-icon--banners.svg" alt="SVG icon for Banners">
                     </figure>
                 </section>
 
@@ -1466,6 +1528,7 @@
         <header class="banner">
             <figure class="mini-paragraph">
                 <img
+                    width="100" height="100"
                     src="art/component-icons/component-icon--ofsidebar.svg"
                     alt="SVG icon for Ofsidebar">
             </figure>
@@ -1613,10 +1676,10 @@
 
         <script>
             // Demo Bars
-            InterfaceOffsideBar('EastsideBar')
-            InterfaceOffsideBar('WestsideBar')
-            InterfaceOffsideBar('OverflowBar')
-            InterfaceOffsideBar('OverflowBarWestside')
+            app.offsidebar('EastsideBar')
+            app.offsidebar('WestsideBar')
+            app.offsidebar('OverflowBar')
+            app.offsidebar('OverflowBarWestside')
         </script>
 
     </article>

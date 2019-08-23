@@ -240,7 +240,7 @@ td, th {
 /*  EOF html wrap */
 /** typography
  *  All about font and line-height
- *  2019.8.16
+ *  2019.8.23
  *
  *  CSS
  *
@@ -250,14 +250,20 @@ td, th {
 .root-typography {
   /** Native font stack 2018 */
   --font-family--native-sans:
-       -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        "Roboto",
-        "Helvetica Neue",
-        Arial,
+       -apple-system, /* Safari for macOS and iOS (San Francisco) */
+        system-ui, /* macOS Chrome, Windows Chrome */
+        BlinkMacSystemFont, /* Chrome < 56 for macOS (San Francisco) */
+       "Segoe UI", /* Windows */
+        Roboto, /* Android */
+        Oxygen, /* KDE */
+        Ubuntu, /* Ubuntu */
+        Cantarell, /* GNOME */
+       "Fira Sans", /* Firefox OS */
+       "Helvetica Neue", /* old macOS */
+        Arial, /* Basic web fallback */
         sans-serif,
-        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+       "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  /* Emoji */
   /** Tufte 2018 */
   /*
       book-style content
@@ -267,18 +273,18 @@ td, th {
         Vollkorn,
         et-book,
         Palatino,
-        "Palatino Linotype",
-        "Palatino LT STD",
-        "Book Antiqua",
+       "Palatino Linotype",
+       "Palatino LT STD",
+       "Book Antiqua",
         Georgia,
         serif,
-        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+       "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   --font-family--tufte-sans:
-        "Trebuchet MS",
-        "Gill Sans",
-        "Gill Sans MT",
+       "Trebuchet MS",
+       "Gill Sans",
+       "Gill Sans MT",
         sans-serif,
-        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; }
+       "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; }
 
 /** Typeface atoms */
 .font-secondary {
@@ -393,21 +399,24 @@ body {
 
 /** Font-size atoms */
 .text-inline-bigger, big {
+  /* 20/24 */
   --font-size: var(--inc-font-size, 1.25em);
   font-size: var(--font-size);
   --line-height: var(--inc-line-height, 1.2);
   line-height: var(--line-height); }
 
 .text-block-bigger {
+  /* 20/32 */
   --font-size: var(--inc-font-size, 1.25em);
   font-size: var(--font-size);
-  line-height: var(--line-height); }
+  line-height: calc(32/20); }
 
 .text-inline-smaller, small,
 .text-block-smaller {
-  --font-size: var(--dec-font-size, 0.75em);
+  /* 13/16 */
+  --font-size: var(--dec-font-size, calc(13/16*1em));
   font-size: var(--font-size);
-  --line-height: var(--dec-line-height, calc(4/3));
+  --line-height: var(--dec-line-height, calc(16/13));
   line-height: var(--line-height); }
 
 /** Reset em-value in element */

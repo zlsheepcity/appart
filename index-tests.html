@@ -1,4 +1,4 @@
-<!doctype html><!-- appart :: 8001 :: 2019.8.14 -->
+<!doctype html><!-- appart :: 8001 :: 2019.9.4 -->
 <html lang="ru">
 <head>
     <meta charset="utf-8">
@@ -33,18 +33,62 @@
 
     <script>
         /* ༼°▽°༽ app boot */
+        function AppBoot() {
+            let app = this
+            app.has = { memory: [] }
+
+         // Boot tasks //
+            const KeepInMemory = (dna) => app.has.memory.push(dna)
+            const ExecuteLater =
+                 (responsible) =>
+                         (dna) => KeepInMemory({dna,for:responsible})
+            const TakeTheQueen = (queen) =>
+                {
+                    app[queen] =  ExecuteLater(queen)
+                    return (f) => ExecuteLater('update')({name:queen,f})
+                }
+
+         // Primary queen //
+            app.attach = TakeTheQueen
+        }
+        /// Run
+        
+
+        /// Some primitive test v2019.9.3
+        function AppBoot__test() {
+            let tpp = new AppBoot()
+            let rpp = [];
+            if (typeof(tpp.has.memory) !== 'array')
+                rpp.push('has no memory')
+            const some_func = function () {return 'ok'}
+            tpp.attach('queenname')(some_func)
+            if (typeof(tpp.queenname) !== 'function')
+                rpp.push('can`t take the queen')
+            return rpp
+        }
+
+        
+        let aptest = new AppBoot()
+        let qf = "some-func"
+        aptest.attach('queeen')(qf)
+        aptest.queeen('eee')
+        //aptest.attach({name:'queeen',f:'qf'})
+        // app.attach('queeen')(f)
+        console.log(aptest)
+        console.log(aptest.has.memory)
+
         function AppKing() {
             let app = this
-            app.Has = { Orders: [] }
+            app.has = { Orders: [] }
 
             function KeepOrder(responsible) {
-                return (dna) => app.Has.Orders.push({dna,for:responsible})
+                return (dna) => app.has.Orders.push({dna,for:responsible})
             }
             function DelegateOrder(order) {
                 if (typeof(app[order.for])==='function') app[order.for](order.dna)
             }
             function ReadOrders() {
-                let read  = app.Has.Orders.splice(0, app.Has.Orders.length) // all of them
+                let read  = app.has.Orders.splice(0, app.has.Orders.length) // all of them
                 read.map((order)=>DelegateOrder(order))
             }
             function QueenUpdate(dna) {
@@ -66,8 +110,8 @@
             }
 
             // use commands
-            app.Has.Queens = ['update','onload','mutate']
-            app.Has.Queens.map((queen)=>app[queen]=KeepOrder(queen))
+            app.has.Queens = ['update','onload','mutate']
+            app.has.Queens.map((queen)=>app[queen]=KeepOrder(queen))
         }
 
         let app = new AppKing()

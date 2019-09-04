@@ -32,12 +32,20 @@
 
 
     <script>
-        /* ༼°▽°༽ app boot */
         function AppBoot() {
-            let app = this
-            app.has = { memory: [] }
 
-         // Boot tasks //
+        /* ༼°▽°༽ app boot
+            King has arrived.
+            Take the Queen.
+            Keep in memory.
+            Execute later.
+        */
+
+         // The Noble Blastula
+            let app = this
+            app.has = { memory: [], arrived:false }
+
+         // Define tasks
             const KeepInMemory = (dna) => app.has.memory.push(dna)
             const ExecuteLater =
                  (responsible) =>
@@ -48,17 +56,20 @@
                     return (f) => ExecuteLater('update')({name:queen,f})
                 }
 
-         // Primary queen //
+         // Apply tasks
             app.attach = TakeTheQueen
         }
-        /// Run
+
+        /// -------------------------------- Boot Run
+        let app = new AppBoot()
+        console.log('Run AppBoot tests', AppBoot__test())
         
 
         /// Some primitive test v2019.9.3
         function AppBoot__test() {
             let tpp = new AppBoot()
-            let rpp = [];
-            if (typeof(tpp.has.memory) !== 'array')
+            let rpp = []
+            if (typeof(tpp.has.memory) !== 'object')
                 rpp.push('has no memory')
             const some_func = function () {return 'ok'}
             tpp.attach('queenname')(some_func)
@@ -67,60 +78,59 @@
             return rpp
         }
 
-        
-        let aptest = new AppBoot()
-        let qf = "some-func"
-        aptest.attach('queeen')(qf)
-        aptest.queeen('eee')
-        //aptest.attach({name:'queeen',f:'qf'})
-        // app.attach('queeen')(f)
-        console.log(aptest)
-        console.log(aptest.has.memory)
+        // -------------------------------- AppKing
 
-        function AppKing() {
+        /*
+            todo queens
+            - mutate
+        */
+
+        function AppKing(mRna) {
+         // The Noble Blastula
             let app = this
-            app.has = { Orders: [] }
+            app.has = { memory: [], arrived:false }
 
-            function KeepOrder(responsible) {
-                return (dna) => app.has.Orders.push({dna,for:responsible})
+         // Define tasks
+            const aInject_mRna = () =>
+                           app = Object.assign(
+                                 app,
+                                 mRna
+                           )
+            const zRememberAll = function ReadAndExecuteOrdersInMemory () {
+                  console.group('Remember All')
+                  while (app.has.memory.length) {
+                      let read  = app.has.memory.splice(0, 1)
+                      read.map((order)=>DelegateTask(order))
+                  }
+                  console.groupEnd()
             }
-            function DelegateOrder(order) {
-                if (typeof(app[order.for])==='function') app[order.for](order.dna)
-            }
-            function ReadOrders() {
-                let read  = app.has.Orders.splice(0, app.has.Orders.length) // all of them
-                read.map((order)=>DelegateOrder(order))
-            }
-            function QueenUpdate(dna) {
-                app[dna.name]=dna.f
-            }
-            function QueenOnload(dna) {
-                if (typeof(dna)==='function') dna();
-            }
-            app.Welcome = function RunApp() {
-                app.loaded = true
-                app.update = QueenUpdate
-                app.onload = QueenOnload
-                ReadOrders()
-            }
-            app.add = function AddNewFunction(dna) {
-                const action = app.loaded ? dna.f : KeepOrder(dna.name)
-                app[dna.name] = action
-                app.update(dna)
-            }
+            const DelegateTask = (task)  => app[task.for](task.dna)
+            const TakeTheQueen = (queen) => (f) => app[queen] = f
+            const UpdateQueens = (dna)   => app[dna.name]=dna.f
+            const Queen_onload = (dna)   => typeof(dna)==='function' ? dna() : false
 
-            // use commands
-            app.has.Queens = ['update','onload','mutate']
-            app.has.Queens.map((queen)=>app[queen]=KeepOrder(queen))
+         // Apply tasks
+            aInject_mRna()
+                app.attach = TakeTheQueen
+                app.update = UpdateQueens
+                app.onload = Queen_onload
+            zRememberAll()
+            app.has.arrived = true
         }
+        
 
-        let app = new AppKing()
-        let run = function apploader (app) {
-            let ActivateInterface = () => app.Welcome()
-            setTimeout(ActivateInterface, 200)
+        /// -------------------------------- King Run
+
+        let run = function apploader () {
+            let ActivateAppInterface = () => {
+                console.group('ActivateAppInterface')
+                app = new AppKing(app)
+                console.groupEnd()
+            }
+            setTimeout(ActivateAppInterface, 200)
         }
+        window.onload = run()
 
-        window.onload = run(app)
     </script>
 
 
@@ -161,19 +171,19 @@
             console.group('AppKing add new function test')
 
             const custom_function = function SomeFunction(dna){ console.log('FUNC:'+dna) }
-            app.add({name:'example', f:custom_function})
+            app.attach('example')(custom_function)
             app.example('ok-example')
 
             const custom_function2 = (dna) => app.example(dna)
-            app.add({name:'example2', f:custom_function2})
+            app.attach('example2')(custom_function2)
             app.example2('ok-ok-example')
 
             const custom_function4 = function() {
                 const custom_function3 = (dna) => app.example(dna)
-                app.add({name:'example3', f:custom_function3})
+                app.attach('example3')(custom_function3)
                 app.example3('ok-ok-ok-example')
             }
-            app.add({name:'example4', f:custom_function4})
+            app.attach('example4')(custom_function4)
             app.example4()
 
             console.groupEnd()
@@ -236,7 +246,7 @@
 
             const classActive     = 'is-active'
             const classHasOverlay = 'has-offsidebar-overlay'
-            const cssBartender    ='.js-for-' + barName
+            const cssBartender    = '.js-for-' + barName
             const classOverlay    = 'offsidebar-overlay'
             const classBackground = 'offsidebar-background'
 
@@ -273,7 +283,8 @@
             }
             bartenderFunction(overlay, 'close')
         }
-        app.add({name:'offsidebar', f:InterfaceOffsideBar})
+        //app.add({name:'offsidebar', f:InterfaceOffsideBar})
+        app.attach('offsidebar')(InterfaceOffsideBar)
         app.offsidebar('ChaptersMenuBar')
     </script>
 

@@ -39,35 +39,106 @@
             Take the Queen.
             Keep in memory.
             Execute later.
-        */
-
+            2019.9.5
+         */
          // The Noble Blastula
             let app = this
-            app.has = { memory: [], arrived:false }
+            app.has = { memory: [], arrived:true }
 
-         // Define tasks
-            const KeepInMemory = (dna) => app.has.memory.push(dna)
-            const ExecuteLater =
-                 (responsible) =>
-                         (dna) => KeepInMemory({dna,for:responsible})
+         // The Noble Provocator
+            const proteinProvoker = function ForceErrorsIfShouldBe () {
+              let tpp = new this.__proto__.constructor()
+              let must_have_a_memory = tpp.has.memory.push('something')
+              let must_accept_queens = (like_this_one)=>true
+              tpp.attach('queen_id')(must_accept_queens)
+              tpp.queen_id('try this')
+            }
+
+         // Define responsibility
             const TakeTheQueen = (queen) =>
                 {
                     app[queen] =  ExecuteLater(queen)
                     return (f) => ExecuteLater('update')({name:queen,f})
                 }
+            const KeepInMemory = (dna) => app.has.memory.push(dna)
+            const ExecuteLater =
+                 (responsible) =>
+                         (dna) => KeepInMemory({dna,for:responsible})
 
-         // Apply tasks
+         // Apply responsibility
             app.attach = TakeTheQueen
+            app.ForceErrorsIfShouldBe = proteinProvoker
         }
 
-        /// -------------------------------- Boot Run
+        //# -------------------------------- AppBoot Run
         let app = new AppBoot()
-        console.log('Run AppBoot tests', AppBoot__test())
-        
+        app.ForceErrorsIfShouldBe()
 
-        /// Some primitive test v2019.9.3
-        function AppBoot__test() {
+
+        //# -------------------------------- AppKing
+
+        /*
+            todo queens
+            - mutate
+        */
+
+        function AppKing(mRna) {
+
+        /* ༼°▽°༽ app the king
+            2019.9.5
+         */
+         // The Noble Blastula
+            let app = this
+            app.has = { memory: [], activity:true }
+
+         // Construction workers
+            const proteinMergeRoots = () =>
+                  app = Object.assign(
+                        app,
+                        mRna
+                  )
+            const proteinRememberAll = function ReadMemory () {
+               // first in, first out
+                  let reading = (task)=>DelegateTask(task)
+                  while (app.has.memory.length) {
+                      let mem = app.has.memory.splice(0, 1)
+                      mem.map(reading)
+                  }
+            }
+            const proteinWakeUp = function initialization () {
+                  app.attach    = TakeTheQueen
+                  app.update    = UpdateQueens
+            }
+            const proteinPrimaryQueens = function configuration () {
+                  app.onload    = Queen_onload
+            }
+
+         // Define responsibility
+            const DelegateTask = (task) => app[task.for](task.dna)
+            const TakeTheQueen = (name) => (f) => app[name] = f
+            const UpdateQueens = (dna)  => app[dna.name]=dna.f
+
+         // Primary Queens
+            const Queen_onload = (dna)  => typeof(dna)==='function' ? dna() : false
+
+         // Apply responsibility
+            proteinMergeRoots()
+            proteinWakeUp()
+            proteinPrimaryQueens()
+            proteinRememberAll()
+        }
+
+        //# -------------------------------- AppKing Test
+
+        function AppBoot__test (silent=false) {
+            const report = (type) => (message) => silent ? false : console[type](message)
+
+            report('log')('Welcome to app survival test')
+
+/*
             let tpp = new AppBoot()
+
+
             let rpp = []
             if (typeof(tpp.has.memory) !== 'object')
                 rpp.push('has no memory')
@@ -76,48 +147,8 @@
             if (typeof(tpp.queenname) !== 'function')
                 rpp.push('can`t take the queen')
             return rpp
+*/
         }
-
-        // -------------------------------- AppKing
-
-        /*
-            todo queens
-            - mutate
-        */
-
-        function AppKing(mRna) {
-         // The Noble Blastula
-            let app = this
-            app.has = { memory: [], arrived:false }
-
-         // Define tasks
-            const aInject_mRna = () =>
-                           app = Object.assign(
-                                 app,
-                                 mRna
-                           )
-            const zRememberAll = function ReadAndExecuteOrdersInMemory () {
-                  console.group('Remember All')
-                  while (app.has.memory.length) {
-                      let read  = app.has.memory.splice(0, 1)
-                      read.map((order)=>DelegateTask(order))
-                  }
-                  console.groupEnd()
-            }
-            const DelegateTask = (task)  => app[task.for](task.dna)
-            const TakeTheQueen = (queen) => (f) => app[queen] = f
-            const UpdateQueens = (dna)   => app[dna.name]=dna.f
-            const Queen_onload = (dna)   => typeof(dna)==='function' ? dna() : false
-
-         // Apply tasks
-            aInject_mRna()
-                app.attach = TakeTheQueen
-                app.update = UpdateQueens
-                app.onload = Queen_onload
-            zRememberAll()
-            app.has.arrived = true
-        }
-        
 
         /// -------------------------------- King Run
 

@@ -1,37 +1,65 @@
-/*  App Core, 8002
- *  2019.7.17
+/** App Core
+ *  Last revision: 2019.9.6
  */
 
 
-        /* ༼°▽°༽ app boot */
-        function BootKing() {
-            let  King = this
-            King.has  =  {
-                 Queens: ['mutate','onload'],
-                 Memory: [],
-                 toRemember: (something) => King.has.Memory.push(something) }
-            function KeepInMemory(responsible) {
-                 return (dna) => King.has.toRemember({dna,for:responsible}) }
-            King.has.Queens.map( (queen)=>King[queen]=KeepInMemory(queen) ) }
+//  -------------------------------- AppKing
 
-        let app = new BootKing()
+function AppKing(mRna) {
 
-function x () {}
+/* ༼°▽°༽ app the king
+    2019.9.5
+ */
+ // The Noble Blastula
+    let app = this
+    app.has = { memory: [], activity:true }
 
+ // Construction workers
+    const proteinMergeRoots = () =>
+          app = Object.assign(
+                app,
+                mRna
+          )
+    const proteinRememberAll = function ReadMemory () {
+       // first in, first out
+          let reading = (task)=>DelegateTask(task)
+          while (app.has.memory.length) {
+              let mem = app.has.memory.splice(0, 1)
+              mem.map(reading)
+          }
+    }
+    const proteinWakeUp = function initialization () {
+          app.attach    = TakeTheQueen
+          app.update    = UpdateQueens
+    }
+    const proteinPrimaryQueens = function configuration () {
+          app.onload    = Queen_onload
+    }
 
-function AppKing (dna) {
-    const ModelDNA = { has: { Memory:[], Queens:[] }}
-    let King = this
+ // Define responsibility
+    const DelegateTask = (task) => app[task.for](task.dna)
+    const TakeTheQueen = (name) => (f) => app[name] = f
+    const UpdateQueens = (dna)  => app[dna.name]=dna.f
+
+ // Primary Queens
+    const Queen_onload = (dna)  => typeof(dna)==='function' ? dna() : false
+
+ // Apply responsibility
+    proteinMergeRoots()
+    proteinWakeUp()
+    proteinPrimaryQueens()
+    proteinRememberAll()
 }
 
 
-/*
+//  -------------------------------- AppKing autorun
 
 
+let autorun = function apploader () {
+    let ActivateAppInterface = () => app = new AppKing(app)
+    setTimeout(ActivateAppInterface, 200)
+}
+window.onload = autorun()
 
 
-
-*/
-
-
-/*  EOF App Core */
+//  EOF app core

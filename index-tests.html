@@ -32,24 +32,25 @@
 
 
     <script>
+        /* ༼°▽°༽ app boot */
         function AppBoot() {
 
-        /* ༼°▽°༽ app boot
+         // The Noble Blastula
+            let app = this
+            app.has = { memory: [], arrived:true }
+            /*
             King has arrived.
             Take the Queen.
             Keep in memory.
             Execute later.
             2019.9.5
-         */
-         // The Noble Blastula
-            let app = this
-            app.has = { memory: [], arrived:true }
+            */
 
          // The Noble Provocator
             const proteinProvoker = function ForceErrorsIfShouldBe () {
               let tpp = new this.__proto__.constructor()
               let must_have_a_memory = tpp.has.memory.push('something')
-              let must_accept_queens = (like_this_one)=>true
+              let must_accept_queens = like_this_one => true
               tpp.attach('queen_id')(must_accept_queens)
               tpp.queen_id('try this')
             }
@@ -68,100 +69,14 @@
          // Apply responsibility
             app.attach = TakeTheQueen
             app.ForceErrorsIfShouldBe = proteinProvoker
-        }
 
-        //# -------------------------------- AppBoot Run
+         // Prepare Primary Queens
+            const queens = ['onload', 'mutate']
+            queens.map( queen => app.attach(queen) )
+        }
+        // autorun
         let app = new AppBoot()
         app.ForceErrorsIfShouldBe()
-
-
-        //# -------------------------------- AppKing
-
-        /*
-            todo queens
-            - mutate
-        */
-
-        function AppKing(mRna) {
-
-        /* ༼°▽°༽ app the king
-            2019.9.5
-         */
-         // The Noble Blastula
-            let app = this
-            app.has = { memory: [], activity:true }
-
-         // Construction workers
-            const proteinMergeRoots = () =>
-                  app = Object.assign(
-                        app,
-                        mRna
-                  )
-            const proteinRememberAll = function ReadMemory () {
-               // first in, first out
-                  let reading = (task)=>DelegateTask(task)
-                  while (app.has.memory.length) {
-                      let mem = app.has.memory.splice(0, 1)
-                      mem.map(reading)
-                  }
-            }
-            const proteinWakeUp = function initialization () {
-                  app.attach    = TakeTheQueen
-                  app.update    = UpdateQueens
-            }
-            const proteinPrimaryQueens = function configuration () {
-                  app.onload    = Queen_onload
-            }
-
-         // Define responsibility
-            const DelegateTask = (task) => app[task.for](task.dna)
-            const TakeTheQueen = (name) => (f) => app[name] = f
-            const UpdateQueens = (dna)  => app[dna.name]=dna.f
-
-         // Primary Queens
-            const Queen_onload = (dna)  => typeof(dna)==='function' ? dna() : false
-
-         // Apply responsibility
-            proteinMergeRoots()
-            proteinWakeUp()
-            proteinPrimaryQueens()
-            proteinRememberAll()
-        }
-
-        //# -------------------------------- AppKing Test
-
-        function AppBoot__test (silent=false) {
-            const report = (type) => (message) => silent ? false : console[type](message)
-
-            report('log')('Welcome to app survival test')
-
-/*
-            let tpp = new AppBoot()
-
-
-            let rpp = []
-            if (typeof(tpp.has.memory) !== 'object')
-                rpp.push('has no memory')
-            const some_func = function () {return 'ok'}
-            tpp.attach('queenname')(some_func)
-            if (typeof(tpp.queenname) !== 'function')
-                rpp.push('can`t take the queen')
-            return rpp
-*/
-        }
-
-        /// -------------------------------- King Run
-
-        let run = function apploader () {
-            let ActivateAppInterface = () => {
-                console.group('ActivateAppInterface')
-                app = new AppKing(app)
-                console.groupEnd()
-            }
-            setTimeout(ActivateAppInterface, 200)
-        }
-        window.onload = run()
-
     </script>
 
 
@@ -180,7 +95,12 @@
         rel="stylesheet">
 
 
-    <!-- ========================================= APP CUSTOM -->
+    <!-- ========================================= APP -->
+
+
+    <script defer src="app/script/app-core.js"></script>
+    <script defer src="app/script/components/survival-test.js"></script>
+    <script defer src="app/script/components/autofill-paragraphs.js"></script>
 
 
     <!-- ========================================== ʕ⊙ᴥ⊙ʔ = -->
@@ -197,29 +117,7 @@
     </style>
 
     <screen class="use-colors colors--root">
-        app test
-        <script>
-            console.group('AppKing add new function test')
-
-            const custom_function = function SomeFunction(dna){ console.log('FUNC:'+dna) }
-            app.attach('example')(custom_function)
-            app.example('ok-example')
-
-            const custom_function2 = (dna) => app.example(dna)
-            app.attach('example2')(custom_function2)
-            app.example2('ok-ok-example')
-
-            const custom_function4 = function() {
-                const custom_function3 = (dna) => app.example(dna)
-                app.attach('example3')(custom_function3)
-                app.example3('ok-ok-ok-example')
-            }
-            app.attach('example4')(custom_function4)
-            app.example4()
-
-            console.groupEnd()
-
-        </script>
+        <p>app test</p>
     </screen>
 
 
@@ -269,52 +167,8 @@
 
         </div>
     </section>
+    <script src="app/styles/components/offsidebar/interface-offsidebar.js"></script>
     <script>
-        function InterfaceOffsideBar (barName) {
-
-            const asidebar = document.querySelector('.'+barName)
-            const htmlwrap = document.querySelector('html')
-
-            const classActive     = 'is-active'
-            const classHasOverlay = 'has-offsidebar-overlay'
-            const cssBartender    = '.js-for-' + barName
-            const classOverlay    = 'offsidebar-overlay'
-            const classBackground = 'offsidebar-background'
-
-            const doClose  = () => {
-                asidebar.classList.remove(classActive)
-                htmlwrap.classList.remove(classHasOverlay) }
-            const doOpen   = () => {
-                asidebar.classList.add(classActive)
-                htmlwrap.classList.add(classHasOverlay) }
-            const doToggle = () => {
-                if (asidebar.classList.contains(classActive)) doClose()
-                else doOpen()
-            }
-
-            // find and activate bartenders
-            const bartenderFunction = (el, order) =>
-                  el.addEventListener('click', order === 'close' ? doClose : doToggle )
-            document.querySelectorAll(cssBartender).forEach(bartenderFunction)
-
-            // find/create background
-            let background = asidebar.querySelector('.'+classBackground)
-            if(!background) {
-                background = document.createElement('div')
-                background.classList.add(classBackground)
-                asidebar.prepend(background)
-            }
-
-            // find/create shadow overlay with functionality
-            let overlay = asidebar.querySelector('.'+classOverlay)
-            if(!overlay) {
-                overlay = document.createElement('div')
-                overlay.classList.add(classOverlay)
-                asidebar.prepend(overlay)
-            }
-            bartenderFunction(overlay, 'close')
-        }
-        //app.add({name:'offsidebar', f:InterfaceOffsideBar})
         app.attach('offsidebar')(InterfaceOffsideBar)
         app.offsidebar('ChaptersMenuBar')
     </script>
@@ -584,7 +438,7 @@
             </section>
         </div>
 
-        <p auto-content></p>
+        <p class="auto"></p>
 
     </article>
 
@@ -972,26 +826,26 @@
 
         <div class="keep-grid article-box-merge-east">
             <section class="block">
-                <p auto-content></p>
-                <div class=""><p auto-content></p></div>
-                <p auto-content></p>
+                <p class="auto"></p>
+                <div class=""><p class="auto"></p></div>
+                <p class="auto"></p>
             </section>
             <section class="textnote">
-                <p auto-content></p>
+                <p class="auto"></p>
                 <a class="swed-button" href="dev/tests-article-grid.html"><span>Demo</span></a>
             </section>
             <section class="big-box">
-                <p auto-content></p>
+                <p class="auto"></p>
             </section>
             <section class="block">
-                <p auto-content></p>
+                <p class="auto"></p>
             </section>
             <figure class="block">
                 <img width="400" height="100" src="art/illustrations/austria.svg" alt="Castle in Austria, schematic illustration">
             </figure>
             <section class="block">
-                <p auto-content></p>
-                <p auto-content></p>
+                <p class="auto"></p>
+                <p class="auto"></p>
             </section>
         </div>
     </article>
@@ -1342,9 +1196,9 @@
         <div class="keep-grid" style="font-family: var(--font-family--tufte-serif);">
             <h3 class="mark">tufte-serif</h3>
             <section class="block">
-                <p auto-content></p>
-                <p auto-content class="text-block-bigger"></p>
-                <p auto-content class="text-block-smaller"></p>
+                <p class="auto"></p>
+                <p class="auto" class="text-block-bigger"></p>
+                <p class="auto" class="text-block-smaller"></p>
             </section>
             <div class="note keep-font-size">
                 <p>297351 years<br>&amp;#$@*</p>
@@ -1353,9 +1207,9 @@
         <div class="keep-grid" style="font-family: var(--font-family--tufte-sans);">
             <h3 class="mark">tufte-sans</h3>
             <section class="block">
-                <p auto-content></p>
-                <p auto-content class="text-block-bigger"></p>
-                <p auto-content class="text-block-smaller"></p>
+                <p class="auto"></p>
+                <p class="auto" class="text-block-bigger"></p>
+                <p class="auto" class="text-block-smaller"></p>
             </section>
             <div class="note keep-font-size">
                 <p>297351 years<br>&amp;#$@*</p>
@@ -1364,9 +1218,9 @@
         <div class="keep-grid" style="font-family: var(--font-family--native-sans);">
             <h3 class="mark">native-sans</h3>
             <section class="block">
-                <p auto-content></p>
-                <p auto-content class="text-block-bigger"></p>
-                <p auto-content class="text-block-smaller"></p>
+                <p class="auto"></p>
+                <p class="auto" class="text-block-bigger"></p>
+                <p class="auto" class="text-block-smaller"></p>
             </section>
             <div class="note keep-font-size">
                 <p>297351 years<br>&amp;#$@*</p>
@@ -1378,13 +1232,13 @@
 
         <div class="block">
             <div>
-                <span auto-content></span>
+                <span class="auto"></span>
                 <mark class="text-inline-bigger">[.text-inline-bigger]</mark>
-                <span auto-content class="text-inline-bigger"></span>
-                <span auto-content></span>
+                <span class="auto" class="text-inline-bigger"></span>
+                <span class="auto"></span>
                 <mark class="text-inline-bigger">[.text-inline-smaller]</mark>
-                <span auto-content class="text-inline-smaller"></span>
-                <span auto-content></span>
+                <span class="auto" class="text-inline-smaller"></span>
+                <span class="auto"></span>
             </div>
             <div class="group-center">
                 <span class="back-color-descent">line height</span>
@@ -1393,11 +1247,11 @@
             </div>
             <div class="text-block-bigger">
                 <mark>.text-block-bigger</mark>
-                <span auto-content></span>
+                <span class="auto"></span>
             </div>
             <div class="text-block-smaller">
                 <mark>.text-block-smaller</mark>
-                <span auto-content></span>
+                <span class="auto"></span>
             </div>
         </div>
 
@@ -1415,12 +1269,12 @@
             </h3>
             <div class="paragraph group-content-rows">
                 <div>
-                    <span auto-content></span>
-                    <span auto-content></span>
+                    <span class="auto"></span>
+                    <span class="auto"></span>
                 </div>
                 <div>
-                    <span auto-content></span>
-                    <span auto-content></span>
+                    <span class="auto"></span>
+                    <span class="auto"></span>
                 </div>
             </div>
 
@@ -1429,8 +1283,8 @@
                 Optimal middle-size (24em)
             </h3>
             <div class="midi-paragraph group-content-rows">
-                <div auto-content></div>
-                <div auto-content></div>
+                <div class="auto"></div>
+                <div class="auto"></div>
             </div>
 
             <section class="group-banner">
@@ -1709,14 +1563,14 @@
 
                     <section class="sidepanel-content">
                         <div class="rows midi-paragraph">
-                            <p auto-content></p>
-                            <p auto-content></p>
-                            <p auto-content></p>
-                            <p auto-content></p>
-                            <p auto-content></p>
-                            <p auto-content></p>
-                            <p auto-content></p>
-                            <p auto-content></p>
+                            <p class="auto"></p>
+                            <p class="auto"></p>
+                            <p class="auto"></p>
+                            <p class="auto"></p>
+                            <p class="auto"></p>
+                            <p class="auto"></p>
+                            <p class="auto"></p>
+                            <p class="auto"></p>
                         </div>
                     </section>
 
@@ -1738,14 +1592,14 @@
 
                     <section class="sidepanel-content">
                         <div class="rows midi-paragraph">
-                            <p auto-content></p>
-                            <p auto-content></p>
-                            <p auto-content></p>
-                            <p auto-content></p>
-                            <p auto-content></p>
-                            <p auto-content></p>
-                            <p auto-content></p>
-                            <p auto-content></p>
+                            <p class="auto"></p>
+                            <p class="auto"></p>
+                            <p class="auto"></p>
+                            <p class="auto"></p>
+                            <p class="auto"></p>
+                            <p class="auto"></p>
+                            <p class="auto"></p>
+                            <p class="auto"></p>
                         </div>
                     </section>
 
@@ -1774,26 +1628,7 @@
 
 <!-- ========================================= PAGE CUSTOM -->
 
-<script>
-    // auto insert random content into paragraphs
-    function autofillParagraphs() {
-        const p = document.querySelectorAll('[auto-content]')
-        for ( let x in p ) {
-            let texts = [
-                'Les grandes personnes m’ont conseillé de laisser de côté les dessins de serpents boas ouverts ou fermés, et de m’intéresser plutôt à la géographie, à l’histoire, au calcul et à la grammaire. C’est ainsi que j’ai abandonné, à l’âge de six ans, une magnifique carrière de peintre.',
-                'J’avais été découragé par l’insuccès de mon dessin numéro 1 et de mon dessin numéro 2. Les grandes personnes ne comprennent jamais rien toutes seules, et c’est fatigant, pour les enfants, de toujours et toujours leur donner des explications.',
-                'J’ai donc dû choisir un autre métier et j’ai appris à piloter des avions. J’ai volé un peu partout dans le monde. Et la géographie, c’est exact, m’a beaucoup servi. Je savais reconnaître, du premier coup d’œil, la Chine de l’Arizona. C’est très utile, si l’on est égaré pendant la nuit.',
-                'J’ai ainsi eu, au cours de ma vie, des tas de contacts avec des tas de gens sérieux. J’ai beaucoup vécu chez les grandes personnes. Je les ai vues de très près. Ça n’a pas trop amélioré mon opinion.',
-                'Quand j’en rencontrais une qui me paraissait un peu lucide, je faisais l’expérience sur elle de mon dessin numéro 1 que j’ai toujours conservé. Je voulais savoir si elle était vraiment compréhensive. Mais toujours elle me répondait : « C’est un chapeau. »',
-                'Alors je ne lui parlais ni de serpents boas, ni de forêts vierges, ni d’étoiles. Je me mettais à sa portée. Je lui parlais de bridge, de golf, de politique et de cravates. Et la grande personne était bien contente de connaître un homme aussi raisonnable.'
-                ]
-            let text = texts[Math.floor(Math.random()*texts.length)]
-            let textnode = document.createTextNode(text)
-            if (p[x].appendChild) p[x].appendChild(textnode)
-        }
-    }
-    autofillParagraphs()
-</script>
+
 
 </body>
 </html>

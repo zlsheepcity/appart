@@ -1,5 +1,5 @@
-/*  Offside Bar open/close functions
- *  v2019.7.23
+/** Offside Bar open/close functions
+ *  2019.9.6
  */
 
 function InterfaceOffsideBar (barName) {
@@ -9,7 +9,7 @@ function InterfaceOffsideBar (barName) {
 
     const classActive     = 'is-active'
     const classHasOverlay = 'has-offsidebar-overlay'
-    const cssBartender    ='.js-for-' + barName
+    const cssBartender    = '.js-for-' + barName
     const classOverlay    = 'offsidebar-overlay'
     const classBackground = 'offsidebar-background'
 
@@ -50,8 +50,9 @@ function InterfaceOffsideBar (barName) {
     bartenderFunction(overlay, 'close')
 }
 
-/* // Run
-InterfaceOffsideBar('offsidebar-class-name')
-*/
+/*  Apprun *//*
+    app.attach('offsidebar')(InterfaceOffsideBar)
+    app.offsidebar('BAR_CLASS_NAME')
+/**/
 
 /*  EOF Offside Bar */

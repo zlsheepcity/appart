@@ -250,16 +250,80 @@
                 margin-left:  auto;
                 margin-right: auto;
             }
+
+            .group-collisting {
+              --max-columns:  5;
+              --gap-space:    calc( var(--col-space) * 2 );
+              --column-width: var(--paragraph-width--min);
+
+              --max-width: calc( ( var(--column-width) + var(--gap-space) ) * var(--max-columns) );
+
+                max-width:    var(--max-width);
+                column-width: var(--column-width);
+                column-gap:   var(--gap-space);
+                padding:      var(--all-space);
+            }
+            .group-collisting>* {
+                page-break-inside: avoid;
+                     break-inside: avoid;
+                margin-bottom: var(--row-space);
+            }
         </style>
 
+        <!-- LONG TEXT BLOCKS -->
 
+        <div class="layer use-colors colors--SG-brand" style="--h2-font-size: var(--h4-font-size);">
+            <div class="group-collisting auto-margin" style="--column-width: 16em; --max-columns:4;">
+                <div>
+                    <h2>Casino Games Integration</h2>
+                    Choose from our 50+ gaming providers and integrate games from all of them or pick only those you want. Our portfolio includes such top-tier providers as Evolution Gaming, NetEnt, BetSoft, Quickspin, Yggdrasil, BetRadar and Microgaming and all types of games – slots, Live casino, sports betting, scratch-cards, bingo, lottery, virtual sports and poker, all available via a single integration.
+                </div>
+                <div>
+                    <h2>BonusSystem Standalone</h2>
+                    Our bonus system is a unique solution which can be either integrated separately or as a part of our game platform. It includes loyalty and experience points, separate balances, customisable user levels, loyalty shop, free rounds, tournaments, gamification and much more. It is a proven player acquisition and retention tool.
+                </div>
+                <div>
+                    <h2>Slots Bundle</h2>
+                    Get the package of all slots providers via a single integration at an attractive cost. The bundle includes games from NetEnt, BetSoft, Quickspin, Microgaming, Amatic, 1X2 Network, Playson, Endorphina, Pragmatic Play and more.
+                </div>
+                <div>
+                    <h2>Live Casino Bundle</h2>
+                    Similar to the Slots Bundle, our Live Casino Bundle is available via a single integration. The portfolio of Live providers includes the top providers of live casino games: Evolution Gaming, NetEnt Live, BetGames, Ezugi, Authentic Gaming, Asia Gaming, Lucky Streak, SA Gaming and more.
+                </div>
+                <div>
+                    <h2>Sports Betting Software Providers</h2>
+                    Our sportsbook solution is a complete package of all kinds of sports and unlimited customisation options based on the exclusive, top-tier BetRadar solution. Enjoy 70.000+ events monthly in 300+ markets.
+                </div>
+                <div>
+                    <h2>Cryptocurrency payment solution</h2>
+                    Many players prefer paying in cryptocurrencies, so it is a good idea to give them such an opportunity. By using cryptocurrencies, your players will remain anonymous and won’t spend much on transactions and you will receive your money quickly. Our in-house developed cryptocurrency payment system supports Bitcoin, Ethereum, Litecoin and many other Ethereum-based and Bitcoin-based currencies.
+                </div>
+                <div>
+                    <h2>Banking</h2>
+                    Banking is a difficult question for gambling enterprises. With our assistance, however, you can open bank and credit card processing (VISA, MasterCard) accounts quickly and easily, thanks to our 10 years experience in dealing with the legal side of gambling business.
+                </div>
+                <div>
+                    <h2>Licensing</h2>
+                    Getting a gaming licence is also crucial, if you want to offer games from well-known providers and win the trust of your players. With us, you get a licence in 2 weeks, avoiding unnecessary complications.
+                </div>
+                <div>
+                    <h2>Hosting</h2>
+                    Our gambling-friendly hosting functions 24/7/365, supports thousands of players simultaneously and is legal and secure. All data centres accept online gambling and have top-notch reputation and reliability.
+                </div>
+                <div>
+                    <h2>Promotion & SEO</h2>
+                    A crucial part of online gambling business. Good SEO & promotion is what differentiates successful casinos from failed enterprises. Get in touch with professionals with 10+ years of experience in online gambling SEO and promotion to ensure your business grows.
+                </div>
+            </div>
+        </div>
+
+        <!-- MINI CARDS -->
 
         <article class="layer native-sans" style="--h4-font-size: var(--h5-font-size);">
-            <section class="group-collisting">
+            <section class="group-collisting auto-margin use-colors colors--root">
 
                 <figure>
                     <h4>Rich Article Grid Layout</h4>
-                    <h5>Rich Article Grid Layout</h5>
                     <div class="text-block-smaller">
                         <p><strong>sass component</strong></p>
                         <p>CSS grid template for big articles with a lot of content, illustrations and creative visuals.</p>
@@ -308,56 +372,134 @@
             </section>
         </article>
 
-        <section>
-            <div class="article-box-merge-east">
-                <section class="box collisting has-sans-text color-box">
-                        <ul>
-                            <li>
-                                <h4>Rich Article Grid Layout</h4>
-                                 <div class="text-is-smaller">
-                                    <p><strong>sass component</strong></p>
-                                    <p>CSS grid template for big articles with a lot of content, illustrations and creative visuals.</p>
-                                </div>
-                            </li>
-                            <li>
-                                <h4>Banners</h4>
-                                <div class="text-is-smaller">
-                                    <p><strong>css class</strong></p>
-                                    <p>Wrapper for content grouping</p>
-                                </div>
-                            </li>
-                            <li>
-                                <h4>Catgrounds</h4>
-                                <div class="text-is-smaller">
-                                    <p><strong>css class</strong></p>
-                                    <p>Design trick to make boring content more interesting</p>
-                                </div>
-                            </li>
-                            <li>
-                                <h4>Offsidebar</h4>
-                                <div class="text-is-smaller">
-                                    <p><strong>css component</strong></p>
-                                    <p>Expandable side-panel prevents content jumps on call (google chrome issue)</p>
-                                </div>
-                            </li>
-                            <li>
-                                <h4>Color-model</h4>
-                                <div class="text-is-smaller">
-                                    <p><strong>css variables</strong></p>
-                                    <p>Pattern for switching colors in markup</p>
-                                </div>
-                            </li>
-                            <li>
-                                <h4>SVG-icons</h4>
-                                <div class="text-is-smaller">
-                                    <p><strong>css, svg</strong></p>
-                                    <p>Markup shortcut and presets with common used icons.</p>
-                                </div>
-                            </li>
-                        </ul>
-                </section>
+        <!-- QUICK DEFAULT -->
 
-            </div>
+        <article class="layer native-sans">
+            <section class="group-collisting auto-margin use-colors colors--primary">
+
+                <figure>
+                    <h4>Rich Article Grid Layout</h4>
+                    <div>
+                        <p><strong>sass component</strong></p>
+                        <p>CSS grid template for big articles with a lot of content, illustrations and creative visuals.</p>
+                    </div>
+                </figure>
+
+                <figure>
+                    <h4>Banners</h4>
+                    <div>
+                        <p><strong>css class</strong></p>
+                        <p>Wrapper for content grouping</p>
+                    </div>
+                </figure>
+
+                <figure>
+                    <h4>Catgrounds</h4>
+                    <div>
+                        <p><strong>css class</strong></p>
+                        <p>Design trick to make boring content more interesting</p>
+                    </div>
+                </figure>
+
+                <figure>
+                    <h4>Offsidebar</h4>
+                    <div>
+                        <p><strong>css component</strong></p>
+                        <p>Expandable side-panel prevents content jumps on call (google chrome issue)</p>
+                    </div>
+                </figure>
+                <figure>
+                    <h4>Color-model</h4>
+                    <div>
+                        <p><strong>css variables</strong></p>
+                        <p>Pattern for switching colors in markup</p>
+                    </div>
+                </figure>
+                <figure>
+                    <h4>SVG-icons</h4>
+                    <div>
+                        <p><strong>css, svg</strong></p>
+                        <p>Markup shortcut and presets with common used icons.</p>
+                    </div>
+                </figure>
+
+                <figure>
+                    <h4>Rich Article Grid Layout</h4>
+                    <div>
+                        <p><strong>sass component</strong></p>
+                        <p>CSS grid template for big articles with a lot of content, illustrations and creative visuals.</p>
+                    </div>
+                </figure>
+
+                <figure>
+                    <h4>Banners</h4>
+                    <div>
+                        <p><strong>css class</strong></p>
+                        <p>Wrapper for content grouping</p>
+                    </div>
+                </figure>
+
+                <figure>
+                    <h4>Catgrounds</h4>
+                    <div>
+                        <p><strong>css class</strong></p>
+                        <p>Design trick to make boring content more interesting</p>
+                    </div>
+                </figure>
+
+            </section>
+        </article>
+
+        <!-- UL-LISTING -->
+
+        <section>
+            <ul class="group-collisting">
+                <li>
+                    <h4>Rich Article Grid Layout</h4>
+                     <div class="text-is-smaller">
+                        <p><strong>sass component</strong></p>
+                        <p>CSS grid template for big articles with a lot of content, illustrations and creative visuals.</p>
+                    </div>
+                </li>
+                <li>
+                    <h4>Banners</h4>
+                    <div class="text-is-smaller">
+                        <p><strong>css class</strong></p>
+                        <p>Wrapper for content grouping</p>
+                    </div>
+                </li>
+                <li class="fatground-wide">
+                    <h4>Catgrounds</h4>
+                    <div class="text-is-smaller">
+                        <p><strong>css class</strong></p>
+                        <p>Design trick to make boring content more interesting</p>
+                    </div>
+                </li>
+                <li>
+                    <h4>Offsidebar</h4>
+                    <div class="text-is-smaller">
+                        <p><strong>css component</strong></p>
+                        <p>Expandable side-panel prevents content jumps on call (google chrome issue)</p>
+                    </div>
+                </li>
+                <li>
+                    <h4>Color-model</h4>
+                    <div class="text-is-smaller">
+                        <p><strong>css variables</strong></p>
+                        <p>Pattern for switching colors in markup</p>
+                    </div>
+                </li>
+                <li>
+                    <h4>SVG-icons</h4>
+                    <div class="text-is-smaller">
+                        <p><strong>css, svg</strong></p>
+                        <p>Markup shortcut and presets with common used icons.</p>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+
             <section class="article-box-merge-east swed-banner catground-description-title">
                 <h3 class="mid-title">Short description:</h3>
                 <div class="color-text">
@@ -369,10 +511,6 @@
                     <a href="catgrounds.html" class="swed-button">Project page</a>
                 </footer>
             </section>
-
-        </section>
-
-
 
 
         <section class="show">

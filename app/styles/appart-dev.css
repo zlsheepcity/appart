@@ -8,15 +8,20 @@
     sass --no-source-map app/styles/appart.scss app/styles/appart-dev.css
  */
 /** base css settings
- *  2019.7.16
+ *  2019.9.9
  */
 :root,
 .root-settings {
   --line-height: 1.5;
-  /* Default vertical and horizontal spacing */
+  /* Default spacing */
   --row-space: 1.5rem;
+  /* Vertical */
   --col-space: 1.5rem;
+  /* Horizontal */
+  --big-space: 4rem;
+  /* Expanded */
   --all-space: var(--row-space) var(--col-space);
+  /* Shortcode Combined */
   /* z-indexes order */
   --z-index--sidebar: 100; }
 

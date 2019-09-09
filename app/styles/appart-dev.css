@@ -234,8 +234,15 @@ td, th {
   --line-height: var(--dec-line-height, calc(16/13));
   line-height: var(--line-height); }
 
+/** -------------------------------- markup workers */
 [hidden], .hidden {
   display: none !important; }
+
+[markup], .markup {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  text-decoration: none; }
 
 /*  EOF html wrap */
 /** typography

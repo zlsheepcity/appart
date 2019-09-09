@@ -122,7 +122,16 @@ td, th {
     line-height: var(--line-height);
 }
 
-[hidden], .hidden { display: none!important; }
 
+/** -------------------------------- markup workers */
+
+
+[hidden], .hidden { display: none!important; }
+[markup], .markup {
+    padding: 0;
+    margin:  0;
+    list-style:      none;
+    text-decoration: none;
+}
 
 /*  EOF html wrap */

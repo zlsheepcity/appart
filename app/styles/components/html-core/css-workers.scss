@@ -54,6 +54,25 @@
         grid-column: full;
 }
 
+.group-collisting {
+  --max-columns:  5;
+  --column-width: var(--paragraph-width--min);
+  --gap-space:    calc(var(--col-space) * 2);
+  --max-width:    calc((var(--column-width) + var(--gap-space)) * var(--max-columns));
+
+    max-width:    var(--max-width,    100%);
+    column-width: var(--column-width, 12em);
+    column-gap:   var(--gap-space,     3em);
+    padding:      var(--all-space,   1.5em);
+} .group-collisting.type2 {
+  --max-columns:  3;
+  --column-width: 16em;
+} .group-collisting>* {
+    page-break-inside: avoid;
+         break-inside: avoid;
+    margin-bottom: var(--row-space);
+}
+
 .autogrid {
   --cell-size: 100%;
     display:   grid;

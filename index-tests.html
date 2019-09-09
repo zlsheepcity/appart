@@ -108,6 +108,8 @@
 </head>
 <body class="colors--primary">
 
+    <!-- ----------------------------------------- APP Header -->
+
     <style>
         screen {
             display: block;
@@ -115,9 +117,46 @@
             padding: 3rem;
         }
     </style>
-
     <screen class="use-colors colors--root">
         <p>app test</p>
+    </screen>
+
+
+    <!-- ----------------------------------------- Dropdown -->
+
+
+    <screen class="use-colors colors--root">
+
+        <section class="group-banner">
+
+            <div class="swed-dropdown">
+                <button class="label">
+                    <div>Dropdown List</div>
+                </button>
+                <div class="droplist">
+                    <ul>
+                        <li><span>First item</span></li>
+                        <li><span>Second item</span></li>
+                        <li><span>Third long size caption</span></li>
+                        <li><span>Last item</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="swed-dropdown">
+                <button class="label">
+                    <div>Ru</div>
+                </button>
+                <div class="droplist">
+                    <ul>
+                        <li><a href="#en">En</a></li>
+                        <li><a href="#ru">Ru</a></li>
+                    </ul>
+                </div>
+            </div>
+
+        </section>
+
     </screen>
 
 
@@ -174,175 +213,230 @@
     </script>
 
 
-
     <!-- ----------------------------------------------------- Multicolumn list research -->
+
 
     <article class="use-colors colors--SG-minor">
 
-    <style>
-        .collisting {
-          --max-width:   60rem;
-          --max-columns:     3;
-          --gap-space:    3rem;
-          --row-space:    1rem;
+        <style>
+            .collisting {
+              --max-width:   60rem;
+              --max-columns:     3;
+              --gap-space:    3rem;
+              --row-space:    1rem;
 
-            max-width:    var(--max-width);
-        }
-        .collisting>ul {
-            column-width: calc(
-                ( var(--max-width) - ( ( var(--max-columns) + 1 ) * var(--gap-space) ) )
-                / var(--max-columns)
-                );
-            column-gap: var(--gap-space);
-            padding:  0 1.5rem; /*var(--gap-space);*/
-            margin:   0;
-        }
-        .collisting>ul>li {
-            page-break-inside: avoid;
-                 break-inside: avoid;
-            margin-bottom:     var(--row-space);
-        }
-
-
-        .collisting.box>ul {
-            grid-column: full;
-        }
-        .auto-margin {
-            margin-left:  auto;
-            margin-right: auto;
-        }
-    </style>
+                max-width:    var(--max-width);
+            }
+            .collisting>ul {
+                column-width: calc(
+                    ( var(--max-width) - ( ( var(--max-columns) + 1 ) * var(--gap-space) ) )
+                    / var(--max-columns)
+                    );
+                column-gap: var(--gap-space);
+                padding:  0 1.5rem; /*var(--gap-space);*/
+                margin:   0;
+            }
+            .collisting>ul>li {
+                page-break-inside: avoid;
+                     break-inside: avoid;
+                margin-bottom:     var(--row-space);
+            }
 
 
+            .collisting.box>ul {
+                grid-column: full;
+            }
+            .auto-margin {
+                margin-left:  auto;
+                margin-right: auto;
+            }
+        </style>
 
-    <section class="show">
-        <header class="banner">
-            <div>
-                <h3 class="mid-title">Collisting</h3>
+
+
+        <article class="layer native-sans" style="--h4-font-size: var(--h5-font-size);">
+            <section class="group-collisting">
+
+                <figure>
+                    <h4>Rich Article Grid Layout</h4>
+                    <h5>Rich Article Grid Layout</h5>
+                    <div class="text-block-smaller">
+                        <p><strong>sass component</strong></p>
+                        <p>CSS grid template for big articles with a lot of content, illustrations and creative visuals.</p>
+                    </div>
+                </figure>
+
+                <figure>
+                    <h4>Banners</h4>
+                    <div class="text-block-smaller">
+                        <p><strong>css class</strong></p>
+                        <p>Wrapper for content grouping</p>
+                    </div>
+                </figure>
+
+
+                <figure>
+                    <h4>Catgrounds</h4>
+                    <div class="text-block-smaller">
+                        <p><strong>css class</strong></p>
+                        <p>Design trick to make boring content more interesting</p>
+                    </div>
+                </figure>
+
+                <figure>
+                    <h4>Offsidebar</h4>
+                    <div class="text-block-smaller">
+                        <p><strong>css component</strong></p>
+                        <p>Expandable side-panel prevents content jumps on call (google chrome issue)</p>
+                    </div>
+                </figure>
+                <figure>
+                    <h4>Color-model</h4>
+                    <div class="text-block-smaller">
+                        <p><strong>css variables</strong></p>
+                        <p>Pattern for switching colors in markup</p>
+                    </div>
+                </figure>
+                <figure>
+                    <h4>SVG-icons</h4>
+                    <div class="text-block-smaller">
+                        <p><strong>css, svg</strong></p>
+                        <p>Markup shortcut and presets with common used icons.</p>
+                    </div>
+                </figure>
+
+            </section>
+        </article>
+
+        <section>
+            <div class="article-box-merge-east">
+                <section class="box collisting has-sans-text color-box">
+                        <ul>
+                            <li>
+                                <h4>Rich Article Grid Layout</h4>
+                                 <div class="text-is-smaller">
+                                    <p><strong>sass component</strong></p>
+                                    <p>CSS grid template for big articles with a lot of content, illustrations and creative visuals.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <h4>Banners</h4>
+                                <div class="text-is-smaller">
+                                    <p><strong>css class</strong></p>
+                                    <p>Wrapper for content grouping</p>
+                                </div>
+                            </li>
+                            <li>
+                                <h4>Catgrounds</h4>
+                                <div class="text-is-smaller">
+                                    <p><strong>css class</strong></p>
+                                    <p>Design trick to make boring content more interesting</p>
+                                </div>
+                            </li>
+                            <li>
+                                <h4>Offsidebar</h4>
+                                <div class="text-is-smaller">
+                                    <p><strong>css component</strong></p>
+                                    <p>Expandable side-panel prevents content jumps on call (google chrome issue)</p>
+                                </div>
+                            </li>
+                            <li>
+                                <h4>Color-model</h4>
+                                <div class="text-is-smaller">
+                                    <p><strong>css variables</strong></p>
+                                    <p>Pattern for switching colors in markup</p>
+                                </div>
+                            </li>
+                            <li>
+                                <h4>SVG-icons</h4>
+                                <div class="text-is-smaller">
+                                    <p><strong>css, svg</strong></p>
+                                    <p>Markup shortcut and presets with common used icons.</p>
+                                </div>
+                            </li>
+                        </ul>
+                </section>
+
             </div>
-        </header>
-        <div class="native-sans" >
-        <section class="collisting auto-margin">
-                <ul>
-                    <li>
-                        <h6>Rich Article Grid Layout</h6>
-                        <div class="text-block-smaller">
-                            <p><strong>sass component</strong></p>
-                            <p>CSS grid template for big articles with a lot of content, illustrations and creative visuals.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <h6>Banners</h6>
-                        <div class="text-block-smaller">
-                            <p><strong>css class</strong></p>
-                            <p>Wrapper for content grouping</p>
-                        </div>
-                    </li>
-                    <li>
-                        <h6>Catgrounds</h6>
-                        <div class="text-block-smaller">
-                            <p><strong>css class</strong></p>
-                            <p>Design trick to make boring content more interesting</p>
-                        </div>
-                    </li>
-                    <li>
-                        <h6>Offsidebar</h6>
-                        <div class="text-block-smaller">
-                            <p><strong>css component</strong></p>
-                            <p>Expandable side-panel prevents content jumps on call (google chrome issue)</p>
-                        </div>
-                    </li>
-                    <li>
-                        <h6>Color-model</h6>
-                        <div class="text-block-smaller">
-                            <p><strong>css variables</strong></p>
-                            <p>Pattern for switching colors in markup</p>
-                        </div>
-                    </li>
-                    <li>
-                        <h6>SVG-icons</h6>
-                        <div class="text-block-smaller">
-                            <p><strong>css, svg</strong></p>
-                            <p>Markup shortcut and presets with common used icons.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <h6>Rich Article Grid Layout II</h6>
-                         <div class="text-block-smaller">
-                            <p><strong>sass component</strong></p>
-                            <p>CSS grid template for big articles with a lot of content, illustrations and creative visuals.</p>
-                        </div>
-                    </li>
-                </ul>
+            <section class="article-box-merge-east swed-banner catground-description-title">
+                <h3 class="mid-title">Short description:</h3>
+                <div class="color-text">
+                    <p>An abstract shapes<br>
+                       as background-images<br>
+                       for visual attraction.</p>
+                </div>
+                <footer>
+                    <a href="catgrounds.html" class="swed-button">Project page</a>
+                </footer>
+            </section>
+
         </section>
-        </div>
-    </section>
 
 
 
-    <section class="chapter show">
-        <div class="article-box-merge-east">
-            <section class="box collisting has-sans-text color-box">
+
+        <section class="show">
+            <header class="banner">
+                <div>
+                    <h3 class="mid-title">Collisting</h3>
+                </div>
+            </header>
+            <div class="native-sans" >
+            <section class="collisting auto-margin">
                     <ul>
                         <li>
-                            <h4>Rich Article Grid Layout</h4>
-                             <div class="text-is-smaller">
+                            <h6>Rich Article Grid Layout</h6>
+                            <div class="text-block-smaller">
                                 <p><strong>sass component</strong></p>
                                 <p>CSS grid template for big articles with a lot of content, illustrations and creative visuals.</p>
                             </div>
                         </li>
                         <li>
-                            <h4>Banners</h4>
-                            <div class="text-is-smaller">
+                            <h6>Banners</h6>
+                            <div class="text-block-smaller">
                                 <p><strong>css class</strong></p>
                                 <p>Wrapper for content grouping</p>
                             </div>
                         </li>
                         <li>
-                            <h4>Catgrounds</h4>
-                            <div class="text-is-smaller">
+                            <h6>Catgrounds</h6>
+                            <div class="text-block-smaller">
                                 <p><strong>css class</strong></p>
                                 <p>Design trick to make boring content more interesting</p>
                             </div>
                         </li>
                         <li>
-                            <h4>Offsidebar</h4>
-                            <div class="text-is-smaller">
+                            <h6>Offsidebar</h6>
+                            <div class="text-block-smaller">
                                 <p><strong>css component</strong></p>
                                 <p>Expandable side-panel prevents content jumps on call (google chrome issue)</p>
                             </div>
                         </li>
                         <li>
-                            <h4>Color-model</h4>
-                            <div class="text-is-smaller">
+                            <h6>Color-model</h6>
+                            <div class="text-block-smaller">
                                 <p><strong>css variables</strong></p>
                                 <p>Pattern for switching colors in markup</p>
                             </div>
                         </li>
                         <li>
-                            <h4>SVG-icons</h4>
-                            <div class="text-is-smaller">
+                            <h6>SVG-icons</h6>
+                            <div class="text-block-smaller">
                                 <p><strong>css, svg</strong></p>
                                 <p>Markup shortcut and presets with common used icons.</p>
                             </div>
                         </li>
+                        <li>
+                            <h6>Rich Article Grid Layout II</h6>
+                             <div class="text-block-smaller">
+                                <p><strong>sass component</strong></p>
+                                <p>CSS grid template for big articles with a lot of content, illustrations and creative visuals.</p>
+                            </div>
+                        </li>
                     </ul>
             </section>
-
-        </div>
-        <section class="article-box-merge-east swed-banner catground-description-title">
-            <h3 class="mid-title">Short description:</h3>
-            <div class="color-text">
-                <p>An abstract shapes<br>
-                   as background-images<br>
-                   for visual attraction.</p>
             </div>
-            <footer>
-                <a href="catgrounds.html" class="swed-button">Project page</a>
-            </footer>
         </section>
-
-    </section>
 
 
     </article>

@@ -132,13 +132,19 @@ body {
   --h4-font-size:    1.5em;
   --h4-line-height:  calc(4/3);
 
- /* 16/24 */
-  --p-font-size:     1em;
-  --p-line-height:   1.5;
-
  /* 20/24 */
   --inc-font-size:   1.25em;
   --inc-line-height: 1.2;
+  --h5-font-size:    var(--inc-font-size);
+  --h5-line-height:  var(--inc-line-height);
+
+ /* 16/24 */
+  --p-font-size:     1em;
+  --p-line-height:   1.5;
+  --h6-font-size:    var(--p-font-size);
+  --h6-line-height:  var(--p-line-height);
+  --def-font-size:   var(--p-font-size);
+  --def-line-height: var(--p-line-height);
 
  /* 13/16 */
   --dec-font-size:   calc(13/16*1em);

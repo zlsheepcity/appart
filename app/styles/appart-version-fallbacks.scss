@@ -228,9 +228,9 @@ $title-size-breakpoint: 'max-width: 38em';
     background-color: var(--shadow-color);
 }
 
-.color-box {
+/*.color-box {
     background-color: var(--secondary-background-color);
-}
+}*/
 .color-text {
     color:            var(--alternative-text-color, var(--secondary-color));
 }
@@ -238,10 +238,10 @@ $title-size-breakpoint: 'max-width: 38em';
     color:            var(--action-color);
 }
 
-.color-box-accent {
+/*.color-box-accent {
     background-color: var(--action-color);
     color:            var(--action-color--text);
-}
+}*/
 .color-text-accent {
     color:            var(--action-color);
 }

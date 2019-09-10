@@ -1422,10 +1422,11 @@ body {
 .back-color {
   background-color: var(--back-color); }
 
-.back-color-accent {
+.back-color-accent, .color-box-accent {
   background-color: var(--back-color-accent); }
 
-.back-color-descent {
+.back-color-descent, .color-box,
+.color-box-descent {
   background-color: var(--back-color-descent); }
 
 .link-color {
@@ -1653,11 +1654,13 @@ body {
     --size: 2;
     grid-column: span var(--size); } }
 /** -------------------------------- padding shortcuts */
-.pt, .pv {
+.pt, .pv, .color-box,
+.color-box-descent, .color-box-accent {
   --padding-top: var(--row-space, 1rem);
   padding-top: var(--padding-top); }
 
-.pb, .pv {
+.pb, .pv, .color-box,
+.color-box-descent, .color-box-accent {
   --padding-bottom: var(--row-space, 1rem);
   padding-bottom: var(--padding-bottom); }
 
@@ -1768,9 +1771,9 @@ mark,
   grid-row-gap: 0; }
 
 .chapter {
-  --padding-top: calc( 4 * var(--row-space, 1rem) );
+  --padding-top: var(--big-space, 4rem);
   padding-top: var(--padding-top);
-  --padding-bottom: calc( 4 * var(--row-space, 1rem) );
+  --padding-bottom: var(--big-space, 4rem);
   padding-bottom: var(--padding-bottom);
   position: relative; }
 
@@ -1787,6 +1790,7 @@ mark,
 .nav-header {
   position: sticky;
   top: 0;
+  z-index: 1;
   background-color: var(--back-color-accent); }
 
 /*  EOF Article markup */
@@ -2078,19 +2082,19 @@ mark,
 .use-shadow-background {
   background-color: var(--shadow-color); }
 
-.color-box {
-  background-color: var(--secondary-background-color); }
-
+/*.color-box {
+    background-color: var(--secondary-background-color);
+}*/
 .color-text {
   color: var(--alternative-text-color, var(--secondary-color)); }
 
 .color-text-action {
   color: var(--action-color); }
 
-.color-box-accent {
-  background-color: var(--action-color);
-  color: var(--action-color--text); }
-
+/*.color-box-accent {
+    background-color: var(--action-color);
+    color:            var(--action-color--text);
+}*/
 .color-text-accent {
   color: var(--action-color); }
 

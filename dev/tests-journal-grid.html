@@ -1,0 +1,187 @@
+<!doctype html><!-- appart :: 8001 :: 2019.7.14 -->
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- ========================================= HEAD CONTENT -->
+
+
+    <title>Journal grid</title>
+
+
+    <!-- ========================================= BOOT -->
+
+
+    <style> /* ༼°▽°༽ boot style */
+        body    { width: 100%; height: auto; overflow: hidden; }
+        img,svg { max-width: 100%; }
+    </style>
+
+    <script>
+        /* ༼°▽°༽ app boot */
+        function AppBoot() {
+
+         // The Noble Blastula
+            let app = this
+            app.has = { memory: [], arrived:true }
+            /*
+            King has arrived.
+            Take the Queen.
+            Keep in memory.
+            Execute later.
+            2019.9.5
+            */
+
+         // The Noble Provocator
+            const proteinProvoker = function ForceErrorsIfShouldBe () {
+              let tpp = new this.__proto__.constructor()
+              let must_have_a_memory = tpp.has.memory.push('something')
+              let must_accept_queens = like_this_one => true
+              tpp.attach('queen_id')(must_accept_queens)
+              tpp.queen_id('try this')
+            }
+
+         // Define responsibility
+            const TakeTheQueen = (queen) =>
+                {
+                    app[queen] =  ExecuteLater(queen)
+                    return (f) => ExecuteLater('update')({name:queen,f})
+                }
+            const KeepInMemory = (dna) => app.has.memory.push(dna)
+            const ExecuteLater =
+                 (responsible) =>
+                         (dna) => KeepInMemory({dna,for:responsible})
+
+         // Apply responsibility
+            app.attach = TakeTheQueen
+            app.ForceErrorsIfShouldBe = proteinProvoker
+
+         // Prepare Primary Queens
+            const queens = ['onload', 'mutate']
+            queens.map( queen => app.attach(queen) )
+        }
+        // autorun
+        let app = new AppBoot()
+        app.ForceErrorsIfShouldBe()
+    </script>
+
+
+    <!-- ========================================= DESIGN -->
+
+
+    <link
+        href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic"
+        rel="stylesheet">
+    <link
+        href="../app/styles/appart-dev.css"
+        rel="stylesheet" type="text/css">
+
+
+    <!-- ========================================= APP -->
+
+
+    <script defer src="../app/script/app-core.js"></script>
+    <script defer src="../app/script/components/survival-test.js"></script>
+    <script defer src="../app/script/components/autofill-paragraphs.js"></script>
+
+
+
+    <!-- ========================================= APP CUSTOM -->
+
+    <style>
+        dl { margin: 0; }
+        dd { padding-bottom: 1rem; }
+    </style>
+
+    <!-- ========================================== ʕ⊙ᴥ⊙ʔ = -->
+    <!-- ========================================= END HEAD -->
+</head>
+<body class="main-font-as-native-sans">
+
+
+    <!-- ----------------------------------------- Site Header -->
+
+
+    <header class="swed-site-head colors--primary">
+        <div class="swed-site-logo"><a href="../index.html"><span>Appart</span></a></div>
+        <ul class="swed-site-meta">
+            <li>
+                <h1 class="h6">Front-end component «journal-grid»</h1>
+            </li>
+        </ul>
+    </header>
+
+
+    <main class="journal-grid use-colors colors--ivory">
+
+        <p class="pt"><a href="https://github.com/zlsheepcity/appart/blob/master/app/styles/components/journal-grid/journal-grid.scss">GitHub CSS source</a></p>
+
+        <header class="wide color-box-accent">
+            <h2>All Components</h2>
+        </header>
+
+        <header>
+            <h3>.block</h3>
+        </header>
+        <header class="note keep-font-size">
+            <h3>.note</h3>
+        </header>
+
+        <div class="block">
+            <p class="auto"></p>
+            <p class="auto"></p>
+            <p class="auto"></p>
+        </div>
+
+        <div class="note"><p class="auto"></p></div>
+
+        <h3>.box .color-box</h3>
+        <div class="box color-box">
+            <p class="auto"></p>
+            <p class="auto"></p>
+        </div>
+
+        <h3>.note .color-box</h3>
+        <div class="note color-box"><p class="auto"></p></div>
+
+        <h3>.wide</h3>
+        <div class="wide color-box">
+            <p class="auto"></p>
+            <p class="auto"></p>
+            <p class="auto"></p>
+        </div>
+
+        <h4>.wide .keep-grid</h4>
+        <div class="wide keep-grid color-box">
+            <p class="auto"></p>
+            <div class="note"><p class="auto"></p></div>
+            <p class="auto"></p>
+            <p class="auto"></p>
+        </div>
+
+        <h3>.layer .keep-grid</h3>
+
+        <div class="layer keep-grid color-box-accent">
+            <p class="auto"></p>
+            <div class="note"><p class="auto"></p></div>
+            <p class="auto"></p>
+            <p class="auto"></p>
+        </div>
+
+        <h3>.figured &gt; figure</h3>
+
+        <div class="figured">
+            <p class="auto pv"></p>
+            <figure class="back-color-descent padding">
+                <p class="auto"></p>
+            </figure>
+        </div>
+
+    </main>
+
+
+    <!-- ========================================= PAGE CUSTOM -->
+
+</body>
+</html>

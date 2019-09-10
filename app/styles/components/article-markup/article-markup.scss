@@ -37,17 +37,31 @@ mark,
     grid-row-gap: 0;
 }
 .chapter {
-  --padding-top:    calc( 4 * var(--row-space, 1rem) );
+  --padding-top:    var(--big-space, 4rem);
     padding-top:    var(--padding-top);
-  --padding-bottom: calc( 4 * var(--row-space, 1rem) );
+  --padding-bottom: var(--big-space, 4rem);
     padding-bottom: var(--padding-bottom);
-    position: relative;
+    position:       relative;
 }
 .chapter.isontop { --padding-top: 0; }
 .chapter.isonbot { --padding-bottom: 0; }
 .chapter-header {
   --margin-top:     calc( 2 * var(--row-space, 1rem) );
     margin-top:     var(--margin-top);
+}
+
+
+//* ------------------------------------- content boxes
+
+
+.color-box,
+.color-box-descent {
+    @extend .back-color-descent !optional;
+    @extend .pv !optional;
+}
+.color-box-accent {
+    @extend .back-color-accent !optional;
+    @extend .pv !optional;
 }
 
 
@@ -60,7 +74,8 @@ mark,
 
 .nav-header {
     position: sticky;
-    top: 0;
+    top:      0;
+    z-index:  1;
     background-color: var(--back-color-accent);
 }
 

@@ -33,27 +33,50 @@
 
     <script>
         /* ༼°▽°༽ app boot */
-        function BootKing() {
-            let  King = this
-            King.has = {
-                 Queens: ['mutate','onload','action'],
-                 Memory: [],
-                 toRemember: (something)=> King.has.Memory.push(something)
-                }
-            function KeepInMemory(responsible) {
-                 return (dna)=> King.has.toRemember({dna,for:responsible})
-                }
-            King.has.Queens.map( (queen)=>King[queen]=KeepInMemory(queen) )
-            King.Welcome = (dna)=> false
-        }
+        function AppBoot() {
 
-        let app = new BootKing()
-        let run = function AfterWindowLoadReady (King) {
-            let ActivateInterface = () => King.Welcome()
-            setTimeout(ActivateInterface, 200)
-        }
+         // The Noble Blastula
+            let app = this
+            app.has = { memory: [], arrived:true }
+            /*
+            King has arrived.
+            Take the Queen.
+            Keep in memory.
+            Execute later.
+            2019.9.5
+            */
 
-        window.onload = run(app)
+         // The Noble Provocator
+            const proteinProvoker = function ForceErrorsIfShouldBe () {
+              let tpp = new this.__proto__.constructor()
+              let must_have_a_memory = tpp.has.memory.push('something')
+              let must_accept_queens = like_this_one => true
+              tpp.attach('queen_id')(must_accept_queens)
+              tpp.queen_id('try this')
+            }
+
+         // Define responsibility
+            const TakeTheQueen = (queen) =>
+                {
+                    app[queen] =  ExecuteLater(queen)
+                    return (f) => ExecuteLater('update')({name:queen,f})
+                }
+            const KeepInMemory = (dna) => app.has.memory.push(dna)
+            const ExecuteLater =
+                 (responsible) =>
+                         (dna) => KeepInMemory({dna,for:responsible})
+
+         // Apply responsibility
+            app.attach = TakeTheQueen
+            app.ForceErrorsIfShouldBe = proteinProvoker
+
+         // Prepare Primary Queens
+            const queens = ['onload', 'mutate']
+            queens.map( queen => app.attach(queen) )
+        }
+        // autorun
+        let app = new AppBoot()
+        app.ForceErrorsIfShouldBe()
     </script>
 
 
@@ -70,6 +93,12 @@
     <link
         href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic"
         rel="stylesheet">
+
+
+    <!-- ========================================= APP -->
+
+
+    <script defer src="app/script/app-core.js"></script>
 
 
     <!-- ========================================= APP CUSTOM -->
@@ -119,6 +148,7 @@
 
             <nav class="sidepanel-content">
                 <ul class="content-menu js-for-ChaptersMenuBar">
+                    <li><a href="#JournalGrid">Journal Grid</a></li>
                     <li><a href="#Offsidebar">Offsidebar</a></li>
                     <li><a href="#Typography">Web-Typography</a></li>
                     <li><a href="#color-model">Color-model</a></li>
@@ -193,13 +223,68 @@
 
     <!-- not yet -->
 
+    <!-- ----------------------------------------- Journal Grid -->
+
+
+    <article id="JournalGrid" class="journal-grid use-colors colors--ivory">
+
+        <header class="nav-header keep-grid use-colors">
+            <p>
+                → Journal Grid,
+                <a href="https://github.com/zlsheepcity/appart/blob/master/app/styles/components/journal-grid/journal-grid.scss">source code</a>,
+                <a href="dev/tests-journal-grid.html">test page</a>
+            </p>
+        </header>
+
+        <section class="chapter keep-grid">
+
+            <header class="wide">
+                <h1>Journal Grid</h1>
+            </header>
+
+            <section class="block">
+                <p class="auto"></p>
+                <p class="auto"></p>
+            </section>
+
+            <aside class="note">
+                <p class="auto"></p>
+            </aside>
+
+            <section class="layer keep-grid color-box">
+                <section class="block">
+                    <p class="auto"></p>
+                    <p class="auto"></p>
+                </section>
+
+                <aside class="note">
+                    <p class="auto"></p>
+                </aside>
+            </section>
+
+            <section class="wide keep-grid color-box">
+                <section class="block">
+                    <p class="auto"></p>
+                    <p class="auto"></p>
+                </section>
+
+                <aside class="note">
+                    <p class="auto"></p>
+                </aside>
+            </section>
+
+        </section>
+
+
+    </article>
+
     <!-- ----------------------------------------- Offside Bar -->
 
 
     <article id="Offsidebar" class="chapter isontop">
 
         <section class="nav-header journal-grid use-colors">
-            <p>→ Offside bar, <a href="https://github.com/zlsheepcity/appart/tree/master/app/styles/components/offsidebar">CSS+Markup+js</a></p>
+            <p>→ Offside bar, <a href="https://github.com/zlsheepcity/appart/tree/master/app/styles/components/offsidebar">source code</a></p>
         </section>
 
         <header class="banner">
@@ -299,14 +384,14 @@
 
                     <section class="sidepanel-content">
                         <div class="rows midi-paragraph">
-                            <p auto-content></p>
-                            <p auto-content></p>
-                            <p auto-content></p>
-                            <p auto-content></p>
-                            <p auto-content></p>
-                            <p auto-content></p>
-                            <p auto-content></p>
-                            <p auto-content></p>
+                            <p class="auto"></p>
+                            <p class="auto"></p>
+                            <p class="auto"></p>
+                            <p class="auto"></p>
+                            <p class="auto"></p>
+                            <p class="auto"></p>
+                            <p class="auto"></p>
+                            <p class="auto"></p>
                         </div>
                     </section>
 
@@ -328,14 +413,14 @@
 
                     <section class="sidepanel-content">
                         <div class="rows midi-paragraph">
-                            <p auto-content></p>
-                            <p auto-content></p>
-                            <p auto-content></p>
-                            <p auto-content></p>
-                            <p auto-content></p>
-                            <p auto-content></p>
-                            <p auto-content></p>
-                            <p auto-content></p>
+                            <p class="auto"></p>
+                            <p class="auto"></p>
+                            <p class="auto"></p>
+                            <p class="auto"></p>
+                            <p class="auto"></p>
+                            <p class="auto"></p>
+                            <p class="auto"></p>
+                            <p class="auto"></p>
                         </div>
                     </section>
 
@@ -367,7 +452,7 @@
     <article id="Typography" class="chapter isontop journal-grid use-colors colors--ivory">
 
         <header class="nav-header layer keep-grid use-colors">
-            <p>→ Web-Typography, <a href="https://github.com/zlsheepcity/appart/blob/master/app/styles/components/html-core/html-typography.scss">CSS source</a></p>
+            <p>→ Web-Typography, <a href="https://github.com/zlsheepcity/appart/blob/master/app/styles/components/html-core/html-typography.scss">source code</a></p>
         </header>
 
         <div class="wide is-centered">
@@ -386,7 +471,7 @@
         <div class="keep-grid" style="font-family: var(--font-family--tufte-serif);">
             <h3 class="mark">tufte-serif</h3>
             <section class="block">
-                <p auto-content></p>
+                <p class="auto"></p>
                 <p auto-content class="text-block-bigger"></p>
                 <p auto-content class="text-block-smaller"></p>
             </section>
@@ -397,7 +482,7 @@
         <div class="keep-grid" style="font-family: var(--font-family--tufte-sans);">
             <h3 class="mark">tufte-sans</h3>
             <section class="block">
-                <p auto-content></p>
+                <p class="auto"></p>
                 <p auto-content class="text-block-bigger"></p>
                 <p auto-content class="text-block-smaller"></p>
             </section>
@@ -408,7 +493,7 @@
         <div class="keep-grid" style="font-family: var(--font-family--native-sans);">
             <h3 class="mark">native-sans</h3>
             <section class="block">
-                <p auto-content></p>
+                <p class="auto"></p>
                 <p auto-content class="text-block-bigger"></p>
                 <p auto-content class="text-block-smaller"></p>
             </section>
@@ -508,7 +593,7 @@
     <article id="color-model" class="chapter isontop isonbot">
 
         <section class="nav-header journal-grid use-colors">
-            <p>→ Color Model, <a href="https://github.com/zlsheepcity/appart/blob/master/app/styles/components/color-model/color-model.scss">CSS source</a></p>
+            <p>→ Color Model, <a href="https://github.com/zlsheepcity/appart/blob/master/app/styles/components/color-model/color-model.scss">source code</a></p>
         </section>
 
         <header class="banner">

@@ -1,5 +1,5 @@
 /** Offside Bar open/close functions
- *  2019.9.6
+ *  2019.9.11
  */
 
 function InterfaceOffsideBar (barName) {
@@ -9,9 +9,10 @@ function InterfaceOffsideBar (barName) {
 
     const classActive     = 'is-active'
     const classHasOverlay = 'has-offsidebar-overlay'
-    const cssBartender    = '.js-for-' + barName
     const classOverlay    = 'offsidebar-overlay'
     const classBackground = 'offsidebar-background'
+
+    const cssBartender    = '.js-for-' + barName
 
     const doClose  = () => {
         asidebar.classList.remove(classActive)
@@ -39,7 +40,7 @@ function InterfaceOffsideBar (barName) {
         asidebar.prepend(background)
     }
 
- // find/create shadow overlay with functionality
+ // find/create shadow overlay
 
     let overlay = asidebar.querySelector('.'+classOverlay)
     if(!overlay) {
@@ -50,9 +51,18 @@ function InterfaceOffsideBar (barName) {
     bartenderFunction(overlay, 'close')
 }
 
-/*  Apprun *//*
+/** Apprun *//*
+
+    // option 1
+
     app.attach('offsidebar')(InterfaceOffsideBar)
     app.offsidebar('BAR_CLASS_NAME')
+
+    // option 2
+
+    <script defer src="app/styles/components/offsidebar/interface-offsidebar.js"></script>
+    <script>app.onload(f=>InterfaceOffsideBar('ChaptersMenuBar'))</script>
+
 /**/
 
 /*  EOF Offside Bar */

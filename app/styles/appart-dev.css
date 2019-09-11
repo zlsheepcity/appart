@@ -544,6 +544,7 @@ body {
 .figured,
 .wide,
 .note,
+.eastside,
 .box,
 .block,
 .keep-wide,
@@ -584,6 +585,9 @@ body {
 .box {
   grid-column: pm_ / _pm; }
 
+.eastside {
+  grid-column: pn_ / _pn; }
+
 .wide {
   grid-column: pm_ / _pn; }
 
@@ -592,6 +596,7 @@ body {
 
 /* has empty start */
 .note,
+.eastside,
 .wide,
 .keep-wide,
 .box,
@@ -601,6 +606,7 @@ body {
 
 /* has removed note */
 .note,
+.eastside,
 .wide:not(.keep-grid),
 .box {
   --open-main-padding: pm_ pn_ pmb_;
@@ -1813,7 +1819,9 @@ mark, .mark {
   --padding-bottom: 0.25em;
   --menu-icon-placeholder: 2em;
   padding-top: var(--padding-top);
-  padding-bottom: var(--padding-bottom);
+  padding-bottom: var(--padding-bottom); }
+
+.nav-header > * {
   padding-right: var(--menu-icon-placeholder); }
 
 .nav-fly {
@@ -1847,12 +1855,12 @@ mark, .mark {
   padding: 0;
   list-style: none; }
 
-.content-menu > li > a {
+.content-menu > li > * {
   display: block;
   padding: 0.5rem var(--col-space);
   text-decoration: none; }
 
-.content-menu > li > a:hover {
+.content-menu > li > *:hover {
   background-color: rgba(0, 0, 0, 0.25); }
 
 /* link decoration */

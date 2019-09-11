@@ -87,6 +87,8 @@ mark, .mark {
   --menu-icon-placeholder: 2em;
     padding-top:    var(--padding-top);
     padding-bottom: var(--padding-bottom);
+}
+.nav-header>* {
     padding-right:  var(--menu-icon-placeholder);
 }
 
@@ -125,12 +127,12 @@ mark, .mark {
     padding: 0;
     list-style: none;
 }
-.content-menu>li>a {
+.content-menu>li>* {
     display: block;
     padding: 0.5rem var(--col-space);
     text-decoration: none;
 }
-.content-menu>li>a:hover {
+.content-menu>li>*:hover {
     background-color: hsla(0,0%,0%,0.25);
 }
 

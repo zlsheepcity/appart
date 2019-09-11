@@ -120,56 +120,15 @@
             <li></li>
         </ul>
         <ul class="swed-site-menu">
-            <li>
-                <a
-                    class="svga-icon"
-                    style="--size: 2;"
-                    href="https://github.com/zlsheepcity/appart">
-                    <svg><use xlink:href="#svg-github"></use></svg>
-                </a>
-            </li>
-            <li>
-                <a
-                    class="svga-icon js-for-ChaptersMenuBar"
-                    style="--base:16px; --size: 3;">
-                    <svg><use xlink:href="#svg-menu"></use></svg>
-                </a>
-            </li>
+            <li></li>
         </ul>
     </header>
-
-
-    <!-- ----------------------------------------- Side Menu -->
-
-
-    <!-- Menu Bar -->
-
-    <section class="ChaptersMenuBar offsidebar">
-        <div class="sidepanel">
-            <header class="sidepanel-header js-for-ChaptersMenuBar">
-                <h2 class="h4">This page</h2>
-            </header>
-            <nav class="sidepanel-content">
-                <ul class="content-menu js-for-ChaptersMenuBar">
-                    <li><a href="#JournalGrid">Journal Grid</a></li>
-                    <li><a href="#Offsidebar">Offsidebar</a></li>
-                    <li><a href="#Typography">Web-Typography</a></li>
-                    <li><a href="#color-model">Color-model</a></li>
-                </ul>
-            </nav>
-        </div>
-    </section>
-
-    <!-- Menu Scripting -->
-
-    <script defer src="app/styles/components/offsidebar/interface-offsidebar.js"></script>
-    <script>app.onload(f=>InterfaceOffsideBar('ChaptersMenuBar'))</script>
 
 
     <!-- ----------------------------------------- Project Header -->
 
 
-    <section class="swed-banner use-colors colors--swed-secondary">
+    <section class="swed-banner use-colors colors--secondary">
         <h2>App <mark>&</mark> Art</h2>
         <p class="mini-paragraph text-inline-bigger">
             Front-end components. Not a framework,
@@ -178,15 +137,52 @@
     </section>
 
 
+    <!-- ----------------------------------------- Side Menu -->
+
+    <article>
+
+        <!-- Menu Bar -->
+
+        <section class="ChaptersMenuBar offsidebar">
+            <div class="sidepanel">
+                <header class="sidepanel-header">
+                    <h2 class="h4">Summary</h2>
+                </header>
+                <nav class="sidepanel-content">
+                    <ul class="content-menu js-for-ChaptersMenuBar">
+                        <li><a href="#JournalGrid">Journal Grid</a></li>
+                        <li><a href="#Typography">Web-Typography</a></li>
+                        <li><a href="#color-model">Color-model</a></li>
+                        <li><a href="#Offsidebar">Offsidebar</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </section>
+
+        <!-- Menu Bartender -->
+
+        <nav class="nav-fly js-for-ChaptersMenuBar">
+            <figure class="svga-icon"><svg><use xlink:href="#svg-menu"></use></svg></figure>
+        </nav>
+
+        <!-- Menu Scripting -->
+
+        <script defer src="app/styles/components/offsidebar/interface-offsidebar.js"></script>
+        <script>app.onload(f=>InterfaceOffsideBar('ChaptersMenuBar'))</script>
+
+    </article>
+
+
     <!-- ========================================= PAGE CONTENT -->
 
+    <hr class="reading-pause">
 
     <!-- ----------------------------------------- Journal Grid -->
 
 
     <article id="JournalGrid" class="journal-grid">
 
-        <nav class="nav-header keep-grid use-colors">
+        <nav class="nav-header journal-grid use-colors">
             <p>
                 <mark>Journal Grid —</mark>
                 <a href="https://github.com/zlsheepcity/appart/blob/master/app/styles/components/journal-grid/journal-grid.scss" class="link-inline">git source</a>,
@@ -240,29 +236,237 @@
     </article>
 
 
+    <!-- ----------------------------------------- Typography Demo -->
+
+
+    <article id="Typography" class="chapter journal-grid">
+
+        <nav class="nav-header journal-grid use-colors">
+            <p>
+                <mark>Web-Typography</mark> —
+                <a href="https://github.com/zlsheepcity/appart/blob/master/app/styles/components/html-core/html-typography.scss" class="link-inline">git source</a>
+            </p>
+        </nav>
+
+        <header class="wide">
+            <h2 class="h1">Web-Typography</h2>
+            <p>Supporter classes and variables — em-based-size presets, types collections, etc</p>
+        </header>
+
+        <section class="chapter keep-grid  use-colors colors--ivory">
+
+            <header class="wide is-centered">
+                <div class="h1">Web-Typography testpage</div>
+                <div class="h2">Web-Typography testpage</div>
+                <div class="h3">Web-Typography testpage</div>
+                <div class="h4">Web-Typography testpage</div>
+                <div class="h5">Web-Typography testpage</div>
+                <div class="h6">Web-Typography testpage</div>
+                <small>Web-Typography testpage</small>
+            </header>
+
+            <h2 class="chapter-header">Facetypes collection</h2>
+
+            <div class="keep-grid" style="font-family: var(--font-family--tufte-serif);">
+                <h3 class="mark">tufte-serif</h3>
+                <section class="block">
+                    <p txt></p>
+                    <p txt class="text-block-bigger"></p>
+                    <p txt class="text-block-smaller"></p>
+                </section>
+                <div class="note keep-font-size">
+                    <p>297351 years<br>&amp;#$@*</p>
+                </div>
+            </div>
+            <div class="keep-grid" style="font-family: var(--font-family--tufte-sans);">
+                <h3 class="mark">tufte-sans</h3>
+                <section class="block">
+                    <p txt></p>
+                    <p txt class="text-block-bigger"></p>
+                    <p txt class="text-block-smaller"></p>
+                </section>
+                <div class="note keep-font-size">
+                    <p>297351 years<br>&amp;#$@*</p>
+                </div>
+            </div>
+            <div class="keep-grid" style="font-family: var(--font-family--native-sans);">
+                <h3 class="mark">native-sans</h3>
+                <section class="block">
+                    <p txt></p>
+                    <p txt class="text-block-bigger"></p>
+                    <p txt class="text-block-smaller"></p>
+                </section>
+                <div class="note keep-font-size">
+                    <p>297351 years<br>&amp;#$@*</p>
+                </div>
+            </div>
+
+
+            <h2 class="chapter-header">Font-size modifyers</h2>
+
+            <div class="block">
+                <div>
+                    <span txt></span>
+                    <mark class="text-inline-bigger">[.text-inline-bigger]</mark>
+                    <span txt class="text-inline-bigger"></span>
+                    <span txt></span>
+                    <mark class="text-inline-bigger">[.text-inline-smaller]</mark>
+                    <span txt class="text-inline-smaller"></span>
+                    <span txt></span>
+                </div>
+                <div class="group-center">
+                    <span class="back-color-descent">line height</span>
+                    <span>—</span>
+                    <span class="back-color-descent text-inline-bigger">line height</span>
+                </div>
+                <div class="text-block-bigger">
+                    <mark>.text-block-bigger</mark>
+                    <span txt></span>
+                </div>
+                <div class="text-block-smaller">
+                    <mark>.text-block-smaller</mark>
+                    <span txt></span>
+                </div>
+            </div>
+
+
+            <section class="wide">
+
+                <header class="chapter-header">
+                    <h2>Paragraph readable width</h2>
+                </header>
+
+                <h3>
+                    <mark>.paragraph</mark>
+                    Max width limit (42em)
+                </h3>
+                <div class="paragraph group-content-rows">
+                    <div><span txt></span><span txt></span></div>
+                    <div><span txt></span><span txt></span></div>
+                </div>
+
+                <h3>
+                    <mark>.midi-paragraph</mark>
+                    Optimal middle-size (24em)
+                </h3>
+                <div class="midi-paragraph group-content-rows">
+                    <div txt></div><div txt></div>
+                </div>
+
+                <section class="group-banner">
+                    <h3 class="banner-title">
+                        <mark>.mini-paragraph</mark>
+                        Minimal readable width (12em)
+                    </h3>
+                    <div class="mini-paragraph group-content-rows">
+                        <div>Front-end components. Not a framework, but reusable code templates.</div>
+                        <div>Atom classes for maintainable inline CSS</div>
+                        <div>CSS grid template for big articles with a lot of content, illustrations and creative visuals.</div>
+                    </div>
+                    <div class="mini-paragraph group-content-rows text-inline-bigger">
+                        <div>Front-end components. Not a framework, but reusable code templates.</div>
+                        <div>Atom classes for maintainable inline CSS</div>
+                        <div>CSS grid template for big articles with a lot of content, illustrations and creative visuals.</div>
+                    </div>
+                </section>
+
+            </section>
+
+        </section>
+
+    </article>
+
+
+    <!-- ----------------------------------------- Color Model -->
+
+
+    <article id="color-model" class="journal-grid">
+
+        <nav class="nav-header journal-grid use-colors">
+            <p>
+                <mark>Color Model</mark> —
+                <a href="https://github.com/zlsheepcity/appart/blob/master/app/styles/components/color-model/color-model.scss">git source</a>
+            </p>
+        </nav>
+
+        <header class="wide">
+            <h2 class="h1">Color Model</h2>
+            <p>Nine variables for color-switching.</p>
+        </header>
+
+        <section class="chapter layer">
+
+            <header class="banner">
+                <h2 class="h3">Some presets:</h2>
+            </header>
+
+            <section class="banner use-colors colors--root">
+                <header>
+                    <h2>colors--root</h2>
+                    <p class="text-color-descent">Color Model 3×3+2</p>
+                </header>
+                <p class="back-color-descent back-color-hover link-color padding">Hover Me</p>
+            </section>
+            <section class="banner use-colors colors--action">
+                <header>
+                    <h2>colors--action</h2>
+                    <p class="text-color-descent">Color Model 3×3+2</p>
+                </header>
+                <p class="back-color-descent back-color-hover link-color padding">Hover Me</p>
+            </section>
+            <section class="banner use-colors colors--ivory">
+                <header>
+                    <h2>colors--ivory</h2>
+                    <p class="text-color-descent">Color Model 3×3+2</p>
+                </header>
+                <p class="back-color-descent back-color-hover link-color padding">Hover Me</p>
+            </section>
+            <section class="banner use-colors colors--swed">
+                <header>
+                    <h2>colors--swed</h2>
+                    <p class="text-color-descent">Color Model 3×3+2</p>
+                </header>
+                <p class="back-color-descent back-color-hover link-color padding">Hover Me</p>
+            </section>
+            <section class="banner use-colors colors--swed-secondary">
+                <header>
+                    <h2>colors--swed-secondary</h2>
+                    <p class="text-color-descent">Color Model 3×3+2</p>
+                </header>
+                <p class="back-color-descent back-color-hover link-color padding">Hover Me</p>
+            </section>
+            <section class="banner use-colors colors--swed-third">
+                <header>
+                    <h2>colors--swed-third</h2>
+                    <p class="text-color-descent">Color Model 3×3+2</p>
+                </header>
+                <p class="back-color-descent back-color-hover link-color padding">Hover Me</p>
+            </section>
+
+        </section>
+
+    </article>
+
+
     <!-- ----------------------------------------- Offside Bar -->
 
 
-    <article id="Offsidebar" class="chapter isontop">
+    <article id="Offsidebar" class="journal-grid">
 
-        <section class="nav-header journal-grid use-colors">
-            <p>→ Offside bar, <a href="https://github.com/zlsheepcity/appart/tree/master/app/styles/components/offsidebar">source code</a></p>
-        </section>
+        <nav class="nav-header journal-grid use-colors">
+            <p>
+                <mark>Offside Bar</mark> —
+                <a href="https://github.com/zlsheepcity/appart/tree/master/app/styles/components/offsidebar" >git source</a>
+            </p>
+        </nav>
 
-        <header class="banner">
-            <figure class="mini-paragraph">
-                <img
-                    src="art/component-icons/component-icon--ofsidebar.svg"
-                    alt="SVG icon for Ofsidebar">
-            </figure>
-            <div>
-                <h2 class="h1">Offside bar</h2>
-                <p>Demo examples</p>
-            </div>
-            
+        <header class="wide">
+            <h2 class="h1">Offside bar</h2>
+            <p>Reveal side panel, avoids content jumps</p>
         </header>
 
-        <section class="banner">
+        <section class="chapter banner">
+                <h3 class="banner-title">Demo cases</h3>
                 <button class="swed-button js-for-EastsideBar">Default</button>
                 <button class="swed-button js-for-WestsideBar">From Westside</button>
                 <button class="swed-button js-for-OverflowBar">Content overflow</button>
@@ -286,15 +490,15 @@
 
                     <nav class="sidepanel-content">
                         <ul class="content-menu js-for-EastsideBar">
-                            <li>Lorem ipsum</li>
-                            <li>Pellentesque habitant</li>
-                            <li>Morbi tristique senectus</li>
-                            <li>Et netus et malesuada</li>
-                            <li>Fames ac turpis egestas</li>
-                            <li>Vestibulum tortor quam</li>
-                            <li>Feugiat vitae</li>
-                            <li>Ultricies eget</li>
-                            <li>Tempor sit amet</li>
+                            <li><span>Lorem ipsum</span></li>
+                            <li><span>Pellentesque habitant</span></li>
+                            <li><span>Morbi tristique senectus</span></li>
+                            <li><span>Et netus et malesuada</span></li>
+                            <li><span>Fames ac turpis egestas</span></li>
+                            <li><span>Vestibulum tortor quam</span></li>
+                            <li><span>Feugiat vitae</span></li>
+                            <li><span>Ultricies eget</span></li>
+                            <li><span>Tempor sit amet</span></li>
                         </ul>
                     </nav>
 
@@ -316,15 +520,15 @@
 
                     <nav class="sidepanel-content">
                         <ul class="content-menu js-for-WestsideBar">
-                            <li>Lorem ipsum</li>
-                            <li>Pellentesque habitant</li>
-                            <li>Morbi tristique senectus</li>
-                            <li>Et netus et malesuada</li>
-                            <li>Fames ac turpis egestas</li>
-                            <li>Vestibulum tortor quam</li>
-                            <li>Feugiat vitae</li>
-                            <li>Ultricies eget</li>
-                            <li>Tempor sit amet</li>
+                            <li><span>Lorem ipsum</span></li>
+                            <li><span>Pellentesque habitant</span></li>
+                            <li><span>Morbi tristique senectus</span></li>
+                            <li><span>Et netus et malesuada</span></li>
+                            <li><span>Fames ac turpis egestas</span></li>
+                            <li><span>Vestibulum tortor quam</span></li>
+                            <li><span>Feugiat vitae</span></li>
+                            <li><span>Ultricies eget</span></li>
+                            <li><span>Tempor sit amet</span></li>
                         </ul>
                     </nav>
 
@@ -346,14 +550,14 @@
 
                     <section class="sidepanel-content">
                         <div class="rows midi-paragraph">
-                            <p class="auto"></p>
-                            <p class="auto"></p>
-                            <p class="auto"></p>
-                            <p class="auto"></p>
-                            <p class="auto"></p>
-                            <p class="auto"></p>
-                            <p class="auto"></p>
-                            <p class="auto"></p>
+                            <p txt></p>
+                            <p txt></p>
+                            <p txt></p>
+                            <p txt></p>
+                            <p txt></p>
+                            <p txt></p>
+                            <p txt></p>
+                            <p txt></p>
                         </div>
                     </section>
 
@@ -375,14 +579,14 @@
 
                     <section class="sidepanel-content">
                         <div class="rows midi-paragraph">
-                            <p class="auto"></p>
-                            <p class="auto"></p>
-                            <p class="auto"></p>
-                            <p class="auto"></p>
-                            <p class="auto"></p>
-                            <p class="auto"></p>
-                            <p class="auto"></p>
-                            <p class="auto"></p>
+                            <p txt></p>
+                            <p txt></p>
+                            <p txt></p>
+                            <p txt></p>
+                            <p txt></p>
+                            <p txt></p>
+                            <p txt></p>
+                            <p txt></p>
                         </div>
                     </section>
 
@@ -407,206 +611,6 @@
 
     </article>
 
-
-    <!-- ----------------------------------------- Typography Demo -->
-
-
-    <article id="Typography" class="chapter isontop journal-grid use-colors colors--ivory">
-
-        <header class="nav-header layer keep-grid use-colors">
-            <p>→ Web-Typography, <a href="https://github.com/zlsheepcity/appart/blob/master/app/styles/components/html-core/html-typography.scss">source code</a></p>
-        </header>
-
-        <div class="wide is-centered">
-            <div class="h1">Web-Typography testpage</div>
-            <div class="h2">Web-Typography testpage</div>
-            <div class="h3">Web-Typography testpage</div>
-            <div class="h4">Web-Typography testpage</div>
-            <div class="h5">Web-Typography testpage</div>
-            <div class="h6">Web-Typography testpage</div>
-            <small>Web-Typography testpage</small>
-        </div>
-
-
-        <h2 class="chapter-header">Facetype collections</h2>
-
-        <div class="keep-grid" style="font-family: var(--font-family--tufte-serif);">
-            <h3 class="mark">tufte-serif</h3>
-            <section class="block">
-                <p class="auto"></p>
-                <p auto-content class="text-block-bigger"></p>
-                <p auto-content class="text-block-smaller"></p>
-            </section>
-            <div class="note keep-font-size">
-                <p>297351 years<br>&amp;#$@*</p>
-            </div>
-        </div>
-        <div class="keep-grid" style="font-family: var(--font-family--tufte-sans);">
-            <h3 class="mark">tufte-sans</h3>
-            <section class="block">
-                <p class="auto"></p>
-                <p auto-content class="text-block-bigger"></p>
-                <p auto-content class="text-block-smaller"></p>
-            </section>
-            <div class="note keep-font-size">
-                <p>297351 years<br>&amp;#$@*</p>
-            </div>
-        </div>
-        <div class="keep-grid" style="font-family: var(--font-family--native-sans);">
-            <h3 class="mark">native-sans</h3>
-            <section class="block">
-                <p class="auto"></p>
-                <p auto-content class="text-block-bigger"></p>
-                <p auto-content class="text-block-smaller"></p>
-            </section>
-            <div class="note keep-font-size">
-                <p>297351 years<br>&amp;#$@*</p>
-            </div>
-        </div>
-
-
-        <h2 class="chapter-header">Font-size modifyers</h2>
-
-        <div class="block">
-            <div>
-                <span auto-content></span>
-                <mark class="text-inline-bigger">[.text-inline-bigger]</mark>
-                <span auto-content class="text-inline-bigger"></span>
-                <span auto-content></span>
-                <mark class="text-inline-bigger">[.text-inline-smaller]</mark>
-                <span auto-content class="text-inline-smaller"></span>
-                <span auto-content></span>
-            </div>
-            <div class="group-center">
-                <span class="back-color-descent">line height</span>
-                <span>—</span>
-                <span class="back-color-descent text-inline-bigger">line height</span>
-            </div>
-            <div class="text-block-bigger">
-                <mark>.text-block-bigger</mark>
-                <span auto-content></span>
-            </div>
-            <div class="text-block-smaller">
-                <mark>.text-block-smaller</mark>
-                <span auto-content></span>
-            </div>
-        </div>
-
-
-
-        <section class="wide">
-
-            <header class="chapter-header">
-                <h2>Paragraph readable width</h2>
-            </header>
-
-            <h3>
-                <mark>.paragraph</mark>
-                Max width limit (42em)
-            </h3>
-            <div class="paragraph rows">
-                <div>
-                    <span auto-content></span>
-                    <span auto-content></span>
-                </div>
-                <div>
-                    <span auto-content></span>
-                    <span auto-content></span>
-                </div>
-            </div>
-
-            <h3>
-                <mark>.midi-paragraph</mark>
-                Optimal middle-size (24em)
-            </h3>
-            <div class="midi-paragraph rows">
-                <div auto-content></div>
-                <div auto-content></div>
-            </div>
-
-            <section class="group-banner">
-
-                <h3 class="banner-title">
-                    <mark>.mini-paragraph</mark>
-                    Minimal readable width (12em)
-                </h3>
-                <div class="mini-paragraph rows">
-                    <div>Front-end components. Not a framework, but reusable code templates.</div>
-                    <div>Atom classes for maintainable inline CSS</div>
-                    <div>CSS grid template for big articles with a lot of content, illustrations and creative visuals.</div>
-                </div>
-                <div class="text-inline-bigger mini-paragraph rows">
-                    <div>Front-end components. Not a framework, but reusable code templates.</div>
-                    <div>Atom classes for maintainable inline CSS</div>
-                    <div>CSS grid template for big articles with a lot of content, illustrations and creative visuals.</div>
-                </div>
-
-            </section>
-
-
-        </section>
-
-    </article>
-
-
-    <!-- ----------------------------------------- Color Model -->
-
-
-    <article id="color-model" class="chapter isontop isonbot">
-
-        <section class="nav-header journal-grid use-colors">
-            <p>→ Color Model, <a href="https://github.com/zlsheepcity/appart/blob/master/app/styles/components/color-model/color-model.scss">source code</a></p>
-        </section>
-
-        <header class="banner">
-            <h2 class="h1">Samples for Color Model</h2>
-        </header>
-
-
-        <section class="banner use-colors colors--root">
-            <header>
-                <h2>colors--root</h2>
-                <p class="text-color-descent">Color Model 3×3+2</p>
-            </header>
-            <p class="back-color-descent back-color-hover link-color padding">Hover Me</p>
-        </section>
-        <section class="banner use-colors colors--action">
-            <header>
-                <h2>colors--action</h2>
-                <p class="text-color-descent">Color Model 3×3+2</p>
-            </header>
-            <p class="back-color-descent back-color-hover link-color padding">Hover Me</p>
-        </section>
-        <section class="banner use-colors colors--ivory">
-            <header>
-                <h2>colors--ivory</h2>
-                <p class="text-color-descent">Color Model 3×3+2</p>
-            </header>
-            <p class="back-color-descent back-color-hover link-color padding">Hover Me</p>
-        </section>
-        <section class="banner use-colors colors--swed">
-            <header>
-                <h2>colors--swed</h2>
-                <p class="text-color-descent">Color Model 3×3+2</p>
-            </header>
-            <p class="back-color-descent back-color-hover link-color padding">Hover Me</p>
-        </section>
-        <section class="banner use-colors colors--swed-secondary">
-            <header>
-                <h2>colors--swed-secondary</h2>
-                <p class="text-color-descent">Color Model 3×3+2</p>
-            </header>
-            <p class="back-color-descent back-color-hover link-color padding">Hover Me</p>
-        </section>
-        <section class="banner use-colors colors--swed-third">
-            <header>
-                <h2>colors--swed-third</h2>
-                <p class="text-color-descent">Color Model 3×3+2</p>
-            </header>
-            <p class="back-color-descent back-color-hover link-color padding">Hover Me</p>
-        </section>
-
-    </article>
 
 
     <!-- ----------------------------------------------------- SVGA Icons -->

@@ -93,6 +93,7 @@
 .figured,
 .wide,
 .note,
+.eastside,
 .box,
 .block,
 /* shortcuts */
@@ -134,12 +135,14 @@
 .layer          { grid-column:    full;     }
 .keep-layer     { grid-column:    full;     }
 .box            { grid-column:  pm_ / _pm;  }
+.eastside       { grid-column:  pn_ / _pn;  }
 .wide           { grid-column:  pm_ / _pn;  }
 .keep-wide      { grid-column:  pm_ / _pn;  }
 
 
 /* has empty start */
 .note,
+.eastside,
 .wide,
 .keep-wide,
 .box,
@@ -151,6 +154,7 @@
 
 /* has removed note */
 .note,
+.eastside,
 .wide:not(.keep-grid),
 .box {
     --open-main-padding: pm_ pn_ pmb_;

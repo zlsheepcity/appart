@@ -122,6 +122,78 @@
     </screen>
 
 
+    <!-- ----------------------------------------- Journal Grid Dora -->
+
+    <style>
+        .dora-grid {
+            display:         grid;
+            align-items:     start;
+            justify-content: start;
+            grid-auto-flow:  row;
+            grid-auto-rows:  min-content;
+            grid-row-gap:    1.5rem;
+            grid-column-gap: 0;
+            grid-template-columns:
+                [full-start]
+                    0
+                [base-start]
+                    2.5rem
+                [pm_]
+                    1.5rem
+                [m_]
+                    35rem
+                [_m]
+                    1.5rem
+                [_pm]
+                    0
+                [pn_]
+                    1.5rem
+                [n_]
+                    16rem
+                [_n]
+                    1.5rem
+                [_pn]
+                    2.5rem
+                [base-end]
+                    0
+                [roof-start]
+                    1fr
+                [roof-end]
+                    0
+                [full-end];
+        }
+        .dora-grid * { grid-column: m_/_m; }
+        .dora-block  { grid-column: m_/_m; background: #ccc; }
+        .dora-box   {  grid-column: pm_/_pm; background: #ffc; }
+        .dora-note   { grid-column: pn_/_pn; background: #fcc; }
+        .dora-wide   { grid-column: pm_/_pn;  background: #cfc;}
+        .dora-base   { grid-column: base;  background: #ccf;}
+        .dora-grid {
+            padding: 4rem 0;
+        }
+        .dora-grid > * { background-color: #222!important;}
+    </style>
+    <article class="dora-grid">
+        <div class="dora-block">
+            <p txt></p>
+            <p txt></p>
+        </div>
+        <div class="dora-note">
+            <p txt></p>
+        </div>
+        <div class="dora-box">
+            <p txt></p>
+            <p txt></p>
+        </div>
+        <div class="dora-wide">
+            <p txt></p>
+        </div>
+        <div class="dora-base">
+            <p txt></p>
+        </div>
+    </article>
+
+
     <!-- ----------------------------------------- Dropdown -->
 
 

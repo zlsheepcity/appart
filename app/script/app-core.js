@@ -57,6 +57,7 @@ function AppKing(mRna) {
 
 let autorun = function apploader () {
     let ActivateAppInterface = () => app = new AppKing(app)
+    console.log('x');
     setTimeout(ActivateAppInterface, 200)
 }
 window.onload = autorun()

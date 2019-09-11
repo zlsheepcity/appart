@@ -478,8 +478,8 @@ body {
 
 /*  EOF Typography */
 /** journal-grid
- *  book-style content layout
- *  2019.8.16
+ *  CSS-grid for articles
+ *  2019.9.11, Clara
  *
  *  CSS
  *
@@ -546,6 +546,8 @@ body {
 .note,
 .box,
 .block,
+.keep-wide,
+.keep-layer,
 .keep-grid,
 .journal-grid {
   display: grid;
@@ -570,7 +572,13 @@ body {
   grid-column: full; }
 
 /* Order #3 important */
+.journal-grid {
+  grid-column: full; }
+
 .layer {
+  grid-column: full; }
+
+.keep-layer {
   grid-column: full; }
 
 .box {
@@ -579,9 +587,13 @@ body {
 .wide {
   grid-column: pm_ / _pn; }
 
+.keep-wide {
+  grid-column: pm_ / _pn; }
+
 /* has empty start */
 .note,
 .wide,
+.keep-wide,
 .box,
 .block {
   --grid-part--full-start: var(--grid-part--empty-start);
@@ -1768,10 +1780,10 @@ body {
  *
  */
 /* ----------------------------------- swed-banner alias */
-mark,
-.mark {
+mark, .mark {
   color: var(--text-color-accent, inherit);
-  background-color: transparent; }
+  background-color: transparent;
+  /* remove defaults */ }
 
 .book-of-chapters {
   grid-row-gap: 0; }
@@ -1828,6 +1840,33 @@ mark,
 
 .has-offsidebar-overlay .nav-fly {
   opacity: 0; }
+
+/* sidebar menu list */
+.content-menu {
+  margin: 0 calc( (-1) * var(--col-space) );
+  padding: 0;
+  list-style: none; }
+
+.content-menu > li > a {
+  display: block;
+  padding: 0.5rem var(--col-space);
+  text-decoration: none; }
+
+.content-menu > li > a:hover {
+  background-color: rgba(0, 0, 0, 0.25); }
+
+/* link decoration */
+.link-inline {
+  text-decoration: underline;
+  --text-decoration-color: currentColor;
+  text-decoration-color: var(--text-decoration-color); }
+
+.link-inline:hover {
+  --text-decoration-color: var(--link-color-accent, currentColor); }
+
+/* dev tools */
+[txt] {
+  opacity: 0.5; }
 
 /*  EOF Article markup */
 /** Some Project Paletes

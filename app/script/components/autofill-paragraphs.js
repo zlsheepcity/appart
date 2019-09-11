@@ -18,6 +18,7 @@ function autofillParagraphs(selector='.auto') {
 }
 
 /*  Apprun */
+    app.onload(()=>autofillParagraphs('[txt]'))
     app.onload(autofillParagraphs)
 /**/
 

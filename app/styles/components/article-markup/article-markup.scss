@@ -26,8 +26,10 @@ h6 { @extend .h6 !optional; }
 
 big   { @extend .text-inline-bigger  !optional; }
 small { @extend .text-inline-smaller !optional; }
-mark,
-.mark { color: var(--text-color-accent, inherit); background-color: transparent; }
+mark, .mark {
+    color: var(--text-color-accent, inherit);
+    background-color: transparent; /* remove defaults */
+}
 
 
 //* ------------------------------------- article
@@ -72,6 +74,10 @@ mark,
     @extend .group-content-rows !optional;
 }
 
+
+//* ------------------------------------- pending components
+
+
 .nav-header {
     position: sticky;
     top:      0;
@@ -110,5 +116,40 @@ mark,
   --background-color: firebrick;
 }
 .has-offsidebar-overlay .nav-fly { opacity: 0; }
+
+
+/* sidebar menu list */
+
+.content-menu {
+    margin:  0 calc( (-1) * var(--col-space) );
+    padding: 0;
+    list-style: none;
+}
+.content-menu>li>a {
+    display: block;
+    padding: 0.5rem var(--col-space);
+    text-decoration: none;
+}
+.content-menu>li>a:hover {
+    background-color: hsla(0,0%,0%,0.25);
+}
+
+
+/* link decoration */
+
+.link-inline {
+    text-decoration: underline;
+  --text-decoration-color: currentColor;
+    text-decoration-color: var(--text-decoration-color);
+}
+.link-inline:hover {
+  --text-decoration-color: var(--link-color-accent, currentColor);
+}
+
+
+/* dev tools */
+
+[txt] { opacity: 0.5; }
+
 
 /*  EOF Article markup */

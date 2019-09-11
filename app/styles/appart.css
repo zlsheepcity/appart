@@ -478,8 +478,8 @@ body {
 
 /*  EOF Typography */
 /** journal-grid
- *  book-style content layout
- *  2019.8.16
+ *  CSS-grid for articles
+ *  2019.9.11, Clara
  *
  *  CSS
  *
@@ -546,6 +546,8 @@ body {
 .note,
 .box,
 .block,
+.keep-wide,
+.keep-layer,
 .keep-grid,
 .journal-grid {
   display: grid;
@@ -570,7 +572,13 @@ body {
   grid-column: full; }
 
 /* Order #3 important */
+.journal-grid {
+  grid-column: full; }
+
 .layer {
+  grid-column: full; }
+
+.keep-layer {
   grid-column: full; }
 
 .box {
@@ -579,9 +587,13 @@ body {
 .wide {
   grid-column: pm_ / _pn; }
 
+.keep-wide {
+  grid-column: pm_ / _pn; }
+
 /* has empty start */
 .note,
 .wide,
+.keep-wide,
 .box,
 .block {
   --grid-part--full-start: var(--grid-part--empty-start);
@@ -670,13 +682,14 @@ body {
   /* bar is never full width, minimal gap  */
   --empty-space-offset: 3rem;
   /* open animation time  */
-  --transition-duration--slidein: 240ms; }
+  --transition-duration--slidein: 340ms;
+  --transition-duration--overlay: 1.4s; }
 
 /** -------------------------------- two sides difference */
 /* Eastside → default */
 .offsidebar {
   /* bar position */
-  --left: auto;
+  --left: var(--state-width, auto);
   --right: 0;
   --transform-origin--horizontal: right;
   /* close icon position */
@@ -689,7 +702,7 @@ body {
 .offsidebar.from-westside {
   /* bar position */
   --left: 0;
-  --right: auto;
+  --right: var(--state-width, auto);
   --transform-origin--horizontal: left;
   /* close icon position */
   --close-icon-right: calc( -1 * var(--empty-space-offset) );
@@ -700,11 +713,13 @@ body {
 /** -------------------------------- closed/active states */
 .offsidebar {
   --state-event: none;
-  --state-value: 0; }
+  --state-value: 0;
+  --state-width: 0; }
 
 .offsidebar.is-active {
   --state-event: all;
-  --state-value: 1; }
+  --state-value: 1;
+  --state-width: auto; }
 
 /** -------------------------------- layout & behavior */
 .offsidebar {
@@ -825,6 +840,9 @@ body {
 .offsidebar .offsidebar-overlay {
   transition: opacity var(--transition-duration--slidein);
   transition-timing-function: var(--timing-function--focusZoom); }
+
+.offsidebar.is-active .offsidebar-overlay {
+  transition-duration: var(--transition-duration--overlay); }
 
 /* Animate offsidebar */
 .offsidebar-background {
@@ -1762,10 +1780,10 @@ body {
  *
  */
 /* ----------------------------------- swed-banner alias */
-mark,
-.mark {
+mark, .mark {
   color: var(--text-color-accent, inherit);
-  background-color: transparent; }
+  background-color: transparent;
+  /* remove defaults */ }
 
 .book-of-chapters {
   grid-row-gap: 0; }
@@ -1790,7 +1808,65 @@ mark,
 .nav-header {
   position: sticky;
   top: 0;
-  z-index: 1; }
+  z-index: 1;
+  --padding-top: 0.25em;
+  --padding-bottom: 0.25em;
+  --menu-icon-placeholder: 2em;
+  padding-top: var(--padding-top);
+  padding-bottom: var(--padding-bottom);
+  padding-right: var(--menu-icon-placeholder); }
+
+.nav-fly {
+  position: fixed;
+  z-index: 3;
+  top: 0;
+  right: 0;
+  width: 2em;
+  height: 2em;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  --background-color: black;
+  --clip-path: polygon(0 0, 100% 0, 100% 100%, 70% 100%, 0% 0%);
+  clip-path: var(--clip-path);
+  cursor: pointer;
+  background-color: var(--background-color);
+  transition: clip-path 240ms var(--timing-function--focusZoom); }
+
+.nav-fly:hover {
+  --clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%, 0% 100%);
+  --background-color: firebrick; }
+
+.has-offsidebar-overlay .nav-fly {
+  opacity: 0; }
+
+/* sidebar menu list */
+.content-menu {
+  margin: 0 calc( (-1) * var(--col-space) );
+  padding: 0;
+  list-style: none; }
+
+.content-menu > li > a {
+  display: block;
+  padding: 0.5rem var(--col-space);
+  text-decoration: none; }
+
+.content-menu > li > a:hover {
+  background-color: rgba(0, 0, 0, 0.25); }
+
+/* link decoration */
+.link-inline {
+  text-decoration: underline;
+  --text-decoration-color: currentColor;
+  text-decoration-color: var(--text-decoration-color); }
+
+.link-inline:hover {
+  --text-decoration-color: var(--link-color-accent, currentColor); }
+
+/* dev tools */
+[txt] {
+  opacity: 0.5; }
 
 /*  EOF Article markup */
 /** Some Project Paletes

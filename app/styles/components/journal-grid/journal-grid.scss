@@ -1,6 +1,6 @@
 /** journal-grid
- *  book-style content layout
- *  2019.8.16
+ *  CSS-grid for articles
+ *  2019.9.11, Clara
  *
  *  CSS
  *
@@ -95,6 +95,9 @@
 .note,
 .box,
 .block,
+/* shortcuts */
+.keep-wide,
+.keep-layer,
 /* core */
 .keep-grid,
 .journal-grid {
@@ -127,14 +130,18 @@
 .journal-grid * { grid-column:   m_ / _m;   } /* Order #1 important */
 .block          { grid-column:   m_ / _m;   } /* Order #2 important */
 .keep-grid      { grid-column:    full;     } /* Order #3 important */
+.journal-grid   { grid-column:    full;     }
 .layer          { grid-column:    full;     }
+.keep-layer     { grid-column:    full;     }
 .box            { grid-column:  pm_ / _pm;  }
 .wide           { grid-column:  pm_ / _pn;  }
+.keep-wide      { grid-column:  pm_ / _pn;  }
 
 
 /* has empty start */
 .note,
 .wide,
+.keep-wide,
 .box,
 .block {
     --grid-part--full-start: var(--grid-part--empty-start);
@@ -203,5 +210,6 @@
     .join-layers {
         grid-row-gap: 0;
     }
+
 
 /*  EOF journal-grid */

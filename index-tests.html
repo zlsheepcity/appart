@@ -921,47 +921,50 @@
 
         <nav class="nav-header keep-grid use-colors">
             <p>
-                Journal Grid,
-                <a href="https://github.com/zlsheepcity/appart/blob/master/app/styles/components/journal-grid/journal-grid.scss">git source</a>,
-                <a href="dev/tests-journal-grid.html">demo page</a>
+                <mark>Journal Grid —</mark>
+                <a href="https://github.com/zlsheepcity/appart/blob/master/app/styles/components/journal-grid/journal-grid.scss" class="link-inline">git source</a>,
+                <a href="dev/tests-journal-grid.html" class="link-inline">demo page</a>
             </p>
         </nav>
 
         <header class="wide">
-            <h1>CSS-grid for articles</h1>
-            <p>journal-grid</p>
+            <h2 class="h1">CSS-grid for articles</h2>
+            <p>
+                Journal-looks article layout with side-notes and various column-merging properties.<br>
+                Has constant spaces, supports small screens, easy markup.
+            </p>
         </header>
 
-        <section class="chapter keep-grid  use-colors colors--ivory">
+        <section class="journal-grid chapter use-colors colors--ivory">
 
             <section class="block">
-                <p class="auto"></p>
-                <p class="auto"></p>
+                <p txt></p>
+                <p txt></p>
             </section>
 
             <aside class="note">
-                <p class="auto"></p>
+                <p txt></p>
             </aside>
 
-            <section class="layer keep-grid color-box">
-                <section class="block">
-                    <p class="auto"></p>
-                    <p class="auto"></p>
-                </section>
+            <p txt></p>
 
+            <section class="keep-layer color-box">
+                <section class="block">
+                    <p txt></p>
+                    <p txt></p>
+                </section>
                 <aside class="note">
-                    <p class="auto"></p>
+                    <p txt></p>
                 </aside>
             </section>
 
-            <section class="wide keep-grid color-box">
+            <section class="keep-wide color-box">
                 <section class="block">
-                    <p class="auto"></p>
-                    <p class="auto"></p>
+                    <p txt></p>
+                    <p txt></p>
                 </section>
-
                 <aside class="note">
-                    <p class="auto"></p>
+                    <p txt></p>
                 </aside>
             </section>
 
@@ -973,138 +976,152 @@
     <!-- ----------------------------------------- Typography Demo -->
 
 
-    <section id="Typography" class="chapter journal-grid use-colors colors--ivory">
+    <article id="Typography" class="chapter journal-grid">
 
-        <div class="wide is-centered">
-            <div class="h1">Web-Typography testpage</div>
-            <div class="h2">Web-Typography testpage</div>
-            <div class="h3">Web-Typography testpage</div>
-            <div class="h4">Web-Typography testpage</div>
-            <div class="h5">Web-Typography testpage</div>
-            <div class="h6">Web-Typography testpage</div>
-            <small>Web-Typography testpage</small>
-        </div>
+        <nav class="nav-header keep-grid use-colors">
+            <p>
+                <mark>Web-Typography</mark> —
+                <a href="https://github.com/zlsheepcity/appart/blob/master/app/styles/components/html-core/html-typography.scss" class="link-inline">git source</a></p>
+        </nav>
 
+        <header class="wide">
+            <h2 class="h1">Web-Typography</h2>
+            <p>em-based-size presets, types collections</p>
+        </header>
 
-        <h2 class="chapter-header">Facetype collections</h2>
+        <section class="chapter keep-grid  use-colors colors--ivory">
 
-        <div class="keep-grid" style="font-family: var(--font-family--tufte-serif);">
-            <h3 class="mark">tufte-serif</h3>
-            <section class="block">
-                <p class="auto"></p>
-                <p class="auto" class="text-block-bigger"></p>
-                <p class="auto" class="text-block-smaller"></p>
-            </section>
-            <div class="note keep-font-size">
-                <p>297351 years<br>&amp;#$@*</p>
-            </div>
-        </div>
-        <div class="keep-grid" style="font-family: var(--font-family--tufte-sans);">
-            <h3 class="mark">tufte-sans</h3>
-            <section class="block">
-                <p class="auto"></p>
-                <p class="auto" class="text-block-bigger"></p>
-                <p class="auto" class="text-block-smaller"></p>
-            </section>
-            <div class="note keep-font-size">
-                <p>297351 years<br>&amp;#$@*</p>
-            </div>
-        </div>
-        <div class="keep-grid" style="font-family: var(--font-family--native-sans);">
-            <h3 class="mark">native-sans</h3>
-            <section class="block">
-                <p class="auto"></p>
-                <p class="auto" class="text-block-bigger"></p>
-                <p class="auto" class="text-block-smaller"></p>
-            </section>
-            <div class="note keep-font-size">
-                <p>297351 years<br>&amp;#$@*</p>
-            </div>
-        </div>
-
-
-        <h2 class="chapter-header">Font-size modifyers</h2>
-
-        <div class="block">
-            <div>
-                <span class="auto"></span>
-                <mark class="text-inline-bigger">[.text-inline-bigger]</mark>
-                <span class="auto" class="text-inline-bigger"></span>
-                <span class="auto"></span>
-                <mark class="text-inline-bigger">[.text-inline-smaller]</mark>
-                <span class="auto" class="text-inline-smaller"></span>
-                <span class="auto"></span>
-            </div>
-            <div class="group-center">
-                <span class="back-color-descent">line height</span>
-                <span>—</span>
-                <span class="back-color-descent text-inline-bigger">line height</span>
-            </div>
-            <div class="text-block-bigger">
-                <mark>.text-block-bigger</mark>
-                <span class="auto"></span>
-            </div>
-            <div class="text-block-smaller">
-                <mark>.text-block-smaller</mark>
-                <span class="auto"></span>
-            </div>
-        </div>
-
-
-
-        <section class="wide">
-
-            <header class="chapter-header">
-                <h2>Paragraph readable width</h2>
+            <header class="wide is-centered">
+                <div class="h1">Web-Typography testpage</div>
+                <div class="h2">Web-Typography testpage</div>
+                <div class="h3">Web-Typography testpage</div>
+                <div class="h4">Web-Typography testpage</div>
+                <div class="h5">Web-Typography testpage</div>
+                <div class="h6">Web-Typography testpage</div>
+                <small>Web-Typography testpage</small>
             </header>
 
-            <h3>
-                <mark>.paragraph</mark>
-                Max width limit (42em)
-            </h3>
-            <div class="paragraph group-content-rows">
-                <div>
-                    <span class="auto"></span>
-                    <span class="auto"></span>
+
+            <h2 class="chapter-header">Facetypes collection</h2>
+
+            <div class="keep-grid" style="font-family: var(--font-family--tufte-serif);">
+                <h3 class="mark">tufte-serif</h3>
+                <section class="block">
+                    <p txt></p>
+                    <p txt class="text-block-bigger"></p>
+                    <p txt class="text-block-smaller"></p>
+                </section>
+                <div class="note keep-font-size">
+                    <p>297351 years<br>&amp;#$@*</p>
                 </div>
-                <div>
-                    <span class="auto"></span>
-                    <span class="auto"></span>
+            </div>
+            <div class="keep-grid" style="font-family: var(--font-family--tufte-sans);">
+                <h3 class="mark">tufte-sans</h3>
+                <section class="block">
+                    <p txt></p>
+                    <p txt class="text-block-bigger"></p>
+                    <p txt class="text-block-smaller"></p>
+                </section>
+                <div class="note keep-font-size">
+                    <p>297351 years<br>&amp;#$@*</p>
+                </div>
+            </div>
+            <div class="keep-grid" style="font-family: var(--font-family--native-sans);">
+                <h3 class="mark">native-sans</h3>
+                <section class="block">
+                    <p txt></p>
+                    <p txt class="text-block-bigger"></p>
+                    <p txt class="text-block-smaller"></p>
+                </section>
+                <div class="note keep-font-size">
+                    <p>297351 years<br>&amp;#$@*</p>
                 </div>
             </div>
 
-            <h3>
-                <mark>.midi-paragraph</mark>
-                Optimal middle-size (24em)
-            </h3>
-            <div class="midi-paragraph group-content-rows">
-                <div class="auto"></div>
-                <div class="auto"></div>
+
+            <h2 class="chapter-header">Font-size modifyers</h2>
+
+            <div class="block">
+                <div>
+                    <span txt></span>
+                    <mark class="text-inline-bigger">[.text-inline-bigger]</mark>
+                    <span txt class="text-inline-bigger"></span>
+                    <span txt></span>
+                    <mark class="text-inline-bigger">[.text-inline-smaller]</mark>
+                    <span txt class="text-inline-smaller"></span>
+                    <span txt></span>
+                </div>
+                <div class="group-center">
+                    <span class="back-color-descent">line height</span>
+                    <span>—</span>
+                    <span class="back-color-descent text-inline-bigger">line height</span>
+                </div>
+                <div class="text-block-bigger">
+                    <mark>.text-block-bigger</mark>
+                    <span txt></span>
+                </div>
+                <div class="text-block-smaller">
+                    <mark>.text-block-smaller</mark>
+                    <span txt></span>
+                </div>
             </div>
 
-            <section class="group-banner">
 
-                <h3 class="banner-title">
-                    <mark>.mini-paragraph</mark>
-                    Minimal readable width (12em)
+            <section class="wide">
+
+                <header class="chapter-header">
+                    <h2>Paragraph readable width</h2>
+                </header>
+
+                <h3>
+                    <mark>.paragraph</mark>
+                    Max width limit (42em)
                 </h3>
-                <div class="mini-paragraph group-content-rows">
-                    <div>Front-end components. Not a framework, but reusable code templates.</div>
-                    <div>Atom classes for maintainable inline CSS</div>
-                    <div>CSS grid template for big articles with a lot of content, illustrations and creative visuals.</div>
+                <div class="paragraph group-content-rows">
+                    <div>
+                        <span txt></span>
+                        <span txt></span>
+                    </div>
+                    <div>
+                        <span txt></span>
+                        <span txt></span>
+                    </div>
                 </div>
-                <div class="text-inline-bigger mini-paragraph group-content-rows">
-                    <div>Front-end components. Not a framework, but reusable code templates.</div>
-                    <div>Atom classes for maintainable inline CSS</div>
-                    <div>CSS grid template for big articles with a lot of content, illustrations and creative visuals.</div>
+
+                <h3>
+                    <mark>.midi-paragraph</mark>
+                    Optimal middle-size (24em)
+                </h3>
+                <div class="midi-paragraph group-content-rows">
+                    <div txt></div>
+                    <div txt></div>
                 </div>
+
+                <section class="group-banner">
+
+                    <h3 class="banner-title">
+                        <mark>.mini-paragraph</mark>
+                        Minimal readable width (12em)
+                    </h3>
+                    <div class="mini-paragraph group-content-rows">
+                        <div>Front-end components. Not a framework, but reusable code templates.</div>
+                        <div>Atom classes for maintainable inline CSS</div>
+                        <div>CSS grid template for big articles with a lot of content, illustrations and creative visuals.</div>
+                    </div>
+                    <div class="mini-paragraph group-content-rows text-inline-bigger">
+                        <div>Front-end components. Not a framework, but reusable code templates.</div>
+                        <div>Atom classes for maintainable inline CSS</div>
+                        <div>CSS grid template for big articles with a lot of content, illustrations and creative visuals.</div>
+                    </div>
+
+                </section>
+
 
             </section>
-
 
         </section>
 
-    </section>
+    </article>
 
 
     <!-- ----------------------------------------- Color Model -->

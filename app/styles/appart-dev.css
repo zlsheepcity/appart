@@ -670,13 +670,14 @@ body {
   /* bar is never full width, minimal gap  */
   --empty-space-offset: 3rem;
   /* open animation time  */
-  --transition-duration--slidein: 240ms; }
+  --transition-duration--slidein: 340ms;
+  --transition-duration--overlay: 1.4s; }
 
 /** -------------------------------- two sides difference */
 /* Eastside → default */
 .offsidebar {
   /* bar position */
-  --left: auto;
+  --left: var(--state-width, auto);
   --right: 0;
   --transform-origin--horizontal: right;
   /* close icon position */
@@ -689,7 +690,7 @@ body {
 .offsidebar.from-westside {
   /* bar position */
   --left: 0;
-  --right: auto;
+  --right: var(--state-width, auto);
   --transform-origin--horizontal: left;
   /* close icon position */
   --close-icon-right: calc( -1 * var(--empty-space-offset) );
@@ -700,11 +701,13 @@ body {
 /** -------------------------------- closed/active states */
 .offsidebar {
   --state-event: none;
-  --state-value: 0; }
+  --state-value: 0;
+  --state-width: 0; }
 
 .offsidebar.is-active {
   --state-event: all;
-  --state-value: 1; }
+  --state-value: 1;
+  --state-width: auto; }
 
 /** -------------------------------- layout & behavior */
 .offsidebar {
@@ -825,6 +828,9 @@ body {
 .offsidebar .offsidebar-overlay {
   transition: opacity var(--transition-duration--slidein);
   transition-timing-function: var(--timing-function--focusZoom); }
+
+.offsidebar.is-active .offsidebar-overlay {
+  transition-duration: var(--transition-duration--overlay); }
 
 /* Animate offsidebar */
 .offsidebar-background {
@@ -1791,7 +1797,37 @@ mark,
   position: sticky;
   top: 0;
   z-index: 1;
-  background-color: var(--back-color-accent); }
+  --padding-top: 0.25em;
+  --padding-bottom: 0.25em;
+  --menu-icon-placeholder: 2em;
+  padding-top: var(--padding-top);
+  padding-bottom: var(--padding-bottom);
+  padding-right: var(--menu-icon-placeholder); }
+
+.nav-fly {
+  position: fixed;
+  z-index: 3;
+  top: 0;
+  right: 0;
+  width: 2em;
+  height: 2em;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  --background-color: black;
+  --clip-path: polygon(0 0, 100% 0, 100% 100%, 70% 100%, 0% 0%);
+  clip-path: var(--clip-path);
+  cursor: pointer;
+  background-color: var(--background-color);
+  transition: clip-path 240ms var(--timing-function--focusZoom); }
+
+.nav-fly:hover {
+  --clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%, 0% 100%);
+  --background-color: firebrick; }
+
+.has-offsidebar-overlay .nav-fly {
+  opacity: 0; }
 
 /*  EOF Article markup */
 /** Some Project Paletes

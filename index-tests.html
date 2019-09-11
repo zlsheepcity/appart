@@ -192,16 +192,12 @@
 
             <nav class="sidepanel-content">
                 <ul class="content-menu js-for-ChaptersMenuBar">
-                    <li><a href="#Collisting">Collisting</a></li>
+                    <li><a href="#Collisting">Group — Collisting</a></li>
+                    <li><a href="#Offsidebar">Bar — Offsidebar</a></li>
+                    <li><a href="#JournalGrid">Grid — Journal Grid</a></li>
                     <li><a href="#Typography">Typography</a></li>
                     <li><a href="#color-model">Color model</a></li>
-                    <li><a href="#Offsidebar">Offsidebar</a></li>
                     <li><a href="#UI-Components">UI Components</a></li>
-                    <li>Fames ac turpis egestas</li>
-                    <li>Vestibulum tortor quam</li>
-                    <li>Feugiat vitae</li>
-                    <li>Ultricies eget</li>
-                    <li>Tempor sit amet</li>
                 </ul>
             </nav>
 
@@ -212,6 +208,10 @@
         app.attach('offsidebar')(InterfaceOffsideBar)
         app.offsidebar('ChaptersMenuBar')
     </script>
+
+    <div class="nav-fly js-for-ChaptersMenuBar">
+        <figure class="svga-icon"><svg><use xlink:href="#svg-menu"></use></svg></figure>
+    </div>
 
 
     <!-- ----------------------------------------- Project Header -->
@@ -917,21 +917,22 @@
     <!-- ----------------------------------------- Journal Grid -->
 
 
-    <article id="JournalGrid" class="journal-grid use-colors colors--ivory">
+    <article id="JournalGrid" class="journal-grid">
 
-        <header class="nav-header keep-grid use-colors">
+        <nav class="nav-header keep-grid use-colors">
             <p>
-                → Journal Grid,
-                <a href="https://github.com/zlsheepcity/appart/blob/master/app/styles/components/journal-grid/journal-grid.scss">source code</a>,
-                <a href="dev/tests-journal-grid.html">test page</a>
+                Journal Grid,
+                <a href="https://github.com/zlsheepcity/appart/blob/master/app/styles/components/journal-grid/journal-grid.scss">git source</a>,
+                <a href="dev/tests-journal-grid.html">demo page</a>
             </p>
+        </nav>
+
+        <header class="wide">
+            <h1>CSS-grid for articles</h1>
+            <p>journal-grid</p>
         </header>
 
-        <section class="chapter keep-grid">
-
-            <header class="wide">
-                <h1>Journal Grid</h1>
-            </header>
+        <section class="chapter keep-grid  use-colors colors--ivory">
 
             <section class="block">
                 <p class="auto"></p>

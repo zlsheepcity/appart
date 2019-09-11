@@ -1790,8 +1790,7 @@ mark,
 .nav-header {
   position: sticky;
   top: 0;
-  z-index: 1;
-  background-color: var(--back-color-accent); }
+  z-index: 1; }
 
 /*  EOF Article markup */
 /** Some Project Paletes

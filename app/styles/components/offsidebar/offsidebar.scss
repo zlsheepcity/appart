@@ -30,7 +30,8 @@
   --empty-space-offset:  3rem;
 
  /* open animation time  */
-  --transition-duration--slidein: 240ms;
+  --transition-duration--slidein: 340ms;
+  --transition-duration--overlay: 1.4s;
 }
 
 
@@ -41,7 +42,7 @@
 
 .offsidebar {
  /* bar position */
-  --left:  auto;
+  --left:  var(--state-width, auto);
   --right: 0;
   --transform-origin--horizontal: right;
  /* close icon position */
@@ -56,7 +57,7 @@
 .offsidebar.from-westside {
  /* bar position */
   --left:  0;
-  --right: auto;
+  --right: var(--state-width, auto);
   --transform-origin--horizontal: left;
  /* close icon position */
   --close-icon-right:  calc( -1 * var(--empty-space-offset) );
@@ -72,11 +73,13 @@
 .offsidebar {
   --state-event: none;
   --state-value: 0;
+  --state-width: 0;
 }
 
 .offsidebar.is-active {
   --state-event: all;
   --state-value: 1;
+  --state-width: auto;
 }
 
 
@@ -235,6 +238,9 @@
     .offsidebar .offsidebar-overlay {
         transition: opacity var(--transition-duration--slidein);
         transition-timing-function: var(--timing-function--focusZoom);
+    }
+    .offsidebar.is-active .offsidebar-overlay {
+        transition-duration: var(--transition-duration--overlay);
     }
 
  /* Animate offsidebar */

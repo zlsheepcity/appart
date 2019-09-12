@@ -47,6 +47,10 @@
   --grid-part--ROOT:       0 [root-start] 0 [root-end] 0;
   --grid-part--ROOF:       0 [roof-start] 0 [roof-end] 0;
 
+ /* mobile state */
+  --if-grid-is-tiny: 1;
+  --if-grid-no-tiny: 0;
+
 }  @media (min-width:38rem) { .journal-grid {
 
  /* Grid Type B */
@@ -58,6 +62,10 @@
   --grid-part--SIDE:       0  var(--ns)   var(--nb)  var(--ne) 0;
   --grid-part--ROOT:       0 [root-start] 0 [root-end] 0;
   --grid-part--ROOF:       0 [roof-start] 0 [roof-end] 0;
+
+ /* mobile state */
+  --if-grid-is-tiny: 0;
+  --if-grid-no-tiny: 1;
 
 }} @media (min-width:58rem) { .journal-grid {
 
@@ -215,11 +223,15 @@
 /** -------------------------------- Components */
 
 
-/*** note with smaller font */
+/*** note decoration */
     .note:not(.keep-font-size) {
         /* 13/16 */
         font-size:   var(--dec-font-size,   calc(13/16*1em) );
         line-height: var(--dec-line-height, calc(16/13) );
+    }
+    .note {
+      --padding: calc( var(--sx)*var(--if-grid-is-tiny,0) );
+        padding: var(--padding);
     }
 
 /*** remove row gap */

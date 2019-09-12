@@ -126,6 +126,15 @@
 
     <style>
         .dora-grid {
+
+          --sx:  var(--col-space, 1.5rem);
+          --sb:  var(--big-space,   4rem);
+
+          --main-column-max-size: 35rem;
+          --note-column-max-size: 16rem;
+          --note-column-min-size: 10rem;
+
+
             display:         grid;
             align-items:     start;
             justify-content: start;
@@ -133,53 +142,125 @@
             grid-auto-rows:  min-content;
             grid-row-gap:    1.5rem;
             grid-column-gap: 0;
+
+            /* ----------------------------- NAMING STRUCTURE
+                [full]
+                - [root]                     - not used / reserved for centering
+                - [base]
+                  - [wrap]>[main]<[wrap]     - main column with padding around
+                  - [side]>[note]<[side]     - note column with padding around
+                - [roof]                     - remaining screen space
+            */
+
+            /* ----------------------------- RESIZING RULES
+                type A     - one column
+                type B     - two columns [main]+[side]
+                type C     - all columns [main]+[side]+[roof]
+                type CC    - (centered)  [root]+[main]+[side]+[roof]
+            */
+
+            /* ----------------------------- FORMULA SHORTCUTS */
+
+          --bs: minmax( 0, calc( var(--sb) - var(--sx) ) ); /* [base] padding size */
+          --nw: 0 [side-start] var(--sx) [note-start] 0;    /* [side] opening template */
+          --ne: 0 [note-end]   var(--sx) [side-end]   0;    /* [side] closing template */
+
+          --ma: 1fr;                                        /* [main] size type A */
+          --na: 0;                                          /* [note] size type A */
+
+          --mb: 7fr;                                        /* [main] size type B */
+          --nb: minmax( var(--note-column-min-size), 3fr ); /* [note] size type B */
+
+          --mc: var(--main-column-max-size);                /* [main] size type C */
+          --nc: var(--note-column-max-size);                /* [note] size type C */
+
+
+          --grid-part--BASE-START: 0 [base-start] 0;
+          --grid-part--BASE-END:   0 [base-end]   0;
+          --grid-part--WEST:       0 [wrap-start] var(--nw);
+          --grid-part--MAIN:       0 [main-start] var(--ma) [main-end] 0;
+          --grid-part--EAST:                      var(--ne) [wrap-end] 0;
+          --grid-part--NOTE:       0;
+          --grid-part--ROOT:       0 [root-start] 0 [root-end] 0;
+          --grid-part--ROOF:       0 [roof-start] 0 [roof-end] 0;
+
+          --grid-part--WEST:       0 [pm_] var(--nw);
+          --grid-part--MAIN:       0 [m_]  var(--ma) [_m]  0;
+          --grid-part--EAST:               var(--ne) [_pm] 0;
+          --grid-part--NOTE:       0;
+          --grid-part--ROOT:       0 [root-start] 0 [root-end] 0;
+          --grid-part--ROOF:       0 [roof-start] 0 [roof-end] 0;
+
+
             grid-template-columns:
                 [full-start]
-                    0
-                [base-start]
-                    2.5rem
-                [pm_]
-                    1.5rem
-                [m_]
-                    35rem
-                [_m]
-                    1.5rem
-                [_pm]
-                    0
-                [pn_]
-                    1.5rem
-                [n_]
-                    16rem
-                [_n]
-                    1.5rem
-                [_pn]
-                    2.5rem
-                [base-end]
-                    0
-                [roof-start]
-                    1fr
-                [roof-end]
-                    0
+                var(--grid-part--ROOT)
+                var(--grid-part--BASE-START)
+                    var(--grid-part--WEST)
+                    var(--grid-part--MAIN)
+                    var(--grid-part--EAST)
+                    var(--grid-part--NOTE)
+                var(--grid-part--BASE-END)
+                var(--grid-part--ROOF)
                 [full-end];
+
         }
-        .dora-grid * { grid-column: m_/_m; }
-        .dora-block  { grid-column: m_/_m; background: #ccc; }
-        .dora-box   {  grid-column: pm_/_pm; background: #ffc; }
-        .dora-note   { grid-column: pn_/_pn; background: #fcc; }
-        .dora-wide   { grid-column: pm_/_pn;  background: #cfc;}
-        .dora-base   { grid-column: base;  background: #ccf;}
+        @media (min-width:38rem) {
+            .dora-grid {
+
+          --grid-part--BASE-START: 0 [base-start] 0;
+          --grid-part--BASE-END:   0 [base-end]   0;
+          --grid-part--WEST:       0 [pm_] var(--sx);
+          --grid-part--MAIN:       0 [m_] 7fr [_m] 0;
+          --grid-part--EAST:       0 var(--sx) [_pm] 0;
+          --grid-part--NOTE:       0 var(--nw) var(--nb) var(--ne) 0;
+          --grid-part--ROOT:       0 [root-start] 0 [root-end] 0;
+          --grid-part--ROOF:       0 [roof-start] 0 [roof-end] 0;
+
+            }
+        }
+
+        @media (min-width:58rem) {
+            .dora-grid {
+
+          --grid-part--BASE-START: 0 [base-start] var(--bs);
+          --grid-part--BASE-END:   var(--bs) [base-end] 0;
+          --grid-part--WEST:       0 [pm_] var(--sx) 0;
+          --grid-part--MAIN:       0 [m_] 35rem [_m] 0;
+          --grid-part--EAST:       0 var(--sx) [_pm] 0;
+          --grid-part--NOTE:       0 var(--nw) 16rem var(--ne) 0;
+          --grid-part--ROOT:       0 [root-start] 1fr [root-end] 0;
+          --grid-part--ROOF:       0 [roof-start] 1fr [roof-end] 0;
+
+            }
+        }
+
+
+        .dora-grid * { grid-column:  m_/_m;  }
+        .dora-block  { grid-column:  m_/_m;  }
+        .dora-box    { grid-column: pm_/_pm; }
+        .dora-note   { grid-column: pn_/_pn; }
+        .dora-wide   { grid-column: pm_/_pn; }
+        .dora-base   { grid-column: base;    }
         .dora-grid {
             padding: 4rem 0;
         }
-        .dora-grid > * { background-color: #222!important;}
+        
     </style>
     <article class="dora-grid">
         <div class="dora-block">
-            <p txt></p>
-            <p txt></p>
+            <p txt></p><hr>
+            <p txt></p><hr>
+            <p txt></p><hr>
+            <p txt></p><hr>
+            <p txt></p><hr>
+            <p txt></p><hr>
         </div>
         <div class="dora-note">
-            <p txt></p>
+            <div class="padding" style="--padding: 0 1.5rem;">
+                <p txt class="text-block-smaller"></p><hr>
+                <p txt class="text-block-smaller"></p><hr>
+            </div>
         </div>
         <div class="dora-box">
             <p txt></p>

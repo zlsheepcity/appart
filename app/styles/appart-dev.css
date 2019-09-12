@@ -802,9 +802,10 @@ body {
 .color-box, .color-box-accent, .color-box-descent {
   --padding-top: var(--row-space, 1rem);
   --padding-bottom: var(--row-space, 1rem);
+  --background-color: var(--back-color-descent, transparent);
   padding-top: var(--padding-top);
   padding-bottom: var(--padding-bottom);
-  background-color: var(--back-color-descent, transparent);
+  background-color: var(--background-color);
 }
 
 /*  EOF journal-grid */

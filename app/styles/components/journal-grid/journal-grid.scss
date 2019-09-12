@@ -1,108 +1,123 @@
 /** journal-grid
  *  CSS-grid for articles
- *  2019.9.11, Clara
+ *  2019.9.12, Dora
  *
  *  CSS
  *
  */
 
 
-/** -------------------------------- grid settings */
+/** ----------------------------- grid settings */
 
 
 .journal-grid {
 
- /* space units */
-  --sx:  var(--col-space, 1.5rem);
-  --sy:  var(--row-space, 1.5rem);
-  --syx: var(--sy) var(--sx);
+  --sx: var(--col-space, 1.5rem); /* - space units: x, y, big */
+  --sy: var(--row-space, 1.5rem);
+  --sb: var(--big-space,   4rem);
 
- /* column sizes — [w] ( [ma+mb] [n] ) [e] */
-  --size-ma: 24rem;
-  --size-mb:  8rem;
-  --size-n:  16rem;
-  --size-w:  minmax(0, 4rem);
-  --size-e:  minmax(0, 100vw);
-}
+  --main-column-max-size: 35rem;  /* - column sizes */
+  --note-column-max-size: 16rem;
+  --note-column-min-size: 10rem;
 
 
-/** -------------------------------- grid formula */
+ /* ----------------------------- NAMING STRUCTURE
+    [full]
+    - [root]                     - not used / reserved for centering
+    - [base]
+      - [wrap]>[main]<[wrap]     - main column with padding around
+      - [side]>[note]<[side]     - note column with padding around
+    - [roof]                     - remaining screen space
+  */
+ /* ----------------------------- RESIZING RULES
+    type A     - one column
+    type B     - two columns [main]+[side]
+    type C     - all columns [main]+[side]+[roof]
+    type CC    - (centered)  [root]+[main]+[side]+[roof]
+  */
+
+
+ /* Grid Type A */
+  --grid-part--BASE-START: 0 [base-start] 0;
+  --grid-part--BASE-END:   0 [base-end]   0;
+  --grid-part--WRAP-START: 0 [wrap-start] var(--ns);              /* join note */
+  --grid-part--MAIN:       0 [main-start] var(--ma) [main-end] 0;
+  --grid-part--WRAP-END:                  var(--ne) [wrap-end] 0;
+  --grid-part--SIDE:       0;
+  --grid-part--ROOT:       0 [root-start] 0 [root-end] 0;
+  --grid-part--ROOF:       0 [roof-start] 0 [roof-end] 0;
+
+}  @media (min-width:38rem) { .journal-grid {
+
+ /* Grid Type B */
+  --grid-part--BASE-START: 0 [base-start] 0;
+  --grid-part--BASE-END:   0 [base-end]   0;
+  --grid-part--WRAP-START: 0 [wrap-start] var(--sx);
+  --grid-part--MAIN:       0 [main-start] var(--mb) [main-end] 0;
+  --grid-part--WRAP-END:                  var(--sx) [wrap-end] 0;
+  --grid-part--SIDE:       0  var(--ns)   var(--nb)  var(--ne) 0;
+  --grid-part--ROOT:       0 [root-start] 0 [root-end] 0;
+  --grid-part--ROOF:       0 [roof-start] 0 [roof-end] 0;
+
+}} @media (min-width:58rem) { .journal-grid {
+
+ /* Grid Type C */
+  --grid-part--BASE-START: 0 [base-start] var(--bp);
+  --grid-part--BASE-END:                  var(--bp) [base-end] 0;
+  --grid-part--WRAP-START: 0 [wrap-start] var(--sx);
+  --grid-part--MAIN:       0 [main-start] var(--mc) [main-end] 0;
+  --grid-part--WRAP-END:                  var(--sx) [wrap-end] 0;
+  --grid-part--SIDE:       0  var(--ns)   var(--nc)  var(--ne) 0;
+  --grid-part--ROOT:       0 [root-start] 0   [root-end] 0;
+  --grid-part--ROOF:       0 [roof-start] 1fr [roof-end] 0;
+
+}} @media (min-width:58rem) { .journal-grid.centrale {
+
+ /* Grid Type CC */
+  --grid-part--ROOT:       0 [root-start] 1fr [root-end] 0;
+  --grid-part--ROOF:       0 [roof-start] 1fr [roof-end] 0;
+
+}}
+
+
+/** -------------------------------- Formula Shortcuts */
 
 
 .journal-grid {
 
- /* mobile state multiplyer */
-  --if-grid-is-tiny: 0;
-  --if-grid-no-tiny: 1;
+  --bp: minmax( 0, calc( var(--sb) - var(--sx) ) ); /* [base] padding size */
+  --ns: 0 [side-start] var(--sx) [note-start] 0;    /* [side] opening part */
+  --ne: 0 [note-end]   var(--sx) [side-end]   0;    /* [side] closing part */
 
- /* main text collumn */
-  --open-main-padding: pm_;
-  --open-main:          m_;
-  --stop-main:          _m;
-  --stop-main-padding: _pm;
+  --ma: 1fr;                                        /* [main] size type A */
+  --na: 0;                                          /* [note] size type A */
 
- /* parts in formula */
-  --grid-part--main-content: var(--size-ma) [_ma] var(--sx) [_pma] 0 [pmb_] var(--sx) [mb_] var(--size-mb);
-  --grid-part--note-column:  0 [pn_] var(--sx) [n_] var(--size-n) [_n] var(--sx) [_pn];
-  --grid-part--main-space:   0;
-  --grid-part--main-gap:     var(--sx);
+  --mb: 7fr;                                        /* [main] size type B */
+  --nb: minmax( var(--note-column-min-size), 3fr ); /* [note] size type B */
 
-  --grid-part--full-start:   [full-start w_] var(--size-w) [_w] 0;
-  --grid-part--full-end:     0 [e_] var(--size-e) [_e full-end];
-  --grid-part--empty-start:  [full-start w_ e_] 0;
-  --grid-part--empty-end:    0 [_w _e full-end];
+  --mc: var(--main-column-max-size);                /* [main] size type C */
+  --nc: var(--note-column-max-size);                /* [note] size type C */
 
 }
 
 
-/** -------------------------------- mobile state */
+/** -------------------------------- Define Grid */
 
 
-@media (max-width:65rem) {
-    .journal-grid {
-     /* remove strict column sizes */
-      --size-ma: 3fr;
-      --size-mb: 1fr;
-      --size-n:  2fr;
-      --size-w:  minmax(0, auto);
-      --size-e:  minmax(0, auto);
-    }
-}
-@media (max-width:47rem) {
-    .journal-grid {
-     /* change state */
-      --if-grid-is-tiny: 1;
-      --if-grid-no-tiny: 0;
-
-     /* note-column appears as main-column */
-      --open-main-padding: pm_ pn_ pmb_;
-      --open-main:          m_  n_  mb_;
-      --stop-main:          _m  _n  _ma;
-      --stop-main-padding: _pm _pn _pma;
-
-     /* mobile layout behavoir */
-      --grid-part--note-column:  0;
-      --grid-part--main-content: 1fr;
-    }
-}
-
-/** -------------------------------- define grid */
-
-
-/* components */
-.figured,
+/* columns */
+.base,
 .wide,
-.note,
-.eastside,
-.box,
-.block,
+.side, .box,
+.note, .block,
 /* shortcuts */
-.keep-wide,
 .keep-layer,
+.keep-base,
+.keep-wide,
 /* core */
 .keep-grid,
 .journal-grid {
 
+ /* Grid Seed */
     display:         grid;
     align-items:     start;
     justify-content: start;
@@ -110,109 +125,120 @@
     grid-auto-rows:  min-content;
     grid-row-gap:    var(--sy);
     grid-column-gap: 0;
-
+ /* Template Dora */
     grid-template-columns:
-          var(--grid-part--full-start)
-        [ var(--open-main-padding) ]
-          var(--grid-part--main-gap)
-          var(--grid-part--main-space)
-        [ var(--open-main) ]
-          var(--grid-part--main-content)
-        [ var(--stop-main) ]
-          var(--grid-part--main-gap)
-        [ var(--stop-main-padding) ]
-          var(--grid-part--note-column)
-          var(--grid-part--full-end)
-        ;
+        [full-start]
+        var(--grid-part--ROOT)
+        var(--grid-part--BASE-START)
+            var(--grid-part--WRAP-START)
+            var(--grid-part--MAIN)
+            var(--grid-part--WRAP-END)
+            var(--grid-part--SIDE)
+        var(--grid-part--BASE-END)
+        var(--grid-part--ROOF)
+        [full-end];
 }
 
 
-/* column matrix */
-.journal-grid * { grid-column:   m_ / _m;   } /* Order #1 important */
-.block          { grid-column:   m_ / _m;   } /* Order #2 important */
-.keep-grid      { grid-column:    full;     } /* Order #3 important */
-.journal-grid   { grid-column:    full;     }
-.layer          { grid-column:    full;     }
-.keep-layer     { grid-column:    full;     }
-.box            { grid-column:  pm_ / _pm;  }
-.eastside       { grid-column:  pn_ / _pn;  }
-.wide           { grid-column:  pm_ / _pn;  }
-.keep-wide      { grid-column:  pm_ / _pn;  }
+/** -------------------------------- Define Columns */
 
 
-/* has empty start */
-.note,
-.eastside,
-.wide,
+.journal-grid * { grid-column: main; } /* Order #1 important */
+.block          { grid-column: main; } /* Order #2 important */
+.box            { grid-column: wrap; } /* Order #3 important */
+.keep-grid      { grid-column: full; } /* Order #4 important */
+
+.keep-layer     { grid-column: full; }
+.keep-base      { grid-column: base; }
+.keep-wide      { grid-column: wrap-start / side-end;  }
+
+.journal-grid   { grid-column: full; }
+.layer          { grid-column: full; }
+.base           { grid-column: base; }
+.wide           { grid-column: wrap-start / side-end; }
+
+.side           { grid-column: side; }
+.note           { grid-column: note; }
+
+
+/** -------------------------------- Define Subgrids */
+
+
+/* #1 Cut [root]/[roof] */
+
+.keep-base,
 .keep-wide,
-.box,
-.block {
-    --grid-part--full-start: var(--grid-part--empty-start);
-    --grid-part--full-end:   var(--grid-part--empty-end);
+.base,
+.wide,
+.side, .box,
+.note, .block {
+  --grid-part--ROOT:       0 [root-start] 0 [root-end] 0;
+  --grid-part--ROOF:       0 [roof-start] 0 [roof-end] 0;
+}
+
+/* #2 Cut [base] */
+
+.keep-wide,
+.wide,
+.side, .box,
+.note, .block {
+  --grid-part--BASE-START: 0 [base-start] 0;
+  --grid-part--BASE-END:   0 [base-end]   0;
+}
+
+/* #3 Cut [side] */
+
+.wide,
+.side, .box,
+.note, .block {
+  --grid-part--WRAP-START: 0 [wrap-start] var(--ns);
+  --grid-part--WRAP-END:                  var(--ne) [wrap-end] 0;
+  --grid-part--SIDE:       0;
+}
+
+/* #4 Reset [main] width */
+
+.wide,
+.side, .box,
+.note, .block {
+  --grid-part--MAIN:       0 [main-start] 1fr [main-end] 0;
+}
+
+/* #5 Remove wrap-padding */
+
+.note, .block {
+  --grid-part--WRAP-START: 0 [wrap-start side-start note-start] 0;
+  --grid-part--WRAP-END:   0 [wrap-end   side-end   note-end]   0;
 }
 
 
-/* has removed note */
-.note,
-.eastside,
-.wide:not(.keep-grid),
-.box {
-    --open-main-padding: pm_ pn_ pmb_;
-    --open-main:          m_  n_  mb_;
-    --stop-main:          _m  _n  _ma;
-    --stop-main-padding: _pm _pn _pma;
-
-    --grid-part--note-column:  0;
-    --grid-part--main-content: 1fr;
-}
+/** -------------------------------- Components */
 
 
-/* has removed content paddings */
-.journal-grid .block { /* +1 level */
-    --open-main-padding: pm_ pn_ pmb_;
-    --open-main:          m_  n_  mb_;
-    --stop-main:          _m  _n  _ma;
-    --stop-main-padding: _pm _pn _pma;
-
-    --grid-part--note-column:  0;
-    --grid-part--main-content: 1fr;
-    --grid-part--main-gap: 0;
-}
-
-
-/** -------------------------------- components */
-
-
-/*** note component */
-    .note {
-        grid-column: pn_ / _pn;
-      --grid-part--main-space: calc( var(--sx)*var(--if-grid-is-tiny, 0) );
-    }
+/*** note with smaller font */
     .note:not(.keep-font-size) {
         /* 13/16 */
         font-size:   var(--dec-font-size,   calc(13/16*1em) );
         line-height: var(--dec-line-height, calc(16/13) );
     }
 
-
-/*** figured component + .figured.card */
-    .figured {
-        grid-column:   pm_ / _pn;
-        margin-bottom: calc( var(--sy)*var(--if-grid-is-tiny) );
-      --grid-part--full-start: var(--grid-part--empty-start);
-      --grid-part--full-end:   var(--grid-part--empty-end);
-    }
-    .figured>*            { grid-column: m_ / _ma; }
-    .figured>figure,
-    .figured>.figure      { grid-column: pmb_ / _pn; }
-    .figured.card>*       { order: calc( 2*var(--if-grid-is-tiny, 0) ); }
-    .figured.card>figure,
-    .figured.card>.figure { order: calc( 1*var(--if-grid-is-tiny, 0) ); }
-
-
-/*** remove row gap, use custom layers each row */
+/*** remove row gap */
     .join-layers {
         grid-row-gap: 0;
+    }
+
+/*** centered grid */
+    .journal-grid.central {
+        /* descibed in @media section */
+    }
+
+/*** background paddings */
+    .color-box {
+      --padding-top:      var(--row-space, 1rem);
+      --padding-bottom:   var(--row-space, 1rem);
+        padding-top:      var(--padding-top);
+        padding-bottom:   var(--padding-bottom);
+        background-color: var(--back-color-descent, transparent);
     }
 
 

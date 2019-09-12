@@ -56,14 +56,13 @@ mark, .mark {
 //* ------------------------------------- content boxes
 
 
-.color-box,
 .color-box-descent {
+    @extend .color-box !optional;
     @extend .back-color-descent !optional;
-    @extend .pv !optional;
 }
 .color-box-accent {
+    @extend .color-box !optional;
     @extend .back-color-accent !optional;
-    @extend .pv !optional;
 }
 
 

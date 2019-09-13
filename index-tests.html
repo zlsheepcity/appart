@@ -122,60 +122,6 @@
     </screen>
 
 
-    <!-- ----------------------------------------- Journal Grid Dora -->
-
-    <style>
-
-        .dora-grid {
-         /* -----------------------------  */
-
-
-        }
-
-
-        .dora-grid {
-
-        }
-
-
-        .dora-grid * { grid-column: main;  }
-        .dora-block  { grid-column: main;  }
-        .dora-box    { grid-column: wrap; }
-        .dora-note   { grid-column: side; }
-        .dora-wide   { grid-column: wrap-start / side-end; }
-        .dora-base   { grid-column: base;    }
-        .dora-grid {
-            padding: 4rem 0;
-        }
-        
-    </style>
-    <article class="dora-grid">
-        <div class="dora-block">
-            <p txt></p><hr>
-            <p txt></p><hr>
-            <p txt></p><hr>
-            <p txt></p><hr>
-            <p txt></p><hr>
-            <p txt></p><hr>
-        </div>
-        <div class="dora-note">
-            <div class="padding" style="--padding: 0 1.5rem;">
-                <p txt class="text-block-smaller"></p><hr>
-                <p txt class="text-block-smaller"></p><hr>
-            </div>
-        </div>
-        <div class="dora-box">
-            <p txt></p>
-            <p txt></p>
-        </div>
-        <div class="dora-wide">
-            <p txt></p>
-        </div>
-        <div class="dora-base">
-            <p txt></p>
-        </div>
-    </article>
-
 
     <!-- ----------------------------------------- Dropdown -->
 
@@ -985,12 +931,12 @@
         <header class="wide">
             <h2 class="h1">CSS-grid for articles</h2>
             <p>
-                Journal-looks article layout with side-notes and various column-merging properties.<br>
-                Has constant spaces, supports small screens, easy markup.
+                Article layout «like-a-journal» with side-notes and various column-merging properties.<br>
+                Has constant spaces, supports small screens, is easy for markup.
             </p>
         </header>
 
-        <section class="journal-grid chapter use-colors colors--ivory">
+        <section class="base keep-grid chapter use-colors colors--ivory">
 
             <section class="block">
                 <p txt></p>
@@ -1003,7 +949,7 @@
 
             <p txt></p>
 
-            <section class="keep-layer color-box">
+            <section class="keep-layer color-box-accent">
                 <section class="block">
                     <p txt></p>
                     <p txt></p>
@@ -1022,6 +968,10 @@
                     <p txt></p>
                 </aside>
             </section>
+
+            <footer>
+                <a href="dev/tests-journal-grid.html" class="h3 link-color">Demo page</a>
+            </footer>
 
         </section>
 
@@ -1044,7 +994,7 @@
             <p>em-based-size presets, types collections</p>
         </header>
 
-        <section class="chapter keep-grid  use-colors colors--ivory">
+        <section class="chapter base keep-grid  use-colors colors--ivory">
 
             <header class="wide is-centered">
                 <div class="h1">Web-Typography testpage</div>

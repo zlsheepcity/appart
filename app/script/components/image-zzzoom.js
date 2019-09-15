@@ -1,17 +1,18 @@
 /* -------------------------------------------
     zoom image on click
     usage: .zzz on image
+    effect: clickable zoom in screen
     2019.9.13
 
-    Original: Zoom Zoom Zang
+    Original source: Zoom Zoom Zang
     https://github.com/julienzmiro/zoomzoomzang/blob/master/zzz.js
 ------------------------------------------- */
 
 //* ------------------------------------------- ENGINE
 
-let zzz          = {};
+let zzzCommander = {};
 let zzzClassname = "zzz"
-let imageZzzoom  = function ( o ) {
+let imageZzzzoom = function zoomZoomZangBased (o) {
 
   var zzzF = this;
   var overlayColor;
@@ -238,20 +239,20 @@ let imageZzzoom  = function ( o ) {
 
 function ActivateImageZzzoom(theme_bg_color = "#FFFFFF") {
 
-    // activate library
-    imageZzzoom(zzz);
+ // activate library
+    imageZzzzoom(zzzCommander)
 
-    // disable on touch devices
-    var isTouchDevice =
+ // disable on touch devices
+    const isTouchDevice =
         ('ontouchstart' in window)
         || ( window.DocumentTouch && window.document instanceof DocumentTouch )
         || window.navigator.maxTouchPoints
-        || window.navigator.msMaxTouchPoints ? true : false;
+        || window.navigator.msMaxTouchPoints ? true : false
+    if (isTouchDevice) return false
 
-    // run
-    if (!isTouchDevice) zzz.init(theme_bg_color);
+ // run library
+    zzzCommander.init(theme_bg_color)
 
-    console.log('Zooooom');
 }
 
 if (app) app.onload(f=>ActivateImageZzzoom())

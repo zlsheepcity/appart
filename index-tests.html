@@ -1,4 +1,4 @@
-<!doctype html><!-- appart :: 8001 :: 2019.9.4 -->
+<!doctype html><!-- appart :: 8102 :: 2019.9.15 -->
 <html lang="ru">
 <head>
     <meta charset="utf-8">
@@ -24,30 +24,33 @@
     <!-- ========================================= BOOT -->
 
 
+    <!-- ༼°▽°༽ style boot -->
     <style>
-        /* ༼°▽°༽ style boot */
         body    { width: 100%; height: auto; overflow: hidden; }
         img,svg { max-width: 100%; }
     </style>
 
+    <!-- ༼°▽°༽ prefetch boot -->
+    <link rel="preconnect"   href="//fonts.gstatic.com">
 
+    <!-- ༼°▽°༽ app boot -->
     <script>
-        /* ༼°▽°༽ app boot */
         function AppBoot() {
 
          // The Noble Blastula
             let app = this
             app.has = { memory: [], arrived:true }
+            app.has.queens = [ 'onload', 'mutate' ]
             /*
-            King has arrived.
-            Take the Queen.
-            Keep in memory.
-            Execute later.
-            2019.9.5
+            King has arrived --- let app = new AppBoot()
+            Take the Queen ----- app.attach('queen_name')(function)
+            Keep in memory ----- app.queen_name(function_parameters)
+            Execute later ------ app.onload(function)
+            2019.9.15
             */
 
          // The Noble Provocator
-            const proteinProvoker = function ForceErrorsIfShouldBe () {
+            const proteinProvoker = function ImitateCriticalTasks () {
               let tpp = new this.__proto__.constructor()
               let must_have_a_memory = tpp.has.memory.push('something')
               let must_accept_queens = like_this_one => true
@@ -68,20 +71,14 @@
 
          // Apply responsibility
             app.attach = TakeTheQueen
-            app.ForceErrorsIfShouldBe = proteinProvoker
-
-         // Prepare Primary Queens
-            const queens = ['onload', 'mutate']
-            queens.map( queen => app.attach(queen) )
+            app.has.queens.map( queen => app.attach(queen) )
+            app.ForceErrorsIfShouldBe =  proteinProvoker
         }
-        // autorun
+
+     // Run Immediately
         let app = new AppBoot()
         app.ForceErrorsIfShouldBe()
     </script>
-
-
-    <!-- ༼°▽°༽ prefetch boot -->
-    <link rel="preconnect"   href="//fonts.gstatic.com">
 
 
     <!-- ========================================= DESIGN -->
@@ -138,6 +135,36 @@
 
         <section class="group-banner">
 
+            <div class="swed-dropdown js-swed-dropdown">
+                <button class="label">
+                    <div>Dropdown List</div>
+                </button>
+                <div class="droplist">
+                    <ul>
+                        <li><span>First item</span></li>
+                        <li><span>Second item</span></li>
+                        <li><span>Third long size caption</span></li>
+                        <li><span>Last item</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="swed-dropdown js-swed-dropdown">
+                <button class="label">
+                    <div>Ru</div>
+                </button>
+                <div class="droplist">
+                    <ul>
+                        <li><span>En</span></li>
+                        <li><span>Ru</span></li>
+                    </ul>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="group-banner">
+
             <div class="swed-dropdown">
                 <button class="label">
                     <div>Dropdown List</div>
@@ -165,6 +192,22 @@
             </div>
 
         </section>
+
+        <script>
+            function activateDropDowns () {
+               const activationClassname = 'swed-dropdown'
+               const activStateClassname = 'is-active'
+               const targets = document.querySelectorAll('.'+activationClassname)
+               const doCloseAll = () => targets.forEach(doClose)
+               const doClose    = el => el.classList.remove(activStateClassname)
+               const doToggle   = el => el.classList.toggle(activStateClassname)
+               const evToggle   = ev => doToggle(ev.currentTarget)
+               const activator  = el => el.addEventListener('click', evToggle)
+
+               targets.forEach(activator)
+            }
+            app.onload(f=>activateDropDowns())
+        </script>
 
     </screen>
 

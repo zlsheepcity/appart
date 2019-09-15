@@ -1,4 +1,4 @@
-<!doctype html><!-- appart :: 8002 :: 2019.7.14 -->
+<!doctype html><!-- appart :: 8102 :: 2019.9.15 -->
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -7,39 +7,70 @@
     <!-- ========================================= HEAD CONTENT -->
 
 
-    <title>ʕ⊙ᴥ⊙ʔ</title>
+    <title>AppSeed</title>
 
 
     <!-- ========================================= BOOT -->
 
 
+    <!-- ༼°▽°༽ style boot -->
     <style>
-        /* ༼°▽°༽ style boot */
         body    { width: 100%; height: auto; overflow: hidden; }
         img,svg { max-width: 100%; }
     </style>
 
+    <!-- ༼°▽°༽ prefetch boot -->
+    <link rel="preconnect"   href="//fonts.gstatic.com">
+    <link rel="preload"      href="art/bergamot-just-browse-here.svg" as="image">
+    <!-- INFO: https://3perf.com/blog/link-rels/ -->
 
+    <!-- ༼°▽°༽ app boot -->
     <script>
-        /* ༼°▽°༽ app boot */
-        function BootKing() {
-            let  King = this
-            King.has  =  {
-                 Queens: ['mutate','onload'],
-                 Memory: [],
-                 toRemember: (something) => King.has.Memory.push(something) }
-            function KeepInMemory(responsible) {
-                 return (dna) => King.has.toRemember({dna,for:responsible}) }
-            King.has.Queens.map( (queen)=>King[queen]=KeepInMemory(queen) ) }
+        function AppBoot() {
 
-        let app = new BootKing()
+         // The Noble Blastula
+            let app = this
+            app.has = { memory: [], arrived:true }
+            app.has.queens = [ 'onload', 'mutate' ]
+            /*
+            King has arrived --- let app = new AppBoot()
+            Take the Queen ----- app.attach('queen_name')(function)
+            Keep in memory ----- app.queen_name(function_parameters)
+            Execute later ------ app.onload(function)
+            2019.9.15
+            */
+
+         // The Noble Provocator
+            const proteinProvoker = function ImitateCriticalTasks () {
+              let tpp = new this.__proto__.constructor()
+              let must_have_a_memory = tpp.has.memory.push('something')
+              let must_accept_queens = like_this_one => true
+              tpp.attach('queen_id')(must_accept_queens)
+              tpp.queen_id('try this')
+            }
+
+         // Define responsibility
+            const TakeTheQueen = (queen) =>
+                {
+                    app[queen] =  ExecuteLater(queen)
+                    return (f) => ExecuteLater('update')({name:queen,f})
+                }
+            const KeepInMemory = (dna) => app.has.memory.push(dna)
+            const ExecuteLater =
+                 (responsible) =>
+                         (dna) => KeepInMemory({dna,for:responsible})
+
+         // Apply responsibility
+            app.attach = TakeTheQueen
+            app.has.queens.map( queen => app.attach(queen) )
+            app.ForceErrorsIfShouldBe =  proteinProvoker
+        }
+
+     // Run Immediately
+        let app = new AppBoot()
+        app.ForceErrorsIfShouldBe()
     </script>
 
-
-    <!-- ༼°▽°༽ prefetch boot -->
-    <link rel="preload"      href="art/bergamot-just-browse-here.svg" as="image">
-    <link rel="preconnect"   href="//fonts.gstatic.com">
-    <!-- INFO: https://3perf.com/blog/link-rels/ -->
 
 
     <!-- ========================================= DESIGN -->

@@ -1,6 +1,6 @@
 /** autofill-paragraphs - insert some lorem ipsum */
 
-function autofillParagraphs(selector='.auto') {
+function autofillParagraphs(selector='[txt]') {
     const p = document.querySelectorAll(selector)
     for ( let x in p ) {
         let texts = [
@@ -18,8 +18,10 @@ function autofillParagraphs(selector='.auto') {
 }
 
 /*  Apprun */
-    app.onload(()=>autofillParagraphs('[txt]'))
-    app.onload(autofillParagraphs)
+    if(app) {
+        app.onload(f=>autofillParagraphs('[txt]'))
+        app.onload(f=>autofillParagraphs('.auto'))
+    }
 /**/
 
 /*  EOF autofill-paragraphs */

@@ -8,7 +8,7 @@
     https://github.com/julienzmiro/zoomzoomzang/blob/master/zzz.js
 ------------------------------------------- */
 
-//* ------------------------------------------- ENGINE
+//* ------------------------------------------- LIBRARY
 
 let zzzCommander = {};
 let zzzClassname = "zzz"
@@ -234,7 +234,7 @@ let imageZzzzoom = function zoomZoomZangBased (o) {
 };
 
 
-//* ------------------------------------------- RUN
+//* ------------------------------------------- DEFINE STARTER
 
 
 function ActivateImageZzzoom(theme_bg_color = "#FFFFFF") {
@@ -255,7 +255,13 @@ function ActivateImageZzzoom(theme_bg_color = "#FFFFFF") {
 
 }
 
-if (app) app.onload(f=>ActivateImageZzzoom())
+
+//* ------------------------------------------- RUN
+
+
+/*  Apprun */
+    if (app) app.onload(f=>ActivateImageZzzoom())
+/**/
 
 
 /* EOF zooming images */

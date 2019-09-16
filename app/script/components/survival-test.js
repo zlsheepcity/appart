@@ -24,7 +24,7 @@ let AppSurvivalTest = function () {
 }
 
 /*  Apprun */
-    app.onload(AppSurvivalTest)
+    if (app) app.onload(AppSurvivalTest)
 /**/
 
 /*  EOF appking survival test */

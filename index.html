@@ -1,4 +1,4 @@
-<!doctype html><!-- appart :: 8100 :: 2019.9.11 -->
+<!doctype html><!-- appart :: 8102 :: 2019.9.16 -->
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -24,30 +24,33 @@
     <!-- ========================================= BOOT -->
 
 
+    <!-- ༼°▽°༽ style boot -->
     <style>
-        /* ༼°▽°༽ style boot */
         body    { width: 100%; height: auto; overflow: hidden; }
         img,svg { max-width: 100%; }
     </style>
 
+    <!-- ༼°▽°༽ prefetch boot -->
+    <link rel="preconnect"   href="//fonts.gstatic.com">
 
+    <!-- ༼°▽°༽ app boot -->
     <script>
-        /* ༼°▽°༽ app boot */
         function AppBoot() {
 
          // The Noble Blastula
             let app = this
             app.has = { memory: [], arrived:true }
+            app.has.queens = [ 'onload', 'mutate' ]
             /*
-            King has arrived.
-            Take the Queen.
-            Keep in memory.
-            Execute later.
-            2019.9.5
+            King has arrived --- let app = new AppBoot()
+            Take the Queen ----- app.attach('queen_name')(function)
+            Keep in memory ----- app.queen_name(function_parameters)
+            Execute later ------ app.onload(function)
+            2019.9.15
             */
 
          // The Noble Provocator
-            const proteinProvoker = function ForceErrorsIfShouldBe () {
+            const proteinProvoker = function ImitateCriticalTasks () {
               let tpp = new this.__proto__.constructor()
               let must_have_a_memory = tpp.has.memory.push('something')
               let must_accept_queens = like_this_one => true
@@ -68,27 +71,21 @@
 
          // Apply responsibility
             app.attach = TakeTheQueen
-            app.ForceErrorsIfShouldBe = proteinProvoker
-
-         // Prepare Primary Queens
-            const queens = ['onload', 'mutate']
-            queens.map( queen => app.attach(queen) )
+            app.has.queens.map( queen => app.attach(queen) )
+            app.ForceErrorsIfShouldBe =  proteinProvoker
         }
-        // autorun
+
+     // Run Immediately
         let app = new AppBoot()
         app.ForceErrorsIfShouldBe()
     </script>
-
-
-    <!-- ༼°▽°༽ prefetch boot -->
-    <link rel="preconnect" href="//fonts.gstatic.com">
 
 
     <!-- ========================================= DESIGN -->
 
 
     <link
-        href="app/styles/appart.css?v2019.9.11"
+        href="app/styles/appart.css?v2019.9.16"
         rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic"
@@ -99,10 +96,14 @@
 
 
     <script defer src="app/script/app-core.js"></script>
-    <script defer src="app/script/components/autofill-paragraphs.js"></script>
 
+    <!-- interface -->
+    <script defer src="app/script/components/image-zzzoom.js"></script>
 
     <!-- ========================================= APP CUSTOM -->
+
+    <!-- dev functions -->
+    <script defer src="app/script/components/autofill-paragraphs.js"></script>
 
 
     <!-- ========================================== ʕ⊙ᴥ⊙ʔ = -->
@@ -127,14 +128,22 @@
 
     <!-- ----------------------------------------- Project Header -->
 
+    <div class="journal-grid">
+        <div class="keep-base">
+            <div class="layer">
 
-    <section class="swed-banner use-colors colors--secondary">
-        <h2>App <mark>&</mark> Art</h2>
-        <p class="mini-paragraph text-inline-bigger">
-            Front-end components. Not a framework,
-            but reusable code templates.
-        </p>
-    </section>
+                <section class="swed-banner use-colors colors--secondary">
+                    <h2>App <mark>&</mark> Art</h2>
+                    <p class="mini-paragraph text-inline-bigger">
+                        Front-end components. Not a framework,
+                        but reusable code templates.
+                    </p>
+                </section>
+
+            </div>
+        </div>
+    </div>
+
 
 
     <!-- ----------------------------------------- Side Menu -->
@@ -201,7 +210,7 @@
             </p>
         </header>
 
-        <section class="journal-grid chapter use-colors colors--ivory">
+        <section class="keep-base chapter use-colors colors--ivory">
 
             <section class="block">
                 <p txt></p>
@@ -256,7 +265,7 @@
             <p>Supporter classes and variables — em-based-size presets, types collections, etc</p>
         </header>
 
-        <section class="chapter keep-grid  use-colors colors--ivory">
+        <section class="chapter keep-base  use-colors colors--ivory">
 
             <header class="wide is-centered">
                 <div class="h1">Web-Typography testpage</div>
@@ -397,7 +406,7 @@
             <p>Nine variables for color-switching.</p>
         </header>
 
-        <section class="chapter layer">
+        <section class="chapter keep-base">
 
             <header class="banner">
                 <h2 class="h3">Some presets:</h2>

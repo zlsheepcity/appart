@@ -2,64 +2,42 @@
  *  2019.9.23
  */
 
-function LazyLoaderStart() {
- // Code source
- // https://imagekit.io/blog/lazy-loading-images-complete-guide/
-    document.addEventListener("DOMContentLoaded", function() {
-      var lazyloadImages;
 
-      if ("IntersectionObserver" in window) {
-        lazyloadImages = document.querySelectorAll("[data-src]");
-        var imageObserver = new IntersectionObserver(function(entries, observer) {
-          entries.forEach(function(entry) {
-            if (entry.isIntersecting) {
-              var image = entry.target;
-              image.src = image.dataset.src;
-              imageObserver.unobserve(image);
-            }
-          });
-        });
+function LazyLoader() {
+    const allLazyImages = document.querySelectorAll('[data-src]')
+    const observerOptions = { rootMargin:'50px 0px' }
+    const MakeImageLoaded = img => img.src = img.dataset.src
 
-        lazyloadImages.forEach(function(image) {
-          imageObserver.observe(image);
-        });
-
-      } else {
-
-        var lazyloadThrottleTimeout;
-        lazyloadImages = document.querySelectorAll("[data-src]");
-
-        function lazyload () {
-          if(lazyloadThrottleTimeout) {
-            clearTimeout(lazyloadThrottleTimeout);
-          }
-
-          lazyloadThrottleTimeout = setTimeout(function() {
-            var scrollTop = window.pageYOffset;
-            lazyloadImages.forEach(function(img) {
-                if(img.offsetTop < (window.innerHeight + scrollTop)) {
-                  img.src = img.dataset.src;
-                }
-            });
-            if(lazyloadImages.length == 0) {
-              document.removeEventListener("scroll", lazyload);
-              window.removeEventListener("resize", lazyload);
-              window.removeEventListener("orientationChange", lazyload);
-            }
-          }, 20);
+    const LoadWithObserver = function() {
+     // Define observer
+        const ObserverTask  = entries => entries.forEach(ObservationTask)
+        const ObservationTask = entry => entry.isIntersecting ? WakeUp(entry.target) : false
+        const RemoveObservation = img => LazyObserver.unobserve(img)
+        const WakeUp = img => {
+              MakeImageLoaded(img)
+              RemoveObservation(img)
         }
+     // Run observer
+        let LazyObserver = new IntersectionObserver(ObserverTask, observerOptions)
+        allLazyImages.forEach(img=>LazyObserver.observe(img))
+    }
 
-        document.addEventListener("scroll", lazyload);
-        window.addEventListener("resize", lazyload);
-        window.addEventListener("orientationChange", lazyload);
-      }
-    })
-
+    if ('IntersectionObserver' in window) LoadWithObserver()
+    else allLazyImages.forEach(MakeImageLoaded)
 }
 
 
-// Autorun
-LazyLoaderStart()
+/* ----------------------------------------- Autorun */
 
 
+document.addEventListener('DOMContentLoaded', LazyLoader)
+
+
+/* ----------------------------------------- Usage
+
+
+<img data-src="file.jpg" width="800" height="600">
+
+
+*/
 /** EOF Lazy Loader */

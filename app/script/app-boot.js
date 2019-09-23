@@ -11,16 +11,17 @@ function AppBoot() {
  // The Noble Blastula
     let app = this
     app.has = { memory: [], arrived:true }
+    app.has.queens = [ 'onload', 'mutate' ]
     /*
-    King has arrived.
-    Take the Queen.
-    Keep in memory.
-    Execute later.
-    2019.9.5
+    King has arrived --- let app = new AppBoot()
+    Take the Queen ----- app.attach('queen_name')(function)
+    Keep in memory ----- app.queen_name(function_parameters)
+    Execute later ------ app.onload(function)
+    2019.9.15
     */
 
  // The Noble Provocator
-    const proteinProvoker = function ForceErrorsIfShouldBe () {
+    const proteinProvoker = function ImitateCriticalTasks () {
       let tpp = new this.__proto__.constructor()
       let must_have_a_memory = tpp.has.memory.push('something')
       let must_accept_queens = like_this_one => true
@@ -41,13 +42,11 @@ function AppBoot() {
 
  // Apply responsibility
     app.attach = TakeTheQueen
-    app.ForceErrorsIfShouldBe = proteinProvoker
-
- // Prepare Primary Queens
-    const queens = ['onload', 'mutate']
-    queens.map( queen => app.attach(queen) )
+    app.has.queens.map( queen => app.attach(queen) )
+    app.ForceErrorsIfShouldBe =  proteinProvoker
 }
-//  -------------------------------- AppBoot run immideately
+
+//  -------------------------------- run immidiately
 let app = new AppBoot()
 app.ForceErrorsIfShouldBe()
 

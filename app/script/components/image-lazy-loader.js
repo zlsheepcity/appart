@@ -3,6 +3,19 @@
  */
 
 
+/** ----------------------------------------- Usage template
+
+
+<script defer src="app/script/components/image-lazy-loader.js"></script>
+<img data-src="file.jpg" width="800" height="600">
+
+
+*/
+
+
+/** ----------------------------------------- Define loader */
+
+
 function LazyLoader() {
     const allLazyImages = document.querySelectorAll('[data-src]')
     const observerOptions = { rootMargin:'50px 0px' }
@@ -27,17 +40,10 @@ function LazyLoader() {
 }
 
 
-/* ----------------------------------------- Autorun */
+/** ----------------------------------------- Autorun */
 
 
 document.addEventListener('DOMContentLoaded', LazyLoader)
 
 
-/* ----------------------------------------- Usage
-
-
-<img data-src="file.jpg" width="800" height="600">
-
-
-*/
 /** EOF Lazy Loader */

@@ -95,6 +95,7 @@
     <script defer src="app/script/app-core.js"></script>
 
     <!-- interface -->
+    <script defer src="app/script/components/css-class-mutator.js"></script>
     <script defer src="app/script/components/image-zzzoom.js"></script>
     <script defer src="app/script/components/image-lazy-loader.js"></script>
 
@@ -118,6 +119,22 @@
     <!-- ========================================= END HEAD -->
 </head>
 <body class="colors--primary native-sans">
+
+    <!-- ----------------------------------------- Class Mutator -->
+
+    <screen class="use-colors colors--root">
+        <header>
+            <h2>CSS Class Mutator</h2>
+        </header>
+        <div class="make-me-happy">DIV.make-me-happy → DIV.happy (the red color)</div>
+        <style>
+            .happy { color:firebrick }
+            .make-me-happy { background-color:wheat }
+        </style>
+        <script>
+            app.mutate({for:'make-me-happy',addClass:'happy',removeClass:'make-me-happy'})
+        </script>
+    </screen>
 
     <!-- ----------------------------------------- Lazy Loading -->
 

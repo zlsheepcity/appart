@@ -1,6 +1,6 @@
 /** -------------------------------------------
-    Scroll to Property (wayway)
-    CSS variable values depending on the scroll position.
+    Scroll to Var (wayway)
+    The scroll position affects the values of CSS variables.
     2019.9.23
 ------------------------------------------- */
 
@@ -9,11 +9,15 @@
 
 
 const queenWayway  = function Ribosome (dna) {
+
+ // Activate basicScroll with DNA
     const instance = basicScroll.create(dna)
     instance.start()
     return instance
+
 }
-if (app) app.attach('wayway')
+if (app) app.attach('wayway')(queenWayway)
+//  app.wayway({dna})
 
 
 /* ------------------------------------------- usage example
@@ -26,7 +30,7 @@ if (app) app.attach('wayway')
         to:   'top-top',
         direct:  true,
         props: {
-            '--font': { from: '10px', to: '36px' }
+            '--font-size': { from: '10px', to: '40px' }
         }
     })
 
@@ -37,11 +41,11 @@ if (app) app.attach('wayway')
             from: 'top-middle',
             to:   'top-top',
             inside:  (instance, percentage, props) => {
-                app.log('wayway-trigga Inside!'+percentage)
+                console.log('Inside! '+percentage)
                 instance.destroy()
             },
             outside: (instance, percentage, props) => {
-                app.log('Outside!'+percentage)
+                console.log('Outside! '+percentage)
             }
         })
 

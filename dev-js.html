@@ -98,7 +98,8 @@
     <script defer src="app/script/components/css-class-mutator.js"></script>
     <script defer src="app/script/components/image-zzzoom.js"></script>
     <script defer src="app/script/components/image-lazy-loader.js"></script>
-    <script defer src="app/script/components/scroll-to-property.js"></script>
+    <script defer src="app/script/components/scroll-to-var.js"></script>
+    <script>app.attach('wayway')</script>
 
 
     <!-- ========================================= APP CUSTOM -->
@@ -134,6 +135,24 @@
         </style>
         <script>
             app.mutate({for:'make-me-happy',addClass:'happy',removeClass:'make-me-happy'})
+        </script>
+    </screen>
+
+    <!-- ----------------------------------------- Scroll To Property -->
+
+    <screen class="use-colors colors--root">
+        <header class="is-centered">
+            <h2>Scroll To Property (Wayway)</h2>
+        </header>
+        <div class="make-me-wayway padding is-centered font-size" style="--font-size:10px;">Font size from 10px to 60px</div>
+        <script>
+            app.wayway({
+                elem: document.querySelector('.make-me-wayway'),
+                from: 'top-bottom',
+                to:   'top-top',
+                props: { '--font-size': {from:'10px',to:'60px'} },
+                direct: true
+            })
         </script>
     </screen>
 

@@ -126,6 +126,10 @@
             </p>
         </section>
         <section class="swed-banner text-block-smaller">
+            <a href="#Articles" class="swed-button">
+                <span class="svga-icon"><svg><use xlink:href="#svg-next"></use></svg></span>
+                read articles
+            </a>
             <a href="#About" class="swed-button">
                 <span class="svga-icon"><svg><use xlink:href="#svg-next"></use></svg></span>
                 about project
@@ -175,7 +179,6 @@
     </article>
 
 
-    <!-- ========================================= PAGE CONTENT -->
 
 
     <hr class="reading-pause">
@@ -250,6 +253,22 @@
                     href="https://github.com/zlsheepcity/appart/tree/master/app/styles/components/offsidebar"
                     class="link-inline">git source</a></p>
                 <p><s>demo page</s></p>
+            </figure>
+
+            <figure>
+                <h4>UI Elements</h4>
+                <p class="text-block-smaller">Button, dropdown, e.t.c.</p>
+                <p><a
+                    href="https://github.com/zlsheepcity/appart/tree/master/app/styles/components/swed-design"
+                    class="link-inline">git source</a></p>
+            </figure>
+
+            <figure>
+                <h4>SVGA Icons</h4>
+                <p class="text-block-smaller">Shortcode for inline SVG-image</p>
+                <p><a
+                    href="https://github.com/zlsheepcity/appart/tree/master/app/styles/components/svga-icons"
+                    class="link-inline">git source</a></p>
             </figure>
 
         </section>
@@ -344,15 +363,34 @@
     </article>
 
 
+    <!-- ========================================= PAGE CONTENT -->
+
+
+    <div id="Articles"></div>
+
+
     <!-- ----------------------------------------- Journal Grid -->
 
 
-    <article id="JournalGrid" class="journal-grid">
+    <article id="JournalGrid" class="journal-grid chapter">
 
-        <hr class="reading-pause padding-top" style="--padding-top:20vh;">
+        <nav
+            class="font-size padding-bottom"
+            style="--font-size:3rem; --padding-bottom:20vh;">
+            <a href="#Start" class="markup">
+                <figure class="svga-icon base-size">
+                    <svg><use xlink:href="#svg-up"></use></svg>
+                </figure>
+            </a>
+            <button class="markup js-for-ChaptersMenuBar">
+                <figure class="svga-icon base-size">
+                    <svg><use xlink:href="#svg-menu"></use></svg>
+                </figure>
+            </button>
+        </nav>
 
         <header class="wide">
-            <h2 class="h1"><mark>§3.</mark><br> CSS-grid for articles</h2>
+            <h2 class="h1"><mark>§1.</mark><br> CSS-grid for articles</h2>
             <p class="midi-paragraph">
                 Journal-looks article layout with side-notes and various column-merging properties. Has constant spaces, layout for small screens.
             </p>
@@ -407,9 +445,22 @@
     <!-- ----------------------------------------- Typography Demo -->
 
 
-    <article id="Typography" class="chapter journal-grid">
+    <article id="Typography" class="journal-grid chapter">
 
-        <hr class="reading-pause padding-top" style="--padding-top:20vh;">
+        <nav
+            class="font-size padding-bottom"
+            style="--font-size:3rem; --padding-bottom:20vh;">
+            <a href="#Start" class="markup">
+                <figure class="svga-icon base-size">
+                    <svg><use xlink:href="#svg-up"></use></svg>
+                </figure>
+            </a>
+            <button class="markup js-for-ChaptersMenuBar">
+                <figure class="svga-icon base-size">
+                    <svg><use xlink:href="#svg-menu"></use></svg>
+                </figure>
+            </button>
+        </nav>
 
         <header class="wide">
             <h2 class="h1"><mark>§2.</mark><br> Web-Typography</h2>
@@ -564,6 +615,11 @@
                 <!--title>Arrow Back, material icons</title-->
                 <path d="M0 0h24v24H0z" fill="none"/>
                 <path d="M0 0h24v24H0z" fill="none"/><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+            </symbol>
+            <symbol id="svg-up" viewBox="0 0 24 24">
+                <!--title>Arrow Up, material icons</title-->
+                <path d="M0-.75h24v24H0z" fill="none"/>
+                <path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"/>
             </symbol>
             <symbol id="svg-down" viewBox="0 0 24 24">
                 <!--title>Chevron Down, material icons</title-->

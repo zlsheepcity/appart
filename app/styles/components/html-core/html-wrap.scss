@@ -28,7 +28,7 @@ body { /*font-size: 16px;*/ }
 /** -------------------------------- improve design & UX */
 
 
-html    { cursor:     default; }
+html    { cursor:     default; scroll-behavior: smooth; }
 body    { overflow-y: scroll;  }
 
 /* Single taps are dispatched immediately on clickable elements */

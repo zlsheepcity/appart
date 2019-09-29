@@ -1,4 +1,4 @@
-<!doctype html><!-- appart :: 8102 :: 2019.9.16 -->
+<!doctype html><!-- appart :: 8102 :: 2019.9.29 -->
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -85,7 +85,7 @@
 
 
     <link
-        href="app/styles/appart.css?v2019.9.16"
+        href="app/styles/appart.css?v2019.9.29"
         rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic"
@@ -111,39 +111,32 @@
 </head>
 <body class="colors--primary">
 
-
-    <!-- ----------------------------------------- Site Header -->
-
-
-    <header class="swed-site-head colors--primary">
-        <h1 class="swed-site-logo h5"><span>Appart</span></h1>
-        <ul class="swed-site-meta">
-            <li></li>
-        </ul>
-        <ul class="swed-site-menu">
-            <li></li>
-        </ul>
-    </header>
-
-
     <!-- ----------------------------------------- Project Header -->
 
-    <div class="journal-grid">
-        <div class="keep-base">
-            <div class="layer">
+    <header id="Start">
 
-                <section class="swed-banner use-colors colors--secondary">
-                    <h2>App <mark>&</mark> Art</h2>
-                    <p class="mini-paragraph text-inline-bigger">
-                        Front-end components. Not a framework,
-                        but reusable code templates.
-                    </p>
-                </section>
+        <section class="swed-banner use-colors colors--secondary">
+            <h1>App <mark>&</mark> Art</h1>
+            <p class="mini-paragraph text-inline-bigger">
+                Front-end components. Not a framework,
+                but reusable code templates.
+            </p>
+            <p class="native-sans text-block-smaller">
+                v2019.9.29<br><strong>Elisa</strong>
+            </p>
+        </section>
+        <section class="swed-banner text-block-smaller">
+            <a href="#About" class="swed-button">
+                <span class="svga-icon"><svg><use xlink:href="#svg-next"></use></svg></span>
+                about project
+            </a>
+            <a href="https://github.com/zlsheepcity/appart" class="swed-button">
+                <span class="svga-icon"><svg><use xlink:href="#svg-github"></use></svg></span>
+                code sources
+            </a>
+        </section>
 
-            </div>
-        </div>
-    </div>
-
+    </header>
 
 
     <!-- ----------------------------------------- Side Menu -->
@@ -156,14 +149,13 @@
         <section class="ChaptersMenuBar offsidebar">
             <div class="sidepanel">
                 <header class="sidepanel-header">
-                    <h2 class="h4">Summary</h2>
+                    <h2 class="h4">Table of Content</h2>
                 </header>
                 <nav class="sidepanel-content">
                     <ul class="content-menu js-for-ChaptersMenuBar">
+                        <li class="pb"><a href="#Start">Start</a></li>
                         <li><a href="#JournalGrid">Journal Grid</a></li>
                         <li><a href="#Typography">Web-Typography</a></li>
-                        <li><a href="#ColorModel">Color-model</a></li>
-                        <li><a href="#Offsidebar">Offsidebar</a></li>
                     </ul>
                 </nav>
             </div>
@@ -189,10 +181,182 @@
     <hr class="reading-pause">
 
 
+    <!-- ----------------------------------------- App Components -->
+
+    <div class="use-colors colors--root">
+
+    <article class="layer padding">
+
+        <header class="is-centered padding">
+            <h2>CSS Components</h2>
+        </header>
+        <section
+            class="group-collisting auto-margin"
+            style="--h4-font-size: var(--h5-font-size);">
+
+            <figure>
+                <h4>CSS Varriors</h4>
+                <p class="text-block-smaller">Replaced inline styling.</p>
+                <p><a
+                    href="https://github.com/zlsheepcity/appart/blob/master/app/styles/components/html-core/css-varriors.scss"
+                    class="link-inline">SCSS function</a></p>
+                <p><s>compiled CSS</s></p>
+                <p><s>research article</s></p>
+            </figure>
+
+            <figure>
+                <h4>Journal Grid</h4>
+                <p class="text-block-smaller">Two-columns content layout.</p>
+                <p><a
+                    href="https://github.com/zlsheepcity/appart/blob/master/app/styles/components/journal-grid/journal-grid.scss"
+                    class="link-inline">git source</a></p>
+                <p><a href="dev/tests-journal-grid.html" class="link-inline">demo/article</a></p>
+            </figure>
+
+            <figure class="fatground">
+                <h4>Catgrounds!</h4>
+                <p class="text-block-smaller">Design trick to make boring content more interesting.</p>
+                <p><s>project page</s></p>
+            </figure>
+
+            <figure>
+                <h4>Color Model</h4>
+                <p class="text-block-smaller">Pattern for switching different color palletes in one document.</p>
+                <p><a
+                    href="https://github.com/zlsheepcity/appart/blob/master/app/styles/components/color-model/color-model.scss"
+                    class="link-inline">git source</a></p>
+                <p><s>research article</s></p>
+            </figure>
+
+            <figure>
+                <h4>CSS Typography</h4>
+                <p class="text-block-smaller">Code snippets and research.</p>
+                <p><a
+                    href="https://github.com/zlsheepcity/appart/blob/master/app/styles/components/html-core/html-typography.scss"
+                    class="link-inline">git source</a></p>
+                <p><a href="#Typography" class="link-inline">demo</a></p>
+            </figure>
+
+            <figure>
+                <div class="pb is-centered js-for-ChaptersMenuBar">
+                    <img
+                        src="art/component-icons/component-icon--ofsidebar.svg"
+                        alt="ofsidebar component icon"
+                        class="width" style="--width:6em;">
+                </div>
+                <h4>Offsidebar</h4>
+                <p class="text-block-smaller">Expandable side-panel.</p>
+                <p><a
+                    href="https://github.com/zlsheepcity/appart/tree/master/app/styles/components/offsidebar"
+                    class="link-inline">git source</a></p>
+                <p><s>demo page</s></p>
+            </figure>
+
+        </section>
+    </article>
+
+
+    <article class="layer padding padding-top" style="--padding-top:0;">
+        <header class="is-centered padding">
+            <h2>JavaScript Components</h2>
+        </header>
+        <section
+            class="group-collisting auto-margin"
+            style="--h4-font-size: var(--h5-font-size);">
+
+            <figure>
+                <h4>Image Lazy Loader</h4>
+                <p class="text-block-smaller">Images are only loaded when it appears while scrolling.</p>
+                <p><a
+                    href="https://github.com/zlsheepcity/appart/blob/master/app/script/components/image-lazy-loader.js"
+                    class="link-inline">git source</a></p>
+            </figure>
+
+            <figure>
+                <h4>Image Zoom</h4>
+                <p class="text-block-smaller">Smooth image zoom to fit screen on click.</p>
+                <p><a
+                    href="https://github.com/zlsheepcity/appart/blob/master/app/script/components/image-zzzoom.js"
+                    class="link-inline">git source</a></p>
+            </figure>
+
+            <figure>
+                <h4>CSS Class Mutator</h4>
+                <p class="text-block-smaller">Shorthand function for managing an element class.</p>
+                <p><a
+                    href="https://github.com/zlsheepcity/appart/blob/master/app/script/components/css-class-mutator.js"
+                    class="link-inline">git source</a></p>
+            </figure>
+
+            <figure>
+                <h4>Scroll to Var</h4>
+                <p class="text-block-smaller">The scroll position affects the values of CSS variables.</p>
+                <p><a
+                    href="https://github.com/zlsheepcity/appart/blob/master/app/script/components/scroll-to-var.js"
+                    class="link-inline">git source</a></p>
+            </figure>
+
+            <figure>
+                <h4>AppKing.js</h4>
+                <p class="text-block-smaller">Vanilla js controller for unsystematized functions.</p>
+                <p><s>research article</s></p>
+            </figure>
+
+        </section>
+    </article>
+
+    </div>
+
+
+    <!-- ----------------------------------------- About project -->
+
+
+    <article id="About" class="journal-grid centrale use-colors colors--swed-third">
+
+        <section class="keep-base chapter use-colors colors--secondary">
+
+            <header>
+                <h2 class="h2">Project Description</h2>
+                <p  class="h4">(in russian)</p>
+            </header>
+
+            <div class="note">
+                <p><strong>appart</strong> — (фр.) поиск подходящего партнёра</p>
+            </div>
+
+            <div class="box">
+                <p><b>App</b> — от технического термина application, <b>Art</b> — творчество. Игра слов означает связь между кодом и содержанием.</p>
+
+                <p>Проект appart создан для упрощённой вёрстки уникального контента. Внимание уделяется ликвидации «некрасивых» ошибок, таких как, дёргание контента под модальным окном.</p>
+
+                <p>Appart не фреймворк, а код для копирования в другие проекты.</p>
+            </div>
+
+            <footer class="text-inline-bigger">
+                <p>
+                    zl, August 2019<br>
+                    zl.sheepcity@gmail.com
+                </p>
+            </footer>
+
+        </section>
+
+    </article>
+
+
     <!-- ----------------------------------------- Journal Grid -->
 
 
     <article id="JournalGrid" class="journal-grid">
+
+        <hr class="reading-pause padding-top" style="--padding-top:20vh;">
+
+        <header class="wide">
+            <h2 class="h1"><mark>§3.</mark><br> CSS-grid for articles</h2>
+            <p class="midi-paragraph">
+                Journal-looks article layout with side-notes and various column-merging properties. Has constant spaces, layout for small screens.
+            </p>
+        </header>
 
         <nav class="nav-header journal-grid use-colors">
             <p>
@@ -201,14 +365,6 @@
                 <a href="dev/tests-journal-grid.html" class="link-inline">demo page</a>
             </p>
         </nav>
-
-        <header class="wide">
-            <h2 class="h1">CSS-grid for articles</h2>
-            <p>
-                Journal-looks article layout with side-notes and various column-merging properties.<br>
-                Has constant spaces, supports small screens, easy markup.
-            </p>
-        </header>
 
         <section class="keep-base chapter use-colors colors--ivory">
 
@@ -223,18 +379,18 @@
 
             <p txt></p>
 
-            <section class="keep-layer color-box">
-                <section class="block">
-                    <p txt></p>
-                    <p txt></p>
-                </section>
-                <aside class="note">
-                    <p txt></p>
-                </aside>
-            </section>
+            <figure class="keep-wide pv">
+                <div><img
+                    src="art/illustrations/austria.svg"
+                    alt=""
+                    class="auto-margin zzz"></div>
+                <figcaption class="note">
+                    <p><strong>Burg Hochosterwitz</strong>, one of Austria's most impressive medieval castles.</p>
+                </figcaption>
+            </figure>
 
             <section class="keep-wide color-box">
-                <section class="block">
+                <section class="block text-block-bigger">
                     <p txt></p>
                     <p txt></p>
                 </section>
@@ -253,17 +409,21 @@
 
     <article id="Typography" class="chapter journal-grid">
 
+        <hr class="reading-pause padding-top" style="--padding-top:20vh;">
+
+        <header class="wide">
+            <h2 class="h1"><mark>§2.</mark><br> Web-Typography</h2>
+            <p class="midi-paragraph">
+                Supporter classes and variables — em-based-size presets, types collections, etc.
+            </p>
+        </header>
+
         <nav class="nav-header journal-grid use-colors">
             <p>
                 <mark>Web-Typography</mark> —
                 <a href="https://github.com/zlsheepcity/appart/blob/master/app/styles/components/html-core/html-typography.scss" class="link-inline">git source</a>
             </p>
         </nav>
-
-        <header class="wide">
-            <h2 class="h1">Web-Typography</h2>
-            <p>Supporter classes and variables — em-based-size presets, types collections, etc</p>
-        </header>
 
         <section class="chapter keep-base  use-colors colors--ivory">
 
@@ -276,6 +436,48 @@
                 <div class="h6">Web-Typography testpage</div>
                 <small>Web-Typography testpage</small>
             </header>
+
+            <section class="wide">
+
+                <header class="chapter-header">
+                    <h2>Paragraph readable width</h2>
+                </header>
+
+                <h3>
+                    <mark>.paragraph</mark>
+                    Max width limit (42em)
+                </h3>
+                <div class="paragraph group-content-rows">
+                    <div><span txt></span><span txt></span></div>
+                    <div><span txt></span><span txt></span></div>
+                </div>
+
+                <h3>
+                    <mark>.midi-paragraph</mark>
+                    Optimal middle-size (24em)
+                </h3>
+                <div class="midi-paragraph group-content-rows">
+                    <div txt></div><div txt></div>
+                </div>
+
+                <section class="group-banner">
+                    <h3 class="banner-title">
+                        <mark>.mini-paragraph</mark>
+                        Minimal readable width (12em)
+                    </h3>
+                    <div class="mini-paragraph group-content-rows">
+                        <div>Front-end components. Not a framework, but reusable code templates.</div>
+                        <div>Atom classes for maintainable inline CSS</div>
+                        <div>CSS grid template for big articles with a lot of content, illustrations and creative visuals.</div>
+                    </div>
+                    <div class="mini-paragraph group-content-rows text-inline-bigger">
+                        <div>Front-end components. Not a framework, but reusable code templates.</div>
+                        <div>Atom classes for maintainable inline CSS</div>
+                        <div>CSS grid template for big articles with a lot of content, illustrations and creative visuals.</div>
+                    </div>
+                </section>
+
+            </section>
 
             <h2 class="chapter-header">Facetypes collection</h2>
 
@@ -341,287 +543,10 @@
                 </div>
             </div>
 
-
-            <section class="wide">
-
-                <header class="chapter-header">
-                    <h2>Paragraph readable width</h2>
-                </header>
-
-                <h3>
-                    <mark>.paragraph</mark>
-                    Max width limit (42em)
-                </h3>
-                <div class="paragraph group-content-rows">
-                    <div><span txt></span><span txt></span></div>
-                    <div><span txt></span><span txt></span></div>
-                </div>
-
-                <h3>
-                    <mark>.midi-paragraph</mark>
-                    Optimal middle-size (24em)
-                </h3>
-                <div class="midi-paragraph group-content-rows">
-                    <div txt></div><div txt></div>
-                </div>
-
-                <section class="group-banner">
-                    <h3 class="banner-title">
-                        <mark>.mini-paragraph</mark>
-                        Minimal readable width (12em)
-                    </h3>
-                    <div class="mini-paragraph group-content-rows">
-                        <div>Front-end components. Not a framework, but reusable code templates.</div>
-                        <div>Atom classes for maintainable inline CSS</div>
-                        <div>CSS grid template for big articles with a lot of content, illustrations and creative visuals.</div>
-                    </div>
-                    <div class="mini-paragraph group-content-rows text-inline-bigger">
-                        <div>Front-end components. Not a framework, but reusable code templates.</div>
-                        <div>Atom classes for maintainable inline CSS</div>
-                        <div>CSS grid template for big articles with a lot of content, illustrations and creative visuals.</div>
-                    </div>
-                </section>
-
-            </section>
-
         </section>
 
     </article>
 
-
-    <!-- ----------------------------------------- Color Model -->
-
-
-    <article id="ColorModel" class="journal-grid">
-
-        <nav class="nav-header journal-grid use-colors">
-            <p>
-                <mark>Color Model</mark> —
-                <a href="https://github.com/zlsheepcity/appart/blob/master/app/styles/components/color-model/color-model.scss">git source</a>
-            </p>
-        </nav>
-
-        <header class="wide">
-            <h2 class="h1">Color Model</h2>
-            <p>Nine variables for color-switching.</p>
-        </header>
-
-        <section class="chapter keep-base">
-
-            <header class="banner">
-                <h2 class="h3">Some presets:</h2>
-            </header>
-
-            <section class="banner use-colors colors--root">
-                <header>
-                    <h2>colors--root</h2>
-                    <p class="text-color-descent">Color Model 3×3+2</p>
-                </header>
-                <p class="back-color-descent back-color-hover link-color padding">Hover Me</p>
-            </section>
-            <section class="banner use-colors colors--action">
-                <header>
-                    <h2>colors--action</h2>
-                    <p class="text-color-descent">Color Model 3×3+2</p>
-                </header>
-                <p class="back-color-descent back-color-hover link-color padding">Hover Me</p>
-            </section>
-            <section class="banner use-colors colors--ivory">
-                <header>
-                    <h2>colors--ivory</h2>
-                    <p class="text-color-descent">Color Model 3×3+2</p>
-                </header>
-                <p class="back-color-descent back-color-hover link-color padding">Hover Me</p>
-            </section>
-            <section class="banner use-colors colors--swed">
-                <header>
-                    <h2>colors--swed</h2>
-                    <p class="text-color-descent">Color Model 3×3+2</p>
-                </header>
-                <p class="back-color-descent back-color-hover link-color padding">Hover Me</p>
-            </section>
-            <section class="banner use-colors colors--swed-secondary">
-                <header>
-                    <h2>colors--swed-secondary</h2>
-                    <p class="text-color-descent">Color Model 3×3+2</p>
-                </header>
-                <p class="back-color-descent back-color-hover link-color padding">Hover Me</p>
-            </section>
-            <section class="banner use-colors colors--swed-third">
-                <header>
-                    <h2>colors--swed-third</h2>
-                    <p class="text-color-descent">Color Model 3×3+2</p>
-                </header>
-                <p class="back-color-descent back-color-hover link-color padding">Hover Me</p>
-            </section>
-
-        </section>
-
-    </article>
-
-
-    <!-- ----------------------------------------- Offside Bar -->
-
-
-    <article id="Offsidebar" class="journal-grid">
-
-        <nav class="nav-header journal-grid use-colors">
-            <p>
-                <mark>Offside Bar</mark> —
-                <a href="https://github.com/zlsheepcity/appart/tree/master/app/styles/components/offsidebar" >git source</a>
-            </p>
-        </nav>
-
-        <header class="wide">
-            <h2 class="h1">Offside bar</h2>
-            <p>Reveal side panel, avoids content jumps</p>
-        </header>
-
-        <section class="chapter banner">
-                <h3 class="banner-title">Demo cases</h3>
-                <button class="swed-button js-for-EastsideBar">Default</button>
-                <button class="swed-button js-for-WestsideBar">From Westside</button>
-                <button class="swed-button js-for-OverflowBar">Content overflow</button>
-                <button class="swed-button js-for-OverflowBarWestside">Content overflow (westside)</button>
-        </section>
-
-        <!-- Demo Bars -->
-
-        <section>
-
-            <!-- Default Bar -->
-
-            <section class="EastsideBar offsidebar colors--secondary">
-                <!-- <div class="offsidebar-overlay"></div>    <!-- auto insertion with js -->
-                <!-- <div class="offsidebar-background"></div> <!-- auto insertion with js -->
-                <div class="sidepanel">
-
-                    <header class="sidepanel-header">
-                        <h4>Scroll Content</h4>
-                    </header>
-
-                    <nav class="sidepanel-content">
-                        <ul class="content-menu js-for-EastsideBar">
-                            <li><span>Lorem ipsum</span></li>
-                            <li><span>Pellentesque habitant</span></li>
-                            <li><span>Morbi tristique senectus</span></li>
-                            <li><span>Et netus et malesuada</span></li>
-                            <li><span>Fames ac turpis egestas</span></li>
-                            <li><span>Vestibulum tortor quam</span></li>
-                            <li><span>Feugiat vitae</span></li>
-                            <li><span>Ultricies eget</span></li>
-                            <li><span>Tempor sit amet</span></li>
-                        </ul>
-                    </nav>
-
-                    <footer class="sidepanel-footer">
-                        <div>Footer</div>
-                    </footer>
-
-                </div>
-            </section>
-
-            <!-- Westside Bar -->
-
-            <section class="WestsideBar offsidebar from-westside colors--secondary">
-                <div class="sidepanel">
-
-                    <header class="sidepanel-header">
-                        <h4>Scroll Content</h4>
-                    </header>
-
-                    <nav class="sidepanel-content">
-                        <ul class="content-menu js-for-WestsideBar">
-                            <li><span>Lorem ipsum</span></li>
-                            <li><span>Pellentesque habitant</span></li>
-                            <li><span>Morbi tristique senectus</span></li>
-                            <li><span>Et netus et malesuada</span></li>
-                            <li><span>Fames ac turpis egestas</span></li>
-                            <li><span>Vestibulum tortor quam</span></li>
-                            <li><span>Feugiat vitae</span></li>
-                            <li><span>Ultricies eget</span></li>
-                            <li><span>Tempor sit amet</span></li>
-                        </ul>
-                    </nav>
-
-                    <footer class="sidepanel-footer">
-                        <div>Footer</div>
-                    </footer>
-
-                </div>
-            </section>
-
-            <!-- Overflow Bar -->
-
-            <section class="OverflowBar offsidebar colors--secondary">
-                <section class="sidepanel">
-
-                    <header class="sidepanel-header">
-                        <h4>Scroll Content</h4>
-                    </header>
-
-                    <section class="sidepanel-content">
-                        <div class="rows midi-paragraph">
-                            <p txt></p>
-                            <p txt></p>
-                            <p txt></p>
-                            <p txt></p>
-                            <p txt></p>
-                            <p txt></p>
-                            <p txt></p>
-                            <p txt></p>
-                        </div>
-                    </section>
-
-                    <footer class="sidepanel-footer">
-                        <div>Footer</div>
-                    </footer>
-
-                </section>
-            </section>
-
-            <!-- Overflow Bar Westside -->
-
-            <section class="OverflowBarWestside offsidebar from-westside colors--secondary">
-                <section class="sidepanel">
-
-                    <header class="sidepanel-header">
-                        <h4>Scroll Content</h4>
-                    </header>
-
-                    <section class="sidepanel-content">
-                        <div class="rows midi-paragraph">
-                            <p txt></p>
-                            <p txt></p>
-                            <p txt></p>
-                            <p txt></p>
-                            <p txt></p>
-                            <p txt></p>
-                            <p txt></p>
-                            <p txt></p>
-                        </div>
-                    </section>
-
-                    <footer class="sidepanel-footer">
-                        <div>Footer</div>
-                    </footer>
-
-                </section>
-            </section>
-
-        </section>
-
-        <!-- Activate Offside Bars -->
-
-        <script>
-            // Demo Bars
-            app.onload(f=>InterfaceOffsideBar('EastsideBar'))
-            app.onload(f=>InterfaceOffsideBar('WestsideBar'))
-            app.onload(f=>InterfaceOffsideBar('OverflowBar'))
-            app.onload(f=>InterfaceOffsideBar('OverflowBarWestside'))
-        </script>
-
-    </article>
 
 
     <!-- ========================================= PAGE CUSTOM -->

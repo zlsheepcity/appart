@@ -187,6 +187,7 @@ body {
 /** -------------------------------- improve design & UX */
 html {
   cursor: default;
+  scroll-behavior: smooth;
 }
 
 body {

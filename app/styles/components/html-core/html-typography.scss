@@ -95,14 +95,14 @@ body {
 
 .paragraph {
   --max-width: var(--paragraph-width);
-    max-width: var(--max-width);
   --min-width: var(--paragraph-width--min);
+    max-width: var(--max-width);
     min-width: var(--min-width);
 }
 .midi-paragraph {
   --max-width: var(--paragraph-width--mid);
-    max-width: var(--max-width);
   --min-width: var(--paragraph-width--min);
+    max-width: var(--max-width);
     min-width: var(--min-width);
 }
 .mini-paragraph {
@@ -117,34 +117,39 @@ body {
 :root,
 .root-typography {
  /* 64/80 */
-  --h1-font-size:    4em;
+  --h1-font-size:    4rem;
   --h1-line-height:  1.25;
 
  /* 48/60 */
-  --h2-font-size:    3em;
+  --h2-font-size:    3rem;
   --h2-line-height:  1.25;
 
  /* 36/48 */
-  --h3-font-size:    2.25em;
+  --h3-font-size:    2.25rem;
   --h3-line-height:  calc(4/3);
 
  /* 24/32 */
-  --h4-font-size:    1.5em;
+  --h4-font-size:    1.5rem;
   --h4-line-height:  calc(4/3);
+
+ /* 20/24 */
+  --h5-font-size:    1.25rem;
+  --h5-line-height:  1.2;
+
+ /* 16/24 */
+  --h6-font-size:    1rem;
+  --h6-line-height:  1.5;
+  --p-font-size:     1rem;
+  --p-line-height:   1.5;
+
 
  /* 20/24 */
   --inc-font-size:   1.25em;
   --inc-line-height: 1.2;
-  --h5-font-size:    var(--inc-font-size);
-  --h5-line-height:  var(--inc-line-height);
 
  /* 16/24 */
-  --p-font-size:     1em;
-  --p-line-height:   1.5;
-  --h6-font-size:    var(--p-font-size);
-  --h6-line-height:  var(--p-line-height);
-  --def-font-size:   var(--p-font-size);
-  --def-line-height: var(--p-line-height);
+  --def-font-size:   1em;
+  --def-line-height: 1.5;
 
  /* 13/16 */
   --dec-font-size:   calc(13/16*1em);
@@ -158,13 +163,13 @@ body {
     :root,
     .root-typography {
      /* 36/40 */
-      --h1-font-size:    2.25em;
+      --h1-font-size:    2.25rem;
       --h1-line-height:  calc(40/36);
      /* 32/36 */
-      --h2-font-size:    2em;
+      --h2-font-size:    2rem;
       --h2-line-height:  calc(36/32);
      /* 28/32 */
-      --h3-font-size:    1.75em;
+      --h3-font-size:    1.75rem;
       --h3-line-height:  calc(32/28);
     }
 }
@@ -199,22 +204,23 @@ body {
 .text-inline-bigger {
  /* 20/24 */
   --font-size:   var(--inc-font-size, 1.25em);
-    font-size:   var(--font-size);
   --line-height: var(--inc-line-height, 1.2);
+    font-size:   var(--font-size);
     line-height: var(--line-height);
 }
 .text-block-bigger {
  /* 20/32 */
   --font-size:   var(--inc-font-size, 1.25em);
+  --line-height: calc(32/20)
     font-size:   var(--font-size);
-    line-height: calc(32/20);
+    line-height: var(--line-height);
 }
 .text-inline-smaller,
 .text-block-smaller {
  /* 13/16 */
   --font-size:   var(--dec-font-size,   calc(13/16*1em));
-    font-size:   var(--font-size);
   --line-height: var(--dec-line-height, calc(16/13));
+    font-size:   var(--font-size);
     line-height: var(--line-height);
 }
 

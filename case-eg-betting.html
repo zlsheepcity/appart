@@ -204,6 +204,8 @@
 
               --width-logo--reduced: 18rem;
               --width-lang--reduced: 10rem;
+
+              --if-mobile: 0;
             }
             @media (min-width:100em) {
                 .sg-design-header .header-grid-menubar {
@@ -219,7 +221,8 @@
             }
             @media (max-width:45em) {
                 .sg-design-header {
-                  --font-size:   1em;
+                  --font-size: 1em;
+                  --if-mobile: 1;
                 }
             }
 
@@ -230,6 +233,9 @@
             .sg-design-header .header-grid-contacts {
               --background-color: hsl( var(--HSL-sgMinor, 201, 22%, 46%) );
               --color:            white;
+              --padding-vertical: calc( 2rem * var(--if-mobile, 0) );
+                padding-top:      var(--padding-vertical);
+                padding-bottom:   var(--padding-vertical);
             }
             .sg-design-header .header-grid-language {
               --background-color: hsl( var(--HSL-sgMinorDarken, 201, 32%, 36%) );

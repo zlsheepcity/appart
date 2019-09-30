@@ -9,6 +9,12 @@
 
     <title>Betting</title>
 
+    <!-- FAVICON -->
+    <meta name="theme-color" content="#5b7d8f">
+    <meta name="msapplication-TileColor" content="#5b7d8f">
+    <meta name="msapplication-TileImage" content="app/favicons/144x144.png">
+    <link href="app/favicons/180x180.png" sizes="180x180" rel="apple-touch-icon">
+    <link href="app/favicons/192x192.png" sizes="192x192" rel="icon" type="image/png">
 
     <!-- ========================================= BOOT -->
 
@@ -408,12 +414,12 @@
                     </li>
                 </ul>
             </div>
-            <div class="header-grid-language js-for-ChaptersMenuBar">
+            <div class="header-grid-language js-for-LanguageMenuBar">
                 <div class="el-language-menu">
                     <div class="el-language-current-label"><span>English</span></div>
                 </div>
             </div>
-            <div class="header-grid-hamburger">
+            <div class="header-grid-hamburger js-for-ChaptersMenuBar">
                 <div class="el-header-hamburger svga-icon base-size"><svg><use xlink:href="#svg-menu"></use></svg></div>
             </div>
             <div class="header-grid-menubar">
@@ -482,10 +488,29 @@
 
         </div>
     </section>
+    <section class="LanguageMenuBar offsidebar from-eastside colors--swed-secondary">
+        <div class="sidepanel">
+
+            <header class="sidepanel-header">
+                <h2 class="min-title">Languages</h2>
+            </header>
+
+            <nav class="sidepanel-content">
+                <ul class="content-menu js-for-LanguageMenuBar">
+                    <li><a href="#Collisting">English</a></li>
+                    <li><a href="#Offsidebar">Russian</a></li>
+                    <li><a href="#JournalGrid">Turkish</a></li>
+                    <li><a href="#Typography">Portugues du Brasil</a></li>
+                </ul>
+            </nav>
+
+        </div>
+    </section>
     <script src="app/styles/components/offsidebar/interface-offsidebar.js"></script>
     <script>
         app.attach('offsidebar')(InterfaceOffsideBar)
         app.offsidebar('ChaptersMenuBar')
+        app.offsidebar('LanguageMenuBar')
     </script>
 
     <!-- Icons -->

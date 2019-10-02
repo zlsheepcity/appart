@@ -110,6 +110,34 @@
 
     <!-- ========================================= APP CUSTOM -->
 
+    <style>
+        .article-link {
+            color:                 var(--text-color, inherit);
+            text-decoration:       underline;
+            text-decoration-color: var(--link-color-descent, currentColor);
+        }
+        .article-link:hover {
+            color:                 var(--text-color-accent, inherit);
+            text-decoration-color: var(--light-shadow, currentColor);
+        }
+        .under-color-box {
+            position: relative;
+            z-index: 0;
+            color: var(--text-color);
+        }
+        .under-color-box::before {
+            content: '';
+            position: absolute;
+            z-index: -1;
+          --offset: -0.75em;
+            top: var(--offset);
+            right: var(--offset);
+            bottom: var(--offset);
+            left: var(--offset);
+            background-color: var(--back-color);
+        }
+    </style>
+
 
     <!-- ========================================== ʕ⊙ᴥ⊙ʔ = -->
     <!-- ========================================= END HEAD -->
@@ -443,20 +471,13 @@
                 background-position: bottom center;
                 background-repeat:   no-repeat;
                 background-size:     cover;
-             /* centered box */
-                display:         flex;
-                flex-direction:  column;
-                align-items:     center;
-                align-content:   center;
-                justify-content: center;
-                padding:         4rem 2rem;
             }
             .el-grand-banner .message {
                 max-width: 42rem;
                 font-weight: 600;
             }
         </style>
-        <div class="el-grand-banner">
+        <div hidden class="el-grand-banner banner">
             <div class="message">
                 <h1 class="h4 pb">So, you want to build your own casino?</h1>
                 <p>SoftGamings is a leading <a href="#Products"><strong>i-gaming developer</strong></a> since 2008,<br>
@@ -464,9 +485,79 @@
                 all top <a href="#Providers"><strong>game providers</strong></a> under a single integration,<br>
                 licensing and banking solutions and more.</p>
             </div>
-            <div class="message">
-                <h1>Sports Betting Software Providers</h1>
+        </div>
+        <div class="el-grand-banner journal-grid pv" style="padding-top:8rem;">
+            <header class="wide">
+                <h1>Sports Betting <br>Software Providers</h1>
+            </header>
+        </div>
+    </section>
+
+    <!-- ------------------------------------- Intro Text -->
+
+
+    <section class="journal-grid use-colors colors--SG-minor">
+        <div class="chapter wide">
+            <p class="paragraph text-block-bigger">SoftGamings sports betting software is based on the powerful BetRadar solution. By integrating this betting software not only will you get access to over 550,000 events per year and 80 sports types, but also enjoy SoftGamings feature-rich Front-end and customisable Bonus System.</p>
+        </div>
+        <div class="back-color-accent group-center" style="grid-column:roof;align-self:stretch;--vertical-align:center;">
+            <div class="padding">
+                <span class="swed-button"><span>Get a Quote</span></span>
             </div>
+        </div>
+    </section>
+
+    <!-- ------------------------------------- Document Navigation -->
+
+    <section class="layer pv use-colors colors--SG-brand">
+        <div class="group-wide--">
+        <div>
+        <div class="is-centered link-color-descent"><h2>Sportsbook Solutions</h2></div>
+        <ul
+           class="markup group-collisting auto-margin"
+           style="--h3-font-size: var(--h4-font-size); --max-columns: 3;">
+            <li>
+                <h3><a href="#" class="article-link">White Label</a></h3>
+                <p class="small">A cost-effective, comprehensive solution aimed at launching in the shortest time possible.</p>
+            </li>
+            <li>
+                <h3><a href="#" class="article-link">Turnkey</a></h3>
+                <p class="small">A self-owned multifunctional sportsbook, unlimited customisation opportunities.</p>
+            </li>
+            <li>
+                <h3><a href="#" class="article-link">Self-Service</a></h3>
+                <p class="small">A technical documentation and a set of scripts.</p>
+            </li>
+        </ul>
+        </div>
+
+        <div>
+        <div class="is-centered link-color-descent"><h2>Software Providers</h2></div>
+        <ul
+           class="markup group-collisting auto-margin"
+           style="--h3-font-size: var(--h4-font-size); --max-columns: 3;">
+            <li class="under-color-box colors--SG-minor text-block-bigger">
+                <h3><a href="#" class="article-link">BetRadar</a></h3>
+                <p class="small">Is number one among sports betting software providers.</p>
+            </li>
+            <li>
+                <h3><a href="#" class="article-link">SBTech</a></h3>
+                <p class="small">Is an award-winning sports betting solutions & iGaming Platform.</p>
+            </li>
+            <li>
+                <h3><a href="#" class="article-link">BetConstruct</a></h3>
+                <p class="small">Provides sports betting and other services in over 16 countries.</p>
+            </li>
+            <li>
+                <h3><a href="#" class="article-link">Digitain</a></h3>
+                <p class="small">Is a great option for those who seek an optimal solution for their online casino.</p>
+            </li>
+            <li>
+                <h3><a href="#" class="article-link">Pinnacle</a></h3>
+                <p class="small">Is one of the leading sportsbooks in the industry.</p>
+            </li>
+        </ul>
+        </div>
         </div>
     </section>
 

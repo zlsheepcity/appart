@@ -90,12 +90,12 @@
   --back-color-descent: var(--light-shadow);
 
   --text-color:         hsl(var(--HSL-sgBlack));
-  --text-color-accent:  white;
+  --text-color-accent:  hsl(var(--HSL-sgAction));
   --text-color-descent: hsl(var(--HSL-sgMinor));
 
-  --link-color:         hsl(var(--HSL-sgAction));
-  --link-color-accent:  hsl(var(--HSL-sgActionDarken));
-  --link-color-descent: hsl(var(--HSL-sgAction));
+  --link-color:         hsl(var(--HSL-sgBlack));
+  --link-color-accent:  var(--link-color);
+  --link-color-descent: white;
 
   --shadow-color: var(--shadow-color--for-light-base);
   --light-shadow: var(--light-shadow--for-light-base);

@@ -24,8 +24,10 @@ h4 { @extend .h4 !optional; }
 h5 { @extend .h5 !optional; }
 h6 { @extend .h6 !optional; }
 
-big   { @extend .text-inline-bigger  !optional; }
-small { @extend .text-inline-smaller !optional; }
+big    { @extend .text-inline-bigger  !optional; }
+small  { @extend .text-inline-smaller !optional; }
+.big   { @extend .text-block-bigger   !optional; }
+.small { @extend .text-block-smaller  !optional; }
 mark, .mark {
     color: var(--text-color-accent, inherit);
     background-color: transparent; /* remove defaults */

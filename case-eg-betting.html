@@ -497,7 +497,7 @@
     <!-- ------------------------------------- Intro Text -->
 
 
-    <section class="journal-grid use-colors colors--SG-minor">
+    <section hidden class="journal-grid use-colors colors--SG-minor">
         <div class="chapter wide">
             <p class="paragraph text-block-bigger">SoftGamings sports betting software is based on the powerful BetRadar solution. By integrating this betting software not only will you get access to over 550,000 events per year and 80 sports types, but also enjoy SoftGamings feature-rich Front-end and customisable Bonus System.</p>
         </div>
@@ -508,7 +508,182 @@
         </div>
     </section>
 
+
     <!-- ------------------------------------- Document Navigation -->
+
+    <style>
+
+      /* grid */
+
+        .el-sportsbook-linkmap {
+            display: grid;
+            align-items:     start;
+            justify-content: start;
+            grid-auto-flow:  row;
+            grid-auto-rows:  min-content;
+            grid-gap:        4em 6em;
+            padding:         2rem 4rem;
+            grid-template-columns: auto 1fr min-content;
+            grid-template-areas:  'one two action';
+        }
+        @media (max-width:70em) {
+            .el-sportsbook-linkmap {
+                grid-template-columns: auto 1fr;
+                grid-template-areas: 'action action' 'one two';
+                padding: 4rem 1.5rem;
+            }
+        }
+        @media (max-width:45em) {
+            .el-sportsbook-linkmap {
+                grid-template-columns: 1fr;
+                grid-template-areas:  'action' 'one' 'two';
+                padding: 4rem 1.5rem;
+            }
+        }
+        .el-sportsbook-linkmap>.solutions { grid-area: one; }
+        .el-sportsbook-linkmap>.providers { grid-area: two; }
+        .el-sportsbook-linkmap>.action    { grid-area: action; }
+
+     /* grid content */
+
+        .el-sportsbook-linkmap h2 {
+          --h2-font-size:   var(--h4-font-size);
+          --h2-line-height: var(--h4-line-height);
+            color: var(--text-color-descent);
+        }
+        .el-sportsbook-linkmap h3 {
+          --h3-font-size:   var(--p-font-size);
+          --h3-line-height: var(--p-line-height);
+            font-weight:    bolder;
+            padding-bottom: 0.25em;
+        }
+        .el-sportsbook-linkmap p {
+            font-size:   var(--dec-font-size);
+            line-height: var(--dec-line-height);
+            max-width:   20em;
+        }
+        .el-sportsbook-linkmap a {
+          --color:                 var(--text-color, currentColor);
+            color:                 var(--color);
+            text-decoration:       underline;
+            text-decoration-color: var(--link-color, currentColor);
+        }
+        .el-sportsbook-linkmap a:hover {
+          --color:                 var(--link-color);
+        }
+        .el-sportsbook-linkmap .special h3 {
+          /*--h3-font-size:   var(--dec-font-size);
+          --h3-line-height: var(--dec-line-height);*/
+        }
+        .el-sportsbook-linkmap .special a {
+          --color: hsl(var(--HSL-sgAction));
+            text-decoration-color: var(--color);
+        }
+        .el-sportsbook-linkmap>.action {
+          --vertical-align:  flex-start;
+            display:         flex;
+            flex-direction:  row;
+            flex-wrap:       wrap;
+            justify-content: center;
+            align-items:     var(--vertical-align);
+            align-content:   var(--vertical-align);
+        }
+        .el-sportsbook-linkmap>.action .swed-button {
+            min-width:14rem;
+        }
+
+        .el-sportsbook-linkmap>.providers .linkmap-ul {
+            column-width: 12em;
+            column-gap:   2em;
+            max-width:    42em;
+        }
+        .linkmap-ul {
+            padding-top:    0.5em;
+            padding-bottom: 0.5em;
+        }
+        .linkmap-ul li {
+            padding-top:    0.5em;
+            padding-bottom: 0.5em;
+            page-break-inside: avoid;
+                 break-inside: avoid;
+            position: relative;
+            z-index:  0;
+        }
+        .linkmap-ul li::before {
+            content:  '';
+            position: absolute;
+            z-index: -1;
+            top:     -0.25em;
+            left:    -2em;
+            bottom:  -0.25em;
+            right:   -0.25em;
+          --opacity:  0;
+          --scale:    0;
+          --background-color: var(--back-color-descent);
+            background-color: var(--background-color);
+            pointer-events:   none;
+            opacity:          var(--opacity);
+            transform:        scale(var(--scale));
+            transform-origin: center center;
+            transition:       all 240ms;
+            transition-timing-function: var(--timing-function--openJump, ease-in-out);
+        }
+        .linkmap-ul li:hover::before {
+          --opacity:  1;
+          --scale:    1;
+        }
+    </style>
+
+    <section class="layer el-sportsbook-linkmap use-colors colors--SG-root">
+        <div class="solutions">
+            <h2>Sportsbook Solutions</h2>
+            <ul class="linkmap-ul">
+                <li>
+                    <h3><a href="#">White Label</a></h3>
+                    <p>A cost-effective, comprehensive solution aimed at launching in the shortest time possible.</p>
+                </li>
+                <li>
+                    <h3><a href="#">Turnkey</a></h3>
+                    <p>A self-owned multifunctional sportsbook, unlimited customisation opportunities.</p>
+                </li>
+                <li>
+                    <h3><a href="#">Self-Service</a></h3>
+                    <p>A technical documentation and a set of scripts.</p>
+                </li>
+                <li class="special">
+                    <h3><a href="#">Solutions Compared</a></h3>
+                </li>
+            </ul>
+        </div>
+        <div class="providers">
+            <h2>Software Providers</h2>
+            <ul class="linkmap-ul">
+                <li class="highlight">
+                    <h3><a href="#">BetRadar</a></h3>
+                    <p>Is number one among sports betting software providers.</p>
+                </li>
+                <li>
+                    <h3><a href="#">SBTech</a></h3>
+                    <p>Is an award-winning sports betting solutions & iGaming Platform.</p>
+                </li>
+                <li>
+                    <h3><a href="#">BetConstruct</a></h3>
+                    <p>Provides sports betting and other services in over 16 countries.</p>
+                </li>
+                <li>
+                    <h3><a href="#">Digitain</a></h3>
+                    <p>An optimal solution for online casino.</p>
+                </li>
+                <li>
+                    <h3><a href="#">Pinnacle</a></h3>
+                    <p>Is one of the leading sportsbooks in the industry.</p>
+                </li>
+            </ul>
+        </div>
+        <div class="action">
+            <span class="swed-button"><span>Get a Quote</span></span>
+        </div>
+    </section>
 
     <section class="layer pv use-colors colors--SG-brand">
         <div class="group-wide--">

@@ -461,7 +461,9 @@
 
     </header>
 
+
     <!-- ------------------------------------- Grand Banner -->
+
 
     <section>
         <style>
@@ -494,22 +496,9 @@
         </div>
     </section>
 
-    <!-- ------------------------------------- Intro Text -->
-
-
-    <section hidden class="journal-grid use-colors colors--SG-minor">
-        <div class="chapter wide">
-            <p class="paragraph text-block-bigger">SoftGamings sports betting software is based on the powerful BetRadar solution. By integrating this betting software not only will you get access to over 550,000 events per year and 80 sports types, but also enjoy SoftGamings feature-rich Front-end and customisable Bonus System.</p>
-        </div>
-        <div class="back-color-accent group-center" style="grid-column:roof;align-self:stretch;--vertical-align:center;">
-            <div class="padding">
-                <span class="swed-button"><span>Get a Quote</span></span>
-            </div>
-        </div>
-    </section>
-
 
     <!-- ------------------------------------- Document Navigation -->
+
 
     <style>
 
@@ -522,7 +511,7 @@
             grid-auto-flow:  row;
             grid-auto-rows:  min-content;
             grid-gap:        4em 6em;
-            padding:         2rem 4rem;
+            padding:         2rem 4rem 1rem 4rem;
             grid-template-columns: auto 1fr min-content;
             grid-template-areas:  'one two action';
         }
@@ -598,8 +587,8 @@
             max-width:    42em;
         }
         .linkmap-ul {
-            padding-top:    0.5em;
-            padding-bottom: 0.5em;
+            padding-top:    1em;
+            padding-bottom: 1em;
         }
         .linkmap-ul li {
             padding-top:    0.5em;
@@ -685,56 +674,173 @@
         </div>
     </section>
 
-    <section class="layer pv use-colors colors--SG-brand">
-        <div class="group-wide--">
-        <div>
-        <div class="is-centered link-color-descent"><h2>Sportsbook Solutions</h2></div>
-        <ul
-           class="markup group-collisting auto-margin"
-           style="--h3-font-size: var(--h4-font-size); --max-columns: 3;">
-            <li>
-                <h3><a href="#" class="article-link">White Label</a></h3>
-                <p class="small">A cost-effective, comprehensive solution aimed at launching in the shortest time possible.</p>
-            </li>
-            <li>
-                <h3><a href="#" class="article-link">Turnkey</a></h3>
-                <p class="small">A self-owned multifunctional sportsbook, unlimited customisation opportunities.</p>
-            </li>
-            <li>
-                <h3><a href="#" class="article-link">Self-Service</a></h3>
-                <p class="small">A technical documentation and a set of scripts.</p>
-            </li>
-        </ul>
+
+    <!-- ------------------------------------- Solution Cards -->
+
+    <style>
+        .el-sportsbook-solution-presenter {
+            padding: 2rem;
+        }
+        .el-sportsbook-solution-presenter h2 {
+          --color: var(--link-color-descent, inherit);
+            color: var(--color);
+            text-align: center;
+        }
+        .el-sportsbook-solution-presenter .compare-link {
+            font-size:   var(--h4-font-size);
+            line-height: var(--h4-line-height);
+            text-align:  center;
+            padding-bottom: 1rem;
+
+          --vertical-align:  flex-start;
+            display:         flex;
+            flex-direction:  row;
+            flex-wrap:       wrap;
+            justify-content: center;
+            align-items:     var(--vertical-align);
+            align-content:   var(--vertical-align);
+        }
+
+
+        .block-button {
+            display: block;
+            padding: 0.5em;
+            background-color:      var(--back-color-descent);
+            text-decoration-color: var(--link-color-descent);
+            color:                 var(--color);
+          --color:                 var(--text-color);
+        }
+        .block-button:hover {
+          --color: hsl(var(--HSL-sgAction));
+        }
+
+        .el-solution-cards {
+            padding:         2rem 0;
+            display:         flex;
+            flex-direction:  row;
+            flex-wrap:       wrap;
+            justify-content: center;
+            align-items:     stretch;
+            align-content:   stretch;
+        }
+        .el-solution-card {
+            position:         relative;
+            z-index:          0;
+            margin:           0rem;
+            padding:          1.5rem;
+            max-width:        18rem;
+          --background-offset: 0.5rem;
+          --background-color: white;
+        }
+        .el-solution-card:hover {
+          --background-offset: 0rem;
+        }
+        .el-solution-card::before {
+            content: '';
+            position: absolute;
+            z-index: -1;
+            top: var(--background-offset);
+            right: var(--background-offset);
+            bottom: var(--background-offset);
+            left: var(--background-offset);
+            background-color: var(--background-color);
+            transition:       all 240ms;
+            transition-timing-function: var(--timing-function--openJump, ease-in-out);
+        }
+        .el-solution-card h3 {
+            font-size:        var(--h5-font-size);
+            padding:          0 0.5rem 0.25rem 0.5rem;
+            border-bottom:    2px solid var(--back-color);
+            margin-bottom:    0.5rem;
+        }
+        .el-solution-card p {
+            font-size:        var(--dec-font-size);
+            line-height:      var(--dec-line-height);
+            padding: 0 0.5rem;
+            min-height: 5rem;
+        }
+        .el-solution-card .svga-icon {
+          --size: 1;
+          --font-size: 48px;
+            font-size: var(--font-size);
+        }
+        .el-solution-card .svga-icon svg {
+            fill: hsl(var(--HSL-sgBrand));
+        }
+        .el-solution-card .swed-button {
+          --font-size:  1em;
+            margin-top: 1rem;
+        }
+    </style>
+
+    <section class="layer el-sportsbook-solution-presenter use-colors colors--SG-brand">
+
+        <header><h2>Sportsbook Solutions</h2></header>
+
+        <div class="el-solution-cards">
+            <div class="el-solution-card">
+                <h3>White Label</h3>
+                <p>A cost-effective, comprehensive solution aimed at launching in the shortest time possible.</p>
+                <div>
+                    <span class="svga-icon"><svg><use xlink:href="#svg-time"></use></svg></span>
+                </div>
+                <div>
+                    <span class="svga-icon"><svg><use xlink:href="#svg-money"></use></svg></span>
+                </div>
+                <div><a href="#" class="card-link"><span class="swed-button">Learn more</span></a></div>
+            </div>
+            <div class="el-solution-card">
+                <h3>Turnkey</h3>
+                <p>A self-owned multifunctional sportsbook, unlimited customisation opportunities.</p>
+                <div>
+                    <span class="svga-icon"><svg><use xlink:href="#svg-time"></use></svg></span>
+                    <span class="svga-icon"><svg><use xlink:href="#svg-time"></use></svg></span>
+                    <span class="svga-icon"><svg><use xlink:href="#svg-time"></use></svg></span>
+                </div>
+                <div>
+                    <span class="svga-icon"><svg><use xlink:href="#svg-money"></use></svg></span>
+                    <span class="svga-icon"><svg><use xlink:href="#svg-money"></use></svg></span>
+                    <span class="svga-icon"><svg><use xlink:href="#svg-money"></use></svg></span>
+                </div>
+                <div><a href="#" class="card-link"><span class="swed-button">Learn more</span></a></div>
+            </div>
+            <div class="el-solution-card">
+                <h3>Self-Service</h3>
+                <p>A technical documentation and a set of scripts.</p>
+                <div>
+                    <span class="svga-icon"><svg><use xlink:href="#svg-time"></use></svg></span>
+                    <span class="svga-icon"><svg><use xlink:href="#svg-time"></use></svg></span>
+                </div>
+                <div>
+                    <span class="svga-icon"><svg><use xlink:href="#svg-money"></use></svg></span>
+                    <span class="svga-icon"><svg><use xlink:href="#svg-money"></use></svg></span>
+                </div>
+                <div><a href="#" class="card-link"><span class="swed-button">Learn more</span></a></div>
+            </div>
         </div>
 
-        <div>
-        <div class="is-centered link-color-descent"><h2>Software Providers</h2></div>
-        <ul
-           class="markup group-collisting auto-margin"
-           style="--h3-font-size: var(--h4-font-size); --max-columns: 3;">
-            <li class="under-color-box colors--SG-minor text-block-bigger">
-                <h3><a href="#" class="article-link">BetRadar</a></h3>
-                <p class="small">Is number one among sports betting software providers.</p>
-            </li>
-            <li>
-                <h3><a href="#" class="article-link">SBTech</a></h3>
-                <p class="small">Is an award-winning sports betting solutions & iGaming Platform.</p>
-            </li>
-            <li>
-                <h3><a href="#" class="article-link">BetConstruct</a></h3>
-                <p class="small">Provides sports betting and other services in over 16 countries.</p>
-            </li>
-            <li>
-                <h3><a href="#" class="article-link">Digitain</a></h3>
-                <p class="small">Is a great option for those who seek an optimal solution for their online casino.</p>
-            </li>
-            <li>
-                <h3><a href="#" class="article-link">Pinnacle</a></h3>
-                <p class="small">Is one of the leading sportsbooks in the industry.</p>
-            </li>
-        </ul>
+        <footer>
+            <div class="compare-link">
+                <a href="#" class="block-button">Detailed Comparsion</a><span hidden class="svga-icon"><svg><use xlink:href="#svg-next"></use></svg></span>
+            </div>
+        </footer>
+
+    </section>
+
+
+    <!-- ------------------------------------- Intro Text -->
+
+
+    <section class="journal-grid use-colors colors--SG-minor">
+        <div class="chapter wide">
+            <h2>BetRadar Back Office</h2>
+            <p class="paragraph text-block-bigger">SoftGamings sports betting software is based on the powerful BetRadar solution. By integrating this betting software not only will you get access to over 550,000 events per year and 80 sports types, but also enjoy SoftGamings feature-rich Front-end and customisable Bonus System.</p>
         </div>
-        </div>
+    </section>
+
+
+    <section>
+        <div><img src="https://www.softgamings.com/content/uploads/sportsbook_bet_stats_.png" alt="sportsbook bet stats"></div>
     </section>
 
     <!-- ------------------------------------- Menu Bar -->
@@ -817,6 +923,16 @@
                 <!--title>Close X, material icons</title-->
                 <path d="M0 0h24v24H0z" fill="none"/>
                 <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+            </symbol>
+
+            <symbol id="svg-time" viewBox="0 0 24 24">
+                <!--title>clock, material icons</title-->
+                <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/>
+                <path d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+            </symbol>
+            <symbol id="svg-money" viewBox="0 0 24 24">
+                <!--title>dollar, material icons</title-->
+                <path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/>
             </symbol>
 
             <symbol id="svg-email" viewBox="0 0 24 24">

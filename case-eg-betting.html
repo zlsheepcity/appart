@@ -122,7 +122,7 @@
             const activate = el => app.wayway({
                 elem:   el,
                 from:  'top-bottom',
-                to:    'top-top',
+                to:    'middle-middle',
                 props:  {
                     '--scroll-grow-scale':{ from:0.25, to:1 },
                     //'--opacity':{ from:4, to: 0.5 }
@@ -695,16 +695,17 @@
 
     <style>
         .scroll-grow-container {
-            position: static;
+            /*position: static;
             position: sticky;
             top:      0;
-            z-index: -1;
+            z-index: -1;*/
         }
         .scroll-grow {
           --scroll-grow-scale:  1;
           --scroll-grow-origin: center center;
             transform:          scale(var(--scroll-grow-scale));
             transform-origin:   var(--scroll-grow-origin);
+            transition:         transform 100ms;
         }
     </style>
 

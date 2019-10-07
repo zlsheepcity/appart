@@ -102,7 +102,11 @@
     <script defer src="app/script/app-core.js"></script>
 
     <!-- interface libs -->
+    <script defer src="app/script/components/css-class-mutator.js"></script>
     <script defer src="app/script/components/image-zzzoom.js"></script>
+    <script defer src="app/script/components/image-lazy-loader.js"></script>
+    <script defer src="app/script/components/scroll-to-var.js"></script>
+    <script>app.attach('wayway')</script>
 
     <!-- dev libs -->
     <script defer src="app/script/components/survival-test.js"></script>
@@ -110,6 +114,25 @@
 
 
     <!-- ========================================= APP CUSTOM -->
+
+    <script>
+     /* Define image growing on scroll */
+        function ScrollGrowIllustrations() {
+            const els = document.querySelectorAll('.scroll-grow')
+            const activate = el => app.wayway({
+                elem:   el,
+                from:  'top-bottom',
+                to:    'top-top',
+                props:  {
+                    '--scroll-grow-scale':{ from:0.25, to:1 },
+                    //'--opacity':{ from:4, to: 0.5 }
+                },
+                direct: true
+            })
+            els.forEach(activate)
+        }
+        app.onload(ScrollGrowIllustrations)
+    </script>
 
     <style>
         .article-link {
@@ -560,12 +583,8 @@
         .el-sportsbook-linkmap a:hover {
           --color:                 var(--link-color);
         }
-        .el-sportsbook-linkmap .special h3 {
-          /*--h3-font-size:   var(--dec-font-size);
-          --h3-line-height: var(--dec-line-height);*/
-        }
         .el-sportsbook-linkmap .special a {
-          --color: hsl(var(--HSL-sgAction));
+          --color: hsl(var(--HSL-sgBrand));
             text-decoration-color: var(--color);
         }
         .el-sportsbook-linkmap>.action {
@@ -622,8 +641,8 @@
           --scale:    1;
         }
     </style>
-
-    <section class="layer el-sportsbook-linkmap use-colors back-color-accent colors--SG-root">
+    <!-- <section class="layer el-sportsbook-linkmap use-colors back-color-accent colors--SG-root"> -->
+    <section class="layer el-sportsbook-linkmap use-colors colors--SG-minor">
         <div class="solutions">
             <h2>Sportsbook Solutions</h2>
             <ul class="linkmap-ul">
@@ -674,9 +693,23 @@
         </div>
     </section>
 
+    <style>
+        .scroll-grow-container {
+            position: static;
+            position: sticky;
+            top:      0;
+            z-index: -1;
+        }
+        .scroll-grow {
+          --scroll-grow-scale:  1;
+          --scroll-grow-origin: center center;
+            transform:          scale(var(--scroll-grow-scale));
+            transform-origin:   var(--scroll-grow-origin);
+        }
+    </style>
 
-    <section class="pt">
-        <div><img src="https://www.softgamings.com/content/uploads/sportsbook-promo-3.jpg"></div>
+    <section class="scroll-grow-container">
+        <div class="scroll-grow"><img src="https://www.softgamings.com/content/uploads/sportsbook-promo-3.jpg"></div>
     </section>
 
     <!-- ------------------------------------- Solution Cards -->
@@ -709,13 +742,15 @@
         .block-button {
             display: block;
             padding: 0.5em;
-            background-color:      var(--back-color-descent);
-            text-decoration-color: var(--link-color-descent);
+            --background-color:      var(--back-color-descent);
+          --text-decoration-color: var(--link-color-descent);
+          --color:                 hsl(var(--HSL-sgAction));
+          --color: black;
             color:                 var(--color);
-          --color:                 var(--text-color);
+            text-decoration-color: var(--text-decoration-color);
         }
         .block-button:hover {
-          --color: hsl(var(--HSL-sgAction));
+          --text-decoration-color: hsl(var(--HSL-sgAction));
         }
 
         .el-solution-cards {
@@ -832,8 +867,8 @@
     </section>
 
 
-    <section>
-        <div><img src="https://www.softgamings.com/content/uploads/sportsbook-promo-4.jpg"></div>
+    <section class="scroll-grow-container background-color" style="--background-color: hsl(220, 22%, 16%);">
+        <div class="scroll-grow"><img src="https://www.softgamings.com/content/uploads/sportsbook-promo-4.jpg"></div>
     </section>
 
     <!-- ------------------------------------- Intro Text -->
@@ -850,8 +885,8 @@
     </section>
 
 
-    <section class="use-colors colors--SG-minor">
-        <div><img src="https://www.softgamings.com/content/uploads/sportsbook_bet_stats_.png" alt="sportsbook bet stats"></div>
+    <section class="scroll-grow-container background-color" style="--background-color: hsl(220, 22%, 16%);">
+        <div class="scroll-grow"><img src="https://www.softgamings.com/content/uploads/sportsbook_bet_stats_.png" alt="sportsbook bet stats"></div>
     </section>
 
     <!-- ------------------------------------- Menu Bar -->

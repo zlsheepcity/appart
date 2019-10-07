@@ -75,6 +75,9 @@ $DEFAULT-VARRIORS: (
     'line-height':      var(--line-height, 1.5),
 
     'opacity':          1,
+
+    'color':            inherit,
+    'background-color': transparent
 );
 @each $VAR, $DEF in $DEFAULT-VARRIORS {
   // Template

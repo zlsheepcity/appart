@@ -221,9 +221,29 @@
 
             /* ------------------------------------- HEADER GRID */
 
+            /* header settings */
+
             .header-grid {
-              --width-logo:          24rem;
-              --width-lang:          12rem;
+              --width-logo:              24rem; /*1*/
+              --width-lang:              12rem; /*3*/
+              --width-hamburger-mobile:  6rem;  /*6*/
+              --height-row-contacts:     4rem;  /*2*/
+              --height-row-menu:         6rem;  /*4*/
+              --height-row-logo-mobile:  10rem; /*5*/
+                /*
+                    Desktop
+                    [*1*] [*2*] [*3*]
+                    [*1*] [*4*******]
+
+                    Mobile
+                    [*5*] [*6*]
+                    [---------]
+                */
+            }
+
+            /* header grid layout */
+
+            .header-grid {
 
               --display-grid-item:    flex;
               --display-desktop-flex: flex;
@@ -235,33 +255,22 @@
               --grid-template-columns--desktop:
                     var(--width-logo)   1fr   var(--width-lang);
               --grid-template-rows--desktop:
-                    minmax(4rem, min-content)
-                    minmax(6rem, min-content);
+                    minmax(var(--height-row-contacts), min-content)
+                    minmax(var(--height-row-menu), min-content);
 
               --grid-template-areas--mobile:
                     'logo     hamburger'
                     'contacts contacts';
               --grid-template-columns--mobile:
-                    1fr 6rem;
+                    1fr var(--width-hamburger-mobile);
               --grid-template-rows--mobile:
-                    minmax(10rem, min-content)
+                    minmax(var(--height-row-logo-mobile), min-content)
                     min-content;
 
               --grid-template-areas:   var(--grid-template-areas--desktop);
               --grid-template-columns: var(--grid-template-columns--desktop);
               --grid-template-rows:    var(--grid-template-rows--desktop);
             }
-
-            @media (max-width:45em) {
-                .header-grid {
-                  --grid-template-areas:   var(--grid-template-areas--mobile);
-                  --grid-template-columns: var(--grid-template-columns--mobile);
-                  --grid-template-rows:    var(--grid-template-rows--mobile);
-                  --display-desktop-flex: none;
-                  --display-mobile-flex:  flex;
-                }
-            }
-
             .header-grid {
                 display: grid;
                 grid-template-areas:   var(--grid-template-areas);
@@ -298,6 +307,18 @@
             .header-grid-menubar {
               --grid-area: menubar;
               --display:   var(--display-desktop-flex, flex);
+            }
+
+            /* change header layout */
+
+            @media (max-width:45em) {
+                .header-grid {
+                  --grid-template-areas:   var(--grid-template-areas--mobile);
+                  --grid-template-columns: var(--grid-template-columns--mobile);
+                  --grid-template-rows:    var(--grid-template-rows--mobile);
+                  --display-desktop-flex: none;
+                  --display-mobile-flex:  flex;
+                }
             }
 
             /* ------------------------------------- DESIGN */

@@ -1,0 +1,290 @@
+<!doctype html><!-- appart :: 8102 :: 2019.9.15 -->
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- ========================================= HEAD CONTENT -->
+
+
+    <title>Aria Components</title>
+
+
+    <!-- ========================================= BOOT -->
+
+
+    <!-- ༼°▽°༽ style boot -->
+    <style>
+        body    { width: 100%; height: auto; overflow: hidden; }
+        img,svg { max-width: 100%; }
+    </style>
+
+    <!-- ༼°▽°༽ prefetch boot -->
+    <link rel="preconnect"   href="//fonts.gstatic.com">
+
+    <!-- ༼°▽°༽ app boot -->
+    <script>
+        function AppBoot() {
+
+         // The Noble Blastula
+            let app = this
+            app.has = { memory: [], arrived:true }
+            app.has.queens = [ 'onload', 'mutate' ]
+            /*
+            King has arrived --- let app = new AppBoot()
+            Take the Queen ----- app.attach('queen_name')(function)
+            Keep in memory ----- app.queen_name(function_parameters)
+            Execute later ------ app.onload(function)
+            2019.9.15
+            */
+
+         // The Noble Provocator
+            const proteinProvoker = function ImitateCriticalTasks () {
+              let tpp = new this.__proto__.constructor()
+              let must_have_a_memory = tpp.has.memory.push('something')
+              let must_accept_queens = like_this_one => true
+              tpp.attach('queen_id')(must_accept_queens)
+              tpp.queen_id('try this')
+            }
+
+         // Define responsibility
+            const TakeTheQueen = (queen) =>
+                {
+                    app[queen] =  ExecuteLater(queen)
+                    return (f) => ExecuteLater('update')({name:queen,f})
+                }
+            const KeepInMemory = (dna) => app.has.memory.push(dna)
+            const ExecuteLater =
+                 (responsible) =>
+                         (dna) => KeepInMemory({dna,for:responsible})
+
+         // Apply responsibility
+            app.attach = TakeTheQueen
+            app.has.queens.map( queen => app.attach(queen) )
+            app.ForceErrorsIfShouldBe =  proteinProvoker
+        }
+
+     // Run Immediately
+        let app = new AppBoot()
+        app.ForceErrorsIfShouldBe()
+    </script>
+
+
+    <!-- ========================================= DESIGN -->
+
+
+    <link
+        href="app/styles/appart.css"
+        rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic"
+        rel="stylesheet">
+
+
+    <!-- ========================================= APP -->
+
+
+    <!-- required core -->
+    <script defer src="app/script/app-core.js"></script>
+
+    <!-- interface libs -->
+    <script defer src="app/script/components/image-zzzoom.js"></script>
+
+    <!-- dev libs -->
+    <script defer src="app/script/components/survival-test.js"></script>
+    <script defer src="app/script/components/autofill-paragraphs.js"></script>
+
+
+    <!-- ========================================= APP CUSTOM -->
+
+    <style>
+        section { padding:  2rem; }
+        p+p { margin-top: 1.5rem; }
+        h2:not(:first-child) { margin-top: 1.5rem; }
+    </style>
+
+
+    <!-- ========================================== ʕ⊙ᴥ⊙ʔ = -->
+    <!-- ========================================= END HEAD -->
+</head>
+<body class="colors--primary native-sans">
+
+<section hidden>
+    <h2><button aria-expanded="false">Self-Service Solution Perks</button></h2>
+    <div hidden>
+        <p>The Self-Service solution is between the White Label and Turnkey solution, taking longer to develop than the White Label solution but coming at a lower price than the Turnkey solution.</p>
+
+        <p>It supports all currencies, as well as an unlimited number of languages the operator can integrate. The solution also comes with numerous other benefits, such as the loyalty system, sports bonuses and free bets, live chat integration, CRM and automated mailing system, advanced reporting system, and integrated internal CMS system. In addition, the operators will be able to rely on 24/7 technical support and the software they opt for will receive continuous updates.</p>
+
+        <p>When it comes to payment systems, the Self-Service solution supports both Visa and MasterCard. Also, the operators can sign a contract with payment method providers.</p>
+    </div>
+</section>
+
+<section class="has-header-toggler">
+
+    <h2>Self-Service Solution Perks</h2>
+    <div>
+        <p>The Self-Service solution is between the White Label and Turnkey solution, taking longer to develop than the White Label solution but coming at a lower price than the Turnkey solution.</p>
+
+        <p>It supports all currencies, as well as an unlimited number of languages the operator can integrate. The solution also comes with numerous other benefits, such as the loyalty system, sports bonuses and free bets, live chat integration, CRM and automated mailing system, advanced reporting system, and integrated internal CMS system. In addition, the operators will be able to rely on 24/7 technical support and the software they opt for will receive continuous updates.</p>
+
+        <p>When it comes to payment systems, the Self-Service solution supports both Visa and MasterCard. Also, the operators can sign a contract with payment method providers.</p>
+    </div>
+
+    <h2>Customisation Options</h2>
+    <div>
+        <p>The Self-Service sportsbook solution allows clients to implement their own website design. However, there are many other customisation options available with the Self-Service solution, such as the possibility to customise the front-end, widgets, and change the colour scheme. In addition, all other additional functionalities can also be customised and implemented by clients’ developers.</p>
+
+        <p>Finally, operators will be able to rearrange blocks on a page freely and will be able to position custom-designed banners on their website. A few additional perks include full access to geolocation technologies, custom odds and lines, automatic live events configuration, as well as a cash-out option with an adjustable commission.</p>
+    </div>
+
+</section>
+
+<style>
+    /*
+    .has-header-toggler .is-hidden {
+        display:none;
+    }
+    */
+    .has-header-toggler .is-visible {
+        display:block;
+        transform-origin: top left;
+        animation: header-toggler-content-appears 240ms var(--timing-function--focusZoom, ease-out) both;
+    }
+    @keyframes header-toggler-content-appears {
+        from {transform: scaleY(0);}
+        to   {transform: scaleY(1);}
+    }
+    .header-toggler-button {
+        all: inherit;
+    }
+    .header-toggler-button:after {
+        content: '▾';
+        display: inline-block;
+        transition: transform 400ms;
+        transition-timing-function: var(--timing-function--focusZoom, ease-out);
+    }
+    .header-toggler-button[aria-expanded="true"]:after {
+        transform: rotate(180deg);
+    }
+</style>
+
+<script>
+    const runHeaderToggler = function() {
+
+     // Define targets
+        const headings = document.querySelectorAll('.has-header-toggler h2');
+        const headingsUpdate = toggler => {
+
+         // Update markup
+            toggler.innerHTML = `
+                <button class="header-toggler-button" aria-expanded="false">
+                    ${toggler.textContent}
+                </button>
+            `
+
+         // Define action
+            let button = toggler.querySelector('button')
+            let contxt = toggler.nextElementSibling
+            let buttonAction = () => {
+                let isExpanded = button.getAttribute('aria-expanded') === 'true' || false
+                button.setAttribute('aria-expanded', !isExpanded)
+                contxtController(!isExpanded)
+            }
+            let contxtController = state => {
+                contxt.hidden = !state
+                contxt.classList.toggle('is-visible',state)
+                //contxt.classList.toggle('is-hidden',!state)
+            }
+
+         // Initialize action
+            button.onclick = buttonAction
+            contxtController(false) // initial hidden
+        }
+
+        Array.prototype.forEach.call(headings, headingsUpdate)
+    }
+    app.onload(runHeaderToggler)
+    /*
+    (function() {
+      const headings = document.querySelectorAll('h2');
+      Array.prototype.forEach.call(headings, heading => {
+        let btn = heading.querySelector('button');
+        let target = heading.nextElementSibling;
+        btn.onclick = () => {
+          let expanded =
+            btn.getAttribute('aria-expanded') === 'true' || false;
+          btn.setAttribute('aria-expanded', !expanded);
+          target.hidden = expanded;
+        }
+      })
+    })()
+(function() {
+  // Get all the <h2> headings
+  const headings = document.querySelectorAll('main h2')
+  
+  Array.prototype.forEach.call(headings, heading => {
+    // Give each <h2> a toggle button child
+    // with the SVG plus/minus icon
+    heading.innerHTML = `
+      <button aria-expanded="false">
+        ${heading.textContent}
+        <svg aria-hidden="true" focusable="false" viewBox="0 0 10 10">
+          <rect class="vert" height="8" width="2" y="1" x="4"/>
+          <rect height="2" width="8" y="4" x="1"/>
+        </svg>
+      </button>
+    `
+    
+    // Function to create a node list 
+    // of the content between this <h2> and the next
+    const getContent = (elem) => {
+      let elems = []
+      while (elem.nextElementSibling && elem.nextElementSibling.tagName !== 'H2') {
+        elems.push(elem.nextElementSibling)
+        elem = elem.nextElementSibling
+      }
+      
+      // Delete the old versions of the content nodes
+      elems.forEach((node) => {
+        node.parentNode.removeChild(node)
+      })
+
+      return elems
+    }
+    
+    // Assign the contents to be expanded/collapsed (array)
+    let contents = getContent(heading)
+    
+    // Create a wrapper element for `contents` and hide it
+    let wrapper = document.createElement('div')
+    wrapper.hidden = true
+    
+    // Add each element of `contents` to `wrapper`
+    contents.forEach(node => {
+      wrapper.appendChild(node)
+    })
+    
+    // Add the wrapped content back into the DOM 
+    // after the heading
+    heading.parentNode.insertBefore(wrapper, heading.nextElementSibling)
+    
+    // Assign the button
+    let btn = heading.querySelector('button')
+    
+    btn.onclick = () => {
+      // Cast the state as a boolean
+      let expanded = btn.getAttribute('aria-expanded') === 'true' || false
+      
+      // Switch the state
+      btn.setAttribute('aria-expanded', !expanded)
+      // Switch the content's visibility
+      wrapper.hidden = expanded    
+    }
+  })
+})()
+    */
+</script>
+
+</body>
+</html>

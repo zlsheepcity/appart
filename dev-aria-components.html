@@ -98,8 +98,9 @@
     <!-- ========================================= APP CUSTOM -->
 
     <style>
-        section { padding:  2rem; }
-        p+p { margin-top: 1.5rem; }
+        section { padding:   2rem; }
+        p+p { margin-top:  1.5rem; }
+        h2  { margin-bottom: 1rem; }
         h2:not(:first-child) { margin-top: 1.5rem; }
     </style>
 
@@ -109,6 +110,7 @@
 </head>
 <body class="colors--primary native-sans">
 
+<!-- TEMPLATE -->
 <section hidden>
     <h2><button aria-expanded="false">Self-Service Solution Perks</button></h2>
     <div hidden>
@@ -120,6 +122,7 @@
     </div>
 </section>
 
+<!-- CONTENT -->
 <section class="has-header-toggler">
 
     <h2>Self-Service Solution Perks</h2>
@@ -140,50 +143,76 @@
 
 </section>
 
+<!-- ========================================= STYLE -->
+
 <style>
-    /*
-    .has-header-toggler .is-hidden {
-        display:none;
-    }
-    */
-    .has-header-toggler .is-visible {
-        display:block;
-        transform-origin: top left;
-        animation: header-toggler-content-appears 240ms var(--timing-function--focusZoom, ease-out) both;
-    }
-    @keyframes header-toggler-content-appears {
-        from {transform: scaleY(0);}
-        to   {transform: scaleY(1);}
-    }
+  /* Header as Button with Marker */
+    .header-toggler-button { all: inherit; }
     .header-toggler-button {
-        all: inherit;
+        width: 100%;
+        display:         flex;
+        flex-direction:  row;
+        flex-wrap:       nowrap;
+        justify-content: space-between;
+        align-items:     flex-start;
     }
-    .header-toggler-button:after {
-        content: '▾';
-        display: inline-block;
-        transition: transform 400ms;
+    .header-toggler-button::after {
+        content:      '▾';
+        cursor:       pointer;
+        display:      inline-block;
+        padding-left: 0.25em;
+    }
+
+  /* Marker in action */
+    .header-toggler-button::after {
+        transition: transform 480ms;
         transition-timing-function: var(--timing-function--focusZoom, ease-out);
     }
+    .header-toggler-button:hover::after {
+        color: var(--text-color-accent, firebrick);
+    }
     .header-toggler-button[aria-expanded="true"]:after {
-        transform: rotate(180deg);
+        transform:  scaleY(-1);
+    }
+
+  /* Content in action */
+    .header-toggler-visible-content {
+        animation: bg-focus-animation 1s ease-in;
+        margin: -0.25em;
+        padding: 0.25em;
+    }
+    @keyframes bg-focus-animation {
+        from { background-color: var(--back-color-accent, lightskyblue); }
+        to   { background-color: transparent; }
     }
 </style>
 
+<!-- ========================================= SCRIPT -->
+
 <script>
     const runHeaderToggler = function() {
+     // Setup
+        const o = {
+            targets:  document.querySelectorAll('.has-header-toggler h2'),
+            button:  'header-toggler-button',
+            label:   'header-toggler-label',
+            marker:  'header-toggler-marker',
+            content: 'header-toggler-visible-content'
+        }
 
      // Define targets
-        const headings = document.querySelectorAll('.has-header-toggler h2');
+        const headings = o.targets;
         const headingsUpdate = toggler => {
 
-         // Update markup
+         // Wrap into Button
             toggler.innerHTML = `
-                <button class="header-toggler-button" aria-expanded="false">
-                    ${toggler.textContent}
+                <button   class="${o.button}" aria-expanded="false">
+                    <span class="${o.label}">${toggler.textContent}<span>
+                    <span class="${o.marker}"><span>
                 </button>
             `
 
-         // Define action
+         // Define actors
             let button = toggler.querySelector('button')
             let contxt = toggler.nextElementSibling
             let buttonAction = () => {
@@ -193,8 +222,7 @@
             }
             let contxtController = state => {
                 contxt.hidden = !state
-                contxt.classList.toggle('is-visible',state)
-                //contxt.classList.toggle('is-hidden',!state)
+                contxt.classList.toggle(o.content, state)
             }
 
          // Initialize action
@@ -202,88 +230,12 @@
             contxtController(false) // initial hidden
         }
 
+     // Initialize targets
         Array.prototype.forEach.call(headings, headingsUpdate)
     }
-    app.onload(runHeaderToggler)
-    /*
-    (function() {
-      const headings = document.querySelectorAll('h2');
-      Array.prototype.forEach.call(headings, heading => {
-        let btn = heading.querySelector('button');
-        let target = heading.nextElementSibling;
-        btn.onclick = () => {
-          let expanded =
-            btn.getAttribute('aria-expanded') === 'true' || false;
-          btn.setAttribute('aria-expanded', !expanded);
-          target.hidden = expanded;
-        }
-      })
-    })()
-(function() {
-  // Get all the <h2> headings
-  const headings = document.querySelectorAll('main h2')
-  
-  Array.prototype.forEach.call(headings, heading => {
-    // Give each <h2> a toggle button child
-    // with the SVG plus/minus icon
-    heading.innerHTML = `
-      <button aria-expanded="false">
-        ${heading.textContent}
-        <svg aria-hidden="true" focusable="false" viewBox="0 0 10 10">
-          <rect class="vert" height="8" width="2" y="1" x="4"/>
-          <rect height="2" width="8" y="4" x="1"/>
-        </svg>
-      </button>
-    `
-    
-    // Function to create a node list 
-    // of the content between this <h2> and the next
-    const getContent = (elem) => {
-      let elems = []
-      while (elem.nextElementSibling && elem.nextElementSibling.tagName !== 'H2') {
-        elems.push(elem.nextElementSibling)
-        elem = elem.nextElementSibling
-      }
-      
-      // Delete the old versions of the content nodes
-      elems.forEach((node) => {
-        node.parentNode.removeChild(node)
-      })
 
-      return elems
-    }
-    
-    // Assign the contents to be expanded/collapsed (array)
-    let contents = getContent(heading)
-    
-    // Create a wrapper element for `contents` and hide it
-    let wrapper = document.createElement('div')
-    wrapper.hidden = true
-    
-    // Add each element of `contents` to `wrapper`
-    contents.forEach(node => {
-      wrapper.appendChild(node)
-    })
-    
-    // Add the wrapped content back into the DOM 
-    // after the heading
-    heading.parentNode.insertBefore(wrapper, heading.nextElementSibling)
-    
-    // Assign the button
-    let btn = heading.querySelector('button')
-    
-    btn.onclick = () => {
-      // Cast the state as a boolean
-      let expanded = btn.getAttribute('aria-expanded') === 'true' || false
-      
-      // Switch the state
-      btn.setAttribute('aria-expanded', !expanded)
-      // Switch the content's visibility
-      wrapper.hidden = expanded    
-    }
-  })
-})()
-    */
+ // Run
+    app.onload(runHeaderToggler)
 </script>
 
 </body>

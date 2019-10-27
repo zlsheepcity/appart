@@ -788,7 +788,11 @@
         .el-sportsbook-solution-presenter {
             padding: 2rem;
         }
-        .el-sportsbook-solution-presenter h2 {
+        .el-sportsbook-solution-presenter header {
+            text-align: center;
+        }
+        .el-sportsbook-solution-presenter h2,
+        .el-sportsbook-solution-presenter h3 {
           --color: var(--link-color-descent, inherit);
             color: var(--color);
             text-align: center;
@@ -882,9 +886,109 @@
         }
     </style>
 
+
+    <!-- Comparsion table styles -->
+
+
+    <style>
+        .solution-compare-table {
+         /* Setup */
+          --is-mobile-layout:      0;
+          --is-desktop-layout:     1;
+          --grid-template:         12em 12em 12em 12em;
+          --grid-title-column:     1;
+          --grid-title-text-align: left;
+
+         /* Design */
+            background-color: #ccc;
+            box-shadow: 0.5em 0.5em 0 hsla(0,0%,0%,0.1);
+
+         /* Grid Layout */
+            margin:          0 auto;
+            padding:         0;
+            max-width:       calc( 48em + 3px );
+            display:         grid;
+            grid-gap:        1px;
+            grid-auto-rows:  min-content;
+            grid-template-columns: var(--grid-template);
+        }
+        .solution-compare-table>* {
+            background-color: white;
+            padding: 0.5em calc( 0.25em + 0.25em*var(--is-desktop-layout) );
+        }
+        .solution-compare-table>*:not(.row-title) {
+            display:         flex;
+            flex-direction:  row;
+            justify-content: center;
+            align-content:   center;
+            align-items:     center;
+            text-align:      center;
+        }
+        .solution-compare-table>.row-title {
+            background-color: hsl(201, 22%, 46%);
+            color:            white;
+            padding-left:     1em;
+            padding-top:      calc( 0.5em + 1.5em * var(--is-mobile-layout) );
+            grid-column:      var(--grid-title-column);
+            text-align:       var(--grid-title-text-align);
+        }
+        .solution-compare-table .svga-icon {
+          --base:  24px;
+          --size:  1;
+            color: hsl(201, 22%, 46%);
+        }
+
+
+        .solution-compare-table>.col-title {
+            background-color: hsl(0, 62%, 37%);
+            color: white;
+        }
+
+        @media (max-width:49em) {
+            .solution-compare-table {
+              --is-mobile-layout:      1;
+              --is-desktop-layout:     0;
+              --grid-template:         1fr 1fr 1fr;
+              --grid-title-column:     1 / span 3;
+              --grid-title-text-align: center;
+                box-shadow: none;
+            }
+        }
+
+
+     /* ==================================== Float Header Option */
+        .solution-compare-table-header {
+            background-color: hsl(171, 55%, 71%);
+
+            position: static;
+            position: sticky;
+            top:      0;
+            z-index:  1;
+        }
+        .solution-compare-table-header .solution-compare-table {
+            background-color: hsl(201, 22%, 46%);
+            color: white;
+            box-shadow: none;
+            font-weight: bolder;
+        }
+        .solution-compare-table-header .solution-compare-table>*,
+        .solution-compare-table-header .solution-compare-table>*:not(.row-title),
+        .solution-compare-table-header .solution-compare-table>.row-title {
+            background-color: transparent;
+        }
+        .solution-compare-table-header .solution-compare-table>.row-title {
+            padding: 0;
+        }
+    </style>
+
+
+
     <section class="layer el-sportsbook-solution-presenter use-colors colors--SG-brand">
 
-        <header><h2>Sportsbook Solutions</h2></header>
+        <header>
+            <h2>Sportsbook Solutions</h2>
+            <p>SoftGamings offers three types of sportsbook solutions.</p>
+        </header>
 
         <div class="el-solution-cards">
             <div class="el-solution-card">
@@ -928,14 +1032,107 @@
             </div>
         </div>
 
-        <footer>
+        <footer hidden>
             <div class="compare-link">
                 <a href="#" class="block-button">Detailed Comparsion</a><span hidden class="svga-icon"><svg><use xlink:href="#svg-next"></use></svg></span>
             </div>
         </footer>
 
+        <footer>
+            <h3>Sportsbook Solutions Compared</h3>
+
+            <style>
+                .solution-fade-in {
+                    padding-top: 4rem;
+                    padding-bottom: 0.5rem;
+                    position: relative;
+                    z-index:  0;
+                }
+                .solution-fade-in::after {
+                    content: '';
+                    position: absolute;
+                    z-index:  1;
+                    pointer-events: none;
+                    top:    0;
+                    left:   0;
+                    width:  100%;
+                    height: 100%;
+                    background: linear-gradient(to bottom, transparent 0%, hsl(171, 55%, 71%) 90%);
+                }
+            </style>
+
+            <div class="solution-fade-in">
+
+                <div class="solution-compare-table">
+
+                    <div class="row-title"></div>
+                    <div class="col-title"><a href="#">White Label</a></div>
+                    <div class="col-title"><a href="#">Turnkey</a></div>
+                    <div class="col-title"><a href="#">Self-Service</a></div>
+
+                    <div class="row-title">Sportsbook development time</div>
+                    <div>
+                        <span class="svga-icon"><svg><use xlink:href="#svg-time"></use></svg></span>
+                    </div>
+                    <div>
+                        <span class="svga-icon"><svg><use xlink:href="#svg-time"></use></svg></span>
+                        <span class="svga-icon"><svg><use xlink:href="#svg-time"></use></svg></span>
+                        <span class="svga-icon"><svg><use xlink:href="#svg-time"></use></svg></span>
+                    </div>
+                    <div>
+                        <span class="svga-icon"><svg><use xlink:href="#svg-time"></use></svg></span>
+                        <span class="svga-icon"><svg><use xlink:href="#svg-time"></use></svg></span>
+                    </div>
+
+                    <div class="row-title">Cost</div>
+                    <div>
+                        <span class="svga-icon"><svg><use xlink:href="#svg-money"></use></svg></span>
+                    </div>
+                    <div>
+                        <span class="svga-icon"><svg><use xlink:href="#svg-money"></use></svg></span>
+                        <span class="svga-icon"><svg><use xlink:href="#svg-money"></use></svg></span>
+                        <span class="svga-icon"><svg><use xlink:href="#svg-money"></use></svg></span>
+                    </div>
+                    <div>
+                        <span class="svga-icon"><svg><use xlink:href="#svg-money"></use></svg></span>
+                        <span class="svga-icon"><svg><use xlink:href="#svg-money"></use></svg></span>
+                    </div>
+
+                    <div class="row-title">Multicurrency</div>
+                    <div>All currencies</div>
+                    <div>All currencies</div>
+                    <div>All currencies</div>
+
+                    <div class="row-title">Languages</div>
+                    <div>Unlimited</div>
+                    <div>Unlimited</div>
+                    <div>Unlimited</div>
+
+                    <div class="row-title">Payment Systems</div>
+                    <div>Softgamings payment system</div>
+                    <div>Direct contracts with payment systems</div>
+                    <div>Direct contracts with payment systems</div>
+
+                    <div class="row-title">Loyalty system</div>
+                    <div>yes</div>
+                    <div>yes</div>
+                    <div>yes</div>
+
+                </div>
+
+            </div>
+
+            <div class="compare-link">
+                <a href="#" class="block-button">Detailed Comparsion</a><span hidden class="svga-icon"><svg><use xlink:href="#svg-next"></use></svg></span>
+            </div>
+
+        </footer>
+
     </section>
 
+
+
+    <!-- ------------------------------------- Monitor Decoration -->
 
     <section class="scroll-grow-container background-color" style="--background-color: hsl(220, 22%, 16%);">
         <div class="scroll-grow"><img src="https://www.softgamings.com/content/uploads/sportsbook-promo-4.jpg"></div>
@@ -947,90 +1144,7 @@
 
     <article style="background-color: hsl(171, 55%, 71%); padding: 4rem 0;">
 
-        <style>
-            .solution-compare-table {
-             /* Setup */
-              --is-mobile-layout:      0;
-              --is-desktop-layout:     1;
-              --grid-template:         12em 12em 12em 12em;
-              --grid-title-column:     1;
-              --grid-title-text-align: left;
-
-             /* Design */
-                background-color: #ccc;
-                box-shadow: 0.5em 0.5em 0 hsla(0,0%,0%,0.1);
-
-             /* Grid Layout */
-                margin:          0 auto;
-                padding:         0;
-                max-width:       calc( 48em + 3px );
-                display:         grid;
-                grid-gap:        1px;
-                grid-auto-rows:  min-content;
-                grid-template-columns: var(--grid-template);
-            }
-            .solution-compare-table>* {
-                background-color: white;
-                padding: 0.5em calc( 0.25em + 0.25em*var(--is-desktop-layout) );
-            }
-            .solution-compare-table>*:not(.row-title) {
-                display:         flex;
-                flex-direction:  row;
-                justify-content: center;
-                align-content:   center;
-                align-items:     center;
-                text-align:      center;
-            }
-            .solution-compare-table>.row-title {
-                background-color: hsl(201, 22%, 46%);
-                color:            white;
-                padding-left:     1em;
-                padding-top:      calc( 0.5em + 1.5em * var(--is-mobile-layout) );
-                grid-column:      var(--grid-title-column);
-                text-align:       var(--grid-title-text-align);
-            }
-            .solution-compare-table .svga-icon {
-              --base:  24px;
-              --size:  1;
-                color: hsl(201, 22%, 46%);
-            }
-            .solution-compare-table-header {
-                background-color: hsl(171, 55%, 71%);
-
-                position: static;
-                position: sticky;
-                top:      0;
-                z-index:  1;
-            }
-            .solution-compare-table-header .solution-compare-table {
-                background-color: hsl(201, 22%, 46%);
-                color: white;
-                box-shadow: none;
-                font-weight: bolder;
-            }
-            .solution-compare-table-header .solution-compare-table>*,
-            .solution-compare-table-header .solution-compare-table>*:not(.row-title),
-            .solution-compare-table-header .solution-compare-table>.row-title {
-                background-color: transparent;
-            }
-            .solution-compare-table-header .solution-compare-table>.row-title {
-                padding: 0;
-            }
-            
-            @media (max-width:49em) {
-                .solution-compare-table {
-                  --is-mobile-layout:      1;
-                  --is-desktop-layout:     0;
-                  --grid-template:         1fr 1fr 1fr;
-                  --grid-title-column:     1 / span 3;
-                  --grid-title-text-align: center;
-                    box-shadow: none;
-                }
-            }
-        </style>
-
-
-        <div class="solution-compare-table-header">
+        <div hidden class="solution-compare-table-header">
             <div class="solution-compare-table">
                 <div class="row-title"></div>
                 <div>White Label</div>
@@ -1040,6 +1154,11 @@
         </div>
 
         <div class="solution-compare-table">
+
+            <div class="row-title"></div>
+            <div class="col-title"><a href="#">White Label</a></div>
+            <div class="col-title"><a href="#">Turnkey</a></div>
+            <div class="col-title"><a href="#">Self-Service</a></div>
 
             <div class="row-title">Sportsbook development time</div>
             <div>
@@ -1152,7 +1271,7 @@
         </div>
 
 
-        <div class="solution-compare-table-header">
+        <div hidden class="solution-compare-table-header">
             <div class="solution-compare-table">
                 <div class="row-title"></div>
                 <div>White Label</div>
@@ -1161,8 +1280,14 @@
             </div>
         </div>
 
+        <hr>
 
         <div class="solution-compare-table">
+
+            <div class="row-title"></div>
+            <div class="col-title"><a href="#">White Label</a></div>
+            <div class="col-title"><a href="#">Turnkey</a></div>
+            <div class="col-title"><a href="#">Self-Service</a></div>
 
 
             <div class="row-title">Website design</div>

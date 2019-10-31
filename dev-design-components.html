@@ -121,8 +121,8 @@
       /* Card Settings */
 
         .myocard {
-          --card-padding:        1em;
-          --item-padding:        0.25em 0.5em;
+          --card-padding:        1rem;
+          --item-padding:        0.25rem 0.5rem;
           --item-max-width:      42rem; /* var(--paragraph-width--max ,42em ); */
 
           --card-back-color:     var(--back-color-accent ,transparent );
@@ -175,8 +175,9 @@
         .myocard>*{ --max-width: var(--item-max-width ,100% );}
         .myocard>*>*{ max-width: var(--max-width            );}
         .myocard>*:nth-child(even)>*{
-            display:    inline-flex;
-            text-align: left; }
+            display:        inline-flex;
+            flex-direction: column;
+            text-align:     left; }
 
      /* Vertical Centering */
 
@@ -193,6 +194,8 @@
     </style>
 
     <style>
+        .demo .myocard>*>figure { padding: 0;}
+        .demo p + p { margin-top: 0;}
         .myocardist.demo {
             padding: 2rem 4rem;
         }
@@ -225,14 +228,14 @@
         }
 
         .demo .myocard>:nth-child(odd)>* {
-            font-size: var(--h4-font-size);
+            font-size: var(--h5-font-size);
         }
 
 
-        .myocardist {
+        .demo .myocardist {
             --card-shadow: hsla(200,40%,90%,0.012);
         }
-        .myocard:hover { --card-shadow: hsla(200,40%,90%,0.12); }
+        .demo .myocard:hover { --card-shadow: hsla(200,40%,90%,0.12); }
         .myocard {
 
         }
@@ -245,24 +248,37 @@
           --card-back-color: hsl(170,40%,20%);
         }
 
+        .demo .myocard {
+          --item-vertical-align: center; }
+
 
     </style>
+
+    <section class="myocard demo3">
+        
+    </section>
 
 
     <section class="myocardist demo demo2 wrap-reverse">
 
         <div class="myocard">
             <div>
-                <p>When it comes to payment systems, the Self-Service solution supports both Visa and MasterCard. When it comes to payment systems, the Self-Service solution supports both Visa and MasterCard. When it comes to payment systems, the Self-Service solution supports both Visa and MasterCard. When it comes to payment systems, the Self-Service solution supports both Visa and MasterCard.</p>
+                <div><p>A few additional perks include full access to geolocation technologies.</p></div>
             </div>
             <div>
-                <div><p>A few additional perks include full access to geolocation technologies.</p></div>
+                <div>
+                    <p>When it comes to payment systems, the Self-Service solution.</p>
+                    <p>Self-Service solution supports both Visa and MasterCard.</p>
+                    <p>Visa and MasterCard. When it comes to payment systems.</p>
+                </div>
             </div>
         </div>
 
         <div class="myocard">
             <div>
-                <div><div class="back-color-accent" style="width:10rem;height:10rem;"></div></div>
+                <figure>
+                    <div class="back-color-accent" style="width:10rem;height:10rem;"></div>
+                </figure>
             </div>
             <div>
                 <div><p>A few additional perks include full access to geolocation technologies. When it comes to payment systems, the Self-Service solution supports both Visa and MasterCard.</p></div>
@@ -274,7 +290,9 @@
                 <div><p>A few additional perks include full access to geolocation technologies. When it comes to payment systems, the Self-Service solution supports both Visa and MasterCard. When it comes to payment systems, the Self-Service solution supports both Visa and MasterCard.</p></div>
             </div>
             <div>
-                <div><div class="back-color-accent" style="width:10rem;height:10rem;"></div></div>
+                <figure>
+                    <div class="back-color-accent" style="width:10rem;height:10rem;"></div>
+                </figure>
             </div>
         </div>
 

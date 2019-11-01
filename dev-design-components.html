@@ -7,7 +7,7 @@
     <!-- ========================================= HEAD CONTENT -->
 
 
-    <title>Aria Components</title>
+    <title>Dev Design Components</title>
 
 
     <!-- ========================================= BOOT -->
@@ -97,12 +97,6 @@
 
     <!-- ========================================= APP CUSTOM -->
 
-    <style>
-        section { padding:   2rem; }
-        p+p { margin-top:  1.5rem; }
-        h2  { margin-bottom: 1rem; }
-        h2:not(:first-child) { margin-top: 1.5rem; }
-    </style>
 
 
     <!-- ========================================== ʕ⊙ᴥ⊙ʔ = -->
@@ -118,40 +112,50 @@
 
     <style>
 
+      /* Cardbox */
+        .myocardbox {
+          --card-max-width: 60rem;
+        }
+
       /* Card Settings */
 
         .myocard {
-          --card-padding:        1rem;
-          --item-padding:        0.25rem 0.5rem;
-          --item-max-width:      42rem; /* var(--paragraph-width--max ,42em ); */
 
-          --card-back-color:     var(--back-color-accent ,transparent );
-          --card-text-color:     var(--text-color        ,inherit     );
+         /* Default System Paddings */
+
+          --sx: var(--col-space ,1rem );
+          --sy: var(--row-space ,1rem );
+
+         /* Setup Paddings */
+
+          --card-padding:        calc( 0.5*var(--sy) ) calc( 0.5*var(--sx) );
+          --item-padding:        calc( 0.5*var(--sy) ) calc( 0.5*var(--sx) );
+          --item-max-width:      42rem; /* var(--paragraph-width--max ,42rem ); */
 
          /* Customization      * Default Value    * Options
+
+          --card-back-color:     transparent;       ...color
+          --card-text-color:     inherit;           ...color
+          --card-max-width:      100%;              ...value
           --card-wrap-order:     wrap;              wrap-reverse
           --item-vertical-align: flex-start;        center, flex-end
+
             */
         }
-
-     /* Classname Add-ons */
-
-        .centrale .myocard, /* vertical centering */
-        .myocard.centrale {
-          --item-vertical-align: center; }
-
-        .wrap-reverse .myocard, /* reverse order for responsive layout */
-        .myocard.wrap-reverse {
-          --card-wrap-order: wrap-reverse;
-          --align-items:     var(--item-vertical-align ,flex-end ); }
 
       /* Apply Design */
 
         .myocard {
-          --background-color: var(--card-back-color);
+          --background-color: var(--card-back-color  ,transparent );
             background-color: var(--background-color);
-          --color: var(--card-text-color);
+          --color: var(--card-text-color ,inherit );
             color: var(--color);
+          --max-width: var(--card-max-width ,100% );
+            max-width: var(--max-width);
+          --margin-left:  auto;
+            margin-left:  var(--margin-left);
+          --margin-right: auto;
+            margin-right: var(--margin-right);
         }
 
       /* Layout Core -- Flex Half-Grow Technique */
@@ -159,9 +163,12 @@
         .myocard {
             display:   flex;
             flex-wrap: var(--card-wrap-order ,wrap       );}
-        .myocard>*                 { flex-grow:   0.5;   }
-        .myocard>*:nth-child(odd)  { margin-left: auto;  }
-        .myocard>*:nth-child(even) { text-align:  right; }
+        .myocard>*                   { flex-grow:   0.5;   }
+        .myocard>*:nth-child( odd)   { margin-left: auto;  }
+        .myocard>*:nth-child(even)   { text-align:  right; }
+        .myocard>*>*                 { }
+        .myocard>*:nth-child( odd)>* { }
+        .myocard>*:nth-child(even)>* { }
 
      /* Paddings Around Card and Items */
 
@@ -169,6 +176,8 @@
                       padding: var(--padding         );}
         .myocard>*{ --padding: var(--item-padding ,0 );}
         .myocard>*>*{ padding: var(--padding         );}
+        .myocard .myocard,
+        .myocard .myocard>* { --padding: 0; }
 
      /* Item Box Model */
 
@@ -179,11 +188,24 @@
             flex-direction: column;
             text-align:     left; }
 
-     /* Vertical Centering */
+     /* Vertical Align */
 
         .myocard {
           --align-items: var(--item-vertical-align ,flex-start );
             align-items: var(--align-items); }
+
+     /* Classname Add-ons */
+
+         /* vertical centering */
+                    .item-vertical-align-center .myocard,
+            .myocard.item-vertical-align-center {
+              --item-vertical-align: center; }
+
+         /* second child goes top, when wrapping */
+                    .wrap-order-reverse .myocard,
+            .myocard.wrap-order-reverse {
+              --card-wrap-order: wrap-reverse;
+              --align-items:     var(--item-vertical-align ,flex-end ); }
 
      /* ...end of Myocards */
 
@@ -254,12 +276,243 @@
 
     </style>
 
-    <section class="myocard demo3">
-        
+    <section class="myocardist demo3">
+
+        <h4>control text</h4>
+        <div class="paragraph" style="padding:1.5rem;">
+            <p class="auto"></p>
+            <p class="auto"></p>
+            <p class="auto"></p>
+        </div>
+
+        <h1>1 Banner</h1>
+
+        <style>
+
+            .el-simplest-banner {
+              --item-vertical-align: center;
+              --background-color:    var(--back-color-accent);
+                background-color:    var(--background-color);
+            }
+
+            .el-event-banner {
+              --item-vertical-align: center;
+              --card-text-color:     black;
+              --background-color:    var(--back-color-accent);
+                background-color:    var(--background-color);
+            }
+            .el-event-banner .myocard .myocard {
+              --card-wrap-order: wrap-reverse;
+            }
+            .el-event-banner img {
+              --max-width: 10rem;
+                max-width: var(--max-width);
+            }
+
+            .el-banner-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+            }
+            .el-banner-grid .myocardbox {
+                display:     flex;
+                align-items: stretch;
+            }
+            .el-banner-grid.x3 { grid-template-columns: 1fr 1fr 1fr; }
+
+        </style>
+
+        <div class="myocardbox el-simplest-banner">
+            <section class="myocard">
+                <header>
+                    <div>
+                        Meet our team at G2E Asia<br>
+                        3-4 December 2019<br>
+                        Marriot Manila, Philippines<br>
+                    </div>
+                </header>
+                <footer>
+                    <div>
+                        <span class="swed-button"><span>Book a meeting</span></span>
+                    </div>
+                </footer>
+            </section>
+        </div>
+
+        <hr>
+
+        <div class="myocardbox el-event-banner">
+            <section class="myocard">
+                <header>
+                    <div>
+                        <section class="myocard">
+                            <footer>
+                                <div>
+                                    Meet our team at G2E Asia<br>
+                                    3-4 December 2019<br>
+                                    Marriot Manila, Philippines<br>
+                                </div>
+                            </footer>
+                            <figure>
+                                <img src="art/illustrations/austria.svg" alt="Logo">
+                            </figure>
+                        </section>
+                    </div>
+                </header>
+                <footer>
+                    <div>
+                        <h3>Book a meeting</h3>
+                    </div>
+                </footer>
+            </section>
+        </div>
+
+        <hr>
+
+        <div class="el-banner-grid x2">
+
+            <div class="myocardbox el-event-banner" style="--background-color: hsl(85, 58%, 60%);">
+                <section class="myocard">
+                    <header>
+                        <div>
+                            <section class="myocard">
+                                <header>
+                                    <div>
+                                        Meet our team at G2E Asia<br>
+                                        3-4 December 2019<br>
+                                        Marriot Manila, Philippines<br>
+                                    </div>
+                                </header>
+                                <figure>
+                                    <img src="https://www.softgamings.com/content/uploads/ge2asia-philippines-logo.png" alt="Logo">
+                                </figure>
+                            </section>
+                        </div>
+                    </header>
+                    <footer>
+                        <div>
+                            <span class="swed-button"><span>Book a meeting</span></span>
+                        </div>
+                    </footer>
+                </section>
+            </div>
+
+            <div class="myocardbox el-event-banner" style="--background-color: hsl(351, 85%, 52%);">
+                <section class="myocard">
+                    <header>
+                        <div>
+                            <section class="myocard">
+                                <header>
+                                    <p>
+                                        Meet our team at SiGMA<br>
+                                        27-29 November 2019<br>
+                                        Malta<br>
+                                    </p>
+                                </header>
+                                <figure>
+                                    <img src="https://www.softgamings.com/content/uploads/sigma-logo-bw.png" alt="Logo">
+                                </figure>
+                            </section>
+                        </div>
+                    </header>
+                    <footer>
+                        <div>
+                            <span class="swed-button"><span>Book a meeting</span></span>
+                        </div>
+                    </footer>
+                </section>
+            </div>
+
+        </div>
+
+        <hr>
+
+        <div class="el-banner-grid x3">
+
+            <div class="myocardbox el-event-banner">
+                <section class="myocard">
+                    <header>
+                        <div>
+                            <section class="myocard">
+                                <footer>
+                                    <div>
+                                        Meet our team at G2E Asia<br>
+                                        3-4 December 2019<br>
+                                        Marriot Manila, Philippines<br>
+                                    </div>
+                                </footer>
+                                <figure>
+                                    <img src="art/illustrations/austria.svg" alt="Logo">
+                                </figure>
+                            </section>
+                        </div>
+                    </header>
+                    <footer>
+                        <div>
+                            <h3>Book a meeting</h3>
+                        </div>
+                    </footer>
+                </section>
+            </div>
+
+            <div class="myocardbox el-event-banner" style="--background-color: hsl(85, 58%, 60%);">
+                <section class="myocard">
+                    <header>
+                        <div>
+                            <section class="myocard">
+                                <header>
+                                    <div>
+                                        Meet our team at G2E Asia<br>
+                                        3-4 December 2019<br>
+                                        Marriot Manila, Philippines<br>
+                                    </div>
+                                </header>
+                                <figure>
+                                    <img src="https://www.softgamings.com/content/uploads/ge2asia-philippines-logo.png" alt="Logo">
+                                </figure>
+                            </section>
+                        </div>
+                    </header>
+                    <footer>
+                        <div>
+                            <span class="swed-button"><span>Book a meeting</span></span>
+                        </div>
+                    </footer>
+                </section>
+            </div>
+
+            <div class="myocardbox el-event-banner" style="--background-color: hsl(351, 85%, 52%);">
+                <section class="myocard">
+                    <header>
+                        <div>
+                            <section class="myocard">
+                                <header>
+                                    <p>
+                                        Meet our team at SiGMA<br>
+                                        27-29 November 2019<br>
+                                        Malta<br>
+                                    </p>
+                                </header>
+                                <figure>
+                                    <img src="https://www.softgamings.com/content/uploads/sigma-logo-bw.png" alt="Logo">
+                                </figure>
+                            </section>
+                        </div>
+                    </header>
+                    <footer>
+                        <div>
+                            <span class="swed-button"><span>Book a meeting</span></span>
+                        </div>
+                    </footer>
+                </section>
+            </div>
+
+        </div>
+
     </section>
 
 
-    <section class="myocardist demo demo2 wrap-reverse">
+
+    <section class="myocardist demo demo2">
 
         <div class="myocard">
             <div>
@@ -648,6 +901,13 @@
 
 <!-- ========= ʕ⊙ᴥ⊙ʔ ====================================== -->
 <article id="HeaderToggler">
+
+    <style>
+        #HeaderToggler section { padding:   2rem; }
+        #HeaderToggler p+p { margin-top:  1.5rem; }
+        #HeaderToggler h2  { margin-bottom: 1rem; }
+        #HeaderToggler h2:not(:first-child) { margin-top: 1.5rem; }
+    </style>
 
 
 <!-- TEMPLATE -->

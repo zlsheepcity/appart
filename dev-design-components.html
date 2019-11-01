@@ -146,12 +146,17 @@
       /* Apply Design */
 
         .myocard {
+
           --background-color: var(--card-back-color  ,transparent );
             background-color: var(--background-color);
           --color: var(--card-text-color ,inherit );
             color: var(--color);
+
+          --width: 100%;
+            width: var(--width);
           --max-width: var(--card-max-width ,100% );
             max-width: var(--max-width);
+
           --margin-left:  auto;
             margin-left:  var(--margin-left);
           --margin-right: auto;
@@ -172,12 +177,15 @@
 
      /* Paddings Around Card and Items */
 
-        .myocard {  --padding: var(--card-padding ,0 );
-                      padding: var(--padding         );}
-        .myocard>*{ --padding: var(--item-padding ,0 );}
-        .myocard>*>*{ padding: var(--padding         );}
-        .myocard .myocard,
-        .myocard .myocard>* { --padding: 0; }
+        .myocard {    --padding: var(--card-padding ,0 );
+                        padding: var(--padding         );}
+        .myocard>*>*{ --padding: var(--item-padding ,0 );}
+        .myocard>*>*{   padding: var(--padding         );}
+
+     /* Inserted Child */
+
+        .myocard>.myocard   { padding: 0; width: auto; }
+        .myocard>.myocard>* { padding: 0; }
 
      /* Item Box Model */
 
@@ -186,7 +194,8 @@
         .myocard>*:nth-child(even)>*{
             display:        inline-flex;
             flex-direction: column;
-            text-align:     left; }
+            text-align:     left;
+            vertical-align: middle; }
 
      /* Vertical Align */
 
@@ -310,8 +319,11 @@
             }
 
             .autogrid-for-myocard .myocardbox {
-                display:     flex;
-                align-items: stretch;
+                /*  Centering cells
+                    display:     flex;
+                    width: 100%;
+                    align-items: stretch;
+                */
             }
             .autogrid-for-myocard { --cell-size: 32rem; }
             @media (max-width: 38rem) { .autogrid-for-myocard { --cell-size: 100%; } }
@@ -329,7 +341,7 @@
                 </header>
                 <footer>
                     <div>
-                        <span class="swed-button"><span>Book a meeting</span></span>
+                        <button class="swed-button"><span>Book a meeting</span></button>
                     </div>
                 </footer>
             </section>
@@ -339,82 +351,50 @@
 
         <div class="myocardbox el-event-banner">
             <section class="myocard">
-                <header>
-                    <div>
-                        <section class="myocard">
-                            <footer>
-                                <div>
-                                    Meet our team at G2E Asia<br>
-                                    3-4 December 2019<br>
-                                    Marriot Manila, Philippines<br>
-                                </div>
-                            </footer>
-                            <figure>
-                                <img src="art/illustrations/austria.svg" alt="Logo">
-                            </figure>
-                        </section>
-                    </div>
-                </header>
+
+                <section class="myocard">
+                    <header>
+                        <div>
+                            Meet our team at G2E Asia<br>
+                            3-4 December 2019<br>
+                            Marriot Manila, Philippines<br>
+                        </div>
+                    </header>
+                    <figure>
+                        <img src="art/illustrations/austria.svg" alt="Logo">
+                    </figure>
+                </section>
+
                 <footer>
-                    <div>
-                        <h3>Book a meeting</h3>
-                    </div>
+                    <h3>Book a meeting</h3>
                 </footer>
+
             </section>
         </div>
 
         <hr>
 
-        <div class="autogrid autogrid-for-myocard">
+        <div class="journal-grid">
 
-            <div class="myocardbox el-event-banner" style="--background-color: hsl(85, 58%, 60%);">
-                <section class="myocard">
-                    <header>
-                        <div>
-                            <section class="myocard">
-                                <header>
-                                    <div>
-                                        Meet our team at G2E Asia<br>
-                                        3-4 December 2019<br>
-                                        Marriot Manila, Philippines<br>
-                                    </div>
-                                </header>
-                                <figure>
-                                    <img src="https://www.softgamings.com/content/uploads/ge2asia-philippines-logo.png" alt="Logo">
-                                </figure>
-                            </section>
-                        </div>
-                    </header>
-                    <footer>
-                        <div>
-                            <span class="swed-button"><span>Book a meeting</span></span>
-                        </div>
-                    </footer>
-                </section>
-            </div>
+            <div class="block"><p class="auto"></p><p class="auto"></p></div>
+            <div class="note"><p class="auto"></p></div>
 
-            <div class="myocardbox el-event-banner" style="--background-color: hsl(351, 85%, 52%);">
-                <section class="myocard">
-                    <header>
-                        <div>
-                            <section class="myocard">
-                                <header>
-                                    <p>
-                                        Meet our team at SiGMA<br>
-                                        27-29 November 2019<br>
-                                        Malta<br>
-                                    </p>
-                                </header>
-                                <figure>
-                                    <img src="https://www.softgamings.com/content/uploads/sigma-logo-bw.png" alt="Logo">
-                                </figure>
-                            </section>
-                        </div>
-                    </header>
+            <div class="base myocardbox el-event-banner">
+                <section class="myocard" style="grid-column: wrap-start / side-end;">
+                    <section class="myocard">
+                        <header>
+                            <div>
+                                Meet our team at G2E Asia<br>
+                                3-4 December 2019<br>
+                                Marriot Manila, Philippines<br>
+                            </div>
+                        </header>
+                        <figure>
+                            <img src="art/illustrations/austria.svg" alt="Logo">
+                        </figure>
+                    </section>
                     <footer>
-                        <div>
-                            <span class="swed-button"><span>Book a meeting</span></span>
-                        </div>
+                        <h3>Grid Base Block</h3>
                     </footer>
                 </section>
             </div>
@@ -425,53 +405,27 @@
 
         <div class="autogrid autogrid-for-myocard">
 
-            <div class="myocardbox el-event-banner">
-                <section class="myocard">
-                    <header>
-                        <div>
-                            <section class="myocard">
-                                <footer>
-                                    <div>
-                                        Meet our team at G2E Asia<br>
-                                        3-4 December 2019<br>
-                                        Marriot Manila, Philippines<br>
-                                    </div>
-                                </footer>
-                                <figure>
-                                    <img src="art/illustrations/austria.svg" alt="Logo">
-                                </figure>
-                            </section>
-                        </div>
-                    </header>
-                    <footer>
-                        <div>
-                            <h3>Book a meeting</h3>
-                        </div>
-                    </footer>
-                </section>
-            </div>
-
             <div class="myocardbox el-event-banner" style="--background-color: hsl(85, 58%, 60%);">
                 <section class="myocard">
-                    <header>
-                        <div>
-                            <section class="myocard">
-                                <header>
-                                    <div>
-                                        Meet our team at G2E Asia<br>
-                                        3-4 December 2019<br>
-                                        Marriot Manila, Philippines<br>
-                                    </div>
-                                </header>
-                                <figure>
+                    
+
+                        <section class="myocard">
+                            <header>
+                                <div>
+                                    Meet our team at G2E Asia<br>
+                                    3-4 December 2019<br>
+                                    Marriot Manila, Philippines<br>
+                                </div>
+                            </header>
+                            <figure>
                                     <img src="https://www.softgamings.com/content/uploads/ge2asia-philippines-logo.png" alt="Logo">
-                                </figure>
-                            </section>
-                        </div>
-                    </header>
+                            </figure>
+                        </section>
+
+                    
                     <footer>
                         <div>
-                            <span class="swed-button"><span>Book a meeting</span></span>
+                            <button class="swed-button"><span>Book a meeting</span></button>
                         </div>
                     </footer>
                 </section>
@@ -479,31 +433,28 @@
 
             <div class="myocardbox el-event-banner" style="--background-color: hsl(351, 85%, 52%);">
                 <section class="myocard">
-                    <header>
-                        <div>
-                            <section class="myocard">
-                                <header>
-                                    <p>
-                                        Meet our team at SiGMA<br>
-                                        27-29 November 2019<br>
-                                        Malta<br>
-                                    </p>
-                                </header>
-                                <figure>
-                                    <img src="https://www.softgamings.com/content/uploads/sigma-logo-bw.png" alt="Logo">
-                                </figure>
-                            </section>
-                        </div>
-                    </header>
+                    <section class="myocard">
+                        <header>
+                            <p>
+                                Meet our team at SiGMA<br>
+                                27-29 November 2019<br>
+                                Malta<br>
+                            </p>
+                        </header>
+                        <figure>
+                            <img src="https://www.softgamings.com/content/uploads/sigma-logo-bw.png" alt="Logo">
+                        </figure>
+                    </section>
                     <footer>
                         <div>
-                            <span class="swed-button"><span>Book a meeting</span></span>
+                            <button class="swed-button"><span>Book a meeting</span></button>
                         </div>
                     </footer>
                 </section>
             </div>
 
         </div>
+
 
     </section>
 

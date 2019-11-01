@@ -309,15 +309,12 @@
                 max-width: var(--max-width);
             }
 
-            .el-banner-grid {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-            }
-            .el-banner-grid .myocardbox {
+            .autogrid-for-myocard .myocardbox {
                 display:     flex;
                 align-items: stretch;
             }
-            .el-banner-grid.x3 { grid-template-columns: 1fr 1fr 1fr; }
+            .autogrid-for-myocard { --cell-size: 32rem; }
+            @media (max-width: 38rem) { .autogrid-for-myocard { --cell-size: 100%; } }
 
         </style>
 
@@ -368,7 +365,7 @@
 
         <hr>
 
-        <div class="el-banner-grid x2">
+        <div class="autogrid autogrid-for-myocard">
 
             <div class="myocardbox el-event-banner" style="--background-color: hsl(85, 58%, 60%);">
                 <section class="myocard">
@@ -426,7 +423,7 @@
 
         <hr>
 
-        <div class="el-banner-grid x3">
+        <div class="autogrid autogrid-for-myocard">
 
             <div class="myocardbox el-event-banner">
                 <section class="myocard">

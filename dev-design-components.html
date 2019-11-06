@@ -285,6 +285,105 @@
 
     </style>
 
+    <style>
+        .jasma-workshop-banner {
+            background-image: url(http://jasma.lv/wp-content/uploads/jasma-workshop-cover.jpg);
+            background-size:     cover;
+            background-position: bottom center;
+            --min-height: calc( 100vw*(1000/1600) );
+
+            background-color: #e45406;
+            color:            black;
+            padding:          8rem 2rem;
+
+            display:  grid;
+            grid-gap: 2rem;
+            grid-template-rows: min-content min-content auto min-content;
+            grid-template-areas:
+                'title description'
+                'logo  description'
+                'logo  space'
+                'logo  links';
+        }
+        .jasma-workshop-title       { grid-area: title; }
+        .jasma-workshop-logo        { grid-area: logo; }
+        .jasma-workshop-description { grid-area: description; }
+        .jasma-workshop-links       { grid-area: links; }
+
+        .jasma-workshop-title {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .jasma-workshop-logo {
+            max-width: 16rem;
+            padding:    1rem;
+            justify-self: end;
+        }
+        .jasma-workshop-block {
+            display:    inline-block;
+            padding:    1rem;
+            background-color: hsla(21, 95%, 46%, 0.64);
+            box-shadow: 0.5rem 0.5rem 0 hsla(21, 95%, 46%, 0.24);
+        }
+        .jasma-workshop-description {
+            font-size: 1.2em;
+        }
+        .jasma-workshop-logo img {
+            animation: keyframes--SimpleRotation 4s cubic-bezier(.36,.07,.19,.97) both;
+            animation-iteration-count: infinite;
+        }
+        @keyframes keyframes--SimpleRotation {
+            0%   {transform: rotate(0deg);}
+            70%  {transform: rotate(359deg);}
+            100% {transform: rotate(0deg);}
+        }
+        @media (max-width:600px) {
+            .jasma-workshop-banner {
+                grid-template-rows: min-content;
+                grid-template-areas:
+                    'title'
+                    'logo'
+                    'description'
+                    'links';
+            }
+        }
+    </style>
+
+    <section class="jasma-workshop-banner">
+        <div class="jasma-workshop-title">
+            <div class="jasma-workshop-block">
+                <h2>JASMA Workshops</h2>
+                <p><a href="https://jasma.lv/workshop/">jasma.lv/workshop</a></p>
+            </div>
+        </div>
+        <div class="jasma-workshop-logo">
+            <img src="http://jasma.lv/wp-content/uploads/JASMA-gear.svg" alt="Workshop Gear">
+        </div>
+        <div class="jasma-workshop-description">
+            <div class="jasma-workshop-block">
+                <p>
+                    Inspired with idea?<br>
+                    Write a message at <b class="contact">workshop@jasma.lv</b><br><br>
+                    Primary questions:<br>
+                </p>
+                <ul>
+                    <li>What is it about?</li>
+                    <li>Who is a target group?</li>
+                    <li>When you are ready?</li>
+                </ul>
+            </div>
+        </div>
+        <div class="jasma-workshop-links">
+            <div class="jasma-workshop-block">
+                <h3>Links</h3>
+                <ul>
+                    <li><a href="https://docs.google.com/spreadsheets/d/1MZ_t0R2t5Un7EAGftxR9tzoRVw0pR32o8ShkY9tB6Zw/edit?usp=sharing">Current workshops</a> (google doc.)</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
     <section class="myocardist demo3">
 
         <h4>control text</h4>

@@ -1,4 +1,4 @@
-<!doctype html><!-- appart :: 8102 :: 2019.9.23 -->
+<!doctype html><!-- appart :: 8102 :: 2019.11.7 -->
 <html lang="ru">
 <head>
     <meta charset="utf-8">
@@ -32,6 +32,7 @@
 
     <!-- ༼°▽°༽ prefetch boot -->
     <link rel="preconnect"   href="//fonts.gstatic.com">
+    <link rel="preconnect"   href="//images.unsplash.com">
 
     <!-- ༼°▽°༽ app boot -->
     <script>
@@ -39,15 +40,29 @@
 
          // The Noble Blastula
             let app = this
-            app.has = { memory: [], arrived:true }
+            app.has = { memory: [], status: false }
             app.has.queens = [ 'onload', 'mutate' ]
-            /*
-            King has arrived --- let app = new AppBoot()
-            Take the Queen ----- app.attach('queen_name')(function)
-            Keep in memory ----- app.queen_name(function_parameters)
-            Execute later ------ app.onload(function)
-            2019.9.15
-            */
+
+         // Define responsibility
+         /*
+            King has arrived ===> let app = new AppBoot()
+            Take the Queen =====> app.attach('queen_name')(function)
+            Keep in memory =====> app.queen_name(function_parameters)
+            Execute later ======> app.onload(function)
+            2019.11.7 */
+            const AppBootStart = (dna) => {
+                app.attach     =  TakeTheQueen
+                dna.map( queen => app.attach(queen) ) }
+            const TakeTheQueen = (queen) => {
+                    app[queen] =  ExecuteLater(queen)
+                    return (f) => ExecuteLater('update')({name:queen,f}) }
+            const KeepInMemory = (dna) => app.has.memory.push(dna)
+            const ExecuteLater =
+                 (responsible) =>
+                         (dna) => KeepInMemory({dna,for:responsible})
+
+         // Apply responsibility
+            AppBootStart(app.has.queens)
 
          // The Noble Provocator
             const proteinProvoker = function ImitateCriticalTasks () {
@@ -57,21 +72,6 @@
               tpp.attach('queen_id')(must_accept_queens)
               tpp.queen_id('try this')
             }
-
-         // Define responsibility
-            const TakeTheQueen = (queen) =>
-                {
-                    app[queen] =  ExecuteLater(queen)
-                    return (f) => ExecuteLater('update')({name:queen,f})
-                }
-            const KeepInMemory = (dna) => app.has.memory.push(dna)
-            const ExecuteLater =
-                 (responsible) =>
-                         (dna) => KeepInMemory({dna,for:responsible})
-
-         // Apply responsibility
-            app.attach = TakeTheQueen
-            app.has.queens.map( queen => app.attach(queen) )
             app.ForceErrorsIfShouldBe =  proteinProvoker
         }
 
@@ -85,8 +85,11 @@
 
 
     <link
-        href="app/styles/appart-dev.css?v2019.8.22"
+        href="app/styles/appart-dev.css?v2019.11.7"
         rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic"
+        rel="stylesheet">
 
 
     <!-- ========================================= APP -->
@@ -100,6 +103,7 @@
     <script defer src="app/script/components/image-lazy-loader.js"></script>
     <script defer src="app/script/components/scroll-to-var.js"></script>
     <script>app.attach('wayway')</script>
+    <script defer src="app/script/components/headroom.js"></script>
 
 
     <!-- ========================================= APP CUSTOM -->
@@ -110,7 +114,7 @@
     <script defer src="app/script/components/autofill-paragraphs.js"></script>
 
     <style>
-        screen {
+        .screen {
             display: block;
             min-height: 100vh;
             padding: 3rem;
@@ -122,29 +126,92 @@
 </head>
 <body class="colors--primary native-sans">
 
-    <!-- ----------------------------------------- Class Mutator -->
+    <!-- ----------------------------------------- SVG Under DIV -->
 
-    <screen class="use-colors colors--root">
+    <article class="journal-grid chapter">
         <header>
-            <h2>CSS Class Mutator</h2>
+            <h2>SVG Under DIV</h2>
+            <p>2019.11.7</p>
         </header>
-        <div class="make-me-happy">DIV.make-me-happy → DIV.happy (the red color)</div>
+        <style>
+            .divik {
+                width: 20rem;
+                height: 4rem;
+                outline:  2px solid lightskyblue;
+                position: relative;
+                z-index:  0;
+            }
+            .divik + .divik { margin-top: 1rem; }
+        </style>
+        <section>
+            <div class="divik"></div>
+            <div class="divik"></div>
+        </section>
+    </article>
+
+    <!-- ----------------------------------------- Web Components -->
+
+    <article class="journal-grid chapter">
+        <header>
+            <h2>Friendly Web Components</h2>
+            <p>
+                Source: Atomico<br>
+                https://github.com/atomicojs/atomico<br>
+                2019.6.18
+            </p>
+        </header>
+        <section class="box color-box">
+
+            <!--declare web-component-->
+            <web-component message="Hello!" counter="1">
+                <p>Markup Content</p>
+            </web-component>
+
+            <!--create web-component-->
+            <script type="module">
+                import { customElement, useState } from "https://unpkg.com/atomico@0.8.6";
+                import html from "https://unpkg.com/atomico@0.8.6/html.js";
+
+                function WebComponent({ message, counter }) {
+                    return html`
+                        <host shadowDom>
+                            <style>
+                                :host { display: block; }
+                                p { margin-left: 1rem; }
+                            </stile>
+                            <h2>${message}</h2>
+                            <p>Attribute value: ${counter+1}</p>
+                            <slot />
+                        </host>
+                    `;
+                }
+                WebComponent.observables = {
+                    message: String,
+                    counter: Number
+                };
+
+                customElement("web-component", WebComponent);
+
+                let wc = document.querySelector("web-component");
+                wc.message = "Attribute Message";
+            </script>
+
+        </section>
+    </article>
+
+    <!-- ----------------------------------------- Scroll To Property -->
+
+    <article class="journal-grid chapter">
+        <header>
+            <h2>Scroll To Property (Wayway)</h2>
+        </header>
         <style>
             .happy { color:firebrick }
             .make-me-happy { background-color:wheat }
         </style>
-        <script>
-            app.mutate({for:'make-me-happy',addClass:'happy',removeClass:'make-me-happy'})
-        </script>
-    </screen>
-
-    <!-- ----------------------------------------- Scroll To Property -->
-
-    <screen class="use-colors colors--root">
-        <header class="is-centered">
-            <h2>Scroll To Property (Wayway)</h2>
-        </header>
-        <div class="make-me-wayway padding is-centered font-size" style="--font-size:10px;">Font size from 10px to 60px</div>
+        <section class="layer">
+            <div class="make-me-wayway padding is-centered font-size" style="--font-size:10px;">Font size from 10px to 60px</div>
+        </section>
         <script>
             app.wayway({
                 elem: document.querySelector('.make-me-wayway'),
@@ -154,12 +221,24 @@
                 direct: true
             })
         </script>
-    </screen>
+        <code><pre>
+            app.wayway({
+                elem: document.querySelector('.make-me-wayway'),
+                from: 'top-bottom',
+                to:   'top-top',
+                props: { '--font-size': {from:'10px',to:'60px'} },
+                direct: true
+            })
+        </pre></code>
+    </article>
 
     <!-- ----------------------------------------- Lazy Loading -->
 
-    <article class="use-colors colors--root">
-
+    <article class="journal-grid chapter">
+        <header>
+            <h2>Lazy Loader</h2>
+            <p>With Intersection Observer</p>
+        </header>
         <style>
             [data-src]:not([src]) {
                 min-width:        100%;
@@ -167,29 +246,50 @@
                 background-color: pink;
             }
         </style>
-
-        <screen>
-            <h2>Lazy Loader</h2>
-            <figure><img data-src="http://placekitten.com/800/200" width="800" height="200" alt="" class="zzz"></figure>
-            <figure><img data-src="http://placekitten.com/800/800" width="800" height="200" alt="" class="zzz"></figure>
-        </screen>
-        <screen class="padding-top" style="--padding-top:200px">
-            <figure><img data-src="http://lorempixel.com/800/400/sports/" alt="" class="zzz"></figure>
-            <figure><img data-src="http://lorempixel.com/800/600/sports/" alt="" class="zzz"></figure>
-        </screen>
-        <screen>
-            <figure><img data-src="http://placekitten.com/600/300/" alt="" class="zzz"></figure>
-            <figure><img data-src="http://placekitten.com/200/400/" alt="" class="zzz"></figure>
-        </screen>
-        <screen>
-            <figure><img data-src="http://lorempixel.com/800/100/sports/" alt="" class="zzz"></figure>
-            <figure><img data-src="http://lorempixel.com/800/300/sports/" alt="" class="zzz"></figure>
-        </screen>
-
+        <section class="screen back-color-accent">
+            <figure><img data-src="https://source.unsplash.com/random/800x200" width="800" height="200" alt="" class="zzz"></figure>
+            <figure><img data-src="https://source.unsplash.com/random/800x800" width="800" height="200" alt="" class="zzz"></figure>
+        </section>
+        <section class="screen">
+            <figure><img data-src="https://source.unsplash.com/random/800x400" alt="" class="zzz"></figure>
+            <figure><img data-src="https://source.unsplash.com/random/800x600" alt="" class="zzz"></figure>
+        </section>
+        <section class="screen back-color-accent">
+            <figure><img data-src="https://source.unsplash.com/random/600x300" alt="" class="zzz"></figure>
+            <figure><img data-src="https://source.unsplash.com/random/200x400" alt="" class="zzz"></figure>
+        </section>
+        <section class="screen">
+            <figure><img data-src="https://source.unsplash.com/random/800x100" alt="" class="zzz"></figure>
+            <figure><img data-src="https://source.unsplash.com/random/800x300" alt="" class="zzz"></figure>
+        </section>
     </article>
 
+    <!-- ----------------------------------------- Class Change -->
 
-
+    <article class="journal-grid chapter">
+        <header>
+            <h2>Change CSS Class</h2>
+        </header>
+        <style>
+            .happy { color:firebrick }
+            .make-me-happy { background-color:wheat }
+        </style>
+        <div class="make-me-happy">DIV.make-me-happy → DIV.happy (red color)</div>
+        <script>
+            app.mutate({
+                for:         'make-me-happy',
+                removeClass: 'make-me-happy',
+                addClass:    'happy'
+            })
+        </script>
+        <code><pre>
+            app.mutate({
+                for:         'make-me-happy',
+                removeClass: 'make-me-happy',
+                addClass:    'happy'
+            })
+        </pre></code>
+    </article>
 
 
 

@@ -1,5 +1,5 @@
 /** Lazy Loader
- *  2019.9.23
+ *  2019.11.7
  */
 
 
@@ -11,14 +11,12 @@
 
 
 */
-
-
 /** ----------------------------------------- Define loader */
 
 
 function LazyLoader() {
-    const allLazyImages = document.querySelectorAll('[data-src]')
-    const observerOptions = { rootMargin:'50px 0px' }
+    const allLazyImages   = document.querySelectorAll('[data-src]')
+    const observerOptions = { rootMargin:'100px 0px' }
     const MakeImageLoaded = img => img.src = img.dataset.src
 
     const LoadWithObserver = function() {

@@ -70,13 +70,6 @@
     </style>
     <style>
      /* ------------------------------------------- Layout */
-        .top-level-button {
-            grid-row:    1;
-            grid-column: note;
-            align-self:  end;
-            padding-bottom: 4.4rem;
-            transform: translateX(-1.5rem);
-        }
         .intro-section>.box.side {
             grid-row: 1;
         }
@@ -94,6 +87,13 @@
     /* ------------------------------------------- Design Components */
         .intro-section {
             background-color: var(--brand-color--descent);
+        }
+        .intro-section>footer {
+            margin-top:  var(--row-space);
+        }
+        .intro-section>footer>* {
+            border-top:  2px solid var(--brand-color);
+            padding-top: var(--row-space);
         }
         .intro-section a {
             display:     inline-block;
@@ -133,12 +133,12 @@
             flex-wrap:       wrap;
             justify-content: flex-start;
             align-items:     flex-start;
+            max-width:       90%;
         }
         .top-level-contacts .caption {
-            margin-right: var(--col-space);
-            margin-top:   0.125em;
-            color:        var(--text-color-accent);
-            font-style:   italic;
+            margin-right:  3rem;
+            line-height: 2.5rem;
+            font-style:  italic;
         }
     </style>
 
@@ -156,31 +156,32 @@
             </h1>
         </header>
 
-        <div class="top-level-button">
-            <button class="swed-button"><span>Send message</span></button>
-        </div>
-
         <section class="chapter base intro-section">
             <div class="box">
                 <p>
                     Welcome to Devops Care, an IT Consulting Firm that helps Software Development companies rapidly implement <b>complete CI/CD solution</b> and go to <b>production in confidence</b>. Our expert professionals will partner with your business to deliver <b>tailor-made practical solutions</b>, fast. We delivered numerous projects — and we’re confident we’re the right <b>IT Consulting</b> Firm for you.
                 </p>
-                <section class="top-level-contacts pt">
-                    <h2 class="h4 caption">Contacts</h2>
-                    <ul class="links">
-                        <li><a href="mailto:pavels.veretennikovs@devops.care">pavels.veretennikovs@devops.care</a></li>
-                        <li><a href="tel:0037129501119">+371-29501119</a></li>
-                    </ul>
-                    
-                    
-                </section>
             </div>
-            <div class="side box">
+            <div class="box side">
                 <ul class="links top-level-menu">
                     <li><a href="/cadmium3"><span>Cadmium3</span></a></li>
                     <li><a href="/kubernetes-cluster"><span>Kubernetes Cluster</span></a></li>
                 </ul>
             </div>
+            <footer class="keep-wide">
+                <div class="box">
+                    <section class="top-level-contacts">
+                        <h2 class="h3 caption">Contacts</h2>
+                        <ul class="links">
+                            <li><a href="mailto:pavels.veretennikovs@devops.care">pavels.veretennikovs@devops.care</a></li>
+                            <li><a href="tel:0037129501119">+371-29501119</a></li>
+                        </ul>
+                    </section>
+                </div>
+                <div class="side">
+                    <button class="swed-button"><span>Send message</span></button>
+                </div>
+            </footer>
         </section>
 
         <section class="chapter keep-grid services">

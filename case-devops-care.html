@@ -58,13 +58,13 @@
           --brand-color--descent: hsl(41, 98%, 84%);
         }
         :root {
-              --h1-font-size:    3.6rem;
-              --h1-line-height:  calc(44/36);
+              --h1-font-size:    3.5rem;
+              --h1-line-height:  calc(64/56);
         }
         @media (max-width:       52rem) {
             :root {
-              --h1-font-size:    2.4rem;
-              --h1-line-height:  calc(30/24);
+              --h1-font-size:    2rem;
+              --h1-line-height:  calc(40/32);
               --big-space:       3rem;
             }
         }
@@ -84,7 +84,7 @@
         .page-design h1 dfn:after {
             content: ' — ';
         }
-        .page-design h2 {
+        .page-design h2.h1 {
             font-style: italic;
             color:      var(--text-color-accent);
         }
@@ -93,14 +93,29 @@
         .intro-section {
             background-color: var(--brand-color--descent);
         }
-        .footer {
-            margin-top:  var(--row-space);
+        .contact-button-area {
+            /*transform: translateX(-1.5em);*/
         }
-        .footer>* {
-            border-top:  2px solid var(--brand-color);
-            padding-top: var(--row-space);
+        @media (max-width:38rem) {
+            .contact-button-area {
+                transform:   none;
+            }
+            .intro-section .contact-button-area>* {
+                justify-self: center;
+            }
+            .chapter {
+              --padding-top:    var(--row-space);
+              --padding-bottom: var(--row-space);
+            }
         }
-        .intro-section a {
+        .links {
+            list-style: none;
+            margin:     0;
+            padding:    0;
+            transform:  translateX(-0.75rem);
+        }
+        .links.inline li { display: inline-block; }
+        .links a {
             display:     inline-block;
           --padding:     0.5rem 0.75rem;
             padding:     var(--padding);
@@ -114,15 +129,16 @@
             background-color:      var(--background-color);
             text-decoration-color: var(--shadow-color);
         }
-        .intro-section a:hover,
-        .intro-section a:focus {
+        .links a:hover,
+        .links a:focus {
           --background-color:      var(--light-shadow);
         }
-        .links {
-            list-style: none;
-            margin:     0;
-            padding:    0;
-            transform:  translateX(-0.75rem);
+        .footer {
+            margin-top:  var(--row-space);
+        }
+        .footer>* {
+            border-top:  2px solid var(--brand-color);
+            padding-top: var(--row-space);
         }
         .top-level-menu a {
           --font-size:   var(--h4-font-size);
@@ -139,19 +155,29 @@
         }
         .top-level-contacts .caption {
             margin-right:  3rem;
+            margin-bottom: 0.125em;
             line-height: 2.5rem;
             font-style:  italic;
         }
         .services figure.side {
             grid-row: 1;
         }
-        @media (max-width:38rem) {
-            .intro-section .contact-button-area {
-                padding-top: calc( 2*var(--row-space, 1.5rem));
-            }
-            .intro-section .contact-button-area>* {
-                justify-self: center;
-            }
+        .demo-area {
+          --background-color:   var(--brand-color);
+            background-color:   var(--background-color);
+                     --color:   white;
+                       color:   var(--color);
+          --text-color-accent:  var(--color);
+          --text-color-descent: var(--color);
+        }
+        .demo-area .contact-button-area {
+            margin-top: 0.5rem;
+        }
+        .page-footer {
+          --background-color:   var(--brand-color--accent);
+            background-color:   var(--background-color);
+          --text-color-accent:  black;
+          --padding-top: 12rem;
         }
     </style>
 
@@ -169,7 +195,7 @@
             </h1>
         </header>
 
-        <section class="chapter base intro-section">
+        <section class="chapter keep-base intro-section">
             <div class="box">
                 <p>
                     Welcome to Devops Care, an IT Consulting Firm that helps Software Development companies rapidly implement <b>complete CI/CD solution</b> and go to <b>production in confidence</b>. Our expert professionals will partner with your business to deliver <b>tailor-made practical solutions</b>, fast. We delivered numerous projects — and we’re confident we’re the right <b>IT Consulting</b> Firm for you.
@@ -212,11 +238,11 @@
                 <figure class="side">
                     <img src="cases/img/AWS-Consulting-and-Automation--preview.webp" alt="">
                 </figure>
-                <div class="keep-base footer">
-                    <div class="wide">
+                <footer class="keep-base footer">
+                    <div class="wide contact-button-area">
                         <button class="swed-button"><span>Get in Touch</span></button>
                     </div>
-                </div>
+                </footer>
             </section>
             <section class="keep-base chapter back-color-descent">
                 <div class="box">
@@ -227,14 +253,52 @@
                 <figure class="side">
                     <img src="cases/img/Turnkey-Environment-for-Development--preview.webp" alt="">
                 </figure>
+                <footer class="keep-base footer">
+                    <div class="wide">
+                        <p><a href="/cadmium3" class="h4">Learn more</a></p>
+                    </div>
+                </footer>
             </section>
-
-
-
-
-
-
         </section>
+
+        <section class="chapter layer keep-grid demo-area">
+            <section class="box">
+                <h2 class="h1">Arrange a Demo</h2>
+                <div class="h3">
+                    <p>Contact us to arrange a short demo, either personally or via <a href="http://zoom.us/">Zoom</a>.</p>
+                </div>
+            </section>
+            <div class="side contact-button-area">
+                <button class="swed-button"><span>Arrange a Demo</span></button>
+            </div>
+        </section>
+
+        <footer class="chapter layer keep-grid page-footer">
+            <div class="box">
+               <h2 class="h1">Devops.Care</h2>
+               <p class="h4">Discover they ways how we can expedite your success</p>
+                <ul class="links inline top-level-menu">
+                    <li><a href="/"><span>Home</span></a></li>
+                    <li><a href="/cadmium3"><span>Cadmium3</span></a></li>
+                    <li><a href="/kubernetes-cluster"><span>Kubernetes Cluster</span></a></li>
+                </ul>
+                <p>©2019 by Devops Care. Proudly created with Wix.com</p>
+            </div>
+            <section class="keep-wide footer">
+                <div class="box">
+                    <section class="top-level-contacts">
+                        <h2 class="h3 caption">Contacts</h2>
+                        <ul class="links">
+                            <li><a href="mailto:pavels.veretennikovs@devops.care">pavels.veretennikovs@devops.care</a></li>
+                            <li><a href="tel:0037129501119">+371-29501119</a></li>
+                        </ul>
+                    </section>
+                </div>
+                <div class="side contact-button-area">
+                    <button class="swed-button"><span>Send message</span></button>
+                </div>
+            </section>
+        </footer>
 
     </main>
 

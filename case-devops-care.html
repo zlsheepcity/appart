@@ -61,21 +61,22 @@
               --h1-font-size:    3.6rem;
               --h1-line-height:  calc(44/36);
         }
-        @media (max-width:       48rem) {
+        @media (max-width:       52rem) {
             :root {
               --h1-font-size:    2.4rem;
               --h1-line-height:  calc(30/24);
+              --big-space:       3rem;
             }
         }
     </style>
     <style>
      /* ------------------------------------------- Layout */
-        .intro-section>.box.side {
-            grid-row: 1;
-        }
     </style>
     <style>
      /* ------------------------------------------- Design */
+        .page-design h1 {
+            transform: translateX(-0.125em);
+        }
         .page-design h1 dfn {
             display: block;
             color:   var(--text-color-accent);
@@ -83,15 +84,19 @@
         .page-design h1 dfn:after {
             content: ' — ';
         }
+        .page-design h2 {
+            font-style: italic;
+            color:      var(--text-color-accent);
+        }
         .page-design p { max-width: 31em; }
     /* ------------------------------------------- Design Components */
         .intro-section {
             background-color: var(--brand-color--descent);
         }
-        .intro-section>footer {
+        .footer {
             margin-top:  var(--row-space);
         }
-        .intro-section>footer>* {
+        .footer>* {
             border-top:  2px solid var(--brand-color);
             padding-top: var(--row-space);
         }
@@ -119,9 +124,6 @@
             padding:    0;
             transform:  translateX(-0.75rem);
         }
-        .top-level-menu {
-            padding-bottom: var(--row-space);
-        }
         .top-level-menu a {
           --font-size:   var(--h4-font-size);
           --line-height: var(--h4-line-height);
@@ -139,6 +141,17 @@
             margin-right:  3rem;
             line-height: 2.5rem;
             font-style:  italic;
+        }
+        .services figure.side {
+            grid-row: 1;
+        }
+        @media (max-width:38rem) {
+            .intro-section .contact-button-area {
+                padding-top: calc( 2*var(--row-space, 1.5rem));
+            }
+            .intro-section .contact-button-area>* {
+                justify-self: center;
+            }
         }
     </style>
 
@@ -168,7 +181,7 @@
                     <li><a href="/kubernetes-cluster"><span>Kubernetes Cluster</span></a></li>
                 </ul>
             </div>
-            <footer class="keep-wide">
+            <footer class="keep-wide footer">
                 <div class="box">
                     <section class="top-level-contacts">
                         <h2 class="h3 caption">Contacts</h2>
@@ -178,7 +191,7 @@
                         </ul>
                     </section>
                 </div>
-                <div class="side">
+                <div class="side contact-button-area">
                     <button class="swed-button"><span>Send message</span></button>
                 </div>
             </footer>
@@ -187,8 +200,39 @@
         <section class="chapter keep-grid services">
 
             <header class="wide">
-                <h2 class="h1 text-color-accent">Devops Care Services</h2>
+                <h2 class="h1">Services</h2>
             </header>
+
+            <section class="keep-base chapter back-color-descent">
+                <div class="box">
+                    <h3>AWS Consulting and Automation</h3>
+                    <p class="h4">Terraform, CloudFormation, Ansible</p>
+                    <p>With years of experience, our staff has the capabilities and expertise to take your business to the next level. At Devops Care, we combine our insights and skills to transform your processes and strategies, and in turn, your company. We’re proud to help shape and improve how our clients structure and manage their business.</p>
+                </div>
+                <figure class="side">
+                    <img src="cases/img/AWS-Consulting-and-Automation--preview.webp" alt="">
+                </figure>
+                <div class="keep-base footer">
+                    <div class="wide">
+                        <button class="swed-button"><span>Get in Touch</span></button>
+                    </div>
+                </div>
+            </section>
+            <section class="keep-base chapter back-color-descent">
+                <div class="box">
+                    <h3>Turnkey Environment for Development</h3>
+                    <p class="h4">EKS/Kubernetes, Jenkins, ELK, Sentry</p>
+                    <p>Give your developers the best set of tools in the market. Attract new talents with cutting edge technology. Don't waste time inventing things from scratch.</p>
+                </div>
+                <figure class="side">
+                    <img src="cases/img/Turnkey-Environment-for-Development--preview.webp" alt="">
+                </figure>
+            </section>
+
+
+
+
+
 
         </section>
 

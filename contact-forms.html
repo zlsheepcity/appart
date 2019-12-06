@@ -1,0 +1,247 @@
+<!doctype html><!-- appart :: 8102 :: 2019.10.30 -->
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- ========================================= HEAD CONTENT -->
+
+
+    <title>Contact Forms</title>
+
+
+    <!-- ========================================= BOOT -->
+
+
+    <!-- ༼°▽°༽ style boot -->
+    <style>
+        body    { width: 100%; height: auto; overflow: hidden; }
+        img,svg { max-width: 100%; }
+    </style>
+
+    <!-- ༼°▽°༽ prefetch boot -->
+    <link rel="preconnect"   href="//fonts.gstatic.com">
+    <link rel="preload"      href="art/bergamot-just-browse-here.svg" as="image">
+    <!-- INFO: https://3perf.com/blog/link-rels/ -->
+
+    <!-- ༼°▽°༽ app boot -->
+    <script>
+        function AppBoot() {
+
+         // The Noble Blastula
+            let app = this
+            app.has = { memory: [], arrived:true }
+            app.has.queens = [ 'onload', 'mutate' ]
+            /*
+            King has arrived --- let app = new AppBoot()
+            Take the Queen ----- app.attach('queen_name')(function)
+            Keep in memory ----- app.queen_name(function_parameters)
+            Execute later ------ app.onload(function)
+            2019.9.15
+            */
+
+         // The Noble Provocator
+            const proteinProvoker = function ImitateCriticalTasks () {
+              let tpp = new this.__proto__.constructor()
+              let must_have_a_memory = tpp.has.memory.push('something')
+              let must_accept_queens = like_this_one => true
+              tpp.attach('queen_id')(must_accept_queens)
+              tpp.queen_id('try this')
+            }
+
+         // Define responsibility
+            const TakeTheQueen = (queen) =>
+                {
+                    app[queen] =  ExecuteLater(queen)
+                    return (f) => ExecuteLater('update')({name:queen,f})
+                }
+            const KeepInMemory = (dna) => app.has.memory.push(dna)
+            const ExecuteLater =
+                 (responsible) =>
+                         (dna) => KeepInMemory({dna,for:responsible})
+
+         // Apply responsibility
+            app.attach = TakeTheQueen
+            app.has.queens.map( queen => app.attach(queen) )
+            app.ForceErrorsIfShouldBe =  proteinProvoker
+        }
+
+     // Run Immediately
+        let app = new AppBoot()
+        app.ForceErrorsIfShouldBe()
+    </script>
+
+
+    <!-- ========================================= DESIGN -->
+
+
+    <link
+        href="app/styles/appart.css"
+        rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic"
+        rel="stylesheet">
+
+
+    <!-- ========================================= APP CUSTOM -->
+
+
+    <!-- ========================================== ʕ⊙ᴥ⊙ʔ = -->
+    <!-- ========================================= END HEAD -->
+</head>
+<body class="colors--primary">
+
+<style>
+    .sidepanel-content.form-design {
+        padding: 0;
+    }
+    .form-design {
+      --max-width: 28rem;
+      --sx:       1.5rem; /* x-space unit */
+      --sy:         1rem; /* y-space unit */
+
+      --back-color--field:        white;
+      --text-color--field:        black;
+      --text-color--field--focus: slategray;
+
+      --back-color--submit:          firebrick;
+      --back-color--submit--accent:  darkred;
+      --text-color--submit:          white;
+      --text-color--submit--accent:  white;
+    }
+
+    .form-design label {
+        display: block;
+        padding: 0;
+        margin:  0;
+    }
+    .form-design input,
+    .form-design select,
+    .form-design optgroup,
+    .form-design textarea {
+
+        font-family: inherit;
+        font-size:   1em;
+        line-height: 1.75;
+
+        display:     block;
+        width:       100%;
+        padding:     0.25em 0.5em;
+
+        border:           0.25em solid;
+      --border-color:     transparent;
+        border-color:     var(--border-color);
+        border-radius:    0;
+
+      --background-color: var(--back-color--field);
+      --color:            var(--text-color--field);
+        background-color: var(--background-color);
+        color:            var(--color);
+    }
+    .form-design input:focus,
+    .form-design textarea:focus {
+      --border-color:     var(--text-color--field--focus);
+    }
+
+    .form-design input[type="submit"] {
+
+        display: inline-block;
+        padding: 0.5em 1.5em;
+        width:   auto;
+
+      --background-color: var(--back-color--submit);
+      --color:            var(--text-color--submit);
+        background-color: var(--background-color);
+        color:            var(--color);
+    }
+    .form-design input[type="submit"]:hover,
+    .form-design input[type="submit"]:focus {
+      --background-color: var(--back-color--submit--accent);
+      --color:            var(--text-color--submit--accent);
+    }
+
+
+
+    .form-design .wpcf7 {
+        max-width: var(--max-width);
+    }
+    .form-design .wpcf7-form {
+        
+    }
+
+
+    .form-fields-wrap {
+
+        padding: var(--sy) var(--sx);
+
+        display: grid;
+        grid-template-columns: 100%;
+        grid-row-gap: var(--sy);
+
+    }
+    .form-design .field-label { display: inline-block;}
+    .form-design .field-label i { opacity: 0.6; }
+    .form-design .submit-wrap {
+        margin-top:  var(--sy);
+    }
+</style>
+
+<section class="ContactTestBar offsidebar from-eastside is-active">
+    <div class="sidepanel">
+        <div class="sidepanel-header">
+            <h2>Contact Us</h2>
+        </div>
+        <div class="sidepanel-content form-design">
+
+<div role="form" class="wpcf7" id="wpcf7-f1725-p9-o1" lang="en-US" dir="ltr">
+    <div class="screen-reader-response"></div>
+    <form action="/about-us/#wpcf7-f1725-p9-o1" method="post" class="wpcf7-form" novalidate="novalidate">
+        <div style="display: none;">
+            <input type="hidden" name="_wpcf7" value="1725">
+            <input type="hidden" name="_wpcf7_version" value="5.1.3">
+            <input type="hidden" name="_wpcf7_locale" value="en_US">
+            <input type="hidden" name="_wpcf7_unit_tag" value="wpcf7-f1725-p9-o1">
+            <input type="hidden" name="_wpcf7_container_post" value="9">
+        </div>
+        <div class="form-fields-wrap">
+            <div class="field-wrap">
+                <label><span class="field-label">Name</span><br>
+                <span class="wpcf7-form-control-wrap your-name"><input type="text" name="contact-name" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false"></span> </label>
+            </div>
+            <div class="field-wrap">
+                <label><span class="field-label">Email</span><br>
+                <span class="wpcf7-form-control-wrap your-email"><input type="email" name="your-email" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email wpcf7-not-valid" aria-required="true" aria-invalid="false">
+
+                <span role="alert" class="wpcf7-not-valid-tip" style="display:block">The field is required.</span>
+
+                </span> </label>
+            </div>
+            <div class="field-wrap">
+                <label><span class="field-label">Phone number <i>(optional)</i></span><br>
+                <span class="wpcf7-form-control-wrap your-name"><input type="text" name="your-phone" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false"></span> </label>
+            </div>
+            <div class="field-wrap">
+                <label><span class="field-label">Skype <i>(optional)</i></span><br>
+                <span class="wpcf7-form-control-wrap your-name"><input type="text" name="your-skype" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false"></span> </label>
+            </div>
+            <div class="field-wrap">
+                <label><span class="field-label">Your Message or Question</span><br>
+                <span class="wpcf7-form-control-wrap your-message"><textarea name="your-message" rows="3" class="wpcf7-form-control wpcf7-textarea wpcf7-validates-as-required" aria-required="true" aria-invalid="false"></textarea></span> </label>
+            </div>
+            <div class="submit-wrap">
+                <input type="submit" value="Send" class="wpcf7-form-control wpcf7-submit">
+                <span class="ajax-loader is-active"></span>
+            </div>
+        </div>
+        <div class="wpcf7-response-output wpcf7-display-none wpcf7-validation-errors" style="display: block;" role="alert">One or more fields have an error. Please check and try again.</div>
+
+        <div class="wpcf7-response-output wpcf7-display-none wpcf7-mail-sent-ok" style="display: block;" role="alert">Gaming License. Licensing of all iGaming Products — online casinos, sports betting, poker, lotteries, and bingo!</div>
+    </form>
+</div>
+
+        </div>
+    </div>
+</section>
+
+</body>
+</html>

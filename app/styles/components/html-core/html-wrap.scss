@@ -105,7 +105,7 @@ hr {
  /* used as empty space */
     display:    block;
     font-size:  inherit;
-    height:     var(--row-space, 1rem);
+    height:     calc(var(--big-space, 4rem) - var(--row-space, 1.5rem));
 }
 
 td, th {

@@ -115,6 +115,203 @@
 </head>
 <body class="colors--primary">
 
+    <!-- ----------------------------------------- Grid-Queen -->
+
+
+    <article class="grid-queen my-grid-queen">
+
+        <style>
+            :root {
+              --right-or-center--when-reduced: right;
+              --left-or-center--when-reduced:  left;
+            }
+            @media (max-width:60rem) { :root {
+              --right-or-center--when-reduced: center;
+              --left-or-center--when-reduced:  center;
+             }
+            }
+            .my-grid-queen {
+              --width-root: 0;
+            }
+            .my-grid-layer {
+                display:      grid;
+                grid-column:  full;
+            }
+            .my-grid-box {
+                display:      grid;
+                grid-column:  main;
+              --grid-template-columns:   var(--grid--box);
+            }
+            .my-text-note {
+                grid-column:  note;
+            }
+        </style>
+
+        <!-- features list -->
+
+        <style>
+            .my-features {
+             /* @extend .subgrid-wrap-west; */
+                display:      grid;
+                grid-column:  west-start / main-end;
+              --grid-template-columns:
+                    var(--column-root--skip)
+                    var(--column-west--show)
+                    var(--column-main--east)
+                    var(--column-east--skip)
+                    var(--column-roof--skip);
+            }
+            .my-feature-dot {
+                grid-column:  menu;
+                font-size:    var(--h1-font-size);
+                justify-self: var(--right-or-center--when-reduced);
+                color:        var(--text-color-accent);
+            }
+            .my-feature-dot + header {
+                align-self:   center;
+                text-align:   var(--left-or-center--when-reduced);
+            }
+        </style>
+        <section class="subgrid-wrap-west chapter">
+
+            <div class="my-feature-dot">※</div>
+            <header>
+                <h1>Grid-Queen</h1>
+            </header>
+            <p class="auto"></p>
+            <p class="auto"></p>
+
+            <div class="my-feature-dot">※</div>
+            <header>
+                <h2>Wonderful Grid</h2>
+            </header>
+            <p class="auto"></p>
+
+        </section>
+
+        <!-- west-half feature -->
+
+        <style>
+            .my-west-half {
+                grid-row:    1;
+                grid-column: east-start / full-end;
+                display:         flex;
+                align-self:      stretch;
+                align-items:     center;
+                justify-content: center;
+            }
+        </style>
+        <section class="my-west-half color-box padding">
+            <div class="midi-paragraph">
+                <p class="auto"></p>
+            </div>
+        </section>
+
+        <hr>
+
+
+        <!-- sticky west menu -->
+
+        <style>
+            .my-menu {
+                grid-column: var(--set-west-wide-column, west);
+                position:    sticky;
+                top:         0;
+                padding:          var(--col-space);
+                background-color: var(--back-color);
+            }
+        </style>
+        <nav class="my-menu">
+            <ul>
+                <li>Sticky menu</li>
+                <li>Welcome component</li>
+            </ul>
+        </nav>
+
+        <!-- color-box joined west -->
+
+        <style>
+            .my-welcome {
+             /* @extend .subgrid-wrap-east; */
+                display:      grid;
+                grid-column:  main-start / east-end;
+              --grid-template-columns:
+                    var(--column-root--skip)
+                    var(--column-west--skip)
+                    var(--column-main--west)
+                    var(--column-east--show)
+                    var(--column-roof--skip);
+            }
+        </style>
+        <section class="my-welcome color-box">
+
+            <blockquote class="my-grid-box">
+                <p class="auto"></p>
+                <p class="auto"></p>
+                <p class="auto"></p>
+            </blockquote>
+            <aside class="my-text-note">
+                <p class="auto"></p>
+            </aside>
+
+        </section>
+
+        <!-- order switching -->
+
+        <style>
+            .my-order-goes-first {
+                grid-row: 1;
+            }
+        </style>
+        <hr>
+        <section class="my-grid-layer">
+            <div>
+                <h4>2. Order switching</h4>
+                <p class="auto"></p>
+            </div>
+            <div class="grid-column--note my-order-goes-first">
+                <h4>1. Demo of</h4>
+                <p class="auto"></p>
+            </div>
+        </section>
+        <hr>
+
+        <!-- custom layer -->
+
+        <section class="my-grid-layer chapter use-colors colors--secondary">
+            <header class="grid-column--text-wide">
+                <h5 class="text-color-accent">Grid-Queen's</h5>
+                <h1>Custom Layer</h1>
+            </header>
+            <div class="h2 grid-column--menu-wide padding text-align use-colors"
+                 style="--back-color: var(--text-color-accent);"
+                >Colors</div>
+            <section class="subgrid-wrap-east color-box">
+
+                <blockquote class="subgrid-main">
+                    <p class="auto"></p>
+                    <p class="auto"></p>
+                    <p class="auto"></p>
+                </blockquote>
+                <ul class="subgrid-east">
+                    <li>Custom Layer</li>
+                    <li>Order Switching</li>
+                    <li>UL-Grids</li>
+                </ul>
+
+            </section>
+            <div class="text-block-bigger"><p class="auto"></p></div>
+        </section>
+
+        <!-- end -->
+
+        <section class="grid-column--west-half-wide subgrid-container pv"><p class="auto"></p></section>
+
+        <section class="grid-column--east-side-wide subgrid-container color-box"><p class="auto"></p></section>
+
+    </article>
+
+
     <!-- ----------------------------------------- APP Header -->
 
     <style>

@@ -1,4 +1,10 @@
-/* 2019.12.8 */
+/** grid-queen
+ *  newspaper-looking site layout
+ *  2019.12.8, Kari
+ *
+ *  CSS
+ *
+ */
 
 /* ------------------------------------ Grid Setup */
 
@@ -72,6 +78,15 @@
   --column-root--show: var(--grid-root-skip);
   --column-west--show: var(--grid-west-skip);
   --column-roof--show: var(--grid-roof-skip);
+
+  --set-west-wide-column: var(--grid-column--west-wide);
+  --set-menu-wide-column: var(--grid-column--menu-wide);
+  --set-main-wide-column: var(--grid-column--main-wide);
+  --set-text-wide-column: var(--grid-column--text-wide);
+  --set-west-side-wide-column: var(--grid-column--west-side-wide);
+  --set-west-half-wide-column: var(--grid-column--west-half-wide);
+  --set-east-side-wide-column: var(--grid-column--east-side-wide);
+  --set-east-half-wide-column: var(--grid-column--east-half-wide);
 
   --column-width-main: 1fr;
 
@@ -259,14 +274,104 @@
       [roof-end]           0
       [full-end]
       ;
+
+  --grid--full:
+      [full-start]         0
+      [root-start]         0 var(--width-root)
+      [root-end]           0
+          [west-start]     0 var(--sx)
+              [menu-start] 0 var(--width-menu)
+              [menu-end]   0 var(--sx)
+          [west-end]       0
+          [main-start]     0 var(--sx)
+              [text-start] 0 var(--column-width-main)
+              [text-end]   0 var(--sx)
+          [main-end]       0
+          [east-start]     0 var(--sx)
+              [note-start] 0 var(--width-note)
+              [note-end]   0 var(--sx)
+          [east-end]       0
+      [roof-start]         0 var(--width-root)
+      [roof-end]           0
+      [full-end]
+      ;
 }
+
+
+/* ------------------------------------ Combined Columns Names */
+
+
+.grid-queen {
+  --grid-column--west-wide: west-start / east-end;
+  --grid-column--menu-wide: menu-start / note-end;
+  --grid-column--main-wide: west-start / east-end;
+  --grid-column--text-wide: menu-start / note-end;
+
+  --grid-column--wrap:      west-start / east-end;
+  --grid-column--wrap-west: west-start / main-end;
+  --grid-column--wrap-east: main-start / east-end;
+  --grid-column--text-wrap: menu-start / note-end;
+  --grid-column--text-west: menu-start / text-end;
+  --grid-column--text-east: text-start / note-end;
+
+  --grid-column--east-side: east-start / full-end;
+  --grid-column--west-side: full-start / west-end;
+
+  --grid-column--west-half: full-start / main-end;
+  --grid-column--east-half: main-start / full-end;
+
+  --grid-column--west-side-wide: full-start / full-end;
+  --grid-column--west-half-wide: full-start / full-end;
+  --grid-column--east-side-wide: full-start / full-end;
+  --grid-column--east-half-wide: full-start / full-end;
+}
+
+
+/* ------------------------------------ / end of core */
+
+/* ------------------------------------ Column Workers */
+
+
+.grid-column--full      { grid-column: full; }
+.grid-column--main      { grid-column: main; }
+.grid-column--text      { grid-column: text; }
+.grid-column--west      { grid-column: west; }
+.grid-column--east      { grid-column: east; }
+.grid-column--menu      { grid-column: menu; }
+.grid-column--note      { grid-column: note; }
+
+.grid-column--wrap      { grid-column: var(--grid-column--wrap); }
+.grid-column--wrap-west { grid-column: var(--grid-column--wrap-west); }
+.grid-column--wrap-east { grid-column: var(--grid-column--wrap-east); }
+.grid-column--text-wrap { grid-column: var(--grid-column--text-wrap); }
+.grid-column--text-west { grid-column: var(--grid-column--text-west); }
+.grid-column--text-east { grid-column: var(--grid-column--text-east); }
+
+.grid-column--west-side { grid-column: var(--grid-column--west-side); }
+.grid-column--west-half { grid-column: var(--grid-column--west-half); }
+.grid-column--east-side { grid-column: var(--grid-column--east-side); }
+.grid-column--east-half { grid-column: var(--grid-column--east-half); }
+
+.grid-column--west-wide { grid-column: var(--set-west-wide-column, west); }
+.grid-column--menu-wide { grid-column: var(--set-menu-wide-column, menu); }
+.grid-column--main-wide { grid-column: var(--set-main-wide-column, main); }
+.grid-column--text-wide { grid-column: var(--set-text-wide-column, text); }
+
+.grid-column--west-side-wide {
+    grid-column: var(--set-west-side-wide-column, var(--grid-column--west-side)); }
+.grid-column--west-half-wide {
+    grid-column: var(--set-west-half-wide-column, var(--grid-column--west-half)); }
+.grid-column--east-side-wide {
+    grid-column: var(--set-east-side-wide-column, var(--grid-column--east-side)); }
+.grid-column--east-half-wide {
+    grid-column: var(--set-east-half-wide-column, var(--grid-column--east-half)); }
 
 
 /* ------------------------------------ Grid Modifications */
 
 
-.grid-queen.is-without-root { --width-root: 0; }
-.grid-queen.is-without-roof { --width-roof: 0; }
+.grid-queen.is-without-root { --width-root:   0; }
+.grid-queen.is-without-roof { --width-roof:   0; }
 .grid-queen.is-without-room {
   --width-root: 0;
   --width-roof: 0;
@@ -291,24 +396,6 @@
 }
 
 
-/* ------------------------------------ Column Workers */
-
-
-.grid-column--main      { grid-column: main; }
-.grid-column--west      { grid-column: west; }
-.grid-column--east      { grid-column: east; }
-.grid-column--menu      { grid-column: menu; }
-.grid-column--note      { grid-column: note; }
-.grid-column--full      { grid-column: full; }
-.grid-column--wrap      { grid-column: west-start / east-end; }
-.grid-column--wrap-west { grid-column: west-start / main-end; }
-.grid-column--wrap-east { grid-column: main-start / east-end; }
-.grid-column--text      { grid-column: text; }
-.grid-column--text-wrap { grid-column: menu-start / note-end; }
-.grid-column--text-west { grid-column: menu-start / text-end; }
-.grid-column--text-east { grid-column: text-start / note-end; }
-
-
 /* ------------------------------------ Component Snippets */
 
 
@@ -325,12 +412,25 @@
     display: grid;
   --grid-template-columns: var(--grid--block);
 }
+.subgrid-join-layers {
+  --grid-row-gap: 0;
+}
 
-/* subgrids inside merged columns */
+/* subgrids for merged columns */
 
 .subgrid-main {
     display:      grid;
     grid-column:  main;
+  --grid-template-columns:   var(--grid--box);
+}
+.subgrid-west {
+    display:      grid;
+    grid-column:  west;
+  --grid-template-columns:   var(--grid--box);
+}
+.subgrid-east {
+    display:      grid;
+    grid-column:  east;
   --grid-template-columns:   var(--grid--box);
 }
 .subgrid-wrap {

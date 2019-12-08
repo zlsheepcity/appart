@@ -1,0 +1,288 @@
+<!doctype html><!-- appart :: 8102 :: 2019.10.30 -->
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- ========================================= HEAD CONTENT -->
+
+
+    <title>Grid Queen</title>
+
+
+    <!-- ========================================= BOOT -->
+
+
+    <!-- ༼°▽°༽ style boot -->
+    <style>
+        body    { width: 100%; height: auto; overflow: hidden; }
+        img,svg { max-width: 100%; }
+    </style>
+
+    <!-- ༼°▽°༽ prefetch boot -->
+    <link rel="preconnect"   href="//fonts.gstatic.com">
+    <link rel="preload"      href="art/bergamot-just-browse-here.svg" as="image">
+    <!-- INFO: https://3perf.com/blog/link-rels/ -->
+
+    <!-- ༼°▽°༽ app boot -->
+    <script>
+        function AppBoot() {
+
+         // The Noble Blastula
+            let app = this
+            app.has = { memory: [], arrived:true }
+            app.has.queens = [ 'onload', 'mutate' ]
+            /*
+            King has arrived --- let app = new AppBoot()
+            Take the Queen ----- app.attach('queen_name')(function)
+            Keep in memory ----- app.queen_name(function_parameters)
+            Execute later ------ app.onload(function)
+            2019.9.15
+            */
+
+         // The Noble Provocator
+            const proteinProvoker = function ImitateCriticalTasks () {
+              let tpp = new this.__proto__.constructor()
+              let must_have_a_memory = tpp.has.memory.push('something')
+              let must_accept_queens = like_this_one => true
+              tpp.attach('queen_id')(must_accept_queens)
+              tpp.queen_id('try this')
+            }
+
+         // Define responsibility
+            const TakeTheQueen = (queen) =>
+                {
+                    app[queen] =  ExecuteLater(queen)
+                    return (f) => ExecuteLater('update')({name:queen,f})
+                }
+            const KeepInMemory = (dna) => app.has.memory.push(dna)
+            const ExecuteLater =
+                 (responsible) =>
+                         (dna) => KeepInMemory({dna,for:responsible})
+
+         // Apply responsibility
+            app.attach = TakeTheQueen
+            app.has.queens.map( queen => app.attach(queen) )
+            app.ForceErrorsIfShouldBe =  proteinProvoker
+        }
+
+     // Run Immediately
+        let app = new AppBoot()
+        app.ForceErrorsIfShouldBe()
+    </script>
+
+
+    <!-- ========================================= DESIGN -->
+
+
+    <link
+        href="app/styles/appart.css"
+        rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic"
+        rel="stylesheet">
+
+
+    <!-- ========================================= APP -->
+
+
+    <!-- required core -->
+    <script defer src="app/script/app-core.js"></script>
+
+    <!-- interface libs -->
+    <script defer src="app/script/components/css-class-mutator.js"></script>
+    <script defer src="app/script/components/image-zzzoom.js"></script>
+    <script defer src="app/script/components/image-lazy-loader.js"></script>
+    <script defer src="app/script/components/scroll-to-var.js"></script>
+    <script>app.attach('wayway')</script>
+    <script defer src="app/script/components/headroom.js"></script>
+
+    <!-- dev libs -->
+    <script defer src="app/script/components/survival-test.js"></script>
+    <script defer src="app/script/components/autofill-paragraphs.js"></script>
+
+
+    <!-- ========================================= APP CUSTOM -->
+
+    <link
+        href="dev/grid-queen.css"
+        rel="stylesheet" type="text/css">
+
+
+    <!-- ========================================== ʕ⊙ᴥ⊙ʔ = -->
+    <!-- ========================================= END HEAD -->
+</head>
+<body class="colors--primary">
+
+
+<article class="my-grid-message grid-queen chapter">
+    <style>
+        .my-grid-message {
+          --use-west-column: 0; /* on: 1, off: 0 */
+          --use-east-column: 0; /* on: 1, off: 0 */
+          --width-menu: 0;
+          --width-note: 0;
+        }
+    </style>
+    <h1>My Message</h1>
+    <p class="auto"></p>
+</article>
+
+<article class="my-grid-banner grid-queen chapter">
+    <style>
+        .my-grid-banner {
+          --use-west-column: 0; /* on: 1, off: 0 */
+          --width-menu:  0;
+          --width-note:  14rem;
+          --grid-c-main: var(--grid-main-join-west);
+        }
+        .my-grid-banner .my-note {
+            grid-column: note;
+        }
+    </style>
+    <h1>My Banner Grid</h1>
+    <p class="auto"></p>
+    <div class="my-note">
+        <button class="swed-button">Button</button>
+    </div>
+</article>
+
+<article class="my-grid-article grid-queen chapter">
+    <style>
+        .my-grid-article {
+          --width-main-max:  32rem;
+          --width-menu: 3.5rem;
+          --width-note:  14rem;
+          --width-root: 0;
+          --width-roof: 1fr;
+        }
+        .my-grid-article .my-menu {
+            grid-column: menu;
+        }
+        .my-grid-article .my-note {
+            grid-column: note;
+        }
+        .my-grid-article .my-intro {
+         /* grid-column-wrap-east */
+            grid-column: main-start / east-end;
+         /* subgrid-wrap-east */
+            display:     grid;
+          --grid-c-root: var(--grid-root-removed);
+          --grid-c-roof: var(--grid-roof-removed);
+          --grid-c-main: var(--grid-main-join-west);
+          --grid-c-west: var(--grid-west-removed);
+        }
+        .my-grid-article .my-box {
+         /* grid-column-main */
+            grid-column: main;
+         /* subgrid-box */
+            display: grid;
+            grid-template-columns: var(--grid-template-columns--main);
+        }
+        .my-grid-article .my-wrap {
+         /* grid-column-wrap */
+            grid-column: west-start / east-end;
+         /* subgrid-wrap */
+            display: grid;
+          --grid-c-root: var(--grid-root-removed);
+          --grid-c-roof: var(--grid-roof-removed);
+        }
+        .my-grid-article .my-wrap-content {
+         /* grid-column-wrap-east */
+            grid-column: main-start / east-end;
+         /* subgrid-box */
+            display: grid;
+            grid-template-columns: var(--grid-template-columns--main);
+        }
+        .my-grid-article .my-layer {
+         /* grid-column-full */
+            grid-column: full;
+         /* subgrid */
+            display: grid;
+        }
+    </style>
+    <header>
+        <h1>My Article Grid</h1>
+        <p class="auto"></p>
+    </header>
+    <section class="my-intro color-box">
+        <div class="my-box">
+            <p class="auto"></p>
+            <p class="auto"></p>
+            <p class="auto"></p>
+        </div>
+        <div class="my-note">
+            <p class="auto"></p>
+        </div>
+    </section>
+    <section class="my-layer chapter color-box">
+        <div class="my-box">
+            <p class="auto"></p>
+            <p class="auto"></p>
+            <p class="auto"></p>
+        </div>
+        <div class="my-note">
+            <p class="auto"></p>
+        </div>
+    </section>
+    <blockquote class="my-wrap color-box">
+        <div class="my-wrap-content">
+            <h1>Wonderful Article Grid</h1>
+        </div>
+        <p class="auto"></p>
+        <p class="auto"></p>
+    </blockquote>
+</article>
+
+
+
+<article class="grid-queen">
+    <div class="grid-column-menu">west</div>
+    <h1>Small</h1>
+    <div class="grid-column-note">east</div>
+</article>
+
+<article class="grid-queen my-grid">
+
+    <header>
+        <h1>Greed Queen</h1>
+        <p>Join Layers</p>
+    </header>
+    <p class="auto"></p>
+    <div class="subgrid-wrap-east color-box">
+        <div class="grid-column-menu">west side</div>
+        <div class="grid-column-main subgrid-box">
+            <p class="auto"></p>
+            <p class="auto"></p>
+            <p class="auto"></p>
+        </div>
+        <div class="grid-column-note">
+            <p class="auto"></p>
+        </div>
+    </div>
+    <div class="subgrid-wrap color-box">
+        <div class="grid-column-menu">west side</div>
+        <p class="auto"></p>
+        <div class="grid-column-note">east side</div>
+        <p class="auto"></p>
+        <p class="auto"></p>
+    </div>
+    <section class="grid-column-full subgrid color-box">
+        <div class="grid-column-menu">west side</div>
+        <div class="grid-column-main color-box subgrid-box">
+            <p class="auto"></p>
+            <p class="auto"></p>
+            <p class="auto"></p>
+        </div>
+        <div class="grid-column-note">east side</div>
+        <div class="grid-column-wrap subgrid-box">
+            <p class="auto"></p>
+            <p class="auto"></p>
+            <p class="auto"></p>
+        </div>
+    </section>
+
+</article>
+
+</body>
+</html>

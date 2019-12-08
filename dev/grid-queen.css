@@ -1,0 +1,294 @@
+.grid-queen {
+  --sy: var(--row-space, 1.5rem);
+  --sx: var(--col-space, 1.5rem);
+
+
+  --width-menu:  8rem;
+  --width-note: 14rem;
+
+  --width-main-max: 32rem;
+  --width-main: minmax(0, var(--width-main-max));
+
+  --width-root: 1fr;
+  --width-roof: 1fr;
+
+  --use-west-column: 1; /* on: 1, off: 0 */
+  --use-east-column: 1; /* on: 1, off: 0 */
+
+  --grid-row-gap:    var(--sy);
+  --align-items:     start;
+  --justify-content: start;
+}
+
+.grid-queen.my-grid {
+  --width-main-max: 32rem;
+  --width-menu: calc( 2*var(--big-space) - 3*var(--col-space));
+  --width-note: 14rem;
+  --width-root: 0;
+  --width-roof: 1fr;
+
+  --use-west-column: 1; /* on: 1, off: 0 */
+  --use-east-column: 1; /* on: 1, off: 0 */
+}
+
+.grid-queen,
+.grid-queen * {
+    grid-template-columns:
+      var(--grid-c-root)
+      var(--grid-c-west)
+      var(--grid-c-main)
+      var(--grid-c-east)
+      var(--grid-c-roof);
+}
+.grid-queen {
+ /* Grid Seed */
+    display:         grid;
+    grid-auto-flow:  row;
+    grid-auto-rows:  min-content;
+    grid-column-gap: 0;
+    grid-row-gap:    var(--grid-row-gap);
+    align-items:     var(--align-items);
+    justify-content: var(--justify-content);
+}
+.grid-queen * {
+ /* Subgrid */
+    grid-auto-flow:  inherit;
+    grid-auto-rows:  inherit;
+    grid-column-gap: 0;
+    grid-row-gap:    var(--grid-row-gap);
+    align-items:     var(--align-items);
+    justify-content: var(--justify-content);
+    grid-column:     text;
+}
+
+
+.grid-queen {
+ /* Template Kari */
+
+  --grid-template-columns--main:
+      [full-start]         0
+      [root-start]         0
+      [roof-start]         0
+          [main-start]     0
+          [west-start]     0
+          [east-start]     0
+              var(--sx)
+              [menu-start] 0
+              [note-start] 0
+              [text-start] 0
+              1fr
+              [text-end]   0
+              [menu-end]   0
+              [note-end]   0
+              var(--sx)
+          [main-end]       0
+          [west-end]       0
+          [east-end]       0
+      [root-end]           0
+      [roof-end]           0
+      [full-end];
+  --grid-template-columns--flat:
+      [full-start]         0
+      [root-start]         0
+      [roof-start]         0
+          [main-start]     0
+          [west-start]     0
+          [east-start]     0
+              [menu-start] 0
+              [note-start] 0
+              [text-start] 0
+              1fr
+              [text-end]   0
+              [menu-end]   0
+              [note-end]   0
+          [main-end]       0
+          [west-end]       0
+          [east-end]       0
+      [root-end]           0
+      [roof-end]           0
+      [full-end];
+
+
+  --grid-west-seed:
+          [west-start] 0
+              calc( var(--use-west-column) * var(--sx) )
+              [menu-start] 0
+              var(--width-menu)
+              [menu-end] 0
+              calc( var(--use-west-column) * var(--sx) )
+          [west-end] 0
+      ;
+  --grid-east-seed:
+          [east-start] 0
+              calc( var(--use-east-column) * var(--sx) )
+              [note-start] 0
+              var(--width-note)
+              [note-end] 0
+              calc( var(--use-east-column) * var(--sx) )
+          [east-end] 0
+      ;
+  --grid-west-removed: 0;
+  --grid-east-removed: 0;
+
+  --grid-main-seed:
+          [main-start]     0
+              var(--sx)
+              [text-start] 0
+              var(--grid-main-content)
+              [text-end]   0
+              var(--sx)
+          [main-end]       0
+      ;
+  --grid-main-join-both:
+          [main-start]     0
+          [west-start]     0
+          [east-start]     0
+              var(--sx)
+              [text-start] 0
+              [menu-start] 0
+              [note-start] 0
+              var(--grid-main-content)
+              [text-end]   0
+              [menu-end]   0
+              [note-end]   0
+              var(--sx)
+          [main-end]       0
+          [west-end]       0
+          [east-end]       0
+      ;
+  --grid-main-join-east:
+          [main-start]     0
+          [east-start]     0
+              var(--sx)
+              [text-start] 0
+              [note-start] 0
+              var(--grid-main-content)
+              [text-end]   0
+              [note-end]   0
+              var(--sx)
+          [main-end]       0
+          [east-end]       0
+      ;
+  --grid-main-join-west:
+          [main-start]     0
+          [west-start]     0
+              var(--sx)
+              [text-start] 0
+              [menu-start] 0
+              var(--grid-main-content)
+              [text-end]   0
+              [menu-end]   0
+              var(--sx)
+          [main-end]       0
+          [west-end]       0
+      ;
+
+
+  --grid-root-removed:
+      [full-start]         0
+      [root-start]         0
+      [roof-start]         0
+      ;
+  --grid-roof-removed:
+      [root-end]           0
+      [roof-end]           0
+      [full-end]
+      ;
+  --grid-root-full:
+      [full-start]         0
+      [root-start]         0
+      var(--width-root)
+      [root-end]           0
+      ;
+  --grid-roof-full:
+      [roof-start]         0
+      var(--width-roof)
+      [roof-end]           0
+      [full-end]
+      ;
+}
+
+/*@media (min-width:60rem) {*/
+    .grid-queen {
+     /* full layout */
+      --grid-c-root: var(--grid-root-full);
+      --grid-c-roof: var(--grid-roof-full);
+      --grid-c-west: var(--grid-west-seed);
+      --grid-c-east: var(--grid-east-seed);
+      --grid-c-main: var(--grid-main-seed);
+
+      --grid-main-content:   var(--width-main);
+    }
+/*}*/
+@media (max-width:60rem) {
+    .grid-queen {
+     /* compact layout */
+      --grid-c-root: var(--grid-root-removed);
+      --grid-c-roof: var(--grid-roof-removed);
+      --grid-c-west: var(--grid-west-removed);
+      --grid-c-main:         var(--grid-main-join-west);
+      --grid-main-join-east: var(--grid-main-join-both);
+      --grid-main-content:   1fr;
+
+      --use-west-column: 0; /* on: 1, off: 0 */
+    }
+}
+@media (max-width:42rem) {
+    .grid-queen {
+     /* compact layout */
+      --grid-c-root: var(--grid-root-removed);
+      --grid-c-roof: var(--grid-roof-removed);
+      --grid-c-west: var(--grid-west-removed);
+      --grid-c-east: var(--grid-east-removed);
+      --grid-c-main:         var(--grid-main-join-both);
+      --grid-main-join-east: var(--grid-main-join-both);
+      --grid-main-join-west: var(--grid-main-join-both);
+      --grid-main-content:   1fr;
+
+      --use-west-column: 0; /* on: 1, off: 0 */
+      --use-east-column: 0; /* on: 1, off: 0 */
+    }
+}
+
+
+
+.grid-column-main      { grid-column: main; }
+.grid-column-west      { grid-column: west; }
+.grid-column-east      { grid-column: east; }
+.grid-column-menu      { grid-column: menu; }
+.grid-column-note      { grid-column: note; }
+.grid-column-full      { grid-column: full; }
+.grid-column-wrap      { grid-column: west-start / east-end; }
+.grid-column-wrap-west { grid-column: west-start / main-end; }
+.grid-column-wrap-east { grid-column: main-start / east-end; }
+
+
+.subgrid {
+    display: grid;
+}
+.subgrid-box {
+    display: grid;
+  --grid-template-columns: var(--grid-template-columns--main);
+    grid-template-columns: var(--grid-template-columns);
+}
+.subgrid-block {
+    display: grid;
+  --grid-template-columns: var(--grid-template-columns--flat);
+    grid-template-columns: var(--grid-template-columns);
+}
+.subgrid-wrap {
+    display:     grid;
+    grid-column: west-start / east-end;
+  --grid-c-root: var(--grid-root-removed);
+  --grid-c-roof: var(--grid-roof-removed);
+}
+.subgrid-wrap-east {
+    display:     grid;
+    grid-column: main-start / east-end;
+  --grid-c-root: var(--grid-root-removed);
+  --grid-c-roof: var(--grid-roof-removed);
+  --grid-c-main: var(--grid-main-join-west);
+  --grid-c-west: var(--grid-west-removed);
+}
+
+

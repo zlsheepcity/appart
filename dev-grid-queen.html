@@ -114,118 +114,325 @@
 </head>
 <body class="colors--primary">
 
+<article class="grid-queen my-grid-queen">
 
-<article class="my-grid-message grid-queen chapter">
+    <h1>Grid-Queen</h1>
+    <p class="auto"></p>
+
     <style>
+        :root {
+          --right-or-center--when-reduced: right;
+          --left-or-center--when-reduced:  left;
+        }
+        @media (max-width:60rem) { :root {
+          --right-or-center--when-reduced: center;
+          --left-or-center--when-reduced:  center;
+         }
+        }
+        .my-grid-queen {
+            padding-top:    4rem;
+            padding-bottom: 4rem;
+          --width-root: 0;
+        }
+        .my-grid-layer {
+            display:      grid;
+            grid-column:  full;
+        }
+        .my-grid-box {
+            display:      grid;
+            grid-column:  main;
+          --grid-template-columns:   var(--grid--box);
+        }
+        .my-text-note {
+            grid-column:  note;
+        }
+    </style>
+
+    <!-- sticky west menu -->
+
+    <style>
+        .my-menu {
+            grid-column: west;
+            position:    sticky;
+            top:         0;
+            padding:          var(--col-space);
+            background-color: var(--back-color);
+        }
+    </style>
+    <nav class="my-menu">
+        <ul>
+            <li>Sticky menu</li>
+            <li>Welcome component</li>
+        </ul>
+    </nav>
+
+    <!-- color-box joined west -->
+
+    <style>
+        .my-welcome {
+         /* @extend .subgrid-wrap-east; */
+            display:      grid;
+            grid-column:  main-start / east-end;
+          --grid-template-columns:
+                var(--column-root--skip)
+                var(--column-west--skip)
+                var(--column-main--west)
+                var(--column-east--show)
+                var(--column-roof--skip);
+        }
+    </style>
+    <section class="my-welcome color-box">
+
+        <blockquote class="my-grid-box">
+            <p class="auto"></p>
+            <p class="auto"></p>
+            <p class="auto"></p>
+        </blockquote>
+        <aside class="my-text-note">
+            <p class="auto"></p>
+        </aside>
+
+    </section>
+
+    <!-- features list -->
+
+    <style>
+        .my-features {
+         /* @extend .subgrid-wrap-west; */
+            display:      grid;
+            grid-column:  west-start / main-end;
+          --grid-template-columns:
+                var(--column-root--skip)
+                var(--column-west--show)
+                var(--column-main--east)
+                var(--column-east--skip)
+                var(--column-roof--skip);
+        }
+        .my-feature-dot {
+            grid-column:  menu;
+            font-size:    var(--h1-font-size);
+            justify-self: var(--right-or-center--when-reduced);
+        }
+        .my-feature-dot + header {
+            align-self:   center;
+            text-align:   var(--left-or-center--when-reduced);
+        }
+    </style>
+    <section class="subgrid-wrap-west chapter">
+
+        <div class="my-feature-dot">※</div>
+        <header>
+            <h1>Wonderful Grid</h1>
+        </header>
+        <p class="auto"></p>
+        <p class="auto"></p>
+
+        <div class="my-feature-dot">※</div>
+        <header>
+            <h2>Rich customization</h2>
+        </header>
+        <p class="auto"></p>
+
+    </section>
+
+    <!-- west-half feature -->
+
+    <style>
+        .my-west-half {
+            grid-column: east-start / full-end;
+            align-self:  stretch;
+            display:         flex;
+            justify-content: center;
+            align-items:     center;
+        }
+    </style>
+    <section class="my-west-half color-box padding">
+        <div class="midi-paragraph">
+            <p class="auto"></p>
+        </div>
+    </section>
+
+    <!-- order switching -->
+
+    <style>
+        .my-order-goes-first {
+            grid-row: 1;
+        }
+    </style>
+    <section class="my-grid-layer chapter">
+        <div>
+            <h4>2. Order switching</h4>
+            <p class="auto"></p>
+        </div>
+        <div class="grid-column--note my-order-goes-first">
+            <h4>1. Component of</h4>
+            <p class="auto"></p>
+        </div>
+    </section>
+
+</article>
+
+
+<article class="
+         grid-queen
+         my-grid-message
+    "><style>
         .my-grid-message {
-         /* grid-queen--remove-both */
-          --grid-west-full:      var(--grid-west-removed);
-          --grid-east-full:      var(--grid-east-removed);
+         /* @extend .grid-queen.is-without-side; */
+          --grid-west-show:      var(--grid-west-skip);
+          --grid-east-show:      var(--grid-east-skip);
           --grid-main-full:      var(--grid-main-join-both);
           --grid-main-join-east: var(--grid-main-join-both);
           --grid-main-join-west: var(--grid-main-join-both);
+         /* design */
+            padding-top:    4rem;
+            padding-bottom: 4rem;
         }
     </style>
+
     <h1>My Message</h1>
     <p class="auto"></p>
+
 </article>
 
-<article class="my-grid-banner grid-queen chapter">
-    <style>
+
+<article class="
+         grid-queen
+         my-grid-banner
+    "><style>
         .my-grid-banner {
-         /* grid-queen--remove-west */
-          --grid-west-full:      var(--grid-west-removed);
+
+         /* @extend .grid-queen.is-without-west; */
+          --grid-west-show:      var(--grid-west-skip);
           --grid-main-full:      var(--grid-main-join-west);
           --grid-main-join-east: var(--grid-main-join-both);
-         /* settings */
-          --width-note:  14rem;
+
+         /* grid settings */
+          --width-note: min-content;
+          --width-main: 50rem;
+
+         /* design */
+            padding-top:    2rem;
+            padding-bottom: 2rem;
+            background-color: var(--back-color-accent);
         }
         .my-grid-banner>header  { grid-column: text-start / note-end; }
         .my-grid-banner>section { grid-column: text; }
         .my-grid-banner>footer  { grid-column: note; }
-        
     </style>
-    <header><h1>My Banner Grid</h1></header>
-    <section><p class="auto"></p></section>
-    <footer><button class="swed-button">Button</button></footer>
+
+    <header>
+        <h1>My Banner Grid</h1>
+    </header>
+
+    <section>
+        <p class="auto"></p>
+    </section>
+
+    <footer>
+        <button class="swed-button">Button</button>
+    </footer>
+
 </article>
 
-<article class="my-grid-removed grid-queen chapter">
-    <style>
+
+
+
+<article class="
+         grid-queen
+         my-grid-removed
+    "><style>
         .my-grid-removed {
-         /* grid-queen--remove-west */
-          --grid-west-full:      var(--grid-west-removed);
+
+         /* @extend .grid-queen.is-without-west; */
+          --grid-west-show:      var(--grid-west-skip);
           --grid-main-full:      var(--grid-main-join-west);
           --grid-main-join-east: var(--grid-main-join-both);
-         /* settings */
-          --width-root: 0;
+
+         /* @extend .grid-queen.is-without-roof; */
+          --width-roof: 0;
+
+         /* design */
+            padding-top:    2rem;
+            padding-bottom: 2rem;
         }
-        .my-grid-removed h1 { grid-column: text-start / east-end; }
     </style>
-    <h1>Removed column</h1>
+
+    <h2>Removed Column</h2>
+
     <div class="grid-column--menu">
-        <p>Check Menu</p>
+        <p>[Removed content]</p>
     </div>
-    <div class="grid-column--main subgrid-box">
+
+    <div class="subgrid-main">
         <p class="auto"></p>
         <p class="auto"></p>
     </div>
+
     <div class="grid-column--note">
         <p class="auto"></p>
     </div>
+
 </article>
 
-<article class="my-grid-article grid-queen chapter">
-    <style>
+<article class="
+         grid-queen
+         my-grid-article
+         chapter
+    "><style>
+
         .my-grid-article {
-          --width-main--max:  32rem;
-          --width-menu:   6rem;
-          --width-note:  14rem;
-          --width-root: 0;
-          --width-roof: 1fr;
+          --width-root:     0;
+          --width-menu:  6rem;
+          --width-main: 32rem;
+          --width-note: 14rem;
+          --width-roof:   1fr;
         }
-        .my-grid-article .my-menu {
+        .my-xx-menu {
             grid-column:  menu;
         }
-        .my-grid-article .my-note {
+        .my-note {
             grid-column:  note;
         }
-        .my-grid-article .my-intro {
-         /* grid-column--wrap-east */
-            grid-column: main-start / east-end;
-         /* subgrid-wrap-east */
-            display:     grid;
-          --grid-c-root: var(--grid-root-removed);
-          --grid-c-roof: var(--grid-roof-removed);
-          --grid-c-main: var(--grid-main-join-west);
-          --grid-c-west: var(--grid-west-removed);
+        .my-intro {
+         /* @extend .subgrid-wrap-east; */
+            display:      grid;
+            grid-column:  main-start / east-end;
+          --grid-template-columns:
+                var(--column-root--skip)
+                var(--column-west--skip)
+                var(--column-main--west)
+                var(--column-east--show)
+                var(--column-roof--skip);
         }
-        .my-grid-article .my-box {
-         /* grid-column--main */
+        .my-box {
+         /* @extend .subgrid-main; */
+            display: grid;
             grid-column: main;
-         /* subgrid-box */
-            display: grid;
-            grid-template-columns: var(--grid-template-columns--main);
+          --grid-template-columns:   var(--grid--box);
         }
-        .my-grid-article .my-wrap {
-         /* grid-column--wrap */
-            grid-column: west-start / east-end;
-         /* subgrid-wrap */
-            display: grid;
-          --grid-c-root: var(--grid-root-removed);
-          --grid-c-roof: var(--grid-roof-removed);
+        .my-wrap {
+         /* @extend .subgrid-wrap; */
+            display:      grid;
+            grid-column:  west-start / east-end;
+          --grid-template-columns:
+                var(--column-root--skip)
+                var(--column-west--show)
+                var(--column-main--full)
+                var(--column-east--show)
+                var(--column-roof--skip);
         }
-        .my-grid-article .my-wrap-content {
-         /* grid-column--wrap-east */
+        .my-wrap-content {
+
+         /* @extend .subgrid-wrap-east; */
             grid-column: main-start / east-end;
-         /* subgrid-box */
+
+         /* @extend .subgrid-container; */
             display: grid;
-            grid-template-columns: var(--grid-template-columns--main);
+          --grid-template-columns:   var(--grid--box);
         }
         .my-grid-article .my-layer {
-         /* grid-column--full */
             grid-column: full;
-         /* subgrid */
             display: grid;
         }
     </style>
@@ -254,13 +461,13 @@
         </div>
     </section>
     <blockquote class="my-wrap color-box">
-        <div class="my-menu h1">※</div>
+        <div class="my-xx-menu h1">※</div>
         <div class="my-wrap-content">
             <h1>Wonderful Article Grid</h1>
         </div>
         <p class="auto"></p>
         <p class="auto"></p>
-        <div class="my-menu h1">※</div>
+        <div class="my-xx-menu h1">※</div>
         <div class="my-wrap-content wc-align">
             <h2>Huge ammount of layouts</h2>
         </div>
@@ -296,8 +503,8 @@
             <p class="auto"></p>
         </div>
     </div>
-    <div class="subgrid-wrap color-box">
-        <div class="grid-column--menu my-west-menu">
+    <div class="subgrid-wrap chapter use-colors colors--secondary">
+        <div class="grid-column--menu my-west-menu use-colors">
             <ul>
                 <li>West menu</li>
                 <li>Menu westside longread</li>
@@ -308,8 +515,8 @@
         <p class="auto"></p>
         <p class="auto"></p>
     </div>
-    <section class="grid-column--full subgrid color-box">
-        <div class="grid-column--menu my-west-menu">
+    <section class="grid-column--full subgrid">
+        <div class="grid-column--menu my-west-menu  use-colors">
             <ul>
                 <li>West menu</li>
                 <li>Menu westside longread</li>

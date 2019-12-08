@@ -5,171 +5,205 @@
   --sy: var(--row-space, 1.5rem);
   --sx: var(--col-space, 1.5rem);
 
- /* columns width */
-  --width-root:        1fr;
-  --width-roof:        1fr;
-  --width-menu:       8rem;
-  --width-note:      14rem;
-  --width-main--max: 32rem;
+ /* five columns */
+  --width-root:   1fr;
+  --width-menu: 14rem;
+  --width-main: 32rem;
+  --width-note: 14rem;
+  --width-roof:   1fr;
 
+ /* customization settings */
+  --grid-row-gap:      var(--sy);
+  --align-items:       start;
+  --justify-content:   start;
+  --column-width-main: minmax(0, var(--width-main));
 }
 
-/** default full layout */
-    .grid-queen {
-     /* columns */
-      --grid-c-root: var(--grid-root-full);
-      --grid-c-west: var(--grid-west-full);
-      --grid-c-main: var(--grid-main-full);
-      --grid-c-east: var(--grid-east-full);
-      --grid-c-roof: var(--grid-roof-full);
-     /* variables */
-    }
-/** reduced layout */
-    @media (max-width:60rem) {
-    .grid-queen {
-     /* columns */
-      --grid-c-root: var(--grid-root-removed);
-      --grid-c-west: var(--grid-west-removed);
-      --grid-c-main: var(--grid-main-join-west);
-      --grid-c-east: var(--grid-east-full);
-      --grid-c-roof: var(--grid-roof-removed);
-     /* variables */
-      --if-reduced--width-main: 1fr;
-      --if-no-west--main-join-both: var(--grid-main-join-both);
-        }
-    }
-/** compact layout */
-    @media (max-width:42rem) {
-    .grid-queen {
-     /* columns */
-      --grid-c-root: var(--grid-root-removed);
-      --grid-c-west: var(--grid-west-removed);
-      --grid-c-main: var(--grid-main-join-both);
-      --grid-c-east: var(--grid-east-removed);
-      --grid-c-roof: var(--grid-roof-removed);
-    /* variables */
-      --if-reduced--width-main: 1fr;
-      --if-no-west--main-join-both: var(--grid-main-join-both);
-      --if-no-east--main-join-both: var(--grid-main-join-both);
-    }
+
+/* ------------------------------------ Grid Definition */
+
+
+.grid-queen,
+.grid-queen * {
+    --grid-template-columns:
+        var(--column-root--show) /* left space   */
+        var(--column-west--show) /* left column  */
+        var(--column-main--full) /* main column  */
+        var(--column-east--show) /* right column */
+        var(--column-roof--show);/* right space  */
 }
+
+
+/* ------------------------------------ Layout System */
+
+.grid-queen {
+ /* default full size layout */
+ 
+  --column-main--full: var(--grid-main-full);
+  --column-main--west: var(--grid-main-join-west);
+  --column-main--east: var(--grid-main-join-east);
+  --column-main--both: var(--grid-main-join-both);
+
+  --column-root--show: var(--grid-root-show);
+  --column-west--show: var(--grid-west-show);
+  --column-east--show: var(--grid-east-show);
+  --column-roof--show: var(--grid-roof-show);
+
+  --column-root--skip: var(--grid-root-skip);
+  --column-west--skip: var(--grid-west-skip);
+  --column-east--skip: var(--grid-east-skip);
+  --column-roof--skip: var(--grid-roof-skip);
+
+  --grid-is-default:     1;
+  --grid-is-reduced:     0;
+  --grid-is-compact:     0;
+  --grid-is-not-default: 0;
+  --grid-is-not-reduced: 1;
+  --grid-is-not-compact: 1;
+}
+
+@media (max-width:60rem) { .grid-queen {
+ /* reduced layout */
+ 
+  --column-main--full: var(--grid-main-join-west);
+  --column-main--east: var(--grid-main-join-both);
+  --column-root--show: var(--grid-root-skip);
+  --column-west--show: var(--grid-west-skip);
+  --column-roof--show: var(--grid-roof-skip);
+
+  --column-width-main: 1fr;
+
+  --grid-is-default:     0;
+  --grid-is-reduced:     1;
+  --grid-is-compact:     0;
+  --grid-is-not-default: 1;
+  --grid-is-not-reduced: 0;
+  --grid-is-not-compact: 1;
+ }
+}
+
+@media (max-width:42rem) { .grid-queen {
+ /* compact layout */
+
+  --column-main--full: var(--grid-main-join-both);
+  --column-main--west: var(--grid-main-join-both);
+  --column-east--show: var(--grid-east-skip);
+
+  --grid-is-default:     0;
+  --grid-is-reduced:     0;
+  --grid-is-compact:     1;
+  --grid-is-not-default: 1;
+  --grid-is-not-reduced: 1;
+  --grid-is-not-compact: 0;
+ }
+}
+
+
+/* ------------------------------------ CSS Structure */
+
+
+.grid-queen,
+.grid-queen * {
+ /* Greed Seed */
+
+    grid-auto-flow:  row;
+    grid-auto-rows:  min-content;
+    grid-template-columns: var(--grid-template-columns);
+
+    grid-column-gap: 0;
+    grid-row-gap:    var(--grid-row-gap);
+
+    align-items:     var(--align-items);
+    justify-content: var(--justify-content);
+
+}
+.grid-queen   { display:     grid; }
+.grid-queen * { grid-column: text; }
+
+
+/* ------------------------------------ Grid Constructor */
 
 
 .grid-queen {
- /* Template Kari */
 
-  --grid-template-columns--main:
-      [full-start]         0
-      [root-start]         0
-      [roof-start]         0
-          [main-start]     0
-          [west-start]     0
-          [east-start]     0 var(--sx)
-              [menu-start] 0
-              [note-start] 0
-              [text-start] 0 1fr
-              [text-end]   0
-              [menu-end]   0
-              [note-end]   0 var(--sx)
+ /* main column */
+
+  --grid-main-full:
+          [main-start]     0 var(--sx)
+              [text-start] 0 var(--column-width-main)
+              [text-end]   0 var(--sx)
           [main-end]       0
-          [west-end]       0
-          [east-end]       0
-      [root-end]           0
-      [roof-end]           0
-      [full-end];
-  --grid-template-columns--flat:
-      [full-start]         0
-      [root-start]         0
-      [roof-start]         0
-          [main-start]     0
+      ;
+  --grid-main-join-both:
           [west-start]     0
           [east-start]     0
+          [main-start]     0 var(--sx)
               [menu-start] 0
               [note-start] 0
-              [text-start] 0 1fr
-              [text-end]   0
+              [text-start] 0 var(--column-width-main)
               [menu-end]   0
               [note-end]   0
+              [text-end]   0 var(--sx)
           [main-end]       0
           [west-end]       0
           [east-end]       0
-      [root-end]           0
-      [roof-end]           0
-      [full-end];
+      ;
+  --grid-main-join-east:
+          [east-start]     0
+          [main-start]     0 var(--sx)
+              [note-start] 0
+              [text-start] 0 var(--column-width-main)
+              [note-end]   0
+              [text-end]   0 var(--sx)
+          [main-end]       0
+          [east-end]       0
+      ;
+  --grid-main-join-west:
+          [west-start]     0
+          [main-start]     0 var(--sx)
+              [menu-start] 0
+              [text-start] 0 var(--column-width-main)
+              [menu-end]   0
+              [text-end]   0 var(--sx)
+          [main-end]       0
+          [west-end]       0
+      ;
 
+ /* side columns */
 
-  --grid-west-full:
+  --grid-west-show:
           [west-start]     0 var(--sx)
               [menu-start] 0 var(--width-menu)
               [menu-end]   0 var(--sx)
           [west-end]       0
       ;
-  --grid-east-full:
+  --grid-east-show:
           [east-start]     0 var(--sx)
               [note-start] 0 var(--width-note)
               [note-end]   0 var(--sx)
           [east-end]       0
       ;
-  --grid-west-removed:     0;
-  --grid-east-removed:     0;
-  --grid-main-full:
-          [main-start]     0 var(--sx)
-              [text-start] 0 var(--width-main)
-              [text-end]   0 var(--sx)
-          [main-end]       0
-      ;
-  --grid-main-join-both:
-          [main-start]     0
-          [west-start]     0
-          [east-start]     0 var(--sx)
-              [text-start] 0
-              [menu-start] 0
-              [note-start] 0 var(--width-main)
-              [text-end]   0
-              [menu-end]   0
-              [note-end]   0 var(--sx)
-          [main-end]       0
-          [west-end]       0
-          [east-end]       0
-      ;
-  --grid-main-join-east: var(--if-no-west--main-join-both,
-          [main-start]     0
-          [east-start]     0 var(--sx)
-              [text-start] 0
-              [note-start] 0 var(--width-main)
-              [text-end]   0
-              [note-end]   0 var(--sx)
-          [main-end]       0
-          [east-end]       0
-      );
-  --grid-main-join-west: var(--if-no-east--main-join-both,
-          [main-start]     0
-          [west-start]     0 var(--sx)
-              [text-start] 0
-              [menu-start] 0 var(--width-main)
-              [text-end]   0
-              [menu-end]   0 var(--sx)
-          [main-end]       0
-          [west-end]       0
-      );
+  --grid-west-skip:     0;
+  --grid-east-skip:     0;
 
+ /* space columns */
 
-  --grid-root-removed:
+  --grid-root-skip:
       [full-start]         0
       [root-start]         0
       [roof-start]         0
       ;
-  --grid-roof-removed:
+  --grid-roof-skip:
       [root-end]           0
       [roof-end]           0
       [full-end]
       ;
-  --grid-root-full:
+  --grid-root-show:
       [full-start]         0
       [root-start]         0 var(--width-root)
       [root-end]           0
       ;
-  --grid-roof-full:
+  --grid-roof-show:
       [roof-start]         0 var(--width-roof)
       [roof-end]           0
       [full-end]
@@ -177,55 +211,85 @@
 }
 
 
+/* ------------------------------------ Grid Templates */
+
 
 .grid-queen {
-    display:         grid;
-  --grid-row-gap:    var(--sy);
-  --align-items:     start;
-  --justify-content: start;
-  --width-main:      var(
-      --if-reduced--width-main,
-        minmax( 0, var(--width-main--max))
-      );
-}
-.grid-queen,
-.grid-queen * {
-    grid-template-columns:
-      var(--grid-c-root)
-      var(--grid-c-west)
-      var(--grid-c-main)
-      var(--grid-c-east)
-      var(--grid-c-roof);
- /* Grid Seed */
-    grid-auto-flow:  row;
-    grid-auto-rows:  min-content;
-    grid-column-gap: 0;
-    grid-row-gap:    var(--grid-row-gap);
-    align-items:     var(--align-items);
-    justify-content: var(--justify-content);
-}
-.grid-queen * {
-    grid-column:     text;
+
+  --grid--box:
+      [full-start]         0
+      [root-start]         0
+      [roof-start]         0
+          [west-start]     0
+          [east-start]     0
+          [main-start]     0 var(--sx)
+              [menu-start] 0
+              [note-start] 0
+              [text-start] 0 1fr
+              [menu-end]   0
+              [note-end]   0
+              [text-end]   0 var(--sx)
+          [main-end]       0
+          [west-end]       0
+          [east-end]       0
+      [root-end]           0
+      [roof-end]           0
+      [full-end]
+      ;
+
+  --grid--block:
+      [full-start]         0
+      [root-start]         0
+      [roof-start]         0
+          [west-start]     0
+          [east-start]     0
+          [main-start]     0
+              [menu-start] 0
+              [note-start] 0
+              [text-start] 0 1fr
+              [menu-end]   0
+              [note-end]   0
+              [text-end]   0
+          [main-end]       0
+          [west-end]       0
+          [east-end]       0
+      [root-end]           0
+      [roof-end]           0
+      [full-end]
+      ;
 }
 
 
-.grid-queen--remove-west {
-  --grid-west-full:      var(--grid-west-removed);
+/* ------------------------------------ Grid Modifications */
+
+
+.grid-queen.is-without-root { --width-root: 0; }
+.grid-queen.is-without-roof { --width-roof: 0; }
+.grid-queen.is-without-room {
+  --width-root: 0;
+  --width-roof: 0;
+  --column-width-main: 1fr;
+}
+.grid-queen.is-without-west {
+  --grid-west-show:      var(--grid-west-skip);
   --grid-main-full:      var(--grid-main-join-west);
   --grid-main-join-east: var(--grid-main-join-both);
 }
-.grid-queen--remove-east {
-  --grid-east-full:      var(--grid-east-removed);
+.grid-queen.is-without-east {
+  --grid-east-show:      var(--grid-east-skip);
   --grid-main-full:      var(--grid-main-join-east);
   --grid-main-join-west: var(--grid-main-join-both);
 }
-.grid-queen--remove-both {
-  --grid-west-full:      var(--grid-west-removed);
-  --grid-east-full:      var(--grid-east-removed);
+.grid-queen.is-without-side {
+  --grid-west-show:      var(--grid-west-skip);
+  --grid-east-show:      var(--grid-east-skip);
   --grid-main-full:      var(--grid-main-join-both);
   --grid-main-join-east: var(--grid-main-join-both);
   --grid-main-join-west: var(--grid-main-join-both);
 }
+
+
+/* ------------------------------------ Column Workers */
 
 
 .grid-column--main      { grid-column: main; }
@@ -237,34 +301,65 @@
 .grid-column--wrap      { grid-column: west-start / east-end; }
 .grid-column--wrap-west { grid-column: west-start / main-end; }
 .grid-column--wrap-east { grid-column: main-start / east-end; }
+.grid-column--text      { grid-column: text; }
+.grid-column--text-wrap { grid-column: menu-start / note-end; }
+.grid-column--text-west { grid-column: menu-start / text-end; }
+.grid-column--text-east { grid-column: text-start / note-end; }
 
+
+/* ------------------------------------ Component Snippets */
+
+
+/* subgrid workers */
 
 .subgrid {
     display: grid;
 }
-.subgrid-box {
+.subgrid-container {
     display: grid;
-  --grid-template-columns: var(--grid-template-columns--main);
-    grid-template-columns: var(--grid-template-columns);
+  --grid-template-columns:   var(--grid--box);
 }
-.subgrid-block {
+.subgrid-content {
     display: grid;
-  --grid-template-columns: var(--grid-template-columns--flat);
-    grid-template-columns: var(--grid-template-columns);
+  --grid-template-columns: var(--grid--block);
+}
+
+/* subgrids inside merged columns */
+
+.subgrid-main {
+    display:      grid;
+    grid-column:  main;
+  --grid-template-columns:   var(--grid--box);
 }
 .subgrid-wrap {
-    display:     grid;
-    grid-column: west-start / east-end;
-  --grid-c-root: var(--grid-root-removed);
-  --grid-c-roof: var(--grid-roof-removed);
+    display:      grid;
+    grid-column:  west-start / east-end;
+  --grid-template-columns:
+        var(--column-root--skip)
+        var(--column-west--show)
+        var(--column-main--full)
+        var(--column-east--show)
+        var(--column-roof--skip);
 }
 .subgrid-wrap-east {
-    display:     grid;
-    grid-column: main-start / east-end;
-  --grid-c-root: var(--grid-root-removed);
-  --grid-c-roof: var(--grid-roof-removed);
-  --grid-c-main: var(--grid-main-join-west);
-  --grid-c-west: var(--grid-west-removed);
+    display:      grid;
+    grid-column:  main-start / east-end;
+  --grid-template-columns:
+        var(--column-root--skip)
+        var(--column-west--skip)
+        var(--column-main--west)
+        var(--column-east--show)
+        var(--column-roof--skip);
+}
+.subgrid-wrap-west {
+    display:      grid;
+    grid-column:  west-start / main-end;
+  --grid-template-columns:
+        var(--column-root--skip)
+        var(--column-west--show)
+        var(--column-main--east)
+        var(--column-east--skip)
+        var(--column-roof--skip);
 }
 
-
+/** EOF greed-queen */

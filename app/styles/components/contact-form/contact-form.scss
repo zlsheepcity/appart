@@ -1,3 +1,11 @@
+/** contact form design
+ *  2019.12.9
+ *
+ *  CSS
+ *
+ */
+
+
 /* -------------------------------- Size Settings */
 
 
@@ -6,7 +14,8 @@
   --sx:       1.5rem; /* x-space unit */
   --sy:         1rem; /* y-space unit */
   --form-field-paddings: 0.25rem 0.5rem;
-  --invalid-marker: url('data:image/svg+xml,%3Csvg fill="lightsalmon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="-4 -4 32 32"%3E%3Cpath d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/%3E%3C/svg%3E');
+ /* invalid scss
+  --invalid-marker: url('data:image/svg+xml,%3Csvg fill="lightsalmon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="-4 -4 32 32"%3E%3Cpath d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/%3E%3C/svg%3E'); */
 }
 
 
@@ -144,6 +153,8 @@
     background-position: right top;
     background-repeat:   no-repeat;
     background-image:    var(--invalid-marker);
+ /* invalid scss */
+    background-image: url('data:image/svg+xml,%3Csvg fill="lightsalmon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="-4 -4 32 32"%3E%3Cpath d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/%3E%3C/svg%3E');
 }
 
 /* invalid field tip */
@@ -207,6 +218,8 @@
     background-position: right top;
     background-repeat:   no-repeat;
     background-image:    var(--invalid-marker);
+ /* invalid scss */
+    background-image: url('data:image/svg+xml,%3Csvg fill="lightsalmon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="-4 -4 32 32"%3E%3Cpath d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/%3E%3C/svg%3E');
 }
 .form-design .wpcf7-not-valid-tip {
  /* @extend .not-valid-tip; */

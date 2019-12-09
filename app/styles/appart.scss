@@ -33,7 +33,7 @@
 
 // -------------------------------------------- Layout Components
 
-@import "components/journal-grid/journal-grid";
+    @import "components/journal-grid/journal-grid";
 @import "components/journal-grid/grid-queen";
 @import "components/offsidebar/offsidebar";
 
@@ -48,6 +48,8 @@
 // -------------------------------------------- Design Components
 
 
+@import "components/contact-form/contact-form";
+
 @import "components/swed-design/swed-banner";
 @import "components/swed-design/swed-button";
 @import "components/swed-design/swed-dropdown";
@@ -56,7 +58,7 @@
 @import "components/catgrounds/catgrounds";
 
 
-// Some Specific Cases
+// -------------------------------------------- Specific Cases
 
 //@import "components/data-table/data-table";
 

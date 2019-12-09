@@ -86,25 +86,206 @@
     <!-- ========================================= APP CUSTOM -->
 
 
+<!--
     <link
         href="dev/contact-form.css"
         rel="stylesheet" type="text/css">
+-->
 
     <style>
-        .wpcf7-response-output,
+/*        .wpcf7-response-output,
         .wpcf7-not-valid-tip {
             display: none!important;
-        }
+        }*/
     </style>
 
 
     <!-- ========================================== ʕ⊙ᴥ⊙ʔ = -->
     <!-- ========================================= END HEAD -->
 </head>
-<body class="colors--secondary native-sans">
+<body class="colors--primary native-sans">
 
 
-<section class="MarkupTestBar offsidebar from-eastside is-active use-colors colors--primary">
+<article class="grid-queen chapter colors--primary">
+
+    <h2>Contact Us</h2>
+    <section class="grid-column--main form-design">
+        <div class="wrap-form">
+            <form action="">
+                <div class="wrap-form-fields">
+
+                    <div class="wrap-field">
+                        <label><span class="field-label">Name <i>(required)</i></span><br>
+                        <span><input type="text" name="contact-name" value="Person Named" size="40" class="" aria-required="true" aria-invalid="false">
+                        </span> </label>
+                    </div>
+
+                    <div class="wrap-field">
+                        <label><span class="field-label">Your Message or Question</span><br>
+                        <span><textarea class="" name="your-message" rows="3" class="" aria-required="true" aria-invalid="false"></textarea>
+                        </span> </label>
+                    </div>
+
+                    <div class="wrap-field">
+                        <label><span class="field-label">Your Select</span><br>
+                        <span><select class="" name="your-select" aria-invalid="false">
+                            <option default>This one is the best</option>
+                            <option>Another one</option>
+                            <option>Third one</option>
+                        </select>
+                        </span> </label>
+                    </div>
+
+                    <div class="wrap-field wrap-submit">
+                        <input type="submit" value="Send" class="form-design-button">
+                        <span class="ajax-loader is-active"></span>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </section>
+
+</article>
+<article class="grid-queen chapter use-colors colors--ivory">
+
+    <h2>Contact Us</h2>
+    <section class="grid-column--main form-design">
+        <div class="wrap-form">
+            <form action="">
+                <div class="wrap-form-fields">
+
+                    <div class="wrap-field">
+                        <label><span class="field-label">Name <i>(required)</i></span><br>
+                        <span><input type="text" name="contact-name" value="Person Named" size="40" class="" aria-required="true" aria-invalid="false">
+                        </span> </label>
+                    </div>
+
+                    <div class="wrap-field">
+                        <label><span class="field-label">Your Message or Question</span><br>
+                        <span><textarea class="" name="your-message" rows="3" class="" aria-required="true" aria-invalid="false"></textarea>
+                        </span> </label>
+                    </div>
+
+                    <div class="wrap-field">
+                        <label><span class="field-label">Your Select</span><br>
+                        <span><select class="" name="your-select" aria-invalid="false">
+                            <option default>This one is the best</option>
+                            <option>Another one</option>
+                            <option>Third one</option>
+                        </select>
+                        </span> </label>
+                    </div>
+
+                    <div class="wrap-field wrap-submit">
+                        <input type="submit" value="Send" class="form-design-button">
+                        <span class="ajax-loader is-active"></span>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </section>
+
+</article>
+<article class="grid-queen chapter use-colors colors--root">
+
+    <style>
+        .colors--root .form-design    input:not(.form-design-button),
+        .colors--root .form-design   select:not(.form-design-button),
+        .colors--root .form-design textarea:not(.form-design-button) {
+          --back-color:         gainsboro;
+          --back-color-accent:  gainsboro;
+          --back-color-descent: lightslategray;
+        }
+    </style>
+
+    <h2>Contact Us</h2>
+    <section class="grid-column--main form-design">
+        <div class="wrap-form">
+            <form action="">
+                <div class="wrap-form-fields">
+
+                    <div class="wrap-field">
+                        <label><span class="field-label">Name <i>(required)</i></span><br>
+                        <span><input type="text" name="contact-name" value="Person Named" size="40" class="" aria-required="true" aria-invalid="false">
+                        </span> </label>
+                    </div>
+
+                    <div class="wrap-field">
+                        <label><span class="field-label">Your Message or Question</span><br>
+                        <span><textarea class="" name="your-message" rows="3" class="" aria-required="true" aria-invalid="false"></textarea>
+                        </span> </label>
+                    </div>
+
+                    <div class="wrap-field">
+                        <label><span class="field-label">Your Select</span><br>
+                        <span><select class="" name="your-select" aria-invalid="false">
+                            <option default>This one is the best</option>
+                            <option>Another one</option>
+                            <option>Third one</option>
+                        </select>
+                        </span> </label>
+                    </div>
+
+                    <div class="wrap-field wrap-submit">
+                        <input type="submit" value="Send" class="form-design-button">
+                        <span class="ajax-loader is-active"></span>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </section>
+
+</article>
+<article class="grid-queen chapter use-colors colors--secondary">
+
+    <h2>Validation</h2>
+    <section class="grid-column--main form-design">
+        <div class="wrap-form">
+            <form action="">
+                <div class="wrap-form-fields">
+
+                    <div class="wrap-field">
+                        <label><span class="field-label">Name <i>(required)</i></span><br>
+                        <span><input type="text" name="contact-name" value="Person Named" size="40" class="is-not-valid" aria-required="true" aria-invalid="false">
+                        <span role="alert" class="not-valid-tip">The field is required.</span>
+                        </span> </label>
+                    </div>
+
+                    <div class="wrap-field">
+                        <label><span class="field-label">Your Message or Question</span><br>
+                        <span><textarea class="is-not-valid" name="your-message" rows="3" class="" aria-required="true" aria-invalid="false"></textarea>
+                        <span role="alert" class="not-valid-tip">The field is required.</span>
+                        </span> </label>
+                    </div>
+
+                    <div class="wrap-field">
+                        <label><span class="field-label">Your Select</span><br>
+                        <span><select class="is-not-valid" name="your-select" aria-invalid="false">
+                            <option default>This one is the best</option>
+                            <option>Another one</option>
+                            <option>Third one</option>
+                        </select>
+                        <span role="alert" class="not-valid-tip">The field is required.</span>
+                        </span> </label>
+                    </div>
+
+                    <div class="wrap-field wrap-submit">
+                        <input type="submit" value="Send" class="form-design-button">
+                        <span class="ajax-loader is-active"></span>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </section>
+
+</article>
+
+
+<section hidden class="MarkupTestBar offsidebar from-eastside use-colors colors--primary">
     <div class="sidepanel">
         <div class="sidepanel-header">
             <h3>Contact Us</h3>
@@ -151,7 +332,7 @@
     </div>
 </section>
 
-<section hidden class="ContactTestBar offsidebar from-eastside use-colors colors--primary">
+<section hidden class="is-active ContactTestBar offsidebar from-eastside use-colors colors--primary">
     <div class="sidepanel">
         <div class="sidepanel-header">
             <h3>Contact Us</h3>
@@ -193,8 +374,8 @@
                 <label><span class="field-label">Your Message or Question</span><br>
                 <span class="wpcf7-form-control-wrap your-message"><textarea name="your-message" rows="3" class="wpcf7-form-control wpcf7-textarea wpcf7-validates-as-required" aria-required="true" aria-invalid="false"></textarea></span> </label>
             </div>
-            <div class="submit-wrap">
-                <input type="submit" value="Send" class="wpcf7-form-control wpcf7-submit">
+            <div class="wrap-field wrap-submit">
+                <input type="submit" value="Send" class="wpcf7-form-control wpcf7-submit form-design-button">
                 <span class="ajax-loader is-active"></span>
             </div>
         </div>

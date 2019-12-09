@@ -33,24 +33,25 @@
 *  Atom classes for maintainable inline CSS
 *  «Var never changes»
 *  zl, 2019.8.14
+*  
 *
 *  SCSS
 *
 */
-/** -------------------------------- Usage Template */
+/** -------------------------------- Usage */
 /*
 
     ## Option 1.
 
-    <div
-        class="opacity"
-        style="--opacity:0.5;"
-        ></div>
+    <div class="opacity" style="--opacity:0.5;">
+        ...
+    </div>
 
     ## Option 2.
 
-    <section style="--opacity:0.5;">
-        <div class="opacity"></div>
+    <section style="--opacity: 0.5;">
+        <div class="opacity">..</div>
+        <div class="opacity">..</div>
     </section>
 
  */
@@ -64,7 +65,7 @@
 .min-height { min-height: var(--min-height,    0 ); }
 .opacity    {    opacity: var(--opacity,       1 ); }
 */
-/** -------------------------------- Sass auto varriors */
+/** -------------------------------- SCSS auto varriors */
 .width {
   width: var(--width, auto);
 }
@@ -163,7 +164,7 @@
 
 /*  EOF CSS Varriors */
 /** html wrap & base markup
- *  2019.8.22
+ *  2019.12.8
  *
  *  something like normalize
  *  low-priority properties for html tags
@@ -173,11 +174,10 @@
  */
 /** -------------------------------- minimal box model */
 *, *:before, *:after {
-  box-sizing: inherit;
+  box-sizing: border-box;
 }
 
 html {
-  box-sizing: border-box;
   height: 100%;
 }
 
@@ -186,20 +186,10 @@ html, body {
   padding: 0;
 }
 
-/** -------------------------------- basic unit & font sizes */
-/* Let the browser decide the font size */
-html {
-  /*font-size: 16px;*/
-}
-
-body {
-  /*font-size: 16px;*/
-}
-
 /** -------------------------------- improve design & UX */
 html {
-  cursor: default;
   scroll-behavior: smooth;
+  cursor: default;
 }
 
 body {
@@ -833,7 +823,7 @@ body {
  *  CSS
  *
  */
-/* ------------------------------------ Grid Setup */
+/* -------------------------------- Grid Setup */
 .grid-queen {
   /* vertical and horizontal space */
   --sy: var(--row-space, 1.5rem);
@@ -851,7 +841,7 @@ body {
   --column-width-main: minmax(0, var(--width-main));
 }
 
-/* ------------------------------------ Grid Definition */
+/* -------------------------------- Grid Definition */
 .grid-queen,
 .grid-queen * {
   --grid-template-columns:
@@ -863,7 +853,7 @@ body {
   /* right space  */
 }
 
-/* ------------------------------------ Layout System */
+/* -------------------------------- Layout System */
 .grid-queen {
   /* default full size layout */
   --column-main--full: var(--grid-main-full);
@@ -925,7 +915,7 @@ body {
     --grid-is-not-compact: 0;
   }
 }
-/* ------------------------------------ CSS Structure */
+/* -------------------------------- CSS Structure */
 .grid-queen,
 .grid-queen * {
   /* Greed Seed */
@@ -946,7 +936,7 @@ body {
   grid-column: text;
 }
 
-/* ------------------------------------ Grid Constructor */
+/* -------------------------------- Grid Constructor */
 .grid-queen {
   /* main column */
   --grid-main-full:
@@ -1017,7 +1007,7 @@ body {
       [full-end] ;
 }
 
-/* ------------------------------------ Grid Templates */
+/* -------------------------------- Grid Templates */
 .grid-queen {
   --grid--box:
       [full-start] 0
@@ -1078,7 +1068,7 @@ body {
       [full-end] ;
 }
 
-/* ------------------------------------ Combined Columns Names */
+/* -------------------------------- Combined Columns Names */
 .grid-queen {
   --grid-column--west-wide: west-start / east-end;
   --grid-column--menu-wide: menu-start / note-end;
@@ -1100,8 +1090,8 @@ body {
   --grid-column--east-half-wide: full-start / full-end;
 }
 
-/* ------------------------------------ / end of core */
-/* ------------------------------------ Column Workers */
+/* -------------------------------- / end of core */
+/* -------------------------------- Column Workers */
 .grid-column--full {
   grid-column: full;
 }
@@ -1202,7 +1192,7 @@ body {
   grid-column: var(--set-east-half-wide-column, var(--grid-column--east-half));
 }
 
-/* ------------------------------------ Grid Modifications */
+/* -------------------------------- Grid Modifications */
 .grid-queen.is-without-root {
   --width-root: 0;
 }
@@ -1237,7 +1227,7 @@ body {
   --grid-main-join-west: var(--grid-main-join-both);
 }
 
-/* ------------------------------------ Component Snippets */
+/* -------------------------------- Component Snippets */
 /* subgrid workers */
 .subgrid {
   display: grid;

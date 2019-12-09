@@ -6,7 +6,7 @@
  *
  */
 
-/* ------------------------------------ Grid Setup */
+/* -------------------------------- Grid Setup */
 
 .grid-queen {
  /* vertical and horizontal space */
@@ -28,7 +28,7 @@
 }
 
 
-/* ------------------------------------ Grid Definition */
+/* -------------------------------- Grid Definition */
 
 
 .grid-queen,
@@ -42,7 +42,7 @@
 }
 
 
-/* ------------------------------------ Layout System */
+/* -------------------------------- Layout System */
 
 .grid-queen {
  /* default full size layout */
@@ -116,7 +116,7 @@
 }
 
 
-/* ------------------------------------ CSS Structure */
+/* -------------------------------- CSS Structure */
 
 
 .grid-queen,
@@ -138,7 +138,7 @@
 .grid-queen * { grid-column: text; }
 
 
-/* ------------------------------------ Grid Constructor */
+/* -------------------------------- Grid Constructor */
 
 
 .grid-queen {
@@ -228,7 +228,7 @@
 }
 
 
-/* ------------------------------------ Grid Templates */
+/* -------------------------------- Grid Templates */
 
 
 .grid-queen {
@@ -298,7 +298,7 @@
 }
 
 
-/* ------------------------------------ Combined Columns Names */
+/* -------------------------------- Combined Columns Names */
 
 
 .grid-queen {
@@ -327,9 +327,9 @@
 }
 
 
-/* ------------------------------------ / end of core */
+/* -------------------------------- / end of core */
 
-/* ------------------------------------ Column Workers */
+/* -------------------------------- Column Workers */
 
 
 .grid-column--full      { grid-column: full; }
@@ -367,7 +367,7 @@
     grid-column: var(--set-east-half-wide-column, var(--grid-column--east-half)); }
 
 
-/* ------------------------------------ Grid Modifications */
+/* -------------------------------- Grid Modifications */
 
 
 .grid-queen.is-without-root { --width-root:   0; }
@@ -396,7 +396,7 @@
 }
 
 
-/* ------------------------------------ Component Snippets */
+/* -------------------------------- Component Snippets */
 
 
 /* subgrid workers */

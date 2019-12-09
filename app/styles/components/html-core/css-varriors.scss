@@ -3,26 +3,27 @@
  *  Atom classes for maintainable inline CSS
  *  «Var never changes»
  *  zl, 2019.8.14
+ *  
  *
  *  SCSS
  *
  */
 
 
-/** -------------------------------- Usage Template */
+/** -------------------------------- Usage */
 /*
 
     ## Option 1.
 
-    <div
-        class="opacity"
-        style="--opacity:0.5;"
-        ></div>
+    <div class="opacity" style="--opacity:0.5;">
+        ...
+    </div>
 
     ## Option 2.
 
-    <section style="--opacity:0.5;">
-        <div class="opacity"></div>
+    <section style="--opacity: 0.5;">
+        <div class="opacity">..</div>
+        <div class="opacity">..</div>
     </section>
 
  */
@@ -42,7 +43,7 @@
     */
 
 
-/** -------------------------------- Sass auto varriors */
+/** -------------------------------- SCSS auto varriors */
 
 
 $DEFAULT-VARRIORS: (
@@ -81,8 +82,7 @@ $DEFAULT-VARRIORS: (
     'background-color': transparent
 );
 @each $VAR, $DEF in $DEFAULT-VARRIORS {
-  // Template
-  //.padding { padding: var(--padding, 0 ); }
+//  .padding { padding: var(--padding, 1rem   ); }
     .#{$VAR} { #{$VAR}: var(--#{$VAR}, #{$DEF}); }
 }
 

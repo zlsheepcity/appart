@@ -1,5 +1,5 @@
 /** html wrap & base markup
- *  2019.8.22
+ *  2019.12.8
  *
  *  something like normalize
  *  low-priority properties for html tags
@@ -12,24 +12,18 @@
 /** -------------------------------- minimal box model */
 
 
-*, *:before, *:after     { box-sizing: inherit; }
-html                     { box-sizing: border-box; height: 100%; }
-html, body               { margin: 0; padding: 0; }
+*, *:before, *:after { box-sizing: border-box; }
+html                 { height: 100%; }
+html, body           { margin: 0; padding: 0; }
 
 
-/** -------------------------------- basic unit & font sizes */
-
-
-/* Let the browser decide the font size */
-html { /*font-size: 16px;*/ }
-body { /*font-size: 16px;*/ }
 
 
 /** -------------------------------- improve design & UX */
 
 
-html    { cursor:     default; scroll-behavior: smooth; }
-body    { overflow-y: scroll;  }
+html    { scroll-behavior: smooth; cursor: default; }
+body    { overflow-y: scroll; }
 
 /* Single taps are dispatched immediately on clickable elements */
 a, area, button, input, label, select, summary, textarea, [tabindex] {

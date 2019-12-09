@@ -76,7 +76,7 @@
 
 
     <link
-        href="app/styles/appart.css"
+        href="app/styles/appart-dev.css"
         rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic"
@@ -86,110 +86,68 @@
     <!-- ========================================= APP CUSTOM -->
 
 
+    <link
+        href="dev/contact-form.css"
+        rel="stylesheet" type="text/css">
+
+    <style>
+        .wpcf7-response-output,
+        .wpcf7-not-valid-tip {
+            display: none!important;
+        }
+    </style>
+
+
     <!-- ========================================== ʕ⊙ᴥ⊙ʔ = -->
     <!-- ========================================= END HEAD -->
 </head>
-<body class="colors--primary">
+<body class="colors--secondary --native-sans">
 
-<style>
-    .sidepanel-content.form-design {
-        padding: 0;
-    }
-    .form-design {
-      --max-width: 28rem;
-      --sx:       1.5rem; /* x-space unit */
-      --sy:         1rem; /* y-space unit */
-
-      --back-color--field:        white;
-      --text-color--field:        black;
-      --text-color--field--focus: slategray;
-
-      --back-color--submit:          firebrick;
-      --back-color--submit--accent:  darkred;
-      --text-color--submit:          white;
-      --text-color--submit--accent:  white;
-    }
-
-    .form-design label {
-        display: block;
-        padding: 0;
-        margin:  0;
-    }
-    .form-design input,
-    .form-design select,
-    .form-design optgroup,
-    .form-design textarea {
-
-        font-family: inherit;
-        font-size:   1em;
-        line-height: 1.75;
-
-        display:     block;
-        width:       100%;
-        padding:     0.25em 0.5em;
-
-        border:           0.25em solid;
-      --border-color:     transparent;
-        border-color:     var(--border-color);
-        border-radius:    0;
-
-      --background-color: var(--back-color--field);
-      --color:            var(--text-color--field);
-        background-color: var(--background-color);
-        color:            var(--color);
-    }
-    .form-design input:focus,
-    .form-design textarea:focus {
-      --border-color:     var(--text-color--field--focus);
-    }
-
-    .form-design input[type="submit"] {
-
-        display: inline-block;
-        padding: 0.5em 1.5em;
-        width:   auto;
-
-      --background-color: var(--back-color--submit);
-      --color:            var(--text-color--submit);
-        background-color: var(--background-color);
-        color:            var(--color);
-    }
-    .form-design input[type="submit"]:hover,
-    .form-design input[type="submit"]:focus {
-      --background-color: var(--back-color--submit--accent);
-      --color:            var(--text-color--submit--accent);
-    }
-
-
-
-    .form-design .wpcf7 {
-        max-width: var(--max-width);
-    }
-    .form-design .wpcf7-form {
-        
-    }
-
-
-    .form-fields-wrap {
-
-        padding: var(--sy) var(--sx);
-
-        display: grid;
-        grid-template-columns: 100%;
-        grid-row-gap: var(--sy);
-
-    }
-    .form-design .field-label { display: inline-block;}
-    .form-design .field-label i { opacity: 0.6; }
-    .form-design .submit-wrap {
-        margin-top:  var(--sy);
-    }
-</style>
-
-<section class="ContactTestBar offsidebar from-eastside is-active">
+<section class="MarkupTestBar offsidebar from-eastside is-active use-colors colors--primary">
     <div class="sidepanel">
         <div class="sidepanel-header">
-            <h2>Contact Us</h2>
+            <h3>Contact Us</h3>
+        </div>
+        <div class="sidepanel-content form-design">
+            <div class="form-wrap">
+                <form action="">
+                    <div class="form-fields-wrap">
+
+                        <div class="field-wrap">
+                            <label><span class="field-label">Name</span><br>
+                            <span><input type="text" name="contact-name" value="Person Named" size="40" class="" aria-required="true" aria-invalid="false"></span> </label>
+                        </div>
+
+                        <div class="field-wrap">
+                            <label><span class="field-label">Your Message or Question</span><br>
+                            <span><textarea name="your-message" rows="3" class="" aria-required="true" aria-invalid="false"></textarea></span> </label>
+                        </div>
+
+                        <div class="field-wrap">
+                            <label><span class="field-label">Your Select</span><br>
+                            <span><select name="your-select" aria-invalid="false">
+                                <option default>This one is the best</option>
+                                <option>Another one</option>
+                                <option>Third one</option>
+                            </select></span> </label>
+                        </div>
+
+                        <div class="field-wrap submit-wrap">
+                            <input type="submit" value="Send" class="wpcf7-form-control wpcf7-submit">
+                            <span class="ajax-loader is-active"></span>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section hidden class="ContactTestBar offsidebar from-eastside use-colors colors--primary">
+    <div class="sidepanel">
+        <div class="sidepanel-header">
+            <h3>Contact Us</h3>
         </div>
         <div class="sidepanel-content form-design">
 
@@ -206,7 +164,7 @@
         <div class="form-fields-wrap">
             <div class="field-wrap">
                 <label><span class="field-label">Name</span><br>
-                <span class="wpcf7-form-control-wrap your-name"><input type="text" name="contact-name" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false"></span> </label>
+                <span class="wpcf7-form-control-wrap your-name"><input type="text" name="contact-name" value="Person Named" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false"></span> </label>
             </div>
             <div class="field-wrap">
                 <label><span class="field-label">Email</span><br>

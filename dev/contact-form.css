@@ -1,0 +1,186 @@
+/* -------------------------------- Size Settings */
+
+
+.form-design {
+  --max-width: 24rem;
+  --sx:       1.5rem; /* x-space unit */
+  --sy:         1rem; /* y-space unit */
+  --form-field-paddings: 0.25rem 0.5rem;
+}
+
+
+/* -------------------------------- Color Settings */
+
+
+.form-design {
+
+  --field-back-color:           white;
+  --field-text-color:           black;
+  --field-border-color--focus:  lightsteelblue;
+
+  --submit-back-color:          firebrick;
+  --submit-text-color:          white;
+  --submit-back-color--accent:  darkred;
+  --submit-text-color--accent:  white;
+
+}
+
+
+/* -------------------------------- HTML Form Elements */
+
+
+.form-design input,
+.form-design select,
+.form-design textarea {
+
+ /* normalization */
+
+    display:   block;
+    width:      100%;
+    box-shadow: none;
+    border:        0;
+  --border-radius: 0;
+    border-radius: var(--border-radius);
+
+    font-size:   1em;
+    font-family: inherit;
+    font-weight: inherit;
+    line-height: var(--line-height);
+
+   -ms-touch-action: manipulation;
+    touch-action:    manipulation;
+    resize:          vertical;
+
+ /* decoration */
+
+  --background-color: var(--field-back-color);
+  --color:            var(--field-text-color);
+    background-color: var(--background-color);
+    color:            var(--color);
+    padding:          var(--form-field-paddings);
+}
+.form-design textarea:focus ,
+.form-design   select:focus ,
+.form-design    input:focus {
+    border-radius: 0;
+    outline:  0.25rem solid var(--field-border-color--focus);
+}
+.form-design label {
+    display: block;
+    padding: 0;
+    margin:  0;
+}
+
+/* submit button */
+
+.form-design input[type="submit"] {
+
+    display: inline-block;
+    padding:  0.5em 1.5em;
+  --border-radius:    4px;
+    width: auto;
+
+  --background-color: var(--submit-back-color);
+  --color:            var(--submit-text-color);
+    background-color: var(--background-color);
+    color:            var(--color);
+}
+.form-design input[type="submit"]:hover,
+.form-design input[type="submit"]:focus {
+  --background-color: var(--submit-back-color--accent);
+  --color:            var(--submit-text-color--accent);
+}
+
+
+
+
+html:not([la-root-re-vars]) {
+  --line-height: 1.5;
+  --timing-function--openJump:  cubic-bezier(0.175,  0.885, 0.320, 1.275);
+  --timing-function--closeJump: cubic-bezier(0.600, -0.280, 0.735, 0.045);
+}
+
+.form-design {
+
+  --back-color--tip:             var(--back-color-descent);
+  --text-color--tip:             var(--text-color);
+}
+
+
+
+
+
+.form-wrap {
+    max-width: var(--max-width);
+}
+.form-design .wpcf7 {
+    max-width: var(--max-width);
+}
+.form-design .wpcf7-form {
+
+}
+
+
+.form-fields-wrap {
+
+    padding: var(--sy) var(--sx);
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-row-gap:    var(--sy);
+    grid-column-gap: 0;
+
+}
+.form-design .field-label {
+    display:      inline-block;
+
+}
+
+.form-design .field-label {
+    transform-origin: left bottom;
+    transition:    transform .42s;
+    transition-timing-function: var(--timing-function--openJump);
+}
+.field-wrap:focus-within .field-label {
+    transform: translateY(-0.25rem);
+    color: var(--text-color-accent);
+}
+.form-design .field-label i { opacity: 0.6; }
+
+.form-design .submit-wrap {
+    margin-top:  calc( var(--sx) - var(--sy) );
+}
+
+.form-design .wpcf7-not-valid {
+    padding-right:   28px;
+    background-size: 24px;
+    background-position: right top;
+    background-repeat:   no-repeat;
+    background-image: url('data:image/svg+xml,%3Csvg fill="firebrick" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"%3E%3Cpolygon points="2 8, 18 8, 10 18"/%3E%3C/svg%3E');
+}
+
+.wpcf7-not-valid-tip {
+    display: block;
+    padding: 0.25rem;
+    color:   var(--text-color--tip);
+    background-color:  var(--back-color--tip);
+}
+.wpcf7-not-valid-tip::before {
+    content:             '▴';
+    color:         firebrick;
+    display:    inline-block;
+    vertical-align: baseline;
+    padding-right:   0.25rem;
+}
+
+.wpcf7-response-output {
+    padding: var(--sy) var(--sx);
+    background-color: var(--back-color-accent);
+}
+
+/* offsidebar integration */
+
+.form-design.sidepanel-content {
+    padding: 0;
+}
+
+/** EOF contact-form */

@@ -101,7 +101,8 @@
     <!-- ========================================== ʕ⊙ᴥ⊙ʔ = -->
     <!-- ========================================= END HEAD -->
 </head>
-<body class="colors--secondary --native-sans">
+<body class="colors--secondary native-sans">
+
 
 <section class="MarkupTestBar offsidebar from-eastside is-active use-colors colors--primary">
     <div class="sidepanel">
@@ -109,31 +110,37 @@
             <h3>Contact Us</h3>
         </div>
         <div class="sidepanel-content form-design">
-            <div class="form-wrap">
+            <div class="wrap-form">
                 <form action="">
-                    <div class="form-fields-wrap">
+                    <div class="wrap-form-fields">
 
-                        <div class="field-wrap">
-                            <label><span class="field-label">Name</span><br>
-                            <span><input type="text" name="contact-name" value="Person Named" size="40" class="" aria-required="true" aria-invalid="false"></span> </label>
+                        <div class="wrap-field">
+                            <label><span class="field-label">Name <i>(required)</i></span><br>
+                            <span><input type="text" name="contact-name" value="Person Named" size="40" class="is-not-valid" aria-required="true" aria-invalid="false">
+                            <span role="alert" class="not-valid-tip">The field is required.</span>
+                            </span> </label>
                         </div>
 
-                        <div class="field-wrap">
+                        <div class="wrap-field">
                             <label><span class="field-label">Your Message or Question</span><br>
-                            <span><textarea name="your-message" rows="3" class="" aria-required="true" aria-invalid="false"></textarea></span> </label>
+                            <span><textarea class="is-not-valid" name="your-message" rows="3" class="" aria-required="true" aria-invalid="false"></textarea>
+                            <span role="alert" class="not-valid-tip">The field is required.</span>
+                            </span> </label>
                         </div>
 
-                        <div class="field-wrap">
+                        <div class="wrap-field">
                             <label><span class="field-label">Your Select</span><br>
-                            <span><select name="your-select" aria-invalid="false">
+                            <span><select class="is-not-valid" name="your-select" aria-invalid="false">
                                 <option default>This one is the best</option>
                                 <option>Another one</option>
                                 <option>Third one</option>
-                            </select></span> </label>
+                            </select>
+                            <span role="alert" class="not-valid-tip">The field is required.</span>
+                            </span> </label>
                         </div>
 
-                        <div class="field-wrap submit-wrap">
-                            <input type="submit" value="Send" class="wpcf7-form-control wpcf7-submit">
+                        <div class="wrap-field wrap-submit">
+                            <input type="submit" value="Send" class="form-design-button">
                             <span class="ajax-loader is-active"></span>
                         </div>
 
@@ -161,12 +168,12 @@
             <input type="hidden" name="_wpcf7_unit_tag" value="wpcf7-f1725-p9-o1">
             <input type="hidden" name="_wpcf7_container_post" value="9">
         </div>
-        <div class="form-fields-wrap">
-            <div class="field-wrap">
+        <div class="wrap-form-fields">
+            <div class="wrap-field">
                 <label><span class="field-label">Name</span><br>
                 <span class="wpcf7-form-control-wrap your-name"><input type="text" name="contact-name" value="Person Named" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false"></span> </label>
             </div>
-            <div class="field-wrap">
+            <div class="wrap-field">
                 <label><span class="field-label">Email</span><br>
                 <span class="wpcf7-form-control-wrap your-email"><input type="email" name="your-email" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email wpcf7-not-valid" aria-required="true" aria-invalid="false">
 
@@ -174,15 +181,15 @@
 
                 </span> </label>
             </div>
-            <div class="field-wrap">
+            <div class="wrap-field">
                 <label><span class="field-label">Phone number <i>(optional)</i></span><br>
                 <span class="wpcf7-form-control-wrap your-name"><input type="text" name="your-phone" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false"></span> </label>
             </div>
-            <div class="field-wrap">
+            <div class="wrap-field">
                 <label><span class="field-label">Skype <i>(optional)</i></span><br>
                 <span class="wpcf7-form-control-wrap your-name"><input type="text" name="your-skype" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false"></span> </label>
             </div>
-            <div class="field-wrap">
+            <div class="wrap-field">
                 <label><span class="field-label">Your Message or Question</span><br>
                 <span class="wpcf7-form-control-wrap your-message"><textarea name="your-message" rows="3" class="wpcf7-form-control wpcf7-textarea wpcf7-validates-as-required" aria-required="true" aria-invalid="false"></textarea></span> </label>
             </div>

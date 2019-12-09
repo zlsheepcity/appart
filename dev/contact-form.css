@@ -12,16 +12,32 @@
 /* -------------------------------- Color Settings */
 
 
-.form-design {
+.form-design input,
+.form-design select,
+.form-design textarea {
 
-  --field-back-color:           white;
-  --field-text-color:           black;
-  --field-border-color--focus:  lightsteelblue;
+  --back-color:         white;
+  --back-color-accent:  white;
+  --back-color-descent: lightslategray;
 
-  --submit-back-color:          firebrick;
-  --submit-text-color:          white;
-  --submit-back-color--accent:  darkred;
-  --submit-text-color--accent:  white;
+  --text-color:         black;
+  --text-color-accent:  black;
+  --text-color-descent: darkslategray;
+
+  --mark-color:         lightsteelblue;
+
+}
+.form-design .form-design-button {
+
+  --back-color:         firebrick;
+  --back-color-accent:  darkred;
+  --back-color-descent: lightslategray;
+
+  --text-color:         white;
+  --text-color-accent:  white;
+  --text-color-descent: darkslategray;
+
+  --mark-color:         lightsteelblue;
 
 }
 
@@ -53,8 +69,8 @@
 
  /* decoration */
 
-  --background-color: var(--field-back-color);
-  --color:            var(--field-text-color);
+  --background-color: var(--back-color);
+  --color:            var(--text-color);
     background-color: var(--background-color);
     color:            var(--color);
     padding:          var(--form-field-paddings);
@@ -62,8 +78,10 @@
 .form-design textarea:focus ,
 .form-design   select:focus ,
 .form-design    input:focus {
+  --background-color: var(--back-color-accent);
+  --color:            var(--text-color-accent);
+    outline: 0.25rem solid var(--mark-color);
     border-radius: 0;
-    outline:  0.25rem solid var(--field-border-color--focus);
 }
 .form-design label {
     display: block;
@@ -71,27 +89,114 @@
     margin:  0;
 }
 
-/* submit button */
 
-.form-design input[type="submit"] {
+/* -------------------------------- Form Layout */
+
+
+.wrap-form {
+    max-width: var(--max-width);
+}
+.wrap-form-fields {
+
+    padding: var(--sy) var(--sx);
+
+ /* vertical grid */
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-row-gap:    var(--sy);
+    grid-column-gap: 0;
+
+}
+.wrap-field {
+    display: block;
+    margin:  0;
+    padding: 0;
+}
+
+
+/* -------------------------------- Components */
+
+
+/* label */
+
+.field-label   { display: inline-block; }
+.field-label i { opacity: 0.64; }
+
+/* label focus */
+
+.wrap-field .field-label {
+    transform-origin: left bottom;
+    transition:    transform .42s;
+    transition-timing-function: var(--timing-function--openJump);
+}
+.wrap-field:focus-within .field-label {
+    transform: translateY(-0.25rem);
+    color: var(--text-color-accent);
+}
+
+/* invalid field marker */
+
+.form-design textarea.is-not-valid,
+.form-design    input.is-not-valid {
+    padding-right:   32px;
+    background-size: 32px;
+    background-position: right top;
+    background-repeat:   no-repeat;
+    background-image: url('data:image/svg+xml,%3Csvg fill="firebrick" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"%3E%3Ccircle cx="16" cy="16" r="7"/%3E%3C/svg%3E');
+    background-image: url('data:image/svg+xml,%3Csvg fill="lightsalmon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="-4 -4 32 32"%3E%3Cpath d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/%3E%3C/svg%3E');
+}
+
+/* invalid field tip */
+
+.not-valid-tip {
+    display: block;
+    padding: 0.25rem;
+    color:             var(--text-color);
+    background-color:  var(--back-color-accent);
+}
+.not-valid-tip::before {
+    content: '▴';
+    color: var(--link-color);
+    display:    inline-block;
+    vertical-align: baseline;
+    padding-right:   0.25rem;
+}
+
+
+/* submit area */
+
+.wrap-submit {
+  --margin-top: calc( var(--sx) - var(--sy) );
+    margin-top: var(--margin-top);
+}
+
+/* default submit button */
+
+.form-design .form-design-button {
 
     display: inline-block;
     padding:  0.5em 1.5em;
   --border-radius:    4px;
     width: auto;
 
-  --background-color: var(--submit-back-color);
-  --color:            var(--submit-text-color);
+  --background-color: var(--back-color);
+  --color:            var(--text-color);
     background-color: var(--background-color);
     color:            var(--color);
 }
-.form-design input[type="submit"]:hover,
-.form-design input[type="submit"]:focus {
-  --background-color: var(--submit-back-color--accent);
-  --color:            var(--submit-text-color--accent);
+.form-design .form-design-button:hover,
+.form-design .form-design-button:focus {
+  --background-color: var(--back-color-accent);
+  --color:            var(--text-color-accent);
 }
 
 
+
+
+
+
+
+/** EOF contact form */
 
 
 html:not([la-root-re-vars]) {
@@ -110,9 +215,7 @@ html:not([la-root-re-vars]) {
 
 
 
-.form-wrap {
-    max-width: var(--max-width);
-}
+
 .form-design .wpcf7 {
     max-width: var(--max-width);
 }
@@ -121,42 +224,7 @@ html:not([la-root-re-vars]) {
 }
 
 
-.form-fields-wrap {
 
-    padding: var(--sy) var(--sx);
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-row-gap:    var(--sy);
-    grid-column-gap: 0;
-
-}
-.form-design .field-label {
-    display:      inline-block;
-
-}
-
-.form-design .field-label {
-    transform-origin: left bottom;
-    transition:    transform .42s;
-    transition-timing-function: var(--timing-function--openJump);
-}
-.field-wrap:focus-within .field-label {
-    transform: translateY(-0.25rem);
-    color: var(--text-color-accent);
-}
-.form-design .field-label i { opacity: 0.6; }
-
-.form-design .submit-wrap {
-    margin-top:  calc( var(--sx) - var(--sy) );
-}
-
-.form-design .wpcf7-not-valid {
-    padding-right:   28px;
-    background-size: 24px;
-    background-position: right top;
-    background-repeat:   no-repeat;
-    background-image: url('data:image/svg+xml,%3Csvg fill="firebrick" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"%3E%3Cpolygon points="2 8, 18 8, 10 18"/%3E%3C/svg%3E');
-}
 
 .wpcf7-not-valid-tip {
     display: block;

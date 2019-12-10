@@ -12,8 +12,9 @@
 
   --row-space:     1.5rem;                              /* Vertical */
   --col-space:     1.5rem;                              /* Horizontal */
-  --big-space:       4rem;                              /* Expanded */
-  --all-space:     var(--row-space) var(--col-space);   /* Shortcode Combined */
+  --mid-space:     2.5rem;                              /* Bigger 1 */
+  --big-space:       4rem;                              /* Bigger 2 */
+  --all-space:     var(--row-space) var(--col-space);   /* Shortcode */
 
  /* z-indexes order */
 

@@ -18,23 +18,21 @@ sass --no-source-map app/styles/appart.scss app/styles/appart-dev.css
  // @import "components/prototype/prototype-sakura";
 
 
-// -------------------------------------------- Appart Defaults
+// -------------------------------------------- System Core
 
- // HTML Setup
+    @import "components/system-core/css-settings";
+    @import "components/system-core/css-animations";
+    @import "components/system-core/html-markup";
+    @import "components/system-core/html-typography";
+    @import "components/system-core/color-model";
+ // dev-mode
+    @import "components/system-core/color-palet--projects";
 
-    @import "components/html-core/css-settings";
-    @import "components/html-core/html-markup";
-    @import "components/html-core/html-typography";
 
- // Support Components
+// -------------------------------------------- Components
 
-    @import "components/html-core/css-varriors";
-    @import "components/animate-css/required-animations";
-    @import "components/svga-icons/svga-icons";
+// Layout
 
- // Layout Components
-
-    /*deprecated*/@import "components/journal-grid/journal-grid";
     @import "components/journal-grid/grid-queen";
     @import "components/offsidebar/offsidebar";
     @import "components/contact-form/contact-form";
@@ -45,6 +43,7 @@ sass --no-source-map app/styles/appart.scss app/styles/appart-dev.css
     @import "components/swed-design/swed-button";
     @import "components/swed-design/swed-dropdown";
     @import "components/swed-design/swed-site-head";
+    @import "components/svga-icons/svga-icons";
     @import "components/catgrounds/catgrounds";
 
  // Specific Cases
@@ -53,17 +52,23 @@ sass --no-source-map app/styles/appart.scss app/styles/appart-dev.css
  // @import "components/data-table/data-table";
 
 
-// -------------------------------------------- Higher priority
+ // Deprecated
 
-    @import "components/color-model/color-model";
-    @import "components/html-core/css-workers";
-    @import "components/article-markup/article-markup";
+    @import "components/journal-grid/journal-grid";
 
 
-// -------------------------------------------- Project
+// -------------------------------------------- System Utils
 
-@import "components/color-model/project-paletes";
-@import "appart-version-fallbacks";
+
+    @import "components/system-utils/css-varriors";
+    @import "components/system-utils/css-workers";
+    @import "components/system-utils/article-markup";
+ // dev-mode
+    @import "components/system-utils/ultra-new";
+
+
+// -------------------------------------------- Custom
+
 
 
 /*  EOF Appart style index */

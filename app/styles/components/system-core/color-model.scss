@@ -11,28 +11,30 @@
 
 
 :root,
-.colors--root,
-.color-model {
+.root,
+.color-model,
+.colors--root {
   --back-color:         white;
-  --back-color-accent:  wheat;
-  --back-color-descent: var(--light-shadow);
+  --back-color-accent:  snow;
+  --back-color-descent: whitesmoke;
 
   --text-color:         black;
-  --text-color-accent:  var(--text-color);
-  --text-color-descent: var(--text-color);
+  --text-color-accent:  darkslategray;
+  --text-color-descent: lightslategray;
 
   --link-color:         firebrick;
-  --link-color-accent:  var(--link-color);
-  --link-color-descent: var(--link-color);
+  --link-color-accent:  darkred;
+  --link-color-descent: lightsteelblue;
 
   --shadow-color: var(--shadow-color--for-light-base);
   --light-shadow: var(--light-shadow--for-light-base);
 }
 
 :root,
+.root,
 .color-model {
-  --shadow-color--for-light-base: hsla(  0,  0%,   0%, 0.3);
-  --shadow-color--for-dark-base:  hsla(  0,  0%, 100%, 0.2);
+  --shadow-color--for-light-base: hsla(  0,  0%,   0%, 0.3 );
+  --shadow-color--for-dark-base:  hsla(  0,  0%, 100%, 0.2 );
   --light-shadow--for-light-base: hsla(  0,  0%,   0%, 0.05);
   --light-shadow--for-dark-base:  hsla(  0,  0%, 100%, 0.05);
 }
@@ -118,6 +120,7 @@ body {
 /* swed-design 2019 */
 
 :root,
+.root,
 .color-model {
     --HSL-NobleBlack:            240, 15%, 12%;
     --HSL-NobleBlue:             212, 34%, 29%;
@@ -132,6 +135,7 @@ body {
 /* appking 2019 */
 
 :root,
+.root,
 .color-model {
     --HSL-KingsBlue:             202, 81%, 23%;
     --HSL-KingsAction:            15, 75%, 30%;

@@ -1,8 +1,8 @@
-/** html wrap & base markup
- *  2019.12.8
+/** html-markup
+ *  2019.12.13
  *
- *  something like normalize
- *  low-priority properties for html tags
+ *  low level html markup
+ *  normalize
  *
  *  CSS
  *
@@ -17,6 +17,17 @@ html                 { height: 100%; }
 html, body           { margin: 0; padding: 0; }
 
 
+/* full-height 2019
+   https://css-tricks.com/some-things-you-oughta-know-when-working-with-viewport-units/ */
+body {
+  min-height: 100vh; /* or min-height: calc(100vh - 80px); - depending on your preferences */
+  min-height: -webkit-fill-available;
+  min-height: -moz-available;
+  min-height: available; /* not sure if exist in any browser */
+  min-height: -webkit-stretch; /* not sure if exist in any browser */
+  min-height: -moz-stretch; /* not sure if exist in any browser */
+  min-height: stretch;
+}
 
 
 /** -------------------------------- improve design & UX */
@@ -59,9 +70,11 @@ p, blockquote {
 button {
     padding:    0;
     border:     0;
-    background: transparent;
     font:       inherit;
-    color:      inherit;
+  --background: var(--back-color-accent, transparent);
+    background: var(--background);
+  --color:      var(--text-color, inherit);
+    color:      var(--color);
 }
 
 
@@ -70,8 +83,8 @@ button {
 
 img, svg, canvas {
     display:   block;
-    max-width: var(--max-width, 100%);
-    min-width: var(--min-width, 0);
+    max-width: 100%;
+    min-width: 0;
     height:    auto;
     border:    0;
 }
@@ -86,8 +99,9 @@ figure {
 a { color: inherit; }
 
 ul, ol {
-    padding: 0;
-    margin:  0 0 0 1.5em;
+    padding:  0;
+    margin:   0;
+    margin-left: var(--col-space, 1.5rem);
 }
 
 hr {
@@ -99,7 +113,7 @@ hr {
  /* used as empty space */
     display:    block;
     font-size:  inherit;
-    height:     calc(var(--big-space, 4rem) - var(--row-space, 1.5rem));
+    height:     var(--mid-space, 2.5rem);
 }
 
 td, th {
@@ -127,5 +141,6 @@ td, th {
     list-style:      none;
     text-decoration: none;
 }
+
 
 /*  EOF html wrap */

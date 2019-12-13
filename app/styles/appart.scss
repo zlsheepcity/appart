@@ -1,83 +1,66 @@
 @charset "UTF-8";
 /*  Appart Styles
  *  index file
- *  2019.8.22
+ *  2019.12.13
  */
 
-/** Compilation Shortcut:
-    scss -C --sourcemap=none app/styles/appart.scss app/styles/appart-dev.css
-    sass --no-source-map app/styles/appart.scss app/styles/appart-dev.css
+/*  -------------------------------------------- Compilation shortcuts
+
+scss -C --sourcemap=none app/styles/appart.scss app/styles/appart-dev.css
+
+sass --no-source-map app/styles/appart.scss app/styles/appart-dev.css
+
  */
 
 
-// --------------------------------------------------------------
 // -------------------------------------------- Quick Prototyping
-// --------------------------------------------------------------
 
-//@import "components/prototype/prototype-sakura";
+ // @import "components/prototype/prototype-sakura";
 
 
-// --------------------------------------------------------------
 // -------------------------------------------- Appart Defaults
-// --------------------------------------------------------------
+
+ // HTML Setup
+
+    @import "components/html-core/css-settings";
+    @import "components/html-core/html-markup";
+    @import "components/html-core/html-typography";
+
+ // Support Components
+
+    @import "components/html-core/css-varriors";
+    @import "components/animate-css/required-animations";
+    @import "components/svga-icons/svga-icons";
+
+ // Layout Components
+
+    /*deprecated*/@import "components/journal-grid/journal-grid";
+    @import "components/journal-grid/grid-queen";
+    @import "components/offsidebar/offsidebar";
+    @import "components/contact-form/contact-form";
+
+ // Design Components
+
+    @import "components/swed-design/swed-banner";
+    @import "components/swed-design/swed-button";
+    @import "components/swed-design/swed-dropdown";
+    @import "components/swed-design/swed-site-head";
+    @import "components/catgrounds/catgrounds";
+
+ // Specific Cases
+
+    @import "components/old-style-code-block/old-style-code-block";
+ // @import "components/data-table/data-table";
 
 
-// -------------------------------------------- HTML Setup
-
-
-@import "components/html-core/css-settings";
-@import "components/html-core/css-varriors";
-@import "components/html-core/html-wrap";
-@import "components/html-core/html-typography";
-
-
-// -------------------------------------------- Layout Components
-
-    @import "components/journal-grid/journal-grid";
-@import "components/journal-grid/grid-queen";
-@import "components/offsidebar/offsidebar";
-
-
-// -------------------------------------------- Support Components
-
-
-@import "components/animate-css/required-animations";
-@import "components/svga-icons/svga-icons";
-
-
-// -------------------------------------------- Design Components
-
-
-@import "components/contact-form/contact-form";
-
-@import "components/swed-design/swed-banner";
-@import "components/swed-design/swed-button";
-@import "components/swed-design/swed-dropdown";
-@import "components/swed-design/swed-site-head";
-
-@import "components/catgrounds/catgrounds";
-
-
-// -------------------------------------------- Specific Cases
-
-@import "components/old-style-code-block/old-style-code-block";
-//@import "components/data-table/data-table";
-
-
-// --------------------------------------------------------------
 // -------------------------------------------- Higher priority
-// --------------------------------------------------------------
+
+    @import "components/color-model/color-model";
+    @import "components/html-core/css-workers";
+    @import "components/article-markup/article-markup";
 
 
-@import "components/color-model/color-model";
-@import "components/html-core/css-workers";
-@import "components/article-markup/article-markup";
-
-
-// --------------------------------------------------------------
 // -------------------------------------------- Project
-// --------------------------------------------------------------
-
 
 @import "components/color-model/project-paletes";
 @import "appart-version-fallbacks";

@@ -1,17 +1,46 @@
 /** typography
  *  All about font and line-height
- *  2019.8.23
+ *  2019.12.13
  *
  *  CSS
  *
  */
 
 
+/** -------------------------------- system base */
+
+
+:root,
+.root {
+  --font-family:             var(--font-family--tufte-serif);
+  --font-family-secondary:   var(--font-family--tufte-sans);
+  --font-family-interface:   var(--font-family--native-sans);
+  --font-weight:             400;
+  --line-height:             1.5;
+}
+
+body {
+    line-height: var(--line-height);
+    font-family: var(--font-family);
+    font-weight: var(--font-weight);
+ /* font-size:   is unset by default */
+
+ /* store base values */
+  --base-font-size:   1rem;
+  --base-line-height: var(--line-height);
+
+ /* Decrease vertical padding on text paragraphs, to
+    make them visually equal with horizontal paddings.
+    Pixel-perfect value depends on font-family. */
+  --base-font-square-ratio: 0.25;
+}
+
+
 /** -------------------------------- Typeface collections */
 
 
 :root,
-.root-typography {
+.root {
 
 /** Native font stack 2018 */
 
@@ -33,7 +62,7 @@
 
 /** Tufte 2018 */
 /*
-    book-style content
+    book-style design
     @import url('https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic');
  */
   --font-family--tufte-serif:
@@ -78,23 +107,30 @@
 
 
 :root,
-.root-typography {
+.root {
   --paragraph-width--max: 42em;
+  --paragraph-width--opt: 32em;
   --paragraph-width--mid: 24em;
   --paragraph-width--min: 12em; }
 @media all and (max-width:12em) {
     :root,
-    .root-typography {
+    .root {
       --paragraph-width--min: 100%;
     }
 }
 
 body {
-  --paragraph-width: var(--paragraph-width--max);
+  --paragraph-width: var(--paragraph-width--opt);
 }
 
 .paragraph {
   --max-width: var(--paragraph-width);
+  --min-width: var(--paragraph-width--min);
+    max-width: var(--max-width);
+    min-width: var(--min-width);
+}
+.maxi-paragraph {
+  --max-width: var(--paragraph-width--max);
   --min-width: var(--paragraph-width--min);
     max-width: var(--max-width);
     min-width: var(--min-width);
@@ -115,7 +151,7 @@ body {
 
 
 :root,
-.root-typography {
+.root {
  /* 64/80 */
   --h1-font-size:    4rem;
   --h1-line-height:  1.25;
@@ -161,7 +197,7 @@ body {
 }
 @media all and (max-width:42em) {
     :root,
-    .root-typography {
+    .root {
      /* 36/40 */
       --h1-font-size:    2.25rem;
       --h1-line-height:  calc(40/36);
@@ -247,34 +283,6 @@ html {
 body {
     text-rendering: optimizeLegibility;
    -webkit-font-smoothing: antialiased;
-}
-
-
-/** -------------------------------- system base */
-
-
-:root,
-.root-typography {
-  --font-family:             var(--font-family--tufte-serif);
-  --font-family-secondary:   var(--font-family--tufte-sans);
-  --font-family-interface:   var(--font-family--native-sans);
-  --font-weight:             400;
-  --line-height:             1.5;
-}
-
-body {
-    line-height: var(--line-height);
-    font-family: var(--font-family);
-    font-weight: var(--font-weight);
- /* font-size is unset */
-
- /* save constant values */
-  --base-font-size:   1rem;
-  --base-line-height: var(--line-height);
-
- /* Decrease vertical paddings by ratio value * 1em,
-    to make visually equal paddings over text paragraph. */
-  --base-font-square-ratio: 0.25;
 }
 
 

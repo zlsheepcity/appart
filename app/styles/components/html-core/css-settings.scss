@@ -1,12 +1,13 @@
-/** base css settings
- *  2019.9.9
+/** root css settings
+ *  2019.12.13
  */
 
 
 :root,
-.root-settings {
+.root {
 
   --line-height:   1.5;
+
 
  /* Default spacing */
 
@@ -14,11 +15,8 @@
   --col-space:     1.5rem;                              /* Horizontal */
   --mid-space:     2.5rem;                              /* Bigger 1 */
   --big-space:       4rem;                              /* Bigger 2 */
-  --all-space:     var(--row-space) var(--col-space);   /* Shortcode */
+  --all-space:     var(--row-space) var(--col-space);   /* Combo Shortcode */
 
- /* z-indexes order */
-
-  --z-index--sidebar: 100;
 
 }
 

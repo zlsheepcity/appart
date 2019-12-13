@@ -1,9 +1,10 @@
-/** === ༼°▽°༽ === CSS Varriors  *//*
+/** === ༼°▽°༽ ===
+ *   CSS Varriors
  *
- *  Atom classes for maintainable inline CSS
+ *  add safely custom value
  *  «Var never changes»
  *  zl, 2019.8.14
- *  
+ *
  *
  *  SCSS
  *
@@ -13,34 +14,26 @@
 /** -------------------------------- Usage */
 /*
 
+    ## Option 0. Default value
+
+    <div class="opacity">
+        ...
+    </div>
+
     ## Option 1.
 
-    <div class="opacity" style="--opacity:0.5;">
+    <div class="opacity" style="--opacity:0.56;">
         ...
     </div>
 
     ## Option 2.
 
-    <section style="--opacity: 0.5;">
-        <div class="opacity">..</div>
-        <div class="opacity">..</div>
+    <section style="--opacity: 0.56;">
+        <div class="opacity">...</div>
+        <div class="opacity">...</div>
     </section>
 
  */
-
-
-/** -------------------------------- Handmade CSS varriors */
-
-
-    /*
-    .width      {      width: var(--width,      auto ); }
-    .max-width  {  max-width: var(--max-width,  100% ); }
-    .min-width  {  min-width: var(--min-width,     0 ); }
-    .height     {     height: var(--height,     auto ); }
-    .max-height { max-height: var(--max-height, 100% ); }
-    .min-height { min-height: var(--min-height,    0 ); }
-    .opacity    {    opacity: var(--opacity,       1 ); }
-    */
 
 
 /** -------------------------------- SCSS auto varriors */
@@ -85,6 +78,20 @@ $DEFAULT-VARRIORS: (
 //  .padding { padding: var(--padding, 1rem   ); }
     .#{$VAR} { #{$VAR}: var(--#{$VAR}, #{$DEF}); }
 }
+
+
+/** -------------------------------- Handmade CSS varriors */
+
+
+    /*
+    .width      {      width: var(--width,      auto ); }
+    .max-width  {  max-width: var(--max-width,  100% ); }
+    .min-width  {  min-width: var(--min-width,     0 ); }
+    .height     {     height: var(--height,     auto ); }
+    .max-height { max-height: var(--max-height, 100% ); }
+    .min-height { min-height: var(--min-height,    0 ); }
+    .opacity    {    opacity: var(--opacity,       1 ); }
+    */
 
 
 /*  EOF CSS Varriors */

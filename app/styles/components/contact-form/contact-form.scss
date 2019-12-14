@@ -1,5 +1,5 @@
 /** contact form design
- *  2019.12.9
+ *  2019.12.15
  *
  *  CSS
  *
@@ -27,6 +27,26 @@
 
 
 /* -------------------------------- Color Settings */
+
+
+/*
+.colors--contact-bar {
+  --back-color:         hsl(  53, 66%, 80% );
+  --back-color-accent:  hsl(  53, 70%, 76% );
+  --back-color-descent: var(--light-shadow);
+
+  --text-color:         hsl( 204,  4%, 22% );
+  --text-color-accent:  hsl( 359, 59%, 43% );
+  --text-color-descent: hsl( 204,  4%, 42% );
+
+  --link-color:         hsl( 359, 54%, 53% );
+  --link-color-accent:  hsl( 359, 59%, 43% );
+  --link-color-descent: var(--link-color);
+
+  --shadow-color: var(--shadow-color--for-light-base);
+  --light-shadow: var(--light-shadow--for-light-base);
+}
+*/
 
 
 .form-design {
@@ -60,7 +80,7 @@
 /* -------------------------------- Color System */
 
 
-.form-design input,
+.form-design input:not([type="submit"]):not([type="reset"]):not([type="button"]),
 .form-design select,
 .form-design textarea {
 
@@ -98,45 +118,47 @@
     padding: 0;
     margin:  0;
 }
+
+/* content fields only */
+
 .form-design textarea,
 .form-design select,
-.form-design input {
-
- /* normalization */
-
-    display:   block;
-    width:      100%;
-    box-shadow: none;
-    border:        0;
-  --border-radius: 0;
-    border-radius: var(--border-radius);
+.form-design input:not([type="submit"]):not([type="reset"]):not([type="button"]) {
+    display: block;
+    width:   100%;
+    padding: var(--form-field-paddings);
 
     font-size:   1em;
     font-family: inherit;
     font-weight: inherit;
     line-height: var(--line-height);
 
-   -ms-touch-action: manipulation;
-    touch-action:    manipulation;
-    resize:          vertical;
-
- /* decoration */
+    box-shadow: none;
+    border:        0;
+  --border-radius: 0;
+    border-radius: var(--border-radius);
 
   --background-color: var(--back-color);
   --color:            var(--text-color);
     background-color: var(--background-color);
     color:            var(--color);
-    padding:          var(--form-field-paddings);
 
+   -ms-touch-action: manipulation;
+    touch-action:    manipulation;
+    resize:          vertical;
+}
+
+/* focus decoration */
+
+.form-design textarea,
+.form-design select,
+.form-design input {
     transition: outline .24s var(--timing-function--openJump);
     outline:    0 solid var(--mark-color);
 }
 .form-design textarea:focus ,
 .form-design   select:focus ,
 .form-design    input:focus {
-
- /* focus decoration */
-
   --background-color: var(--back-color-accent);
   --color:            var(--text-color-accent);
     outline: 0.25rem solid var(--mark-color);
@@ -152,7 +174,6 @@
     max-width: var(--max-width);
 }
 .wrap-form-fields {
-
     padding: var(--sy) var(--sx);
 
  /* vertical grid */
@@ -160,13 +181,26 @@
     grid-template-columns: auto;
     grid-row-gap: var(--sy);
     grid-column-gap: 0;
-
 }
 .wrap-field {
     display: block;
     margin:  0;
     padding: 0;
 }
+.wrap-form-feedback {
+    padding:   var(--sy) var(--sx);
+    width:     100vh;
+    max-width: var(--max-width);
+}
+
+
+/* -------------------------------- States */
+
+
+.form-design .wrap-form-feedback { display: none; }
+
+.form-design.has-state-response .wrap-form-fields   { display:  none; }
+.form-design.has-state-response .wrap-form-feedback { display: block; }
 
 
 /* -------------------------------- Components */
@@ -200,11 +234,22 @@
 /* default submit button */
 
 .form-design .form-design-button {
-
     display: inline-block;
+    width:           auto;
     padding:  0.5em 1.5em;
+    border:             0;
   --border-radius:    4px;
-    width: auto;
+    border-radius: var(--border-radius);
+    box-shadow:      none;
+
+   -ms-touch-action: manipulation;
+    touch-action:    manipulation;
+    resize:          vertical;
+
+    font-size:   1em;
+    font-family: inherit;
+    font-weight: inherit;
+    line-height: var(--line-height);
 
   --background-color: var(--back-color);
   --color:            var(--text-color);
@@ -251,7 +296,6 @@
 }
 
 
-
 /* -------------------------------- WPCF7 Integration */
 
 
@@ -285,16 +329,90 @@
     vertical-align: baseline;
     padding-right:   0.25rem;
 }
-.wpcf7-response-output {
+.form-design .wpcf7-response-output {
     padding: var(--sy) var(--sx);
+    margin:  0;
+    border:  0;
     background-color: var(--back-color-accent);
+    color:            var(--text-color-accent);
+}
+.form-design .wrap-validation-response .wpcf7-response-output {
+    margin: 0 calc( -1 * var(--sx) );
+}
+
+
+
+/* ajax loader */
+
+.form-design .wpcf7 .ajax-loader {
+    background-image: none;
+    pointer-events:   none;
+
+    position: absolute;
+    z-index:  1;
+    top:      0;
+    right:    0;
+    bottom:   0;
+    left:     0;
+    width:    auto;
+    height:   auto;
+    margin:   0;
+    padding:  0;
+}
+.form-design .wpcf7 .ajax-loader::before {
+    content: '';
+    position: absolute;
+    z-index:  0;
+    top:      0;
+    right:    0;
+    bottom:   0;
+    left:     0;
+
+    opacity:  0.85;
+  --background-color: transparent;
+    background-color: var(--background-color);
+    transition: background 240ms ease-out;
+}
+
+.form-design .wpcf7 .ajax-loader.is-active {
+    visibility:       visible;
+    pointer-events:   all;
+}
+.form-design .wpcf7 .ajax-loader.is-active::before {
+    background-color: var(--back-color);
+}
+.form-design .wpcf7 .ajax-loader.is-active::after {
+  --size:     6rem;
+
+    content:  '';
+    position: absolute;
+    z-index:  1;
+    top:      calc( 50% - 0.5*var(--size) );
+    right:    calc( 50% - 0.5*var(--size) );
+    width:    var(--size);
+    height:   var(--size);
+
+    background-size:     var(--size);
+    background-repeat:   no-repeat;
+    background-position: center center;
+    background-image: url('data:image/svg+xml,%3Csvg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/%3E%3C/svg%3E');
+
+    animation: FormLoaderRotation 1s linear infinite;
+}
+@keyframes FormLoaderRotation {
+    from { transform: rotate(360deg); }
+    to   { transform: rotate(1deg);   }
 }
 
 
 /* -------------------------------- Offsidebar Integration */
 
 
-.form-design.sidepanel-content { padding: 0; }
+.form-design.sidepanel-content {
+    position:  relative;
+    padding:   0;
+    flex-grow: 2;
+}
 
 
 /* -------------------------------- Required System Vars */

@@ -1,4 +1,4 @@
-function Init__ContactFormReaction (dna) {
+function Init__ContactForm (dna={}) {
 
     const Mom = dna.el || document.querySelector(dna.selector || '.form-functional')
     if ( !Mom ) return false
@@ -55,12 +55,28 @@ function Init__ContactFormReaction (dna) {
      // combo
         stateLoading:  e => Api.setState('Loading'),
         stateResponse: e => Api.setState('Response'),
+
+     // Delegators
+
+        delegateReset: el => {
+            if (!el) return false
+            el.addEventListener('click', Api.resetForm)
+        },
+        delegateLoading: el => {
+            if (!el) return false
+            el.addEventListener('click', Api.stateLoading)
+        },
+        delegateResponse: el => {
+            if (!el) return false;
+            el.addEventListener('click', Api.stateResponse)
+        },
+
     }
 
     const Activate__core_events = ()=> {
-        if (Dom.Reform) Dom.Reform.addEventListener('click', Api.resetForm)
-        if (Dom.stLoad) Dom.stLoad.addEventListener('click', Api.stateLoading)
-        if (Dom.stFeed) Dom.stFeed.addEventListener('click', Api.stateResponse)
+        Api.delegateReset(Dom.Reform)
+        Api.delegateLoading(Dom.stLoad)
+        Api.delegateResponse(Dom.stFeed)
     }
 
     const Integration__wpcf7 = ()=> {
@@ -95,10 +111,10 @@ function Init__ContactFormReaction (dna) {
 
 $(function() {
     $( '.form-functional' )
-        .each( (i,el) => {Init__ContactFormReaction({el:el})} )
+        .each( (i,el) => {Init__ContactForm({el:el})} )
 })
 
-/**//* ----- vanila autorun /*
+/**//* ----- app autorun /*
 
 ...
 

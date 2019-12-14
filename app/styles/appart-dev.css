@@ -1594,8 +1594,148 @@ body {
 }
 
 /*  EOF offsidebar */
+/** myocard
+ *  responsive solution for cards with 2 components
+ *  2019.12.15
+ *
+ *  CSS
+ *
+ */
+/* -------------------------------- Settings */
+.myocard {
+  --sx: var(--col-space ,1.5rem );
+  /* horizontal space unit */
+  --sy: var(--row-space ,1.5rem );
+  /* vertical space unit */
+  /* Private */
+  --card-padding: calc( 0.5*var(--sy) ) 0;
+  --item-padding: calc( 0.5*var(--sy) ) var(--sx);
+  --item-max-width: 28rem;
+  /* Public
+  
+    --card-max-width:      100%;
+    --card-wrap-order:     wrap-reverse;
+    --card-wrap-order:     wrap;
+    --card-centering:      0;
+    --card-centering:      auto;
+    --item-vertical-align: center;
+    --item-vertical-align: flex-end;
+    --item-vertical-align: flex-start;
+  
+      */
+}
+
+/* -------------------------------- Layout */
+.myocard {
+  --width: 100%;
+  width: var(--width);
+  --max-width-xx: calc( 2*var(--item-max-width) + var(--sx) );
+  --max-width: var(--card-max-width ,var(--max-width-xx) );
+  max-width: var(--max-width);
+  --margin-left: var(--card-centering ,auto );
+  margin-left: var(--margin-left);
+  --margin-right: var(--card-centering ,auto );
+  margin-right: var(--margin-right);
+}
+
+/* Flex Half-Grow Technique */
+.myocard {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: var(--card-wrap-order, wrap);
+}
+
+.myocard > * {
+  flex-grow: 0.5;
+}
+
+.myocard > *:nth-child(odd) {
+  margin-left: auto;
+}
+
+.myocard > *:nth-child(even) {
+  text-align: right;
+}
+
+/* Paddings Around Card and Items */
+.myocard {
+  --padding: var(--card-padding ,0 );
+  padding: var(--padding);
+}
+
+.myocard > * > * {
+  --padding: var(--item-padding ,0 );
+}
+
+.myocard > * > * {
+  padding: var(--padding);
+}
+
+/* Inserted Child */
+.myocard > .myocard {
+  padding: 0;
+  width: auto;
+}
+
+.myocard > .myocard > * {
+  padding: 0;
+}
+
+/* Item Box Model */
+.myocard > * {
+  --max-width: var(--item-max-width ,100% );
+}
+
+.myocard > * > * {
+  max-width: var(--max-width);
+}
+
+.myocard > *:nth-child(even) > * {
+  display: inline-flex;
+  flex-direction: column;
+  text-align: left;
+  vertical-align: middle;
+}
+
+/* Vertical Align */
+.myocard {
+  --align-items: var(--item-vertical-align ,center );
+  align-items: var(--align-items);
+}
+
+/* -------------------------------- Addons */
+.myocards-wrapper.align-top,
+.myocard.align-top {
+  --item-vertical-align: flex-start;
+}
+
+.myocards-wrapper.is-banner,
+.myocard.is-banner {
+  --item-max-width: 40rem;
+  --card-max-width: 57.5rem;
+}
+
+.myocards-wrapper.is-layout,
+.myocard.is-layout {
+  --card-padding: calc( 0.5*var(--sy) ) calc( 0.5*var(--sx) );
+  --item-padding: calc( 0.5*var(--sy) ) calc( 0.5*var(--sx) );
+  --item-max-width: 42rem;
+  --card-max-width: 100%;
+  --card-centering: 0;
+  --item-vertical-align: flex-start;
+}
+
+.myocards-wrapper.wrap-order-reverse,
+.myocard.wrap-order-reverse {
+  /* second child goes first,
+     when wrapping */
+  --card-wrap-order: wrap-reverse;
+  --align-items: var(--item-vertical-align ,flex-end );
+}
+
+/** EOF Myocards */
 /** contact form design
- *  2019.12.9
+ *  2019.12.15
  *
  *  CSS
  *
@@ -1617,6 +1757,24 @@ body {
 }
 
 /* -------------------------------- Color Settings */
+/*
+.colors--contact-bar {
+  --back-color:         hsl(  53, 66%, 80% );
+  --back-color-accent:  hsl(  53, 70%, 76% );
+  --back-color-descent: var(--light-shadow);
+
+  --text-color:         hsl( 204,  4%, 22% );
+  --text-color-accent:  hsl( 359, 59%, 43% );
+  --text-color-descent: hsl( 204,  4%, 42% );
+
+  --link-color:         hsl( 359, 54%, 53% );
+  --link-color-accent:  hsl( 359, 59%, 43% );
+  --link-color-descent: var(--link-color);
+
+  --shadow-color: var(--shadow-color--for-light-base);
+  --light-shadow: var(--light-shadow--for-light-base);
+}
+*/
 .form-design {
   --field-back-color: white;
   --field-back-color-accent: white;
@@ -1640,7 +1798,7 @@ body {
 }
 
 /* -------------------------------- Color System */
-.form-design input,
+.form-design input:not([type=submit]):not([type=reset]):not([type=button]),
 .form-design select,
 .form-design textarea {
   --back-color: var(--field-back-color);
@@ -1669,29 +1827,34 @@ body {
   margin: 0;
 }
 
+/* content fields only */
 .form-design textarea,
 .form-design select,
-.form-design input {
-  /* normalization */
+.form-design input:not([type=submit]):not([type=reset]):not([type=button]) {
   display: block;
   width: 100%;
-  box-shadow: none;
-  border: 0;
-  --border-radius: 0;
-  border-radius: var(--border-radius);
+  padding: var(--form-field-paddings);
   font-size: 1em;
   font-family: inherit;
   font-weight: inherit;
   line-height: var(--line-height);
-  -ms-touch-action: manipulation;
-  touch-action: manipulation;
-  resize: vertical;
-  /* decoration */
+  box-shadow: none;
+  border: 0;
+  --border-radius: 0;
+  border-radius: var(--border-radius);
   --background-color: var(--back-color);
   --color: var(--text-color);
   background-color: var(--background-color);
   color: var(--color);
-  padding: var(--form-field-paddings);
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  resize: vertical;
+}
+
+/* focus decoration */
+.form-design textarea,
+.form-design select,
+.form-design input {
   transition: outline 0.24s var(--timing-function--openJump);
   outline: 0 solid var(--mark-color);
 }
@@ -1699,7 +1862,6 @@ body {
 .form-design textarea:focus,
 .form-design select:focus,
 .form-design input:focus {
-  /* focus decoration */
   --background-color: var(--back-color-accent);
   --color: var(--text-color-accent);
   outline: 0.25rem solid var(--mark-color);
@@ -1725,6 +1887,25 @@ body {
   display: block;
   margin: 0;
   padding: 0;
+}
+
+.wrap-form-feedback {
+  padding: var(--sy) var(--sx);
+  width: 100vh;
+  max-width: var(--max-width);
+}
+
+/* -------------------------------- States */
+.form-design .wrap-form-feedback {
+  display: none;
+}
+
+.form-design.has-state-response .wrap-form-fields {
+  display: none;
+}
+
+.form-design.has-state-response .wrap-form-feedback {
+  display: block;
 }
 
 /* -------------------------------- Components */
@@ -1759,9 +1940,19 @@ body {
 /* default submit button */
 .form-design .form-design-button {
   display: inline-block;
-  padding: 0.5em 1.5em;
-  --border-radius: 4px;
   width: auto;
+  padding: 0.5em 1.5em;
+  border: 0;
+  --border-radius: 4px;
+  border-radius: var(--border-radius);
+  box-shadow: none;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  resize: vertical;
+  font-size: 1em;
+  font-family: inherit;
+  font-weight: inherit;
+  line-height: var(--line-height);
   --background-color: var(--back-color);
   --color: var(--text-color);
   background-color: var(--background-color);
@@ -1838,14 +2029,86 @@ body {
   padding-right: 0.25rem;
 }
 
-.wpcf7-response-output {
+.form-design .wpcf7-response-output {
   padding: var(--sy) var(--sx);
+  margin: 0;
+  border: 0;
   background-color: var(--back-color-accent);
+  color: var(--text-color-accent);
 }
 
+.form-design .wrap-validation-response .wpcf7-response-output {
+  margin: 0 calc( -1 * var(--sx) );
+}
+
+/* ajax loader */
+.form-design .wpcf7 .ajax-loader {
+  background-image: none;
+  pointer-events: none;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: auto;
+  height: auto;
+  margin: 0;
+  padding: 0;
+}
+
+.form-design .wpcf7 .ajax-loader::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0.85;
+  --background-color: transparent;
+  background-color: var(--background-color);
+  transition: background 240ms ease-out;
+}
+
+.form-design .wpcf7 .ajax-loader.is-active {
+  visibility: visible;
+  pointer-events: all;
+}
+
+.form-design .wpcf7 .ajax-loader.is-active::before {
+  background-color: var(--back-color);
+}
+
+.form-design .wpcf7 .ajax-loader.is-active::after {
+  --size: 6rem;
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: calc( 50% - 0.5*var(--size) );
+  right: calc( 50% - 0.5*var(--size) );
+  width: var(--size);
+  height: var(--size);
+  background-size: var(--size);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-image: url('data:image/svg+xml,%3Csvg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/%3E%3C/svg%3E');
+  animation: FormLoaderRotation 1s linear infinite;
+}
+
+@keyframes FormLoaderRotation {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(1deg);
+  }
+}
 /* -------------------------------- Offsidebar Integration */
 .form-design.sidepanel-content {
+  position: relative;
   padding: 0;
+  flex-grow: 2;
 }
 
 /* -------------------------------- Required System Vars */
@@ -2361,146 +2624,6 @@ html:not([la-root-re-vars]) {
 }
 
 /*  EOF catgrounds */
-/** myocard
- *  responsive solution for cards with 2 components
- *  2019.12.15
- *
- *  CSS
- *
- */
-/* -------------------------------- Settings */
-.myocard {
-  --sx: var(--col-space ,1.5rem );
-  /* horizontal space unit */
-  --sy: var(--row-space ,1.5rem );
-  /* vertical space unit */
-  /* Private */
-  --card-padding: calc( 0.5*var(--sy) ) 0;
-  --item-padding: calc( 0.5*var(--sy) ) var(--sx);
-  --item-max-width: 28rem;
-  /* Public
-  
-    --card-max-width:      100%;
-    --card-wrap-order:     wrap-reverse;
-    --card-wrap-order:     wrap;
-    --card-centering:      0;
-    --card-centering:      auto;
-    --item-vertical-align: center;
-    --item-vertical-align: flex-end;
-    --item-vertical-align: flex-start;
-  
-      */
-}
-
-/* -------------------------------- Layout */
-.myocard {
-  --width: 100%;
-  width: var(--width);
-  --max-width-xx: calc( 2*var(--item-max-width) + var(--sx) );
-  --max-width: var(--card-max-width ,var(--max-width-xx) );
-  max-width: var(--max-width);
-  --margin-left: var(--card-centering ,auto );
-  margin-left: var(--margin-left);
-  --margin-right: var(--card-centering ,auto );
-  margin-right: var(--margin-right);
-}
-
-/* Flex Half-Grow Technique */
-.myocard {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: var(--card-wrap-order, wrap);
-}
-
-.myocard > * {
-  flex-grow: 0.5;
-}
-
-.myocard > *:nth-child(odd) {
-  margin-left: auto;
-}
-
-.myocard > *:nth-child(even) {
-  text-align: right;
-}
-
-/* Paddings Around Card and Items */
-.myocard {
-  --padding: var(--card-padding ,0 );
-  padding: var(--padding);
-}
-
-.myocard > * > * {
-  --padding: var(--item-padding ,0 );
-}
-
-.myocard > * > * {
-  padding: var(--padding);
-}
-
-/* Inserted Child */
-.myocard > .myocard {
-  padding: 0;
-  width: auto;
-}
-
-.myocard > .myocard > * {
-  padding: 0;
-}
-
-/* Item Box Model */
-.myocard > * {
-  --max-width: var(--item-max-width ,100% );
-}
-
-.myocard > * > * {
-  max-width: var(--max-width);
-}
-
-.myocard > *:nth-child(even) > * {
-  display: inline-flex;
-  flex-direction: column;
-  text-align: left;
-  vertical-align: middle;
-}
-
-/* Vertical Align */
-.myocard {
-  --align-items: var(--item-vertical-align ,center );
-  align-items: var(--align-items);
-}
-
-/* -------------------------------- Addons */
-.myocards-wrapper.align-top,
-.myocard.align-top {
-  --item-vertical-align: flex-start;
-}
-
-.myocards-wrapper.is-banner,
-.myocard.is-banner {
-  --item-max-width: 40rem;
-  --card-max-width: 57.5rem;
-}
-
-.myocards-wrapper.is-layout,
-.myocard.is-layout {
-  --card-padding: calc( 0.5*var(--sy) ) calc( 0.5*var(--sx) );
-  --item-padding: calc( 0.5*var(--sy) ) calc( 0.5*var(--sx) );
-  --item-max-width: 42rem;
-  --card-max-width: 100%;
-  --card-centering: 0;
-  --item-vertical-align: flex-start;
-}
-
-.myocards-wrapper.wrap-order-reverse,
-.myocard.wrap-order-reverse {
-  /* second child goes first,
-     when wrapping */
-  --card-wrap-order: wrap-reverse;
-  --align-items: var(--item-vertical-align ,flex-end );
-}
-
-/** EOF Myocards */
 /** code block design
  *  2019.12.10
  *

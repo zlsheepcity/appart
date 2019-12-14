@@ -35,9 +35,13 @@ sass --no-source-map app/styles/appart.scss app/styles/appart-dev.css
 
     @import "components/journal-grid/grid-queen";
     @import "components/offsidebar/offsidebar";
+    @import "components/myocard/myocard";
+
+ // Functionality
+
     @import "components/contact-form/contact-form";
 
- // Design Components
+ // Design
 
     @import "components/swed-design/swed-banner";
     @import "components/swed-design/swed-button";
@@ -45,7 +49,6 @@ sass --no-source-map app/styles/appart.scss app/styles/appart-dev.css
     @import "components/swed-design/swed-site-head";
     @import "components/svga-icons/svga-icons";
     @import "components/catgrounds/catgrounds";
-    @import "components/myocard/myocard";
 
  // Specific Cases
 

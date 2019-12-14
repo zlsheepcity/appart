@@ -147,7 +147,7 @@
         <article class="grid-queen chapter colors--primary">
 
             <h2>Contact Us</h2>
-            <section class="grid-column--main form-design">
+            <section class="grid-column--main form-design form-functional">
                 <div class="wrap-form">
                     <form action="">
                         <div class="wrap-form-fields">
@@ -176,6 +176,7 @@
 
                             <div class="wrap-field wrap-submit">
                                 <input type="submit" value="Send" class="form-design-button">
+                                <div class="form-design-button js-imitate-form">Imitate</div>
                                 <span class="ajax-loader is-active"></span>
                             </div>
 
@@ -183,6 +184,17 @@
                     </form>
                 </div>
             </section>
+
+            <script src="app/styles/components/contact-form/controller.js"></script>
+            <script>
+                function getFormApiExample () {
+                    let selector = '.form-functional'
+                    let form_api = Init__ContactForm({selector})
+                    let imitator = document.querySelector('.js-imitate-form')
+                    form_api.delegateLoading(imitator)
+                }
+                app.onload(getFormApiExample)
+            </script>
 
         </article>
         <article class="grid-queen chapter use-colors colors--ivory">

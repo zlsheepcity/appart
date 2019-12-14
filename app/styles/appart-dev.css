@@ -2361,6 +2361,13 @@ html:not([la-root-re-vars]) {
 }
 
 /*  EOF catgrounds */
+/** myocard
+ *  responsive solution for cards with 2 components
+ *  2019.12.15
+ *
+ *  CSS
+ *
+ */
 /* -------------------------------- Settings */
 .myocard {
   --sx: var(--col-space ,1.5rem );
@@ -2464,15 +2471,18 @@ html:not([la-root-re-vars]) {
 }
 
 /* -------------------------------- Addons */
+.myocards-wrapper.align-top,
 .myocard.align-top {
   --item-vertical-align: flex-start;
 }
 
-.is-banner {
+.myocards-wrapper.is-banner,
+.myocard.is-banner {
   --item-max-width: 40rem;
   --card-max-width: 57.5rem;
 }
 
+.myocards-wrapper.is-layout,
 .myocard.is-layout {
   --card-padding: calc( 0.5*var(--sy) ) calc( 0.5*var(--sx) );
   --item-padding: calc( 0.5*var(--sy) ) calc( 0.5*var(--sx) );
@@ -2482,20 +2492,10 @@ html:not([la-root-re-vars]) {
   --item-vertical-align: flex-start;
 }
 
-/* Cardbox */
-.myocard-box {
-  --card-centering: auto;
-  --card-max-width:
-    calc( 2*var(--item-max-width) + var(--sx) );
-}
-
-/* vertical centering */
-.item-vertical-align-center {
-  --item-vertical-align: center;
-}
-
-/* second child goes top, when wrapping */
-.wrap-order-reverse {
+.myocards-wrapper.wrap-order-reverse,
+.myocard.wrap-order-reverse {
+  /* second child goes first,
+     when wrapping */
   --card-wrap-order: wrap-reverse;
   --align-items: var(--item-vertical-align ,flex-end );
 }

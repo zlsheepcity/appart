@@ -274,7 +274,7 @@
     <!-- ----------------------------------------- Grid-Queen -->
 
 
-    <article class="grid-queen my-grid-queen">
+    <article class="grid-queen my-grid-queen chapter isontop">
 
         <style>
             :root {
@@ -1434,6 +1434,299 @@
         <p>Respsonsive table component</p>
 
     </article>
+
+
+
+
+<!-- ------------------------- post myocard -->
+
+
+<article class="chapter">
+
+    <header class="grid-queen">
+        <h2>Myocards</h2>
+    </header>
+
+
+    <header class="grid-queen chapter">
+        <h2>is-banner</h2>
+    </header>
+
+    <section class="myocard is-banner">
+        <section>
+            <div>
+                <p class="auto text-block-bigger"></p>
+           </div>
+       </section>
+        <section>
+            <div>
+                <button class="swed-button">
+                    <span>Book a meeting</span>
+                </button>
+           </div>
+       </section>
+    </section>
+
+    <header class="grid-queen chapter">
+        <h2>align-top</h2>
+    </header>
+
+    <section class="myocard align-top">
+        <section>
+            <div>
+                <section class="rows">
+                <h4>First Part</h4>
+                <p class="auto"></p>
+                </section>
+           </div>
+       </section>
+        <section>
+            <div>
+                <section class="rows">
+                <h4>Second Part</h4>
+                <p class="auto"></p>
+                <p class="auto"></p>
+                <p class="auto"></p>
+                </section>
+           </div>
+       </section>
+    </section>
+
+
+    <!-- -------------------------------- Avatars -->
+
+    <style>
+        .el-avatar-icon {
+          --width: 14rem;
+            width: var(--width);
+        }
+        .el-avatar-big {
+          --width: 24rem;
+            width: var(--width);
+        }
+    </style>
+
+
+    <header class="grid-queen chapter">
+        <h2>Avatars</h2>
+    </header>
+
+    <section class="myocard">
+        <section>
+            <div>
+                <img src="art/bergamot-just-browse-here.svg"
+                     class="el-avatar-big" alt="">
+           </div>
+       </section>
+        <section>
+            <div>
+                <p class="auto text-block-bigger"></p>
+           </div>
+       </section>
+    </section>
+
+    <section class="myocard is-banner back-color-accent">
+        <section>
+            <div>
+                <p class="auto text-block-bigger"></p>
+           </div>
+       </section>
+        <section>
+            <div>
+                <img src="art/bergamot-just-browse-here.svg"
+                     class="el-avatar-icon" alt="">
+           </div>
+       </section>
+    </section>
+
+
+    <!-- -------------------------------- Inside Grid -->
+
+    <article class="chapter use-colors colors--ivory">
+    <section class="grid-queen is-without-root">
+
+        <h2>Inside Grid</h2>
+
+        <section class="grid-column--wrap subgrid-content">
+
+            <section class="myocard is-banner back-color-accent">
+                <section>
+                    <div>
+                        <img src="art/bergamot-just-browse-here.svg"
+                             class="el-avatar-icon" alt="">
+                   </div>
+               </section>
+                <section>
+                    <div>
+                        <p class="auto text-block-bigger"></p>
+                   </div>
+               </section>
+            </section>
+
+            <section class="myocard is-banner wrap-order-reverse back-color-accent">
+                <section>
+                    <div>
+                        <p class="auto text-block-bigger"></p>
+                   </div>
+               </section>
+                <section>
+                    <div>
+                        <img src="art/illustrations/austria.svg"
+                             class="el-avatar-icon" alt="">
+                   </div>
+               </section>
+            </section>
+
+        </section>
+        <section class="grid-column--wrap">
+            <section class="myocard align-top">
+                <section>
+                    <div>
+                        <section class="rows">
+                        <h4>First Part</h4>
+                        <p class="auto"></p>
+                        </section>
+                   </div>
+               </section>
+                <section>
+                    <div>
+                        <section class="rows">
+                        <h4>Second Part</h4>
+                        <p class="auto"></p>
+                        <p class="auto"></p>
+                        <p class="auto"></p>
+                        </section>
+                   </div>
+               </section>
+            </section>
+        </section>
+    </section>
+    </article>
+
+    <!-- -------------------------------- Cases -->
+
+    <section class="myocard">
+        <section>
+            <div>
+                <h2>Universal Wrap</h2>
+           </div>
+       </section>
+        <section>
+            <div>
+                <section class="rows">
+                <p class="auto"></p>
+                <big><mark>Learn More</mark></big>
+                </section>
+           </div>
+       </section>
+    </section>
+
+    <section class="myocard">
+        <section>
+            <div>
+                <h2>Long Multicontent Title inside Wrap</h2>
+           </div>
+       </section>
+        <section>
+            <div>
+                <p class="auto"></p>
+           </div>
+       </section>
+    </section>
+
+    <div class="chapter back-color-accent">
+        <section class="myocard">
+
+            <section class="myocard is-banner">
+                <header>
+                    <div>
+                        Meet our team at G2E Asia<br>
+                        3-4 December 2019<br>
+                        Marriot Manila, Philippines<br>
+                    </div>
+                </header>
+                <figure>
+                    <img src="art/illustrations/austria.svg"
+                         class="el-avatar-icon" alt="Logo">
+                </figure>
+            </section>
+
+            <footer>
+                <div>
+                    <button class="swed-button">
+                        <span>Book a meeting</span>
+                    </button>
+                </div>
+            </footer>
+
+        </section>
+    </div>
+
+    <section class="el-myocardist chapter">
+
+        <style>
+            .el-myocardist .myocard { --card-max-width: 52rem; }
+            .el-myocardist .myocard + .myocard { margin-top: 2rem; }
+            .el-myocardist .myocard { background-color: var(--back-color-accent); }
+        </style>
+
+        <div class="myocard">
+            <div><p>When it comes to payment systems.</p></div>
+            <div><p>Self-Service Solution</p></div>
+        </div>
+
+        <div class="myocard">
+            <div><p>A few additional perks include full access to geolocation technologies.</p></div>
+            <div><p>Self-Service Customisation Options</p></div>
+        </div>
+
+        <div class="myocard">
+            <div>
+                <h4>When it comes to payment systems, the Self-Service solution supports both Visa and MasterCard.</h4>
+            </div>
+            <div>
+                <p>Self-Service Solution</p>
+            </div>
+        </div>
+
+        <div class="myocard">
+            <div>
+                <h3>When it comes.</h3>
+            </div>
+            <div>
+                <div><p>A few additional perks include full access to geolocation technologies.</p></div>
+            </div>
+        </div>
+
+    </section>
+
+</article>
+<article class="chapter use-colors colors--root">
+
+    <header class="grid-queen chapter isontop">
+        <h2>Template</h2>
+    </header>
+
+    <section class="myocard">
+        <section>
+            <div>
+                <img src="art/illustrations/austria.svg"
+                     class="el-avatar-big" alt="">
+           </div>
+       </section>
+        <section>
+            <div>
+                <section class="rows">
+                <p class="auto"></p>
+                <p class="auto"></p>
+                </section>
+           </div>
+       </section>
+    </section>
+
+</article>
+
+
 
 
 

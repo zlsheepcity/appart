@@ -1,0 +1,136 @@
+/* -------------------------------- Settings */
+
+.myocard {
+
+  --sx: var(--col-space ,1.5rem ); /* horizontal space unit */
+  --sy: var(--row-space ,1.5rem ); /* vertical space unit */
+
+ /* Private */
+
+  --card-padding:        calc( 0.5*var(--sy) ) 0;
+  --item-padding:        calc( 0.5*var(--sy) ) var(--sx);
+  --item-max-width:      28rem;
+
+ /* Public
+
+  --card-max-width:      100%;
+  --card-wrap-order:     wrap-reverse;
+  --card-wrap-order:     wrap;
+  --card-centering:      0;
+  --card-centering:      auto;
+  --item-vertical-align: center;
+  --item-vertical-align: flex-end;
+  --item-vertical-align: flex-start;
+
+    */
+}
+
+
+/* -------------------------------- Layout */
+
+
+.myocard {
+
+  --width:        100%;
+    width:        var(--width);
+
+  --max-width-xx: calc( 2*var(--item-max-width) + var(--sx) );
+  --max-width:    var(--card-max-width ,var(--max-width-xx) );
+    max-width:    var(--max-width);
+
+  --margin-left:  var(--card-centering ,auto );
+    margin-left:  var(--margin-left);
+
+  --margin-right: var(--card-centering ,auto );
+    margin-right: var(--margin-right);
+
+}
+
+/* Flex Half-Grow Technique */
+
+    .myocard {
+        display:        flex;
+        flex-direction: row;
+        flex-wrap:      var(--card-wrap-order ,wrap ); }
+    .myocard>*                   { flex-grow:   0.5;   }
+    .myocard>*:nth-child( odd)   { margin-left: auto;  }
+    .myocard>*:nth-child(even)   { text-align:  right; }
+    .myocard>*>*                 { }
+    .myocard>*:nth-child( odd)>* { }
+    .myocard>*:nth-child(even)>* { }
+
+ /* Paddings Around Card and Items */
+
+    .myocard {    --padding: var(--card-padding ,0 );
+                    padding: var(--padding         );}
+    .myocard>*>*{ --padding: var(--item-padding ,0 );}
+    .myocard>*>*{   padding: var(--padding         );}
+
+ /* Inserted Child */
+
+    .myocard>.myocard   { padding: 0; width: auto; }
+    .myocard>.myocard>* { padding: 0; }
+
+ /* Item Box Model */
+
+    .myocard>* { --max-width: var(--item-max-width ,100% );}
+    .myocard>*>* { max-width: var(--max-width            );}
+    .myocard>*:nth-child(even)>* {
+        display:        inline-flex;
+        flex-direction: column;
+        text-align:     left;
+        vertical-align: middle; }
+
+ /* Vertical Align */
+
+    .myocard {
+      --align-items: var(--item-vertical-align ,center );
+        align-items: var(--align-items); }
+
+
+/* -------------------------------- Addons */
+
+.myocard.align-top {
+  --item-vertical-align: flex-start;
+}
+
+.is-banner {
+  --item-max-width:      40rem;
+  --card-max-width:    57.5rem;
+}
+
+.myocard.is-layout {
+  --card-padding:        calc( 0.5*var(--sy) ) calc( 0.5*var(--sx) );
+  --item-padding:        calc( 0.5*var(--sy) ) calc( 0.5*var(--sx) );
+
+  --item-max-width:      42rem;
+  --card-max-width:      100%;
+
+  --card-centering:      0;
+  --item-vertical-align: flex-start;
+}
+
+
+/* Cardbox */
+
+.myocard-box {
+  --card-centering:      auto;
+  --card-max-width:
+    calc( 2*var(--item-max-width) + var(--sx) );
+}
+
+ /* vertical centering */
+
+.item-vertical-align-center {
+  --item-vertical-align: center;
+}
+
+ /* second child goes top, when wrapping */
+
+.wrap-order-reverse {
+  --card-wrap-order: wrap-reverse;
+  --align-items:     var(--item-vertical-align ,flex-end );
+}
+
+
+/** EOF Myocards */

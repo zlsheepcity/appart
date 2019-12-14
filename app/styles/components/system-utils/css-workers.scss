@@ -49,9 +49,9 @@
     grid-auto-rows:  min-content;
     grid-row-gap:    var(--row-space, 1rem);
     grid-column-gap: 0;
-    grid-template-columns: [full] auto;
+    grid-template-columns: [full main] auto;
     } .group-content-rows>* {
-        grid-column: full;
+        grid-column: main;
 }
 
 .group-collisting {

@@ -1,0 +1,76 @@
+/** swed-site-head
+ *  short line at the top of the page
+ *  2019.8.1
+ *
+ *  CSS
+ *
+ */
+
+/*  markup template
+
+    <header class="swed-site-head colors--primary">
+        <h1 class="swed-site-logo">...</h1>
+        <ul class="swed-site-meta">...</ul>
+        <ul class="swed-site-menu">...</ul>
+    </header>
+
+*/
+
+.swed-site-head {
+  --line-height:      1rem;
+  --sx:               var(--col-space, 1rem);
+  --sy:               1rem;
+
+  --head-background:  var(--back-color,   inherit);
+  --head-text-color:  var(--text-color,   inherit);
+  --head-shadow:      var(--shadow-color, hsla(0, 0%, 100%, 0.25));
+
+    padding-top:      var(--sy);
+    background-color: var(--head-background);
+               color: var(--head-text-color);
+
+    display:          flex;
+    flex-direction:   row;
+    flex-wrap:        wrap;
+    justify-content:  flex-start;
+    align-items:      center;
+    align-content:    center;
+}
+.swed-site-head>* {
+    line-height: var(--line-height);
+    height:      var(--line-height);
+    margin:    0 var(--sx) var(--sy) var(--sx);
+    overflow:  visible;
+}
+.swed-site-meta,
+.swed-site-menu {
+    list-style:       none;
+    padding:          0;
+
+    display:          grid;
+    grid-row-gap:     var(--sy);
+    grid-column-gap:  var(--sx);
+    grid-auto-flow:   column;
+    align-items:      center;
+}
+.swed-site-menu {
+    margin-left:      auto;
+}
+.swed-site-logo {
+    flex-grow:        0;
+}
+.swed-site-logo a {
+    color:            var(--head-shadow);
+}
+.swed-site-logo span {
+    font-size:        1.5em;
+    color:            var(--head-text-color);
+}
+
+@media all and (max-width:24em) {
+  /* title and menu in top row */
+    .swed-site-meta { order: 3; }
+    .swed-site-menu { order: 2; }
+}
+
+/*  EOF swed-site-head */

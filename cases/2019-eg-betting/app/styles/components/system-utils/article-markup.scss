@@ -1,0 +1,95 @@
+/** Article markup
+ *  Shortcuts for faster coding
+ *  2019.8.22
+ *
+ *  SCSS
+ *
+ */
+
+
+/* ----------------------------------- swed-banner alias */
+
+
+.banner       { @extend .swed-banner         !optional; }
+.banner-title { @extend .swed-banner-title   !optional; }
+
+
+//* ------------------------------------- html
+
+
+h1 { @extend .h1 !optional; }
+h2 { @extend .h2 !optional; }
+h3 { @extend .h3 !optional; }
+h4 { @extend .h4 !optional; }
+h5 { @extend .h5 !optional; }
+h6 { @extend .h6 !optional; }
+
+big    { @extend .text-inline-bigger  !optional; }
+small  { @extend .text-inline-smaller !optional; }
+.big   { @extend .text-block-bigger   !optional; }
+.small { @extend .text-block-smaller  !optional; }
+
+mark, .mark {
+    color: var(--text-color-accent, inherit);
+    background-color: transparent; /* remove defaults */
+}
+
+/* link decoration */
+
+.link-inline {
+    text-decoration: underline;
+  --text-decoration-color: currentColor;
+    text-decoration-color: var(--text-decoration-color);
+}
+.link-inline:hover {
+  --text-decoration-color: var(--link-color-accent, currentColor);
+}
+
+
+//* ------------------------------------- article codex
+
+
+.book-of-chapters {
+    grid-row-gap: 0;
+}
+.chapter {
+  --padding-top:    var(--big-space, 4rem);
+    padding-top:    var(--padding-top);
+  --padding-bottom: var(--big-space, 4rem);
+    padding-bottom: var(--padding-bottom);
+    position:       relative;
+}
+.chapter.isontop { --padding-top: 0; }
+.chapter.isonbot { --padding-bottom: 0; }
+
+
+//* ------------------------------------- content boxes
+
+
+.color-box {
+  --padding-top:      var(--row-space, 1.5rem);
+  --padding-bottom:   var(--row-space, 1.5rem);
+  --background-color: var(--back-color-descent, transparent);
+    padding-top:      var(--padding-top);
+    padding-bottom:   var(--padding-bottom);
+    background-color: var(--background-color);
+}
+.color-box-descent {
+    @extend .color-box !optional;
+    @extend .back-color-descent !optional;
+}
+.color-box-accent {
+    @extend .color-box !optional;
+    @extend .back-color-accent !optional;
+}
+
+
+//* ------------------------------------- layout shortcuts
+
+
+.rows {
+    @extend .group-content-rows !optional;
+}
+
+
+/*  EOF Article markup */

@@ -1,0 +1,428 @@
+/** contact form design
+ *  2019.12.10
+ *
+ *  CSS
+ *
+ */
+
+
+/* -------------------------------- Field Error Icon */
+
+
+.form-design {
+ /* invalid for SCSS
+  --invalid-marker: url('data:image/svg+xml,%3Csvg fill="lightsalmon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="-4 -4 32 32"%3E%3Cpath d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/%3E%3C/svg%3E'); */
+}
+
+
+/* -------------------------------- Size Settings */
+
+
+.form-design {
+  --max-width: 24rem;
+  --sx:       1.5rem; /* x-space unit */
+  --sy:         1rem; /* y-space unit */
+  --form-field-paddings: 0.25rem 0.5rem;
+}
+
+
+/* -------------------------------- Color Settings */
+
+
+/*
+.colors--contact-bar {
+  --back-color:         hsl(  53, 66%, 80% );
+  --back-color-accent:  hsl(  53, 70%, 76% );
+  --back-color-descent: var(--light-shadow);
+
+  --text-color:         hsl( 204,  4%, 22% );
+  --text-color-accent:  hsl( 359, 59%, 43% );
+  --text-color-descent: hsl( 204,  4%, 42% );
+
+  --link-color:         hsl( 359, 54%, 53% );
+  --link-color-accent:  hsl( 359, 59%, 43% );
+  --link-color-descent: var(--link-color);
+
+  --shadow-color: var(--shadow-color--for-light-base);
+  --light-shadow: var(--light-shadow--for-light-base);
+}
+*/
+
+
+.form-design {
+
+  --field-back-color:          white;
+  --field-back-color-accent:   white;
+  --field-back-color-descent:  lightslategray;
+
+  --field-text-color:          black;
+  --field-text-color-accent:   black;
+  --field-text-color-descent:  darkslategray;
+
+  --submit-back-color:         firebrick;
+  --submit-back-color-accent:  darkred;
+  --submit-back-color-descent: lightslategray;
+
+  --submit-text-color:         white;
+  --submit-text-color-accent:  white;
+  --submit-text-color-descent: darkslategray;
+
+  --focus-mark-color:          lightsteelblue;
+
+}
+.form-design.theme--white {
+  --field-back-color:          gainsboro;
+  --field-back-color-accent:   gainsboro;
+  --field-back-color-descent:  lightslategray;
+}
+
+
+/* -------------------------------- Color System */
+
+
+.form-design input:not([type="submit"]):not([type="reset"]):not([type="button"]),
+.form-design select,
+.form-design textarea {
+
+  --back-color:         var(--field-back-color);
+  --back-color-accent:  var(--field-back-color-accent);
+  --back-color-descent: var(--field-back-color-descent);
+
+  --text-color:         var(--field-text-color);
+  --text-color-accent:  var(--field-text-color-accent);
+  --text-color-descent: var(--field-text-color-descent);
+
+  --mark-color:         var(--focus-mark-color);
+
+}
+.form-design .form-design-button {
+
+  --back-color:         var(--submit-back-color);
+  --back-color-accent:  var(--submit-back-color-accent);
+  --back-color-descent: var(--submit-back-color-descent);
+
+  --text-color:         var(--submit-text-color);
+  --text-color-accent:  var(--submit-text-color-accent);
+  --text-color-descent: var(--submit-text-color-descent);
+
+  --mark-color:         var(--focus-mark-color);
+
+}
+
+
+/* -------------------------------- HTML Form Elements */
+
+
+.form-design label {
+    display: block;
+    padding: 0;
+    margin:  0;
+}
+
+/* content fields only */
+
+.form-design textarea,
+.form-design select,
+.form-design input:not([type="submit"]):not([type="reset"]):not([type="button"]) {
+    display: block;
+    width:   100%;
+    padding: var(--form-field-paddings);
+
+    font-size:   1em;
+    font-family: inherit;
+    font-weight: inherit;
+    line-height: var(--line-height);
+
+    box-shadow: none;
+    border:        0;
+  --border-radius: 0;
+    border-radius: var(--border-radius);
+
+  --background-color: var(--back-color);
+  --color:            var(--text-color);
+    background-color: var(--background-color);
+    color:            var(--color);
+
+   -ms-touch-action: manipulation;
+    touch-action:    manipulation;
+    resize:          vertical;
+}
+
+/* focus decoration */
+
+.form-design textarea,
+.form-design select,
+.form-design input {
+    transition: outline .24s var(--timing-function--openJump);
+    outline:    0 solid var(--mark-color);
+}
+.form-design textarea:focus ,
+.form-design   select:focus ,
+.form-design    input:focus {
+  --background-color: var(--back-color-accent);
+  --color:            var(--text-color-accent);
+    outline: 0.25rem solid var(--mark-color);
+    border-radius: 0;
+}
+
+
+/* -------------------------------- Form Layout */
+
+
+.wrap-form {
+    width:     100%;
+    max-width: var(--max-width);
+}
+.wrap-form-fields {
+    padding: var(--sy) var(--sx);
+
+ /* vertical grid */
+    display: grid;
+    grid-template-columns: auto;
+    grid-row-gap: var(--sy);
+    grid-column-gap: 0;
+}
+.wrap-field {
+    display: block;
+    margin:  0;
+    padding: 0;
+}
+.wrap-form-feedback {
+    padding:   var(--sy) var(--sx);
+    width:     100vh;
+    max-width: var(--max-width);
+}
+
+
+/* -------------------------------- States */
+
+
+.form-design .wrap-form-feedback { display: none; }
+
+.form-design.has-state-response .wrap-form-fields   { display:  none; }
+.form-design.has-state-response .wrap-form-feedback { display: block; }
+
+
+/* -------------------------------- Components */
+
+
+/* label */
+
+.field-label   { display: inline-block; }
+.field-label i { opacity: 0.64; }
+
+/* label focus */
+
+.wrap-field .field-label {
+    transform-origin: left bottom;
+    transition:    transform .24s;
+    transition-timing-function: var(--timing-function--focusZoom);
+}
+.wrap-field:focus-within .field-label {
+    color: var(--text-color-accent);
+    transform: translateY(-0.25rem);
+}
+
+/* submit area */
+
+.wrap-submit {
+  --vertical-margin: calc( var(--sx) - var(--sy) );
+    margin-top:      var(--vertical-margin);
+    margin-bottom:   var(--vertical-margin);
+}
+
+/* default submit button */
+
+.form-design .form-design-button {
+    display: inline-block;
+    width:           auto;
+    padding:  0.5em 1.5em;
+    border:             0;
+  --border-radius:    4px;
+    border-radius: var(--border-radius);
+    box-shadow:      none;
+
+   -ms-touch-action: manipulation;
+    touch-action:    manipulation;
+    resize:          vertical;
+
+    font-size:   1em;
+    font-family: inherit;
+    font-weight: inherit;
+    line-height: var(--line-height);
+
+  --background-color: var(--back-color);
+  --color:            var(--text-color);
+    background-color: var(--background-color);
+    color:            var(--color);
+}
+.form-design .form-design-button:hover,
+.form-design .form-design-button:focus {
+  --background-color: var(--back-color-accent);
+  --color:            var(--text-color-accent);
+}
+
+
+/* -------------------------------- Status Components */
+
+
+/* invalid field marker */
+
+.form-design textarea.is-not-valid,
+.form-design    input.is-not-valid {
+    padding-right:       2rem;
+    background-size:     2rem;
+    background-position: right top;
+    background-repeat:   no-repeat;
+ /* invalid for SCSS
+    background-image:    var(--invalid-marker); */
+    background-image: url('data:image/svg+xml,%3Csvg fill="lightsalmon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="-4 -4 32 32"%3E%3Cpath d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/%3E%3C/svg%3E');
+}
+
+/* invalid field tip */
+
+.not-valid-tip {
+    display: block;
+    padding: 0.25rem;
+    color:             var(--text-color);
+    background-color:  var(--back-color-accent);
+}
+.not-valid-tip::before {
+    content: '▴';
+    color: var(--link-color);
+    display:    inline-block;
+    vertical-align: baseline;
+    padding-right:   0.25rem;
+}
+
+
+/* -------------------------------- WPCF7 Integration */
+
+
+.form-design .wpcf7 {
+ /* @extend .wrap-form; */
+    max-width: var(--max-width);
+}
+.form-design textarea.wpcf7-not-valid,
+.form-design    input.wpcf7-not-valid {
+ /* @extend .form-design input.is-not-valid; */
+    padding-right:   32px;
+    background-size: 32px;
+    background-position: right top;
+    background-repeat:   no-repeat;
+    background-image:    var(--invalid-marker);
+ /* invalid scss */
+    background-image: url('data:image/svg+xml,%3Csvg fill="lightsalmon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="-4 -4 32 32"%3E%3Cpath d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/%3E%3C/svg%3E');
+}
+.form-design .wpcf7-not-valid-tip {
+ /* @extend .not-valid-tip; */
+    display: block;
+    padding: 0.25rem;
+    color:             var(--text-color);
+    background-color:  var(--back-color-accent);
+}
+.form-design .wpcf7-not-valid-tip::before {
+ /* @extend .not-valid-tip::before; */
+    content: '▴';
+    color: var(--link-color);
+    display:    inline-block;
+    vertical-align: baseline;
+    padding-right:   0.25rem;
+}
+.form-design .wpcf7-response-output {
+    padding: var(--sy) var(--sx);
+    margin:  0;
+    border:  0;
+    background-color: var(--back-color-accent);
+    color:            var(--text-color-accent);
+}
+.form-design .wrap-validation-response .wpcf7-response-output {
+    margin: 0 calc( -1 * var(--sx) );
+}
+
+
+
+/* ajax loader */
+
+.form-design .wpcf7 .ajax-loader {
+    background-image: none;
+    pointer-events:   none;
+
+    position: absolute;
+    z-index:  1;
+    top:      0;
+    right:    0;
+    bottom:   0;
+    left:     0;
+    width:    auto;
+    height:   auto;
+    margin:   0;
+    padding:  0;
+}
+.form-design .wpcf7 .ajax-loader::before {
+    content: '';
+    position: absolute;
+    z-index:  0;
+    top:      0;
+    right:    0;
+    bottom:   0;
+    left:     0;
+
+    opacity:  0.85;
+  --background-color: transparent;
+    background-color: var(--background-color);
+    transition: background 240ms ease-out;
+}
+
+.form-design .wpcf7 .ajax-loader.is-active {
+    visibility:       visible;
+    pointer-events:   all;
+}
+.form-design .wpcf7 .ajax-loader.is-active::before {
+    background-color: var(--back-color);
+}
+.form-design .wpcf7 .ajax-loader.is-active::after {
+  --size:     6rem;
+
+    content:  '';
+    position: absolute;
+    z-index:  1;
+    top:      calc( 50% - 0.5*var(--size) );
+    right:    calc( 50% - 0.5*var(--size) );
+    width:    var(--size);
+    height:   var(--size);
+
+    background-size:     var(--size);
+    background-repeat:   no-repeat;
+    background-position: center center;
+    background-image: url('data:image/svg+xml,%3Csvg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/%3E%3C/svg%3E');
+
+    animation: FormLoaderRotation 1s linear infinite;
+}
+@keyframes FormLoaderRotation {
+    from { transform: rotate(360deg); }
+    to   { transform: rotate(1deg);   }
+}
+
+
+/* -------------------------------- Offsidebar Integration */
+
+
+.form-design.sidepanel-content {
+    position:  relative;
+    padding:   0;
+    flex-grow: 2;
+}
+
+
+/* -------------------------------- Required System Vars */
+
+
+html:not([la-root-re-vars]) {
+  --line-height: 1.5;
+  --timing-function--focusZoom: cubic-bezier(0.165,  0.84,  0.44,  1);
+  --timing-function--openJump:  cubic-bezier(0.175,  0.885, 0.320, 1.275);
+}
+
+
+/** EOF contact form */

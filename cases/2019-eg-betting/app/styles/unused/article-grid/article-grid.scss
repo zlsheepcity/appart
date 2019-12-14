@@ -1,0 +1,457 @@
+/*  Article grid, v2003
+ *  2019.7.16
+ *  Deprecated, replaced by journal-grid
+ */
+
+
+// ------------------------------------------- Layout Settings
+
+
+$row-gap:     1rem;
+$col-gap:  1.25rem;
+$add-gap:     1rem;
+$west-width: 11rem;
+$main-width: 35rem;
+$east-width: 16rem;
+
+$M: $main-width + 2 * $col-gap;
+$W: $west-width + 2 * $col-gap;
+$E: $east-width + 2 * $col-gap;
+
+$breakpoint--centered-content: "min-width: #{ $M }";                                 //  600px
+$breakpoint--east-col-appears: "min-width: #{ $M + $add-gap + $E }";                 //  912px
+$breakpoint--west-col-appears: "min-width: #{ $W + $add-gap + $M + $add-gap + $E }"; // 1144px
+
+
+.article-grid {
+  --grid-base--row-gap:    var(--row-space, #{$row-gap});
+  --grid-base--col-gap:    var(--col-space, #{$col-gap});
+  --grid-base--add-gap:    #{$add-gap}; /* additional paddings between main and sides columns */
+  --grid-base--west-width: #{$west-width}; /* short prefix */
+  --grid-base--main-width: #{$main-width}; /* main text flow */
+  --grid-base--east-width: #{$east-width}; /* text-notes */
+}
+
+
+// ------------------------------------------- Grid Formula
+
+
+.article-grid {
+
+    // content width
+
+  --grid-formula--main-width: auto;
+  --grid-formula--west-width: var(--grid-formula--main-width);
+  --grid-formula--east-width: var(--grid-formula--main-width);
+
+    // start + end
+
+  --grid-formula--start-hard:  [full-start] 0;
+  --grid-formula--end-hard:    0 [full-end];
+  --grid-formula--start-space: [full-start] minmax(0, 1fr);
+  --grid-formula--end-space:   minmax(0, 1fr) [full-end];
+
+    // west + east
+
+  --grid-formula--west-skip: 0;
+  --grid-formula--east-skip: 0;
+  --grid-formula--west-insert:
+            0
+        [overwest-start]
+            var(--grid-base--col-gap)
+        [west-start]
+            var(--grid-base--west-width)
+        [west-end]
+            var(--grid-base--col-gap)
+        [overwest-end]
+            var(--grid-base--add-gap);
+  --grid-formula--east-insert:
+            var(--grid-base--add-gap)
+        [overeast-start]
+            var(--grid-base--col-gap)
+        [east-start]
+            var(--grid-base--east-width)
+        [east-end]
+            var(--grid-base--col-gap)
+        [overeast-end]
+            0;
+
+    // main
+
+  --grid-formula--main-single:
+            0
+        [overmain-start]
+            var(--grid-base--col-gap)
+        [main-start]
+            var(--grid-formula--main-width)
+        [main-end]
+            var(--grid-base--col-gap)
+        [overmain-end]
+            0;
+
+  --grid-formula--main-join-all:
+            0
+        [overmain-start overwest-start overeast-start]
+            var(--grid-base--col-gap)
+        [main-start west-start east-start]
+            var(--grid-formula--main-width)
+        [main-end   west-end   east-end]
+            var(--grid-base--col-gap)
+        [overmain-end   overwest-end   overeast-end]
+            0;
+
+  --grid-formula--main-join-east:
+            0
+        [overmain-start overeast-start]
+            var(--grid-base--col-gap)
+        [main-start east-start]
+            var(--grid-formula--main-width)
+        [main-end   east-end]
+            var(--grid-base--col-gap)
+        [overmain-end   overeast-end]
+            0;
+
+  --grid-formula--main-join-west:
+            0
+        [overmain-start overwest-start]
+            var(--grid-base--col-gap)
+        [main-start west-start]
+            var(--grid-formula--main-width)
+        [main-end   west-end]
+            var(--grid-base--col-gap)
+        [overmain-end   overwest-end]
+            0;
+}
+
+
+// ------------------------------------------- Grid Constructor
+
+
+// default short view
+
+.article-grid {
+  --grid-part--START:          var(--grid-formula--start-hard);
+  --grid-part--WEST:           var(--grid-formula--west-skip);
+  --grid-part--MAIN:           var(--grid-formula--main-join-all);
+  --grid-part--MAIN-join-WEST: var(--grid-formula--main-join-all);
+  --grid-part--MAIN-join-EAST: var(--grid-formula--main-join-all);
+  --grid-part--MAIN-join-ALL:  var(--grid-formula--main-join-all);
+  --grid-part--EAST:           var(--grid-formula--east-skip);
+  --grid-part--END:            var(--grid-formula--end-hard);
+}
+
+// centered content
+
+@media all and ($breakpoint--centered-content) {
+    .article-grid {
+      --grid-formula--main-width:  var(--grid-base--main-width);
+      --grid-part--START:          var(--grid-formula--start-space);
+      --grid-part--END:            var(--grid-formula--end-space);
+    }
+}
+
+// east side appears
+
+@media all and ($breakpoint--east-col-appears) {
+    .article-grid {
+      --grid-formula--east-width:  var(--grid-base--east-width);
+      --grid-part--EAST:           var(--grid-formula--east-insert);
+      --grid-part--MAIN:           var(--grid-formula--main-join-west);
+      --grid-part--MAIN-join-WEST: var(--grid-formula--main-join-west);
+    }
+}
+
+// both sides
+
+@media all and ($breakpoint--west-col-appears) {
+    .article-grid {
+      --grid-formula--west-width:  var(--grid-base--west-width);
+      --grid-part--WEST:           var(--grid-formula--west-insert);
+      --grid-part--MAIN:           var(--grid-formula--main-single);
+      --grid-part--MAIN-join-EAST: var(--grid-formula--main-join-east);
+    }
+}
+
+
+// ------------------------------------------- Grid Templates
+
+
+.article-grid {
+  --grid-template-columns--default:
+        var(--grid-part--START)
+        var(--grid-part--WEST)
+        var(--grid-part--MAIN)
+        var(--grid-part--EAST)
+        var(--grid-part--END);
+
+  --grid-template-columns--content-block:
+        [full-start overwest-start overeast-start overmain-start main-start west-start east-start]
+            1fr
+        [full-end   overwest-end   overeast-end   overmain-end   main-end   west-end   east-end];
+
+  --grid-template-columns--content-box:
+        [full-start overwest-start overeast-start overmain-start]
+            var(--grid-base--col-gap)
+        [main-start west-start east-start]
+            1fr
+        [main-end   west-end   east-end]
+            var(--grid-base--col-gap)
+        [full-end   overwest-end   overeast-end   overmain-end];
+}
+
+
+// ------------------------------------------- Sass Shortcuts
+
+
+%article-grid-seed {
+    display:         grid;
+    align-items:     start;
+    justify-content: start;
+    grid-auto-flow:  row;
+    grid-auto-rows:  min-content;
+    grid-row-gap:    var(--grid-base--row-gap);
+    grid-column-gap: 0;
+}
+
+
+// ------------------------------------------- Columns
+
+
+.article-grid {
+    @extend %article-grid-seed;
+    grid-template-columns: var(--grid-template-columns--default);
+}
+.article-grid *     { grid-column: main; }
+.article-grid       { grid-column: full; }
+.article-layer      { grid-column: full; }
+
+// general blocks
+
+.article-block-west { grid-column: west; }
+.article-block-east { grid-column: east; }
+.article-block-main { grid-column: main; }
+.article-block      { grid-column: main; }
+
+.article-block-west,
+.article-block-east,
+.article-block-main,
+.article-block {
+    @extend %article-grid-seed;
+    grid-template-columns: var(--grid-template--content-block);
+}
+
+
+// general boxes
+
+.article-box-west   { grid-column: overwest; }
+.article-box-east   { grid-column: overeast; }
+.article-box-main   { grid-column: overmain; }
+.article-box        { grid-column: overmain; }
+
+.article-box-west,
+.article-box-east,
+.article-box-main,
+.article-box {
+    @extend %article-grid-seed;
+    grid-template-columns: var(--grid-template-columns--content-box);
+}
+
+// screen sides
+
+.article-westside { grid-column: full-start / overwest-end; }
+.article-eastside { grid-column: overeast-start / full-end; }
+
+.article-westside,
+.article-eastside {
+    @extend %article-grid-seed;
+    grid-template-columns: var(--grid-template-columns--content-box);
+}
+
+// merge blocks
+
+.article-block-merge-west     { grid-column: west-start / main-end; }
+.article-block-merge-east     { grid-column: main-start / east-end; }
+.article-block-merge          { grid-column: west-start / east-end; }
+
+.article-block-merge-west,
+.article-block-merge-east,
+.article-block-merge {
+    @extend %article-grid-seed;
+    grid-template-columns: var(--grid-template-columns--content-block);
+}
+
+// merge boxes
+
+.article-box-merge-west   { grid-column: overwest-start / overmain-end; }
+.article-box-merge-east   { grid-column: overmain-start / overeast-end; }
+.article-box-merge        { grid-column: overwest-start / overeast-end; }
+
+.article-box-merge-west,
+.article-box-merge-east,
+.article-box-merge  {
+    @extend %article-grid-seed;
+    grid-template-columns: var(--grid-template-columns--content-box);
+}
+
+
+
+// ------------------------------------------- Keep grid for columns
+
+
+.article-layer.keep-grid {
+    @extend %article-grid-seed;
+    grid-template-columns: var(--grid-template-columns--default);
+}
+
+.article-westside.keep-grid {
+  --grid-part--WEST-as-MAIN:
+            0
+        [overmain-start overwest-start overeast-start]
+            var(--grid-base--col-gap)
+        [main-start west-start east-start]
+            var(--grid-formula--west-width)
+        [main-end   west-end   east-end]
+            var(--grid-base--col-gap)
+        [overmain-end   overwest-end   overeast-end]
+            0;
+
+    grid-template-columns:
+        var(--grid-part--START)
+        var(--grid-part--WEST-as-MAIN)
+        var(--grid-formula--end-hard);
+}
+
+.article-eastside.keep-grid {
+  --grid-part--EAST-as-MAIN:
+            0
+        [overmain-start overwest-start overeast-start]
+            var(--grid-base--col-gap)
+        [main-start west-start east-start]
+            var(--grid-formula--east-width)
+        [main-end   west-end   east-end]
+            var(--grid-base--col-gap)
+        [overmain-end   overwest-end   overeast-end]
+            0;
+
+    grid-template-columns:
+        var(--grid-formula--start-hard)
+        var(--grid-part--EAST-as-MAIN)
+        var(--grid-part--END);
+}
+
+.article-box-merge.keep-grid {
+    grid-template-columns:
+        var(--grid-formula--start-hard)
+        var(--grid-part--WEST)
+        var(--grid-part--MAIN)
+        var(--grid-part--EAST)
+        var(--grid-formula--end-hard);
+}
+.article-box-merge-east.keep-grid {
+    grid-template-columns:
+        var(--grid-formula--start-hard)
+        var(--grid-part--MAIN-join-WEST)
+        var(--grid-part--EAST)
+        var(--grid-formula--end-hard);
+}
+.article-box-merge-west.keep-grid {
+    grid-template-columns:
+        var(--grid-formula--start-hard)
+        var(--grid-part--WEST)
+        var(--grid-part--MAIN-join-EAST)
+        var(--grid-formula--end-hard);
+}
+
+
+// ------------------------------------------- Workers
+
+
+.article-grid {
+
+    max-width: 100%;
+    word-wrap: break-word;
+
+}
+
+
+/* autobar west */
+
+.article-autobar-west {
+    @extend .article-box-west;
+}
+.for-autobar {
+    position:      relative;
+    border-bottom: 4px solid var(--shadow-color);
+    color: var(--action-color);
+    margin-bottom: var(--row-space, 1rem);
+    &::before {
+        position:  absolute;
+        top:       50%;
+        left:      0;
+        width:     1em;
+        height:    1em;
+        transform: translateX(-1.2rem) translateY(-58%);
+
+        content:   "«";
+        font-size: 1em;
+        line-height: 1;
+        background-color: var(--action-color);
+        color: var(--action-color--text);
+        border-radius: 50%;
+        display: none;
+    }
+}
+
+@media all and ($breakpoint--west-col-appears) {
+
+    /* reset offsidebar view */
+
+    .offsidebar.is-autobar {
+        position:   static;
+        z-index:    0;
+        max-width:  100%;
+        top:        auto;
+        bottom:     auto;
+        right:      auto;
+        left:       auto;
+
+        .sidepanel {
+            opacity:   1;
+            pointer-events: all;
+        }
+        .sidepanel-content,
+        .sidepanel-header,
+        .sidepanel-footer {
+            transform: scaleX(1);
+            opacity:   1;
+        }
+    }
+
+    /* hide button */
+
+    .article-autobar-west {
+        .for-autobar { display: none; }
+    }
+
+    /* modify menu */
+
+    .offsidebar.is-autobar {
+        grid-column: full;
+        .sidepanel-header {
+            background-color: transparent;
+            color: inherit;
+        }
+        .sidepanel-content {
+            padding-top:    0;
+            padding-bottom: 0;
+
+            /* 14/24 */
+            font-size:    0.875em;
+            line-height: 1.714286;
+        }
+    }
+
+}
+
+
+/*  EOF article-grid */

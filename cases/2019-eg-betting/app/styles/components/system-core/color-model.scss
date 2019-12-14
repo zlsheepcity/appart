@@ -1,0 +1,254 @@
+/** Color Model 3x3+2
+ *  System based on nine color values and two shadows
+ *  zl, 2019.8.14
+ *
+ *  CSS
+ *
+ */
+
+
+/** -------------------------------- base */
+
+
+:root,
+.root,
+.color-model,
+.colors--root {
+  --back-color:         white;
+  --back-color-accent:  snow;
+  --back-color-descent: whitesmoke;
+
+  --text-color:         black;
+  --text-color-accent:  darkslategray;
+  --text-color-descent: lightslategray;
+
+  --link-color:         firebrick;
+  --link-color-accent:  darkred;
+  --link-color-descent: lightsteelblue;
+
+  --shadow-color: var(--shadow-color--for-light-base);
+  --light-shadow: var(--light-shadow--for-light-base);
+}
+
+:root,
+.root,
+.color-model {
+  --shadow-color--for-light-base: hsla(  0,  0%,   0%, 0.3 );
+  --shadow-color--for-dark-base:  hsla(  0,  0%, 100%, 0.2 );
+  --light-shadow--for-light-base: hsla(  0,  0%,   0%, 0.05);
+  --light-shadow--for-dark-base:  hsla(  0,  0%, 100%, 0.05);
+}
+
+
+/** -------------------------------- autorun */
+
+
+body {
+    background-color: var(--back-color);
+               color: var(--text-color);
+}
+
+
+/** -------------------------------- atom classes */
+
+
+.use-colors {
+    background-color: var(--back-color);
+               color: var(--text-color);
+}
+
+
+.text-color  {
+               color: var(--text-color);
+}
+.text-color-accent  {
+               color: var(--text-color-accent);
+}
+.text-color-descent {
+               color: var(--text-color-descent);
+}
+
+.back-color  {
+    background-color: var(--back-color);
+}
+.back-color-accent  {
+    background-color: var(--back-color-accent);
+}
+.back-color-descent {
+    background-color: var(--back-color-descent);
+}
+
+.link-color  {
+               color: var(--link-color);
+}
+.link-color-accent  {
+               color: var(--link-color-accent);
+}
+.link-color-descent {
+               color: var(--link-color-descent);
+}
+
+
+.back-color-transparent  {
+  --back-color: transparent;
+    background-color: var(--back-color);
+}
+.back-color-hover:hover {
+  --back-color-hover: var(--back-color-accent);
+    background-color: var(--back-color-hover);
+}
+.text-color-hover:hover {
+  --text-color-hover: var(--text-color-accent);
+               color: var(--text-color-hover);
+}
+.link-color-hover:hover {
+  --link-color-hover: var(--link-color-accent);
+               color: var(--link-color-hover);
+}
+
+
+/** === ༼°▽°༽ === Color Model Presets
+ *
+ *  zl, 2019.8.14
+ *
+ */
+
+
+/** -------------------------------- skup palettes */
+
+
+/* swed-design 2019 */
+
+:root,
+.root,
+.color-model {
+    --HSL-NobleBlack:            240, 15%, 12%;
+    --HSL-NobleBlue:             212, 34%, 29%;
+    --HSL-AccentBlue:            204, 22%, 55%;
+    --HSL-AccentBlux:            226, 17%, 20%;
+    --HSL-NobleWhite:            226, 27%, 90%;
+    --HSL-NobleHighWhite:        226, 32%, 75%;
+    --HSL-NobleAction:           359, 54%, 53%;
+    --HSL-NobleHoverAction:      359, 59%, 43%;
+}
+
+/* appking 2019 */
+
+:root,
+.root,
+.color-model {
+    --HSL-KingsBlue:             202, 81%, 23%;
+    --HSL-KingsAction:            15, 75%, 30%;
+    --HSL-KingsGold:              42, 79%, 53%;
+    --HSL-KingsGrass:            155, 31%, 62%;
+    --HSL-KingsLand:              34, 20%, 33%;
+}
+
+
+/** -------------------------------- color themes */
+
+
+.colors--template {
+  --back-color:         white;
+  --back-color-accent:  var(--back-color);
+  --back-color-descent: var(--light-shadow);
+
+  --text-color:         black;
+  --text-color-accent:  var(--text-color);
+  --text-color-descent: var(--text-color);
+
+  --link-color:         firebrick;
+  --link-color-accent:  var(--link-color);
+  --link-color-descent: var(--link-color);
+
+  --shadow-color: var(--shadow-color--for-light-base);
+  --light-shadow: var(--light-shadow--for-light-base);
+/*--shadow-color: var(--shadow-color--for-dark-base);
+  --light-shadow: var(--light-shadow--for-dark-base);*/
+}
+
+.colors--primary,
+.colors--swed {
+  --back-color:         hsl( var(--HSL-NobleBlack) );
+  --back-color-accent:  hsl( var(--HSL-AccentBlux) );
+  --back-color-descent: var(--light-shadow);
+
+  --text-color:         hsl( var(--HSL-NobleWhite) );
+  --text-color-accent:  hsl( var(--HSL-NobleHighWhite) );
+  --text-color-descent: var(--text-color);
+
+  --link-color:         hsl( var(--HSL-NobleAction) );
+  --link-color-accent:  hsl( var(--HSL-NobleHoverAction) );
+  --link-color-descent: var(--link-color);
+
+  --shadow-color: var(--shadow-color--for-dark-base);
+  --light-shadow: var(--light-shadow--for-dark-base);
+}
+.colors--secondary,
+.colors--swed-secondary {
+  --back-color:         hsl(var(--HSL-NobleBlue));
+  --back-color-accent:  var(--light-shadow);
+  --back-color-descent: var(--light-shadow);
+
+  --text-color:         hsl(var(--HSL-NobleWhite));
+  --text-color-accent:  hsl(var(--HSL-NobleAction));
+  --text-color-descent: hsl(var(--HSL-NobleHighWhite));
+
+  --link-color:         hsl(var(--HSL-NobleAction));
+  --link-color-accent:  hsl(var(--HSL-NobleHoverAction));
+  --link-color-descent: var(--link-color);
+
+  --shadow-color: var(--shadow-color--for-light-base);
+  --light-shadow: var(--light-shadow--for-light-base);
+}
+.colors--swed-third {
+  --back-color:         hsl(var(--HSL-AccentBlue));
+  --back-color-accent:  var(--light-shadow);
+  --back-color-descent: var(--light-shadow);
+
+  --text-color:         hsl( var(--HSL-NobleBlack) );
+  --text-color-accent:  var(--text-color);
+  --text-color-descent: var(--text-color);
+
+  --link-color:         hsl(var(--HSL-NobleWhite));
+  --link-color-accent:  hsl(var(--HSL-NobleHighWhite));
+  --link-color-descent: var(--link-color);
+
+  --shadow-color: var(--shadow-color--for-light-base);
+  --light-shadow: var(--light-shadow--for-light-base);
+}
+.colors--action {
+  --back-color:         hsl( var(--HSL-NobleAction) );
+  --back-color-accent:  hsl( var(--HSL-NobleHoverAction) );
+  --back-color-descent: var(--light-shadow);
+
+  --text-color:         hsl( 359,  0%, 100% );
+  --text-color-accent:  hsl( 359, 28%, 82% );
+  --text-color-descent: hsl( 359, 28%, 82% );
+
+  --link-color:         hsl( 359,  0%, 100% );
+  --link-color-accent:  var(--link-color);
+  --link-color-descent: var(--link-color);
+
+  --shadow-color: var(--shadow-color--for-light-base);
+  --light-shadow: var(--light-shadow--for-light-base);
+}
+.colors--ivory {
+  --back-color:         hsl(  53, 66%, 80% );
+  --back-color-accent:  hsl(  53, 70%, 76% );
+  --back-color-descent: var(--light-shadow);
+
+  --text-color:         hsl( 204,  4%, 22% );
+  --text-color-accent:  hsl( 359, 59%, 43% );
+  --text-color-descent: hsl( 204,  4%, 42% );
+
+  --link-color:         hsl( 359, 54%, 53% );
+  --link-color-accent:  hsl( 359, 59%, 43% );
+  --link-color-descent: var(--link-color);
+
+  --shadow-color: var(--shadow-color--for-light-base);
+  --light-shadow: var(--light-shadow--for-light-base);
+}
+
+
+/*  EOF color model */

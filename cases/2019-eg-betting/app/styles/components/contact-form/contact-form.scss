@@ -1,0 +1,310 @@
+/** contact form design
+ *  2019.12.9
+ *
+ *  CSS
+ *
+ */
+
+
+/* -------------------------------- Field Error Icon */
+
+
+.form-design {
+ /* invalid for SCSS
+  --invalid-marker: url('data:image/svg+xml,%3Csvg fill="lightsalmon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="-4 -4 32 32"%3E%3Cpath d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/%3E%3C/svg%3E'); */
+}
+
+
+/* -------------------------------- Size Settings */
+
+
+.form-design {
+  --max-width: 24rem;
+  --sx:       1.5rem; /* x-space unit */
+  --sy:         1rem; /* y-space unit */
+  --form-field-paddings: 0.25rem 0.5rem;
+}
+
+
+/* -------------------------------- Color Settings */
+
+
+.form-design {
+
+  --field-back-color:          white;
+  --field-back-color-accent:   white;
+  --field-back-color-descent:  lightslategray;
+
+  --field-text-color:          black;
+  --field-text-color-accent:   black;
+  --field-text-color-descent:  darkslategray;
+
+  --submit-back-color:         firebrick;
+  --submit-back-color-accent:  darkred;
+  --submit-back-color-descent: lightslategray;
+
+  --submit-text-color:         white;
+  --submit-text-color-accent:  white;
+  --submit-text-color-descent: darkslategray;
+
+  --focus-mark-color:          lightsteelblue;
+
+}
+.form-design.theme--white {
+  --field-back-color:          gainsboro;
+  --field-back-color-accent:   gainsboro;
+  --field-back-color-descent:  lightslategray;
+}
+
+
+/* -------------------------------- Color System */
+
+
+.form-design input,
+.form-design select,
+.form-design textarea {
+
+  --back-color:         var(--field-back-color);
+  --back-color-accent:  var(--field-back-color-accent);
+  --back-color-descent: var(--field-back-color-descent);
+
+  --text-color:         var(--field-text-color);
+  --text-color-accent:  var(--field-text-color-accent);
+  --text-color-descent: var(--field-text-color-descent);
+
+  --mark-color:         var(--focus-mark-color);
+
+}
+.form-design .form-design-button {
+
+  --back-color:         var(--submit-back-color);
+  --back-color-accent:  var(--submit-back-color-accent);
+  --back-color-descent: var(--submit-back-color-descent);
+
+  --text-color:         var(--submit-text-color);
+  --text-color-accent:  var(--submit-text-color-accent);
+  --text-color-descent: var(--submit-text-color-descent);
+
+  --mark-color:         var(--focus-mark-color);
+
+}
+
+
+/* -------------------------------- HTML Form Elements */
+
+
+.form-design label {
+    display: block;
+    padding: 0;
+    margin:  0;
+}
+.form-design textarea,
+.form-design select,
+.form-design input {
+
+ /* normalization */
+
+    display:   block;
+    width:      100%;
+    box-shadow: none;
+    border:        0;
+  --border-radius: 0;
+    border-radius: var(--border-radius);
+
+    font-size:   1em;
+    font-family: inherit;
+    font-weight: inherit;
+    line-height: var(--line-height);
+
+   -ms-touch-action: manipulation;
+    touch-action:    manipulation;
+    resize:          vertical;
+
+ /* decoration */
+
+  --background-color: var(--back-color);
+  --color:            var(--text-color);
+    background-color: var(--background-color);
+    color:            var(--color);
+    padding:          var(--form-field-paddings);
+
+    transition: outline .24s var(--timing-function--openJump);
+    outline:    0 solid var(--mark-color);
+}
+.form-design textarea:focus ,
+.form-design   select:focus ,
+.form-design    input:focus {
+
+ /* focus decoration */
+
+  --background-color: var(--back-color-accent);
+  --color:            var(--text-color-accent);
+    outline: 0.25rem solid var(--mark-color);
+    border-radius: 0;
+}
+
+
+/* -------------------------------- Form Layout */
+
+
+.wrap-form {
+    width:     100%;
+    max-width: var(--max-width);
+}
+.wrap-form-fields {
+
+    padding: var(--sy) var(--sx);
+
+ /* vertical grid */
+    display: grid;
+    grid-template-columns: auto;
+    grid-row-gap: var(--sy);
+    grid-column-gap: 0;
+
+}
+.wrap-field {
+    display: block;
+    margin:  0;
+    padding: 0;
+}
+
+
+/* -------------------------------- Components */
+
+
+/* label */
+
+.field-label   { display: inline-block; }
+.field-label i { opacity: 0.64; }
+
+/* label focus */
+
+.wrap-field .field-label {
+    transform-origin: left bottom;
+    transition:    transform .24s;
+    transition-timing-function: var(--timing-function--focusZoom);
+}
+.wrap-field:focus-within .field-label {
+    color: var(--text-color-accent);
+    transform: translateY(-0.25rem);
+}
+
+/* submit area */
+
+.wrap-submit {
+  --vertical-margin: calc( var(--sx) - var(--sy) );
+    margin-top:      var(--vertical-margin);
+    margin-bottom:   var(--vertical-margin);
+}
+
+/* default submit button */
+
+.form-design .form-design-button {
+
+    display: inline-block;
+    padding:  0.5em 1.5em;
+  --border-radius:    4px;
+    width: auto;
+
+  --background-color: var(--back-color);
+  --color:            var(--text-color);
+    background-color: var(--background-color);
+    color:            var(--color);
+}
+.form-design .form-design-button:hover,
+.form-design .form-design-button:focus {
+  --background-color: var(--back-color-accent);
+  --color:            var(--text-color-accent);
+}
+
+
+/* -------------------------------- Status Components */
+
+
+/* invalid field marker */
+
+.form-design textarea.is-not-valid,
+.form-design    input.is-not-valid {
+    padding-right:       2rem;
+    background-size:     2rem;
+    background-position: right top;
+    background-repeat:   no-repeat;
+ /* invalid for SCSS
+    background-image:    var(--invalid-marker); */
+    background-image: url('data:image/svg+xml,%3Csvg fill="lightsalmon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="-4 -4 32 32"%3E%3Cpath d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/%3E%3C/svg%3E');
+}
+
+/* invalid field tip */
+
+.not-valid-tip {
+    display: block;
+    padding: 0.25rem;
+    color:             var(--text-color);
+    background-color:  var(--back-color-accent);
+}
+.not-valid-tip::before {
+    content: '▴';
+    color: var(--link-color);
+    display:    inline-block;
+    vertical-align: baseline;
+    padding-right:   0.25rem;
+}
+
+
+
+/* -------------------------------- WPCF7 Integration */
+
+
+.form-design .wpcf7 {
+ /* @extend .wrap-form; */
+    max-width: var(--max-width);
+}
+.form-design textarea.wpcf7-not-valid,
+.form-design    input.wpcf7-not-valid {
+ /* @extend .form-design input.is-not-valid; */
+    padding-right:   32px;
+    background-size: 32px;
+    background-position: right top;
+    background-repeat:   no-repeat;
+    background-image:    var(--invalid-marker);
+ /* invalid scss */
+    background-image: url('data:image/svg+xml,%3Csvg fill="lightsalmon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="-4 -4 32 32"%3E%3Cpath d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/%3E%3C/svg%3E');
+}
+.form-design .wpcf7-not-valid-tip {
+ /* @extend .not-valid-tip; */
+    display: block;
+    padding: 0.25rem;
+    color:             var(--text-color);
+    background-color:  var(--back-color-accent);
+}
+.form-design .wpcf7-not-valid-tip::before {
+ /* @extend .not-valid-tip::before; */
+    content: '▴';
+    color: var(--link-color);
+    display:    inline-block;
+    vertical-align: baseline;
+    padding-right:   0.25rem;
+}
+.wpcf7-response-output {
+    padding: var(--sy) var(--sx);
+    background-color: var(--back-color-accent);
+}
+
+
+/* -------------------------------- Offsidebar Integration */
+
+
+.form-design.sidepanel-content { padding: 0; }
+
+
+/* -------------------------------- Required System Vars */
+
+
+html:not([la-root-re-vars]) {
+  --line-height: 1.5;
+  --timing-function--focusZoom: cubic-bezier(0.165,  0.84,  0.44,  1);
+  --timing-function--openJump:  cubic-bezier(0.175,  0.885, 0.320, 1.275);
+}
+
+
+/** EOF contact form */

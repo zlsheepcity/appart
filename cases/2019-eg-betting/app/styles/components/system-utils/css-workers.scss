@@ -1,0 +1,172 @@
+/** Universal helpers
+ *  2019.8.22
+ *
+ *  CSS
+ *
+ */
+
+
+/** -------------------------------- layout */
+
+
+.group-wide {
+  --vertical-align:  flex-start;
+    display:         flex;
+    flex-direction:  row;
+    flex-wrap:       wrap;
+    justify-content: space-between;
+    align-items:     var(--vertical-align);
+    align-content:   var(--vertical-align);
+}
+.group-center {
+  --vertical-align:  flex-start;
+    display:         flex;
+    flex-direction:  row;
+    flex-wrap:       wrap;
+    justify-content: center;
+    align-items:     var(--vertical-align);
+    align-content:   var(--vertical-align);
+}
+.group-banner {
+    display:         flex;
+    flex-direction:  row;
+    flex-wrap:       wrap;
+    justify-content: center;
+    align-items:     center;
+    align-content:   center;
+    align-self:      stretch;
+  --v-space: var(--row-space, 1rem);
+  --h-space: var(--col-space, 1rem);
+    padding-top:     var(--h-space);
+    } .group-banner>* {
+        margin:  0 var(--h-space) var(--v-space) var(--h-space);
+}
+.group-content-rows {
+    display:         grid;
+    align-items:     start;
+    justify-content: start;
+    grid-auto-flow:  row;
+    grid-auto-rows:  min-content;
+    grid-row-gap:    var(--row-space, 1rem);
+    grid-column-gap: 0;
+    grid-template-columns: [full] auto;
+    } .group-content-rows>* {
+        grid-column: full;
+}
+
+.group-collisting {
+  --max-columns:  5;
+  --column-width: var(--paragraph-width--min);
+  --gap-space:    calc(var(--col-space) * 2);
+  --max-width:    calc((var(--column-width) + var(--gap-space)) * var(--max-columns));
+
+    max-width:    var(--max-width,    100%);
+    column-width: var(--column-width, 12em);
+    column-gap:   var(--gap-space,     3em);
+    padding:      var(--all-space,   1.5em);
+} .group-collisting.type2 {
+  --max-columns:  3;
+  --column-width: 16em;
+} .group-collisting>* {
+    page-break-inside: avoid;
+         break-inside: avoid;
+    margin-bottom: var(--row-space);
+}
+
+.autogrid {
+  --cell-size: 100%;
+    display:   grid;
+    grid-gap:  0;
+    grid-template-columns: repeat(auto-fill, minmax(var(--cell-size), 1fr));
+    } .autogrid>* {
+        grid-column: span 1;
+}
+@media (min-width: 24rem) {
+    .autogrid {
+      --cell-size: var(--paragraph-width--mid, 24rem);
+    }
+}
+@media (min-width: 48rem) {
+    .autogrid>.is-big {
+      --size: 2;
+        grid-column: span var(--size);
+    }
+}
+
+
+
+/** -------------------------------- padding shortcuts */
+
+
+.pt, .pv {
+  --padding-top:    var(--row-space, 1rem);
+    padding-top:    var(--padding-top);
+}
+.pb, .pv {
+  --padding-bottom: var(--row-space, 1rem);
+    padding-bottom: var(--padding-bottom);
+}
+.mt, .mv {
+  --margin-top:     var(--row-space, 1rem);
+    margin-top:     var(--margin-top);
+}
+.mb, .mv {
+  --margin-bottom:  var(--row-space, 1rem);
+    margin-bottom:  var(--margin-bottom);
+}
+
+.pt-text, .pv-text {
+  --font-offset:    calc( 1em * var(--base-font-square-ratio, 0.25)   );
+  --padding-top:    calc( var(--col-space, 1rem) - var(--font-offset) );
+    padding-top:    var(--padding-top);
+}
+.pb-text, .pv-text {
+  --font-offset:    calc( 1em * var(--base-font-square-ratio, 0.25)   );
+  --padding-bottom: calc( var(--col-space, 1rem) - var(--font-offset) );
+    padding-bottom: var(--padding-bottom);
+}
+
+
+/** -------------------------------- align compass */
+
+
+ .s-align { align-self:    end; }
+ .n-align { align-self:  start; }
+ .w-align {                     justify-self:  start; }
+ .e-align {                     justify-self:    end; }
+.se-align { align-self:    end; justify-self:    end; }
+.ne-align { align-self:  start; justify-self:    end; }
+.sw-align { align-self:    end; justify-self:  start; }
+.nw-align { align-self:  start; justify-self:  start; }
+
+.sc-align { align-self:    end; justify-self: center; }
+.nc-align { align-self:  start; justify-self: center; }
+.wc-align { align-self: center; justify-self:  start; }
+.ec-align { align-self: center; justify-self:    end; }
+.cc-align { align-self: center; justify-self: center; }
+ .c-align,
+.hc-align {                     justify-self: center; }
+.vc-align { align-self: center; }
+
+
+/** -------------------------------- univeral helpers */
+
+
+.is-centered {
+    text-align:      center;
+    justify-content: center;
+    align-self:      center;
+}
+.auto-margin {
+  --margin-left:  auto;
+  --margin-right: auto;
+    margin-left:  var(--margin-left);
+    margin-right: var(--margin-right);
+}
+
+.layer {
+    grid-column: full;
+}
+
+
+/*  EOF Universal helpers */

@@ -1,0 +1,57 @@
+/** swed-banner
+ *  wrap anything for nice grouping
+ *  2019.8.22
+ *
+ *  CSS
+ *
+ */
+
+
+/** -------------------------------- settings */
+
+
+.swed-banner {
+  --v-space: var(--row-space, 1rem);
+  --h-space: var(--col-space, 1rem);
+
+  --banner-padding:
+      var(--v-space)
+      0
+      0
+      0;
+}
+
+
+/** -------------------------------- main component */
+
+
+.swed-banner {
+ /* group-center */
+    display:         flex;
+    flex-direction:  row;
+    flex-wrap:       wrap;
+    justify-content: center;
+    align-items:     center;
+    align-content:   center;
+    align-self:      stretch;
+
+    padding: var(--banner-padding);
+}
+.swed-banner>* {
+  --margin:  0 var(--h-space) var(--v-space) var(--h-space);
+    margin:    var(--margin);
+}
+
+
+/** -------------------------------- support components */
+
+
+.swed-banner-title {
+    width: 100%;
+    justify-content: center;
+    justify-self:    center;
+    text-align:      center;
+}
+
+
+/*  EOF swed-banner */

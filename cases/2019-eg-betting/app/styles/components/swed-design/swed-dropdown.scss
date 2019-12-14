@@ -1,0 +1,216 @@
+/** dropdown UI component
+ *  2019.8.18
+ *
+ *  CSS
+ *
+ */
+
+
+/** -------------------------------- settings */
+
+
+.swed-dropdown {
+
+  --label-color:          inherit;
+  --hover-label-color:    var(--text-color-accent,  inherit);
+
+  --dropdown-back-color:  var(--back-color-accent,  rgba(255,255,255,0.1));
+  --hoverlink-back-color: var(--back-color-descent, rgba(255,255,255,0.25));
+
+  --droplist-max-width:   var(--paragraph-width--mid, 24em);
+
+}
+
+
+/** -------------------------------- closed state (default) */
+
+
+.swed-dropdown {
+  --arrow-rotate:    none;
+  --pointer-events:  none;
+  --label-events:    all;
+  --scale-timing:    var(--timing-function--closeJump);
+  --opacity-timing:  ease-out;
+
+ /* universal state flags */
+  --state-block:     none;
+  --state-value:     0;
+}
+
+
+/** -------------------------------- open state */
+
+
+.swed-dropdown.use-hover:hover,
+.swed-dropdown:focus,
+.swed-dropdown.is-active {
+  --arrow-rotate:    rotate(180deg);
+  --pointer-events:  all;
+  --label-events:    none;
+  --scale-timing:    var(--timing-function--openJump);
+  --opacity-timing:  ease-in;
+
+ /* universal state flags */
+  --state-block:     block;
+  --state-value:     1;
+
+ /* change colors */
+  --label-color:     var(--hover-label-color);
+}
+
+/* duplicate the same in other selector */
+.swed-dropdown:focus-within {
+  --arrow-rotate:    rotate(180deg);
+  --pointer-events:  all;
+  --label-events:    none;
+  --scale-timing:    var(--timing-function--openJump);
+  --opacity-timing:  ease-in;
+
+ /* universal state flags */
+  --state-block:     block;
+  --state-value:     1;
+
+ /* change colors */
+  --label-color:     var(--hover-label-color);
+}
+
+
+.swed-dropdown.use-hover:hover {
+  --label-events:    all;
+}
+
+/** -------------------------------- wrap */
+
+
+.swed-dropdown {
+    position: relative;
+    z-index:  var(--state-value);
+    pointer-events: none;
+}
+
+
+/** -------------------------------- label */
+
+
+.swed-dropdown>.label {
+    position: relative;
+    z-index:  1;
+
+    line-height:    1.5;
+    padding:        0.25em 0.5em;
+
+    color:          var(--label-color);
+    pointer-events: var(--label-events);
+}
+
+/* has arrow-marker */
+
+.swed-dropdown>.label {
+    display:       flex;
+    align-items:   center;
+    overflow:      hidden;
+    white-space:   nowrap;
+    text-overflow: ellipsis;
+    position:      relative;
+    padding-right: calc( 0.5em + 1.5em );
+}
+.swed-dropdown>.label::after {
+    content:       '';
+    position:      absolute;
+    right:         0.5em;
+    width:         1.5em;
+    height:        1.5em;
+ /* v-shape gray icon */
+    background-image:    url("data:image/svg+xml,%3Csvg fill%3D%22%23888888%22 width%3D%2224%22 height%3D%2224%22 viewBox%3D%220 0 24 24%22 xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E %3Cpath d%3D%22M7.41 7.84L12 12.42l4.59-4.58L18 9.25l-6 6-6-6z%22%2F%3E %3C%2Fsvg%3E");
+    background-size:     100%;
+    background-repeat:   no-repeat;
+    background-position: center center;
+ /* active rotation */
+    transform:           var(--arrow-rotate);
+    transition:          transform 240ms;
+    transform-origin:    center center;
+}
+
+
+/** -------------------------------- droplist wrap */
+
+
+.swed-dropdown>.droplist {
+    position: absolute;
+    z-index:  0;
+    top:     -0.25em;
+    left:    -0.25em;
+    min-width:  calc( 100% + 0.25em + 0.25em );
+    pointer-events: var(--pointer-events);
+}
+
+/* background */
+
+.swed-dropdown>.droplist::after {
+    content:  '';
+    position: absolute;
+    z-index: -1;
+    top:      0;
+    right:    0;
+    bottom:   0;
+    left:     0;
+
+    pointer-events:   none;
+
+    background-color: var(--dropdown-back-color);
+    transform:        scale(var(--state-value));
+    transform-origin: 1em 1em;
+    transition:       transform 240ms;
+    transition-timing-function: var(--state-timing-function);
+}
+
+
+/* better ux - transparent hover area around droplist */
+
+.swed-dropdown.use-hover:hover>.droplist::before {
+    content:  '';
+    position: absolute;
+    z-index: -2;
+    top:      2em;
+    right:   -2em;
+    bottom:  -2em;
+    left:    -2em;
+    display:  var(--state-block);
+    pointer-events: all;
+}
+
+
+/** -------------------------------- droplist UL content */
+
+
+.swed-dropdown>.droplist>ul {
+    list-style:     none;
+    margin:         0;
+    padding:        0;
+    margin-top:     2.5em;
+    padding-bottom: 0.5em;
+
+    opacity:    var(--state-value);
+    transition: opacity 240ms var(--opacity-timing);
+}
+
+.swed-dropdown>.droplist>ul>li {
+  --background-color: transparent;
+    background-color: var(--background-color);
+    max-width:        var(--droplist-max-width);
+    white-space:      nowrap;
+    text-overflow:    ellipsis;
+    padding: 0.25em 0.75em;
+}
+.swed-dropdown>.droplist>ul>li:hover {
+  --background-color: var(--hoverlink-back-color);
+}
+.swed-dropdown>.droplist>ul>li:hover>* {
+    display:    block;
+    transform:  translateX(0.25em);
+    transition: transform 240ms ease-in;
+    transition-timing-function: var(--timing-function--openJump);
+}
+
+
+/* EOF dropdown */

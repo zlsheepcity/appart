@@ -1,0 +1,38 @@
+/** SVGA icons
+ *  inline component for svg icons
+ *  2019.6.27
+ *
+ *  CSS
+ *  + SVG file with common icons
+ *  + usage examples, md file
+ *
+ */
+
+
+.svga-icon {
+  --base:   1em;                      /* - inline height    */
+  --size:   var(--line-height, 1.5);  /* - scale multiplyer */
+
+    width:  var(--base);
+    height: var(--base);
+
+    display:    inline-flex;
+    justify-content: center;
+    align-content:   center;
+    align-items:     center;
+    vertical-align:  middle;
+
+    &:not(.base-size) {
+        margin-right:     calc( var(--size)*var(--base) - var(--base) );
+        transform:        scale(var(--size));
+        transform-origin: left center;
+    }
+
+    &>svg {
+        width:  100%;
+        height: 100%;
+        fill:   currentColor;
+    }
+}
+
+/*  EOF SVGA Icons */

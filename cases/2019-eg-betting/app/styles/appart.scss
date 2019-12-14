@@ -1,0 +1,74 @@
+@charset "UTF-8";
+/*  Appart Styles
+ *  index file
+ *  2019.12.13
+ */
+
+/*  -------------------------------------------- Compilation shortcuts
+
+scss -C --sourcemap=none app/styles/appart.scss app/styles/appart-dev.css
+
+sass --no-source-map app/styles/appart.scss app/styles/appart-dev.css
+
+ */
+
+
+// -------------------------------------------- Quick Prototyping
+
+ // @import "components/prototype/prototype-sakura";
+
+
+// -------------------------------------------- System Core
+
+    @import "components/system-core/css-settings";
+    @import "components/system-core/css-animations";
+    @import "components/system-core/html-markup";
+    @import "components/system-core/html-typography";
+    @import "components/system-core/color-model";
+ // dev-mode
+    @import "components/system-core/color-palet--projects";
+
+
+// -------------------------------------------- Components
+
+// Layout
+
+    @import "components/journal-grid/grid-queen";
+    @import "components/offsidebar/offsidebar";
+    @import "components/contact-form/contact-form";
+
+ // Design Components
+
+    @import "components/swed-design/swed-banner";
+    @import "components/swed-design/swed-button";
+    @import "components/swed-design/swed-dropdown";
+    @import "components/swed-design/swed-site-head";
+    @import "components/svga-icons/svga-icons";
+    @import "components/catgrounds/catgrounds";
+
+ // Specific Cases
+
+    @import "components/old-style-code-block/old-style-code-block";
+ // @import "components/data-table/data-table";
+
+
+ // Deprecated
+
+    @import "components/journal-grid/journal-grid";
+
+
+// -------------------------------------------- System Utils
+
+
+    @import "components/system-utils/css-varriors";
+    @import "components/system-utils/css-workers";
+    @import "components/system-utils/article-markup";
+ // dev-mode
+    @import "components/system-utils/ultra-new";
+
+
+// -------------------------------------------- Custom
+
+
+
+/*  EOF Appart style index */

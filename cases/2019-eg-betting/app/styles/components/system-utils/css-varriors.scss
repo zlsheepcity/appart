@@ -1,0 +1,97 @@
+/** === ༼°▽°༽ ===
+ *   CSS Varriors
+ *
+ *  add safely custom value
+ *  «Var never changes»
+ *  zl, 2019.12.13
+ *
+ *
+ *  SCSS
+ *
+ */
+
+
+/** -------------------------------- Usage */
+/*
+
+    ## Option 0. Default value
+
+    <div class="opacity">
+        ...
+    </div>
+
+    ## Option 1.
+
+    <div class="opacity" style="--opacity:0.56;">
+        ...
+    </div>
+
+    ## Option 2.
+
+    <section style="--opacity: 0.56;">
+        <div class="opacity">...</div>
+        <div class="opacity">...</div>
+    </section>
+
+ */
+
+
+/** -------------------------------- SCSS auto varriors */
+
+
+$DEFAULT-VARRIORS: (
+//  'property-name':    default-value,
+
+    'width':            auto,
+    'max-width':        100%,
+    'min-width':        0,
+
+    'height':           auto,
+    'max-height':       100%,
+    'min-height':       0,
+
+    'padding':          var(--row-space, 1rem) var(--col-space, 1rem),
+    'padding-top':      var(--row-space, 1rem),
+    'padding-bottom':   var(--row-space, 1rem),
+    'padding-left':     var(--col-space, 1rem),
+    'padding-right':    var(--col-space, 1rem),
+
+    'margin':           var(--row-space, 1rem) var(--col-space, 1rem),
+    'margin-top':       var(--row-space, 1rem),
+    'margin-bottom':    var(--row-space, 1rem),
+    'margin-left':      var(--col-space, 1rem),
+    'margin-right':     var(--col-space, 1rem),
+
+    'align-self':       center,
+    'justify-self':     center,
+    'text-align':       center,
+
+    'font-size':        1em,
+    'line-height':      var(--line-height, 1.5),
+
+    'opacity':          1,
+
+    'color':            inherit,
+    'background-color': transparent
+);
+@each $VAR, $DEF in $DEFAULT-VARRIORS {
+//  .padding { padding: var(--padding, 1rem   ); }
+    .#{$VAR} { #{$VAR}: var(--#{$VAR}, #{$DEF}); }
+}
+
+
+/** -------------------------------- Handmade CSS varriors */
+
+
+    /*
+    .width      {      width: var(--width,      auto ); }
+    .max-width  {  max-width: var(--max-width,  100% ); }
+    .min-width  {  min-width: var(--min-width,     0 ); }
+    .height     {     height: var(--height,     auto ); }
+    .max-height { max-height: var(--max-height, 100% ); }
+    .min-height { min-height: var(--min-height,    0 ); }
+    .opacity    {    opacity: var(--opacity,       1 ); }
+    */
+
+
+/*  EOF CSS Varriors */

@@ -1,0 +1,275 @@
+/** === ༼°▽°༽ === Offsidebar  *//*
+ *
+ *  Expandable side-panel
+ *  Prevents content jumps when appears
+ *  zl, 2019.8.14
+ *
+ *  PURE CSS
+ *
+ */
+
+
+/** -------------------------------- offsidebar settings */
+
+
+.offsidebar {
+
+ /* size units */
+  --sx:   var(--col-space, 1.5rem);
+  --sy:   var(--row-space, 1.5rem);
+
+ /* color units */
+  --text-color--sidepanel: var(--text-color, var(--color,            black));
+  --back-color--sidepanel: var(--back-color, var(--background-color, white));
+
+ /* base properties */
+  --z-index--sidebar: 100;
+  --direction:        ltr;
+
+ /* bar is never full width, minimal gap  */
+  --empty-space-offset:  3rem;
+
+ /* open animation time  */
+  --transition-duration--slidein: 340ms;
+  --transition-duration--overlay: 1.4s;
+}
+
+
+/** -------------------------------- two sides difference */
+
+
+/* Eastside → default */
+
+.offsidebar {
+ /* bar position */
+  --left:  var(--state-width, auto);
+  --right: 0;
+  --transform-origin--horizontal: right;
+ /* close icon position */
+  --close-icon-right:              100%;
+ /* scrollbar position */
+  --scroll-overflow-behavoir:    scroll;
+  --scroll-direction:               ltr;
+}
+
+/* Westside ← */
+
+.offsidebar.from-westside {
+ /* bar position */
+  --left:  0;
+  --right: var(--state-width, auto);
+  --transform-origin--horizontal: left;
+ /* close icon position */
+  --close-icon-right:  calc( -1 * var(--empty-space-offset) );
+/* scrollbar position */
+  --scroll-overflow-behavoir:     auto;
+  --scroll-direction:              rtl;
+}
+
+
+/** -------------------------------- closed/active states */
+
+
+.offsidebar {
+  --state-event: none;
+  --state-value: 0;
+  --state-width: 0;
+}
+
+.offsidebar.is-active {
+  --state-event: all;
+  --state-value: 1;
+  --state-width: auto;
+}
+
+
+/** -------------------------------- layout & behavior */
+
+
+.offsidebar {
+    position:   fixed;
+    z-index:    var(--z-index--sidebar, 100);
+    top:        0;
+    bottom:     0;
+    right:      var(--right);
+    left:       var(--left);
+    max-width:  calc( 100% - var(--empty-space-offset) );
+
+    pointer-events: var(--state-event);
+}
+
+.offsidebar-background {
+    position:  absolute;
+    z-index:  -1;
+    top:       0;
+    right:     0;
+    width:  100%;
+    height: 100%;
+
+    background-color: var(--back-color--sidepanel);
+    transform: scaleX(var(--state-value));
+}
+
+.offsidebar-overlay {
+    position:  fixed;
+    z-index:  -2;
+    top:       0;
+    bottom:    0;
+    left:      0;
+    right:     0;
+
+    background-color: hsla(0, 0%, 0%, 0.9);
+    opacity: var(--state-value);
+}
+
+/** -------------------------------- close icon */
+
+.offsidebar-background::before {
+    content:  '';
+    display:  block;
+    position: absolute;
+    top:      0;
+    right:    var(--close-icon-right);
+    width:    var(--empty-space-offset);
+    height:   var(--empty-space-offset);
+
+ /* click will be delegated to overlay div */
+    pointer-events:   none;
+
+ /* x-close — white svg icon */
+    background-image:  url('data:image/svg+xml,%3Csvg fill="%23FFFFFF" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/%3E%3C/svg%3E');
+    background-size:   contain;
+    background-repeat: no-repeat;
+}
+
+
+/** -------------------------------- content wrap */
+
+
+.sidepanel {
+    position:   relative;
+    max-width:  100%;
+    height:     100%;
+    overflow-x: visible;
+    overflow-y: var(--scroll-overflow-behavoir);
+    direction:  var(--scroll-direction);
+
+    display:         flex;
+    flex-direction:  column;
+    justify-content: flex-start;
+    align-content:   stretch;
+
+    color:      var(--text-color--sidepanel);
+    opacity:    var(--state-value);
+}
+.sidepanel>*{
+    direction: var(--direction);
+}
+.sidepanel-header {
+    margin-top:    0;
+    margin-bottom: 0;
+    position: sticky;
+    top:      0;
+    z-index:  1;
+}
+.sidepanel-footer {
+    margin-top: auto;
+    margin-bottom: 0;
+    position: sticky;
+    bottom:   0;
+    z-index:  1;
+}
+
+/* change state for content */
+
+.offsidebar .sidepanel-content,
+.offsidebar .sidepanel-header,
+.offsidebar .sidepanel-footer {
+    transform: scaleX(var(--state-value));
+    opacity:          var(--state-value);
+}
+
+/** -------------------------------- content design */
+
+
+.sidepanel-content {
+    padding: var(--sy) var(--sx);
+}
+
+.sidepanel-header {
+
+    display:  flex;
+    flex-direction:  column;
+    justify-content: center;
+    align-content:  stretch;
+    align-items:    stretch;
+
+ /* visual harmony with closing icon */
+    min-height: var(--empty-space-offset);
+    padding:    0.25em var(--sx);
+
+ /* inverted colors for header & footer */
+    background-color: var(--text-color--sidepanel);
+               color: var(--back-color--sidepanel);
+}
+
+.sidepanel-footer {
+    padding:   0.25em var(--sx);
+
+ /* inverted colors for header & footer */
+    background-color: var(--text-color--sidepanel);
+               color: var(--back-color--sidepanel);
+}
+
+
+/** -------------------------------- disable background scroll */
+
+
+/*html*/.has-offsidebar-overlay {
+    overflow: hidden;
+}
+
+
+/** -------------------------------- animation settings */
+
+
+ /* Animate overlay */
+
+    .offsidebar .offsidebar-overlay {
+        transition: opacity var(--transition-duration--slidein);
+        transition-timing-function: var(--timing-function--focusZoom);
+    }
+    .offsidebar.is-active .offsidebar-overlay {
+        transition-duration: var(--transition-duration--overlay);
+    }
+
+ /* Animate offsidebar */
+
+    .offsidebar-background {
+        will-change: transform;
+    }
+    .offsidebar.is-active .offsidebar-background {
+        transition: transform var(--transition-duration--slidein);
+        transition-timing-function: var(--timing-function--focusZoom);
+        transform-origin: var(--transform-origin--horizontal) center;
+        transition-delay: 50ms;
+    }
+
+ /* Animate content */
+
+    .offsidebar .sidepanel-content,
+    .offsidebar .sidepanel-header,
+    .offsidebar .sidepanel-footer {
+        will-change: transform;
+    }
+    .offsidebar.is-active .sidepanel-content,
+    .offsidebar.is-active .sidepanel-header,
+    .offsidebar.is-active .sidepanel-footer {
+        transition: transform var(--transition-duration--slidein);
+        transition-timing-function: var(--timing-function--focusZoom);
+        transform-origin: var(--transform-origin--horizontal) center;
+        transition-delay: 50ms;
+    }
+
+
+/*  EOF offsidebar */

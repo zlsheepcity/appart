@@ -1601,6 +1601,26 @@ body {
  *  CSS
  *
  */
+/*
+    <section class="myocard">
+        <section>
+            <div>
+                <p>...</p>
+           </div>
+       </section>
+        <section>
+            <div>
+                <p>...</p>
+           </div>
+       </section>
+    </section>
+
+    myocards-wrapper
+        myocard align-top
+        myocard is-banner
+        myocard is-layout
+        myocard wrap-order-reverse
+*/
 /* -------------------------------- Settings */
 .myocard {
   --sx: var(--col-space ,1.5rem );

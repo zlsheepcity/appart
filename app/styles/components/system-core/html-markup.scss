@@ -1,5 +1,5 @@
 /** html-markup
- *  2019.12.13
+ *  2019.12.16
  *
  *  low level html markup
  *  normalize
@@ -17,17 +17,17 @@ html                 { height: 100%; }
 html, body           { margin: 0; padding: 0; }
 
 
-/* full-height 2019
-   https://css-tricks.com/some-things-you-oughta-know-when-working-with-viewport-units/ */
-body {
-  min-height: 100vh; /* or min-height: calc(100vh - 80px); - depending on your preferences */
-  min-height: -webkit-fill-available;
-  min-height: -moz-available;
-  min-height: available; /* not sure if exist in any browser */
-  min-height: -webkit-stretch; /* not sure if exist in any browser */
-  min-height: -moz-stretch; /* not sure if exist in any browser */
-  min-height: stretch;
-}
+/** full-height 2019
+    https://css-tricks.com/some-things-you-oughta-know-when-working-with-viewport-units/
+*/  body {
+        min-height:  100vh;
+        min-height: -webkit-fill-available;
+        min-height: -moz-available;
+        min-height:  available;
+        min-height: -webkit-stretch;
+        min-height: -moz-stretch;
+        min-height:  stretch;
+    }
 
 
 /** -------------------------------- improve design & UX */
@@ -43,7 +43,7 @@ a, area, button, input, label, select, summary, textarea, [tabindex] {
 }
 
 
-/** -------------------------------- semantic markup without design affect */
+/** -------------------------------- semantic markup without design */
 
 
 figure, figcaption, fieldset, legend {
@@ -53,12 +53,20 @@ figure, figcaption, fieldset, legend {
     border:  0;
     white-space: normal;
 }
-
-main, article, section, aside,
-header, footer,
-nav, code { display: block; }
-
-h1, h2, h3, h4, h5, h6,
+main, article, section, aside, header, footer, nav {
+    display: block;
+}
+pre, code {
+    display: block;
+}
+h1, h2, h3, h4, h5, h6 {
+    margin:  0;
+    padding: 0;
+    font-family: inherit;
+    font-size:   inherit;
+    line-height: inherit;
+    font-weight: inherit;
+}
 p, blockquote {
     margin:  0;
     padding: 0;
@@ -68,7 +76,7 @@ p, blockquote {
     font-weight: inherit;
 }
 button {
-    padding:    0;
+    padding:    0.25rem 1.5rem;
     border:     0;
     font:       inherit;
   --background: var(--back-color-accent, transparent);
@@ -78,22 +86,33 @@ button {
 }
 
 
-/** -------------------------------- images are used as illustrations */
+/** -------------------------------- images and media as illustrations */
 
 
 img, svg, canvas {
     display:   block;
     max-width: 100%;
-    min-width: 0;
-    height:    auto;
+    margin:    0;
+    padding:   0;
     border:    0;
 }
-figure {
-    max-width: var(--max-width, 100%);
+figure, figcaption {
+    display:   block;
+    max-width: 100%;
+    margin:    0;
+    padding:   0;
+    border:    0;
+}
+iframe, embed, object {
+    display:   block;
+    max-width: 100%;
+    margin:    0;
+    padding:   0;
+    border:    0;
 }
 
 
-/** -------------------------------- markup defaults */
+/** -------------------------------- default content */
 
 
 a { color: inherit; }
@@ -107,8 +126,8 @@ ul, ol {
 hr {
     background: transparent;
     box-shadow: none;
-    border: 0;
-    margin: 0;
+    border:  0;
+    margin:  0;
 
  /* used as empty space */
     display:    block;

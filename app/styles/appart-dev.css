@@ -50,6 +50,22 @@ sass --no-source-map app/styles/appart.scss app/styles/appart-dev.css
     transform: rotate(0deg); }
   to {
     transform: rotate(359deg); } }
+@keyframes SimpleDancer {
+  0% {
+    transform: rotate(13deg) scale(2); }
+  25% {
+    transform: rotate(0deg); }
+  50% {
+    transform: rotate(-13deg) scale(2); }
+  75% {
+    transform: rotate(0deg); }
+  100% {
+    transform: rotate(13deg) scale(2); } }
+.dance-like-happy {
+  animation: SimpleDancer 800ms linear infinite;
+  transform: rotate(0);
+  transform-origin: bottom center; }
+
 @keyframes ShakeLikeRefuse {
   10%, 90% {
     transform: translate3d(-1px, 0, 0); }
@@ -170,10 +186,7 @@ h1, h2, h3, h4, h5, h6 {
 p, blockquote {
   margin: 0;
   padding: 0;
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit;
-  font-weight: inherit; }
+  font: inherit; }
 
 button {
   padding: 0.25rem 1.5rem;
@@ -1244,8 +1257,8 @@ body {
   /* bar is never full width, minimal gap  */
   --empty-space-offset: 3rem;
   /* open animation time  */
-  --transition-duration--slidein: 340ms;
-  --transition-duration--overlay: 1.4s; }
+  --transition-duration--slidein: 320ms;
+  --transition-duration--overlay: 240ms; }
 
 /** -------------------------------- two sides difference */
 /* Eastside → default */
@@ -1871,8 +1884,7 @@ body {
   left: 0;
   opacity: 0.85;
   --background-color: transparent;
-  background-color: var(--background-color);
-  transition: background 240ms ease-out; }
+  background-color: var(--background-color); }
 
 .form-design .wpcf7 .ajax-loader.is-active {
   visibility: visible;
@@ -1901,6 +1913,14 @@ body {
     transform: rotate(360deg); }
   to {
     transform: rotate(1deg); } }
+/* phone field */
+.form-design .intl-tel-input.allow-dropdown input.form-control {
+  padding-left: 52px; }
+
+.form-design .intl-tel-input .country-list {
+  max-width: calc( var(--max-width) - 1.75*var(--sx) );
+  overflow-x: hidden; }
+
 /* -------------------------------- Offsidebar Integration */
 .form-design.sidepanel-content {
   position: relative;

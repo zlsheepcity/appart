@@ -23,15 +23,15 @@
   --back-color--sidepanel: var(--back-color, var(--background-color, white));
 
  /* base properties */
-  --z-index--sidebar: 100;
-  --direction:        ltr;
+  --z-index--sidebar:    100;
+  --direction:           ltr;
 
  /* bar is never full width, minimal gap  */
   --empty-space-offset:  3rem;
 
  /* open animation time  */
-  --transition-duration--slidein: 340ms;
-  --transition-duration--overlay: 1.4s;
+  --transition-duration--slidein: 320ms;
+  --transition-duration--overlay: 240ms;
 }
 
 

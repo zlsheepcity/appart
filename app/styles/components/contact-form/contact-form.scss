@@ -403,6 +403,16 @@
     to   { transform: rotate(1deg);   }
 }
 
+/* phone field */
+
+.form-design .intl-tel-input.allow-dropdown input.form-control {
+    padding-left: 52px;
+}
+.form-design .intl-tel-input .country-list {
+    max-width:  calc( var(--max-width) - 1.75*var(--sx) );
+    overflow-x: hidden;
+}
+
 
 /* -------------------------------- Offsidebar Integration */
 

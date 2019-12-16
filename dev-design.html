@@ -105,6 +105,179 @@
 <body class="colors--primary native-sans">
 
 
+<!-- ========================================= HeaderToggler -->
+<article id="HeaderToggler">
+
+    <style>
+        #HeaderToggler section { padding:   2rem; }
+        #HeaderToggler p+p { margin-top:  1.5rem; }
+        #HeaderToggler h2  { margin-bottom: 1rem; }
+        #HeaderToggler h2:not(:first-child) { margin-top: 1.5rem; }
+    </style>
+
+
+<!-- TEMPLATE -->
+
+<section hidden>
+    <h2><button aria-expanded="false">Self-Service Solution Perks</button></h2>
+    <div hidden>
+        <p>The Self-Service solution is between the White Label and Turnkey solution, taking longer to develop than the White Label solution but coming at a lower price than the Turnkey solution.</p>
+
+        <p>It supports all currencies, as well as an unlimited number of languages the operator can integrate. The solution also comes with numerous other benefits, such as the loyalty system, sports bonuses and free bets, live chat integration, CRM and automated mailing system, advanced reporting system, and integrated internal CMS system. In addition, the operators will be able to rely on 24/7 technical support and the software they opt for will receive continuous updates.</p>
+
+        <p>When it comes to payment systems, the Self-Service solution supports both Visa and MasterCard. Also, the operators can sign a contract with payment method providers.</p>
+    </div>
+</section>
+
+<!-- CONTENT -->
+
+<section class="has-header-toggler">
+
+    <h2>Self-Service Solution Perks</h2>
+    <div>
+        <p>The Self-Service solution is between the White Label and Turnkey solution, taking longer to develop than the White Label solution but coming at a lower price than the Turnkey solution.</p>
+
+        <p>It supports all currencies, as well as an unlimited number of languages the operator can integrate. The solution also comes with numerous other benefits, such as the loyalty system, sports bonuses and free bets, live chat integration, CRM and automated mailing system, advanced reporting system, and integrated internal CMS system. In addition, the operators will be able to rely on 24/7 technical support and the software they opt for will receive continuous updates.</p>
+
+        <p>When it comes to payment systems, the Self-Service solution supports both Visa and MasterCard. Also, the operators can sign a contract with payment method providers.</p>
+    </div>
+
+    <h2>Customisation Options</h2>
+    <div>
+        <p>The Self-Service sportsbook solution allows clients to implement their own website design. However, there are many other customisation options available with the Self-Service solution, such as the possibility to customise the front-end, widgets, and change the colour scheme. In addition, all other additional functionalities can also be customised and implemented by clients’ developers.</p>
+
+        <p>Finally, operators will be able to rearrange blocks on a page freely and will be able to position custom-designed banners on their website. A few additional perks include full access to geolocation technologies, custom odds and lines, automatic live events configuration, as well as a cash-out option with an adjustable commission.</p>
+    </div>
+
+</section>
+
+<!-- ========================================= STYLE -->
+
+<style>
+  /* Header as Button with Marker */
+    .header-toggler-button { all: inherit; }
+    .header-toggler-button {
+        width: 100%;
+        display:         flex;
+        flex-direction:  row;
+        flex-wrap:       nowrap;
+        justify-content: space-between;
+        align-items:     flex-start;
+    }
+    .header-toggler-button::after {
+        content:     '▾';
+        order:        0;
+        cursor:       pointer;
+        display:      inline-block;
+        padding-left: 0.25em;
+    }
+
+  /* Marker in action */
+    .header-toggler-button::after {
+        transition: transform 480ms;
+        transition-timing-function: var(--timing-function--focusZoom, ease-out);
+    }
+    .header-toggler-button:hover::after {
+        color: var(--text-color-accent, firebrick);
+    }
+    .header-toggler-button[aria-expanded="true"]:after {
+        transform:  scaleY(-1);
+    }
+
+  /* Content in action */
+    .header-toggler-visible-content {
+        animation: bg-focus-animation 1s ease-in;
+        margin: -0.25em;
+        padding: 0.25em;
+    }
+    @keyframes bg-focus-animation {
+        from { background-color: var(--back-color-accent, lightskyblue); }
+        to   { background-color: transparent; }
+    }
+</style>
+
+<!-- ========================================= SCRIPT -->
+
+<script>
+    const runHeaderToggler = function() {
+     // Setup
+        const o = {
+            targets:  document.querySelectorAll('.has-header-toggler h2'),
+            button:  'header-toggler-button',
+            label:   'header-toggler-label',
+            marker:  'header-toggler-marker',
+            content: 'header-toggler-visible-content'
+        }
+
+     // Define targets
+        const headings = o.targets;
+        const headingsUpdate = toggler => {
+
+         // Wrap into Button
+            toggler.innerHTML = `
+                <button   class="${o.button}" aria-expanded="false">
+                    <span class="${o.label}">${toggler.textContent}<span>
+                    <span class="${o.marker}"><span>
+                </button>
+            `
+
+         // Define actors
+            let button = toggler.querySelector('button')
+            let contxt = toggler.nextElementSibling
+            let buttonAction = () => {
+                let isExpanded = button.getAttribute('aria-expanded') === 'true' || false
+                button.setAttribute('aria-expanded', !isExpanded)
+                contxtController(!isExpanded)
+            }
+            let contxtController = state => {
+                contxt.hidden = !state
+                contxt.classList.toggle(o.content, state)
+            }
+
+         // Initialize action
+            button.onclick = buttonAction
+            contxtController(false) // initial hidden
+        }
+
+     // Initialize targets
+        Array.prototype.forEach.call(headings, headingsUpdate)
+    }
+
+ // Run
+    app.onload(runHeaderToggler)
+</script>
+
+
+</article>
+
+
+<!-- ------------------------- golden grid -->
+
+<article>
+   <!--
+       by Ivan Bogachev
+       https://habr.com/ru/post/479580/
+     -->
+    <style>
+        .golden-grid {
+          --golden-grid-template: 1fr 1fr 2fr 4fr 2.66fr 5.33fr 5.33fr 4.33fr 2.83fr 3.5fr 3.5fr 2.83fr 4.33fr 5.33fr 5.33fr 2.66fr 4fr 2fr 1fr 1fr;
+            position: relative;
+            height:   100vh;
+            width:    100%;
+            display:  grid;
+            grid-gap: 0;
+            grid-template-rows:    var(--golden-grid-template);
+            grid-template-columns: var(--golden-grid-template);
+            background: url(art/illustrations/golden-grid.jpg) left top / 100% 100% no-repeat;
+        }
+    </style>
+    <div class="golden-grid">
+        <div style="grid-area: 6 / 6 / span 5 / span 5; background-color: rgba(0,200,0,0.5);"></div>
+    </div>
+</article>
+
+
+
 <!-- ------------------------- post myocard -->
 
 
@@ -393,7 +566,10 @@
 
 
 
-<!-- ========= ʕ⊙ᴥ⊙ʔ ====================================== -->
+<!-- ====================================== jasma-workshop-banner -->
+
+<article>
+
     <style>
         .jasma-workshop-banner {
             background-image: url(http://jasma.lv/wp-content/uploads/jasma-workshop-cover.jpg);
@@ -493,152 +669,8 @@
         </div>
     </section>
 
-
-
-
-<!-- ========= ʕ⊙ᴥ⊙ʔ ====================================== -->
-<article id="HeaderToggler">
-
-    <style>
-        #HeaderToggler section { padding:   2rem; }
-        #HeaderToggler p+p { margin-top:  1.5rem; }
-        #HeaderToggler h2  { margin-bottom: 1rem; }
-        #HeaderToggler h2:not(:first-child) { margin-top: 1.5rem; }
-    </style>
-
-
-<!-- TEMPLATE -->
-
-<section hidden>
-    <h2><button aria-expanded="false">Self-Service Solution Perks</button></h2>
-    <div hidden>
-        <p>The Self-Service solution is between the White Label and Turnkey solution, taking longer to develop than the White Label solution but coming at a lower price than the Turnkey solution.</p>
-
-        <p>It supports all currencies, as well as an unlimited number of languages the operator can integrate. The solution also comes with numerous other benefits, such as the loyalty system, sports bonuses and free bets, live chat integration, CRM and automated mailing system, advanced reporting system, and integrated internal CMS system. In addition, the operators will be able to rely on 24/7 technical support and the software they opt for will receive continuous updates.</p>
-
-        <p>When it comes to payment systems, the Self-Service solution supports both Visa and MasterCard. Also, the operators can sign a contract with payment method providers.</p>
-    </div>
-</section>
-
-<!-- CONTENT -->
-
-<section class="has-header-toggler">
-
-    <h2>Self-Service Solution Perks</h2>
-    <div>
-        <p>The Self-Service solution is between the White Label and Turnkey solution, taking longer to develop than the White Label solution but coming at a lower price than the Turnkey solution.</p>
-
-        <p>It supports all currencies, as well as an unlimited number of languages the operator can integrate. The solution also comes with numerous other benefits, such as the loyalty system, sports bonuses and free bets, live chat integration, CRM and automated mailing system, advanced reporting system, and integrated internal CMS system. In addition, the operators will be able to rely on 24/7 technical support and the software they opt for will receive continuous updates.</p>
-
-        <p>When it comes to payment systems, the Self-Service solution supports both Visa and MasterCard. Also, the operators can sign a contract with payment method providers.</p>
-    </div>
-
-    <h2>Customisation Options</h2>
-    <div>
-        <p>The Self-Service sportsbook solution allows clients to implement their own website design. However, there are many other customisation options available with the Self-Service solution, such as the possibility to customise the front-end, widgets, and change the colour scheme. In addition, all other additional functionalities can also be customised and implemented by clients’ developers.</p>
-
-        <p>Finally, operators will be able to rearrange blocks on a page freely and will be able to position custom-designed banners on their website. A few additional perks include full access to geolocation technologies, custom odds and lines, automatic live events configuration, as well as a cash-out option with an adjustable commission.</p>
-    </div>
-
-</section>
-
-<!-- ========================================= STYLE -->
-
-<style>
-  /* Header as Button with Marker */
-    .header-toggler-button { all: inherit; }
-    .header-toggler-button {
-        width: 100%;
-        display:         flex;
-        flex-direction:  row;
-        flex-wrap:       nowrap;
-        justify-content: space-between;
-        align-items:     flex-start;
-    }
-    .header-toggler-button::after {
-        content:      '▾';
-        cursor:       pointer;
-        display:      inline-block;
-        padding-left: 0.25em;
-    }
-
-  /* Marker in action */
-    .header-toggler-button::after {
-        transition: transform 480ms;
-        transition-timing-function: var(--timing-function--focusZoom, ease-out);
-    }
-    .header-toggler-button:hover::after {
-        color: var(--text-color-accent, firebrick);
-    }
-    .header-toggler-button[aria-expanded="true"]:after {
-        transform:  scaleY(-1);
-    }
-
-  /* Content in action */
-    .header-toggler-visible-content {
-        animation: bg-focus-animation 1s ease-in;
-        margin: -0.25em;
-        padding: 0.25em;
-    }
-    @keyframes bg-focus-animation {
-        from { background-color: var(--back-color-accent, lightskyblue); }
-        to   { background-color: transparent; }
-    }
-</style>
-
-<!-- ========================================= SCRIPT -->
-
-<script>
-    const runHeaderToggler = function() {
-     // Setup
-        const o = {
-            targets:  document.querySelectorAll('.has-header-toggler h2'),
-            button:  'header-toggler-button',
-            label:   'header-toggler-label',
-            marker:  'header-toggler-marker',
-            content: 'header-toggler-visible-content'
-        }
-
-     // Define targets
-        const headings = o.targets;
-        const headingsUpdate = toggler => {
-
-         // Wrap into Button
-            toggler.innerHTML = `
-                <button   class="${o.button}" aria-expanded="false">
-                    <span class="${o.label}">${toggler.textContent}<span>
-                    <span class="${o.marker}"><span>
-                </button>
-            `
-
-         // Define actors
-            let button = toggler.querySelector('button')
-            let contxt = toggler.nextElementSibling
-            let buttonAction = () => {
-                let isExpanded = button.getAttribute('aria-expanded') === 'true' || false
-                button.setAttribute('aria-expanded', !isExpanded)
-                contxtController(!isExpanded)
-            }
-            let contxtController = state => {
-                contxt.hidden = !state
-                contxt.classList.toggle(o.content, state)
-            }
-
-         // Initialize action
-            button.onclick = buttonAction
-            contxtController(false) // initial hidden
-        }
-
-     // Initialize targets
-        Array.prototype.forEach.call(headings, headingsUpdate)
-    }
-
- // Run
-    app.onload(runHeaderToggler)
-</script>
-
-
 </article>
+
 
 </body>
 </html>

@@ -30,6 +30,18 @@
     to   {transform: rotate(359deg);}
 }
 
+@keyframes SimpleDancer {
+      0% { transform: rotate( 13deg) scale(2); }
+     25% { transform: rotate(  0deg);          }
+     50% { transform: rotate(-13deg) scale(2); }
+     75% { transform: rotate(  0deg);          }
+    100% { transform: rotate( 13deg) scale(2); }
+}
+.dance-like-happy {
+  animation: SimpleDancer 1s linear infinite;
+  transform: rotate(0);
+  transform-origin: bottom center;
+}
 
 @keyframes ShakeLikeRefuse {
   10%, 90%      { transform: translate3d(-1px, 0, 0); }
@@ -43,6 +55,7 @@
   backface-visibility: hidden;
   perspective: 1000px;
 }
+
 
 
 /** Constructor

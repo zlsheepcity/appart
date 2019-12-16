@@ -38,7 +38,7 @@
     100% { transform: rotate( 13deg) scale(2); }
 }
 .dance-like-happy {
-  animation: SimpleDancer 1s linear infinite;
+  animation: SimpleDancer 800ms linear infinite;
   transform: rotate(0);
   transform-origin: bottom center;
 }

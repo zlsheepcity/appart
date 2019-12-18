@@ -245,45 +245,17 @@
         transition-property:        transform;
         transition-duration:        var(--transition-duration--slidein);
         transition-timing-function: var(--timing-function--focusZoom, ease-out);
-        transition-timing-function: var(--timing-function--openJump, ease-out);
-    }
-
- /* Animate header/footer */
-
-    .offsidebar .sidepanel-header,
-    .offsidebar .sidepanel-footer {
-        opacity:                    var(--state-value);
-        transform:                  scaleY( var(--state-value) );
-        transform-origin:           top center;
-/*
-        transform:                  scaleX( var(--state-value) );
-        transform-origin:           var(--transform-origin--horizontal) center;
-        will-change:                transform;
-        opacity:                    var(--state-value);
-*/
-    }
-    .offsidebar.is-active .sidepanel-header,
-    .offsidebar.is-active .sidepanel-footer {
-        transition-property:        opacity, transform;
-        transition-duration:        var(--transition-duration--slidein);
-        transition-delay:           var(--transition-duration--slidein);
-        transition-timing-function: ease-in;
-        transition-timing-function: var(--timing-function--openJump, ease-out);
-/*
-        transition-property:        transform;
-        transition-duration:        var(--transition-duration--slidein);
-        transition-timing-function: var(--timing-function--focusZoom, ease-out);
-        transition-timing-function: var(--timing-function--openJump, ease-out);
-*/
+        //transition-timing-function: var(--timing-function--openJump, ease-out);
     }
 
  /* Animate close-icon */
 
     .offsidebar-background::before {
         opacity:                    var(--state-value);
+        transform:                  scale( var(--state-value) );
     }
     .offsidebar.is-active .offsidebar-background::before {
-        transition-property:        opacity;
+        transition-property:        opacity, transform;
         transition-duration:        var(--transition-duration--content);
         transition-delay:           var(--transition-duration--slidein);
         transition-timing-function: ease-in;
@@ -305,5 +277,30 @@
         transition-timing-function: ease-in;
     }
 
+ /* Animate header */
+
+    .offsidebar .sidepanel-header {
+        opacity:                    var(--state-value);
+        transform:                  scaleY( var(--state-value) );
+        transform-origin:           top center;
+    }
+    .offsidebar.is-active .sidepanel-header {
+        transition-property:        opacity, transform;
+        transition-duration:        var(--transition-duration--slidein);
+        transition-delay:           var(--transition-duration--slidein);
+        transition-timing-function: var(--timing-function--openJump, ease-out);
+    }
+
+ /* Animate footer */
+
+    .offsidebar .sidepanel-footer {
+        opacity:                    var(--state-value);
+    }
+    .offsidebar.is-active .sidepanel-footer {
+        transition-property:        opacity;
+        transition-duration:        var(--transition-duration--slidein);
+        transition-delay:           var(--transition-duration--slidein);
+        transition-timing-function: ease-in;
+    }
 
 /*  EOF offsidebar */

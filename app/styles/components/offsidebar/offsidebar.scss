@@ -245,7 +245,6 @@
         transition-property:        transform;
         transition-duration:        var(--transition-duration--slidein);
         transition-timing-function: var(--timing-function--focusZoom, ease-out);
-        //transition-timing-function: var(--timing-function--openJump, ease-out);
     }
 
  /* Animate close-icon */
@@ -253,6 +252,7 @@
     .offsidebar-background::before {
         opacity:                    var(--state-value);
         transform:                  scale( var(--state-value) );
+        will-change:                transform;
     }
     .offsidebar.is-active .offsidebar-background::before {
         transition-property:        opacity, transform;
@@ -283,6 +283,7 @@
         opacity:                    var(--state-value);
         transform:                  scaleY( var(--state-value) );
         transform-origin:           top center;
+        will-change:                transform;
     }
     .offsidebar.is-active .sidepanel-header {
         transition-property:        opacity, transform;

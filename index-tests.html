@@ -1,4 +1,4 @@
-<!doctype html><!-- appart :: 8102 :: 2019.9.15 -->
+<!doctype html>
 <html la-root-re-vars lang="ru">
 <head>
     <meta charset="utf-8">
@@ -85,7 +85,7 @@
 
 
     <link
-        href="app/styles/appart-dev.css?v2019.8.22"
+        href="app/styles/appart-dev.css?v2019.12.18"
         rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic"
@@ -125,7 +125,7 @@
             let  imitator = document.querySelector('.js-imitate-form')
             form_api.delegateResponse(imitator)
         }
-        app.onload(getFormApiExample)
+        // app.onload(getFormApiExample)
     </script>
 
 
@@ -143,7 +143,7 @@
 
     <!-- ----------------------------------------- Code Field -->
 
-<article class="--padding">
+<article>
 <pre class="code-block">
 .code-block  {
     font-family: 'VT323', 'Courier New', Courier, monospace;
@@ -156,6 +156,7 @@
     white-space: pre;
 
     <mark>[...]</mark>
+    <a href="#">Link</a>
 }
 </pre>
 </article>
@@ -172,6 +173,17 @@
                  bar_api.delegateToggle(document.querySelector('.toggle-ContactBar'))
         }
         app.onload(DemoActivateContactBar)
+    </script>
+    <script>
+        function DemoActivateContactForm () {
+         // get api
+            let  selector = '.ContactBar'
+            let  form_api = Init__ContactForm({selector})
+         // delegate action
+            //let  imitator = document.querySelector('.js-imitate-form')
+            //form_api.delegateResponse(imitator)
+        }
+        app.onload(DemoActivateContactForm)
     </script>
 
     <div class="colors--ivory">
@@ -213,8 +225,7 @@
 
                                 <div class="wrap-field wrap-submit">
                                     <input type="submit" value="Send" class="form-design-button">
-                                    <div class="form-design-button js-imitate-form">Imitate</div>
-                                    <span class="ajax-loader is-active"></span>
+                                    <span class="form-loader"></span>
                                 </div>
 
                             </div>
@@ -238,6 +249,16 @@
                 </div>
 
             </section>
+
+
+            <footer class="offsidebar-footer bar-footer">
+                <div>
+                    <button class="js-form-reset">reset</button>
+                    <button class="js-form-loading">loading</button>
+                    <button class="js-form-response">response</button>
+                </div>
+            </footer>
+
 
         </div>
     </section>

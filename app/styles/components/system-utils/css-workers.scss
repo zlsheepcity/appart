@@ -6,6 +6,17 @@
  */
 
 
+/** -------------------------------- elements */
+
+
+.text-link {
+   -ms-touch-action: manipulation;
+    touch-action:    manipulation;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+
 /** -------------------------------- layout */
 
 
@@ -163,7 +174,6 @@
     margin-left:  var(--margin-left);
     margin-right: var(--margin-right);
 }
-
 .layer {
     grid-column: full;
 }

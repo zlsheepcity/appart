@@ -8,13 +8,13 @@ function Init__ContactForm (dna={}) {
     const isActive         = 'is-active'
 
     const Dom = {
-        Former: Mom,
-        Loader: Mom.querySelector('.ajax-loader'),
+        Former: Mom.classList.contains('form-functional') ? Mom : Mom.querySelector('.form-functional'),
+        Loader: Mom.querySelector('.form-loader') || Mom.querySelector('.ajax-loader'),
         Answer: Mom.querySelector('.wrap-form-feedback'),
-        Reform: Mom.querySelector('.js-form-reset'),
-        stLoad: Mom.querySelector('.js-form-loading'),
-        stFeed: Mom.querySelector('.js-form-response'),
-        elWpcf: Mom.querySelector('.wpcf7')
+        elWpcf: Mom.querySelector('.wpcf7'),
+        controllersReset: Mom.querySelectorAll('.js-form-reset'),
+        controllersLoad:  Mom.querySelectorAll('.js-form-loading'),
+        controllersResponse:  Mom.querySelectorAll('.js-form-response')
     }
 
     const Api = {
@@ -59,24 +59,21 @@ function Init__ContactForm (dna={}) {
      // Delegators
 
         delegateReset: el => {
-            if (!el) return false
-            el.addEventListener('click', Api.resetForm)
+            if (el) el.addEventListener('click', Api.resetForm)
         },
         delegateLoading: el => {
-            if (!el) return false
-            el.addEventListener('click', Api.stateLoading)
+            if (el) el.addEventListener('click', Api.stateLoading)
         },
         delegateResponse: el => {
-            if (!el) return false;
-            el.addEventListener('click', Api.stateResponse)
+            if (el) el.addEventListener('click', Api.stateResponse)
         },
 
     }
 
     const Activate__core_events = ()=> {
-        Api.delegateReset(Dom.Reform)
-        Api.delegateLoading(Dom.stLoad)
-        Api.delegateResponse(Dom.stFeed)
+        Dom.controllersReset.forEach( el=>Api.delegateReset(el) )
+        Dom.controllersLoad.forEach( el=>Api.delegateLoading(el) )
+        Dom.controllersResponse.forEach( el=>Api.delegateResponse(el) )
     }
 
     const Integration__wpcf7 = ()=> {

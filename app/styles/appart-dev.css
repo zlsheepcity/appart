@@ -1872,6 +1872,61 @@ body {
   vertical-align: baseline;
   padding-right: 0.25rem; }
 
+/* form loader */
+.form-loader {
+  visibility: hidden;
+  background-image: none;
+  pointer-events: none;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: auto;
+  height: auto;
+  margin: 0;
+  padding: 0; }
+
+.form-loader::before {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0.85;
+  --background-color: transparent;
+  background-color: var(--background-color); }
+
+.form-loader.is-active {
+  visibility: visible;
+  pointer-events: all; }
+
+.form-loader.is-active::before {
+  background-color: var(--back-color); }
+
+.form-loader.is-active::after {
+  --size: 6rem;
+  content: '';
+  position: absolute;
+  z-index: 1;
+  top: calc( 50% - 0.5*var(--size) );
+  right: calc( 50% - 0.5*var(--size) );
+  width: var(--size);
+  height: var(--size);
+  background-size: var(--size);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-image: url('data:image/svg+xml,%3Csvg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/%3E%3C/svg%3E');
+  animation: FormLoaderRotation 1s linear infinite; }
+
+@keyframes FormLoaderRotation {
+  from {
+    transform: rotate(360deg); }
+  to {
+    transform: rotate(1deg); } }
 /* -------------------------------- WPCF7 Integration */
 .form-design .wpcf7 {
   /* @extend .wrap-form; */
@@ -1962,11 +2017,6 @@ body {
   background-image: url('data:image/svg+xml,%3Csvg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/%3E%3C/svg%3E');
   animation: FormLoaderRotation 1s linear infinite; }
 
-@keyframes FormLoaderRotation {
-  from {
-    transform: rotate(360deg); }
-  to {
-    transform: rotate(1deg); } }
 /* phone field */
 .form-design .intl-tel-input.allow-dropdown input.form-control {
   padding-left: 52px; }
@@ -1976,7 +2026,7 @@ body {
   overflow-x: hidden; }
 
 /* -------------------------------- Offsidebar Integration */
-.form-design.sidepanel-content {
+.form-design.offsidebar-content {
   position: relative;
   padding: 0;
   flex-grow: 2; }
@@ -2890,6 +2940,13 @@ html:not([la-root-re-vars]) {
  *  CSS
  *
  */
+/** -------------------------------- elements */
+.text-link {
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  text-decoration: underline;
+  cursor: pointer; }
+
 /** -------------------------------- layout */
 .group-wide {
   --vertical-align: flex-start;

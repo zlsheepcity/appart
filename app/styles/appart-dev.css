@@ -1375,13 +1375,6 @@ body {
   bottom: 0;
   z-index: 1; }
 
-/* change state for content */
-.offsidebar .sidepanel-content,
-.offsidebar .sidepanel-header,
-.offsidebar .sidepanel-footer {
-  transform: scaleX(var(--state-value));
-  opacity: var(--state-value); }
-
 /** -------------------------------- content design */
 .sidepanel-content {
   padding: var(--sy) var(--sx); }
@@ -1427,21 +1420,35 @@ body {
 .offsidebar.is-active .offsidebar-background {
   transition-property: transform;
   transition-duration: var(--transition-duration--slidein);
-  transition-timing-function: var(--timing-function--focusZoom, ease-out); }
+  transition-timing-function: var(--timing-function--focusZoom, ease-out);
+  transition-timing-function: var(--timing-function--openJump, ease-out); }
 
 /* Animate header/footer */
 .offsidebar .sidepanel-header,
 .offsidebar .sidepanel-footer {
-  transform: scaleX(var(--state-value));
-  transform-origin: var(--transform-origin--horizontal) center;
-  will-change: transform;
-  opacity: var(--state-value); }
+  opacity: var(--state-value);
+  transform: scaleY(var(--state-value));
+  transform-origin: top center;
+  /*
+          transform:                  scaleX( var(--state-value) );
+          transform-origin:           var(--transform-origin--horizontal) center;
+          will-change:                transform;
+          opacity:                    var(--state-value);
+  */ }
 
 .offsidebar.is-active .sidepanel-header,
 .offsidebar.is-active .sidepanel-footer {
-  transition-property: transform;
+  transition-property: opacity, transform;
   transition-duration: var(--transition-duration--slidein);
-  transition-timing-function: var(--timing-function--focusZoom, ease-out); }
+  transition-delay: var(--transition-duration--slidein);
+  transition-timing-function: ease-in;
+  transition-timing-function: var(--timing-function--openJump, ease-out);
+  /*
+          transition-property:        transform;
+          transition-duration:        var(--transition-duration--slidein);
+          transition-timing-function: var(--timing-function--focusZoom, ease-out);
+          transition-timing-function: var(--timing-function--openJump, ease-out);
+  */ }
 
 /* Animate close-icon */
 .offsidebar-background::before {

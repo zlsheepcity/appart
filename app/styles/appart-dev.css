@@ -1249,15 +1249,16 @@ body {
   --sx: var(--col-space, 1.5rem);
   --sy: var(--row-space, 1.5rem);
   /* color units */
-  --text-color--sidepanel: var(--text-color, var(--color, black));
-  --back-color--sidepanel: var(--back-color, var(--background-color, white));
+  --text-color--sidepanel: var(--text-color, black);
+  --back-color--sidepanel: var(--back-color, white);
   /* base properties */
   --z-index--sidebar: 100;
   --direction: ltr;
-  /* bar is never full width, minimal gap  */
+  /* minimal gap value  */
   --empty-space-offset: 3rem;
   /* open animation time  */
-  --transition-duration--slidein: 320ms;
+  --transition-duration--slidein: 240ms;
+  --transition-duration--content: 120ms;
   --transition-duration--overlay: 240ms; }
 
 /** -------------------------------- two sides difference */
@@ -1299,7 +1300,7 @@ body {
 /** -------------------------------- layout & behavior */
 .offsidebar {
   position: fixed;
-  z-index: var(--z-index--sidebar, 100);
+  z-index: var(--z-index--sidebar);
   top: 0;
   bottom: 0;
   right: var(--right);
@@ -1314,8 +1315,7 @@ body {
   right: 0;
   width: 100%;
   height: 100%;
-  background-color: var(--back-color--sidepanel);
-  transform: scaleX(var(--state-value)); }
+  background-color: var(--back-color--sidepanel); }
 
 .offsidebar-overlay {
   position: fixed;
@@ -1411,37 +1411,61 @@ body {
   overflow: hidden; }
 
 /** -------------------------------- animation settings */
-/* Animate overlay */
+/* Animate overlay
+   Default: opacity fade in */
 .offsidebar .offsidebar-overlay {
-  transition: opacity var(--transition-duration--slidein);
+  transition-property: opacity;
+  transition-duration: var(--transition-duration--overlay);
   transition-timing-function: var(--timing-function--focusZoom); }
 
-.offsidebar.is-active .offsidebar-overlay {
-  transition-duration: var(--transition-duration--overlay); }
-
-/* Animate offsidebar */
+/* Animate background */
 .offsidebar-background {
+  transform: scaleX(var(--state-value));
+  transform-origin: var(--transform-origin--horizontal) center;
   will-change: transform; }
 
 .offsidebar.is-active .offsidebar-background {
-  transition: transform var(--transition-duration--slidein);
-  transition-timing-function: var(--timing-function--focusZoom);
-  transform-origin: var(--transform-origin--horizontal) center;
-  transition-delay: 50ms; }
+  transition-property: transform;
+  transition-duration: var(--transition-duration--slidein);
+  transition-timing-function: var(--timing-function--focusZoom, ease-out); }
 
-/* Animate content */
-.offsidebar .sidepanel-content,
+/* Animate header/footer */
 .offsidebar .sidepanel-header,
 .offsidebar .sidepanel-footer {
-  will-change: transform; }
+  transform: scaleX(var(--state-value));
+  transform-origin: var(--transform-origin--horizontal) center;
+  will-change: transform;
+  opacity: var(--state-value); }
 
-.offsidebar.is-active .sidepanel-content,
 .offsidebar.is-active .sidepanel-header,
 .offsidebar.is-active .sidepanel-footer {
-  transition: transform var(--transition-duration--slidein);
-  transition-timing-function: var(--timing-function--focusZoom);
-  transform-origin: var(--transform-origin--horizontal) center;
-  transition-delay: 50ms; }
+  transition-property: transform;
+  transition-duration: var(--transition-duration--slidein);
+  transition-timing-function: var(--timing-function--focusZoom, ease-out); }
+
+/* Animate close-icon */
+.offsidebar-background::before {
+  opacity: var(--state-value); }
+
+.offsidebar.is-active .offsidebar-background::before {
+  transition-property: opacity;
+  transition-duration: var(--transition-duration--content);
+  transition-delay: var(--transition-duration--slidein);
+  transition-timing-function: ease-in; }
+
+/* Animate content */
+.offsidebar .sidepanel-content {
+  --dy: 0.5rem;
+  --translate-y: calc( var(--dy)*var(--state-value) - var(--dy) );
+  transform: translateY(var(--translate-y));
+  will-change: transform;
+  opacity: var(--state-value); }
+
+.offsidebar.is-active .sidepanel-content {
+  transition-property: opacity, transform;
+  transition-duration: var(--transition-duration--content);
+  transition-delay: var(--transition-duration--slidein);
+  transition-timing-function: ease-in; }
 
 /*  EOF offsidebar */
 /** myocard

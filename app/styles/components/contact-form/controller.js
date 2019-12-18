@@ -107,16 +107,31 @@ function Init__ContactForm (dna={}) {
     return Api
 }
 
-/* --------- wp jquery autorun /*
+/* -------------------------------- Usage
 
-$(function() {
-    $( '.form-functional' )
-        .each( (i,el) => {Init__ContactForm({el:el})} )
-})
+ -- App Autorun:
 
-/**//* ----- app autorun /*
+    <!-- contact form -->
+    <script src="app/styles/components/contact-form/controller.js"></script>
+    <script>
+        function getFormApiExample () {
+         // get api
+            let  selector = '.form-functional'
+            let  form_api = Init__ContactForm({selector})
+         // delegate action
+            let  imitator = document.querySelector('.js-imitate-form')
+            form_api.delegateResponse(imitator)
+        }
+        app.onload(getFormApiExample)
+    </script>
 
-...
+
+ -- Jquery autorun:
+
+    $(function() {
+        $( '.form-functional' )
+            .each( (i,el) => {Init__ContactForm({el:el})} )
+    })
 
 /**/
 

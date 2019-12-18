@@ -108,6 +108,28 @@
     <!-- ========================================= APP CUSTOM -->
 
 
+    <!-- offsidebar -->
+    <script defer src="app/styles/components/offsidebar/interface-offsidebar.js"></script>
+    <script>
+        app.onload(f=>InterfaceOffsideBar('ChaptersMenuBar'))
+    </script>
+
+    <!-- contact form -->
+    <script src="app/styles/components/contact-form/controller.js"></script>
+    <script>
+        function getFormApiExample () {
+         // get api
+            let  selector = '.form-functional'
+            let  form_api = Init__ContactForm({selector})
+         // delegate action
+            let  imitator = document.querySelector('.js-imitate-form')
+            form_api.delegateResponse(imitator)
+        }
+        app.onload(getFormApiExample)
+    </script>
+
+
+
     <!-- dev functions -->
     <script defer src="app/script/components/survival-test.js"></script>
     <script defer src="app/script/components/autofill-paragraphs.js"></script>
@@ -137,6 +159,83 @@
 }
 </pre>
 </article>
+
+    <!-- ----------------------------------------- contact offsidebar -->
+
+    <header class="grid-queen chapter">
+        <button class="swed-button js-for-ContactBar">Contact Bar</button>
+    </header>
+    <script>
+        app.onload(f=>InterfaceOffsideBar('ContactBar'))
+    </script>
+    <div class="colors--ivory">
+    <section class="offsidebar from-eastside ContactBar">
+        <div class="sidepanel">
+
+            <header class="sidepanel-header">
+                <h4>Contact Us</h4>
+            </header>
+
+            <section class="sidepanel-content form-design form-functional">
+
+                <div class="wrap-form-plugin">
+                    <div class="wrap-form">
+                        <form action="">
+                            <div class="wrap-form-fields">
+
+                                <div class="wrap-field">
+                                    <label><span class="field-label">Name <i>(required)</i></span><br>
+                                    <span><input type="text" name="contact-name" value="Person Named" size="40" class="" aria-required="true" aria-invalid="false">
+                                    </span> </label>
+                                </div>
+
+                                <div class="wrap-field">
+                                    <label><span class="field-label">Your Message or Question</span><br>
+                                    <span><textarea class="" name="your-message" rows="3" class="" aria-required="true" aria-invalid="false"></textarea>
+                                    </span> </label>
+                                </div>
+
+                                <div class="wrap-field">
+                                    <label><span class="field-label">Your Select</span><br>
+                                    <span><select class="" name="your-select" aria-invalid="false">
+                                        <option default>This one is the best</option>
+                                        <option>Another one</option>
+                                        <option>Third one</option>
+                                    </select>
+                                    </span> </label>
+                                </div>
+
+                                <div class="wrap-field wrap-submit">
+                                    <input type="submit" value="Send" class="form-design-button">
+                                    <div class="form-design-button js-imitate-form">Imitate</div>
+                                    <span class="ajax-loader is-active"></span>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="wrap-form-feedback">
+                    <div class="feedback-design rows">
+                        <h4 class=" success">Your message was sent successfully. Thanks!</h4>
+                        <p>Our manager will reach out to you within the next 24 business hours.</p>
+                        <p>Best regards,<br>SoftGamings team!</p>
+                        <div class="next-links text-block-bigger">
+                            <h6>Next:</h6>
+                            <ul>
+                                <li><a href="/" class="text-link">Home page</a></li>
+                                <li><span class="text-link js-form-reset">New message</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+        </div>
+    </section>
+    </div>
 
 
     <!-- ----------------------------------------- Form Design -->
@@ -205,6 +304,7 @@
                 </div>
 
             </section>
+<!--
 
             <script src="app/styles/components/contact-form/controller.js"></script>
             <script>
@@ -216,6 +316,8 @@
                 }
                 app.onload(getFormApiExample)
             </script>
+-->
+
 
         </article>
         <article class="grid-queen chapter use-colors colors--ivory">
@@ -764,11 +866,13 @@
 
         </div>
     </section>
+<!--
     <script src="app/styles/components/offsidebar/interface-offsidebar.js"></script>
     <script>
         app.attach('offsidebar')(InterfaceOffsideBar)
         app.offsidebar('ChaptersMenuBar')
     </script>
+ -->
 
     <div class="nav-fly js-for-ChaptersMenuBar">
         <figure class="svga-icon"><svg><use xlink:href="#svg-menu"></use></svg></figure>

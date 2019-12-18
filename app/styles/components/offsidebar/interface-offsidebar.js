@@ -1,68 +1,106 @@
 /** Offside Bar open/close functions
- *  2019.9.11
+ *  2019.12.18
  */
 
-function InterfaceOffsideBar (barName) {
+function InterfaceOffsideBar ( dna={} ) {
 
-    const asidebar = document.querySelector('.'+barName)
+ // Intro
+    if ( typeof(dna)==='string' ) dna = {name:dna}
+    if ( dna.name ) dna.el = document.querySelector('.'+dna.name)
+    if ( !dna.el  ) return false;
+
+ // Core
+
+    const asidebar = dna.el
     const htmlwrap = document.querySelector('html')
 
     const classActive     = 'is-active'
     const classHasOverlay = 'has-offsidebar-overlay'
-    const classOverlay    = 'offsidebar-overlay'
+    const classBarOverlay = 'offsidebar-overlay'
     const classBackground = 'offsidebar-background'
+    const queryBartender  = '.js-for-' + dna.name
 
-    const cssBartender    = '.js-for-' + barName
+    const Api = {
 
-    const doClose  = () => {
-        asidebar.classList.remove(classActive)
-        htmlwrap.classList.remove(classHasOverlay) }
-    const doOpen   = () => {
-        asidebar.classList.add(classActive)
-        htmlwrap.classList.add(classHasOverlay) }
-    const doToggle = () => {
-        if (asidebar.classList.contains(classActive)) doClose()
-        else doOpen()
+        getState: f => asidebar.classList.contains(classActive),
+        setStateClosed: f => {
+            asidebar.classList.remove(classActive)
+            htmlwrap.classList.remove(classHasOverlay)
+        },
+        setStateOpen: f => {
+            asidebar.classList.add(classActive)
+            htmlwrap.classList.add(classHasOverlay)
+        },
+        toggleState: f => {
+            if (Api.getState()) Api.setStateClosed()
+            else                Api.setStateOpen()
+        },
+
+     // Public
+
+        open:   e => Api.setStateOpen(),
+        close:  e => Api.setStateClosed(),
+        toggle: e => Api.toggleState(),
+
+     // Delegators
+
+        delegateOpen: el => {
+            if (el) el.addEventListener('click', Api.open)
+        },
+        delegateClose: el => {
+            if (el) el.addEventListener('click', Api.close)
+        },
+        delegateToggle: el => {
+            if (el) el.addEventListener('click', Api.toggle)
+        }
+
     }
 
- // find and activate bartenders
+    const Construct_this_bar = () => {
 
-    const bartenderFunction = (el, order) =>
-          el.addEventListener('click', order === 'close' ? doClose : doToggle )
-    document.querySelectorAll(cssBartender).forEach(bartenderFunction)
+     // find/create background
+        let background = asidebar.querySelector('.'+classBackground)
+        if(!background) {
+            background = document.createElement('div')
+            background.classList.add(classBackground)
+            asidebar.prepend(background)
+        }
 
- // find/create background
+     // find/create shadow overlay
+        let baroverlay = asidebar.querySelector('.'+classBarOverlay)
+        if(!baroverlay) {
+            baroverlay = document.createElement('div')
+            baroverlay.classList.add(classBarOverlay)
+            asidebar.prepend(baroverlay)
+        }
+        Api.delegateClose(baroverlay)
 
-    let background = asidebar.querySelector('.'+classBackground)
-    if(!background) {
-        background = document.createElement('div')
-        background.classList.add(classBackground)
-        asidebar.prepend(background)
+     // find and activate bartenders
+        let bartenders = [...document.querySelectorAll(queryBartender)]
+            bartenders.forEach(Api.delegateToggle)
     }
 
- // find/create shadow overlay
-
-    let overlay = asidebar.querySelector('.'+classOverlay)
-    if(!overlay) {
-        overlay = document.createElement('div')
-        overlay.classList.add(classOverlay)
-        asidebar.prepend(overlay)
-    }
-    bartenderFunction(overlay, 'close')
+ // Initialize
+    Construct_this_bar()
+    return Api
 }
 
-/** Apprun *//*
+/** Run *//*
 
-    // option 1
+    let bar_api = InterfaceOffsideBar('BAR_CLASS_NAME')
 
-    app.attach('offsidebar')(InterfaceOffsideBar)
-    app.offsidebar('BAR_CLASS_NAME')
-
-    // option 2
+ // Snippet
 
     <script defer src="app/styles/components/offsidebar/interface-offsidebar.js"></script>
-    <script>app.onload(f=>InterfaceOffsideBar('ChaptersMenuBar'))</script>
+    <script>
+        function DemoActivateContactBar() {
+            let  bar_api = InterfaceOffsideBar('ContactBar')
+            if  (bar_api)
+                 bar_api.delegateToggle(document.querySelector('.toggle-ContactBar'))
+        }
+        app.onload(DemoActivateContactBar)
+    </script>
 
 /**/
 
-/*  EOF Offside Bar */
+/** EOF Offside Bar */

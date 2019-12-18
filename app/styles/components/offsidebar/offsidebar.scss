@@ -2,7 +2,7 @@
  *
  *  Expandable side-panel
  *  Prevents content jumps when appears
- *  zl, 2019.8.14
+ *  zl, 2019.12.18 "Contactia"
  *
  *  PURE CSS
  *
@@ -19,20 +19,21 @@
   --sy:   var(--row-space, 1.5rem);
 
  /* color units */
-  --text-color--sidepanel: var(--text-color, black);
   --back-color--sidepanel: var(--back-color, white);
-
- /* base properties */
-  --z-index--sidebar:    100;
-  --direction:           ltr;
+  --text-color--sidepanel: var(--text-color, black);
+  --back-color--overlay:   hsla(0, 0%, 0%, 0.9);
 
  /* minimal gap value  */
   --empty-space-offset:  3rem;
 
  /* open animation time  */
   --transition-duration--slidein: 240ms;
-  --transition-duration--content: 120ms;
+  --transition-duration--content: 160ms;
   --transition-duration--overlay: 240ms;
+
+ /* base properties */
+  --z-index--sidebar:    100;
+  --direction:           ltr;
 }
 
 
@@ -43,28 +44,28 @@
 
 .offsidebar {
  /* bar position */
-  --left:  var(--state-width, auto);
-  --right: 0;
-  --transform-origin--horizontal: right;
- /* close icon position */
-  --close-icon-right:              100%;
+  --left:                           var(--state-width, auto);
+  --right:                                                 0;
+  --transform-origin--horizontal:                      right;
  /* scrollbar position */
-  --scroll-overflow-behavoir:    scroll;
-  --scroll-direction:               ltr;
+  --scroll-overflow-behavoir:                         scroll;
+  --scroll-direction:                                    ltr;
+ /* close-icon position */
+  --right--close-icon:                                  100%;
 }
 
 /* Westside ← */
 
 .offsidebar.from-westside {
  /* bar position */
-  --left:  0;
-  --right: var(--state-width, auto);
-  --transform-origin--horizontal: left;
- /* close icon position */
-  --close-icon-right:  calc( -1 * var(--empty-space-offset) );
+  --left:                                                  0;
+  --right:                          var(--state-width, auto);
+  --transform-origin--horizontal:                       left;
 /* scrollbar position */
-  --scroll-overflow-behavoir:     auto;
-  --scroll-direction:              rtl;
+  --scroll-overflow-behavoir:                           auto;
+  --scroll-direction:                                    rtl;
+ /* close-icon position */
+  --right--close-icon:  calc( -1*var(--empty-space-offset) );
 }
 
 
@@ -94,11 +95,11 @@
     bottom:    0;
     right:     var(--right);
     left:      var(--left);
-    max-width: calc( 100% - var(--empty-space-offset) );
 
-    pointer-events: var(--state-event);
+    max-width:        calc( 100% - var(--empty-space-offset) );
+    color:            var(--text-color--sidepanel);
+    pointer-events:   var(--state-event);
 }
-
 .offsidebar-background {
     position:  absolute;
     z-index:  -1;
@@ -109,7 +110,6 @@
 
     background-color: var(--back-color--sidepanel);
 }
-
 .offsidebar-overlay {
     position:  fixed;
     z-index:  -2;
@@ -118,18 +118,22 @@
     left:      0;
     right:     0;
 
-    background-color: hsla(0, 0%, 0%, 0.9);
-    opacity: var(--state-value);
+    background-color: var(--back-color--overlay);
+    opacity:          var(--state-value);
+}
+.offsidebar-container {
+    opacity:          var(--state-value);
 }
 
 /** -------------------------------- close icon */
+
 
 .offsidebar-background::before {
     content:  '';
     display:  block;
     position: absolute;
     top:      0;
-    right:    var(--close-icon-right);
+    right:    var(--right--close-icon);
     width:    var(--empty-space-offset);
     height:   var(--empty-space-offset);
 
@@ -147,23 +151,15 @@
 
 /** -------------------------------- content wrap */
 
+
 .offsidebar-container {
-    position:   relative;
     max-width:  100%;
     height:     100%;
     overflow-x: visible;
-    overflow-y: var(--scroll-overflow-behavoir, scroll);
-
-    display:         flex;
-    flex-direction:  column;
-    justify-content: flex-start;
-    align-content:   stretch;
-
-    color:      var(--text-color--sidepanel);
-    opacity:    var(--state-value);
+    overflow-y: scroll;
 }
 
-/* Scrollbar switch side */
+/* scrollbar position */
 
 .offsidebar-container {
     overflow-y: var(--scroll-overflow-behavoir, scroll);
@@ -177,6 +173,15 @@
 
 /* Sticky header/footer */
 
+.offsidebar-container {
+    position: relative;
+    z-index:  0;
+
+    display:         flex;
+    flex-direction:  column;
+    justify-content: flex-start;
+    align-content:   stretch;
+}
 .offsidebar-header {
     margin-top:    0;
     margin-bottom: 0;
@@ -190,47 +195,6 @@
     position: sticky;
     bottom:   0;
     z-index:  1;
-}
-
-
-/** -------------------------------- design workers */
-
-
-.sidepanel-content {
-    padding: var(--sy) var(--sx);
-}
-
-.sidepanel-header {
-
-    display:  flex;
-    flex-direction:  column;
-    justify-content: center;
-    align-content:  stretch;
-    align-items:    stretch;
-
- /* visual harmony with closing icon */
-    min-height: var(--empty-space-offset);
-    padding:    0.25em var(--sx);
-
- /* inverted colors for header & footer */
-    background-color: var(--text-color--sidepanel);
-               color: var(--back-color--sidepanel);
-}
-
-.sidepanel-footer {
-    padding:   0.25em var(--sx);
-
- /* inverted colors for header & footer */
-    background-color: var(--text-color--sidepanel);
-               color: var(--back-color--sidepanel);
-}
-
-
-/** -------------------------------- Disable body scroll */
-
-
-/*html*/.has-offsidebar-overlay {
-    overflow: hidden;
 }
 
 
@@ -317,112 +281,37 @@
     }
 
 
-/** -------------------------------- Fallback */
+/** -------------------------------- Design workers */
 
-.sidepanel {
-    position:   relative;
-    max-width:  100%;
-    height:     100%;
-    overflow-x: visible;
-    overflow-y: var(--scroll-overflow-behavoir);
-    direction:  var(--scroll-direction);
 
+.offsidebar .bar-header  { padding: 0.25em    var(--sx); }
+.offsidebar .bar-footer  { padding: 0.25em    var(--sx); }
+.offsidebar .bar-content { padding: var(--sy) var(--sx); }
+
+.offsidebar .bar-header,
+.offsidebar .bar-footer {
+ /* inverted colors for header & footer */
+    background-color: var(--text-color--sidepanel);
+               color: var(--back-color--sidepanel);
+}
+
+.offsidebar .bar-header {
+ /* visual harmony with closing icon */
     display:         flex;
     flex-direction:  column;
-    justify-content: flex-start;
-    align-content:   stretch;
-
-    color:      var(--text-color--sidepanel);
-    opacity:    var(--state-value);
-}
-.sidepanel>*{
-    direction:  var(--direction);
-}
-.sidepanel-header {
-    margin-top:    0;
-    margin-bottom: 0;
-    position: sticky;
-    top:      0;
-    z-index:  1;
-}
-.sidepanel-footer {
-    margin-top: auto;
-    margin-bottom: 0;
-    position: sticky;
-    bottom:   0;
-    z-index:  1;
-}
-.sidepanel-content {
-    padding: var(--sy) var(--sx);
-}
-/**  content design */
-.sidepanel-header {
-
-    display:  flex;
-    flex-direction:  column;
     justify-content: center;
-    align-content:  stretch;
-    align-items:    stretch;
-
- /* visual harmony with closing icon */
-    min-height: var(--empty-space-offset);
-    padding:    0.25em var(--sx);
-
- /* inverted colors for header & footer */
-    background-color: var(--text-color--sidepanel);
-               color: var(--back-color--sidepanel);
-}
-
-.sidepanel-footer {
-    padding:   0.25em var(--sx);
-
- /* inverted colors for header & footer */
-    background-color: var(--text-color--sidepanel);
-               color: var(--back-color--sidepanel);
+    align-content:   stretch;
+    align-items:     stretch;
+    min-height:      var(--empty-space-offset);
 }
 
 
- /* Animate content */
+/** -------------------------------- Disable body scroll */
 
-    .offsidebar .sidepanel-content{
-      --dy: 0.5rem;
-      --translate-y: calc( var(--dy)*var(--state-value) - var(--dy) );
-        transform:                  translateY( var(--translate-y) );
-        will-change:                transform;
-        opacity:                    var(--state-value);
-    }
-    .offsidebar.is-active .sidepanel-content {
-        transition-property:        opacity, transform;
-        transition-duration:        var(--transition-duration--content);
-        transition-delay:           var(--transition-duration--slidein);
-        transition-timing-function: ease-in;
-    }
 
- /* Animate header */
+/*html*/.has-offsidebar-overlay {
+    overflow: hidden;
+}
 
-    .offsidebar .sidepanel-header {
-        opacity:                    var(--state-value);
-        transform:                  scaleY( var(--state-value) );
-        transform-origin:           top center;
-        will-change:                transform;
-    }
-    .offsidebar.is-active .sidepanel-header {
-        transition-property:        opacity, transform;
-        transition-duration:        var(--transition-duration--slidein);
-        transition-delay:           var(--transition-duration--slidein);
-        transition-timing-function: var(--timing-function--openJump, ease-out);
-    }
-
- /* Animate footer */
-
-    .offsidebar .sidepanel-footer {
-        opacity:                    var(--state-value);
-    }
-    .offsidebar.is-active .sidepanel-footer {
-        transition-property:        opacity;
-        transition-duration:        var(--transition-duration--slidein);
-        transition-delay:           var(--transition-duration--slidein);
-        transition-timing-function: ease-in;
-    }
 
 /*  EOF offsidebar */

@@ -163,16 +163,22 @@
     <!-- ----------------------------------------- contact offsidebar -->
 
     <header class="grid-queen chapter">
-        <button class="swed-button js-for-ContactBar">Contact Bar</button>
+        <button class="swed-button toggle-ContactBar">Contact Bar</button>
     </header>
     <script>
-        app.onload(f=>InterfaceOffsideBar('ContactBar'))
+        function DemoActivateContactBar() {
+            let  bar_api = InterfaceOffsideBar('ContactBar')
+            if  (bar_api)
+                 bar_api.delegateToggle(document.querySelector('.toggle-ContactBar'))
+        }
+        app.onload(DemoActivateContactBar)
     </script>
+
     <div class="colors--ivory">
     <section class="offsidebar from-eastside ContactBar">
         <div class="offsidebar-container">
 
-            <header class="offsidebar-header sidepanel-header">
+            <header class="offsidebar-header bar-header">
                 <h4>Contact Us</h4>
             </header>
 

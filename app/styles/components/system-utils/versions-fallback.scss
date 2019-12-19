@@ -1,5 +1,48 @@
 
+/** -------------------------------- Retired Components */
+
+
+/** Was replaced by Myocards */
+.group-banner {
+    display:         flex;
+    flex-direction:  row;
+    flex-wrap:       wrap;
+    justify-content: center;
+    align-items:     center;
+    align-content:   center;
+    align-self:      stretch;
+  --v-space:         var(--row-space, 1.5rem);
+  --h-space:         var(--col-space, 1.5rem);
+    padding-top:     var(--h-space);
+    } .group-banner>* {
+        margin:  0 var(--h-space) var(--v-space) var(--h-space);
+}
+
+
+/** Too complex */
+.autogrid {
+  --cell-size: 100%;
+    display:   grid;
+    grid-gap:  0;
+    grid-template-columns: repeat(auto-fill, minmax(var(--cell-size), 1fr));
+    } .autogrid>* {
+        grid-column: span 1;
+}
+@media (min-width: 24rem) {
+    .autogrid {
+      --cell-size: var(--paragraph-width--mid, 24rem);
+    }
+}
+@media (min-width: 48rem) {
+    .autogrid>.is-big {
+      --size: 2;
+        grid-column: span var(--size);
+    }
+}
+
+
 /** -------------------------------- Offsidebar Fallback */
+
 
 .sidepanel {
     position:   relative;
@@ -106,5 +149,13 @@
         transition-delay:           var(--transition-duration--slidein);
         transition-timing-function: ease-in;
     }
+
+
+/** -------------------------------- Renamed Components */
+
+
+.group-content-rows { @extend .group-rows; }
+
+
 
 /*  EOF Versions Fallback */

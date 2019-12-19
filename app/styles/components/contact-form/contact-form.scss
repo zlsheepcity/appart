@@ -1,21 +1,12 @@
 /** contact form design
- *  2019.12.15
+ *  2019.12.19
  *
  *  CSS
  *
  */
 
 
-/* -------------------------------- Field Error Icon */
-
-
-.form-design {
- /* invalid for SCSS
-  --invalid-marker: url('data:image/svg+xml,%3Csvg fill="lightsalmon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="-4 -4 32 32"%3E%3Cpath d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/%3E%3C/svg%3E'); */
-}
-
-
-/* -------------------------------- Size Settings */
+/* -------------------------------- Define Layout */
 
 
 .form-design {
@@ -26,11 +17,15 @@
 }
 
 
-/* -------------------------------- Color Settings */
+/* -------------------------------- Define Colors */
 
 
-/*
-.colors--contact-bar {
+.form-design {
+
+ /* Form */
+
+ /* Preffered Theme:    Ivory
+
   --back-color:         hsl(  53, 66%, 80% );
   --back-color-accent:  hsl(  53, 70%, 76% );
   --back-color-descent: var(--light-shadow);
@@ -45,11 +40,10 @@
 
   --shadow-color: var(--shadow-color--for-light-base);
   --light-shadow: var(--light-shadow--for-light-base);
-}
-*/
 
+ */
 
-.form-design {
+ /* Fields */
 
   --field-back-color:          white;
   --field-back-color-accent:   white;
@@ -59,6 +53,10 @@
   --field-text-color-accent:   black;
   --field-text-color-descent:  darkslategray;
 
+  --focus-mark-color:          lightsteelblue;
+
+ /* Button */
+
   --submit-back-color:         firebrick;
   --submit-back-color-accent:  darkred;
   --submit-back-color-descent: lightslategray;
@@ -67,13 +65,13 @@
   --submit-text-color-accent:  white;
   --submit-text-color-descent: darkslategray;
 
-  --focus-mark-color:          lightsteelblue;
-
 }
 .form-design.theme--white {
+
   --field-back-color:          gainsboro;
   --field-back-color-accent:   gainsboro;
   --field-back-color-descent:  lightslategray;
+
 }
 
 
@@ -147,6 +145,9 @@
     touch-action:    manipulation;
     resize:          vertical;
 }
+
+/* custom select */
+
 .form-design select {
    -webkit-appearance:   none;
       -moz-appearance:   none;
@@ -286,7 +287,7 @@
     background-repeat:   no-repeat;
  /* invalid for SCSS
     background-image:    var(--invalid-marker); */
-    background-image: url('data:image/svg+xml,%3Csvg fill="lightsalmon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="-4 -4 32 32"%3E%3Cpath d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/%3E%3C/svg%3E');
+    background-image: url('data:image/svg+xml;utf8,<svg fill="lightsalmon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="-4 -4 32 32"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>');
 }
 
 /* invalid field tip */
@@ -358,7 +359,8 @@
     background-size:     var(--size);
     background-repeat:   no-repeat;
     background-position: center center;
-    background-image: url('data:image/svg+xml,%3Csvg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/%3E%3C/svg%3E');
+ /* SVG: arrows circle loading */
+    background-image: url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/></svg>');
 
     animation: FormLoaderRotation 1s linear infinite;
 }
@@ -375,6 +377,19 @@
  /* @extend .wrap-form; */
     max-width: var(--max-width);
 }
+.form-design .wpcf7-response-output {
+    padding: var(--sy) var(--sx);
+    margin:  0;
+    border:  0;
+    background-color: var(--back-color-accent);
+    color:            var(--text-color-accent);
+}
+.form-design .wrap-validation-response .wpcf7-response-output {
+    margin: 0 calc( -1 * var(--sx) );
+}
+
+/* invalid tips */
+
 .form-design textarea.wpcf7-not-valid,
 .form-design    input.wpcf7-not-valid {
  /* @extend .form-design input.is-not-valid; */
@@ -383,8 +398,10 @@
     background-position: right top;
     background-repeat:   no-repeat;
     background-image:    var(--invalid-marker);
- /* invalid scss */
-    background-image: url('data:image/svg+xml,%3Csvg fill="lightsalmon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="-4 -4 32 32"%3E%3Cpath d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/%3E%3C/svg%3E');
+ /* invalid for SCSS
+    background-image:    var(--invalid-marker); */
+ /* SVG: i-info circle */
+    background-image: url('data:image/svg+xml;utf8,<svg fill="lightsalmon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="-4 -4 32 32"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>');
 }
 .form-design .wpcf7-not-valid-tip {
  /* @extend .not-valid-tip; */
@@ -401,18 +418,6 @@
     vertical-align: baseline;
     padding-right:   0.25rem;
 }
-.form-design .wpcf7-response-output {
-    padding: var(--sy) var(--sx);
-    margin:  0;
-    border:  0;
-    background-color: var(--back-color-accent);
-    color:            var(--text-color-accent);
-}
-.form-design .wrap-validation-response .wpcf7-response-output {
-    margin: 0 calc( -1 * var(--sx) );
-}
-
-
 
 /* ajax loader */
 
@@ -466,7 +471,8 @@
     background-size:     var(--size);
     background-repeat:   no-repeat;
     background-position: center center;
-    background-image: url('data:image/svg+xml,%3Csvg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/%3E%3C/svg%3E');
+ /* SVG: arrows circle loading */
+    background-image: url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/></svg>');
 
     animation: FormLoaderRotation 1s linear infinite;
 }
@@ -495,10 +501,12 @@
 /* -------------------------------- Required System Vars */
 
 
-html:not([la-root-re-vars]) {
+html:not(.root) {
   --line-height: 1.5;
   --timing-function--focusZoom: cubic-bezier(0.165,  0.84,  0.44,  1);
   --timing-function--openJump:  cubic-bezier(0.175,  0.885, 0.320, 1.275);
+  --shadow-color--for-light-base: hsla(  0,  0%,   0%, 0.3 );
+  --light-shadow--for-light-base: hsla(  0,  0%,   0%, 0.05);
 }
 
 

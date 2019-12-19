@@ -528,8 +528,8 @@ body {
 .root,
 .color-model {
   --shadow-color--for-light-base: hsla( 0, 0%, 0%, 0.3 );
-  --shadow-color--for-dark-base: hsla( 0, 0%, 100%, 0.2 );
   --light-shadow--for-light-base: hsla( 0, 0%, 0%, 0.05);
+  --shadow-color--for-dark-base: hsla( 0, 0%, 100%, 0.2 );
   --light-shadow--for-dark-base: hsla( 0, 0%, 100%, 0.05); }
 
 /** -------------------------------- autorun */
@@ -811,7 +811,7 @@ body {
  *
  */
 /* -------------------------------- Grid Setup */
-.grid-queen {
+.grid-queen, .grid-king {
   /* vertical and horizontal space */
   --sy: var(--row-space, 1.5rem);
   --sx: var(--col-space, 1.5rem);
@@ -828,8 +828,9 @@ body {
   --column-width-main: minmax(0, var(--width-main)); }
 
 /* -------------------------------- Grid Definition */
-.grid-queen,
-.grid-queen * {
+.grid-queen, .grid-king,
+.grid-queen *,
+.grid-king * {
   --grid-template-columns:
       var(--column-root--show) /* left space   */
       var(--column-west--show) /* left column  */
@@ -839,7 +840,7 @@ body {
   /* right space  */ }
 
 /* -------------------------------- Layout System */
-.grid-queen {
+.grid-queen, .grid-king {
   /* default full size layout */
   --column-main--full: var(--grid-main-full);
   --column-main--west: var(--grid-main-join-west);
@@ -861,7 +862,7 @@ body {
   --grid-is-not-compact: 1; }
 
 @media (max-width: 60rem) {
-  .grid-queen {
+  .grid-queen, .grid-king {
     /* reduced layout */
     --column-main--full: var(--grid-main-join-west);
     --column-main--east: var(--grid-main-join-both);
@@ -884,7 +885,7 @@ body {
     --grid-is-not-reduced: 0;
     --grid-is-not-compact: 1; } }
 @media (max-width: 42rem) {
-  .grid-queen {
+  .grid-queen, .grid-king {
     /* compact layout */
     --column-main--full: var(--grid-main-join-both);
     --column-main--west: var(--grid-main-join-both);
@@ -896,25 +897,26 @@ body {
     --grid-is-not-reduced: 1;
     --grid-is-not-compact: 0; } }
 /* -------------------------------- CSS Structure */
-.grid-queen,
-.grid-queen * {
+.grid-queen, .grid-king,
+.grid-queen *,
+.grid-king * {
   /* Greed Seed */
   grid-auto-flow: row;
   grid-auto-rows: min-content;
-  grid-template-columns: var(--grid-template-columns);
   grid-column-gap: 0;
   grid-row-gap: var(--grid-row-gap);
   align-items: var(--align-items);
-  justify-content: var(--justify-content); }
+  justify-content: var(--justify-content);
+  grid-template-columns: var(--grid-template-columns); }
 
-.grid-queen {
+.grid-queen, .grid-king {
   display: grid; }
 
-.grid-queen * {
+.grid-queen *, .grid-king * {
   grid-column: text; }
 
 /* -------------------------------- Grid Constructor */
-.grid-queen {
+.grid-queen, .grid-king {
   /* main column */
   --grid-main-full:
           [main-start] 0 var(--sx)
@@ -984,7 +986,7 @@ body {
       [full-end] ; }
 
 /* -------------------------------- Grid Templates */
-.grid-queen {
+.grid-queen, .grid-king {
   --grid--box:
       [full-start] 0
       [root-start] 0
@@ -1044,7 +1046,7 @@ body {
       [full-end] ; }
 
 /* -------------------------------- Combined Columns Names */
-.grid-queen {
+.grid-queen, .grid-king {
   --grid-column--west-wide: west-start / east-end;
   --grid-column--menu-wide: menu-start / note-end;
   --grid-column--main-wide: west-start / east-end;
@@ -1052,9 +1054,9 @@ body {
   --grid-column--wrap: west-start / east-end;
   --grid-column--wrap-west: west-start / main-end;
   --grid-column--wrap-east: main-start / east-end;
-  --grid-column--text-wrap: menu-start / note-end;
-  --grid-column--text-west: menu-start / text-end;
-  --grid-column--text-east: text-start / note-end;
+  --grid-column--wrap-text: menu-start / note-end;
+  --grid-column--wrap-text-west: menu-start / text-end;
+  --grid-column--wrap-text-east: text-start / note-end;
   --grid-column--east-side: east-start / full-end;
   --grid-column--west-side: full-start / west-end;
   --grid-column--west-half: full-start / main-end;
@@ -1096,14 +1098,14 @@ body {
 .grid-column--wrap-east {
   grid-column: var(--grid-column--wrap-east); }
 
-.grid-column--text-wrap {
-  grid-column: var(--grid-column--text-wrap); }
+.grid-column--wrap-text {
+  grid-column: var(--grid-column--wrap-text); }
 
-.grid-column--text-west {
-  grid-column: var(--grid-column--text-west); }
+.grid-column--wrap-text-west {
+  grid-column: var(--grid-column--wrap-text-west); }
 
-.grid-column--text-east {
-  grid-column: var(--grid-column--text-east); }
+.grid-column--wrap-text-east {
+  grid-column: var(--grid-column--wrap-text-east); }
 
 .grid-column--west-side {
   grid-column: var(--grid-column--west-side); }
@@ -1142,28 +1144,28 @@ body {
   grid-column: var(--set-east-half-wide-column, var(--grid-column--east-half)); }
 
 /* -------------------------------- Grid Modifications */
-.grid-queen.is-without-root {
+.grid-queen.is-without-root, .is-without-root.grid-king {
   --width-root: 0; }
 
-.grid-queen.is-without-roof {
+.grid-queen.is-without-roof, .is-without-roof.grid-king {
   --width-roof: 0; }
 
-.grid-queen.is-without-room {
+.grid-queen.is-without-room, .is-without-room.grid-king {
   --width-root: 0;
   --width-roof: 0;
   --column-width-main: 1fr; }
 
-.grid-queen.is-without-west {
+.grid-queen.is-without-west, .is-without-west.grid-king {
   --grid-west-show: var(--grid-west-skip);
   --grid-main-full: var(--grid-main-join-west);
   --grid-main-join-east: var(--grid-main-join-both); }
 
-.grid-queen.is-without-east {
+.grid-queen.is-without-east, .is-without-east.grid-king {
   --grid-east-show: var(--grid-east-skip);
   --grid-main-full: var(--grid-main-join-east);
   --grid-main-join-west: var(--grid-main-join-both); }
 
-.grid-queen.is-without-side {
+.grid-queen.is-without-side, .is-without-side.grid-king {
   --grid-west-show: var(--grid-west-skip);
   --grid-east-show: var(--grid-east-skip);
   --grid-main-full: var(--grid-main-join-both);
@@ -1172,6 +1174,13 @@ body {
 
 /* -------------------------------- Component Snippets */
 /* subgrid workers */
+.sublayer {
+  display: grid;
+  grid-column: full; }
+
+.subgrid-join-layers {
+  --grid-row-gap: 0; }
+
 .subgrid {
   display: grid; }
 
@@ -1182,9 +1191,6 @@ body {
 .subgrid-content {
   display: grid;
   --grid-template-columns: var(--grid--block); }
-
-.subgrid-join-layers {
-  --grid-row-gap: 0; }
 
 /* subgrids for merged columns */
 .subgrid-main {
@@ -1510,6 +1516,8 @@ body {
        </section>
     </section>
 
+    CSS Classnames
+
     myocards-wrapper
         myocard align-top
         myocard is-banner
@@ -1631,17 +1639,12 @@ body {
 
 /** EOF Myocards */
 /** contact form design
- *  2019.12.15
+ *  2019.12.19
  *
  *  CSS
  *
  */
-/* -------------------------------- Field Error Icon */
-.form-design {
-  /* invalid for SCSS
-   --invalid-marker: url('data:image/svg+xml,%3Csvg fill="lightsalmon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="-4 -4 32 32"%3E%3Cpath d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/%3E%3C/svg%3E'); */ }
-
-/* -------------------------------- Size Settings */
+/* -------------------------------- Define Layout */
 .form-design {
   --max-width: 24rem;
   --sx: 1.5rem;
@@ -1650,9 +1653,11 @@ body {
   /* y-space unit */
   --form-field-paddings: 0.25rem 0.5rem; }
 
-/* -------------------------------- Color Settings */
-/*
-.colors--contact-bar {
+/* -------------------------------- Define Colors */
+.form-design {
+  /* Form */
+ /* Preffered Theme:    Ivory
+
   --back-color:         hsl(  53, 66%, 80% );
   --back-color-accent:  hsl(  53, 70%, 76% );
   --back-color-descent: var(--light-shadow);
@@ -1667,22 +1672,23 @@ body {
 
   --shadow-color: var(--shadow-color--for-light-base);
   --light-shadow: var(--light-shadow--for-light-base);
-}
-*/
-.form-design {
+
+ */
+  /* Fields */
   --field-back-color: white;
   --field-back-color-accent: white;
   --field-back-color-descent: lightslategray;
   --field-text-color: black;
   --field-text-color-accent: black;
   --field-text-color-descent: darkslategray;
+  --focus-mark-color: lightsteelblue;
+  /* Button */
   --submit-back-color: firebrick;
   --submit-back-color-accent: darkred;
   --submit-back-color-descent: lightslategray;
   --submit-text-color: white;
   --submit-text-color-accent: white;
-  --submit-text-color-descent: darkslategray;
-  --focus-mark-color: lightsteelblue; }
+  --submit-text-color-descent: darkslategray; }
 
 .form-design.theme--white {
   --field-back-color: gainsboro;
@@ -1739,6 +1745,7 @@ body {
   touch-action: manipulation;
   resize: vertical; }
 
+/* custom select */
 .form-design select {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -1856,7 +1863,7 @@ body {
   background-repeat: no-repeat;
   /* invalid for SCSS
      background-image:    var(--invalid-marker); */
-  background-image: url('data:image/svg+xml,%3Csvg fill="lightsalmon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="-4 -4 32 32"%3E%3Cpath d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/%3E%3C/svg%3E'); }
+  background-image: url('data:image/svg+xml;utf8,<svg fill="lightsalmon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="-4 -4 32 32"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>'); }
 
 /* invalid field tip */
 .not-valid-tip {
@@ -1919,7 +1926,8 @@ body {
   background-size: var(--size);
   background-repeat: no-repeat;
   background-position: center center;
-  background-image: url('data:image/svg+xml,%3Csvg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/%3E%3C/svg%3E');
+  /* SVG: arrows circle loading */
+  background-image: url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/></svg>');
   animation: FormLoaderRotation 1s linear infinite; }
 
 @keyframes FormLoaderRotation {
@@ -1932,6 +1940,17 @@ body {
   /* @extend .wrap-form; */
   max-width: var(--max-width); }
 
+.form-design .wpcf7-response-output {
+  padding: var(--sy) var(--sx);
+  margin: 0;
+  border: 0;
+  background-color: var(--back-color-accent);
+  color: var(--text-color-accent); }
+
+.form-design .wrap-validation-response .wpcf7-response-output {
+  margin: 0 calc( -1 * var(--sx) ); }
+
+/* invalid tips */
 .form-design textarea.wpcf7-not-valid,
 .form-design input.wpcf7-not-valid {
   /* @extend .form-design input.is-not-valid; */
@@ -1940,8 +1959,10 @@ body {
   background-position: right top;
   background-repeat: no-repeat;
   background-image: var(--invalid-marker);
-  /* invalid scss */
-  background-image: url('data:image/svg+xml,%3Csvg fill="lightsalmon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="-4 -4 32 32"%3E%3Cpath d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/%3E%3C/svg%3E'); }
+  /* invalid for SCSS
+     background-image:    var(--invalid-marker); */
+  /* SVG: i-info circle */
+  background-image: url('data:image/svg+xml;utf8,<svg fill="lightsalmon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="-4 -4 32 32"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>'); }
 
 .form-design .wpcf7-not-valid-tip {
   /* @extend .not-valid-tip; */
@@ -1957,16 +1978,6 @@ body {
   display: inline-block;
   vertical-align: baseline;
   padding-right: 0.25rem; }
-
-.form-design .wpcf7-response-output {
-  padding: var(--sy) var(--sx);
-  margin: 0;
-  border: 0;
-  background-color: var(--back-color-accent);
-  color: var(--text-color-accent); }
-
-.form-design .wrap-validation-response .wpcf7-response-output {
-  margin: 0 calc( -1 * var(--sx) ); }
 
 /* ajax loader */
 .form-design .wpcf7 .ajax-loader {
@@ -2014,7 +2025,8 @@ body {
   background-size: var(--size);
   background-repeat: no-repeat;
   background-position: center center;
-  background-image: url('data:image/svg+xml,%3Csvg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/%3E%3C/svg%3E');
+  /* SVG: arrows circle loading */
+  background-image: url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/></svg>');
   animation: FormLoaderRotation 1s linear infinite; }
 
 /* phone field */
@@ -2032,10 +2044,12 @@ body {
   flex-grow: 2; }
 
 /* -------------------------------- Required System Vars */
-html:not([la-root-re-vars]) {
+html:not(.root) {
   --line-height: 1.5;
   --timing-function--focusZoom: cubic-bezier(0.165, 0.84, 0.44, 1);
-  --timing-function--openJump: cubic-bezier(0.175, 0.885, 0.320, 1.275); }
+  --timing-function--openJump: cubic-bezier(0.175, 0.885, 0.320, 1.275);
+  --shadow-color--for-light-base: hsla( 0, 0%, 0%, 0.3 );
+  --light-shadow--for-light-base: hsla( 0, 0%, 0%, 0.05); }
 
 /** EOF contact form */
 /** swed-banner
@@ -2966,30 +2980,15 @@ html:not([la-root-re-vars]) {
   align-items: var(--vertical-align);
   align-content: var(--vertical-align); }
 
-.group-banner {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-  align-self: stretch;
-  --v-space: var(--row-space, 1rem);
-  --h-space: var(--col-space, 1rem);
-  padding-top: var(--h-space); }
-
-.group-banner > * {
-  margin: 0 var(--h-space) var(--v-space) var(--h-space); }
-
-.group-content-rows, .rows {
+.group-rows, .group-content-rows, .rows {
   display: grid;
   align-items: start;
   justify-content: start;
   grid-auto-flow: row;
   grid-auto-rows: min-content;
-  grid-row-gap: var(--row-space, 1rem);
+  grid-row-gap: var(--row-space, 1.5rem);
   grid-column-gap: 0;
-  grid-template-columns: [full main] auto; }
+  grid-template-columns: [full main text] auto; }
 
 .group-content-rows > *, .rows > * {
   grid-column: main; }
@@ -3013,22 +3012,24 @@ html:not([la-root-re-vars]) {
   break-inside: avoid;
   margin-bottom: var(--row-space); }
 
-.autogrid {
-  --cell-size: 100%;
-  display: grid;
-  grid-gap: 0;
-  grid-template-columns: repeat(auto-fill, minmax(var(--cell-size), 1fr)); }
+/** Collisting Template
 
-.autogrid > * {
-  grid-column: span 1; }
+    <ul class="group-collisting auto-margin">
+        <li>
+            <h4>Rich Article Grid Layout</h4>
+            <p>CSS grid template for big articles with a lot of content, illustrations and creative visuals.</p>
+        </li>
+        <li>
+            <h4>Banners</h4>
+            <p>Wrapper for content grouping</p>
+        </li>
+        <li>
+            <h4>Catgrounds</h4>
+            <p>Design trick to make boring content more interesting</p>
+        </li>
+    </ul>
 
-@media (min-width: 24rem) {
-  .autogrid {
-    --cell-size: var(--paragraph-width--mid, 24rem); } }
-@media (min-width: 48rem) {
-  .autogrid > .is-big {
-    --size: 2;
-    grid-column: span var(--size); } }
+*/
 /** -------------------------------- padding shortcuts */
 .pt, .pv {
   --padding-top: var(--row-space, 1rem);
@@ -3105,12 +3106,11 @@ html:not([la-root-re-vars]) {
   align-self: center;
   justify-self: center; }
 
-.c-align,
-.hc-align {
-  justify-self: center; }
-
 .vc-align {
   align-self: center; }
+
+.hc-align, .c-align {
+  justify-self: center; }
 
 /** -------------------------------- univeral helpers */
 .is-centered {
@@ -3174,7 +3174,45 @@ mark, .mark {
   padding-bottom: var(--padding-bottom);
   background-color: var(--background-color); }
 
+.grid-king {
+  --width-root: 0;
+  --width-menu: 4rem; }
+
 /*  EOF Article markup */
+/** -------------------------------- Retired Components */
+/** Was replaced by Myocards */
+.group-banner {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  align-self: stretch;
+  --v-space: var(--row-space, 1.5rem);
+  --h-space: var(--col-space, 1.5rem);
+  padding-top: var(--h-space); }
+
+.group-banner > * {
+  margin: 0 var(--h-space) var(--v-space) var(--h-space); }
+
+/** Too complex */
+.autogrid {
+  --cell-size: 100%;
+  display: grid;
+  grid-gap: 0;
+  grid-template-columns: repeat(auto-fill, minmax(var(--cell-size), 1fr)); }
+
+.autogrid > * {
+  grid-column: span 1; }
+
+@media (min-width: 24rem) {
+  .autogrid {
+    --cell-size: var(--paragraph-width--mid, 24rem); } }
+@media (min-width: 48rem) {
+  .autogrid > .is-big {
+    --size: 2;
+    grid-column: span var(--size); } }
 /** -------------------------------- Offsidebar Fallback */
 .sidepanel {
   position: relative;
@@ -3267,10 +3305,25 @@ mark, .mark {
   transition-delay: var(--transition-duration--slidein);
   transition-timing-function: ease-in; }
 
+/** -------------------------------- Renamed Components */
 /*  EOF Versions Fallback */
-.svgbg-close {
-  /* SVG: x-close — white */
-  background-image: url('data:image/svg+xml;utf8,<svg fill="white" height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>'); }
+/** Generate Colors from Black:
+    https://codepen.io/sosuke/full/Pjoqqp
+*/
+.filter--black-is-white {
+  filter: invert(100%); }
+
+.background-image--close {
+  /* SVG: x-close */
+  background-image: url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>'); }
+
+.background-image--loading {
+  /* SVG: arrows circle loading */
+  background-image: url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/></svg>'); }
+
+.background-image--info {
+  /* SVG: i-info circle */
+  background-image: url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>'); }
 
 .nav-header {
   position: sticky;

@@ -91,5 +91,11 @@ mark, .mark {
     @extend .group-content-rows !optional;
 }
 
+.grid-king {
+    @extend .grid-queen !optional;
+  --width-root: 0;
+  --width-menu: 4rem;
+}
+
 
 /*  EOF Article markup */

@@ -38,29 +38,15 @@
     align-items:     var(--vertical-align);
     align-content:   var(--vertical-align);
 }
-.group-banner {
-    display:         flex;
-    flex-direction:  row;
-    flex-wrap:       wrap;
-    justify-content: center;
-    align-items:     center;
-    align-content:   center;
-    align-self:      stretch;
-  --v-space: var(--row-space, 1rem);
-  --h-space: var(--col-space, 1rem);
-    padding-top:     var(--h-space);
-    } .group-banner>* {
-        margin:  0 var(--h-space) var(--v-space) var(--h-space);
-}
-.group-content-rows {
+.group-rows {
     display:         grid;
     align-items:     start;
     justify-content: start;
     grid-auto-flow:  row;
     grid-auto-rows:  min-content;
-    grid-row-gap:    var(--row-space, 1rem);
+    grid-row-gap:    var(--row-space, 1.5rem);
     grid-column-gap: 0;
-    grid-template-columns: [full main] auto;
+    grid-template-columns: [full main text] auto;
     } .group-content-rows>* {
         grid-column: main;
 }
@@ -83,27 +69,24 @@
          break-inside: avoid;
     margin-bottom: var(--row-space);
 }
+/** Collisting Template
 
-.autogrid {
-  --cell-size: 100%;
-    display:   grid;
-    grid-gap:  0;
-    grid-template-columns: repeat(auto-fill, minmax(var(--cell-size), 1fr));
-    } .autogrid>* {
-        grid-column: span 1;
-}
-@media (min-width: 24rem) {
-    .autogrid {
-      --cell-size: var(--paragraph-width--mid, 24rem);
-    }
-}
-@media (min-width: 48rem) {
-    .autogrid>.is-big {
-      --size: 2;
-        grid-column: span var(--size);
-    }
-}
+    <ul class="group-collisting auto-margin">
+        <li>
+            <h4>Rich Article Grid Layout</h4>
+            <p>CSS grid template for big articles with a lot of content, illustrations and creative visuals.</p>
+        </li>
+        <li>
+            <h4>Banners</h4>
+            <p>Wrapper for content grouping</p>
+        </li>
+        <li>
+            <h4>Catgrounds</h4>
+            <p>Design trick to make boring content more interesting</p>
+        </li>
+    </ul>
 
+*/
 
 
 /** -------------------------------- padding shortcuts */
@@ -155,9 +138,9 @@
 .wc-align { align-self: center; justify-self:  start; }
 .ec-align { align-self: center; justify-self:    end; }
 .cc-align { align-self: center; justify-self: center; }
- .c-align,
-.hc-align {                     justify-self: center; }
+ 
 .vc-align { align-self: center; }
+.hc-align, .c-align {           justify-self: center; }
 
 
 /** -------------------------------- univeral helpers */

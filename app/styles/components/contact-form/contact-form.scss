@@ -496,6 +496,14 @@
     padding:   0;
     flex-grow: 2;
 }
+.offsidebar:not(.is-active) .form-loader.is-active {
+    visibility:       hidden;
+    pointer-events:   none;
+}
+.offsidebar:not(.is-active) .form-design .wpcf7 .ajax-loader.is-active {
+    visibility:       hidden;
+    pointer-events:   none;
+}
 
 
 /* -------------------------------- Required System Vars */

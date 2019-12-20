@@ -20,53 +20,16 @@
  /* SVG: i-info circle */
     background-image: url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>');
 }
+.background-image--menu {
+ /* SVG: hamburger */
+    background-image: url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>');
+}
 
 //* ------------------------------------- pending components
 
 
-.nav-header {
-    position: sticky;
-    top:      0;
-    z-index:  1;
-  --padding-top:    0.25em;
-  --padding-bottom: 0.25em;
-  --menu-icon-placeholder: 2em;
-    padding-top:    var(--padding-top);
-    padding-bottom: var(--padding-bottom);
-}
-.nav-header>* {
-    padding-right:  var(--menu-icon-placeholder);
-}
 
-.nav-fly {
-    position: fixed;
-    z-index:  3;
-    top:      0;
-    right:    0;
-    width:  2em;
-    height: 2em;
-
-    display:   flex;
-    justify-content: center;
-    align-content:   center;
-    align-items:     center;
-
-  --background-color: black;
-  --clip-path: polygon(0 0, 100% 0, 100% 100%, 70% 100%, 0% 0%);
-    clip-path: var(--clip-path);
-    cursor:    pointer;
-    background-color: var(--background-color);
-
-    transition: clip-path 240ms var(--timing-function--focusZoom);
-}
-.nav-fly:hover {
-  --clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%, 0% 100%);
-  --background-color: firebrick;
-}
-.has-offsidebar-overlay .nav-fly { opacity: 0; }
-
-
-/* sidebar menu list */
+/* universal menu list */
 
 .content-menu {
     margin:  0 calc( (-1) * var(--col-space) );

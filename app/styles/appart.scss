@@ -1,39 +1,37 @@
 @charset "UTF-8";
 /*  Appart Styles
  *  index file
- *  2019.12.13
+ *  2019.12.20
  */
 
-/*  -------------------------------------------- Compilation shortcuts
-
+/** Compilation shortcuts
 scss -C --sourcemap=none app/styles/appart.scss app/styles/appart-dev.css
-
 sass --no-source-map app/styles/appart.scss app/styles/appart-dev.css
-
  */
 
 
 // -------------------------------------------- Quick Prototyping
+
 
  // @import "components/prototype/prototype-sakura";
 
 
 // -------------------------------------------- System Core
 
+
     @import "components/system-core/css-settings";
     @import "components/system-core/css-animations";
     @import "components/system-core/html-markup";
     @import "components/system-core/html-typography";
     @import "components/system-core/color-model";
- // dev-mode
-    @import "components/system-core/color-palet--projects";
 
 
 // -------------------------------------------- Components
 
-// Layout
 
-    @import "components/journal-grid/grid-queen";
+ // Layout
+
+    @import "components/article-grid/grid-queen";
     @import "components/offsidebar/offsidebar";
     @import "components/myocard/myocard";
 
@@ -43,7 +41,6 @@ sass --no-source-map app/styles/appart.scss app/styles/appart-dev.css
 
  // Design
 
-    @import "components/swed-design/swed-banner";
     @import "components/swed-design/swed-button";
     @import "components/swed-design/swed-dropdown";
     @import "components/swed-design/swed-site-head";
@@ -58,7 +55,8 @@ sass --no-source-map app/styles/appart.scss app/styles/appart-dev.css
 
  // Deprecated
 
-    @import "components/journal-grid/journal-grid";
+    @import "components/swed-design/swed-banner";
+ // @import "components/journal-grid/journal-grid";
 
 
 // -------------------------------------------- System Utils
@@ -67,7 +65,9 @@ sass --no-source-map app/styles/appart.scss app/styles/appart-dev.css
     @import "components/system-utils/css-varriors";
     @import "components/system-utils/css-workers";
     @import "components/system-utils/article-markup";
+
  // dev-mode
+    @import "components/system-core/color-palet--projects";
     @import "components/system-utils/versions-fallback";
     @import "components/system-utils/ultra-new";
 

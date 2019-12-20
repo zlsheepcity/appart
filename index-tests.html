@@ -94,6 +94,33 @@
         href="https://fonts.googleapis.com/css?family=VT323"
         rel="stylesheet">
 
+    <style>
+        .nav-title {
+            background-color:  gold;
+            color:            black;
+            padding-top:    0.75rem;
+            padding-bottom: 0.75rem;
+            padding-right:     3rem;
+          --h1-font-size:    1.5rem;
+          --h1-line-height:       1;
+          --grid-column--default: var(--grid-column--wrap-text-east);
+        }
+        .nav-burger {
+            position: fixed;
+            z-index:  3;
+            top:      0;
+            right:    0;
+            width:    3rem;
+            height:   3rem;
+
+            background-size:     100%;
+            background-repeat:   no-repeat;
+            background-position: center center;
+         /* SVG: hamburger */
+            background-image: url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>');
+        }
+    </style>
+
 
     <!-- ========================================= APP -->
 
@@ -109,14 +136,22 @@
 
 
     <!-- offsidebar -->
+
     <script defer src="app/styles/components/offsidebar/interface-offsidebar.js"></script>
     <script>
-        app.onload(f=>InterfaceOffsideBar('ChaptersMenuBar'))
+        function DemoActivate__ChaptersMenuBar() {
+            let  bar_api = InterfaceOffsideBar('ChaptersMenuBar')
+            if  (bar_api)
+                 bar_api.delegateToggle(document.querySelector('.toggle-ChaptersMenuBar'))
+        }
+        app.onload(DemoActivate__ChaptersMenuBar)
     </script>
 
     <!-- contact form -->
+
     <script src="app/styles/components/contact-form/controller.js"></script>
     <script>
+        /*
         function getFormApiExample () {
          // get api
             let  selector = '.form-functional'
@@ -125,12 +160,14 @@
             let  imitator = document.querySelector('.js-imitate-form')
             form_api.delegateResponse(imitator)
         }
-        // app.onload(getFormApiExample)
+        app.onload(getFormApiExample)
+        */
     </script>
 
 
 
     <!-- dev functions -->
+
     <script defer src="app/script/components/survival-test.js"></script>
     <script defer src="app/script/components/autofill-paragraphs.js"></script>
 
@@ -140,18 +177,37 @@
 </head>
 <body class="colors--primary">
 
-
 <!-- ----------------------------------------- SVG Backgrounds -->
 
-<article class="">
-    
-    
+<article class="use-colors colors--ivory">
+    <header class="nav-title grid-king" id="SVGBackgrounds">
+        <h2 class="h1">SVG Backgrounds</h2>
+    </header>
+    <style>
+        .bgicon {
+            display: inline-block;
+            width:   3rem;
+            height:  3rem;
+            background-size:     100%;
+            background-repeat:   no-repeat;
+            background-position: center center;
+        }
+    </style>
+    <section class="grid-king chapter">
+        <section>
+            <div class="bgicon background-image--close"></div>
+            <div class="bgicon background-image--loading"></div>
+            <div class="bgicon background-image--info"></div>
+        </section>
+    </section>
 </article>
-
 
 <!-- ----------------------------------------- Code Field -->
 
 <article>
+    <header class="nav-title grid-king" id="CodeField">
+        <h2 class="h1">Code Field</h2>
+    </header>
 <pre class="code-block">
 .code-block  {
     font-family: 'VT323', 'Courier New', Courier, monospace;
@@ -169,8 +225,12 @@
 </pre>
 </article>
 
-    <!-- ----------------------------------------- contact offsidebar -->
+<!-- ----------------------------------------- contact offsidebar -->
 
+<article>
+    <header class="nav-title grid-king" id="OffsidebarContactForm">
+        <h2 class="h1">Offsidebar Contact Form</h2>
+    </header>
     <header class="grid-queen chapter">
         <button class="swed-button toggle-ContactBar">Contact Bar</button>
     </header>
@@ -272,178 +332,202 @@
     </section>
     </div>
 
+</article>
 
-    <!-- ----------------------------------------- Form Design -->
+<!-- ----------------------------------------- Form Design -->
 
+<article>
+    <header id="FormDesign" class="nav-title grid-king">
+        <h2 class="h1">Form Design</h2>
+    </header>
+    <article class="grid-queen chapter colors--primary DemoForm">
+        <style>
+            .DemoForm .form-design { position: relative; }
+        </style>
 
-    <section>
+        <h2>Contact Us</h2>
+        <section class="grid-column--main form-design form-functional">
 
-        <article class="grid-queen chapter colors--primary">
+            <div class="wrap-form-plugin">
 
-            <h2>Contact Us</h2>
-            <section class="grid-column--main form-design form-functional">
+                <div class="wrap-form">
+                    <form action="">
+                        <div class="wrap-form-fields">
 
-                <div class="wrap-form-plugin">
-
-                    <div class="wrap-form">
-                        <form action="">
-                            <div class="wrap-form-fields">
-
-                                <div class="wrap-field">
-                                    <label><span class="field-label">Name <i>(required)</i></span><br>
-                                    <span><input type="text" name="contact-name" value="Person Named" size="40" class="" aria-required="true" aria-invalid="false">
-                                    </span> </label>
-                                </div>
-
-                                <div class="wrap-field">
-                                    <label><span class="field-label">Your Message or Question</span><br>
-                                    <span><textarea class="" name="your-message" rows="3" class="" aria-required="true" aria-invalid="false"></textarea>
-                                    </span> </label>
-                                </div>
-
-                                <div class="wrap-field">
-                                    <label><span class="field-label">Your Select</span><br>
-                                    <span><select class="" name="your-select" aria-invalid="false">
-                                        <option default>This one is the best</option>
-                                        <option>Another one</option>
-                                        <option>Third one</option>
-                                    </select>
-                                    </span> </label>
-                                </div>
-
-                                <div class="wrap-field wrap-submit">
-                                    <input type="submit" value="Send" class="form-design-button">
-                                    <div class="form-design-button js-imitate-form">Imitate</div>
-                                    <span class="ajax-loader is-active"></span>
-                                </div>
-
+                            <div class="wrap-field">
+                                <label><span class="field-label">Name <i>(required)</i></span><br>
+                                <span><input type="text" name="contact-name" value="Person Named" size="40" class="" aria-required="true" aria-invalid="false">
+                                </span> </label>
                             </div>
-                        </form>
-                    </div>
 
-                </div>
+                            <div class="wrap-field">
+                                <label><span class="field-label">Your Message or Question</span><br>
+                                <span><textarea class="" name="your-message" rows="3" class="" aria-required="true" aria-invalid="false"></textarea>
+                                </span> </label>
+                            </div>
 
-                <div class="wrap-form-feedback">
-                    <div class="feedback-design rows">
-                        <h4 class=" success">Your message was sent successfully. Thanks!</h4>
-                        <p>Our manager will reach out to you within the next 24 business hours.</p>
-                        <p>Best regards,<br>SoftGamings team!</p>
-                        <div class="next-links text-block-bigger">
-                            <h6>Next:</h6>
-                            <ul>
-                                <li><a href="/" class="text-link">Home page</a></li>
-                                <li><span class="text-link js-form-reset">New message</span></li>
-                            </ul>
+                            <div class="wrap-field">
+                                <label><span class="field-label">Your Select</span><br>
+                                <span><select class="" name="your-select" aria-invalid="false">
+                                    <option default>This one is the best</option>
+                                    <option>Another one</option>
+                                    <option>Third one</option>
+                                </select>
+                                </span> </label>
+                            </div>
+
+                            <div class="wrap-field wrap-submit">
+                                <input type="submit" value="Send" class="form-design-button">
+                            </div>
+
                         </div>
-                    </div>
+                    </form>
                 </div>
 
-            </section>
+            </div>
+
+            <div class="wrap-form-feedback">
+                <div class="feedback-design rows">
+                    <h4 class=" success">Your message was sent successfully. Thanks!</h4>
+                    <p>Our manager will reach out to you within the next 24 business hours.</p>
+                    <p>Best regards,<br>SoftGamings team!</p>
+                    <div class="next-links text-block-bigger">
+                        <h6>Next:</h6>
+                        <ul>
+                            <li><a href="/" class="text-link">Home page</a></li>
+                            <li><span class="text-link js-form-reset">New message</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-loader"></div>
+
+        </section>
+        <div>
+            <button class="js-form-reset">reset</button>
+            <button class="js-form-loading">loading</button>
+            <button class="js-form-response">response</button>
+        </div>
+        <script>
+            function DemoActivateContactForm2 () {
+             // get api
+                let  selector = '.DemoForm'
+                let  form_api = Init__ContactForm({selector})
+             // delegate action
+                //let  imitator = document.querySelector('.js-imitate-form')
+                //form_api.delegateResponse(imitator)
+            }
+            app.onload(DemoActivateContactForm2)
+        </script>
+
 <!--
 
-            <script src="app/styles/components/contact-form/controller.js"></script>
-            <script>
-                function getFormApiExample () {
-                    let selector = '.form-functional'
-                    let form_api = Init__ContactForm({selector})
-                    let imitator = document.querySelector('.js-imitate-form')
-                    form_api.delegateResponse(imitator)
-                }
-                app.onload(getFormApiExample)
-            </script>
+        <script src="app/styles/components/contact-form/controller.js"></script>
+        <script>
+            function getFormApiExample () {
+                let selector = '.form-functional'
+                let form_api = Init__ContactForm({selector})
+                let imitator = document.querySelector('.js-imitate-form')
+                form_api.delegateResponse(imitator)
+            }
+            app.onload(getFormApiExample)
+        </script>
 -->
 
 
-        </article>
-        <article class="grid-queen chapter use-colors colors--ivory">
+    </article>
+    <article class="grid-queen chapter use-colors colors--ivory">
 
-            <h2>Contact Us</h2>
-            <section class="grid-column--main form-design">
-                <div class="wrap-form">
-                    <form action="">
-                        <div class="wrap-form-fields">
+        <h2>Contact Us</h2>
+        <section class="grid-column--main form-design">
+            <div class="wrap-form">
+                <form action="">
+                    <div class="wrap-form-fields">
 
-                            <div class="wrap-field">
-                                <label><span class="field-label">Name <i>(required)</i></span><br>
-                                <span><input type="text" name="contact-name" value="Person Named" size="40" class="" aria-required="true" aria-invalid="false">
-                                </span> </label>
-                            </div>
-
-                            <div class="wrap-field">
-                                <label><span class="field-label">Your Message or Question</span><br>
-                                <span><textarea class="" name="your-message" rows="3" class="" aria-required="true" aria-invalid="false"></textarea>
-                                </span> </label>
-                            </div>
-
-                            <div class="wrap-field">
-                                <label><span class="field-label">Your Select</span><br>
-                                <span><select class="" name="your-select" aria-invalid="false">
-                                    <option default>This one is the best</option>
-                                    <option>Another one</option>
-                                    <option>Third one</option>
-                                </select>
-                                </span> </label>
-                            </div>
-
-                            <div class="wrap-field wrap-submit">
-                                <input type="submit" value="Send" class="form-design-button">
-                                <span class="ajax-loader is-active"></span>
-                            </div>
-
+                        <div class="wrap-field">
+                            <label><span class="field-label">Name <i>(required)</i></span><br>
+                            <span><input type="text" name="contact-name" value="Person Named" size="40" class="" aria-required="true" aria-invalid="false">
+                            </span> </label>
                         </div>
-                    </form>
-                </div>
-            </section>
 
-        </article>
-        <article class="grid-queen chapter use-colors colors--root native-sans">
-
-            <h2>Contact Us</h2>
-            <section class="grid-column--main form-design theme--white">
-                <div class="wrap-form">
-                    <form action="">
-                        <div class="wrap-form-fields">
-
-                            <div class="wrap-field">
-                                <label><span class="field-label">Name <i>(required)</i></span><br>
-                                <span><input type="text" name="contact-name" value="Person Named" size="40" class="" aria-required="true" aria-invalid="false">
-                                </span> </label>
-                            </div>
-
-                            <div class="wrap-field">
-                                <label><span class="field-label">Your Message or Question</span><br>
-                                <span><textarea class="" name="your-message" rows="3" class="" aria-required="true" aria-invalid="false"></textarea>
-                                </span> </label>
-                            </div>
-
-                            <div class="wrap-field">
-                                <label><span class="field-label">Your Select</span><br>
-                                <span><select class="" name="your-select" aria-invalid="false">
-                                    <option default>This one is the best</option>
-                                    <option>Another one</option>
-                                    <option>Third one</option>
-                                </select>
-                                </span> </label>
-                            </div>
-
-                            <div class="wrap-field wrap-submit">
-                                <input type="submit" value="Send" class="form-design-button">
-                                <span class="ajax-loader is-active"></span>
-                            </div>
-
+                        <div class="wrap-field">
+                            <label><span class="field-label">Your Message or Question</span><br>
+                            <span><textarea class="" name="your-message" rows="3" class="" aria-required="true" aria-invalid="false"></textarea>
+                            </span> </label>
                         </div>
-                    </form>
-                </div>
-            </section>
 
-        </article>
+                        <div class="wrap-field">
+                            <label><span class="field-label">Your Select</span><br>
+                            <span><select class="" name="your-select" aria-invalid="false">
+                                <option default>This one is the best</option>
+                                <option>Another one</option>
+                                <option>Third one</option>
+                            </select>
+                            </span> </label>
+                        </div>
 
-    </section>
+                        <div class="wrap-field wrap-submit">
+                            <input type="submit" value="Send" class="form-design-button">
+                            <span class="ajax-loader is-active"></span>
+                        </div>
 
+                    </div>
+                </form>
+            </div>
+        </section>
 
-    <!-- ----------------------------------------- Grid-Queen -->
+    </article>
+    <article class="grid-queen chapter use-colors colors--root native-sans">
 
+        <h2>Contact Us</h2>
+        <section class="grid-column--main form-design theme--white">
+            <div class="wrap-form">
+                <form action="">
+                    <div class="wrap-form-fields">
 
+                        <div class="wrap-field">
+                            <label><span class="field-label">Name <i>(required)</i></span><br>
+                            <span><input type="text" name="contact-name" value="Person Named" size="40" class="" aria-required="true" aria-invalid="false">
+                            </span> </label>
+                        </div>
+
+                        <div class="wrap-field">
+                            <label><span class="field-label">Your Message or Question</span><br>
+                            <span><textarea class="" name="your-message" rows="3" class="" aria-required="true" aria-invalid="false"></textarea>
+                            </span> </label>
+                        </div>
+
+                        <div class="wrap-field">
+                            <label><span class="field-label">Your Select</span><br>
+                            <span><select class="" name="your-select" aria-invalid="false">
+                                <option default>This one is the best</option>
+                                <option>Another one</option>
+                                <option>Third one</option>
+                            </select>
+                            </span> </label>
+                        </div>
+
+                        <div class="wrap-field wrap-submit">
+                            <input type="submit" value="Send" class="form-design-button">
+                            <span class="ajax-loader is-active"></span>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </section>
+
+    </article>
+
+</article>
+
+<!-- ----------------------------------------- Grid-Queen -->
+
+<article>
+    <header class="nav-title grid-king" id="GridQueen">
+        <h2 class="h1">Grid-Queen</h2>
+    </header>
     <article class="grid-queen my-grid-queen chapter isontop">
 
         <style>
@@ -636,24 +720,1701 @@
         <section class="grid-column--east-side-wide subgrid-container color-box"><p class="auto"></p></section>
 
     </article>
+</article>
 
+<!-- ----------------------------------------- Swed Dropdown -->
 
-    <!-- ----------------------------------------- APP Header -->
+<article>
+    <header class="nav-title grid-king" id="SwedDropdown">
+        <h2 class="h1">Swed Dropdown</h2>
+    </header>
 
-    <style>
-        screen {
-            display: block;
-            min-height: 100vh;
-            padding: 3rem;
-        }
-    </style>
-    <screen class="use-colors colors--root">
-        <p>app test: zzz</p>
-        <div>
-            <img src="art/illustrations/austria.svg" alt="" class="auto-margin zzz">
+    <article class="chapter use-colors colors--root">
+
+        <section class="group-banner">
+
+            <div class="swed-dropdown js-swed-dropdown">
+                <button class="label">
+                    <div>Dropdown List</div>
+                </button>
+                <div class="droplist">
+                    <ul>
+                        <li><span>First item</span></li>
+                        <li><span>Second item</span></li>
+                        <li><span>Third long size caption</span></li>
+                        <li><span>Last item</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="swed-dropdown js-swed-dropdown">
+                <button class="label">
+                    <div>Ru</div>
+                </button>
+                <div class="droplist">
+                    <ul>
+                        <li><span>En</span></li>
+                        <li><span>Ru</span></li>
+                    </ul>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="group-banner">
+
+            <div class="swed-dropdown">
+                <button class="label">
+                    <div>Dropdown List</div>
+                </button>
+                <div class="droplist">
+                    <ul>
+                        <li><span>First item</span></li>
+                        <li><span>Second item</span></li>
+                        <li><span>Third long size caption</span></li>
+                        <li><span>Last item</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="swed-dropdown">
+                <button class="label">
+                    <div>Ru</div>
+                </button>
+                <div class="droplist">
+                    <ul>
+                        <li><a href="#en">En</a></li>
+                        <li><a href="#ru">Ru</a></li>
+                    </ul>
+                </div>
+            </div>
+
+        </section>
+
+        <script>
+            function activateDropDowns () {
+               const activationClassname = 'swed-dropdown'
+               const activStateClassname = 'is-active'
+               const targets = document.querySelectorAll('.'+activationClassname)
+               const doCloseAll = () => targets.forEach(doClose)
+               const doClose    = el => el.classList.remove(activStateClassname)
+               const doToggle   = el => el.classList.toggle(activStateClassname)
+               const evToggle   = ev => doToggle(ev.currentTarget)
+               const activator  = el => el.addEventListener('click', evToggle)
+
+               targets.forEach(activator)
+            }
+            app.onload(f=>activateDropDowns())
+        </script>
+
+    </article>
+
+    <article id="UI-Components" class="chapter isontop journal-grid">
+
+        <div class="layer">
+
+            <header class="banner">
+                <h2 class="h1">UI Components</h2>
+            </header>
+
+            <section class="group-banner">
+
+                <div class="swed-dropdown">
+                    <button class="label">
+                        <div>Dropdown List</div>
+                    </button>
+                    <div class="droplist">
+                        <ul>
+                            <li><span>First item</span></li>
+                            <li><span>Second item</span></li>
+                            <li><span>Third long size caption</span></li>
+                            <li><span>Last item</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="swed-dropdown use-hover">
+                    <button class="label">
+                        <div>Ru</div>
+                    </button>
+                    <div class="droplist">
+                        <ul>
+                            <li><a href="#en">En</a></li>
+                            <li><a href="#ru">Ru</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <button class="swed-button">Button</button>
+
+            </section>
+
+            <section class="group-banner native-sans use-colors colors--root">
+
+                <div class="swed-dropdown">
+                    <button class="label">
+                        <div>Dropdown List</div>
+                    </button>
+                    <div class="droplist">
+                        <ul>
+                            <li><span>First item</span></li>
+                            <li><span>Second item</span></li>
+                            <li><span>Third long size caption</span></li>
+                            <li><span>Last item</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="swed-dropdown">
+                    <button class="label">
+                        <div>RU</div>
+                    </button>
+                    <div class="droplist">
+                        <ul>
+                            <li><a href="#en">EN</a></li>
+                            <li><a href="#ru">RU</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <button class="swed-button">Button</button>
+
+            </section>
         </div>
-    </screen>
 
+        <p class="auto"></p>
+
+    </article>
+
+
+</article>
+
+<!-- ----------------------------------------- Banners -->
+
+<article>
+
+    <header class="nav-title grid-king" id="Banners">
+        <h2 class="h1">Banners</h2>
+    </header>
+
+    <section class="swed-banner use-colors colors--swed-secondary">
+        <h2>App <mark>&</mark> Art</h2>
+        <p class="mini-paragraph text-inline-bigger">
+            Front-end components. Not a framework,
+            but reusable code templates.
+        </p>
+    </section>
+
+    <section class="myocard use-colors colors--swed-third">
+        <section>
+            <div>
+                <h2>App <mark>&</mark> Art</h2>
+           </div>
+       </section>
+        <section>
+            <div>
+                <p class="mini-paragraph text-inline-bigger">
+                    Front-end components. Not a framework,
+                    but reusable code templates.
+                </p>
+           </div>
+       </section>
+    </section>
+
+</article>
+
+<!-- ----------------------------------------- Myocards -->
+
+<article>
+    <header class="nav-title grid-king" id="Myocards">
+        <h2 class="h1">Myocards</h2>
+    </header>
+
+    <article class="chapter">
+
+        <header class="grid-queen">
+            <h2>Myocards</h2>
+        </header>
+
+
+        <header class="grid-queen chapter">
+            <h2>is-banner</h2>
+        </header>
+
+        <section class="myocard is-banner">
+            <section>
+                <div>
+                    <p class="auto text-block-bigger"></p>
+               </div>
+           </section>
+            <section>
+                <div>
+                    <button class="swed-button">
+                        <span>Book a meeting</span>
+                    </button>
+               </div>
+           </section>
+        </section>
+
+        <header class="grid-queen chapter">
+            <h2>align-top</h2>
+        </header>
+
+        <section class="myocard align-top">
+            <section>
+                <div>
+                    <section class="rows">
+                    <h4>First Part</h4>
+                    <p class="auto"></p>
+                    </section>
+               </div>
+           </section>
+            <section>
+                <div>
+                    <section class="rows">
+                    <h4>Second Part</h4>
+                    <p class="auto"></p>
+                    <p class="auto"></p>
+                    <p class="auto"></p>
+                    </section>
+               </div>
+           </section>
+        </section>
+
+
+        <!-- -------------------------------- Avatars -->
+
+        <style>
+            .el-avatar-icon {
+              --width: 14rem;
+                width: var(--width);
+            }
+            .el-avatar-big {
+              --width: 24rem;
+                width: var(--width);
+            }
+        </style>
+
+
+        <header class="grid-queen chapter">
+            <h2>Avatars</h2>
+        </header>
+
+        <section class="myocard">
+            <section>
+                <div>
+                    <img src="art/bergamot-just-browse-here.svg"
+                         class="el-avatar-big" alt="">
+               </div>
+           </section>
+            <section>
+                <div>
+                    <p class="auto text-block-bigger"></p>
+               </div>
+           </section>
+        </section>
+
+        <section class="myocard is-banner back-color-accent">
+            <section>
+                <div>
+                    <p class="auto text-block-bigger"></p>
+               </div>
+           </section>
+            <section>
+                <div>
+                    <img src="art/bergamot-just-browse-here.svg"
+                         class="el-avatar-icon" alt="">
+               </div>
+           </section>
+        </section>
+
+
+        <!-- -------------------------------- Inside Grid -->
+
+        <article class="chapter use-colors colors--ivory">
+        <section class="grid-queen is-without-root">
+
+            <h2>Inside Grid</h2>
+
+            <section class="grid-column--wrap subgrid-content">
+
+                <section class="myocard is-banner back-color-accent">
+                    <section>
+                        <div>
+                            <img src="art/bergamot-just-browse-here.svg"
+                                 class="el-avatar-icon" alt="">
+                       </div>
+                   </section>
+                    <section>
+                        <div>
+                            <p class="auto text-block-bigger"></p>
+                       </div>
+                   </section>
+                </section>
+
+                <section class="myocard is-banner wrap-order-reverse back-color-accent">
+                    <section>
+                        <div>
+                            <p class="auto text-block-bigger"></p>
+                       </div>
+                   </section>
+                    <section>
+                        <div>
+                            <img src="art/illustrations/austria.svg"
+                                 class="el-avatar-icon" alt="">
+                       </div>
+                   </section>
+                </section>
+
+            </section>
+            <section class="grid-column--wrap">
+                <section class="myocard align-top">
+                    <section>
+                        <div>
+                            <section class="rows">
+                            <h4>First Part</h4>
+                            <p class="auto"></p>
+                            </section>
+                       </div>
+                   </section>
+                    <section>
+                        <div>
+                            <section class="rows">
+                            <h4>Second Part</h4>
+                            <p class="auto"></p>
+                            <p class="auto"></p>
+                            <p class="auto"></p>
+                            </section>
+                       </div>
+                   </section>
+                </section>
+            </section>
+        </section>
+        </article>
+
+        <!-- -------------------------------- Cases -->
+
+        <section class="myocard">
+            <section>
+                <div>
+                    <h2>Universal Wrap</h2>
+               </div>
+           </section>
+            <section>
+                <div>
+                    <section class="rows">
+                    <p class="auto"></p>
+                    <big><mark>Learn More</mark></big>
+                    </section>
+               </div>
+           </section>
+        </section>
+
+        <section class="myocard">
+            <section>
+                <div>
+                    <h2>Long Multicontent Title inside Wrap</h2>
+               </div>
+           </section>
+            <section>
+                <div>
+                    <p class="auto"></p>
+               </div>
+           </section>
+        </section>
+
+        <div class="chapter back-color-accent">
+            <section class="myocard">
+
+                <section class="myocard is-banner">
+                    <header>
+                        <div>
+                            Meet our team at G2E Asia<br>
+                            3-4 December 2019<br>
+                            Marriot Manila, Philippines<br>
+                        </div>
+                    </header>
+                    <figure>
+                        <img src="art/illustrations/austria.svg"
+                             class="el-avatar-icon" alt="Logo">
+                    </figure>
+                </section>
+
+                <footer>
+                    <div>
+                        <button class="swed-button">
+                            <span>Book a meeting</span>
+                        </button>
+                    </div>
+                </footer>
+
+            </section>
+        </div>
+
+        <section class="el-myocardist chapter">
+
+            <style>
+                .el-myocardist .myocard { --card-max-width: 52rem; }
+                .el-myocardist .myocard + .myocard { margin-top: 2rem; }
+                .el-myocardist .myocard { background-color: var(--back-color-accent); }
+            </style>
+
+            <div class="myocard">
+                <div><p>When it comes to payment systems.</p></div>
+                <div><p>Self-Service Solution</p></div>
+            </div>
+
+            <div class="myocard">
+                <div><p>A few additional perks include full access to geolocation technologies.</p></div>
+                <div><p>Self-Service Customisation Options</p></div>
+            </div>
+
+            <div class="myocard">
+                <div>
+                    <h4>When it comes to payment systems, the Self-Service solution supports both Visa and MasterCard.</h4>
+                </div>
+                <div>
+                    <p>Self-Service Solution</p>
+                </div>
+            </div>
+
+            <div class="myocard">
+                <div>
+                    <h3>When it comes.</h3>
+                </div>
+                <div>
+                    <div><p>A few additional perks include full access to geolocation technologies.</p></div>
+                </div>
+            </div>
+
+        </section>
+
+    </article>
+    <article class="chapter use-colors colors--root">
+
+        <header class="grid-queen chapter isontop">
+            <h2>Template</h2>
+        </header>
+
+        <section class="myocard">
+            <section>
+                <div>
+                    <img src="art/illustrations/austria.svg"
+                         class="el-avatar-big" alt="">
+               </div>
+           </section>
+            <section>
+                <div>
+                    <section class="rows">
+                    <p class="auto"></p>
+                    <p class="auto"></p>
+                    </section>
+               </div>
+           </section>
+        </section>
+
+    </article>
+
+</article>
+
+<!-- ----------------------------------------- Journal Grid -->
+
+<article class="journal-grid">
+    <header class="nav-title grid-king" id="JournalGrid">
+        <h2 class="h1">Journal Grid</h2>
+    </header>
+
+    <nav class="nav-header journal-grid use-colors">
+        <p>
+            <mark>Journal Grid —</mark>
+            <a href="https://github.com/zlsheepcity/appart/blob/master/app/styles/components/journal-grid/journal-grid.scss" class="link-inline">git source</a>,
+            <a href="dev/tests-journal-grid.html" class="link-inline">demo page</a>
+        </p>
+    </nav>
+
+    <header class="wide">
+        <h2 class="h1">CSS-grid for articles</h2>
+        <p>
+            Article layout «like-a-journal» with side-notes and various column-merging properties.<br>
+            Has constant spaces, supports small screens, is easy for markup.
+        </p>
+    </header>
+
+    <section class="base keep-grid chapter use-colors colors--ivory">
+
+        <section class="block">
+            <p txt></p>
+            <p txt></p>
+            <p txt></p>
+        </section>
+
+        <aside class="note">
+            <p txt></p>
+        </aside>
+
+        <section class="keep-layer color-box-accent">
+            <section class="block">
+                <p txt></p>
+                <p txt></p>
+            </section>
+            <aside class="note">
+                <p txt></p>
+            </aside>
+        </section>
+
+        <section class="keep-wide color-box">
+            <section class="block">
+                <figure>
+                    <img src="art/illustrations/austria.svg" alt="" class="zzz">
+                </figure>
+                <p txt></p>
+                <p txt></p>
+            </section>
+            <aside class="note">
+                <p txt></p>
+            </aside>
+        </section>
+
+        <footer>
+            <a href="dev/tests-journal-grid.html" class="h3 link-color">Demo page</a>
+        </footer>
+
+    </section>
+
+</article>
+
+<!-- ----------------------------------------- Typography Demo -->
+
+<article>
+
+    <header class="nav-title grid-king" id="Typography">
+        <h2 class="h1">Typography</h2>
+    </header>
+
+    <article class="chapter journal-grid">
+
+        <nav class="nav-header keep-grid use-colors">
+            <p>
+                <mark>Web-Typography</mark> —
+                <a href="https://github.com/zlsheepcity/appart/blob/master/app/styles/components/html-core/html-typography.scss" class="link-inline">git source</a></p>
+        </nav>
+
+        <header class="wide">
+            <h2 class="h1">Web-Typography</h2>
+            <p>em-based-size presets, types collections</p>
+        </header>
+
+        <section class="chapter base keep-grid  use-colors colors--ivory">
+
+            <header class="wide is-centered">
+                <div class="h1">Web-Typography testpage</div>
+                <div class="h2">Web-Typography testpage</div>
+                <div class="h3">Web-Typography testpage</div>
+                <div class="h4">Web-Typography testpage</div>
+                <div class="h5">Web-Typography testpage</div>
+                <div class="h6">Web-Typography testpage</div>
+                <small>Web-Typography testpage</small>
+            </header>
+
+
+            <h2 class="chapter-header">Facetypes collection</h2>
+
+            <div class="keep-grid" style="font-family: var(--font-family--tufte-serif);">
+                <h3 class="mark">tufte-serif</h3>
+                <section class="block">
+                    <p txt></p>
+                    <p txt class="text-block-bigger"></p>
+                    <p txt class="text-block-smaller"></p>
+                </section>
+                <div class="note keep-font-size">
+                    <p>297351 years<br>&amp;#$@*</p>
+                </div>
+            </div>
+            <div class="keep-grid" style="font-family: var(--font-family--tufte-sans);">
+                <h3 class="mark">tufte-sans</h3>
+                <section class="block">
+                    <p txt></p>
+                    <p txt class="text-block-bigger"></p>
+                    <p txt class="text-block-smaller"></p>
+                </section>
+                <div class="note keep-font-size">
+                    <p>297351 years<br>&amp;#$@*</p>
+                </div>
+            </div>
+            <div class="keep-grid" style="font-family: var(--font-family--native-sans);">
+                <h3 class="mark">native-sans</h3>
+                <section class="block">
+                    <p txt></p>
+                    <p txt class="text-block-bigger"></p>
+                    <p txt class="text-block-smaller"></p>
+                </section>
+                <div class="note keep-font-size">
+                    <p>297351 years<br>&amp;#$@*</p>
+                </div>
+            </div>
+
+
+            <h2 class="chapter-header">Font-size modifyers</h2>
+
+            <div class="block">
+                <div>
+                    <span txt></span>
+                    <mark class="text-inline-bigger">[.text-inline-bigger]</mark>
+                    <span txt class="text-inline-bigger"></span>
+                    <span txt></span>
+                    <mark class="text-inline-bigger">[.text-inline-smaller]</mark>
+                    <span txt class="text-inline-smaller"></span>
+                    <span txt></span>
+                </div>
+                <div class="group-center">
+                    <span class="back-color-descent">line height</span>
+                    <span>—</span>
+                    <span class="back-color-descent text-inline-bigger">line height</span>
+                </div>
+                <div class="text-block-bigger">
+                    <mark>.text-block-bigger</mark>
+                    <span txt></span>
+                </div>
+                <div class="text-block-smaller">
+                    <mark>.text-block-smaller</mark>
+                    <span txt></span>
+                </div>
+            </div>
+
+
+            <section class="wide">
+
+                <header class="chapter-header">
+                    <h2>Paragraph readable width</h2>
+                </header>
+
+                <h3>
+                    <mark>.paragraph</mark>
+                    Max width limit (42em)
+                </h3>
+                <div class="paragraph group-content-rows">
+                    <div>
+                        <span txt></span>
+                        <span txt></span>
+                    </div>
+                    <div>
+                        <span txt></span>
+                        <span txt></span>
+                    </div>
+                </div>
+
+                <h3>
+                    <mark>.midi-paragraph</mark>
+                    Optimal middle-size (24em)
+                </h3>
+                <div class="midi-paragraph group-content-rows">
+                    <div txt></div>
+                    <div txt></div>
+                </div>
+
+                <section class="group-banner">
+
+                    <h3 class="banner-title">
+                        <mark>.mini-paragraph</mark>
+                        Minimal readable width (12em)
+                    </h3>
+                    <div class="mini-paragraph group-content-rows">
+                        <div>Front-end components. Not a framework, but reusable code templates.</div>
+                        <div>Atom classes for maintainable inline CSS</div>
+                        <div>CSS grid template for big articles with a lot of content, illustrations and creative visuals.</div>
+                    </div>
+                    <div class="mini-paragraph group-content-rows text-inline-bigger">
+                        <div>Front-end components. Not a framework, but reusable code templates.</div>
+                        <div>Atom classes for maintainable inline CSS</div>
+                        <div>CSS grid template for big articles with a lot of content, illustrations and creative visuals.</div>
+                    </div>
+
+                </section>
+
+
+            </section>
+
+        </section>
+
+    </article>
+
+</article>
+
+<!-- ----------------------------------------- Color Model -->
+
+<article>
+    <header class="nav-title grid-king" id="ColorModel">
+        <h2 class="h1">Color Model</h2>
+    </header>
+    <article class="journal-grid">
+
+        <nav class="nav-header journal-grid use-colors">
+            <p>
+                <mark>Color Model</mark> —
+                <a href="https://github.com/zlsheepcity/appart/blob/master/app/styles/components/color-model/color-model.scss">git source</a>
+            </p>
+        </nav>
+
+        <header class="wide">
+            <h2 class="h1">Color Model</h2>
+            <p>Nine variables for color-switching.</p>
+        </header>
+
+        <section class="chapter keep-base">
+
+            <header class="banner">
+                <h2 class="h3">Some presets:</h2>
+            </header>
+
+            <section class="banner use-colors colors--root">
+                <header>
+                    <h2>colors--root</h2>
+                    <p class="text-color-descent">Color Model 3×3+2</p>
+                </header>
+                <p class="back-color-descent back-color-hover link-color padding">Hover Me</p>
+            </section>
+            <section class="banner use-colors colors--action">
+                <header>
+                    <h2>colors--action</h2>
+                    <p class="text-color-descent">Color Model 3×3+2</p>
+                </header>
+                <p class="back-color-descent back-color-hover link-color padding">Hover Me</p>
+            </section>
+            <section class="banner use-colors colors--ivory">
+                <header>
+                    <h2>colors--ivory</h2>
+                    <p class="text-color-descent">Color Model 3×3+2</p>
+                </header>
+                <p class="back-color-descent back-color-hover link-color padding">Hover Me</p>
+            </section>
+            <section class="banner use-colors colors--swed">
+                <header>
+                    <h2>colors--swed</h2>
+                    <p class="text-color-descent">Color Model 3×3+2</p>
+                </header>
+                <p class="back-color-descent back-color-hover link-color padding">Hover Me</p>
+            </section>
+            <section class="banner use-colors colors--swed-secondary">
+                <header>
+                    <h2>colors--swed-secondary</h2>
+                    <p class="text-color-descent">Color Model 3×3+2</p>
+                </header>
+                <p class="back-color-descent back-color-hover link-color padding">Hover Me</p>
+            </section>
+            <section class="banner use-colors colors--swed-third">
+                <header>
+                    <h2>colors--swed-third</h2>
+                    <p class="text-color-descent">Color Model 3×3+2</p>
+                </header>
+                <p class="back-color-descent back-color-hover link-color padding">Hover Me</p>
+            </section>
+
+        </section>
+
+    </article>
+</article>
+
+<!-- ----------------------------------------- Offside Bar -->
+
+<article>
+    <header class="nav-title grid-king" id="Offsidebar">
+        <h2 class="h1">Offsidebar</h2>
+    </header>
+
+    <article class="journal-grid">
+
+        <nav class="nav-header journal-grid use-colors">
+            <p>
+                <mark>Offside Bar</mark> —
+                <a href="https://github.com/zlsheepcity/appart/tree/master/app/styles/components/offsidebar" >git source</a>
+            </p>
+        </nav>
+
+        <header class="wide">
+            <h2 class="h1">Offside bar</h2>
+            <p>Reveal side panel, avoids content jumps</p>
+        </header>
+
+        <section class="chapter banner">
+                <h3 class="banner-title">Demo cases</h3>
+                <button class="swed-button js-for-EastsideBar">Default</button>
+                <button class="swed-button js-for-WestsideBar">From Westside</button>
+                <button class="swed-button js-for-OverflowBar">Content overflow</button>
+                <button class="swed-button js-for-OverflowBarWestside">Content overflow (westside)</button>
+        </section>
+
+        <!-- Demo Bars -->
+
+        <section>
+
+            <!-- Default Bar -->
+
+            <section class="EastsideBar offsidebar colors--secondary">
+                <!-- <div class="offsidebar-overlay"></div>    <!-- auto insertion with js -->
+                <!-- <div class="offsidebar-background"></div> <!-- auto insertion with js -->
+                <div class="sidepanel">
+
+                    <header class="sidepanel-header">
+                        <h4>Scroll Content</h4>
+                    </header>
+
+                    <nav class="sidepanel-content">
+                        <ul class="content-menu js-for-EastsideBar">
+                            <li><span>Lorem ipsum</span></li>
+                            <li><span>Pellentesque habitant</span></li>
+                            <li><span>Morbi tristique senectus</span></li>
+                            <li><span>Et netus et malesuada</span></li>
+                            <li><span>Fames ac turpis egestas</span></li>
+                            <li><span>Vestibulum tortor quam</span></li>
+                            <li><span>Feugiat vitae</span></li>
+                            <li><span>Ultricies eget</span></li>
+                            <li><span>Tempor sit amet</span></li>
+                        </ul>
+                    </nav>
+
+                    <footer class="sidepanel-footer">
+                        <div>Footer</div>
+                    </footer>
+
+                </div>
+            </section>
+
+            <!-- Westside Bar -->
+
+            <section class="WestsideBar offsidebar from-westside colors--secondary">
+                <div class="sidepanel">
+
+                    <header class="sidepanel-header">
+                        <h4>Scroll Content</h4>
+                    </header>
+
+                    <nav class="sidepanel-content">
+                        <ul class="content-menu js-for-WestsideBar">
+                            <li><span>Lorem ipsum</span></li>
+                            <li><span>Pellentesque habitant</span></li>
+                            <li><span>Morbi tristique senectus</span></li>
+                            <li><span>Et netus et malesuada</span></li>
+                            <li><span>Fames ac turpis egestas</span></li>
+                            <li><span>Vestibulum tortor quam</span></li>
+                            <li><span>Feugiat vitae</span></li>
+                            <li><span>Ultricies eget</span></li>
+                            <li><span>Tempor sit amet</span></li>
+                        </ul>
+                    </nav>
+
+                    <footer class="sidepanel-footer">
+                        <div>Footer</div>
+                    </footer>
+
+                </div>
+            </section>
+
+            <!-- Overflow Bar -->
+
+            <section class="OverflowBar offsidebar colors--secondary">
+                <section class="sidepanel">
+
+                    <header class="sidepanel-header">
+                        <h4>Scroll Content</h4>
+                    </header>
+
+                    <section class="sidepanel-content">
+                        <div class="rows midi-paragraph">
+                            <p txt></p>
+                            <p txt></p>
+                            <p txt></p>
+                            <p txt></p>
+                            <p txt></p>
+                            <p txt></p>
+                            <p txt></p>
+                            <p txt></p>
+                        </div>
+                    </section>
+
+                    <footer class="sidepanel-footer">
+                        <div>Footer</div>
+                    </footer>
+
+                </section>
+            </section>
+
+            <!-- Overflow Bar Westside -->
+
+            <section class="OverflowBarWestside offsidebar from-westside colors--secondary">
+                <section class="sidepanel">
+
+                    <header class="sidepanel-header">
+                        <h4>Scroll Content</h4>
+                    </header>
+
+                    <section class="sidepanel-content">
+                        <div class="rows midi-paragraph">
+                            <p txt></p>
+                            <p txt></p>
+                            <p txt></p>
+                            <p txt></p>
+                            <p txt></p>
+                            <p txt></p>
+                            <p txt></p>
+                            <p txt></p>
+                        </div>
+                    </section>
+
+                    <footer class="sidepanel-footer">
+                        <div>Footer</div>
+                    </footer>
+
+                </section>
+            </section>
+
+        </section>
+
+        <!-- Activate Offside Bars -->
+
+        <script>
+            // Demo Bars
+            app.onload(f=>InterfaceOffsideBar('EastsideBar'))
+            app.onload(f=>InterfaceOffsideBar('WestsideBar'))
+            app.onload(f=>InterfaceOffsideBar('OverflowBar'))
+            app.onload(f=>InterfaceOffsideBar('OverflowBarWestside'))
+        </script>
+
+    </article>
+
+</article>
+
+<!-- ----------------------------------------- SVGA Icons -->
+
+<article>
+    <header class="nav-title grid-king" id="SVGAIcons">
+        <h2 class="h1">SVGA Icons</h2>
+    </header>
+
+    <article id="svga-icons" class="chapter journal-grid">
+
+        <header class="west">
+            <h2>SVGA Icons</h2>
+        </header>
+
+        <section class="block">
+
+            <ul>
+                <li>Inline markup</li>
+                <li>Customizable SVG presets</li>
+            </ul>
+
+            <div class="block text-is-bigger">
+                <section>
+                    <figure class="svga-icon"><svg><use xlink:href="#svg-next"></use></svg></figure>
+                    <figure class="svga-icon"><svg><use xlink:href="#svg-back"></use></svg></figure>
+                    <figure class="svga-icon"><svg><use xlink:href="#svg-down"></use></svg></figure>
+                    <figure class="svga-icon"><svg><use xlink:href="#svg-menu"></use></svg></figure>
+                    <figure class="svga-icon"><svg><use xlink:href="#svg-check"></use></svg></figure>
+                    <figure class="svga-icon"><svg><use xlink:href="#svg-close"></use></svg></figure>
+                </section>
+                <section>
+                    <figure class="svga-icon"><svg><use xlink:href="#svg-email"></use></svg></figure>
+                    <figure class="svga-icon"><svg><use xlink:href="#svg-phone"></use></svg></figure>
+                    <figure class="svga-icon"><svg><use xlink:href="#svg-chat"></use></svg></figure>
+                </section>
+                <section>
+                    <figure class="svga-icon"><svg><use xlink:href="#svg-linkedin"></use></svg></figure>
+                    <figure class="svga-icon"><svg><use xlink:href="#svg-twitter"></use></svg></figure>
+                    <figure class="svga-icon"><svg><use xlink:href="#svg-facebook"></use></svg></figure>
+                    <figure class="svga-icon"><svg><use xlink:href="#svg-instagram"></use></svg></figure>
+                    <figure class="svga-icon"><svg><use xlink:href="#svg-youtube"></use></svg></figure>
+                    <figure class="svga-icon"><svg><use xlink:href="#svg-github"></use></svg></figure>
+                    <figure class="svga-icon"><svg><use xlink:href="#svg-skype"></use></svg></figure>
+                    <figure class="svga-icon"><svg><use xlink:href="#svg-telegram"></use></svg></figure>
+                </section>
+            </div>
+
+        </section>
+
+        <div class="eastbox">
+            <h3>To Do:</h3>
+            <ul class="block">
+                <li>Нарисовать иконки по текущим шаблонам</li>
+                <li>Устранить слипание между строками</li>
+            </ul>
+        </div>
+
+    </article>
+
+    <!-- Icons -->
+
+    <div hidden>
+        <svg id="UsedIcons">
+            <symbol id="svg-next" viewBox="0 0 24 24">
+                <!--title>Arrow Next, material icons</title-->
+                <path d="M0 0h24v24H0z" fill="none"/>
+                <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
+            </symbol>
+            <symbol id="svg-back" viewBox="0 0 24 24">
+                <!--title>Arrow Back, material icons</title-->
+                <path d="M0 0h24v24H0z" fill="none"/>
+                <path d="M0 0h24v24H0z" fill="none"/><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+            </symbol>
+            <symbol id="svg-down" viewBox="0 0 24 24">
+                <!--title>Chevron Down, material icons</title-->
+                <path d="M0-.75h24v24H0z" fill="none"/>
+                <path d="M7.41 7.84L12 12.42l4.59-4.58L18 9.25l-6 6-6-6z"/>
+            </symbol>
+            <symbol id="svg-menu" viewBox="0 0 24 24">
+                <!--title>Hamburger, material icons</title-->
+                <path d="M0 0h24v24H0z" fill="none"/>
+                <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+            </symbol>
+            <symbol id="svg-check" viewBox="0 0 24 24">
+                <!--title>Check, material icons</title-->
+                <path d="M0 0h24v24H0z" fill="none"/>
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+            </symbol>
+            <symbol id="svg-close" viewBox="0 0 24 24">
+                <!--title>Close X, material icons</title-->
+                <path d="M0 0h24v24H0z" fill="none"/>
+                <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+            </symbol>
+
+            <symbol id="svg-email" viewBox="0 0 24 24">
+                <!--title>Email, material icons</title-->
+                <path d="M0 0h24v24H0z" fill="none"/>
+                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V8l8 5 8-5v10zm-8-7L4 6h16l-8 5z"/>
+            </symbol>
+            <symbol id="svg-phone" viewBox="0 0 24 24">
+                <!--title>Phone, material icons</title-->
+                <path d="M0 0h24v24H0z" fill="none"/>
+                <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+            </symbol>
+            <symbol id="svg-skype" viewBox="-12 -12 88 88">
+                <!--title>Skype, custom 2019.6.27</title-->
+                <path d="M61.7 37.3v.3l-.1-.6.1.3A29.3 29.3 0 0 0 60 20a29.7 29.7 0 0 0-16-16A29.5 29.5 0 0 0 32 1.6a32.1 32.1 0 0 0-5.7.5s.2 0 .3.2l-.7-.1.4-.1A18 18 0 0 0 5.2 5.3a17.8 17.8 0 0 0-3 21.3s0-.2.2-.3v.7l-.1-.4a31 31 0 0 0 2 17 29.7 29.7 0 0 0 16 16C23.8 61.2 27.8 62 32 62a28.2 28.2 0 0 0 5.3-.5l-.3-.2.6.1h-.3A17.2 17.2 0 0 0 46 64a17.9 17.9 0 0 0 15.6-26.6zm-29.6 13c-10.8 0-15.6-5.3-15.6-9.2 0-2 1.6-3.5 3.6-3.5 4.6 0 3.4 6.7 12 6.7 4.3 0 6.8-2.4 6.8-4.8 0-1.5-.8-3.1-3.6-3.8l-9.6-2.4c-7.7-1.9-9-6-9-10 0-8.1 7.6-11.1 14.7-11.1 6.6 0 14.4 3.6 14.4 8.5 0 2-1.8 3.2-3.9 3.2-4 0-3.2-5.4-11-5.4-4 0-6.1 1.7-6.1 4.3s3 3.3 5.8 4l7 1.5c7.8 1.8 9.8 6.2 9.8 10.5 0 6.6-5 11.5-15.3 11.5zm4.9 11c0 .2.1.2.3.3l.3-.1zm24.6-23.7l.1-.3-.1-.4zM2.3 26.3l-.1.3.2.4zm24.3-24l-.3-.1H26z"/>
+            </symbol>
+            <symbol id="svg-telegram" viewBox="-48 -48 624 624">
+                <!--title>Telegram Square, custom 2019.6.27</title-->
+                <path fill="currentColor" d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm121.8 169.9l-40.7 191.8c-3 13.6-11.1 16.9-22.4 10.5l-62-45.7-29.9 28.8c-3.3 3.3-6.1 6.1-12.5 6.1l4.4-63.1 114.9-103.8c5-4.4-1.1-6.9-7.7-2.5l-142 89.4-61.2-19.1c-13.3-4.2-13.6-13.3 2.8-19.7l239.1-92.2c11.1-4 20.8 2.7 17.2 19.5z"/>
+            </symbol>
+            <symbol id="svg-chat" viewBox="-48 -48 624 624">
+                <!--title>Chat Bubble, font-awesome</title-->
+                <path fill="currentColor" d="M256 32C114.6 32 0 125.1 0 240c0 49.6 21.4 95 57 130.7C44.5 421.1 2.7 466 2.2 466.5c-2.2 2.3-2.8 5.7-1.5 8.7S4.8 480 8 480c66.3 0 116-31.8 140.6-51.4 32.7 12.3 69 19.4 107.4 19.4 141.4 0 256-93.1 256-208S397.4 32 256 32zM128 272c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm128 0c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm128 0c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32z"/>
+            </symbol>
+
+            <symbol id="svg-linkedin" viewBox="0 0 448 512">
+                <!--title>Linkedin Square, font-awesome</title-->
+                <path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/>
+            </symbol>
+            <symbol id="svg-twitter" viewBox="0 0 448 512">
+                <!--title>Twitter Square, font-awesome</title-->
+                <path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-48.9 158.8c.2 2.8.2 5.7.2 8.5 0 86.7-66 186.6-186.6 186.6-37.2 0-71.7-10.8-100.7-29.4 5.3.6 10.4.8 15.8.8 30.7 0 58.9-10.4 81.4-28-28.8-.6-53-19.5-61.3-45.5 10.1 1.5 19.2 1.5 29.6-1.2-30-6.1-52.5-32.5-52.5-64.4v-.8c8.7 4.9 18.9 7.9 29.6 8.3a65.447 65.447 0 0 1-29.2-54.6c0-12.2 3.2-23.4 8.9-33.1 32.3 39.8 80.8 65.8 135.2 68.6-9.3-44.5 24-80.6 64-80.6 18.9 0 35.9 7.9 47.9 20.7 14.8-2.8 29-8.3 41.6-15.8-4.9 15.2-15.2 28-28.8 36.1 13.2-1.4 26-5.1 37.8-10.2-8.9 13.1-20.1 24.7-32.9 34z"/>
+            </symbol>
+            <symbol id="svg-facebook" viewBox="0 0 448 512">
+                <!--title>Facebook Square, font-awesome</title-->
+                <path d="M400 32H48A48 48 0 0 0 0 80v352a48 48 0 0 0 48 48h137.25V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.27c-30.81 0-40.42 19.12-40.42 38.73V256h68.78l-11 71.69h-57.78V480H400a48 48 0 0 0 48-48V80a48 48 0 0 0-48-48z"/>
+            </symbol>
+            <symbol id="svg-youtube" viewBox="0 0 448 512">
+                <!--title>Youtube Square, font-awesome</title-->
+                <path d="M186.8 202.1l95.2 54.1-95.2 54.1V202.1zM448 80v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V80c0-26.5 21.5-48 48-48h352c26.5 0 48 21.5 48 48zm-42 176.3s0-59.6-7.6-88.2c-4.2-15.8-16.5-28.2-32.2-32.4C337.9 128 224 128 224 128s-113.9 0-142.2 7.7c-15.7 4.2-28 16.6-32.2 32.4-7.6 28.5-7.6 88.2-7.6 88.2s0 59.6 7.6 88.2c4.2 15.8 16.5 27.7 32.2 31.9C110.1 384 224 384 224 384s113.9 0 142.2-7.7c15.7-4.2 28-16.1 32.2-31.9 7.6-28.5 7.6-88.1 7.6-88.1z"/>
+            </symbol>
+            <symbol id="svg-instagram" viewBox="0 0 448 512">
+                <!--title>Instagram, font-awesome</title-->
+                <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/>
+            </symbol>
+            <symbol id="svg-github" viewBox="0 0 448 512">
+                <!--title>Github Square, font-awesome</title-->
+                <path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM277.3 415.7c-8.4 1.5-11.5-3.7-11.5-8 0-5.4.2-33 .2-55.3 0-15.6-5.2-25.5-11.3-30.7 37-4.1 76-9.2 76-73.1 0-18.2-6.5-27.3-17.1-39 1.7-4.3 7.4-22-1.7-45-13.9-4.3-45.7 17.9-45.7 17.9-13.2-3.7-27.5-5.6-41.6-5.6-14.1 0-28.4 1.9-41.6 5.6 0 0-31.8-22.2-45.7-17.9-9.1 22.9-3.5 40.6-1.7 45-10.6 11.7-15.6 20.8-15.6 39 0 63.6 37.3 69 74.3 73.1-4.8 4.3-9.1 11.7-10.6 22.3-9.5 4.3-33.8 11.7-48.3-13.9-9.1-15.8-25.5-17.1-25.5-17.1-16.2-.2-1.1 10.2-1.1 10.2 10.8 5 18.4 24.2 18.4 24.2 9.7 29.7 56.1 19.7 56.1 19.7 0 13.9.2 36.5.2 40.6 0 4.3-3 9.5-11.5 8-66-22.1-112.2-84.9-112.2-158.3 0-91.8 70.2-161.5 162-161.5S388 165.6 388 257.4c.1 73.4-44.7 136.3-110.7 158.3zm-98.1-61.1c-1.9.4-3.7-.4-3.9-1.7-.2-1.5 1.1-2.8 3-3.2 1.9-.2 3.7.6 3.9 1.9.3 1.3-1 2.6-3 3zm-9.5-.9c0 1.3-1.5 2.4-3.5 2.4-2.2.2-3.7-.9-3.7-2.4 0-1.3 1.5-2.4 3.5-2.4 1.9-.2 3.7.9 3.7 2.4zm-13.7-1.1c-.4 1.3-2.4 1.9-4.1 1.3-1.9-.4-3.2-1.9-2.8-3.2.4-1.3 2.4-1.9 4.1-1.5 2 .6 3.3 2.1 2.8 3.4zm-12.3-5.4c-.9 1.1-2.8.9-4.3-.6-1.5-1.3-1.9-3.2-.9-4.1.9-1.1 2.8-.9 4.3.6 1.3 1.3 1.8 3.3.9 4.1zm-9.1-9.1c-.9.6-2.6 0-3.7-1.5s-1.1-3.2 0-3.9c1.1-.9 2.8-.2 3.7 1.3 1.1 1.5 1.1 3.3 0 4.1zm-6.5-9.7c-.9.9-2.4.4-3.5-.6-1.1-1.3-1.3-2.8-.4-3.5.9-.9 2.4-.4 3.5.6 1.1 1.3 1.3 2.8.4 3.5zm-6.7-7.4c-.4.9-1.7 1.1-2.8.4-1.3-.6-1.9-1.7-1.5-2.6.4-.6 1.5-.9 2.8-.4 1.3.7 1.9 1.8 1.5 2.6z"/>
+            </symbol>
+        </svg>
+    </div>
+
+</article>
+
+<!-- ----------------------------------------- Multicolumn Collisting -->
+
+
+<article class="use-colors colors--SG-minor">
+
+    <header class="nav-title grid-king" id="Collisting">
+        <h2 class="h1">Collisting</h2>
+    </header>
+
+
+    <!-- MINI CARDS -->
+
+    <article class="layer native-sans" style="--h4-font-size: var(--h5-font-size);">
+        <section class="group-collisting auto-margin use-colors colors--root">
+
+            <figure>
+                <h4>Rich Article Grid Layout</h4>
+                <div class="text-block-smaller">
+                    <p><strong>sass component</strong></p>
+                    <p>CSS grid template for big articles with a lot of content, illustrations and creative visuals.</p>
+                </div>
+            </figure>
+
+            <figure>
+                <h4>Banners</h4>
+                <div class="text-block-smaller">
+                    <p><strong>css class</strong></p>
+                    <p>Wrapper for content grouping</p>
+                </div>
+            </figure>
+
+
+            <figure>
+                <h4>Catgrounds</h4>
+                <div class="text-block-smaller">
+                    <p><strong>css class</strong></p>
+                    <p>Design trick to make boring content more interesting</p>
+                </div>
+            </figure>
+
+            <figure>
+                <h4>Offsidebar</h4>
+                <div class="text-block-smaller">
+                    <p><strong>css component</strong></p>
+                    <p>Expandable side-panel prevents content jumps on call (google chrome issue)</p>
+                </div>
+            </figure>
+            <figure>
+                <h4>Color-model</h4>
+                <div class="text-block-smaller">
+                    <p><strong>css variables</strong></p>
+                    <p>Pattern for switching colors in markup</p>
+                </div>
+            </figure>
+            <figure>
+                <h4>SVG-icons</h4>
+                <div class="text-block-smaller">
+                    <p><strong>css, svg</strong></p>
+                    <p>Markup shortcut and presets with common used icons.</p>
+                </div>
+            </figure>
+
+        </section>
+    </article>
+    <article class="layer native-sans" style="--h4-font-size: var(--h5-font-size);">
+        <section class="group-collisting type2 auto-margin use-colors colors--root">
+
+            <figure>
+                <h4>Rich Article Grid Layout</h4>
+                <div class="text-block-smaller">
+                    <p><strong>sass component</strong></p>
+                    <p>CSS grid template for big articles with a lot of content, illustrations and creative visuals.</p>
+                </div>
+            </figure>
+
+            <figure>
+                <h4>Banners</h4>
+                <div class="text-block-smaller">
+                    <p><strong>css class</strong></p>
+                    <p>Wrapper for content grouping</p>
+                </div>
+            </figure>
+
+
+            <figure>
+                <h4>Catgrounds</h4>
+                <div class="text-block-smaller">
+                    <p><strong>css class</strong></p>
+                    <p>Design trick to make boring content more interesting</p>
+                </div>
+            </figure>
+
+            <figure>
+                <h4>Offsidebar</h4>
+                <div class="text-block-smaller">
+                    <p><strong>css component</strong></p>
+                    <p>Expandable side-panel prevents content jumps on call (google chrome issue)</p>
+                </div>
+            </figure>
+            <figure>
+                <h4>Color-model</h4>
+                <div class="text-block-smaller">
+                    <p><strong>css variables</strong></p>
+                    <p>Pattern for switching colors in markup</p>
+                </div>
+            </figure>
+            <figure>
+                <h4>SVG-icons</h4>
+                <div class="text-block-smaller">
+                    <p><strong>css, svg</strong></p>
+                    <p>Markup shortcut and presets with common used icons.</p>
+                </div>
+            </figure>
+
+        </section>
+    </article>
+
+    <!-- QUICK DEFAULT -->
+
+    <article class="layer native-sans">
+        <section class="group-collisting auto-margin use-colors colors--primary">
+
+            <figure>
+                <h4>Rich Article Grid Layout</h4>
+                <div>
+                    <p><strong>sass component</strong></p>
+                    <p>CSS grid template for big articles with a lot of content, illustrations and creative visuals.</p>
+                </div>
+            </figure>
+
+            <figure>
+                <h4>Banners</h4>
+                <div>
+                    <p><strong>css class</strong></p>
+                    <p>Wrapper for content grouping</p>
+                </div>
+            </figure>
+
+            <figure>
+                <h4>Catgrounds</h4>
+                <div>
+                    <p><strong>css class</strong></p>
+                    <p>Design trick to make boring content more interesting</p>
+                </div>
+            </figure>
+
+            <figure>
+                <h4>Offsidebar</h4>
+                <div>
+                    <p><strong>css component</strong></p>
+                    <p>Expandable side-panel prevents content jumps on call (google chrome issue)</p>
+                </div>
+            </figure>
+            <figure>
+                <h4>Color-model</h4>
+                <div>
+                    <p><strong>css variables</strong></p>
+                    <p>Pattern for switching colors in markup</p>
+                </div>
+            </figure>
+            <figure>
+                <h4>SVG-icons</h4>
+                <div>
+                    <p><strong>css, svg</strong></p>
+                    <p>Markup shortcut and presets with common used icons.</p>
+                </div>
+            </figure>
+
+            <figure>
+                <h4>Rich Article Grid Layout</h4>
+                <div>
+                    <p><strong>sass component</strong></p>
+                    <p>CSS grid template for big articles with a lot of content, illustrations and creative visuals.</p>
+                </div>
+            </figure>
+
+            <figure>
+                <h4>Banners</h4>
+                <div>
+                    <p><strong>css class</strong></p>
+                    <p>Wrapper for content grouping</p>
+                </div>
+            </figure>
+
+            <figure>
+                <h4>Catgrounds</h4>
+                <div>
+                    <p><strong>css class</strong></p>
+                    <p>Design trick to make boring content more interesting</p>
+                </div>
+            </figure>
+
+        </section>
+    </article>
+    <article class="layer native-sans">
+        <section class="group-collisting type2 auto-margin use-colors colors--primary">
+
+            <figure>
+                <h4>Rich Article Grid Layout</h4>
+                <div>
+                    <p><strong>sass component</strong></p>
+                    <p>CSS grid template for big articles with a lot of content, illustrations and creative visuals.</p>
+                </div>
+            </figure>
+
+            <figure>
+                <h4>Banners</h4>
+                <div>
+                    <p><strong>css class</strong></p>
+                    <p>Wrapper for content grouping</p>
+                </div>
+            </figure>
+
+            <figure>
+                <h4>Catgrounds</h4>
+                <div>
+                    <p><strong>css class</strong></p>
+                    <p>Design trick to make boring content more interesting</p>
+                </div>
+            </figure>
+
+            <figure>
+                <h4>Offsidebar</h4>
+                <div>
+                    <p><strong>css component</strong></p>
+                    <p>Expandable side-panel prevents content jumps on call (google chrome issue)</p>
+                </div>
+            </figure>
+            <figure>
+                <h4>Color-model</h4>
+                <div>
+                    <p><strong>css variables</strong></p>
+                    <p>Pattern for switching colors in markup</p>
+                </div>
+            </figure>
+            <figure>
+                <h4>SVG-icons</h4>
+                <div>
+                    <p><strong>css, svg</strong></p>
+                    <p>Markup shortcut and presets with common used icons.</p>
+                </div>
+            </figure>
+
+            <figure>
+                <h4>Rich Article Grid Layout</h4>
+                <div>
+                    <p><strong>sass component</strong></p>
+                    <p>CSS grid template for big articles with a lot of content, illustrations and creative visuals.</p>
+                </div>
+            </figure>
+
+            <figure>
+                <h4>Banners</h4>
+                <div>
+                    <p><strong>css class</strong></p>
+                    <p>Wrapper for content grouping</p>
+                </div>
+            </figure>
+
+            <figure>
+                <h4>Catgrounds</h4>
+                <div>
+                    <p><strong>css class</strong></p>
+                    <p>Design trick to make boring content more interesting</p>
+                </div>
+            </figure>
+
+        </section>
+    </article>
+
+    <!-- UL-LISTING -->
+
+    <section>
+        <ul class="group-collisting">
+            <li>
+                <h4>Rich Article Grid Layout</h4>
+                 <div class="text-is-smaller">
+                    <p><strong>sass component</strong></p>
+                    <p>CSS grid template for big articles with a lot of content, illustrations and creative visuals.</p>
+                </div>
+            </li>
+            <li>
+                <h4>Banners</h4>
+                <div class="text-is-smaller">
+                    <p><strong>css class</strong></p>
+                    <p>Wrapper for content grouping</p>
+                </div>
+            </li>
+            <li class="fatground-wide">
+                <h4>Catgrounds</h4>
+                <div class="text-is-smaller">
+                    <p><strong>css class</strong></p>
+                    <p>Design trick to make boring content more interesting</p>
+                </div>
+            </li>
+            <li>
+                <h4>Offsidebar</h4>
+                <div class="text-is-smaller">
+                    <p><strong>css component</strong></p>
+                    <p>Expandable side-panel prevents content jumps on call (google chrome issue)</p>
+                </div>
+            </li>
+            <li>
+                <h4>Color-model</h4>
+                <div class="text-is-smaller">
+                    <p><strong>css variables</strong></p>
+                    <p>Pattern for switching colors in markup</p>
+                </div>
+            </li>
+            <li>
+                <h4>SVG-icons</h4>
+                <div class="text-is-smaller">
+                    <p><strong>css, svg</strong></p>
+                    <p>Markup shortcut and presets with common used icons.</p>
+                </div>
+            </li>
+        </ul>
+    </section>
+    <section>
+        <ul class="group-collisting type2">
+            <li>
+                <h4>Rich Article Grid Layout</h4>
+                 <div class="text-is-smaller">
+                    <p><strong>sass component</strong></p>
+                    <p>CSS grid template for big articles with a lot of content, illustrations and creative visuals.</p>
+                </div>
+            </li>
+            <li>
+                <h4>Banners</h4>
+                <div class="text-is-smaller">
+                    <p><strong>css class</strong></p>
+                    <p>Wrapper for content grouping</p>
+                </div>
+            </li>
+            <li class="fatground-wide">
+                <h4>Catgrounds</h4>
+                <div class="text-is-smaller">
+                    <p><strong>css class</strong></p>
+                    <p>Design trick to make boring content more interesting</p>
+                </div>
+            </li>
+            <li>
+                <h4>Offsidebar</h4>
+                <div class="text-is-smaller">
+                    <p><strong>css component</strong></p>
+                    <p>Expandable side-panel prevents content jumps on call (google chrome issue)</p>
+                </div>
+            </li>
+            <li>
+                <h4>Color-model</h4>
+                <div class="text-is-smaller">
+                    <p><strong>css variables</strong></p>
+                    <p>Pattern for switching colors in markup</p>
+                </div>
+            </li>
+            <li>
+                <h4>SVG-icons</h4>
+                <div class="text-is-smaller">
+                    <p><strong>css, svg</strong></p>
+                    <p>Markup shortcut and presets with common used icons.</p>
+                </div>
+            </li>
+        </ul>
+    </section>
+
+    <!-- LONG TEXT BLOCKS -->
+
+    <div class="layer use-colors colors--SG-brand">
+        <div
+            class="group-collisting auto-margin text-block-smaller"
+            style="--column-width: 16em; --max-columns:4;--h2-font-size: var(--h3-font-size);">
+            <div>
+                <h4>Casino Games Integration</h4>
+                <p>Choose from our 50+ gaming providers and integrate games from all of them or pick only those you want. Our portfolio includes such top-tier providers as Evolution Gaming, NetEnt, BetSoft, Quickspin, Yggdrasil, BetRadar and Microgaming and all types of games – slots, Live casino, sports betting, scratch-cards, bingo, lottery, virtual sports and poker, all available via a single integration.</p>
+            </div>
+            <div>
+                <h4>BonusSystem Standalone</h4>
+                Our bonus system is a unique solution which can be either integrated separately or as a part of our game platform. It includes loyalty and experience points, separate balances, customisable user levels, loyalty shop, free rounds, tournaments, gamification and much more. It is a proven player acquisition and retention tool.
+            </div>
+            <div>
+                <h4>Slots Bundle</h4>
+                Get the package of all slots providers via a single integration at an attractive cost. The bundle includes games from NetEnt, BetSoft, Quickspin, Microgaming, Amatic, 1X2 Network, Playson, Endorphina, Pragmatic Play and more.
+            </div>
+            <div>
+                <h4>Live Casino Bundle</h4>
+                Similar to the Slots Bundle, our Live Casino Bundle is available via a single integration. The portfolio of Live providers includes the top providers of live casino games: Evolution Gaming, NetEnt Live, BetGames, Ezugi, Authentic Gaming, Asia Gaming, Lucky Streak, SA Gaming and more.
+            </div>
+            <div>
+                <h4>Sports Betting Software Providers</h4>
+                Our sportsbook solution is a complete package of all kinds of sports and unlimited customisation options based on the exclusive, top-tier BetRadar solution. Enjoy 70.000+ events monthly in 300+ markets.
+            </div>
+            <div>
+                <h4>Cryptocurrency payment solution</h4>
+                Many players prefer paying in cryptocurrencies, so it is a good idea to give them such an opportunity. By using cryptocurrencies, your players will remain anonymous and won’t spend much on transactions and you will receive your money quickly. Our in-house developed cryptocurrency payment system supports Bitcoin, Ethereum, Litecoin and many other Ethereum-based and Bitcoin-based currencies.
+            </div>
+            <div>
+                <h4>Banking</h4>
+                Banking is a difficult question for gambling enterprises. With our assistance, however, you can open bank and credit card processing (VISA, MasterCard) accounts quickly and easily, thanks to our 10 years experience in dealing with the legal side of gambling business.
+            </div>
+            <div>
+                <h4>Licensing</h4>
+                Getting a gaming licence is also crucial, if you want to offer games from well-known providers and win the trust of your players. With us, you get a licence in 2 weeks, avoiding unnecessary complications.
+            </div>
+            <div>
+                <h4>Hosting</h4>
+                Our gambling-friendly hosting functions 24/7/365, supports thousands of players simultaneously and is legal and secure. All data centres accept online gambling and have top-notch reputation and reliability.
+            </div>
+            <div>
+                <h4>Promotion & SEO</h4>
+                A crucial part of online gambling business. Good SEO & promotion is what differentiates successful casinos from failed enterprises. Get in touch with professionals with 10+ years of experience in online gambling SEO and promotion to ensure your business grows.
+            </div>
+        </div>
+    </div>
+    <div class="layer use-colors colors--SG-brand">
+        <div
+           class="group-collisting type2 auto-margin text-block-smaller native-sans"
+           style="--h2-font-size: var(--h4-font-size);">
+            <div>
+                <h4>Casino Games Integration</h4>
+                Choose from our 50+ gaming providers and integrate games from all of them or pick only those you want. Our portfolio includes such top-tier providers as Evolution Gaming, NetEnt, BetSoft, Quickspin, Yggdrasil, BetRadar and Microgaming and all types of games – slots, Live casino, sports betting, scratch-cards, bingo, lottery, virtual sports and poker, all available via a single integration.
+            </div>
+            <div>
+                <h4>BonusSystem Standalone</h4>
+                Our bonus system is a unique solution which can be either integrated separately or as a part of our game platform. It includes loyalty and experience points, separate balances, customisable user levels, loyalty shop, free rounds, tournaments, gamification and much more. It is a proven player acquisition and retention tool.
+            </div>
+            <div>
+                <h4>Slots Bundle</h4>
+                Get the package of all slots providers via a single integration at an attractive cost. The bundle includes games from NetEnt, BetSoft, Quickspin, Microgaming, Amatic, 1X2 Network, Playson, Endorphina, Pragmatic Play and more.
+            </div>
+            <div>
+                <h4>Live Casino Bundle</h4>
+                Similar to the Slots Bundle, our Live Casino Bundle is available via a single integration. The portfolio of Live providers includes the top providers of live casino games: Evolution Gaming, NetEnt Live, BetGames, Ezugi, Authentic Gaming, Asia Gaming, Lucky Streak, SA Gaming and more.
+            </div>
+            <div>
+                <h4>Sports Betting Software Providers</h4>
+                Our sportsbook solution is a complete package of all kinds of sports and unlimited customisation options based on the exclusive, top-tier BetRadar solution. Enjoy 70.000+ events monthly in 300+ markets.
+            </div>
+            <div>
+                <h4>Cryptocurrency payment solution</h4>
+                Many players prefer paying in cryptocurrencies, so it is a good idea to give them such an opportunity. By using cryptocurrencies, your players will remain anonymous and won’t spend much on transactions and you will receive your money quickly. Our in-house developed cryptocurrency payment system supports Bitcoin, Ethereum, Litecoin and many other Ethereum-based and Bitcoin-based currencies.
+            </div>
+            <div>
+                <h4>Banking</h4>
+                Banking is a difficult question for gambling enterprises. With our assistance, however, you can open bank and credit card processing (VISA, MasterCard) accounts quickly and easily, thanks to our 10 years experience in dealing with the legal side of gambling business.
+            </div>
+            <div>
+                <h4>Licensing</h4>
+                Getting a gaming licence is also crucial, if you want to offer games from well-known providers and win the trust of your players. With us, you get a licence in 2 weeks, avoiding unnecessary complications.
+            </div>
+            <div>
+                <h4>Hosting</h4>
+                Our gambling-friendly hosting functions 24/7/365, supports thousands of players simultaneously and is legal and secure. All data centres accept online gambling and have top-notch reputation and reliability.
+            </div>
+            <div>
+                <h4>Promotion & SEO</h4>
+                A crucial part of online gambling business. Good SEO & promotion is what differentiates successful casinos from failed enterprises. Get in touch with professionals with 10+ years of experience in online gambling SEO and promotion to ensure your business grows.
+            </div>
+        </div>
+    </div>
+
+    <!-- STORY CASE -->
+
+    <article
+        class="layer padding use-colors colors--swed-secondary"
+        style="--padding: var(--big-space) 0;">
+
+        <ul markup class="group-collisting auto-margin" style="--max-columns: 4;">
+            <li>
+                <a markup href="#">
+                    <p>Глава О.</p>
+                    <h4>Оптимизация</h4>
+                </a>
+                <p>Сельский бунт, заветы старой Поговорки и деда Баяна.</p>
+            </li>
+            <li>
+                <a markup href="#">
+                    <p>Глава 1.</p>
+                    <h4>Супервулкан</h4>
+                </a>
+                <p>Клюв для Ворона, разговор с Создателем, встреча с Историей, кот.</p>
+            </li>
+            <li>
+                <a markup href="#">
+                    <p>Глава 2.</p>
+                    <h4>Миссия</h4>
+                </a>
+                <p>Спасение модели DNA.</p>
+            </li>
+            <li>
+                <a markup href="#">
+                    <p>Глава 3.</p>
+                    <h4>Болото</h4>
+                </a>
+                <p>Поиск имени в Карбонских болотах, Сетера и Гетера проводят экзорцизм.</p>
+            </li>
+            <li>
+                <a markup href="#">
+                    <p>Глава 4.</p>
+                    <h4>Перевал ошибок</h4>
+                </a>
+                <p>Граница экрана, ловля ошибок покрупнее, появление волка в шкуре волка.</p>
+            </li>
+            <li>
+                <a markup href="#">
+                    <p>Глава 5.</p>
+                    <h4>Овечки</h4>
+                </a>
+                <p>Нешуточный волейбольный матч, решение мелких проблем.</p>
+            </li>
+            <li>
+                <a markup href="#">
+                    <p>Глава 6.</p>
+                    <h4>Хеадер</h4>
+                </a>
+                <p>Меню в таверне.</p>
+            </li>
+        </ul>
+
+    </article>
+    <article
+        class="layer padding use-colors colors--swed-secondary"
+        style="--padding: var(--big-space) 0;">
+
+        <ul markup class="group-collisting type2 auto-margin" style="--max-columns: 3;">
+            <li>
+                <a markup href="#">
+                    <p>Глава О.</p>
+                    <h4>Оптимизация</h4>
+                </a>
+                <p>Сельский бунт, заветы старой Поговорки и деда Баяна.</p>
+            </li>
+            <li>
+                <a markup href="#">
+                    <p>Глава 1.</p>
+                    <h4>Супервулкан</h4>
+                </a>
+                <p>Клюв для Ворона, разговор с Создателем, встреча с Историей, кот.</p>
+            </li>
+            <li>
+                <a markup href="#">
+                    <p>Глава 2.</p>
+                    <h4>Миссия</h4>
+                </a>
+                <p>Спасение модели DNA.</p>
+            </li>
+            <li>
+                <a markup href="#">
+                    <p>Глава 3.</p>
+                    <h4>Болото</h4>
+                </a>
+                <p>Поиск имени в Карбонских болотах, Сетера и Гетера проводят экзорцизм.</p>
+            </li>
+            <li>
+                <a markup href="#">
+                    <p>Глава 4.</p>
+                    <h4>Перевал ошибок</h4>
+                </a>
+                <p>Граница экрана, ловля ошибок покрупнее, появление волка в шкуре волка.</p>
+            </li>
+            <li>
+                <a markup href="#">
+                    <p>Глава 5.</p>
+                    <h4>Овечки</h4>
+                </a>
+                <p>Нешуточный волейбольный матч, решение мелких проблем.</p>
+            </li>
+            <li>
+                <a markup href="#">
+                    <p>Глава 6.</p>
+                    <h4>Хеадер</h4>
+                </a>
+                <p>Меню в таверне.</p>
+            </li>
+        </ul>
+
+    </article>
+
+</article>
+
+
+
+<!-- ----------------------------------------- Unsorted -->
+
+<article>
+    <header class="nav-title grid-king" id="Unsorted">
+        <h2 class="h1">...Unsorted</h2>
+    </header>
 
     <!-- ----------------------------------------- JavaScript Components -->
 
@@ -772,92 +2533,6 @@
         </section>
     </article>
 
-
-
-    <!-- ----------------------------------------- Dropdown -->
-
-
-    <screen class="use-colors colors--root">
-
-        <section class="group-banner">
-
-            <div class="swed-dropdown js-swed-dropdown">
-                <button class="label">
-                    <div>Dropdown List</div>
-                </button>
-                <div class="droplist">
-                    <ul>
-                        <li><span>First item</span></li>
-                        <li><span>Second item</span></li>
-                        <li><span>Third long size caption</span></li>
-                        <li><span>Last item</span></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="swed-dropdown js-swed-dropdown">
-                <button class="label">
-                    <div>Ru</div>
-                </button>
-                <div class="droplist">
-                    <ul>
-                        <li><span>En</span></li>
-                        <li><span>Ru</span></li>
-                    </ul>
-                </div>
-            </div>
-
-        </section>
-
-        <section class="group-banner">
-
-            <div class="swed-dropdown">
-                <button class="label">
-                    <div>Dropdown List</div>
-                </button>
-                <div class="droplist">
-                    <ul>
-                        <li><span>First item</span></li>
-                        <li><span>Second item</span></li>
-                        <li><span>Third long size caption</span></li>
-                        <li><span>Last item</span></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="swed-dropdown">
-                <button class="label">
-                    <div>Ru</div>
-                </button>
-                <div class="droplist">
-                    <ul>
-                        <li><a href="#en">En</a></li>
-                        <li><a href="#ru">Ru</a></li>
-                    </ul>
-                </div>
-            </div>
-
-        </section>
-
-        <script>
-            function activateDropDowns () {
-               const activationClassname = 'swed-dropdown'
-               const activStateClassname = 'is-active'
-               const targets = document.querySelectorAll('.'+activationClassname)
-               const doCloseAll = () => targets.forEach(doClose)
-               const doClose    = el => el.classList.remove(activStateClassname)
-               const doToggle   = el => el.classList.toggle(activStateClassname)
-               const evToggle   = ev => doToggle(ev.currentTarget)
-               const activator  = el => el.addEventListener('click', evToggle)
-
-               targets.forEach(activator)
-            }
-            app.onload(f=>activateDropDowns())
-        </script>
-
-    </screen>
-
-
     <!-- ----------------------------------------- Site Header + MENU -->
 
 
@@ -878,135 +2553,6 @@
             </li>
         </ul>
     </header>
-
-    <!-- Menu Bar -->
-
-    <section class="ChaptersMenuBar offsidebar from-eastside colors--swed-secondary">
-        <div class="sidepanel">
-
-            <header class="sidepanel-header">
-                <h2 class="min-title">Tests</h2>
-            </header>
-
-            <nav class="sidepanel-content">
-                <ul class="content-menu js-for-ChaptersMenuBar">
-                    <li><a href="#Collisting">Group — Collisting</a></li>
-                    <li><a href="#Offsidebar">Bar — Offsidebar</a></li>
-                    <li><a href="#JournalGrid">Grid — Journal Grid</a></li>
-                    <li><a href="#Typography">Typography</a></li>
-                    <li><a href="#color-model">Color model</a></li>
-                    <li><a href="#UI-Components">UI Components</a></li>
-                </ul>
-            </nav>
-
-        </div>
-    </section>
-<!--
-    <script src="app/styles/components/offsidebar/interface-offsidebar.js"></script>
-    <script>
-        app.attach('offsidebar')(InterfaceOffsideBar)
-        app.offsidebar('ChaptersMenuBar')
-    </script>
- -->
-
-    <div class="nav-fly js-for-ChaptersMenuBar">
-        <figure class="svga-icon"><svg><use xlink:href="#svg-menu"></use></svg></figure>
-    </div>
-
-
-    <!-- ----------------------------------------- Project Header -->
-
-
-    <section class="swed-banner use-colors colors--swed-secondary">
-        <h2>App <mark>&</mark> Art</h2>
-        <p class="mini-paragraph text-inline-bigger">
-            Front-end components. Not a framework,
-            but reusable code templates.
-        </p>
-    </section>
-
-
-
-
-    <!-- ----------------------------------------- UI Components -->
-
-
-    <article id="UI-Components" class="chapter isontop journal-grid">
-
-        <div class="layer">
-
-            <header class="banner">
-                <h2 class="h1">UI Components</h2>
-            </header>
-
-            <section class="group-banner">
-
-                <div class="swed-dropdown">
-                    <button class="label">
-                        <div>Dropdown List</div>
-                    </button>
-                    <div class="droplist">
-                        <ul>
-                            <li><span>First item</span></li>
-                            <li><span>Second item</span></li>
-                            <li><span>Third long size caption</span></li>
-                            <li><span>Last item</span></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="swed-dropdown use-hover">
-                    <button class="label">
-                        <div>Ru</div>
-                    </button>
-                    <div class="droplist">
-                        <ul>
-                            <li><a href="#en">En</a></li>
-                            <li><a href="#ru">Ru</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <button class="swed-button">Button</button>
-
-            </section>
-
-            <section class="group-banner native-sans use-colors colors--root">
-
-                <div class="swed-dropdown">
-                    <button class="label">
-                        <div>Dropdown List</div>
-                    </button>
-                    <div class="droplist">
-                        <ul>
-                            <li><span>First item</span></li>
-                            <li><span>Second item</span></li>
-                            <li><span>Third long size caption</span></li>
-                            <li><span>Last item</span></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="swed-dropdown">
-                    <button class="label">
-                        <div>RU</div>
-                    </button>
-                    <div class="droplist">
-                        <ul>
-                            <li><a href="#en">EN</a></li>
-                            <li><a href="#ru">RU</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <button class="swed-button">Button</button>
-
-            </section>
-        </div>
-
-        <p class="auto"></p>
-
-    </article>
 
 
     <!-- ----------------------------------------- Components Promo -->
@@ -1202,6 +2748,8 @@
     </section>
 
 
+
+
     <!-- ----------------------------------------- Catgrounds -->
 
 
@@ -1247,17 +2795,17 @@
         }
     </style>
 
-            <section class="article-box-merge-east swed-banner catground-description-title">
-                <h3 class="mid-title">Short description:</h3>
-                <div class="color-text">
-                    <p>An abstract shapes<br>
-                       as background-images<br>
-                       for visual attraction.</p>
-                </div>
-                <footer>
-                    <a href="catgrounds.html" class="swed-button">Project page</a>
-                </footer>
-            </section>
+    <section class="article-box-merge-east swed-banner catground-description-title">
+        <h3 class="mid-title">Short description:</h3>
+        <div class="color-text">
+            <p>An abstract shapes<br>
+               as background-images<br>
+               for visual attraction.</p>
+        </div>
+        <footer>
+            <a href="catgrounds.html" class="swed-button">Project page</a>
+        </footer>
+    </section>
 
     <article class="chapter isontop isonbot color-mode--catgrounds use-colors">
 
@@ -1310,29 +2858,29 @@
     </section>
 
 
-
     <!-- ----------------------------------------- Banner -->
 
 
-            <section class="swed-banner colors-as-secondary">
+    <section class="swed-banner colors-as-secondary">
 
-                <header>
-                    <h2 class="huge-title">Banner</h2>
-                </header>
+        <header>
+            <h2 class="huge-title">Banner</h2>
+        </header>
 
-                <section class="has-min-width" style="--min-width:16em;">
-                    <h3 class="min-title">Features</h3>
-                    <ul>
-                        <li>One-tag wrap</li>
-                        <li>Auto fit for any screen/area</li>
-                    </ul>
-                </section>
+        <section class="has-min-width" style="--min-width:16em;">
+            <h3 class="min-title">Features</h3>
+            <ul>
+                <li>One-tag wrap</li>
+                <li>Auto fit for any screen/area</li>
+            </ul>
+        </section>
 
-                <footer>
-                    <a href="dev/tests-banners.html" class="swed-button"><span>Demo</span></a>
-                </footer>
+        <footer>
+            <a href="dev/tests-banners.html" class="swed-button"><span>Demo</span></a>
+        </footer>
 
-            </section>
+    </section>
+
 
 
     <!-- ----------------------------------------- Autogrid -->
@@ -1440,1514 +2988,10 @@
     </article>
 
 
-    <!-- ----------------------------------------------------- Article Grid -->
-
-
-    <article id="article-grid" class="banner use-colors colors--ivory">
-
-        <h2>Article Grid</h2>
-        <section>
-            <a href="dev/tests-article-grid.html">Article grid usecases</a>
-            <figure class="svga-icon color-text"><svg><use xlink:href="#svg-next"></use></svg></figure>
-        </section>
-
-    </article>
-
-
-    <!-- ----------------------------------------------------- SVGA Icons -->
-
-
-    <article id="svga-icons" class="chapter journal-grid">
-
-        <header class="west">
-            <h2>SVGA Icons</h2>
-        </header>
-
-        <section class="block">
-
-            <ul>
-                <li>Inline markup</li>
-                <li>Customizable SVG presets</li>
-            </ul>
-
-            <div class="block text-is-bigger">
-                <section>
-                    <figure class="svga-icon"><svg><use xlink:href="#svg-next"></use></svg></figure>
-                    <figure class="svga-icon"><svg><use xlink:href="#svg-back"></use></svg></figure>
-                    <figure class="svga-icon"><svg><use xlink:href="#svg-down"></use></svg></figure>
-                    <figure class="svga-icon"><svg><use xlink:href="#svg-menu"></use></svg></figure>
-                    <figure class="svga-icon"><svg><use xlink:href="#svg-check"></use></svg></figure>
-                    <figure class="svga-icon"><svg><use xlink:href="#svg-close"></use></svg></figure>
-                </section>
-                <section>
-                    <figure class="svga-icon"><svg><use xlink:href="#svg-email"></use></svg></figure>
-                    <figure class="svga-icon"><svg><use xlink:href="#svg-phone"></use></svg></figure>
-                    <figure class="svga-icon"><svg><use xlink:href="#svg-chat"></use></svg></figure>
-                </section>
-                <section>
-                    <figure class="svga-icon"><svg><use xlink:href="#svg-linkedin"></use></svg></figure>
-                    <figure class="svga-icon"><svg><use xlink:href="#svg-twitter"></use></svg></figure>
-                    <figure class="svga-icon"><svg><use xlink:href="#svg-facebook"></use></svg></figure>
-                    <figure class="svga-icon"><svg><use xlink:href="#svg-instagram"></use></svg></figure>
-                    <figure class="svga-icon"><svg><use xlink:href="#svg-youtube"></use></svg></figure>
-                    <figure class="svga-icon"><svg><use xlink:href="#svg-github"></use></svg></figure>
-                    <figure class="svga-icon"><svg><use xlink:href="#svg-skype"></use></svg></figure>
-                    <figure class="svga-icon"><svg><use xlink:href="#svg-telegram"></use></svg></figure>
-                </section>
-            </div>
-
-        </section>
-
-        <div class="eastbox">
-            <h3>To Do:</h3>
-            <ul class="block">
-                <li>Нарисовать иконки по текущим шаблонам</li>
-                <li>Устранить слипание между строками</li>
-            </ul>
-        </div>
-
-    </article>
-
-    <!-- Icons -->
-
-    <div hidden>
-        <svg id="UsedIcons">
-            <symbol id="svg-next" viewBox="0 0 24 24">
-                <!--title>Arrow Next, material icons</title-->
-                <path d="M0 0h24v24H0z" fill="none"/>
-                <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
-            </symbol>
-            <symbol id="svg-back" viewBox="0 0 24 24">
-                <!--title>Arrow Back, material icons</title-->
-                <path d="M0 0h24v24H0z" fill="none"/>
-                <path d="M0 0h24v24H0z" fill="none"/><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
-            </symbol>
-            <symbol id="svg-down" viewBox="0 0 24 24">
-                <!--title>Chevron Down, material icons</title-->
-                <path d="M0-.75h24v24H0z" fill="none"/>
-                <path d="M7.41 7.84L12 12.42l4.59-4.58L18 9.25l-6 6-6-6z"/>
-            </symbol>
-            <symbol id="svg-menu" viewBox="0 0 24 24">
-                <!--title>Hamburger, material icons</title-->
-                <path d="M0 0h24v24H0z" fill="none"/>
-                <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
-            </symbol>
-            <symbol id="svg-check" viewBox="0 0 24 24">
-                <!--title>Check, material icons</title-->
-                <path d="M0 0h24v24H0z" fill="none"/>
-                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
-            </symbol>
-            <symbol id="svg-close" viewBox="0 0 24 24">
-                <!--title>Close X, material icons</title-->
-                <path d="M0 0h24v24H0z" fill="none"/>
-                <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
-            </symbol>
-
-            <symbol id="svg-email" viewBox="0 0 24 24">
-                <!--title>Email, material icons</title-->
-                <path d="M0 0h24v24H0z" fill="none"/>
-                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V8l8 5 8-5v10zm-8-7L4 6h16l-8 5z"/>
-            </symbol>
-            <symbol id="svg-phone" viewBox="0 0 24 24">
-                <!--title>Phone, material icons</title-->
-                <path d="M0 0h24v24H0z" fill="none"/>
-                <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
-            </symbol>
-            <symbol id="svg-skype" viewBox="-12 -12 88 88">
-                <!--title>Skype, custom 2019.6.27</title-->
-                <path d="M61.7 37.3v.3l-.1-.6.1.3A29.3 29.3 0 0 0 60 20a29.7 29.7 0 0 0-16-16A29.5 29.5 0 0 0 32 1.6a32.1 32.1 0 0 0-5.7.5s.2 0 .3.2l-.7-.1.4-.1A18 18 0 0 0 5.2 5.3a17.8 17.8 0 0 0-3 21.3s0-.2.2-.3v.7l-.1-.4a31 31 0 0 0 2 17 29.7 29.7 0 0 0 16 16C23.8 61.2 27.8 62 32 62a28.2 28.2 0 0 0 5.3-.5l-.3-.2.6.1h-.3A17.2 17.2 0 0 0 46 64a17.9 17.9 0 0 0 15.6-26.6zm-29.6 13c-10.8 0-15.6-5.3-15.6-9.2 0-2 1.6-3.5 3.6-3.5 4.6 0 3.4 6.7 12 6.7 4.3 0 6.8-2.4 6.8-4.8 0-1.5-.8-3.1-3.6-3.8l-9.6-2.4c-7.7-1.9-9-6-9-10 0-8.1 7.6-11.1 14.7-11.1 6.6 0 14.4 3.6 14.4 8.5 0 2-1.8 3.2-3.9 3.2-4 0-3.2-5.4-11-5.4-4 0-6.1 1.7-6.1 4.3s3 3.3 5.8 4l7 1.5c7.8 1.8 9.8 6.2 9.8 10.5 0 6.6-5 11.5-15.3 11.5zm4.9 11c0 .2.1.2.3.3l.3-.1zm24.6-23.7l.1-.3-.1-.4zM2.3 26.3l-.1.3.2.4zm24.3-24l-.3-.1H26z"/>
-            </symbol>
-            <symbol id="svg-telegram" viewBox="-48 -48 624 624">
-                <!--title>Telegram Square, custom 2019.6.27</title-->
-                <path fill="currentColor" d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm121.8 169.9l-40.7 191.8c-3 13.6-11.1 16.9-22.4 10.5l-62-45.7-29.9 28.8c-3.3 3.3-6.1 6.1-12.5 6.1l4.4-63.1 114.9-103.8c5-4.4-1.1-6.9-7.7-2.5l-142 89.4-61.2-19.1c-13.3-4.2-13.6-13.3 2.8-19.7l239.1-92.2c11.1-4 20.8 2.7 17.2 19.5z"/>
-            </symbol>
-            <symbol id="svg-chat" viewBox="-48 -48 624 624">
-                <!--title>Chat Bubble, font-awesome</title-->
-                <path fill="currentColor" d="M256 32C114.6 32 0 125.1 0 240c0 49.6 21.4 95 57 130.7C44.5 421.1 2.7 466 2.2 466.5c-2.2 2.3-2.8 5.7-1.5 8.7S4.8 480 8 480c66.3 0 116-31.8 140.6-51.4 32.7 12.3 69 19.4 107.4 19.4 141.4 0 256-93.1 256-208S397.4 32 256 32zM128 272c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm128 0c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm128 0c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32z"/>
-            </symbol>
-
-            <symbol id="svg-linkedin" viewBox="0 0 448 512">
-                <!--title>Linkedin Square, font-awesome</title-->
-                <path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/>
-            </symbol>
-            <symbol id="svg-twitter" viewBox="0 0 448 512">
-                <!--title>Twitter Square, font-awesome</title-->
-                <path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-48.9 158.8c.2 2.8.2 5.7.2 8.5 0 86.7-66 186.6-186.6 186.6-37.2 0-71.7-10.8-100.7-29.4 5.3.6 10.4.8 15.8.8 30.7 0 58.9-10.4 81.4-28-28.8-.6-53-19.5-61.3-45.5 10.1 1.5 19.2 1.5 29.6-1.2-30-6.1-52.5-32.5-52.5-64.4v-.8c8.7 4.9 18.9 7.9 29.6 8.3a65.447 65.447 0 0 1-29.2-54.6c0-12.2 3.2-23.4 8.9-33.1 32.3 39.8 80.8 65.8 135.2 68.6-9.3-44.5 24-80.6 64-80.6 18.9 0 35.9 7.9 47.9 20.7 14.8-2.8 29-8.3 41.6-15.8-4.9 15.2-15.2 28-28.8 36.1 13.2-1.4 26-5.1 37.8-10.2-8.9 13.1-20.1 24.7-32.9 34z"/>
-            </symbol>
-            <symbol id="svg-facebook" viewBox="0 0 448 512">
-                <!--title>Facebook Square, font-awesome</title-->
-                <path d="M400 32H48A48 48 0 0 0 0 80v352a48 48 0 0 0 48 48h137.25V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.27c-30.81 0-40.42 19.12-40.42 38.73V256h68.78l-11 71.69h-57.78V480H400a48 48 0 0 0 48-48V80a48 48 0 0 0-48-48z"/>
-            </symbol>
-            <symbol id="svg-youtube" viewBox="0 0 448 512">
-                <!--title>Youtube Square, font-awesome</title-->
-                <path d="M186.8 202.1l95.2 54.1-95.2 54.1V202.1zM448 80v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V80c0-26.5 21.5-48 48-48h352c26.5 0 48 21.5 48 48zm-42 176.3s0-59.6-7.6-88.2c-4.2-15.8-16.5-28.2-32.2-32.4C337.9 128 224 128 224 128s-113.9 0-142.2 7.7c-15.7 4.2-28 16.6-32.2 32.4-7.6 28.5-7.6 88.2-7.6 88.2s0 59.6 7.6 88.2c4.2 15.8 16.5 27.7 32.2 31.9C110.1 384 224 384 224 384s113.9 0 142.2-7.7c15.7-4.2 28-16.1 32.2-31.9 7.6-28.5 7.6-88.1 7.6-88.1z"/>
-            </symbol>
-            <symbol id="svg-instagram" viewBox="0 0 448 512">
-                <!--title>Instagram, font-awesome</title-->
-                <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/>
-            </symbol>
-            <symbol id="svg-github" viewBox="0 0 448 512">
-                <!--title>Github Square, font-awesome</title-->
-                <path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM277.3 415.7c-8.4 1.5-11.5-3.7-11.5-8 0-5.4.2-33 .2-55.3 0-15.6-5.2-25.5-11.3-30.7 37-4.1 76-9.2 76-73.1 0-18.2-6.5-27.3-17.1-39 1.7-4.3 7.4-22-1.7-45-13.9-4.3-45.7 17.9-45.7 17.9-13.2-3.7-27.5-5.6-41.6-5.6-14.1 0-28.4 1.9-41.6 5.6 0 0-31.8-22.2-45.7-17.9-9.1 22.9-3.5 40.6-1.7 45-10.6 11.7-15.6 20.8-15.6 39 0 63.6 37.3 69 74.3 73.1-4.8 4.3-9.1 11.7-10.6 22.3-9.5 4.3-33.8 11.7-48.3-13.9-9.1-15.8-25.5-17.1-25.5-17.1-16.2-.2-1.1 10.2-1.1 10.2 10.8 5 18.4 24.2 18.4 24.2 9.7 29.7 56.1 19.7 56.1 19.7 0 13.9.2 36.5.2 40.6 0 4.3-3 9.5-11.5 8-66-22.1-112.2-84.9-112.2-158.3 0-91.8 70.2-161.5 162-161.5S388 165.6 388 257.4c.1 73.4-44.7 136.3-110.7 158.3zm-98.1-61.1c-1.9.4-3.7-.4-3.9-1.7-.2-1.5 1.1-2.8 3-3.2 1.9-.2 3.7.6 3.9 1.9.3 1.3-1 2.6-3 3zm-9.5-.9c0 1.3-1.5 2.4-3.5 2.4-2.2.2-3.7-.9-3.7-2.4 0-1.3 1.5-2.4 3.5-2.4 1.9-.2 3.7.9 3.7 2.4zm-13.7-1.1c-.4 1.3-2.4 1.9-4.1 1.3-1.9-.4-3.2-1.9-2.8-3.2.4-1.3 2.4-1.9 4.1-1.5 2 .6 3.3 2.1 2.8 3.4zm-12.3-5.4c-.9 1.1-2.8.9-4.3-.6-1.5-1.3-1.9-3.2-.9-4.1.9-1.1 2.8-.9 4.3.6 1.3 1.3 1.8 3.3.9 4.1zm-9.1-9.1c-.9.6-2.6 0-3.7-1.5s-1.1-3.2 0-3.9c1.1-.9 2.8-.2 3.7 1.3 1.1 1.5 1.1 3.3 0 4.1zm-6.5-9.7c-.9.9-2.4.4-3.5-.6-1.1-1.3-1.3-2.8-.4-3.5.9-.9 2.4-.4 3.5.6 1.1 1.3 1.3 2.8.4 3.5zm-6.7-7.4c-.4.9-1.7 1.1-2.8.4-1.3-.6-1.9-1.7-1.5-2.6.4-.6 1.5-.9 2.8-.4 1.3.7 1.9 1.8 1.5 2.6z"/>
-            </symbol>
-        </svg>
-    </div>
-
-
-    <!-- ----------------------------------------------------- Responsive Data Table -->
-
-
-    <article id="data-table" class="chapter journal-grid">
-
-        <header class="west">
-            <h2>Data Table</h2>
-        </header>
-
-        <p>Respsonsive table component</p>
-
-    </article>
-
-
-
-
-<!-- ------------------------- post myocard -->
-
-
-<article class="chapter">
-
-    <header class="grid-queen">
-        <h2>Myocards</h2>
-    </header>
-
-
-    <header class="grid-queen chapter">
-        <h2>is-banner</h2>
-    </header>
-
-    <section class="myocard is-banner">
-        <section>
-            <div>
-                <p class="auto text-block-bigger"></p>
-           </div>
-       </section>
-        <section>
-            <div>
-                <button class="swed-button">
-                    <span>Book a meeting</span>
-                </button>
-           </div>
-       </section>
-    </section>
-
-    <header class="grid-queen chapter">
-        <h2>align-top</h2>
-    </header>
-
-    <section class="myocard align-top">
-        <section>
-            <div>
-                <section class="rows">
-                <h4>First Part</h4>
-                <p class="auto"></p>
-                </section>
-           </div>
-       </section>
-        <section>
-            <div>
-                <section class="rows">
-                <h4>Second Part</h4>
-                <p class="auto"></p>
-                <p class="auto"></p>
-                <p class="auto"></p>
-                </section>
-           </div>
-       </section>
-    </section>
-
-
-    <!-- -------------------------------- Avatars -->
-
-    <style>
-        .el-avatar-icon {
-          --width: 14rem;
-            width: var(--width);
-        }
-        .el-avatar-big {
-          --width: 24rem;
-            width: var(--width);
-        }
-    </style>
-
-
-    <header class="grid-queen chapter">
-        <h2>Avatars</h2>
-    </header>
-
-    <section class="myocard">
-        <section>
-            <div>
-                <img src="art/bergamot-just-browse-here.svg"
-                     class="el-avatar-big" alt="">
-           </div>
-       </section>
-        <section>
-            <div>
-                <p class="auto text-block-bigger"></p>
-           </div>
-       </section>
-    </section>
-
-    <section class="myocard is-banner back-color-accent">
-        <section>
-            <div>
-                <p class="auto text-block-bigger"></p>
-           </div>
-       </section>
-        <section>
-            <div>
-                <img src="art/bergamot-just-browse-here.svg"
-                     class="el-avatar-icon" alt="">
-           </div>
-       </section>
-    </section>
-
-
-    <!-- -------------------------------- Inside Grid -->
-
-    <article class="chapter use-colors colors--ivory">
-    <section class="grid-queen is-without-root">
-
-        <h2>Inside Grid</h2>
-
-        <section class="grid-column--wrap subgrid-content">
-
-            <section class="myocard is-banner back-color-accent">
-                <section>
-                    <div>
-                        <img src="art/bergamot-just-browse-here.svg"
-                             class="el-avatar-icon" alt="">
-                   </div>
-               </section>
-                <section>
-                    <div>
-                        <p class="auto text-block-bigger"></p>
-                   </div>
-               </section>
-            </section>
-
-            <section class="myocard is-banner wrap-order-reverse back-color-accent">
-                <section>
-                    <div>
-                        <p class="auto text-block-bigger"></p>
-                   </div>
-               </section>
-                <section>
-                    <div>
-                        <img src="art/illustrations/austria.svg"
-                             class="el-avatar-icon" alt="">
-                   </div>
-               </section>
-            </section>
-
-        </section>
-        <section class="grid-column--wrap">
-            <section class="myocard align-top">
-                <section>
-                    <div>
-                        <section class="rows">
-                        <h4>First Part</h4>
-                        <p class="auto"></p>
-                        </section>
-                   </div>
-               </section>
-                <section>
-                    <div>
-                        <section class="rows">
-                        <h4>Second Part</h4>
-                        <p class="auto"></p>
-                        <p class="auto"></p>
-                        <p class="auto"></p>
-                        </section>
-                   </div>
-               </section>
-            </section>
-        </section>
-    </section>
-    </article>
-
-    <!-- -------------------------------- Cases -->
-
-    <section class="myocard">
-        <section>
-            <div>
-                <h2>Universal Wrap</h2>
-           </div>
-       </section>
-        <section>
-            <div>
-                <section class="rows">
-                <p class="auto"></p>
-                <big><mark>Learn More</mark></big>
-                </section>
-           </div>
-       </section>
-    </section>
-
-    <section class="myocard">
-        <section>
-            <div>
-                <h2>Long Multicontent Title inside Wrap</h2>
-           </div>
-       </section>
-        <section>
-            <div>
-                <p class="auto"></p>
-           </div>
-       </section>
-    </section>
-
-    <div class="chapter back-color-accent">
-        <section class="myocard">
-
-            <section class="myocard is-banner">
-                <header>
-                    <div>
-                        Meet our team at G2E Asia<br>
-                        3-4 December 2019<br>
-                        Marriot Manila, Philippines<br>
-                    </div>
-                </header>
-                <figure>
-                    <img src="art/illustrations/austria.svg"
-                         class="el-avatar-icon" alt="Logo">
-                </figure>
-            </section>
-
-            <footer>
-                <div>
-                    <button class="swed-button">
-                        <span>Book a meeting</span>
-                    </button>
-                </div>
-            </footer>
-
-        </section>
-    </div>
-
-    <section class="el-myocardist chapter">
-
-        <style>
-            .el-myocardist .myocard { --card-max-width: 52rem; }
-            .el-myocardist .myocard + .myocard { margin-top: 2rem; }
-            .el-myocardist .myocard { background-color: var(--back-color-accent); }
-        </style>
-
-        <div class="myocard">
-            <div><p>When it comes to payment systems.</p></div>
-            <div><p>Self-Service Solution</p></div>
-        </div>
-
-        <div class="myocard">
-            <div><p>A few additional perks include full access to geolocation technologies.</p></div>
-            <div><p>Self-Service Customisation Options</p></div>
-        </div>
-
-        <div class="myocard">
-            <div>
-                <h4>When it comes to payment systems, the Self-Service solution supports both Visa and MasterCard.</h4>
-            </div>
-            <div>
-                <p>Self-Service Solution</p>
-            </div>
-        </div>
-
-        <div class="myocard">
-            <div>
-                <h3>When it comes.</h3>
-            </div>
-            <div>
-                <div><p>A few additional perks include full access to geolocation technologies.</p></div>
-            </div>
-        </div>
-
-    </section>
 
 </article>
-<article class="chapter use-colors colors--root">
-
-    <header class="grid-queen chapter isontop">
-        <h2>Template</h2>
-    </header>
-
-    <section class="myocard">
-        <section>
-            <div>
-                <img src="art/illustrations/austria.svg"
-                     class="el-avatar-big" alt="">
-           </div>
-       </section>
-        <section>
-            <div>
-                <section class="rows">
-                <p class="auto"></p>
-                <p class="auto"></p>
-                </section>
-           </div>
-       </section>
-    </section>
-
-</article>
-
-
-
-
-
-    <!-- ========================================= PUBLISHED -->
-    <!-- ========================================= PUBLISHED -->
-    <!-- ========================================= PUBLISHED -->
-
-
-    <!-- ----------------------------------------- Journal Grid -->
-
-
-    <article id="JournalGrid" class="journal-grid">
-
-        <nav class="nav-header journal-grid use-colors">
-            <p>
-                <mark>Journal Grid —</mark>
-                <a href="https://github.com/zlsheepcity/appart/blob/master/app/styles/components/journal-grid/journal-grid.scss" class="link-inline">git source</a>,
-                <a href="dev/tests-journal-grid.html" class="link-inline">demo page</a>
-            </p>
-        </nav>
-
-        <header class="wide">
-            <h2 class="h1">CSS-grid for articles</h2>
-            <p>
-                Article layout «like-a-journal» with side-notes and various column-merging properties.<br>
-                Has constant spaces, supports small screens, is easy for markup.
-            </p>
-        </header>
-
-        <section class="base keep-grid chapter use-colors colors--ivory">
-
-            <section class="block">
-                <p txt></p>
-                <p txt></p>
-                <p txt></p>
-            </section>
-
-            <aside class="note">
-                <p txt></p>
-            </aside>
-
-            <section class="keep-layer color-box-accent">
-                <section class="block">
-                    <p txt></p>
-                    <p txt></p>
-                </section>
-                <aside class="note">
-                    <p txt></p>
-                </aside>
-            </section>
-
-            <section class="keep-wide color-box">
-                <section class="block">
-                    <figure>
-                        <img src="art/illustrations/austria.svg" alt="" class="zzz">
-                    </figure>
-                    <p txt></p>
-                    <p txt></p>
-                </section>
-                <aside class="note">
-                    <p txt></p>
-                </aside>
-            </section>
-
-            <footer>
-                <a href="dev/tests-journal-grid.html" class="h3 link-color">Demo page</a>
-            </footer>
-
-        </section>
-
-    </article>
-
-
-    <!-- ----------------------------------------- Typography Demo -->
-
-
-    <article id="Typography" class="chapter journal-grid">
-
-        <nav class="nav-header keep-grid use-colors">
-            <p>
-                <mark>Web-Typography</mark> —
-                <a href="https://github.com/zlsheepcity/appart/blob/master/app/styles/components/html-core/html-typography.scss" class="link-inline">git source</a></p>
-        </nav>
-
-        <header class="wide">
-            <h2 class="h1">Web-Typography</h2>
-            <p>em-based-size presets, types collections</p>
-        </header>
-
-        <section class="chapter base keep-grid  use-colors colors--ivory">
-
-            <header class="wide is-centered">
-                <div class="h1">Web-Typography testpage</div>
-                <div class="h2">Web-Typography testpage</div>
-                <div class="h3">Web-Typography testpage</div>
-                <div class="h4">Web-Typography testpage</div>
-                <div class="h5">Web-Typography testpage</div>
-                <div class="h6">Web-Typography testpage</div>
-                <small>Web-Typography testpage</small>
-            </header>
-
-
-            <h2 class="chapter-header">Facetypes collection</h2>
-
-            <div class="keep-grid" style="font-family: var(--font-family--tufte-serif);">
-                <h3 class="mark">tufte-serif</h3>
-                <section class="block">
-                    <p txt></p>
-                    <p txt class="text-block-bigger"></p>
-                    <p txt class="text-block-smaller"></p>
-                </section>
-                <div class="note keep-font-size">
-                    <p>297351 years<br>&amp;#$@*</p>
-                </div>
-            </div>
-            <div class="keep-grid" style="font-family: var(--font-family--tufte-sans);">
-                <h3 class="mark">tufte-sans</h3>
-                <section class="block">
-                    <p txt></p>
-                    <p txt class="text-block-bigger"></p>
-                    <p txt class="text-block-smaller"></p>
-                </section>
-                <div class="note keep-font-size">
-                    <p>297351 years<br>&amp;#$@*</p>
-                </div>
-            </div>
-            <div class="keep-grid" style="font-family: var(--font-family--native-sans);">
-                <h3 class="mark">native-sans</h3>
-                <section class="block">
-                    <p txt></p>
-                    <p txt class="text-block-bigger"></p>
-                    <p txt class="text-block-smaller"></p>
-                </section>
-                <div class="note keep-font-size">
-                    <p>297351 years<br>&amp;#$@*</p>
-                </div>
-            </div>
-
-
-            <h2 class="chapter-header">Font-size modifyers</h2>
-
-            <div class="block">
-                <div>
-                    <span txt></span>
-                    <mark class="text-inline-bigger">[.text-inline-bigger]</mark>
-                    <span txt class="text-inline-bigger"></span>
-                    <span txt></span>
-                    <mark class="text-inline-bigger">[.text-inline-smaller]</mark>
-                    <span txt class="text-inline-smaller"></span>
-                    <span txt></span>
-                </div>
-                <div class="group-center">
-                    <span class="back-color-descent">line height</span>
-                    <span>—</span>
-                    <span class="back-color-descent text-inline-bigger">line height</span>
-                </div>
-                <div class="text-block-bigger">
-                    <mark>.text-block-bigger</mark>
-                    <span txt></span>
-                </div>
-                <div class="text-block-smaller">
-                    <mark>.text-block-smaller</mark>
-                    <span txt></span>
-                </div>
-            </div>
-
-
-            <section class="wide">
-
-                <header class="chapter-header">
-                    <h2>Paragraph readable width</h2>
-                </header>
-
-                <h3>
-                    <mark>.paragraph</mark>
-                    Max width limit (42em)
-                </h3>
-                <div class="paragraph group-content-rows">
-                    <div>
-                        <span txt></span>
-                        <span txt></span>
-                    </div>
-                    <div>
-                        <span txt></span>
-                        <span txt></span>
-                    </div>
-                </div>
-
-                <h3>
-                    <mark>.midi-paragraph</mark>
-                    Optimal middle-size (24em)
-                </h3>
-                <div class="midi-paragraph group-content-rows">
-                    <div txt></div>
-                    <div txt></div>
-                </div>
-
-                <section class="group-banner">
-
-                    <h3 class="banner-title">
-                        <mark>.mini-paragraph</mark>
-                        Minimal readable width (12em)
-                    </h3>
-                    <div class="mini-paragraph group-content-rows">
-                        <div>Front-end components. Not a framework, but reusable code templates.</div>
-                        <div>Atom classes for maintainable inline CSS</div>
-                        <div>CSS grid template for big articles with a lot of content, illustrations and creative visuals.</div>
-                    </div>
-                    <div class="mini-paragraph group-content-rows text-inline-bigger">
-                        <div>Front-end components. Not a framework, but reusable code templates.</div>
-                        <div>Atom classes for maintainable inline CSS</div>
-                        <div>CSS grid template for big articles with a lot of content, illustrations and creative visuals.</div>
-                    </div>
-
-                </section>
-
-
-            </section>
-
-        </section>
-
-    </article>
-
-
-    <!-- ----------------------------------------- Color Model -->
-
-
-    <article id="ColorModel" class="journal-grid">
-
-        <nav class="nav-header journal-grid use-colors">
-            <p>
-                <mark>Color Model</mark> —
-                <a href="https://github.com/zlsheepcity/appart/blob/master/app/styles/components/color-model/color-model.scss">git source</a>
-            </p>
-        </nav>
-
-        <header class="wide">
-            <h2 class="h1">Color Model</h2>
-            <p>Nine variables for color-switching.</p>
-        </header>
-
-        <section class="chapter keep-base">
-
-            <header class="banner">
-                <h2 class="h3">Some presets:</h2>
-            </header>
-
-            <section class="banner use-colors colors--root">
-                <header>
-                    <h2>colors--root</h2>
-                    <p class="text-color-descent">Color Model 3×3+2</p>
-                </header>
-                <p class="back-color-descent back-color-hover link-color padding">Hover Me</p>
-            </section>
-            <section class="banner use-colors colors--action">
-                <header>
-                    <h2>colors--action</h2>
-                    <p class="text-color-descent">Color Model 3×3+2</p>
-                </header>
-                <p class="back-color-descent back-color-hover link-color padding">Hover Me</p>
-            </section>
-            <section class="banner use-colors colors--ivory">
-                <header>
-                    <h2>colors--ivory</h2>
-                    <p class="text-color-descent">Color Model 3×3+2</p>
-                </header>
-                <p class="back-color-descent back-color-hover link-color padding">Hover Me</p>
-            </section>
-            <section class="banner use-colors colors--swed">
-                <header>
-                    <h2>colors--swed</h2>
-                    <p class="text-color-descent">Color Model 3×3+2</p>
-                </header>
-                <p class="back-color-descent back-color-hover link-color padding">Hover Me</p>
-            </section>
-            <section class="banner use-colors colors--swed-secondary">
-                <header>
-                    <h2>colors--swed-secondary</h2>
-                    <p class="text-color-descent">Color Model 3×3+2</p>
-                </header>
-                <p class="back-color-descent back-color-hover link-color padding">Hover Me</p>
-            </section>
-            <section class="banner use-colors colors--swed-third">
-                <header>
-                    <h2>colors--swed-third</h2>
-                    <p class="text-color-descent">Color Model 3×3+2</p>
-                </header>
-                <p class="back-color-descent back-color-hover link-color padding">Hover Me</p>
-            </section>
-
-        </section>
-
-    </article>
-
-
-    <!-- ----------------------------------------- Offside Bar -->
-
-
-    <article id="Offsidebar" class="journal-grid">
-
-        <nav class="nav-header journal-grid use-colors">
-            <p>
-                <mark>Offside Bar</mark> —
-                <a href="https://github.com/zlsheepcity/appart/tree/master/app/styles/components/offsidebar" >git source</a>
-            </p>
-        </nav>
-
-        <header class="wide">
-            <h2 class="h1">Offside bar</h2>
-            <p>Reveal side panel, avoids content jumps</p>
-        </header>
-
-        <section class="chapter banner">
-                <h3 class="banner-title">Demo cases</h3>
-                <button class="swed-button js-for-EastsideBar">Default</button>
-                <button class="swed-button js-for-WestsideBar">From Westside</button>
-                <button class="swed-button js-for-OverflowBar">Content overflow</button>
-                <button class="swed-button js-for-OverflowBarWestside">Content overflow (westside)</button>
-        </section>
-
-        <!-- Demo Bars -->
-
-        <section>
-
-            <!-- Default Bar -->
-
-            <section class="EastsideBar offsidebar colors--secondary">
-                <!-- <div class="offsidebar-overlay"></div>    <!-- auto insertion with js -->
-                <!-- <div class="offsidebar-background"></div> <!-- auto insertion with js -->
-                <div class="sidepanel">
-
-                    <header class="sidepanel-header">
-                        <h4>Scroll Content</h4>
-                    </header>
-
-                    <nav class="sidepanel-content">
-                        <ul class="content-menu js-for-EastsideBar">
-                            <li><span>Lorem ipsum</span></li>
-                            <li><span>Pellentesque habitant</span></li>
-                            <li><span>Morbi tristique senectus</span></li>
-                            <li><span>Et netus et malesuada</span></li>
-                            <li><span>Fames ac turpis egestas</span></li>
-                            <li><span>Vestibulum tortor quam</span></li>
-                            <li><span>Feugiat vitae</span></li>
-                            <li><span>Ultricies eget</span></li>
-                            <li><span>Tempor sit amet</span></li>
-                        </ul>
-                    </nav>
-
-                    <footer class="sidepanel-footer">
-                        <div>Footer</div>
-                    </footer>
-
-                </div>
-            </section>
-
-            <!-- Westside Bar -->
-
-            <section class="WestsideBar offsidebar from-westside colors--secondary">
-                <div class="sidepanel">
-
-                    <header class="sidepanel-header">
-                        <h4>Scroll Content</h4>
-                    </header>
-
-                    <nav class="sidepanel-content">
-                        <ul class="content-menu js-for-WestsideBar">
-                            <li><span>Lorem ipsum</span></li>
-                            <li><span>Pellentesque habitant</span></li>
-                            <li><span>Morbi tristique senectus</span></li>
-                            <li><span>Et netus et malesuada</span></li>
-                            <li><span>Fames ac turpis egestas</span></li>
-                            <li><span>Vestibulum tortor quam</span></li>
-                            <li><span>Feugiat vitae</span></li>
-                            <li><span>Ultricies eget</span></li>
-                            <li><span>Tempor sit amet</span></li>
-                        </ul>
-                    </nav>
-
-                    <footer class="sidepanel-footer">
-                        <div>Footer</div>
-                    </footer>
-
-                </div>
-            </section>
-
-            <!-- Overflow Bar -->
-
-            <section class="OverflowBar offsidebar colors--secondary">
-                <section class="sidepanel">
-
-                    <header class="sidepanel-header">
-                        <h4>Scroll Content</h4>
-                    </header>
-
-                    <section class="sidepanel-content">
-                        <div class="rows midi-paragraph">
-                            <p txt></p>
-                            <p txt></p>
-                            <p txt></p>
-                            <p txt></p>
-                            <p txt></p>
-                            <p txt></p>
-                            <p txt></p>
-                            <p txt></p>
-                        </div>
-                    </section>
-
-                    <footer class="sidepanel-footer">
-                        <div>Footer</div>
-                    </footer>
-
-                </section>
-            </section>
-
-            <!-- Overflow Bar Westside -->
-
-            <section class="OverflowBarWestside offsidebar from-westside colors--secondary">
-                <section class="sidepanel">
-
-                    <header class="sidepanel-header">
-                        <h4>Scroll Content</h4>
-                    </header>
-
-                    <section class="sidepanel-content">
-                        <div class="rows midi-paragraph">
-                            <p txt></p>
-                            <p txt></p>
-                            <p txt></p>
-                            <p txt></p>
-                            <p txt></p>
-                            <p txt></p>
-                            <p txt></p>
-                            <p txt></p>
-                        </div>
-                    </section>
-
-                    <footer class="sidepanel-footer">
-                        <div>Footer</div>
-                    </footer>
-
-                </section>
-            </section>
-
-        </section>
-
-        <!-- Activate Offside Bars -->
-
-        <script>
-            // Demo Bars
-            app.onload(f=>InterfaceOffsideBar('EastsideBar'))
-            app.onload(f=>InterfaceOffsideBar('WestsideBar'))
-            app.onload(f=>InterfaceOffsideBar('OverflowBar'))
-            app.onload(f=>InterfaceOffsideBar('OverflowBarWestside'))
-        </script>
-
-    </article>
-
-
-    <!-- ========================================= READY TO PUBLISH -->
-    <!-- ========================================= READY TO PUBLISH -->
-    <!-- ========================================= READY TO PUBLISH -->
-
-
-    <!-- ----------------------------------------- Multicolumn Collisting -->
-
-
-    <article id="Collisting" class="use-colors colors--SG-minor">
-
-        <header class="banner">
-            <h2 class="h1">Collisting</h2>
-            <p>Card grouping with auto columns</p>
-        </header>
-
-        <!-- MINI CARDS -->
-
-        <article class="layer native-sans" style="--h4-font-size: var(--h5-font-size);">
-            <section class="group-collisting auto-margin use-colors colors--root">
-
-                <figure>
-                    <h4>Rich Article Grid Layout</h4>
-                    <div class="text-block-smaller">
-                        <p><strong>sass component</strong></p>
-                        <p>CSS grid template for big articles with a lot of content, illustrations and creative visuals.</p>
-                    </div>
-                </figure>
-
-                <figure>
-                    <h4>Banners</h4>
-                    <div class="text-block-smaller">
-                        <p><strong>css class</strong></p>
-                        <p>Wrapper for content grouping</p>
-                    </div>
-                </figure>
-
-
-                <figure>
-                    <h4>Catgrounds</h4>
-                    <div class="text-block-smaller">
-                        <p><strong>css class</strong></p>
-                        <p>Design trick to make boring content more interesting</p>
-                    </div>
-                </figure>
-
-                <figure>
-                    <h4>Offsidebar</h4>
-                    <div class="text-block-smaller">
-                        <p><strong>css component</strong></p>
-                        <p>Expandable side-panel prevents content jumps on call (google chrome issue)</p>
-                    </div>
-                </figure>
-                <figure>
-                    <h4>Color-model</h4>
-                    <div class="text-block-smaller">
-                        <p><strong>css variables</strong></p>
-                        <p>Pattern for switching colors in markup</p>
-                    </div>
-                </figure>
-                <figure>
-                    <h4>SVG-icons</h4>
-                    <div class="text-block-smaller">
-                        <p><strong>css, svg</strong></p>
-                        <p>Markup shortcut and presets with common used icons.</p>
-                    </div>
-                </figure>
-
-            </section>
-        </article>
-        <article class="layer native-sans" style="--h4-font-size: var(--h5-font-size);">
-            <section class="group-collisting type2 auto-margin use-colors colors--root">
-
-                <figure>
-                    <h4>Rich Article Grid Layout</h4>
-                    <div class="text-block-smaller">
-                        <p><strong>sass component</strong></p>
-                        <p>CSS grid template for big articles with a lot of content, illustrations and creative visuals.</p>
-                    </div>
-                </figure>
-
-                <figure>
-                    <h4>Banners</h4>
-                    <div class="text-block-smaller">
-                        <p><strong>css class</strong></p>
-                        <p>Wrapper for content grouping</p>
-                    </div>
-                </figure>
-
-
-                <figure>
-                    <h4>Catgrounds</h4>
-                    <div class="text-block-smaller">
-                        <p><strong>css class</strong></p>
-                        <p>Design trick to make boring content more interesting</p>
-                    </div>
-                </figure>
-
-                <figure>
-                    <h4>Offsidebar</h4>
-                    <div class="text-block-smaller">
-                        <p><strong>css component</strong></p>
-                        <p>Expandable side-panel prevents content jumps on call (google chrome issue)</p>
-                    </div>
-                </figure>
-                <figure>
-                    <h4>Color-model</h4>
-                    <div class="text-block-smaller">
-                        <p><strong>css variables</strong></p>
-                        <p>Pattern for switching colors in markup</p>
-                    </div>
-                </figure>
-                <figure>
-                    <h4>SVG-icons</h4>
-                    <div class="text-block-smaller">
-                        <p><strong>css, svg</strong></p>
-                        <p>Markup shortcut and presets with common used icons.</p>
-                    </div>
-                </figure>
-
-            </section>
-        </article>
-
-        <!-- QUICK DEFAULT -->
-
-        <article class="layer native-sans">
-            <section class="group-collisting auto-margin use-colors colors--primary">
-
-                <figure>
-                    <h4>Rich Article Grid Layout</h4>
-                    <div>
-                        <p><strong>sass component</strong></p>
-                        <p>CSS grid template for big articles with a lot of content, illustrations and creative visuals.</p>
-                    </div>
-                </figure>
-
-                <figure>
-                    <h4>Banners</h4>
-                    <div>
-                        <p><strong>css class</strong></p>
-                        <p>Wrapper for content grouping</p>
-                    </div>
-                </figure>
-
-                <figure>
-                    <h4>Catgrounds</h4>
-                    <div>
-                        <p><strong>css class</strong></p>
-                        <p>Design trick to make boring content more interesting</p>
-                    </div>
-                </figure>
-
-                <figure>
-                    <h4>Offsidebar</h4>
-                    <div>
-                        <p><strong>css component</strong></p>
-                        <p>Expandable side-panel prevents content jumps on call (google chrome issue)</p>
-                    </div>
-                </figure>
-                <figure>
-                    <h4>Color-model</h4>
-                    <div>
-                        <p><strong>css variables</strong></p>
-                        <p>Pattern for switching colors in markup</p>
-                    </div>
-                </figure>
-                <figure>
-                    <h4>SVG-icons</h4>
-                    <div>
-                        <p><strong>css, svg</strong></p>
-                        <p>Markup shortcut and presets with common used icons.</p>
-                    </div>
-                </figure>
-
-                <figure>
-                    <h4>Rich Article Grid Layout</h4>
-                    <div>
-                        <p><strong>sass component</strong></p>
-                        <p>CSS grid template for big articles with a lot of content, illustrations and creative visuals.</p>
-                    </div>
-                </figure>
-
-                <figure>
-                    <h4>Banners</h4>
-                    <div>
-                        <p><strong>css class</strong></p>
-                        <p>Wrapper for content grouping</p>
-                    </div>
-                </figure>
-
-                <figure>
-                    <h4>Catgrounds</h4>
-                    <div>
-                        <p><strong>css class</strong></p>
-                        <p>Design trick to make boring content more interesting</p>
-                    </div>
-                </figure>
-
-            </section>
-        </article>
-        <article class="layer native-sans">
-            <section class="group-collisting type2 auto-margin use-colors colors--primary">
-
-                <figure>
-                    <h4>Rich Article Grid Layout</h4>
-                    <div>
-                        <p><strong>sass component</strong></p>
-                        <p>CSS grid template for big articles with a lot of content, illustrations and creative visuals.</p>
-                    </div>
-                </figure>
-
-                <figure>
-                    <h4>Banners</h4>
-                    <div>
-                        <p><strong>css class</strong></p>
-                        <p>Wrapper for content grouping</p>
-                    </div>
-                </figure>
-
-                <figure>
-                    <h4>Catgrounds</h4>
-                    <div>
-                        <p><strong>css class</strong></p>
-                        <p>Design trick to make boring content more interesting</p>
-                    </div>
-                </figure>
-
-                <figure>
-                    <h4>Offsidebar</h4>
-                    <div>
-                        <p><strong>css component</strong></p>
-                        <p>Expandable side-panel prevents content jumps on call (google chrome issue)</p>
-                    </div>
-                </figure>
-                <figure>
-                    <h4>Color-model</h4>
-                    <div>
-                        <p><strong>css variables</strong></p>
-                        <p>Pattern for switching colors in markup</p>
-                    </div>
-                </figure>
-                <figure>
-                    <h4>SVG-icons</h4>
-                    <div>
-                        <p><strong>css, svg</strong></p>
-                        <p>Markup shortcut and presets with common used icons.</p>
-                    </div>
-                </figure>
-
-                <figure>
-                    <h4>Rich Article Grid Layout</h4>
-                    <div>
-                        <p><strong>sass component</strong></p>
-                        <p>CSS grid template for big articles with a lot of content, illustrations and creative visuals.</p>
-                    </div>
-                </figure>
-
-                <figure>
-                    <h4>Banners</h4>
-                    <div>
-                        <p><strong>css class</strong></p>
-                        <p>Wrapper for content grouping</p>
-                    </div>
-                </figure>
-
-                <figure>
-                    <h4>Catgrounds</h4>
-                    <div>
-                        <p><strong>css class</strong></p>
-                        <p>Design trick to make boring content more interesting</p>
-                    </div>
-                </figure>
-
-            </section>
-        </article>
-
-        <!-- UL-LISTING -->
-
-        <section>
-            <ul class="group-collisting">
-                <li>
-                    <h4>Rich Article Grid Layout</h4>
-                     <div class="text-is-smaller">
-                        <p><strong>sass component</strong></p>
-                        <p>CSS grid template for big articles with a lot of content, illustrations and creative visuals.</p>
-                    </div>
-                </li>
-                <li>
-                    <h4>Banners</h4>
-                    <div class="text-is-smaller">
-                        <p><strong>css class</strong></p>
-                        <p>Wrapper for content grouping</p>
-                    </div>
-                </li>
-                <li class="fatground-wide">
-                    <h4>Catgrounds</h4>
-                    <div class="text-is-smaller">
-                        <p><strong>css class</strong></p>
-                        <p>Design trick to make boring content more interesting</p>
-                    </div>
-                </li>
-                <li>
-                    <h4>Offsidebar</h4>
-                    <div class="text-is-smaller">
-                        <p><strong>css component</strong></p>
-                        <p>Expandable side-panel prevents content jumps on call (google chrome issue)</p>
-                    </div>
-                </li>
-                <li>
-                    <h4>Color-model</h4>
-                    <div class="text-is-smaller">
-                        <p><strong>css variables</strong></p>
-                        <p>Pattern for switching colors in markup</p>
-                    </div>
-                </li>
-                <li>
-                    <h4>SVG-icons</h4>
-                    <div class="text-is-smaller">
-                        <p><strong>css, svg</strong></p>
-                        <p>Markup shortcut and presets with common used icons.</p>
-                    </div>
-                </li>
-            </ul>
-        </section>
-        <section>
-            <ul class="group-collisting type2">
-                <li>
-                    <h4>Rich Article Grid Layout</h4>
-                     <div class="text-is-smaller">
-                        <p><strong>sass component</strong></p>
-                        <p>CSS grid template for big articles with a lot of content, illustrations and creative visuals.</p>
-                    </div>
-                </li>
-                <li>
-                    <h4>Banners</h4>
-                    <div class="text-is-smaller">
-                        <p><strong>css class</strong></p>
-                        <p>Wrapper for content grouping</p>
-                    </div>
-                </li>
-                <li class="fatground-wide">
-                    <h4>Catgrounds</h4>
-                    <div class="text-is-smaller">
-                        <p><strong>css class</strong></p>
-                        <p>Design trick to make boring content more interesting</p>
-                    </div>
-                </li>
-                <li>
-                    <h4>Offsidebar</h4>
-                    <div class="text-is-smaller">
-                        <p><strong>css component</strong></p>
-                        <p>Expandable side-panel prevents content jumps on call (google chrome issue)</p>
-                    </div>
-                </li>
-                <li>
-                    <h4>Color-model</h4>
-                    <div class="text-is-smaller">
-                        <p><strong>css variables</strong></p>
-                        <p>Pattern for switching colors in markup</p>
-                    </div>
-                </li>
-                <li>
-                    <h4>SVG-icons</h4>
-                    <div class="text-is-smaller">
-                        <p><strong>css, svg</strong></p>
-                        <p>Markup shortcut and presets with common used icons.</p>
-                    </div>
-                </li>
-            </ul>
-        </section>
-
-        <!-- LONG TEXT BLOCKS -->
-
-        <div class="layer use-colors colors--SG-brand">
-            <div
-                class="group-collisting auto-margin text-block-smaller"
-                style="--column-width: 16em; --max-columns:4;--h2-font-size: var(--h3-font-size);">
-                <div>
-                    <h4>Casino Games Integration</h4>
-                    <p>Choose from our 50+ gaming providers and integrate games from all of them or pick only those you want. Our portfolio includes such top-tier providers as Evolution Gaming, NetEnt, BetSoft, Quickspin, Yggdrasil, BetRadar and Microgaming and all types of games – slots, Live casino, sports betting, scratch-cards, bingo, lottery, virtual sports and poker, all available via a single integration.</p>
-                </div>
-                <div>
-                    <h4>BonusSystem Standalone</h4>
-                    Our bonus system is a unique solution which can be either integrated separately or as a part of our game platform. It includes loyalty and experience points, separate balances, customisable user levels, loyalty shop, free rounds, tournaments, gamification and much more. It is a proven player acquisition and retention tool.
-                </div>
-                <div>
-                    <h4>Slots Bundle</h4>
-                    Get the package of all slots providers via a single integration at an attractive cost. The bundle includes games from NetEnt, BetSoft, Quickspin, Microgaming, Amatic, 1X2 Network, Playson, Endorphina, Pragmatic Play and more.
-                </div>
-                <div>
-                    <h4>Live Casino Bundle</h4>
-                    Similar to the Slots Bundle, our Live Casino Bundle is available via a single integration. The portfolio of Live providers includes the top providers of live casino games: Evolution Gaming, NetEnt Live, BetGames, Ezugi, Authentic Gaming, Asia Gaming, Lucky Streak, SA Gaming and more.
-                </div>
-                <div>
-                    <h4>Sports Betting Software Providers</h4>
-                    Our sportsbook solution is a complete package of all kinds of sports and unlimited customisation options based on the exclusive, top-tier BetRadar solution. Enjoy 70.000+ events monthly in 300+ markets.
-                </div>
-                <div>
-                    <h4>Cryptocurrency payment solution</h4>
-                    Many players prefer paying in cryptocurrencies, so it is a good idea to give them such an opportunity. By using cryptocurrencies, your players will remain anonymous and won’t spend much on transactions and you will receive your money quickly. Our in-house developed cryptocurrency payment system supports Bitcoin, Ethereum, Litecoin and many other Ethereum-based and Bitcoin-based currencies.
-                </div>
-                <div>
-                    <h4>Banking</h4>
-                    Banking is a difficult question for gambling enterprises. With our assistance, however, you can open bank and credit card processing (VISA, MasterCard) accounts quickly and easily, thanks to our 10 years experience in dealing with the legal side of gambling business.
-                </div>
-                <div>
-                    <h4>Licensing</h4>
-                    Getting a gaming licence is also crucial, if you want to offer games from well-known providers and win the trust of your players. With us, you get a licence in 2 weeks, avoiding unnecessary complications.
-                </div>
-                <div>
-                    <h4>Hosting</h4>
-                    Our gambling-friendly hosting functions 24/7/365, supports thousands of players simultaneously and is legal and secure. All data centres accept online gambling and have top-notch reputation and reliability.
-                </div>
-                <div>
-                    <h4>Promotion & SEO</h4>
-                    A crucial part of online gambling business. Good SEO & promotion is what differentiates successful casinos from failed enterprises. Get in touch with professionals with 10+ years of experience in online gambling SEO and promotion to ensure your business grows.
-                </div>
-            </div>
-        </div>
-        <div class="layer use-colors colors--SG-brand">
-            <div
-               class="group-collisting type2 auto-margin text-block-smaller native-sans"
-               style="--h2-font-size: var(--h4-font-size);">
-                <div>
-                    <h4>Casino Games Integration</h4>
-                    Choose from our 50+ gaming providers and integrate games from all of them or pick only those you want. Our portfolio includes such top-tier providers as Evolution Gaming, NetEnt, BetSoft, Quickspin, Yggdrasil, BetRadar and Microgaming and all types of games – slots, Live casino, sports betting, scratch-cards, bingo, lottery, virtual sports and poker, all available via a single integration.
-                </div>
-                <div>
-                    <h4>BonusSystem Standalone</h4>
-                    Our bonus system is a unique solution which can be either integrated separately or as a part of our game platform. It includes loyalty and experience points, separate balances, customisable user levels, loyalty shop, free rounds, tournaments, gamification and much more. It is a proven player acquisition and retention tool.
-                </div>
-                <div>
-                    <h4>Slots Bundle</h4>
-                    Get the package of all slots providers via a single integration at an attractive cost. The bundle includes games from NetEnt, BetSoft, Quickspin, Microgaming, Amatic, 1X2 Network, Playson, Endorphina, Pragmatic Play and more.
-                </div>
-                <div>
-                    <h4>Live Casino Bundle</h4>
-                    Similar to the Slots Bundle, our Live Casino Bundle is available via a single integration. The portfolio of Live providers includes the top providers of live casino games: Evolution Gaming, NetEnt Live, BetGames, Ezugi, Authentic Gaming, Asia Gaming, Lucky Streak, SA Gaming and more.
-                </div>
-                <div>
-                    <h4>Sports Betting Software Providers</h4>
-                    Our sportsbook solution is a complete package of all kinds of sports and unlimited customisation options based on the exclusive, top-tier BetRadar solution. Enjoy 70.000+ events monthly in 300+ markets.
-                </div>
-                <div>
-                    <h4>Cryptocurrency payment solution</h4>
-                    Many players prefer paying in cryptocurrencies, so it is a good idea to give them such an opportunity. By using cryptocurrencies, your players will remain anonymous and won’t spend much on transactions and you will receive your money quickly. Our in-house developed cryptocurrency payment system supports Bitcoin, Ethereum, Litecoin and many other Ethereum-based and Bitcoin-based currencies.
-                </div>
-                <div>
-                    <h4>Banking</h4>
-                    Banking is a difficult question for gambling enterprises. With our assistance, however, you can open bank and credit card processing (VISA, MasterCard) accounts quickly and easily, thanks to our 10 years experience in dealing with the legal side of gambling business.
-                </div>
-                <div>
-                    <h4>Licensing</h4>
-                    Getting a gaming licence is also crucial, if you want to offer games from well-known providers and win the trust of your players. With us, you get a licence in 2 weeks, avoiding unnecessary complications.
-                </div>
-                <div>
-                    <h4>Hosting</h4>
-                    Our gambling-friendly hosting functions 24/7/365, supports thousands of players simultaneously and is legal and secure. All data centres accept online gambling and have top-notch reputation and reliability.
-                </div>
-                <div>
-                    <h4>Promotion & SEO</h4>
-                    A crucial part of online gambling business. Good SEO & promotion is what differentiates successful casinos from failed enterprises. Get in touch with professionals with 10+ years of experience in online gambling SEO and promotion to ensure your business grows.
-                </div>
-            </div>
-        </div>
-
-        <!-- STORY CASE -->
-
-        <article
-            class="layer padding use-colors colors--swed-secondary"
-            style="--padding: var(--big-space) 0;">
-
-            <ul markup class="group-collisting auto-margin" style="--max-columns: 4;">
-                <li>
-                    <a markup href="#">
-                        <p>Глава О.</p>
-                        <h4>Оптимизация</h4>
-                    </a>
-                    <p>Сельский бунт, заветы старой Поговорки и деда Баяна.</p>
-                </li>
-                <li>
-                    <a markup href="#">
-                        <p>Глава 1.</p>
-                        <h4>Супервулкан</h4>
-                    </a>
-                    <p>Клюв для Ворона, разговор с Создателем, встреча с Историей, кот.</p>
-                </li>
-                <li>
-                    <a markup href="#">
-                        <p>Глава 2.</p>
-                        <h4>Миссия</h4>
-                    </a>
-                    <p>Спасение модели DNA.</p>
-                </li>
-                <li>
-                    <a markup href="#">
-                        <p>Глава 3.</p>
-                        <h4>Болото</h4>
-                    </a>
-                    <p>Поиск имени в Карбонских болотах, Сетера и Гетера проводят экзорцизм.</p>
-                </li>
-                <li>
-                    <a markup href="#">
-                        <p>Глава 4.</p>
-                        <h4>Перевал ошибок</h4>
-                    </a>
-                    <p>Граница экрана, ловля ошибок покрупнее, появление волка в шкуре волка.</p>
-                </li>
-                <li>
-                    <a markup href="#">
-                        <p>Глава 5.</p>
-                        <h4>Овечки</h4>
-                    </a>
-                    <p>Нешуточный волейбольный матч, решение мелких проблем.</p>
-                </li>
-                <li>
-                    <a markup href="#">
-                        <p>Глава 6.</p>
-                        <h4>Хеадер</h4>
-                    </a>
-                    <p>Меню в таверне.</p>
-                </li>
-            </ul>
-
-        </article>
-        <article
-            class="layer padding use-colors colors--swed-secondary"
-            style="--padding: var(--big-space) 0;">
-
-            <ul markup class="group-collisting type2 auto-margin" style="--max-columns: 3;">
-                <li>
-                    <a markup href="#">
-                        <p>Глава О.</p>
-                        <h4>Оптимизация</h4>
-                    </a>
-                    <p>Сельский бунт, заветы старой Поговорки и деда Баяна.</p>
-                </li>
-                <li>
-                    <a markup href="#">
-                        <p>Глава 1.</p>
-                        <h4>Супервулкан</h4>
-                    </a>
-                    <p>Клюв для Ворона, разговор с Создателем, встреча с Историей, кот.</p>
-                </li>
-                <li>
-                    <a markup href="#">
-                        <p>Глава 2.</p>
-                        <h4>Миссия</h4>
-                    </a>
-                    <p>Спасение модели DNA.</p>
-                </li>
-                <li>
-                    <a markup href="#">
-                        <p>Глава 3.</p>
-                        <h4>Болото</h4>
-                    </a>
-                    <p>Поиск имени в Карбонских болотах, Сетера и Гетера проводят экзорцизм.</p>
-                </li>
-                <li>
-                    <a markup href="#">
-                        <p>Глава 4.</p>
-                        <h4>Перевал ошибок</h4>
-                    </a>
-                    <p>Граница экрана, ловля ошибок покрупнее, появление волка в шкуре волка.</p>
-                </li>
-                <li>
-                    <a markup href="#">
-                        <p>Глава 5.</p>
-                        <h4>Овечки</h4>
-                    </a>
-                    <p>Нешуточный волейбольный матч, решение мелких проблем.</p>
-                </li>
-                <li>
-                    <a markup href="#">
-                        <p>Глава 6.</p>
-                        <h4>Хеадер</h4>
-                    </a>
-                    <p>Меню в таверне.</p>
-                </li>
-            </ul>
-
-        </article>
-
-    </article>
-
-
-
 
 <!-- ========================================= PAGE CUSTOM -->
-
-
 
 </body>
 </html>

@@ -2,6 +2,36 @@
 /** -------------------------------- Retired Components */
 
 
+/** Retired Grid System */
+.journal-grid {
+
+    @extend .grid-queen;
+  --width-root:       0; &.centrale { --width-root: 1fr; }
+  --width-menu:       0;
+  --width-main:   35rem;
+  --width-note:   16rem;
+  --width-roof:     1fr;
+    @extend .is-without-west;
+
+    .block             { @extend .subgrid-content;   }
+    .box               { @extend .subgrid-container; }
+    .side              { @extend .subgrid-east;      }
+    .base, .wide       { @extend .subgrid-wrap;      }
+    .keep-layer        { @extend .sublayer;          }
+    .keep-wide         { @extend .subgrid-wrap;      }
+
+    .note {
+        @extend .subgrid-content;
+        @extend .grid-column--note;
+     /* 13/16 */
+      --font-size:   var(--dec-font-size,   calc(13/16*1em));
+      --line-height: var(--dec-line-height, calc(16/13));
+        font-size:   var(--font-size);
+        line-height: var(--line-height);
+    }
+}
+
+
 /** Was replaced by Myocards */
 .group-banner {
     display:         flex;
@@ -39,6 +69,52 @@
         grid-column: span var(--size);
     }
 }
+
+
+/** Too specific */
+
+
+.nav-header {
+    position: sticky;
+    top:      0;
+    z-index:  1;
+  --padding-top:    0.25em;
+  --padding-bottom: 0.25em;
+  --menu-icon-placeholder: 2em;
+    padding-top:    var(--padding-top);
+    padding-bottom: var(--padding-bottom);
+}
+.nav-header>* {
+    padding-right:  var(--menu-icon-placeholder);
+}
+
+.nav-fly {
+    position: fixed;
+    z-index:  3;
+    top:      0;
+    right:    0;
+    width:  2em;
+    height: 2em;
+
+    display:   flex;
+    justify-content: center;
+    align-content:   center;
+    align-items:     center;
+
+  --background-color: black;
+  --clip-path: polygon(0 0, 100% 0, 100% 100%, 70% 100%, 0% 0%);
+    clip-path: var(--clip-path);
+    cursor:    pointer;
+    background-color: var(--background-color);
+
+    transition: clip-path 240ms var(--timing-function--focusZoom);
+}
+.nav-fly:hover {
+  --clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%, 0% 100%);
+  --background-color: firebrick;
+}
+.has-offsidebar-overlay .nav-fly { opacity: 0; }
+
 
 
 /** -------------------------------- Offsidebar Fallback */

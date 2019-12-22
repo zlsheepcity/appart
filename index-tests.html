@@ -105,20 +105,6 @@
           --h1-line-height:       1;
           --grid-column--default: var(--grid-column--wrap-text-east);
         }
-        .nav-burger {
-            position: fixed;
-            z-index:  3;
-            top:      0;
-            right:    0;
-            width:    3rem;
-            height:   3rem;
-
-            background-size:     100%;
-            background-repeat:   no-repeat;
-            background-position: center center;
-         /* SVG: hamburger */
-            background-image: url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>');
-        }
     </style>
 
 
@@ -177,6 +163,35 @@
 </head>
 <body class="colors--primary">
 
+<!-- ----------------------------------------- MENU -->
+
+<nav>
+    <style>
+        .von-burger {
+          --background-color: gold;
+          --color:           black;
+            position: fixed;
+            z-index:  3;
+            top:      0;
+            right:    0;
+            width:  3em;
+            height: 3em;
+            cursor: pointer;
+         /* SVG: hamburger */
+            background-image: url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>');
+            background-size:     48px;
+            background-repeat:   no-repeat;
+            background-position: center center;
+            border-radius: 0 0 0 4px;
+        }
+        .von-burger:hover {
+            transition: background 120ms ease-in;
+          --background-color: goldenrod;
+        }
+    </style>
+    <button markup class="von-burger"></button>
+</nav>
+
 <!-- ----------------------------------------- SVG Backgrounds -->
 
 <article class="use-colors colors--ivory">
@@ -192,12 +207,20 @@
             background-repeat:   no-repeat;
             background-position: center center;
         }
+        .bgicon:hover {
+            z-index: 1;
+            background-color: var(--back-color-accent);
+            transition: transform 120ms ease-in;
+            transform: scale(2);
+            transform-origin: bottom center;
+        }
     </style>
     <section class="grid-king chapter">
         <section>
             <div class="bgicon background-image--close"></div>
             <div class="bgicon background-image--loading"></div>
             <div class="bgicon background-image--info"></div>
+            <div class="bgicon background-image--menu"></div>
         </section>
     </section>
 </article>

@@ -76,10 +76,10 @@ button {
     padding:    0.25rem 1.5rem;
     border:     0;
     font:       inherit;
-  --background: var(--back-color-accent, transparent);
-    background: var(--background);
-  --color:      var(--text-color, inherit);
-    color:      var(--color);
+  --background-color: var(--back-color-accent, transparent);
+    background-color: var(--background-color);
+  --color:            var(--text-color, inherit);
+    color:            var(--color);
 }
 
 

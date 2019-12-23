@@ -55,11 +55,10 @@ function AppKing(mRna) {
 //  -------------------------------- AppKing autorun
 
 
-let autorun = function apploader () {
-    let ActivateAppInterface = () => app = new AppKing(app)
-    setTimeout(ActivateAppInterface, 200)
-}
-window.onload = autorun()
+function appLauncher () { console.log('App Launcher'); if (app) app = new AppKing(app) }
+if (window.addEventListener) window.addEventListener("load", appLauncher, false);
+else if (window.attachEvent) window.attachEvent("onload", appLauncher);
+else                         window.onload = appLauncher;
 
 
 //  EOF app core

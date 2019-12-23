@@ -89,6 +89,23 @@
 */
 
 
+.menulist {
+    margin:           0;
+    padding:          calc(0.5*var(--row-space)) 0;
+    list-style:       none;
+}
+.menulist>li>* {
+    display:          block;
+    padding:          calc(0.25*var(--row-space)) var(--col-space);
+  --background-color: transparent;
+    background-color: var(--background-color);
+}
+.menulist>li>*:hover,
+.menulist>li>*:focus {
+  --background-color: var(--light-shadow);
+}
+
+
 /** -------------------------------- padding shortcuts */
 
 

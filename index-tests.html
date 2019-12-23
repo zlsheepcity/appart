@@ -125,17 +125,19 @@
 
     <script defer src="app/styles/components/offsidebar/interface-offsidebar.js"></script>
     <script>
+        /*
         function DemoActivate__ChaptersMenuBar() {
             let  bar_api = InterfaceOffsideBar('ChaptersMenuBar')
             if  (bar_api)
                  bar_api.delegateToggle(document.querySelector('.toggle-ChaptersMenuBar'))
         }
         app.onload(DemoActivate__ChaptersMenuBar)
+        */
     </script>
 
     <!-- contact form -->
 
-    <script src="app/styles/components/contact-form/controller.js"></script>
+    <script defer src="app/styles/components/contact-form/controller.js"></script>
     <script>
         /*
         function getFormApiExample () {
@@ -166,6 +168,9 @@
 <!-- ----------------------------------------- MENU -->
 
 <nav>
+
+    <!-- Hamburger -->
+
     <style>
         .von-burger {
           --background-color: gold;
@@ -182,6 +187,8 @@
             background-size:     48px;
             background-repeat:   no-repeat;
             background-position: center center;
+            background-color:    var(--background-color);
+            color:               var(--color);
             border-radius: 0 0 0 4px;
         }
         .von-burger:hover {
@@ -190,6 +197,44 @@
         }
     </style>
     <button markup class="von-burger"></button>
+
+    <!-- Menu Bar -->
+
+    <section class="offsidebar ChaptersMenuBar">
+        <div class="offsidebar-container">
+            <header class="offsidebar-header bar-header">
+                <h2 class="h4">Chapters</h2>
+            </header>
+            <section class="offsidebar-content">
+                <ul class="menulist js-content-for-ChaptersMenuBar"></ul>
+            </section>
+        </div>
+    </section>
+    <script>
+        function Activate__ChaptersMenuBar() {
+            let  bar_api = InterfaceOffsideBar('ChaptersMenuBar')
+            if  (bar_api)
+                 bar_api.delegateToggle(document.querySelector('.von-burger'))
+            Autofill__ChaptersMenuBar(bar_api)
+        }
+        function Autofill__ChaptersMenuBar(api) {
+            const menuplace = document.querySelector('.js-content-for-ChaptersMenuBar')
+            const headers   = [...document.querySelectorAll('.nav-title')]
+            const getTitle  = el => el.querySelector('h2').innerText
+            const getID     = el => '#'+el.id
+            const addItem   = el => {
+                let li = document.createElement('li')
+                let a  = document.createElement('a')
+                a.href      = getID(el)
+                a.innerText = getTitle(el)
+                api.delegateClose(a)
+                li.appendChild(a)
+                menuplace.appendChild(li)
+            }
+            headers.forEach(addItem)
+        }
+        app.onload(Activate__ChaptersMenuBar)
+    </script>
 </nav>
 
 <!-- ----------------------------------------- SVG Backgrounds -->

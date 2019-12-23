@@ -55,7 +55,7 @@ function AppKing(mRna) {
 //  -------------------------------- AppKing autorun
 
 
-function appLauncher () { console.log('App Launcher'); if (app) app = new AppKing(app) }
+function appLauncher () { if (app) app = new AppKing(app) }
 if (window.addEventListener) window.addEventListener("load", appLauncher, false);
 else if (window.attachEvent) window.attachEvent("onload", appLauncher);
 else                         window.onload = appLauncher;

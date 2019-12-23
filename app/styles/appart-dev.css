@@ -1159,9 +1159,9 @@ body {
   /* minimal gap value  */
   --empty-space-offset: 3rem;
   /* open animation time  */
-  --transition-duration--slidein: 240ms;
-  --transition-duration--content: 160ms;
-  --transition-duration--overlay: 240ms;
+  --transition-duration--slidein: 160ms;
+  --transition-duration--content: 120ms;
+  --transition-duration--overlay: 160ms;
   /* base properties */
   --z-index--sidebar: 100;
   --direction: ltr; }

@@ -26,8 +26,9 @@
 
     <!-- ༼°▽°༽ style boot -->
     <style>
-        body    { width: 100%; height: auto; overflow: hidden; }
-        img,svg { max-width: 100%; }
+        html,body { margin: 0; padding: 0; }
+        body      { width: 100%; height: auto; overflow-y: scroll; }
+        img,svg   { max-width: 100%; }
     </style>
 
     <!-- ༼°▽°༽ prefetch boot -->
@@ -86,24 +87,71 @@
 
     <link
         href="app/styles/appart-dev.css?v2019.12.18"
+        media="none" onload="if(media!='all')media='all'"
         rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic"
+        media="none" onload="if(media!='all')media='all'"
         rel="stylesheet">
     <link
         href="https://fonts.googleapis.com/css?family=VT323"
+        media="none" onload="if(media!='all')media='all'"
         rel="stylesheet">
 
+    <noscript>
+        <link
+            href="app/styles/appart-dev.css?v2019.12.18"
+            rel="stylesheet" type="text/css">
+        <link
+            href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic"
+            rel="stylesheet">
+        <link
+            href="https://fonts.googleapis.com/css?family=VT323"
+            rel="stylesheet">
+    </noscript>
+
     <style>
-        .nav-title {
-            background-color:  gold;
-            color:            black;
-            padding-top:    0.75rem;
-            padding-bottom: 0.75rem;
-            padding-right:     3rem;
-          --h1-font-size:    1.5rem;
-          --h1-line-height:       1;
-          --grid-column--default: var(--grid-column--wrap-text-east);
+        .von-loader {
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 240ms ease-out;
+            
+            display: block;
+            position: fixed;
+            z-index: 11;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-color: hsl(212, 34%, 29%);
+            color:            hsl(226, 27%, 90%);
+        }
+        .von-loader.is-active {
+            pointer-events: all;
+            opacity: 1;
+        }
+        .von-loader.is-active::after {
+          --size:     6rem;
+
+            content:  '';
+            position: absolute;
+            z-index:  1;
+            top:      calc( 50% - 0.5*var(--size) );
+            right:    calc( 50% - 0.5*var(--size) );
+            width:    var(--size);
+            height:   var(--size);
+
+            background-size:     var(--size);
+            background-repeat:   no-repeat;
+            background-position: center center;
+         /* SVG: arrows circle loading */
+            background-image: url('data:image/svg+xml;utf8,<svg fill="white" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/></svg>');
+
+            animation: PageLoaderRotation 1s linear infinite;
+        }
+        @keyframes PageLoaderRotation {
+            from { transform: rotate(360deg); }
+            to   { transform: rotate(1deg);   }
         }
     </style>
 
@@ -164,6 +212,19 @@
     <!-- ========================================= END HEAD -->
 </head>
 <body class="colors--primary">
+<div class="von-loader"></div>
+<script>
+    function vonLoader () {
+        let loader = document.querySelector('.von-loader')
+        let finish = () => { if (loader) loader.classList.remove('is-active') }
+        if (window.addEventListener) window.addEventListener("load", finish, false)
+        else if (window.attachEvent) window.attachEvent("onload", finish)
+        else finish()
+        if (loader && loader.classList) loader.classList.add('is-active')
+        //if (loader) console.log(loader)
+    }
+    vonLoader()
+</script>
 
 <!-- ----------------------------------------- MENU -->
 
@@ -172,6 +233,16 @@
     <!-- Hamburger -->
 
     <style>
+        .nav-title {
+            background-color:  gold;
+            color:            black;
+            padding-top:    0.75rem;
+            padding-bottom: 0.75rem;
+            padding-right:     3rem;
+          --h1-font-size:    1.5rem;
+          --h1-line-height:       1;
+          --grid-column--default: var(--grid-column--wrap-text-east);
+        }
         .von-burger {
           --background-color: gold;
           --color:           black;
@@ -200,7 +271,7 @@
 
     <!-- Menu Bar -->
 
-    <section class="offsidebar ChaptersMenuBar">
+    <section class="offsidebar colors--root ChaptersMenuBar">
         <div class="offsidebar-container">
             <header class="offsidebar-header bar-header">
                 <h2 class="h4">Chapters</h2>

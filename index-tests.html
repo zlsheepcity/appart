@@ -112,47 +112,40 @@
 
     <style>
         .von-loader {
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 240ms ease-out;
-            
-            display: block;
             position: fixed;
-            z-index: 11;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
+            z-index:  11;
+            top:      0;
+            right:    0;
+            bottom:   0;
+            left:     0;
+            transition:       opacity 240ms ease-out;
             background-color: hsl(212, 34%, 29%);
             color:            hsl(226, 27%, 90%);
-        }
+            pointer-events:   none;
+            opacity:          0; }
         .von-loader.is-active {
-            pointer-events: all;
-            opacity: 1;
-        }
-        .von-loader.is-active::after {
+            pointer-events:   all;
+            opacity:          1; }
+        .von-loader::after {
           --size:     6rem;
-
             content:  '';
             position: absolute;
             z-index:  1;
-            top:      calc( 50% - 0.5*var(--size) );
-            right:    calc( 50% - 0.5*var(--size) );
+            top:      1.5rem;
+            left:     1.5rem;
             width:    var(--size);
             height:   var(--size);
-
             background-size:     var(--size);
             background-repeat:   no-repeat;
             background-position: center center;
          /* SVG: arrows circle loading */
             background-image: url('data:image/svg+xml;utf8,<svg fill="white" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/></svg>');
 
-            animation: PageLoaderRotation 1s linear infinite;
-        }
-        @keyframes PageLoaderRotation {
-            from { transform: rotate(360deg); }
-            to   { transform: rotate(1deg);   }
-        }
+            animation: PageLoaderRotation 1s linear infinite; }
+            @keyframes PageLoaderRotation {
+                from { transform: rotate(360deg); }
+                to   { transform: rotate(1deg);   }
+            }
     </style>
 
 
@@ -161,51 +154,26 @@
 
     <script defer src="app/script/app-core.js"></script>
 
-    <!-- interface -->
+    <!-- optimization -->
     <script defer src="app/script/components/image-lazy-loader.js"></script>
+
+    <!-- interface -->
+    <script defer src="app/styles/components/offsidebar/interface-offsidebar.js"></script>
+    <script defer src="app/styles/components/contact-form/controller.js"></script>
     <script defer src="app/script/components/image-zzzoom.js"></script>
+
+    <!-- dev functions -->
+    <script defer src="app/script/components/survival-test.js"></script>
+    <script defer src="app/script/components/autofill-paragraphs.js"></script>
 
 
     <!-- ========================================= APP CUSTOM -->
 
 
-    <!-- offsidebar -->
-
-    <script defer src="app/styles/components/offsidebar/interface-offsidebar.js"></script>
-    <script>
-        /*
-        function DemoActivate__ChaptersMenuBar() {
-            let  bar_api = InterfaceOffsideBar('ChaptersMenuBar')
-            if  (bar_api)
-                 bar_api.delegateToggle(document.querySelector('.toggle-ChaptersMenuBar'))
-        }
-        app.onload(DemoActivate__ChaptersMenuBar)
-        */
-    </script>
-
-    <!-- contact form -->
-
-    <script defer src="app/styles/components/contact-form/controller.js"></script>
-    <script>
-        /*
-        function getFormApiExample () {
-         // get api
-            let  selector = '.form-functional'
-            let  form_api = Init__ContactForm({selector})
-         // delegate action
-            let  imitator = document.querySelector('.js-imitate-form')
-            form_api.delegateResponse(imitator)
-        }
-        app.onload(getFormApiExample)
-        */
-    </script>
 
 
 
-    <!-- dev functions -->
 
-    <script defer src="app/script/components/survival-test.js"></script>
-    <script defer src="app/script/components/autofill-paragraphs.js"></script>
 
 
     <!-- ========================================== ʕ⊙ᴥ⊙ʔ = -->
@@ -221,7 +189,6 @@
         else if (window.attachEvent) window.attachEvent("onload", finish)
         else finish()
         if (loader && loader.classList) loader.classList.add('is-active')
-        //if (loader) console.log(loader)
     }
     vonLoader()
 </script>

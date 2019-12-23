@@ -93,12 +93,12 @@ function InterfaceOffsideBar ( dna={} ) {
 
     <script defer src="app/styles/components/offsidebar/interface-offsidebar.js"></script>
     <script>
-        function DemoActivateContactBar() {
-            let  bar_api = InterfaceOffsideBar('ContactBar')
+        function ActivateDemoBar() {
+            let  bar_api = InterfaceOffsideBar('DemoBarClassname')
             if  (bar_api)
-                 bar_api.delegateToggle(document.querySelector('.toggle-ContactBar'))
+                 bar_api.delegateToggle(document.querySelector('.toggle-DemoBar'))
         }
-        app.onload(DemoActivateContactBar)
+        app.onload(ActivateDemoBar)
     </script>
 
 /**/

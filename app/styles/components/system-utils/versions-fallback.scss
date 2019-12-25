@@ -227,6 +227,15 @@
     }
 
 
+
+/* ----------------------------------- swed-banner alias */
+
+
+.banner       { @extend .swed-banner         !optional; }
+.banner-title { @extend .swed-banner-title   !optional; }
+
+
+
 /** -------------------------------- Renamed Components */
 
 

@@ -10,6 +10,7 @@ Pure CSS, SCSS, Vanilla JS
 ## components web-page
 
 https://zlsheepcity.github.io/appart/
+https://zlsheepcity.github.io/appart/index-tests.html
 
 
 ## quick description (in russian)
@@ -23,3 +24,4 @@ App — от технического термина application, Art — тво
 Appart не фреймворк, а код для копирования в другие проекты.
 
 zl, August 2019
+zl.sheepcity@gmail.com

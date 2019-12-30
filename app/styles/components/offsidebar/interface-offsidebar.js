@@ -85,22 +85,27 @@ function InterfaceOffsideBar ( dna={} ) {
     return Api
 }
 
-/** Run *//*
 
+//  Create and Run
+
+/*
     let bar_api = InterfaceOffsideBar('BAR_CLASS_NAME')
+*/
 
- // Snippet
 
+//  Common usage snippet
+
+/*
     <script defer src="app/styles/components/offsidebar/interface-offsidebar.js"></script>
     <script>
         function ActivateDemoBar() {
-            let  bar_api = InterfaceOffsideBar('DemoBarClassname')
+            let  bar_api = InterfaceOffsideBar('BAR_CLASS_NAME')
             if  (bar_api)
-                 bar_api.delegateToggle(document.querySelector('.toggle-DemoBar'))
+                 bar_api.delegateToggle(document.querySelector('.BUTTON_CLASS_NAME'))
         }
         app.onload(ActivateDemoBar)
     </script>
+*/
 
-/**/
 
 /** EOF Offside Bar */

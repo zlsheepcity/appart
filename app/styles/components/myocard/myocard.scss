@@ -1,5 +1,5 @@
 /** myocard
- *  responsive solution for cards with 2 components
+ *  responsive solution for cards with 2 childs
  *  2019.12.15
  *
  *  CSS
@@ -43,13 +43,16 @@
   --item-padding:        calc( 0.5*var(--sy) ) var(--sx);
   --item-max-width:      28rem;
 
- /* Public
+ /* Public options
 
   --card-max-width:      100%;
+
   --card-wrap-order:     wrap-reverse;
   --card-wrap-order:     wrap;
+
   --card-centering:      0;
   --card-centering:      auto;
+
   --item-vertical-align: center;
   --item-vertical-align: flex-end;
   --item-vertical-align: flex-start;
@@ -67,13 +70,13 @@
     width:        var(--width);
 
   --max-width-xx: calc( 2*var(--item-max-width) + var(--sx) );
-  --max-width:    var(--card-max-width ,var(--max-width-xx) );
+  --max-width:    var(--card-max-width, var(--max-width-xx) );
     max-width:    var(--max-width);
 
-  --margin-left:  var(--card-centering ,auto );
+  --margin-left:  var(--card-centering, auto );
     margin-left:  var(--margin-left);
 
-  --margin-right: var(--card-centering ,auto );
+  --margin-right: var(--card-centering, auto );
     margin-right: var(--margin-right);
 
 }
@@ -83,7 +86,7 @@
     .myocard {
         display:        flex;
         flex-direction: row;
-        flex-wrap:      var(--card-wrap-order ,wrap ); }
+        flex-wrap:      var(--card-wrap-order,  wrap );}
     .myocard>*                   { flex-grow:   0.5;   }
     .myocard>*:nth-child( odd)   { margin-left: auto;  }
     .myocard>*:nth-child(even)   { text-align:  right; }
@@ -116,7 +119,7 @@
  /* Vertical Align */
 
     .myocard {
-      --align-items: var(--item-vertical-align ,center );
+      --align-items: var(--item-vertical-align, center );
         align-items: var(--align-items); }
 
 

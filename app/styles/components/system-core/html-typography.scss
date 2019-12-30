@@ -285,5 +285,23 @@ body {
    -webkit-font-smoothing: antialiased;
 }
 
+/** Features Inspector: wakamaifondue.com */
+.font-feature-digital {
+    font-feature-settings:
+        'lnum' on,
+        'ss14' on,
+        'ss17' on;
+}
+.sup-num {
+    font-size:             inherit;
+    vertical-align:        text-top;
+    font-feature-settings: 'sups' on;
+}
+.sub-num {
+    font-size:             inherit;
+    vertical-align:        text-bottom;
+    font-feature-settings: 'subs' on;
+}
+
 
 /*  EOF Typography */

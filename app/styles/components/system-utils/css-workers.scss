@@ -48,7 +48,7 @@
     grid-column-gap: 0;
     grid-template-columns: [full main text] auto;
     } .group-content-rows>* {
-        grid-column: main;
+        grid-column: text;
 }
 
 .group-collisting {

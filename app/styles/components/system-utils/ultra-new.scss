@@ -27,21 +27,3 @@
 
 //* ------------------------------------- pending components
 
-
-
-/* universal menu list */
-
-.content-menu {
-    margin:  0 calc( (-1) * var(--col-space) );
-    padding: 0;
-    list-style: none;
-}
-.content-menu>li>* {
-    display: block;
-    padding: 0.5rem var(--col-space);
-    text-decoration: none;
-}
-.content-menu>li>*:hover {
-    background-color: hsla(0,0%,0%,0.25);
-}
-

@@ -239,8 +239,8 @@
 /** -------------------------------- Renamed Components */
 
 
-.group-content-rows { @extend .group-rows; }
-
+.group-content-rows { @extend .group-rows    !optional; }
+.content-menu       { @extend .menulist      !optional; }
 
 
 /*  EOF Versions Fallback */

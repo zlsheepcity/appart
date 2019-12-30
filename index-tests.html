@@ -33,6 +33,9 @@
 
     <!-- ༼°▽°༽ prefetch boot -->
     <link rel="preconnect"   href="//fonts.gstatic.com">
+    <link rel="preload"      href="app/fonts/Vollkorn-Regular.woff2"  as="font">
+    <link rel="preload"      href="art/bergamot-just-browse-here.svg" as="image">
+    <!-- INFO: https://3perf.com/blog/link-rels/ -->
 
     <!-- ༼°▽°༽ app boot -->
     <script>
@@ -89,26 +92,13 @@
         href="app/styles/appart-dev.css?v2019.12.18"
         media="none" onload="if(media!='all')media='all'"
         rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic"
-        media="none" onload="if(media!='all')media='all'"
-        rel="stylesheet">
-    <link
-        href="https://fonts.googleapis.com/css?family=VT323"
-        media="none" onload="if(media!='all')media='all'"
-        rel="stylesheet">
 
     <noscript>
         <link
             href="app/styles/appart-dev.css?v2019.12.18"
             rel="stylesheet" type="text/css">
-        <link
-            href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic"
-            rel="stylesheet">
-        <link
-            href="https://fonts.googleapis.com/css?family=VT323"
-            rel="stylesheet">
     </noscript>
+
 
     <style>
         .von-loader {

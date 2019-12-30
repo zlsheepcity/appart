@@ -23,6 +23,7 @@ sass --no-source-map app/styles/appart.scss app/styles/appart-dev.css
     @import "components/system-core/css-animations";
     @import "components/system-core/html-markup";
     @import "components/system-core/html-typography";
+    @import "components/system-core/fonts";
     @import "components/system-core/color-model";
 
 

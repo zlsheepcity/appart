@@ -6,29 +6,6 @@
  */
 
 
-/** Hosted at Google Snippet */
-/*
-    <link rel="preconnect"   href="//fonts.gstatic.com">
-    <link
-        href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic"
-        media="none" onload="if(media!='all')media='all'"
-        rel="stylesheet">
-    <link
-        href="https://fonts.googleapis.com/css?family=VT323"
-        media="none" onload="if(media!='all')media='all'"
-        rel="stylesheet">
-
-    <noscript>
-        <link
-            href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic"
-            rel="stylesheet">
-        <link
-            href="https://fonts.googleapis.com/css?family=VT323"
-            rel="stylesheet">
-    </noscript>
- */
-
-
 /** Primary Text Serif */
 
 @font-face {
@@ -80,5 +57,28 @@
         url('../fonts/VT323-Regular.svg#VT323-Regular') format('svg');
 }
 
+
+/** Fonts Hosted at Google */
+
+/*
+    <link rel="preconnect"   href="//fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic"
+        media="none" onload="if(media!='all')media='all'"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=VT323"
+        media="none" onload="if(media!='all')media='all'"
+        rel="stylesheet">
+
+    <noscript>
+        <link
+            href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic"
+            rel="stylesheet">
+        <link
+            href="https://fonts.googleapis.com/css?family=VT323"
+            rel="stylesheet">
+    </noscript>
+ */
 
 /*  EOF Hosted Fonts */

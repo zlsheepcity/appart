@@ -1,0 +1,71 @@
+<!-- Von Burger + Fill Chapters -->
+<!-- 2020.1.2   -->
+
+<nav>
+
+<!--Hamburger -->
+    <style>
+        .von-burger {
+          --background-color: gold;
+          --color:           black;
+            position: fixed;
+            z-index:  3;
+            top:      0;
+            right:    0;
+            width:  3em;
+            height: 3em;
+            cursor: pointer;
+         /* SVG: hamburger */
+            background-image: url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>');
+            background-size:     48px;
+            background-repeat:   no-repeat;
+            background-position: center center;
+            background-color:    var(--background-color);
+            color:               var(--color);
+            border-radius: 0 0 0 4px;
+        }
+        .von-burger:hover {
+            transition: background 120ms ease-in;
+          --background-color: goldenrod;
+        }
+    </style>
+    <button markup class="von-burger"></button>
+
+<!--Menu Bar -->
+    <section class="offsidebar colors--root ChaptersMenuBar">
+        <div class="offsidebar-container">
+            <header class="offsidebar-header bar-header">
+                <h2 class="h4">Chapters</h2>
+            </header>
+            <section class="offsidebar-content">
+                <ul class="menulist js-list-for-ChaptersMenuBar"></ul>
+            </section>
+        </div>
+    </section>
+    <script>
+        function Activate__ChaptersMenuBar() {
+            let  bar_api = InterfaceOffsideBar('ChaptersMenuBar')
+            if  (bar_api)
+                 bar_api.delegateToggle(document.querySelector('.von-burger'))
+            Autofill__ChaptersMenuBar(bar_api)
+        }
+        function Autofill__ChaptersMenuBar(api) {
+            const menuplace = document.querySelector('.js-list-for-ChaptersMenuBar')
+            const headers   = [...document.querySelectorAll('.nav-title')]
+            const getText   = el => el.querySelector('h2').innerText
+            const getLink   = el => '#'+el.id
+            const addItem   = el => {
+                let li = document.createElement('li')
+                let a  = document.createElement('a')
+                a.href      = getLink(el)
+                a.innerText = getText(el)
+                api.delegateClose(a)
+                li.appendChild(a)
+                menuplace.appendChild(li)
+            }
+            headers.forEach(addItem)
+        }
+        app.onload(Activate__ChaptersMenuBar)
+    </script>
+
+</nav>

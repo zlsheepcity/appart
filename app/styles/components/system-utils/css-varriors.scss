@@ -4,39 +4,11 @@
  *  add safely custom value
  *  «Var never changes»
  *  zl, 2019.12.13
- *
- *
- *  SCSS
+ *  update: 2020.1.2
  *
  */
 
-
-/** -------------------------------- Usage */
-/*
-
-    ## Option 0. Default value
-
-    <div class="opacity">
-        ...
-    </div>
-
-    ## Option 1.
-
-    <div class="opacity" style="--opacity:0.56;">
-        ...
-    </div>
-
-    ## Option 2.
-
-    <section style="--opacity: 0.56;">
-        <div class="opacity">...</div>
-        <div class="opacity">...</div>
-    </section>
-
- */
-
-
-/** -------------------------------- SCSS auto varriors */
+//  -------------------------------- SCSS auto varriors
 
 
 $DEFAULT-VARRIORS: (
@@ -66,10 +38,10 @@ $DEFAULT-VARRIORS: (
     'justify-self':     center,
     'text-align':       center,
 
-    'font-size':        1em,
+    'font-size':        1rem,
     'line-height':      var(--line-height, 1.5),
 
-    'opacity':          1,
+    'opacity':          0,
 
     'color':            inherit,
     'background-color': transparent
@@ -78,20 +50,5 @@ $DEFAULT-VARRIORS: (
 //  .padding { padding: var(--padding, 1rem   ); }
     .#{$VAR} { #{$VAR}: var(--#{$VAR}, #{$DEF}); }
 }
-
-
-/** -------------------------------- Handmade CSS varriors */
-
-
-    /*
-    .width      {      width: var(--width,      auto ); }
-    .max-width  {  max-width: var(--max-width,  100% ); }
-    .min-width  {  min-width: var(--min-width,     0 ); }
-    .height     {     height: var(--height,     auto ); }
-    .max-height { max-height: var(--max-height, 100% ); }
-    .min-height { min-height: var(--min-height,    0 ); }
-    .opacity    {    opacity: var(--opacity,       1 ); }
-    */
-
 
 /*  EOF CSS Varriors */

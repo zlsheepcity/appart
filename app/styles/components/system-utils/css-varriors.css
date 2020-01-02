@@ -1,0 +1,107 @@
+@charset "UTF-8";
+/** === ༼°▽°༽ ===
+ *   CSS Varriors
+ *
+ *  add safely custom value
+ *  «Var never changes»
+ *  zl, 2019.12.13
+ *  update: 2020.1.2
+ *
+ */
+.width {
+  width: var(--width, auto);
+}
+
+.max-width {
+  max-width: var(--max-width, 100%);
+}
+
+.min-width {
+  min-width: var(--min-width, 0);
+}
+
+.height {
+  height: var(--height, auto);
+}
+
+.max-height {
+  max-height: var(--max-height, 100%);
+}
+
+.min-height {
+  min-height: var(--min-height, 0);
+}
+
+.padding {
+  padding: var(--padding, var(--row-space, 1rem) var(--col-space, 1rem));
+}
+
+.padding-top {
+  padding-top: var(--padding-top, var(--row-space, 1rem));
+}
+
+.padding-bottom {
+  padding-bottom: var(--padding-bottom, var(--row-space, 1rem));
+}
+
+.padding-left {
+  padding-left: var(--padding-left, var(--col-space, 1rem));
+}
+
+.padding-right {
+  padding-right: var(--padding-right, var(--col-space, 1rem));
+}
+
+.margin {
+  margin: var(--margin, var(--row-space, 1rem) var(--col-space, 1rem));
+}
+
+.margin-top {
+  margin-top: var(--margin-top, var(--row-space, 1rem));
+}
+
+.margin-bottom {
+  margin-bottom: var(--margin-bottom, var(--row-space, 1rem));
+}
+
+.margin-left {
+  margin-left: var(--margin-left, var(--col-space, 1rem));
+}
+
+.margin-right {
+  margin-right: var(--margin-right, var(--col-space, 1rem));
+}
+
+.align-self {
+  align-self: var(--align-self, center);
+}
+
+.justify-self {
+  justify-self: var(--justify-self, center);
+}
+
+.text-align {
+  text-align: var(--text-align, center);
+}
+
+.font-size {
+  font-size: var(--font-size, 1rem);
+}
+
+.line-height {
+  line-height: var(--line-height, var(--line-height, 1.5));
+}
+
+.opacity {
+  opacity: var(--opacity, 0);
+}
+
+.color {
+  color: var(--color, inherit);
+}
+
+.background-color {
+  background-color: var(--background-color, transparent);
+}
+
+/*  EOF CSS Varriors */

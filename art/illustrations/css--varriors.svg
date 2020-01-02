@@ -6,7 +6,7 @@
 <![CDATA[
 	.main{fill-rule:evenodd;clip-rule:evenodd;}
 	.css-fill{fill-rule:evenodd;clip-rule:evenodd;fill:#FFFFFF;}
-	.var{fill-rule:evenodd;clip-rule:evenodd;fill:#330000;}
+	.var{fill-rule:evenodd;clip-rule:evenodd;fill:hsl( 359, 54%, 53% );}
 ]]>
 </style>
 <g>

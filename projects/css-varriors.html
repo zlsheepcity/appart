@@ -93,11 +93,97 @@
 
     <!-- ========================================= APP CUSTOM -->
 
+    <style>
+        .el-drainage-divide {
+            width:  100%;
+            height: 10vw;
+            background-image:    url(../art/decorations/horizont-varriors.svg);
+            background-repeat:   no-repeat;
+            background-size:     cover;
+            background-position: center bottom;
+        }
+    </style>
 
     <!-- ========================================== ʕ⊙ᴥ⊙ʔ = -->
     <!-- ========================================= END HEAD -->
 </head>
 <body class="colors--primary">
+
+<!-- ============================================= Appart Header -->
+
+<nav class="grid-king use-colors colors--secondary h4">
+    <p>
+        CSS varriors —
+         a<del class="opacity" style="--opacity:0.05">p</del>part of
+        <a href="../index.html" class="link-inline mark">appart</a>
+        project
+    </p>
+    <small class="grid-column--note align-self">
+        v2020.1.2
+    </small>
+</nav>
+
+<!-- ============================================= Project Header -->
+
+<header class="el-project-header use-colors colors--ivory">
+    <figure class="chapter">
+        <img
+            src="../art/illustrations/css--varriors.svg"
+            alt="CSS --varriors"
+            class="width height auto-margin"
+            style="--width:90vw;--height:30vw;">
+    </figure>
+    <hr class="el-drainage-divide colors--primary"/>
+</header>
+
+<article class="chapter grid-king">
+
+    <p>It's about CSS & Markup.</p>
+    <p>Sometimes we need to add custom value without any hurt to current design system. Inline styling isn't a good solution.</p>
+    <p>If only we always could add <mark>.my-custom-class</mark> …<br>But it's not.</p>
+
+    <header>
+    <h1 class="h3">CSS varriors</h1>
+    <p>Solution based on <mark>CSS variables</mark>.</p>
+    </header>
+
+    <ul>
+        <li>Memorable logic with CSS property names.</li>
+        <li>The markup remains safe for reuse.</li>
+        <li>The designer remains calm.</li>
+    </ul>
+
+</article>
+
+<pre class="code-block">
+<mark>&lt;!-- Typical System Example --&gt;</mark>
+
+&lt;blockquote class="padding-sm"&gt;...&lt;/blockquote&gt;
+&lt;blockquote class="padding-md"&gt;...&lt;/blockquote&gt;
+
+<mark>&lt;!-- Avoid Inline Styling --&gt;</mark>
+
+&lt;blockquote style="padding-left: 27.5vw"&gt;...&lt;/blockquote&gt;
+
+<mark>&lt;!-- Use Varriors Instead --&gt;</mark>
+
+&lt;blockquote class="padding-left" style="--padding-left: 27.5vw"&gt;
+    &lt;p&gt; Var. Var never changes. &lt;/p&gt;
+    &lt;cite&gt; Ron Perlman (almost correct quote) &lt;/cite&gt;
+&lt;/blockquote&gt;
+</pre>
+
+<footer class="chapter grid-king">
+
+    <h3>Installation</h3>
+    <p>Copy-paste SCSS/CSS or include any of this files into your project.</p>
+
+    <ul class="h4">
+        <li><a href="https://github.com/zlsheepcity/appart/blob/master/app/styles/components/system-utils/css-varriors.scss">SCSS Constructor</a></li>
+        <li><a href="https://github.com/zlsheepcity/appart/blob/master/app/styles/components/system-utils/css-varriors.css">Compiled CSS</a></li>
+    </ul>
+
+</footer>
 
 </body>
 </html>

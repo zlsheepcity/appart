@@ -85,6 +85,9 @@ body {
 
 /** Typeface atoms */
 
+.font-primary {
+    font-family: var(--font-family);
+}
 .font-secondary {
     font-family: var(--font-family-secondary);
 }

@@ -329,6 +329,9 @@ body {
        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; }
 
 /** Typeface atoms */
+.font-primary {
+  font-family: var(--font-family); }
+
 .font-secondary {
   font-family: var(--font-family-secondary); }
 
@@ -517,27 +520,6 @@ body {
  *  CSS
  *
  */
-/** Hosted at Google Snippet */
-/*
-    <link rel="preconnect"   href="//fonts.gstatic.com">
-    <link
-        href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic"
-        media="none" onload="if(media!='all')media='all'"
-        rel="stylesheet">
-    <link
-        href="https://fonts.googleapis.com/css?family=VT323"
-        media="none" onload="if(media!='all')media='all'"
-        rel="stylesheet">
-
-    <noscript>
-        <link
-            href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic"
-            rel="stylesheet">
-        <link
-            href="https://fonts.googleapis.com/css?family=VT323"
-            rel="stylesheet">
-    </noscript>
- */
 /** Primary Text Serif */
 @font-face {
   font-family: 'Vollkorn';
@@ -560,6 +542,27 @@ body {
   font-weight: normal;
   font-style: normal;
   src: url("../fonts/VT323-Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/VT323-Regular.woff") format("woff"), url("../fonts/VT323-Regular.ttf") format("truetype"), url("../fonts/VT323-Regular.svg#VT323-Regular") format("svg"); }
+/** Fonts Hosted at Google */
+/*
+    <link rel="preconnect"   href="//fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic"
+        media="none" onload="if(media!='all')media='all'"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=VT323"
+        media="none" onload="if(media!='all')media='all'"
+        rel="stylesheet">
+
+    <noscript>
+        <link
+            href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic"
+            rel="stylesheet">
+        <link
+            href="https://fonts.googleapis.com/css?family=VT323"
+            rel="stylesheet">
+    </noscript>
+ */
 /*  EOF Hosted Fonts */
 /** Color Model 3x3+2
  *  System based on nine color values and two shadows
@@ -2115,6 +2118,7 @@ html:not(.root) {
  *  About:
  *  i saw this magic at
  *  https://adrianroselli.com/2019/09/table-with-expando-rows.html
+ *  below is modifyed solution
  *
  */
 /* -------------------------------- Type Settings */

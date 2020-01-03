@@ -14,17 +14,26 @@ Revision: 2019.12.30
 - group-banner returns
 - Dropdowns as WebComponents
 - Animated Cat-Buttons
-- SVG Map
+- SVG HoverMap
 
 
 ## Update Cases
 
 - code-block: custom scan time, textarea addon
-
+- optimize github svga-icon
 
 -------------------------------------
 # Design & Presentation
 -------------------------------------
 
 - Index update
+
+
+
+
+
+-------------------------------------
+# Complete
+-------------------------------------
+
 - CSS Varriors

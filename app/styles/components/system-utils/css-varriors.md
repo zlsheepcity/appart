@@ -53,8 +53,8 @@ But it's not.
 Compilation shortcuts
 ```bash
 
-scss -C --sourcemap=none app/styles/components/system-utils/css-varriors.scss app/styles/components/system-utils/css-varriors.css
+scss -C --sourcemap=none app/styles/components/system-utils/css-varriors.scss app/styles/components/system-utils/css-varriors-compiled.css
 
-sass --no-source-map app/styles/components/system-utils/css-varriors.scss app/styles/components/system-utils/css-varriors.css
+sass --no-source-map app/styles/components/system-utils/css-varriors.scss app/styles/components/system-utils/css-varriors-compiled.css
 
 ```

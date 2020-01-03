@@ -17,6 +17,11 @@ Revision: 2019.12.30
 - SVG Map
 
 
+## Update Cases
+
+- code-block: custom scan time, textarea addon
+
+
 -------------------------------------
 # Design & Presentation
 -------------------------------------

@@ -16,7 +16,7 @@
 
     <!-- ## MICRODATA -->
     <meta property="og:url"          content="https://zlsheepcity.github.io/appart/projects/article-grid.html" />
-    <meta property="og:image"        content="https://zlsheepcity.github.io/appart/projects/css-varriors.png" />
+    <meta property="og:image"        content="https://zlsheepcity.github.io/appart/projects/article-grid--long-read.png" />
     <meta property="og:image:width"  content="1200" />
     <meta property="og:image:height" content="628" />
     <meta property="og:type"         content="article" />
@@ -159,6 +159,11 @@
 </article>
 
 <article id="LongRead" class="el-longread chapter grid-king use-colors colors--ivory">
+
+    <figure class="grid-column--wrap-east">
+        <img src="article-grid--long-read.png" alt="This article preview">
+    </figure>
+
     <header>
         <h1>Longread Demo</h1>
         <p>January 13, 2020</p>
@@ -178,8 +183,8 @@
         <text></text>
     </section>
     <figure class="subgrid-wrap">
-        <img src="../art/illustrations/austria.svg" alt="" class="demo">
-        <figcaption class="subgrid-content grid-column--note text-block-smaller s-align">
+        <img src="../art/illustrations/illistr--products.svg" alt="" class="demo">
+        <figcaption class="subgrid-content grid-column--note text-block-smaller">
             <text></text>
         </figcaption>
     </figure>
@@ -188,7 +193,7 @@
     <h2 auto class="subgrid-container grid-column--wrap-east"></h2>
     <text></text>
     <text></text>
-    <blockquote class="subgrid-container grid-column--wrap-east text-block-bigger color-box">
+    <blockquote class="subgrid-wrap-west text-block-bigger color-box">
         <text></text>
     </blockquote>
     <text></text>
@@ -200,9 +205,12 @@
         <text></text>
         <text></text>
     </section>
+    <figure class="subgrid-east">
+        <img src="../art/illustrations/austria.svg" alt="" class="demo">
+    </figure>
     <figure class="subgrid-wrap-east color-box">
         <img src="../art/illustrations/austria.svg" alt="" class="demo">
-        <figcaption class="subgrid-content grid-column--note text-block-smaller">
+        <figcaption class="subgrid-content grid-column--note text-block-smaller s-align">
             <text></text>
         </figcaption>
     </figure>
@@ -225,16 +233,109 @@
         <h5 auto>2. </h5>
         <text></text>
     </section>
+
+    <figure class="grid-column--wrap-east">
+        <img src="../art/illustrations/illistr--mr-router.svg" alt="Icons" class="demo">
+    </figure>
+
     <hr>
 
-    <figure class="subgrid-wrap">
-        <figcaption class="subgrid-content grid-column--note text-block-smaller">
+    <section
+        class="sublayer"
+        style="color:var(--back-color);background-color:var(--text-color);">
+        <style>
+            .el-settings-cell {
+                grid-column:  full;
+                align-self:   end;
+                overflow:     hidden;
+            }
+            .el-settings-cell img {
+                width:     100%;
+                transform: translateY(1px);
+            }
+        </style>
+
+        <hr>
+        <hr>
+
+        <section class="subgrid-container grid-column--wrap-east">
+
+            <h2 auto></h2>
+            <div class="h4">
+                <text></text>
+            </div>
+
+        </section>
+
+        <div class="subgrid-main">
             <text></text>
-        </figcaption>
-        <div class="grid-column--wrap-east">
-            <img src="../art/fox-author.svg" alt="" class="demo">
+            <text></text>
         </div>
-    </figure>
+        <div class="subgrid-east text-block-smaller">
+            <text></text>
+        </div>
+
+        <figure class="el-settings-cell">
+            <img src="../art/illustrations/illistr--settings.svg" alt="Settings">
+        </figure>
+    </section>
+
+    <hr>
+
+    <section class="sublayer grid-queen">
+        <div class="subgrid-west text-block-smaller">
+            <text></text>
+        </div>
+        <div class="subgrid-main color-box">
+            <text></text>
+            <text></text>
+        </div>
+        <div class="subgrid-east text-block-smaller">
+            <text></text>
+        </div>
+        <div class="subgrid-container grid-column--west-side color-box align-self" style="--align-self:stretch;">
+            <text></text>
+        </div>
+        <div class="subgrid-wrap-east">
+            <h3 class="subgrid-container grid-column--wrap">
+                <text></text>
+            </h3>
+        </div>
+        <div class="subgrid-west color-box text-block-smaller align-self" style="--align-self:stretch;">
+            <text></text>
+            <text></text>
+        </div>
+        <div class="subgrid-main">
+            <text></text>
+            <text></text>
+            <text></text>
+        </div>
+        <div class="subgrid-east color-box text-block-smaller align-self" style="--align-self:stretch;">
+            <text></text>
+        </div>
+        <div class="subgrid-container grid-column--wrap color-box">
+            <text></text>
+            <text></text>
+        </div>
+
+        <h1 auto class="subgrid-container grid-column--wrap-east"></h1>
+        <figure class="grid-column--wrap">
+            <img src="../art/decorations/deer-divider.svg" alt="" class="demo">
+        </figure>
+        <text class="text-block-bigger"></text>
+        <text></text>
+        <text></text>
+
+        <figure class="subgrid-wrap">
+            <figcaption class="subgrid-content grid-column--note text-block-smaller">
+                <text></text>
+            </figcaption>
+            <div class="grid-column--wrap-east">
+                <img src="../art/fox-author.svg" alt="" class="demo">
+            </div>
+        </figure>
+
+    </section>
 
 
 </article>
@@ -316,7 +417,7 @@
         autofillCaptions()
     </script>
     <style>
-        text, [auto], .demo { opacity: 0.32; }
+        text, [auto], .demo { opacity: 0.62; }
     </style>
 
 </footer>

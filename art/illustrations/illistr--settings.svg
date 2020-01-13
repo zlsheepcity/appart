@@ -4,11 +4,11 @@
 	 width="1000px" height="750px" viewBox="0 0 1000 750" style="enable-background:new 0 0 1000 750;" xml:space="preserve">
 <style type="text/css">
 <![CDATA[
-	.st0{opacity:0;fill-rule:evenodd;clip-rule:evenodd;fill:#A7A9AC;}
-	.st1{fill-rule:evenodd;clip-rule:evenodd;fill:#ED1C24;}
+	.st0{opacity:0.2;fill-rule:evenodd;clip-rule:evenodd;fill:#A7A9AC;}
+	.st1{fill-rule:evenodd;clip-rule:evenodd;fill:#eee6aa;}
 	.st2{fill-rule:evenodd;clip-rule:evenodd;}
 	.st3{fill-rule:evenodd;clip-rule:evenodd;fill:#FFFFFF;}
-	.st4{opacity:0;fill-rule:evenodd;clip-rule:evenodd;fill:#939598;}
+	.st4{opacity:0.2;fill-rule:evenodd;clip-rule:evenodd;fill:#939598;}
 ]]>
 </style>
 <path class="st2" d="M990.4,740.3c7.8-3.1-0.4-144.7-0.4-157.6c0.1-32.1,0.2-64.2-0.1-96.2c-0.3-28.3,1.2-20.7-22.8-22.4

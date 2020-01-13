@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- appseed 2020.1.2 -->
+
+    <!-- ========================================= HEAD CONTENT -->
+
+
+    <title>Article Grid Layout</title>
+
+    <meta name="description"         content="Magazine-looking CSS layout, Grid based" />
+    <meta name="author"              content="zl 2020, zl.sheepcity@gmail.com" />
+
+    <!-- ## MICRODATA -->
+    <meta property="og:url"          content="https://zlsheepcity.github.io/appart/projects/article-grid.html" />
+    <meta property="og:image"        content="https://zlsheepcity.github.io/appart/projects/css-varriors.png" />
+    <meta property="og:image:width"  content="1200" />
+    <meta property="og:image:height" content="628" />
+    <meta property="og:type"         content="article" />
+    <meta property="og:locale"       content="en_US" />
+
+    <!-- FAVICON -->
+    <meta name="theme-color"             content="#314863">
+    <meta name="msapplication-TileColor" content="#314863">
+    <meta name="msapplication-TileImage" content="../app/favicons/144x144.png">
+    <link href="../app/favicons/180x180.png" sizes="180x180" rel="apple-touch-icon">
+    <link href="../app/favicons/192x192.png" sizes="192x192" rel="icon" type="image/png">
+
+
+    <!-- ========================================= BOOT -->
+
+
+    <!-- ༼°▽°༽ style boot -->
+    <style>
+        html       { margin:0; padding:0 0.25rem; }
+        body       { margin:0; padding:0; width:100%; height:auto; overflow-y:scroll; }
+        img,svg,hr { margin:0; border:0; max-width:100%; }
+        pre        { overflow:auto; }
+    </style>
+
+    <!-- ༼°▽°༽ prefetch boot -->
+    <link rel="preload"      href="../app/fonts/Vollkorn-Regular.woff2" as="font">
+    <link rel="preload"      href="../app/fonts/Vollkorn-Bold.woff2"    as="font">
+    <link rel="preload"      href="../app/fonts/Vollkorn-Italic.woff2"  as="font">
+    <link rel="preload"      href="../app/fonts/VT323-Regular.woff"     as="font">
+
+
+    <!-- ========================================= DESIGN -->
+
+
+    <link
+        href="../app/styles/appart-dev.css?v2020.1.2"
+        media="none" onload="if(media!='all')media='all'"
+        rel="stylesheet" type="text/css">
+
+    <noscript>
+        <link
+            href="../app/styles/appart-dev.css?v2020.1.2"
+            rel="stylesheet" type="text/css">
+    </noscript>
+
+
+    <!-- ========================================= APP CUSTOM -->
+
+    <style>
+
+    </style>
+
+    <!-- ========================================== ʕ⊙ᴥ⊙ʔ = -->
+    <!-- ========================================= END HEAD -->
+</head>
+<body class="colors--primary">
+
+<!-- ============================================= Von Loader -->
+
+<nav>
+    <style>
+        .von-loader {
+          --background-color: hsl(212, 34%, 29%);
+          --color:            hsl(226, 27%, 90%);
+          --size:     6rem;
+            z-index:  11;
+            position: fixed;
+            top:      0;
+            right:    0;
+            bottom:   0;
+            left:     0;
+            background-color: var(--background-color);
+            color:            var(--color);
+            transition:       opacity 240ms ease-out;
+            pointer-events:   none;
+            opacity:          0; }
+        .von-loader.is-active {
+            pointer-events:   all;
+            opacity:          1; }
+        .von-loader::after {
+            content:  '';
+            position: absolute;
+            z-index:  1;
+            top:      1.5rem;
+            left:     1.5rem;
+            width:    var(--size);
+            height:   var(--size);
+            background-size:     var(--size);
+            background-repeat:   no-repeat;
+            background-position: center center;
+         /* SVG: arrows circle loading */
+            background-image: url('data:image/svg+xml;utf8,<svg fill="white" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/></svg>');
+
+            animation: VonLoaderRotation 1s linear infinite; }
+            @keyframes VonLoaderRotation {
+                from { transform: rotate(360deg); }
+                to   { transform: rotate(  1deg); }
+            }
+    </style>
+    <div class="von-loader"></div>
+    <script>
+        function vonLoader () {
+
+            let loader = document.querySelector('.von-loader')
+            if (!loader) return false
+            loader.classList.add('is-active')
+
+            let finish = () => { loader.classList.remove('is-active') }
+            if (window.addEventListener) window.addEventListener("load", finish, false)
+            else if (window.attachEvent) window.attachEvent("onload", finish)
+            else finish()
+        }
+        vonLoader()
+    </script>
+</nav>
+
+<!-- ============================================= Appart Header -->
+
+<nav
+    class="grid-king use-colors colors--secondary text-block-smaller padding"
+    style="--padding: 0.25rem 0; --grid-row-gap:0.25rem">
+    <p>
+        Article Grid —
+         a<del class="opacity" style="--opacity:0.05">p</del>part of
+        <a href="../index.html" class="link-inline mark">appart</a>
+        project
+    </p>
+    <p class="grid-column--note">
+        v2020.1.13, Version: Kari
+    </p>
+</nav>
+
+<!-- ============================================= Project Header -->
+
+<article class="chapter grid-king">
+    <header>
+        <h1>Article Grid</h1>
+        <h2>grid-queen 2020</h2>
+    </header>
+</article>
+
+<article id="LongRead" class="el-longread chapter grid-king use-colors colors--ivory">
+    <header>
+        <h1>Longread Demo</h1>
+        <p>January 13, 2020</p>
+    </header>
+
+    <text></text>
+    <section class="subgrid-container grid-column--east text-block-smaller color-box">
+        <p>
+            Text-content is random<br>
+            Reload to change
+        </p>
+    </section>
+
+    <h2 auto class="subgrid-container grid-column--wrap-east"></h2>
+    <section class="subgrid-main">
+        <text></text>
+        <text></text>
+    </section>
+    <figure class="subgrid-wrap">
+        <img src="../art/illustrations/austria.svg" alt="" class="demo">
+        <figcaption class="subgrid-content grid-column--note text-block-smaller s-align">
+            <text></text>
+        </figcaption>
+    </figure>
+    <hr>
+
+    <h2 auto class="subgrid-container grid-column--wrap-east"></h2>
+    <text></text>
+    <text></text>
+    <blockquote class="subgrid-container grid-column--wrap-east text-block-bigger color-box">
+        <text></text>
+    </blockquote>
+    <text></text>
+    <hr>
+
+    <h3 auto class="subgrid-container grid-column--wrap-east"></h3>
+    <section class="subgrid-main">
+        <text></text>
+        <text></text>
+        <text></text>
+    </section>
+    <figure class="subgrid-wrap-east color-box">
+        <img src="../art/illustrations/austria.svg" alt="" class="demo">
+        <figcaption class="subgrid-content grid-column--note text-block-smaller">
+            <text></text>
+        </figcaption>
+    </figure>
+    <hr>
+
+    <section class="subgrid-main">
+        <h4 auto class="subgrid-container grid-column--wrap-east"></h4>
+        <text></text>
+        <text></text>
+        <h4 auto class="subgrid-container grid-column--wrap-east"></h4>
+        <text></text>
+        <text></text>
+        <text></text>
+        <text></text>
+    </section>
+    <section class="subgrid-content grid-column--note text-block-smaller">
+        <h5 auto>1. </h5>
+        <text></text>
+        <text></text>
+        <h5 auto>2. </h5>
+        <text></text>
+    </section>
+    <hr>
+
+    <figure class="subgrid-wrap">
+        <figcaption class="subgrid-content grid-column--note text-block-smaller">
+            <text></text>
+        </figcaption>
+        <div class="grid-column--wrap-east">
+            <img src="../art/fox-author.svg" alt="" class="demo">
+        </div>
+    </figure>
+
+
+</article>
+
+
+<!-- ============================================= Project Footer -->
+
+<footer class="chapter grid-king">
+
+    <h3>Installation</h3>
+    <p>Copy-paste CSS or include file into your project.</p>
+
+    <ul class="markup h4">
+        <li>
+            <figure class="svga-icon base-size mark"><svg><use xlink:href="#svg-github"></use></svg></figure>
+            <a href="https://github.com/zlsheepcity/appart/blob/master/app/styles/components/article-grid/grid-queen.scss">CSS file</a>
+        </li>
+    </ul>
+
+    <hr>
+
+    <h3>Research</h3>
+
+    <section>
+        <b>At 2020.1.13</b>
+        <p>
+            ...
+        </p>
+    </section>
+
+    <div hidden>
+        <svg>
+            <symbol id="svg-github" viewBox="0 0 448 512">
+                <!--title>Github Square, font-awesome</title-->
+                <path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM277.3 415.7c-8.4 1.5-11.5-3.7-11.5-8 0-5.4.2-33 .2-55.3 0-15.6-5.2-25.5-11.3-30.7 37-4.1 76-9.2 76-73.1 0-18.2-6.5-27.3-17.1-39 1.7-4.3 7.4-22-1.7-45-13.9-4.3-45.7 17.9-45.7 17.9-13.2-3.7-27.5-5.6-41.6-5.6-14.1 0-28.4 1.9-41.6 5.6 0 0-31.8-22.2-45.7-17.9-9.1 22.9-3.5 40.6-1.7 45-10.6 11.7-15.6 20.8-15.6 39 0 63.6 37.3 69 74.3 73.1-4.8 4.3-9.1 11.7-10.6 22.3-9.5 4.3-33.8 11.7-48.3-13.9-9.1-15.8-25.5-17.1-25.5-17.1-16.2-.2-1.1 10.2-1.1 10.2 10.8 5 18.4 24.2 18.4 24.2 9.7 29.7 56.1 19.7 56.1 19.7 0 13.9.2 36.5.2 40.6 0 4.3-3 9.5-11.5 8-66-22.1-112.2-84.9-112.2-158.3 0-91.8 70.2-161.5 162-161.5S388 165.6 388 257.4c.1 73.4-44.7 136.3-110.7 158.3zm-98.1-61.1c-1.9.4-3.7-.4-3.9-1.7-.2-1.5 1.1-2.8 3-3.2 1.9-.2 3.7.6 3.9 1.9.3 1.3-1 2.6-3 3zm-9.5-.9c0 1.3-1.5 2.4-3.5 2.4-2.2.2-3.7-.9-3.7-2.4 0-1.3 1.5-2.4 3.5-2.4 1.9-.2 3.7.9 3.7 2.4zm-13.7-1.1c-.4 1.3-2.4 1.9-4.1 1.3-1.9-.4-3.2-1.9-2.8-3.2.4-1.3 2.4-1.9 4.1-1.5 2 .6 3.3 2.1 2.8 3.4zm-12.3-5.4c-.9 1.1-2.8.9-4.3-.6-1.5-1.3-1.9-3.2-.9-4.1.9-1.1 2.8-.9 4.3.6 1.3 1.3 1.8 3.3.9 4.1zm-9.1-9.1c-.9.6-2.6 0-3.7-1.5s-1.1-3.2 0-3.9c1.1-.9 2.8-.2 3.7 1.3 1.1 1.5 1.1 3.3 0 4.1zm-6.5-9.7c-.9.9-2.4.4-3.5-.6-1.1-1.3-1.3-2.8-.4-3.5.9-.9 2.4-.4 3.5.6 1.1 1.3 1.3 2.8.4 3.5zm-6.7-7.4c-.4.9-1.7 1.1-2.8.4-1.3-.6-1.9-1.7-1.5-2.6.4-.6 1.5-.9 2.8-.4 1.3.7 1.9 1.8 1.5 2.6z"/>
+            </symbol>
+        </svg>
+    </div>
+
+    <script>
+        function autofillParagraphs(selector='text') {
+            const p = document.querySelectorAll(selector)
+            for ( let x in p ) {
+                let texts = [
+                    'Les grandes personnes m’ont conseillé de laisser de côté les dessins de serpents boas ouverts ou fermés, et de m’intéresser plutôt à la géographie, à l’histoire, au calcul et à la grammaire. C’est ainsi que j’ai abandonné, à l’âge de six ans, une magnifique carrière de peintre.',
+                    'J’avais été découragé par l’insuccès de mon dessin numéro 1 et de mon dessin numéro 2. Les grandes personnes ne comprennent jamais rien toutes seules, et c’est fatigant, pour les enfants, de toujours et toujours leur donner des explications.',
+                    'J’ai donc dû choisir un autre métier et j’ai appris à piloter des avions. J’ai volé un peu partout dans le monde. Et la géographie, c’est exact, m’a beaucoup servi. Je savais reconnaître, du premier coup d’œil, la Chine de l’Arizona. C’est très utile, si l’on est égaré pendant la nuit.',
+                    'J’ai ainsi eu, au cours de ma vie, des tas de contacts avec des tas de gens sérieux. J’ai beaucoup vécu chez les grandes personnes. Je les ai vues de très près. Ça n’a pas trop amélioré mon opinion.',
+                    'Quand j’en rencontrais une qui me paraissait un peu lucide, je faisais l’expérience sur elle de mon dessin numéro 1 que j’ai toujours conservé. Je voulais savoir si elle était vraiment compréhensive. Mais toujours elle me répondait : « C’est un chapeau. »',
+                    'Alors je ne lui parlais ni de serpents boas, ni de forêts vierges, ni d’étoiles. Je me mettais à sa portée. Je lui parlais de bridge, de golf, de politique et de cravates. Et la grande personne était bien contente de connaître un homme aussi raisonnable.'
+                    ]
+                let text = texts[Math.floor(Math.random()*texts.length)]
+                let textnode = document.createTextNode(text)
+                if (p[x].appendChild) p[x].appendChild(textnode)
+            }
+        }
+        function autofillCaptions(selector='[auto]') {
+            const p = document.querySelectorAll(selector)
+            console.log(p)
+            for ( let x in p ) {
+                let texts = [
+                    'Une magnifique carrière de peintre',
+                    'Les grandes personnes ne comprennent jamais rien toutes seules',
+                    'la Chine de l’Arizona',
+                    '«C’est un chapeau»',
+                    'Alors je ne lui parlais ni de serpents boas',
+                    'Je me mettais à sa portée',
+                    'Je lui parlais de bridge, de golf, de politique et de cravates',
+                    'Et la grande personne était bien contente de connaître un homme aussi raisonnable'
+                    ]
+                let text = texts[Math.floor(Math.random()*texts.length)]
+                let textnode = document.createTextNode(text)
+                let wrapnode = document.createElement('span')
+                    wrapnode.appendChild(textnode)
+                if (p[x].appendChild) p[x].appendChild(wrapnode)
+            }
+        }
+        autofillParagraphs()
+        autofillCaptions()
+    </script>
+    <style>
+        text, [auto], .demo { opacity: 0.32; }
+    </style>
+
+</footer>
+
+</body>
+</html>

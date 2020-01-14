@@ -137,7 +137,7 @@
 
 <nav
     class="grid-king use-colors colors--secondary text-block-smaller padding"
-    style="--padding: 0.25rem 0; --grid-row-gap:0.25rem">
+    style="--padding: 0.25rem 0; --grid-row-gap: 0.25rem;">
     <p>
         Article Grid —
          a<del class="opacity" style="--opacity:0.05">p</del>part of
@@ -162,19 +162,21 @@
 
 <div id="LongRead" class="el-longread chapter grid-king use-colors colors--ivory">
 
+    <mark auto></mark>
+
     <article class="sublayer">
         <header class="chapter-header">
             <h1>Longread Demo</h1>
             <p>January 13, 2020</p>
         </header>
-        <figure class="ingrid-wrap-east first-grid-row">
+        <figure class="inngrid-wrap-east first-grid-row">
             <img src="article-grid--long-read.png" alt="This article preview">
         </figure>
-        <section class="ingrid">
+        <section class="inngrid">
             <text></text>
             <text></text>
         </section>
-        <aside class="ingrid-east color-box">
+        <aside class="inngrid-east color-box">
             <p>
                 Text-content is random<br>
                 Reload to change
@@ -184,7 +186,7 @@
 
     <article class="sublayer">
         <h2 auto class="chapter-header"></h2>
-        <section class="ingrid">
+        <section class="inngrid">
             <text></text>
             <text></text>
         </section>
@@ -198,7 +200,7 @@
 
     <article class="sublayer">
         <h2 auto class="chapter-header"></h2>
-        <section class="ingrid-wrap-east h4">
+        <section class="inngrid-wrap-east h4">
             <text></text>
         </section>
         <text></text>
@@ -210,19 +212,21 @@
     </article>
 
     <article class="sublayer">
-        <section class="ingrid">
+        <section class="inngrid">
             <h3 auto></h3>
             <text></text>
             <text></text>
             <text></text>
         </section>
-        <figure class="ingrid-east first-grid-row">
+        <figure class="inngrid-east first-grid-row">
             <img
                 src="../art/illustrations/austria.svg"
                 alt="Mediveal Castle Icon"
                 class="demo width" style="--width:9rem">
         </figure>
         <figure class="subgrid-wrap-east color-box">
+            <div class="h4"><text></text></div>
+            <div class="chapter-note" auto></div>
             <img
                 src="../art/illustrations/austria.svg"
                 alt="Mediveal Castle Illustration"
@@ -232,38 +236,41 @@
             </figcaption>
         </figure>
     </article>
-    <hr>
 
-    <section class="subgrid-wrap-west">
-        <div class="grid-column--menu h4 e-align">※</div>
-        <h4 auto class="subgrid-container grid-column--wrap-east"></h4>
-        <text></text>
-        <text></text>
-        <div class="grid-column--menu h4 e-align">※</div>
-        <h4 auto class="subgrid-container grid-column--wrap-east"></h4>
-        <text></text>
-        <text></text>
-        <text></text>
-        <text></text>
-    </section>
-    <section class="subgrid-content grid-column--note text-block-smaller">
-        <h5 auto>1. </h5>
-        <text></text>
-        <text></text>
-        <h5 auto>2. </h5>
-        <text></text>
-    </section>
+    <article class="sublayer">
+        <section class="subgrid-wrap-west">
+            <h4 class="inngrid-menu c-align">※</h4>
+            <h4 auto class="inngrid-wrap-east"></h4>
+            <text></text>
+            <text></text>
+            <h4 class="inngrid-menu c-align">※</h4>
+            <h4 auto class="inngrid-wrap-east"></h4>
+            <text></text>
+            <text></text>
+            <text></text>
+            <text></text>
+        </section>
+        <section class="chapter-note">
+            <h5 auto>1. </h5>
+            <text></text>
+            <text></text>
+            <h5 auto>2. </h5>
+            <text></text>
+        </section>
+        <figure class="inngrid-wrap-east">
+            <img src="../art/illustrations/illistr--mr-router.svg" alt="Icons" class="demo">
+        </figure>
+    </article>
 
-    <figure class="subgrid-container grid-column--wrap-east">
-        <img src="../art/illustrations/illistr--mr-router.svg" alt="Icons" class="demo">
-    </figure>
+    <article class="sublayer el-dark-settings">
 
-    <hr>
-
-    <section
-        class="sublayer"
-        style="color:var(--back-color);background-color:var(--text-color);">
         <style>
+            .el-dark-settings {
+                color:            var(--back-color);
+                background-color: var(--text-color);
+                padding-top:      16vh;
+                margin:           16vh 0;
+            }
             .el-settings-cell {
                 grid-column:  full;
                 align-self:   end;
@@ -275,71 +282,65 @@
             }
         </style>
 
-        <hr>
-        <hr>
-
-        <section class="subgrid-container grid-column--wrap-east">
-
+        <section class="inngrid-wrap-east">
             <h2 auto></h2>
             <div class="h4">
                 <text></text>
             </div>
-
         </section>
-
-        <div class="subgrid-main">
+        <div class="inngrid">
             <text></text>
             <text></text>
         </div>
-        <div class="subgrid-east text-block-smaller">
+        <div class="chapter-note">
             <text></text>
         </div>
-
         <figure class="el-settings-cell">
             <img src="../art/illustrations/illistr--settings.svg" alt="Settings">
         </figure>
-    </section>
 
-    <hr>
+    </article>
 
-    <section class="sublayer grid-queen">
-        <div class="subgrid-west text-block-smaller">
+
+    <article class="sublayer grid-queen">
+
+        <div class="inngrid-west text-block-smaller">
             <text></text>
         </div>
-        <div class="subgrid-main color-box">
-            <text></text>
-            <text></text>
-        </div>
-        <div class="subgrid-east text-block-smaller">
-            <text></text>
-        </div>
-        <div class="subgrid-container grid-column--west-side color-box align-self" style="--align-self:stretch;">
-            <text></text>
-        </div>
-        <div class="subgrid-wrap-east">
-            <h3 class="subgrid-container grid-column--wrap">
-                <text></text>
-            </h3>
-        </div>
-        <div class="subgrid-west color-box text-block-smaller align-self" style="--align-self:stretch;">
+        <div class="inngrid color-box">
             <text></text>
             <text></text>
         </div>
-        <div class="subgrid-main">
-            <text></text>
-            <text></text>
+        <div class="inngrid-east text-block-smaller">
             <text></text>
         </div>
-        <div class="subgrid-east color-box text-block-smaller align-self" style="--align-self:stretch;">
-            <text></text>
-        </div>
-        <div class="subgrid-container grid-column--wrap color-box">
-            <text></text>
+        <div class="inngrid-west-side color-box align-self" style="--align-self:stretch;">
             <text></text>
         </div>
 
-        <h1 auto class="subgrid-container grid-column--wrap-east"></h1>
-        <figure class="subgrid-container grid-column--wrap">
+        <h3 class="inngrid-wrap-east">
+            <text></text>
+        </h3>
+
+        <div class="inngrid-west color-box text-block-smaller align-self" style="--align-self:stretch;">
+            <text></text>
+            <text></text>
+        </div>
+        <div class="inngrid">
+            <text></text>
+            <text></text>
+            <text></text>
+        </div>
+        <div class="inngrid-east color-box text-block-smaller align-self" style="--align-self:stretch;">
+            <text></text>
+        </div>
+        <div class="inngrid-wrap color-box">
+            <text></text>
+            <text></text>
+        </div>
+
+        <h1 auto class="chapter-header"></h1>
+        <figure class="inngrid-wrap">
             <img src="../art/decorations/deer-divider.svg" alt="" class="demo">
         </figure>
         <text class="text-block-bigger"></text>
@@ -347,15 +348,15 @@
         <text></text>
 
         <figure class="subgrid-wrap">
-            <figcaption class="subgrid-content grid-column--note text-block-smaller">
+            <figcaption class="chapter-note">
                 <text></text>
             </figcaption>
-            <div class="subgrid-container grid-column--wrap-east">
+            <div class="inngrid-wrap-east">
                 <img src="../art/fox-author.svg" alt="" class="demo">
             </div>
         </figure>
 
-    </section>
+    </article>
 
 
 </div>
@@ -373,18 +374,10 @@
             <figure class="svga-icon base-size mark"><svg><use xlink:href="#svg-github"></use></svg></figure>
             <a href="https://github.com/zlsheepcity/appart/blob/master/app/styles/components/article-grid/grid-queen.scss">CSS file</a>
         </li>
+        <li>
+            <del>Documentation</del> (not yet)
+        </li>
     </ul>
-
-    <hr>
-
-    <h3>Research</h3>
-
-    <section>
-        <b>At 2020.1.13</b>
-        <p>
-            ...
-        </p>
-    </section>
 
     <div hidden>
         <svg>
@@ -414,14 +407,13 @@
         }
         function autofillCaptions(selector='[auto]') {
             const p = document.querySelectorAll(selector)
-            console.log(p)
             for ( let x in p ) {
                 let texts = [
                     'Une magnifique carrière de peintre',
-                    'Les grandes personnes ne comprennent jamais rien toutes seules',
-                    'la Chine de l’Arizona',
+                    'Les grandes personnes ne comprennent jamais rien toutes seules. Et c’est fatigant.',
+                    'La Chine de l’Arizona',
                     '«C’est un chapeau»',
-                    'Alors je ne lui parlais ni de serpents boas',
+                    'Alors je ne lui parlais ni de serpents boas, ni de forêts vierges, ni d’étoiles.',
                     'Je me mettais à sa portée',
                     'Je lui parlais de bridge, de golf, de politique et de cravates',
                     'Et la grande personne était bien contente de connaître un homme aussi raisonnable'
@@ -437,7 +429,7 @@
         autofillCaptions()
     </script>
     <style>
-        text, [auto], .demo { opacity: 0.62; }
+        text, [auto], .demo { opacity: 0.42; }
     </style>
 
 </footer>

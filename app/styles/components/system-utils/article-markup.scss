@@ -56,7 +56,7 @@ mark, .mark {
 .chapter.isonbot { --padding-bottom: 0; }
 
 .chapter-header {
-    @extend .ingrid-wrap-east !optional;
+    @extend .inngrid-wrap-east !optional;
     grid-row-gap: 0;
     h1, h2, h3,
    .h1,.h2,.h3,
@@ -65,7 +65,7 @@ mark, .mark {
     }
 }
 .chapter-note {
-    @extend .ingrid-note        !optional;
+    @extend .inngrid-note       !optional;
     @extend .text-block-smaller !optional;
   --padding-left: calc( 2.5rem * var(--grid-is-not-default, 0) );
     padding-left: var(--padding-left);

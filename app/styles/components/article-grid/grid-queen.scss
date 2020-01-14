@@ -79,14 +79,14 @@
   --column-west--show: var(--grid-west-skip);
   --column-roof--show: var(--grid-roof-skip);
 
-  --set-west-wide-column: var(--grid-column--west-wide);
-  --set-menu-wide-column: var(--grid-column--menu-wide);
-  --set-main-wide-column: var(--grid-column--main-wide);
-  --set-text-wide-column: var(--grid-column--text-wide);
-  --set-west-side-wide-column: var(--grid-column--west-side-wide);
-  --set-west-half-wide-column: var(--grid-column--west-half-wide);
-  --set-east-side-wide-column: var(--grid-column--east-side-wide);
-  --set-east-half-wide-column: var(--grid-column--east-half-wide);
+  --setWNWC: var(--grid-column--west-wide);      /*set-west-norm-wide-column*/
+  --setMNWC: var(--grid-column--menu-wide);      /*set-menu-norm-wide-column*/
+  --setMMWC: var(--grid-column--main-wide);      /*set-main-norm-wide-column*/
+  --setMTWC: var(--grid-column--text-wide);      /*set-text-norm-wide-column*/
+  --setWSWC: var(--grid-column--west-side-wide); /*set-west-side-wide-column*/
+  --setWHWC: var(--grid-column--west-half-wide); /*set-west-half-wide-column*/
+  --setESWC: var(--grid-column--east-side-wide); /*set-east-side-wide-column*/
+  --setEHWC: var(--grid-column--east-half-wide); /*set-east-half-wide-column*/
 
   --column-width-main: 1fr;
 
@@ -325,10 +325,10 @@
   --grid-column--west-half:      full-start / main-end;
   --grid-column--east-half:      main-start / full-end;
 
-  --grid-column--west-side-wide: full-start / full-end;
-  --grid-column--west-half-wide: full-start / full-end;
-  --grid-column--east-side-wide: full-start / full-end;
-  --grid-column--east-half-wide: full-start / full-end;
+  --grid-column--west-side-wide: full;
+  --grid-column--west-half-wide: full;
+  --grid-column--east-side-wide: full;
+  --grid-column--east-half-wide: full;
 }
 
 
@@ -337,39 +337,45 @@
 /* -------------------------------- Column Workers */
 
 
-.grid-column--full           { grid-column: full; }
-.grid-column--main           { grid-column: main; }
-.grid-column--text           { grid-column: text; }
-.grid-column--west           { grid-column: west; }
-.grid-column--east           { grid-column: east; }
-.grid-column--menu           { grid-column: menu; }
-.grid-column--note           { grid-column: note; }
+/*   Atomic Cells     */
+    .grid-column--full           { grid-column: full; }
+    .grid-column--root           { grid-column: root; }
+    .grid-column--west           { grid-column: west; }
+    .grid-column--menu           { grid-column: menu; }
+    .grid-column--main           { grid-column: main; }
+    .grid-column--text           { grid-column: text; }
+    .grid-column--east           { grid-column: east; }
+    .grid-column--note           { grid-column: note; }
+    .grid-column--roof           { grid-column: foof; }
 
-.grid-column--wrap           { grid-column: var(--grid-column--wrap); }
-.grid-column--wrap-west      { grid-column: var(--grid-column--wrap-west); }
-.grid-column--wrap-east      { grid-column: var(--grid-column--wrap-east); }
-.grid-column--wrap-text      { grid-column: var(--grid-column--wrap-text); }
-.grid-column--wrap-text-west { grid-column: var(--grid-column--wrap-text-west); }
-.grid-column--wrap-text-east { grid-column: var(--grid-column--wrap-text-east); }
+/*   Merge main cells     */
+    .grid-column--wrap           { grid-column: var(--grid-column--wrap); }
+    .grid-column--wrap-west      { grid-column: var(--grid-column--wrap-west); }
+    .grid-column--wrap-east      { grid-column: var(--grid-column--wrap-east); }
 
-.grid-column--west-side      { grid-column: var(--grid-column--west-side); }
-.grid-column--west-half      { grid-column: var(--grid-column--west-half); }
-.grid-column--east-side      { grid-column: var(--grid-column--east-side); }
-.grid-column--east-half      { grid-column: var(--grid-column--east-half); }
+/*   Merge text-areas without paddings     */
+    .grid-column--wrap-text      { grid-column: var(--grid-column--wrap-text); }
+    .grid-column--wrap-text-west { grid-column: var(--grid-column--wrap-text-west); }
+    .grid-column--wrap-text-east { grid-column: var(--grid-column--wrap-text-east); }
 
-.grid-column--west-wide { grid-column: var(--set-west-wide-column, west); }
-.grid-column--menu-wide { grid-column: var(--set-menu-wide-column, menu); }
-.grid-column--main-wide { grid-column: var(--set-main-wide-column, main); }
-.grid-column--text-wide { grid-column: var(--set-text-wide-column, text); }
+/*   Merge aside with screen corner     */
+    .grid-column--west-side      { grid-column: var(--grid-column--west-side); }
+    .grid-column--east-side      { grid-column: var(--grid-column--east-side); }
 
-.grid-column--west-side-wide {
-    grid-column: var(--set-west-side-wide-column, var(--grid-column--west-side)); }
-.grid-column--west-half-wide {
-    grid-column: var(--set-west-half-wide-column, var(--grid-column--west-half)); }
-.grid-column--east-side-wide {
-    grid-column: var(--set-east-side-wide-column, var(--grid-column--east-side)); }
-.grid-column--east-half-wide {
-    grid-column: var(--set-east-half-wide-column, var(--grid-column--east-half)); }
+/*   Merge content with screen corner     */
+    .grid-column--west-half      { grid-column: var(--grid-column--west-half); }
+    .grid-column--east-half      { grid-column: var(--grid-column--east-half); }
+
+
+/* Responsive Columns - are full-width with reduced layout */
+.grid-column--west-rw      { grid-column: var(--setWNWC, west); }
+.grid-column--menu-rw      { grid-column: var(--setMNWC, menu); }
+.grid-column--main-rw      { grid-column: var(--setMMWC, main); }
+.grid-column--text-rw      { grid-column: var(--setMTWC, text); }
+.grid-column--west-side-rw { grid-column: var(--setWSWC, var(--grid-column--west-side)); }
+.grid-column--west-half-rw { grid-column: var(--setWHWC, var(--grid-column--west-half)); }
+.grid-column--east-side-rw { grid-column: var(--setESWC, var(--grid-column--east-side)); }
+.grid-column--east-half-rw { grid-column: var(--setEHWC, var(--grid-column--east-half)); }
 
 
 /* -------------------------------- Grid Modifications */
@@ -404,18 +410,92 @@
 /* -------------------------------- Component Snippets */
 
 
+/* operation cells */
+
+.ingrid-main,
+.ingrid-west,
+.ingrid-east,
+.ingrid-wrap,
+.ingrid-wrap-west,
+.ingrid-wrap-east,
+.ingrid-west-side,
+.ingrid-east-side,
+.ingrid-west-half,
+.ingrid-east-half,
+.ingrid-main-rw,
+.ingrid-west-rw,
+.ingrid-east-rw,
+.ingrid-west-side-rw,
+.ingrid-west-half-rw,
+.ingrid-east-side-rw,
+.ingrid-east-half-rw,
+.ingrid-root,
+.ingrid-roof,
+.ingrid-full,
+.ingrid {
+    display:         grid;
+    grid-column:     var(--grid-column, main);
+  --grid-template-columns:   var(--grid--box);
+}
+.ingrid-wrap-text,
+.ingrid-wrap-text-west,
+.ingrid-wrap-text-east,
+.ingrid-menu-rw,
+.ingrid-text-rw,
+.ingrid-menu,
+.ingrid-text,
+.ingrid-note {
+    display:         grid;
+    grid-column:     var(--grid-column, main);
+  --grid-template-columns: var(--grid--block);
+}
+
+.ingrid-full           { --grid-column: full; }
+.ingrid-root           { --grid-column: root; }
+.ingrid-west           { --grid-column: west; }
+.ingrid-main           { --grid-column: main; }
+.ingrid-east           { --grid-column: east; }
+.ingrid-roof           { --grid-column: foof; }
+.ingrid                { --grid-column: main; }
+
+.ingrid-menu           { --grid-column: menu; }
+.ingrid-text           { --grid-column: text; }
+.ingrid-note           { --grid-column: note; }
+
+.ingrid-wrap           { --grid-column: var(--grid-column--wrap); }
+.ingrid-wrap-west      { --grid-column: var(--grid-column--wrap-west); }
+.ingrid-wrap-east      { --grid-column: var(--grid-column--wrap-east); }
+
+.ingrid-wrap-text      { --grid-column: var(--grid-column--wrap-text); }
+.ingrid-wrap-text-west { --grid-column: var(--grid-column--wrap-text-west); }
+.ingrid-wrap-text-east { --grid-column: var(--grid-column--wrap-text-east); }
+
+.ingrid-west-side      { --grid-column: var(--grid-column--west-side); }
+.ingrid-east-side      { --grid-column: var(--grid-column--east-side); }
+
+.ingrid-west-half      { --grid-column: var(--grid-column--west-half); }
+.ingrid-east-half      { --grid-column: var(--grid-column--east-half); }
+
+.ingrid-west-rw        { --grid-column: var(--setWNWC, west); }
+.ingrid-menu-rw        { --grid-column: var(--setMNWC, menu); }
+.ingrid-main-rw        { --grid-column: var(--setMMWC, main); }
+.ingrid-text-rw        { --grid-column: var(--setMTWC, text); }
+.ingrid-west-side-rw   { --grid-column: var(--setWSWC, var(--grid-column--west-side)); }
+.ingrid-west-half-rw   { --grid-column: var(--setWHWC, var(--grid-column--west-half)); }
+.ingrid-east-side-rw   { --grid-column: var(--setESWC, var(--grid-column--east-side)); }
+.ingrid-east-half-rw   { --grid-column: var(--setEHWC, var(--grid-column--east-half)); }
+
+
 /* subgrid workers */
 
+.join-layers         { --grid-row-gap: 0; }
+.gap-layers          { --grid-row-gap: var(--sy); }
+.first-grid-row      {   grid-row:     1; }
+.subgrid             {   display:   grid; }
 
 .sublayer {
     display:     grid;
     grid-column: full;
-}
-.subgrid-join-layers {
-  --grid-row-gap: 0;
-}
-.subgrid {
-    display: grid;
 }
 .subgrid-container {
     display: grid;
@@ -426,7 +506,85 @@
   --grid-template-columns: var(--grid--block);
 }
 
+
 /* subgrids for merged columns */
+
+.subgrid-wrap {
+    display:      grid;
+    grid-column:  var(--grid-column--wrap);
+  --grid-template-columns:
+        var(--column-root--skip)
+        var(--column-west--show)
+        var(--column-main--full)
+        var(--column-east--show)
+        var(--column-roof--skip);
+}
+.subgrid-wrap-east {
+    display:      grid;
+    grid-column:  var(--grid-column--wrap-east);
+  --grid-template-columns:
+        var(--column-root--skip)
+        var(--column-west--skip)
+        var(--column-main--west)
+        var(--column-east--show)
+        var(--column-roof--skip);
+}
+.subgrid-wrap-west {
+    display:      grid;
+    grid-column:  var(--grid-column--wrap-west);
+  --grid-template-columns:
+        var(--column-root--skip)
+        var(--column-west--show)
+        var(--column-main--east)
+        var(--column-east--skip)
+        var(--column-roof--skip);
+}
+.subgrid-west-side {
+    display:      grid;
+    grid-column:  var(--grid-column--west-side);
+  --column-width-main: var(--width-menu);
+  --grid-template-columns:
+        var(--column-root--show)
+        var(--column-west--skip)
+        var(--column-main--both)
+        var(--column-east--skip)
+        var(--column-roof--skip);
+}
+.subgrid-east-side {
+    display:      grid;
+    grid-column:  var(--grid-column--east-side);
+  --column-width-main: var(--width-note);
+  --grid-template-columns:
+        var(--column-root--skip)
+        var(--column-west--skip)
+        var(--column-main--both)
+        var(--column-east--skip)
+        var(--column-roof--show);
+}
+.subgrid-west-half {
+    display:      grid;
+    grid-column:  var(--grid-column--west-half);
+  --grid-template-columns:
+        var(--column-root--show)
+        var(--column-west--show)
+        var(--column-main--east)
+        var(--column-east--skip)
+        var(--column-roof--skip);
+}
+.subgrid-east-half {
+    display:      grid;
+    grid-column:  var(--grid-column--east-half);
+  --grid-template-columns:
+        var(--column-root--skip)
+        var(--column-west--skip)
+        var(--column-main--west)
+        var(--column-east--show)
+        var(--column-roof--show);
+}
+
+
+/* -------------------------------- Deprecated */
+
 
 .subgrid-main {
     display:      grid;
@@ -443,35 +601,6 @@
     grid-column:  east;
   --grid-template-columns:   var(--grid--box);
 }
-.subgrid-wrap {
-    display:      grid;
-    grid-column:  west-start / east-end;
-  --grid-template-columns:
-        var(--column-root--skip)
-        var(--column-west--show)
-        var(--column-main--full)
-        var(--column-east--show)
-        var(--column-roof--skip);
-}
-.subgrid-wrap-east {
-    display:      grid;
-    grid-column:  main-start / east-end;
-  --grid-template-columns:
-        var(--column-root--skip)
-        var(--column-west--skip)
-        var(--column-main--west)
-        var(--column-east--show)
-        var(--column-roof--skip);
-}
-.subgrid-wrap-west {
-    display:      grid;
-    grid-column:  west-start / main-end;
-  --grid-template-columns:
-        var(--column-root--skip)
-        var(--column-west--show)
-        var(--column-main--east)
-        var(--column-east--skip)
-        var(--column-roof--skip);
-}
+
 
 /** EOF greed-queen */

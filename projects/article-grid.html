@@ -152,76 +152,94 @@
 <!-- ============================================= Project Header -->
 
 <article class="chapter grid-king">
+
     <header>
         <h1>Article Grid</h1>
         <h2>grid-queen 2020</h2>
     </header>
+
 </article>
 
-<article id="LongRead" class="el-longread chapter grid-king use-colors colors--ivory">
+<div id="LongRead" class="el-longread chapter grid-king use-colors colors--ivory">
 
-    <figure class="grid-column--wrap-east">
-        <img src="article-grid--long-read.png" alt="This article preview">
-    </figure>
-
-    <header>
-        <h1>Longread Demo</h1>
-        <p>January 13, 2020</p>
-    </header>
-
-    <text></text>
-    <section class="subgrid-container grid-column--east text-block-smaller color-box">
-        <p>
-            Text-content is random<br>
-            Reload to change
-        </p>
-    </section>
-
-    <h2 auto class="subgrid-container grid-column--wrap-east"></h2>
-    <section class="subgrid-main">
-        <text></text>
-        <text></text>
-    </section>
-    <figure class="subgrid-wrap">
-        <img src="../art/illustrations/illistr--products.svg" alt="" class="demo">
-        <figcaption class="subgrid-content grid-column--note text-block-smaller">
+    <article class="sublayer">
+        <header class="chapter-header">
+            <h1>Longread Demo</h1>
+            <p>January 13, 2020</p>
+        </header>
+        <figure class="ingrid-wrap-east first-grid-row">
+            <img src="article-grid--long-read.png" alt="This article preview">
+        </figure>
+        <section class="ingrid">
             <text></text>
-        </figcaption>
-    </figure>
-    <hr>
+            <text></text>
+        </section>
+        <aside class="ingrid-east color-box">
+            <p>
+                Text-content is random<br>
+                Reload to change
+            </p>
+        </aside>
+    </article>
 
-    <h2 auto class="subgrid-container grid-column--wrap-east"></h2>
-    <text></text>
-    <text></text>
-    <blockquote class="subgrid-wrap-west text-block-bigger color-box">
+    <article class="sublayer">
+        <h2 auto class="chapter-header"></h2>
+        <section class="ingrid">
+            <text></text>
+            <text></text>
+        </section>
+        <figure class="subgrid-wrap">
+            <img  src="../art/illustrations/illistr--products.svg" alt="Illustration" class="demo">
+            <figcaption class="chapter-note">
+                <text></text>
+            </figcaption>
+        </figure>
+    </article>
+
+    <article class="sublayer">
+        <h2 auto class="chapter-header"></h2>
+        <section class="ingrid-wrap-east h4">
+            <text></text>
+        </section>
         <text></text>
-    </blockquote>
-    <text></text>
-    <hr>
+        <text></text>
+        <blockquote class="subgrid-wrap-west text-block-bigger color-box">
+            <text></text>
+        </blockquote>
+        <text></text>
+    </article>
 
-    <div class="sublayer">
-        <section class="subgrid-main">
+    <article class="sublayer">
+        <section class="ingrid">
             <h3 auto></h3>
             <text></text>
             <text></text>
             <text></text>
         </section>
-        <figure class="subgrid-east" style="grid-row:1;">
-            <img src="../art/illustrations/austria.svg" alt="" class="demo width" style="width:12rem">
+        <figure class="ingrid-east first-grid-row">
+            <img
+                src="../art/illustrations/austria.svg"
+                alt="Mediveal Castle Icon"
+                class="demo width" style="--width:9rem">
         </figure>
-    </div>
-    <figure class="subgrid-wrap-east color-box">
-        <img src="../art/illustrations/austria.svg" alt="" class="demo">
-        <figcaption class="subgrid-content grid-column--note text-block-smaller s-align">
-            <text></text>
-        </figcaption>
-    </figure>
+        <figure class="subgrid-wrap-east color-box">
+            <img
+                src="../art/illustrations/austria.svg"
+                alt="Mediveal Castle Illustration"
+                class="demo">
+            <figcaption class="chapter-note s-align">
+                <text></text>
+            </figcaption>
+        </figure>
+    </article>
     <hr>
 
-    <section class="subgrid-main">
+    <section class="subgrid-wrap-west">
+        <div class="grid-column--menu h4 e-align">※</div>
         <h4 auto class="subgrid-container grid-column--wrap-east"></h4>
         <text></text>
         <text></text>
+        <div class="grid-column--menu h4 e-align">※</div>
         <h4 auto class="subgrid-container grid-column--wrap-east"></h4>
         <text></text>
         <text></text>
@@ -340,7 +358,7 @@
     </section>
 
 
-</article>
+</div>
 
 
 <!-- ============================================= Project Footer -->

@@ -4,14 +4,17 @@
     <meta charset="UTF-8">
     <title>Colors</title>
     <style>
-        body   { background-color: hsla(240, 15%, 12%, 1); }
+        body   {
+            background-color: hsl(240, 15%, 12%);
+            color:            hsl(226, 27%, 90%);
+        }
         figure {
             border-left: 8em solid hsla(0,0%,0%,0.1);
             padding:     1em 2em;
             margin:      0;
             line-height: 2;
 
-            color:            hsl(066, 61%, 88%);
+            color:            hsl( 66, 61%, 88%);
             background-color: var(--bc, slategray);
         }
         figure[bg] { color:   hsl(240, 15%, 12%); }
@@ -26,36 +29,124 @@
               grid-template-columns: 1fr;
 
         }
+
+.color-model {
+    /* Noble Palette */
+  --c--NobleBlack:            hsl(226, 15%, 12%);
+  --c--NobleWhite:            hsl(226, 27%, 90%);
+  --c--NobleNight:            hsl(226, 17%, 20%);
+  --c--NobleDay:              hsl(226, 32%, 75%);
+  --c--NobleSky:              hsl(204, 22%, 55%);
+  --c--NobleSea:              hsl(212, 34%, 29%);
+  --c--NobleSunset:           hsl(359, 28%, 82%);
+  --c--NobleAccent:           hsl(359, 54%, 53%);
+  --c--NobleAction:           hsl(359, 59%, 43%);
+    /* Ivory Palette */
+  --c--Ivory:                 hsl( 53, 66%, 80%);
+  --c--IvoryAccent:           hsl( 53, 70%, 76%);
+  --c--IvoryDark:             hsl(204,  4%, 22%);
+  --c--IvoryGray:             hsl(204,  8%, 38%);
+}
+.color-model {
+    /* App Palette */
+  --c--AppBlue:               hsl(202, 81%, 23%);
+  --c--AppGreen:              hsl(155, 31%, 62%);
+  --c--AppGold:               hsl( 42, 79%, 53%);
+  --c--AppRed:                hsl( 15, 75%, 30%);
+  --c--AppBrown:              hsl( 34, 20%, 33%);
+}
+
     </style>
 </head>
 <body>
 
-    <article class="colors">
+    <article class="colors color-model">
+
 
         <figure
-            style="--bc:hsl(066, 61%, 88%)" bg>
-            <figcaption>hsl(066, 61%, 88%)</figcaption>
+            style="--bc:var(--c--NobleWhite)" bg>
+            <figcaption>hsl(226, 27%, 90%)</figcaption>
+        </figure>
+        <figure
+            style="--bc:var(--c--NobleDay)">
+            <figcaption>hsl(226, 32%, 75%)</figcaption>
+        </figure>
+        <figure
+            style="--bc:var(--c--NobleSunset)" bg>
+            <figcaption>hsl(359, 28%, 82%)</figcaption>
+        </figure>
+
+
+        <figure
+            style="--bc:var(--c--NobleBlack)">
+            <figcaption>hsl(226, 15%, 12%)</figcaption>
+        </figure>
+        <figure
+            style="--bc:var(--c--NobleNight)">
+            <figcaption>hsl(226, 17%, 20%)</figcaption>
+        </figure>
+        <figure
+            style="--bc:var(--c--NobleSky)">
+            <figcaption>hsl(204, 22%, 55%)</figcaption>
+        </figure>
+        <figure
+            style="--bc:var(--c--NobleSea)">
+            <figcaption>hsl(212, 34%, 29%)</figcaption>
+        </figure>
+        <figure
+            style="--bc:var(--c--NobleAccent)">
+            <figcaption>hsl(359, 54%, 53%)</figcaption>
+        </figure>
+        <figure
+            style="--bc:var(--c--NobleAction)">
+            <figcaption>hsl(359, 59%, 43%)</figcaption>
+        </figure>
+
+
+
+        <figure
+            style="--bc:var(--c--Ivory)" bg>
+            <figcaption>hsl( 53, 66%, 80%)</figcaption>
+        </figure>
+        <figure
+            style="--bc:var(--c--IvoryAccent)" bg>
+            <figcaption>hsl( 53, 70%, 76%)</figcaption>
+        </figure>
+        <figure
+            style="--bc:var(--c--IvoryDark)">
+            <figcaption>hsl(204,  4%, 22%)</figcaption>
+        </figure>
+        <figure
+            style="--bc:var(--c--IvoryGray)">
+            <figcaption>hsl(204,  8%, 38%)</figcaption>
+        </figure>
+
+
+
+        <figure
+            style="--bc:hsl( 66, 61%, 88%)" bg>
+            <figcaption>hsl( 66, 61%, 88%)</figcaption>
         </figure>
 
         <figure
-            style="--bc:hsl(013, 61%, 54%)">
-            <figcaption>hsl(013, 61%, 54%)</figcaption>
+            style="--bc:hsl( 13, 61%, 54%)">
+            <figcaption>hsl( 13, 61%, 54%)</figcaption>
         </figure>
         <figure
-            style="--bc:hsl(053, 38%, 41%)">
-            <figcaption>hsl(053, 38%, 41%)</figcaption>
+            style="--bc:hsl( 53, 38%, 41%)">
+            <figcaption>hsl( 53, 38%, 41%)</figcaption>
         </figure>
         <figure
-            style="--bc:hsl(041, 66%, 48%)">
-            <figcaption>hsl(041, 66%, 48%)</figcaption>
+            style="--bc:hsl( 41, 66%, 48%)">
+            <figcaption>hsl( 41, 66%, 48%)</figcaption>
         </figure>
         <figure
-            style="--bc:hsl(027, 45%, 60%)">
-            <figcaption>hsl(027, 45%, 60%)</figcaption>
+            style="--bc:hsl( 27, 45%, 60%)">
+            <figcaption>hsl( 27, 45%, 60%)</figcaption>
         </figure>
         <figure
-            style="--bc:hsl(048, 83%, 70%)">
-            <figcaption>hsl(048, 83%, 70%)</figcaption>
+            style="--bc:hsl( 48, 83%, 70%)">
+            <figcaption>hsl( 48, 83%, 70%)</figcaption>
         </figure>
         <figure
             style="--bc:hsl(157, 20%, 34%)">
@@ -102,36 +193,24 @@
             <figcaption>hsl(195, 54%, 28%)</figcaption>
         </figure>
         <figure
-            style="--bc:">
-            <figcaption></figcaption>
+            style="--bc:var(--c--AppBlue)">
+            <figcaption>hsl(202, 81%, 23%)</figcaption>
         </figure>
         <figure
-            style="--bc:">
-            <figcaption></figcaption>
+            style="--bc:var(--c--AppGreen)">
+            <figcaption>hsl(155, 31%, 62%)</figcaption>
         </figure>
         <figure
-            style="--bc:">
-            <figcaption></figcaption>
+            style="--bc:var(--c--AppGold)">
+            <figcaption>hsl( 42, 79%, 53%)</figcaption>
         </figure>
         <figure
-            style="--bc:">
-            <figcaption></figcaption>
+            style="--bc:var(--c--AppRed)">
+            <figcaption>hsl( 15, 75%, 30%)</figcaption>
         </figure>
         <figure
-            style="--bc:">
-            <figcaption></figcaption>
-        </figure>
-        <figure
-            style="--bc:">
-            <figcaption></figcaption>
-        </figure>
-        <figure
-            style="--bc:">
-            <figcaption></figcaption>
-        </figure>
-        <figure
-            style="--bc:">
-            <figcaption></figcaption>
+            style="--bc:var(--c--AppBrown)">
+            <figcaption>hsl( 34, 20%, 33%)</figcaption>
         </figure>
 
 

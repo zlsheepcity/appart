@@ -117,31 +117,37 @@ body {
 /** -------------------------------- skup palettes */
 
 
-/* swed-design 2019 */
+/* noble-age 2020 */
 
 :root,
 .root,
 .color-model {
-    --HSL-NobleBlack:            240, 15%, 12%;
-    --HSL-NobleBlue:             212, 34%, 29%;
-    --HSL-AccentBlue:            204, 22%, 55%;
-    --HSL-AccentBlux:            226, 17%, 20%;
-    --HSL-NobleWhite:            226, 27%, 90%;
-    --HSL-NobleHighWhite:        226, 32%, 75%;
-    --HSL-NobleAction:           359, 54%, 53%;
-    --HSL-NobleHoverAction:      359, 59%, 43%;
+    /* Noble Palette */
+  --c--NobleBlack:            hsl(240, 15%, 12%);
+  --c--NobleWhite:            hsl(226, 27%, 90%);
+  --c--NobleNight:            hsl(226, 17%, 20%);
+  --c--NobleDay:              hsl(226, 32%, 75%);
+  --c--NobleSky:              hsl(204, 22%, 55%);
+  --c--NobleSea:              hsl(212, 34%, 29%);
+  --c--NobleSunset:           hsl(359, 28%, 82%);
+  --c--NobleAccent:           hsl(359, 54%, 53%);
+  --c--NobleAction:           hsl(359, 59%, 43%);
+    /* Ivory Palette */
+  --c--Ivory:                 hsl( 53, 66%, 80%);
+  --c--IvoryAccent:           hsl( 53, 70%, 76%);
+  --c--IvoryDark:             hsl(204,  4%, 22%);
+  --c--IvoryGray:             hsl(204,  8%, 38%);
 }
 
-/* appking 2019 */
-
 :root,
 .root,
 .color-model {
-    --HSL-KingsBlue:             202, 81%, 23%;
-    --HSL-KingsAction:            15, 75%, 30%;
-    --HSL-KingsGold:              42, 79%, 53%;
-    --HSL-KingsGrass:            155, 31%, 62%;
-    --HSL-KingsLand:              34, 20%, 33%;
+    /* App Palette */
+  --c--AppBlue:               hsl(202, 81%, 23%);
+  --c--AppGreen:              hsl(155, 31%, 62%);
+  --c--AppGold:               hsl( 42, 79%, 53%);
+  --c--AppRed:                hsl( 15, 75%, 30%);
+  --c--AppBrown:              hsl( 34, 20%, 33%);
 }
 
 
@@ -169,82 +175,82 @@ body {
 
 .colors--primary,
 .colors--swed {
-  --back-color:         hsl( var(--HSL-NobleBlack) );
-  --back-color-accent:  hsl( var(--HSL-AccentBlux) );
+  --back-color:         var(--c--NobleBlack);
+  --back-color-accent:  var(--c--NobleNight);
   --back-color-descent: var(--light-shadow);
 
-  --text-color:         hsl( var(--HSL-NobleWhite) );
-  --text-color-accent:  hsl( var(--HSL-NobleHighWhite) );
-  --text-color-descent: var(--text-color);
+  --text-color:         var(--c--NobleWhite);
+  --text-color-accent:  var(--c--NobleAccent);
+  --text-color-descent: var(--c--NobleDay);
 
-  --link-color:         hsl( var(--HSL-NobleAction) );
-  --link-color-accent:  hsl( var(--HSL-NobleHoverAction) );
-  --link-color-descent: var(--link-color);
+  --link-color:         var(--c--NobleAccent);
+  --link-color-accent:  var(--c--NobleAction);
+  --link-color-descent: var(--c--NobleAction);
 
   --shadow-color: var(--shadow-color--for-dark-base);
   --light-shadow: var(--light-shadow--for-dark-base);
 }
 .colors--secondary,
 .colors--swed-secondary {
-  --back-color:         hsl(var(--HSL-NobleBlue));
+  --back-color:         var(--c--NobleSea);
   --back-color-accent:  var(--light-shadow);
   --back-color-descent: var(--light-shadow);
 
-  --text-color:         hsl(var(--HSL-NobleWhite));
-  --text-color-accent:  hsl(var(--HSL-NobleAction));
-  --text-color-descent: hsl(var(--HSL-NobleHighWhite));
+  --text-color:         var(--c--NobleWhite);
+  --text-color-accent:  var(--c--NobleAccent);
+  --text-color-descent: var(--c--NobleDay);
 
-  --link-color:         hsl(var(--HSL-NobleAction));
-  --link-color-accent:  hsl(var(--HSL-NobleHoverAction));
-  --link-color-descent: var(--link-color);
+  --link-color:         var(--c--NobleAccent);
+  --link-color-accent:  var(--c--NobleAction);
+  --link-color-descent: var(--c--NobleAction);
 
   --shadow-color: var(--shadow-color--for-light-base);
   --light-shadow: var(--light-shadow--for-light-base);
 }
 .colors--swed-third {
-  --back-color:         hsl(var(--HSL-AccentBlue));
+  --back-color:         var(--c--NobleSky);
   --back-color-accent:  var(--light-shadow);
   --back-color-descent: var(--light-shadow);
 
-  --text-color:         hsl( var(--HSL-NobleBlack) );
-  --text-color-accent:  var(--text-color);
-  --text-color-descent: var(--text-color);
+  --text-color:         var(--c--NobleBlack);
+  --text-color-accent:  var(--c--NobleNight);
+  --text-color-descent: var(--c--NobleNight);
 
-  --link-color:         hsl(var(--HSL-NobleWhite));
-  --link-color-accent:  hsl(var(--HSL-NobleHighWhite));
-  --link-color-descent: var(--link-color);
+  --link-color:         var(--c--NobleWhite);
+  --link-color-accent:  var(--c--NobleDay);
+  --link-color-descent: var(--c--NobleDay);
 
   --shadow-color: var(--shadow-color--for-light-base);
   --light-shadow: var(--light-shadow--for-light-base);
 }
 .colors--action {
-  --back-color:         hsl( var(--HSL-NobleAction) );
-  --back-color-accent:  hsl( var(--HSL-NobleHoverAction) );
+  --back-color:         var(--c--NobleAccent);
+  --back-color-accent:  var(--c--NobleAction);
   --back-color-descent: var(--light-shadow);
 
-  --text-color:         hsl( 359,  0%, 100% );
-  --text-color-accent:  hsl( 359, 28%, 82% );
-  --text-color-descent: hsl( 359, 28%, 82% );
+  --text-color:         var(--c--NobleWhite);
+  --text-color-accent:  var(--c--NobleSunset);
+  --text-color-descent: var(--c--NobleSunset);
 
-  --link-color:         hsl( 359,  0%, 100% );
-  --link-color-accent:  var(--link-color);
-  --link-color-descent: var(--link-color);
+  --link-color:         var(--c--NobleWhite);
+  --link-color-accent:  var(--c--NobleSunset);
+  --link-color-descent: var(--c--NobleSunset);
 
   --shadow-color: var(--shadow-color--for-light-base);
   --light-shadow: var(--light-shadow--for-light-base);
 }
 .colors--ivory {
-  --back-color:         hsl(  53, 66%, 80% );
-  --back-color-accent:  hsl(  53, 70%, 76% );
+  --back-color:         var(--c--Ivory);
+  --back-color-accent:  var(--c--IvoryAccent);
   --back-color-descent: var(--light-shadow);
 
-  --text-color:         hsl( 204,  4%, 22% );
-  --text-color-accent:  hsl( 359, 59%, 43% );
-  --text-color-descent: hsl( 204,  4%, 42% );
+  --text-color:         var(--c--IvoryDark);
+  --text-color-accent:  var(--c--NobleAction);
+  --text-color-descent: var(--c--IvoryGray);
 
-  --link-color:         hsl( 359, 54%, 53% );
-  --link-color-accent:  hsl( 359, 59%, 43% );
-  --link-color-descent: var(--link-color);
+  --link-color:         var(--c--NobleAccent);
+  --link-color-accent:  var(--c--NobleAction);
+  --link-color-descent: var(--c--NobleAction);
 
   --shadow-color: var(--shadow-color--for-light-base);
   --light-shadow: var(--light-shadow--for-light-base);

@@ -16,9 +16,60 @@
     cursor: pointer;
 }
 
+.is-icon {
+  --l: var(--line-height, 1.5);
+  --u: 1em;
+  --w: calc( var(--u) * var(--l) );
+  --h: calc( var(--width) * var(--ratio) );
+  --s: calc( var(--width) * ( var(--zoom) - 1 ) * 0.5 );
+
+/** API */
+  --width:  var(--w);
+  --height: var(--h);
+  --space:  var(--s);
+  --ratio:  1; /* h=w*ratio */
+  --zoom:   1;
+
+/** DOM Element */
+    width:               var(--width);
+    height:              var(--height);
+    display:             inline-flex;
+    vertical-align:      sub;
+    /* bg */
+    background-position: center center;
+    background-size:     contain;
+    background-repeat:   no-repeat;
+    /* zoom */
+    margin-right:        var(--s);
+    margin-left:         var(--s);
+    transform:           scale(var(--zoom));
+    transform-origin:    center center;
+
+}
+
+.menulist {
+    --pv: calc( 0.5 * var(--row-space, 1.5rem) );
+    --ph: 0;
+      margin:           0;
+      padding:          var(--pv) var(--ph);
+      list-style:       none;
+  }
+  .menulist>li>* {
+    --pv: calc( 0.25 * var(--row-space, 1.5rem) );
+    --ph: var(--col-space, 1.5rem);
+      display:          block;
+      margin:           0;
+      padding:          var(--pv) var(--ph);
+    --background-color: transparent;
+      background-color: var(--background-color);
+  }
+  .menulist>li>*:hover,
+  .menulist>li>*:focus {
+    --background-color: var(--light-shadow);
+  }
+
 
 /** -------------------------------- layout */
-
 
 .group-wide {
   --vertical-align:  flex-start;
@@ -38,6 +89,7 @@
     align-items:     var(--vertical-align);
     align-content:   var(--vertical-align);
 }
+
 .group-rows {
     display:         grid;
     align-items:     start;
@@ -47,10 +99,23 @@
     grid-row-gap:    var(--row-space, 1.5rem);
     grid-column-gap: 0;
     grid-template-columns: [full main text] auto;
-    } .group-content-rows>* {
+    } .group-rows>* {
         grid-column: text;
 }
-
+.group-banner {
+    display:         flex;
+    flex-direction:  row;
+    flex-wrap:       wrap;
+    justify-content: center;
+    align-items:     center;
+    align-content:   center;
+    align-self:      stretch;
+  --v:               var(--row-space, 1.5rem);
+  --h:               var(--col-space, 1.5rem);
+    padding-top:     var(--v);
+    } .group-banner>* {
+        margin:  0 var(--h) var(--v) var(--h);
+}
 .group-collisting {
   --max-columns:  5;
   --column-width: var(--paragraph-width--min);
@@ -61,13 +126,13 @@
     column-width: var(--column-width, 12em);
     column-gap:   var(--gap-space,     3em);
     padding:      var(--all-space,   1.5em);
-} .group-collisting.type2 {
-  --max-columns:  3;
-  --column-width: 16em;
-} .group-collisting>* {
-    page-break-inside: avoid;
-         break-inside: avoid;
-    margin-bottom: var(--row-space);
+    } .group-collisting.type2 {
+    --max-columns:  3;
+    --column-width: 16em;
+    } .group-collisting>* {
+        page-break-inside: avoid;
+             break-inside: avoid;
+        margin-bottom: var(--row-space);
 }
 /** Collisting Template
 
@@ -89,51 +154,34 @@
 */
 
 
-.menulist {
-    margin:           0;
-    padding:          calc(0.5*var(--row-space)) 0;
-    list-style:       none;
-}
-.menulist>li>* {
-    display:          block;
-    padding:          calc(0.25*var(--row-space)) var(--col-space);
-  --background-color: transparent;
-    background-color: var(--background-color);
-}
-.menulist>li>*:hover,
-.menulist>li>*:focus {
-  --background-color: var(--light-shadow);
-}
-
-
 /** -------------------------------- padding shortcuts */
 
 
 .pt, .pv {
-  --padding-top:    var(--row-space, 1rem);
+  --padding-top:    var(--row-space, 1.5rem);
     padding-top:    var(--padding-top);
 }
 .pb, .pv {
-  --padding-bottom: var(--row-space, 1rem);
+  --padding-bottom: var(--row-space, 1.5rem);
     padding-bottom: var(--padding-bottom);
 }
 .mt, .mv {
-  --margin-top:     var(--row-space, 1rem);
+  --margin-top:     var(--row-space, 1.5rem);
     margin-top:     var(--margin-top);
 }
 .mb, .mv {
-  --margin-bottom:  var(--row-space, 1rem);
+  --margin-bottom:  var(--row-space, 1.5rem);
     margin-bottom:  var(--margin-bottom);
 }
 
 .pt-text, .pv-text {
   --font-offset:    calc( 1em * var(--base-font-square-ratio, 0.25)   );
-  --padding-top:    calc( var(--col-space, 1rem) - var(--font-offset) );
+  --padding-top:    calc( var(--col-space, 1.5rem) - var(--font-offset) );
     padding-top:    var(--padding-top);
 }
 .pb-text, .pv-text {
   --font-offset:    calc( 1em * var(--base-font-square-ratio, 0.25)   );
-  --padding-bottom: calc( var(--col-space, 1rem) - var(--font-offset) );
+  --padding-bottom: calc( var(--col-space, 1.5rem) - var(--font-offset) );
     padding-bottom: var(--padding-bottom);
 }
 

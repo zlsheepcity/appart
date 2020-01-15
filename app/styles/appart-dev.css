@@ -661,13 +661,13 @@ body {
 .root,
 .color-model {
   /* Noble Palette */
-  --c--NobleBlack: hsl(240, 15%, 12%);
+  --c--NobleBlack: hsl(226, 15%, 12%);
   --c--NobleWhite: hsl(226, 27%, 90%);
   --c--NobleNight: hsl(226, 17%, 20%);
   --c--NobleDay: hsl(226, 32%, 75%);
-  --c--NobleSunset: hsl(359, 28%, 82%);
   --c--NobleSky: hsl(204, 22%, 55%);
   --c--NobleSea: hsl(212, 34%, 29%);
+  --c--NobleSunset: hsl(359, 28%, 82%);
   --c--NobleAccent: hsl(359, 54%, 53%);
   --c--NobleAction: hsl(359, 59%, 43%);
   /* Ivory Palette */
@@ -697,10 +697,12 @@ body {
   --link-color: firebrick;
   --link-color-accent: var(--link-color);
   --link-color-descent: var(--link-color);
+  /* Dark Base*/
+  --shadow-color: var(--shadow-color--for-dark-base);
+  --light-shadow: var(--light-shadow--for-dark-base);
+  /* Light Base*/
   --shadow-color: var(--shadow-color--for-light-base);
-  --light-shadow: var(--light-shadow--for-light-base);
-  /*--shadow-color: var(--shadow-color--for-dark-base);
-    --light-shadow: var(--light-shadow--for-dark-base);*/ }
+  --light-shadow: var(--light-shadow--for-light-base); }
 
 .colors--primary,
 .colors--swed {
@@ -2886,6 +2888,55 @@ html:not(.root) {
   text-decoration: underline;
   cursor: pointer; }
 
+.is-icon {
+  --l: var(--line-height, 1.5);
+  --u: 1em;
+  --w: calc( var(--u) * var(--l) );
+  --h: calc( var(--width) * var(--ratio) );
+  --s: calc( var(--width) * ( var(--zoom) - 1 ) * 0.5 );
+  /** API */
+  --width: var(--w);
+  --height: var(--h);
+  --space: var(--s);
+  --ratio: 1;
+  /* h=w*ratio */
+  --zoom: 1;
+  /** DOM Element */
+  width: var(--width);
+  height: var(--height);
+  display: inline-flex;
+  vertical-align: sub;
+  /* bg */
+  background-position: center center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  /* zoom */
+  margin-right: var(--s);
+  margin-left: var(--s);
+  transform: scale(var(--zoom));
+  transform-origin: center center; }
+
+.menulist, .content-menu {
+  --pv: calc( 0.5 * var(--row-space, 1.5rem) );
+  --ph: 0;
+  margin: 0;
+  padding: var(--pv) var(--ph);
+  list-style: none; }
+
+.menulist > li > *, .content-menu > li > * {
+  --pv: calc( 0.25 * var(--row-space, 1.5rem) );
+  --ph: var(--col-space, 1.5rem);
+  display: block;
+  margin: 0;
+  padding: var(--pv) var(--ph);
+  --background-color: transparent;
+  background-color: var(--background-color); }
+
+.menulist > li > *:hover, .content-menu > li > *:hover,
+.menulist > li > *:focus,
+.content-menu > li > *:focus {
+  --background-color: var(--light-shadow); }
+
 /** -------------------------------- layout */
 .group-wide {
   --vertical-align: flex-start;
@@ -2905,7 +2956,7 @@ html:not(.root) {
   align-items: var(--vertical-align);
   align-content: var(--vertical-align); }
 
-.group-rows, .group-content-rows, .rows {
+.group-rows, .rows, .group-content-rows {
   display: grid;
   align-items: start;
   justify-content: start;
@@ -2915,8 +2966,23 @@ html:not(.root) {
   grid-column-gap: 0;
   grid-template-columns: [full main text] auto; }
 
-.group-content-rows > *, .rows > * {
+.group-rows > *, .rows > *, .group-content-rows > * {
   grid-column: text; }
+
+.group-banner {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  align-self: stretch;
+  --v: var(--row-space, 1.5rem);
+  --h: var(--col-space, 1.5rem);
+  padding-top: var(--v); }
+
+.group-banner > * {
+  margin: 0 var(--h) var(--v) var(--h); }
 
 .group-collisting {
   --max-columns: 5;
@@ -2955,47 +3021,31 @@ html:not(.root) {
     </ul>
 
 */
-.menulist, .content-menu {
-  margin: 0;
-  padding: calc(0.5*var(--row-space)) 0;
-  list-style: none; }
-
-.menulist > li > *, .content-menu > li > * {
-  display: block;
-  padding: calc(0.25*var(--row-space)) var(--col-space);
-  --background-color: transparent;
-  background-color: var(--background-color); }
-
-.menulist > li > *:hover, .content-menu > li > *:hover,
-.menulist > li > *:focus,
-.content-menu > li > *:focus {
-  --background-color: var(--light-shadow); }
-
 /** -------------------------------- padding shortcuts */
 .pt, .pv {
-  --padding-top: var(--row-space, 1rem);
+  --padding-top: var(--row-space, 1.5rem);
   padding-top: var(--padding-top); }
 
 .pb, .pv {
-  --padding-bottom: var(--row-space, 1rem);
+  --padding-bottom: var(--row-space, 1.5rem);
   padding-bottom: var(--padding-bottom); }
 
 .mt, .mv {
-  --margin-top: var(--row-space, 1rem);
+  --margin-top: var(--row-space, 1.5rem);
   margin-top: var(--margin-top); }
 
 .mb, .mv {
-  --margin-bottom: var(--row-space, 1rem);
+  --margin-bottom: var(--row-space, 1.5rem);
   margin-bottom: var(--margin-bottom); }
 
 .pt-text, .pv-text {
   --font-offset: calc( 1em * var(--base-font-square-ratio, 0.25) );
-  --padding-top: calc( var(--col-space, 1rem) - var(--font-offset) );
+  --padding-top: calc( var(--col-space, 1.5rem) - var(--font-offset) );
   padding-top: var(--padding-top); }
 
 .pb-text, .pv-text {
   --font-offset: calc( 1em * var(--base-font-square-ratio, 0.25) );
-  --padding-bottom: calc( var(--col-space, 1rem) - var(--font-offset) );
+  --padding-bottom: calc( var(--col-space, 1.5rem) - var(--font-offset) );
   padding-bottom: var(--padding-bottom); }
 
 /** -------------------------------- align compass */
@@ -3069,6 +3119,37 @@ html:not(.root) {
   grid-column: full; }
 
 /*  EOF Universal helpers */
+/** Icon helpers
+ *  2020.1.15
+ *
+ *  CSS
+ *
+ */
+/** -------------------------------- SVG Color Filters */
+/** Generate Colors from Black:
+    https://codepen.io/sosuke/full/Pjoqqp
+*/
+.use-filter--black-is-white {
+  filter: invert(100%); }
+
+/** -------------------------------- SVG Backgrounds */
+.background-image--close {
+  /* SVG: x-close */
+  background-image: url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>'); }
+
+.background-image--loading {
+  /* SVG: arrows circle loading-refresh */
+  background-image: url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/></svg>'); }
+
+.background-image--info {
+  /* SVG: i-info circle */
+  background-image: url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>'); }
+
+.background-image--menu {
+  /* SVG: hamburger */
+  background-image: url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>'); }
+
+/** EOF Icon helpers */
 /** Article markup
  *  Shortcuts for faster coding
  *  2019.8.22
@@ -3076,7 +3157,7 @@ html:not(.root) {
  *  SCSS
  *
  */
-mark, .mark {
+mark, .mark, [mark] {
   color: var(--text-color-accent, inherit);
   background-color: transparent;
   /* remove defaults */ }
@@ -3252,22 +3333,6 @@ mark, .mark {
     font-size: var(--font-size);
     line-height: var(--line-height); }
 
-/** Was replaced by Myocards */
-.group-banner {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-  align-self: stretch;
-  --v-space: var(--row-space, 1.5rem);
-  --h-space: var(--col-space, 1.5rem);
-  padding-top: var(--h-space); }
-
-.group-banner > * {
-  margin: 0 var(--h-space) var(--v-space) var(--h-space); }
-
 /** Too complex */
 .autogrid {
   --cell-size: 100%;
@@ -3419,26 +3484,5 @@ mark, .mark {
 /* ----------------------------------- swed-banner alias */
 /** -------------------------------- Renamed Components */
 /*  EOF Versions Fallback */
-/** Generate Colors from Black:
-    https://codepen.io/sosuke/full/Pjoqqp
-*/
-.filter--black-is-white {
-  filter: invert(100%); }
-
-.background-image--close {
-  /* SVG: x-close */
-  background-image: url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>'); }
-
-.background-image--loading {
-  /* SVG: arrows circle loading-refresh */
-  background-image: url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/></svg>'); }
-
-.background-image--info {
-  /* SVG: i-info circle */
-  background-image: url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>'); }
-
-.background-image--menu {
-  /* SVG: hamburger */
-  background-image: url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>'); }
-
+/** -------------------------------- pending components */
 /*  EOF Appart style index */

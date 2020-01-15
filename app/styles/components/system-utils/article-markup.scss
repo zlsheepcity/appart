@@ -22,7 +22,7 @@ small  { @extend .text-inline-smaller !optional; }
 .big   { @extend .text-block-bigger   !optional; }
 .small { @extend .text-block-smaller  !optional; }
 
-mark, .mark {
+mark, .mark, [mark] {
     color: var(--text-color-accent, inherit);
     background-color: transparent; /* remove defaults */
 }
@@ -97,7 +97,7 @@ mark, .mark {
 
 
 .rows {
-    @extend .group-content-rows !optional;
+    @extend .group-rows !optional;
 }
 
 .grid-king {

@@ -32,21 +32,6 @@
 }
 
 
-/** Was replaced by Myocards */
-.group-banner {
-    display:         flex;
-    flex-direction:  row;
-    flex-wrap:       wrap;
-    justify-content: center;
-    align-items:     center;
-    align-content:   center;
-    align-self:      stretch;
-  --v-space:         var(--row-space, 1.5rem);
-  --h-space:         var(--col-space, 1.5rem);
-    padding-top:     var(--h-space);
-    } .group-banner>* {
-        margin:  0 var(--h-space) var(--v-space) var(--h-space);
-}
 
 
 /** Too complex */

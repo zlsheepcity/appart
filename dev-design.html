@@ -104,6 +104,45 @@
 </head>
 <body class="colors--primary native-sans">
 
+<!-- ========================================= Moving Path -->
+
+<article id="MovingPath">
+    <style>
+        .el-box {
+            width:      350px;
+            height:     200px;
+            padding:    0rem;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="350" height="200" fill="none" stroke="red"><path d="M50,150 C50,0 200,0 200,75 C200,150 350,150 350,0"/></svg>');
+            background-repeat: no-repeat;
+
+        }
+        .el-fox {
+            /* define box */
+            width:  3rem;
+            height: 3rem;
+            border-right:  2px solid magenta;
+            background-color:  hsla(204, 44%, 34%, 0.5);
+
+            /* define path */
+            offset-path: path('M0,0 C40,160 60,160 100,0');
+            offset-path: path("M50,150 C50,0 200,0 200,75 C200,150 350,150 350,0");
+
+            offset-rotate: auto 90deg;
+            offset-anchor: 50% 50%;
+
+
+            animation: go 4000ms infinite ease-in-out;
+        }
+        @keyframes go {
+             50% { offset-distance: 100%; }
+            100% { offset-distance:   0%; }
+        }
+    </style>
+    <div class="el-box">
+        <div class="el-fox"></div>
+    </div>
+</article>
+
 <!-- ========================================= Shadow Captions -->
 
 <article id="ShadowCaptions">
@@ -111,7 +150,13 @@
 
         <style>
             .shadow1 {
-                text-shadow: #3E3E40 1px 1px,#3E3E40 -0px 0px,#3E3E40 -1px 1px,#3E3E40 -2px 2px,#3E3E40 -3px 3px,#3E3E40 -4px 4px,#3E3E40 -5px 5px,#3E3E40 -6px 6px,#3E3E40 -7px 7px,#3E3E40 -8px 8px,#3E3E40 -9px 9px,#3E3E40 -10px 10px,#3E3E40 -11px 11px,#3E3E40 -12px 12px,#3E3E40 -13px 13px,#3E3E40 -14px 14px,#3E3E40 -15px 15px,#3E3E40 -16px 16px,#3E3E40 -17px 17px,#3E3E40 -18px 18px,#3E3E40 -19px 19px,#3E3E40 -20px 20px,#3E3E40 -21px 21px,#3E3E40 -22px 22px,#3E3E40 -23px 23px,#3E3E40 -24px 24px,#3E3E40 -25px 25px,#3E3E40 -26px 26px,#3E3E40 -27px 27px,#3E3E40 -28px 28px,#3E3E40 -29px 29px,#3E3E40 -30px 30px,#3E3E40 -31px 31px,#3E3E40 -32px 32px,#3E3E40 -33px 33px,#3E3E40 -34px 34px,#3E3E40 -35px 35px,#3E3E40 -36px 36px,#3E3E40 -37px 37px,#3E3E40 -38px 38px,#3E3E40 -39px 39px,#3E3E40 -40px 40px,#3E3E40 -41px 41px,#3E3E40 -42px 42px,#3E3E40 -43px 43px,#3E3E40 -44px 44px,#3E3E40 -45px 45px,#3E3E40 -46px 46px,#3E3E40 -47px 47px,#3E3E40 -48px 48px,#3E3E40 -49px 49px,#3E3E40 -50px 50px,#3E3E40 -51px 51px,#3E3E40 -52px 52px,#3E3E40 -53px 53px,#3E3E40 -54px 54px,#3E3E40 -55px 55px,#3E3E40 -56px 56px,#3E3E40 -57px 57px,#3E3E40 -58px 58px,#3E3E40 -59px 59px,#3E3E40 -60px 60px,#3E3E40 -61px 61px,#3E3E40 -62px 62px,#3E3E40 -63px 63px,#3E3E40 -64px 64px,#3E3E40 -65px 65px,#3E3E40 -66px 66px,#3E3E40 -67px 67px,#3E3E40 -68px 68px,#3E3E40 -69px 69px,#3E3E40 -70px 70px,#3E3E40 -71px 71px,#3E3E40 -72px 72px,#3E3E40 -73px 73px,#3E3E40 -74px 74px,#3E3E40 -75px 75px,#3E3E40 -76px 76px,#3E3E40 -77px 77px,#3E3E40 -78px 78px,#3E3E40 -79px 79px,#3E3E40 -80px 80px,#3E3E40 -81px 81px,#3E3E40 -82px 82px,#3E3E40 -83px 83px,#3E3E40 -84px 84px,#3E3E40 -85px 85px,#3E3E40 -86px 86px,#3E3E40 -87px 87px,#3E3E40 -88px 88px,#3E3E40 -89px 89px,#3E3E40 -90px 90px,#3E3E40 -91px 91px,#3E3E40 -92px 92px,#3E3E40 -93px 93px,#3E3E40 -94px 94px,#3E3E40 -95px 95px,#3E3E40 -96px 96px,#3E3E40 -97px 97px,#3E3E40 -98px 98px,#3E3E40 -99px 99px,#3E3E40 -100px 100px,#3E3E40 -101px 101px,#3E3E40 -102px 102px,#3E3E40 -103px 103px,#3E3E40 -104px 104px,#3E3E40 -105px 105px,#3E3E40 -106px 106px,#3E3E40 -107px 107px,#3E3E40 -108px 108px,#3E3E40 -109px 109px,#3E3E40 -110px 110px,#3E3E40 -111px 111px,#3E3E40 -112px 112px,#3E3E40 -113px 113px,#3E3E40 -114px 114px,#3E3E40 -115px 115px,#3E3E40 -116px 116px,#3E3E40 -117px 117px,#3E3E40 -118px 118px,#3E3E40 -119px 119px,#3E3E40 -120px 120px,#3E3E40 -121px 121px,#3E3E40 -122px 122px,#3E3E40 -123px 123px,#3E3E40 -124px 124px,#3E3E40 -125px 125px,#3E3E40 -126px 126px,#3E3E40 -127px 127px,#3E3E40 -128px 128px,#3E3E40 -129px 129px,#3E3E40 -130px 130px,#3E3E40 -131px 131px,#3E3E40 -132px 132px,#3E3E40 -133px 133px,#3E3E40 -134px 134px,#3E3E40 -135px 135px,#3E3E40 -136px 136px,#3E3E40 -137px 137px,#3E3E40 -138px 138px,#3E3E40 -139px 139px,#3E3E40 -140px 140px,#3E3E40 -141px 141px,#3E3E40 -142px 142px,#3E3E40 -143px 143px,#3E3E40 -144px 144px,#3E3E40 -145px 145px,#3E3E40 -146px 146px,#3E3E40 -147px 147px,#3E3E40 -148px 148px,#3E3E40 -149px 149px,#3E3E40 -150px 150px,#3E3E40 -151px 151px,#3E3E40 -152px 152px,#3E3E40 -153px 153px,#3E3E40 -154px 154px,#3E3E40 -155px 155px,#3E3E40 -156px 156px,#3E3E40 -157px 157px,#3E3E40 -158px 158px,#3E3E40 -159px 159px,#3E3E40 -160px 160px,#3E3E40 -161px 161px,#3E3E40 -162px 162px,#3E3E40 -163px 163px,#3E3E40 -164px 164px,#3E3E40 -165px 165px,#3E3E40 -166px 166px,#3E3E40 -167px 167px,#3E3E40 -168px 168px,#3E3E40 -169px 169px;
+              --gc: #3E3E40;
+            }
+            .shadow1 {
+                text-shadow: var(--gc) 1px 1px,var(--gc) -0px 0px,var(--gc) -1px 1px,var(--gc) -2px 2px,var(--gc) -3px 3px,var(--gc) -4px 4px,var(--gc) -5px 5px,var(--gc) -6px 6px,var(--gc) -7px 7px,var(--gc) -8px 8px,var(--gc) -9px 9px,var(--gc) -10px 10px,var(--gc) -11px 11px,var(--gc) -12px 12px,var(--gc) -13px 13px,var(--gc) -14px 14px,var(--gc) -15px 15px,var(--gc) -16px 16px,var(--gc) -17px 17px,var(--gc) -18px 18px,var(--gc) -19px 19px,var(--gc) -20px 20px,var(--gc) -21px 21px,var(--gc) -22px 22px,var(--gc) -23px 23px,var(--gc) -24px 24px,var(--gc) -25px 25px,var(--gc) -26px 26px,var(--gc) -27px 27px,var(--gc) -28px 28px,var(--gc) -29px 29px,var(--gc) -30px 30px,var(--gc) -31px 31px,var(--gc) -32px 32px,var(--gc) -33px 33px,var(--gc) -34px 34px,var(--gc) -35px 35px,var(--gc) -36px 36px,var(--gc) -37px 37px,var(--gc) -38px 38px,var(--gc) -39px 39px,var(--gc) -40px 40px,var(--gc) -41px 41px,var(--gc) -42px 42px,var(--gc) -43px 43px,var(--gc) -44px 44px,var(--gc) -45px 45px,var(--gc) -46px 46px,var(--gc) -47px 47px,var(--gc) -48px 48px,var(--gc) -49px 49px,var(--gc) -50px 50px,var(--gc) -51px 51px,var(--gc) -52px 52px,var(--gc) -53px 53px,var(--gc) -54px 54px,var(--gc) -55px 55px,var(--gc) -56px 56px,var(--gc) -57px 57px,var(--gc) -58px 58px,var(--gc) -59px 59px,var(--gc) -60px 60px,var(--gc) -61px 61px,var(--gc) -62px 62px,var(--gc) -63px 63px,var(--gc) -64px 64px,var(--gc) -65px 65px,var(--gc) -66px 66px,var(--gc) -67px 67px,var(--gc) -68px 68px,var(--gc) -69px 69px,var(--gc) -70px 70px,var(--gc) -71px 71px,var(--gc) -72px 72px,var(--gc) -73px 73px,var(--gc) -74px 74px,var(--gc) -75px 75px,var(--gc) -76px 76px,var(--gc) -77px 77px,var(--gc) -78px 78px,var(--gc) -79px 79px,var(--gc) -80px 80px,var(--gc) -81px 81px,var(--gc) -82px 82px,var(--gc) -83px 83px,var(--gc) -84px 84px,var(--gc) -85px 85px,var(--gc) -86px 86px,var(--gc) -87px 87px,var(--gc) -88px 88px,var(--gc) -89px 89px,var(--gc) -90px 90px,var(--gc) -91px 91px,var(--gc) -92px 92px,var(--gc) -93px 93px,var(--gc) -94px 94px,var(--gc) -95px 95px,var(--gc) -96px 96px,var(--gc) -97px 97px,var(--gc) -98px 98px,var(--gc) -99px 99px,var(--gc) -100px 100px,var(--gc) -101px 101px,var(--gc) -102px 102px,var(--gc) -103px 103px,var(--gc) -104px 104px,var(--gc) -105px 105px,var(--gc) -106px 106px,var(--gc) -107px 107px,var(--gc) -108px 108px,var(--gc) -109px 109px,var(--gc) -110px 110px,var(--gc) -111px 111px,var(--gc) -112px 112px,var(--gc) -113px 113px,var(--gc) -114px 114px,var(--gc) -115px 115px,var(--gc) -116px 116px,var(--gc) -117px 117px,var(--gc) -118px 118px,var(--gc) -119px 119px,var(--gc) -120px 120px,var(--gc) -121px 121px,var(--gc) -122px 122px,var(--gc) -123px 123px,var(--gc) -124px 124px,var(--gc) -125px 125px,var(--gc) -126px 126px,var(--gc) -127px 127px,var(--gc) -128px 128px,var(--gc) -129px 129px,var(--gc) -130px 130px,var(--gc) -131px 131px,var(--gc) -132px 132px,var(--gc) -133px 133px,var(--gc) -134px 134px,var(--gc) -135px 135px,var(--gc) -136px 136px,var(--gc) -137px 137px,var(--gc) -138px 138px,var(--gc) -139px 139px,var(--gc) -140px 140px,var(--gc) -141px 141px,var(--gc) -142px 142px,var(--gc) -143px 143px,var(--gc) -144px 144px,var(--gc) -145px 145px,var(--gc) -146px 146px,var(--gc) -147px 147px,var(--gc) -148px 148px,var(--gc) -149px 149px,var(--gc) -150px 150px,var(--gc) -151px 151px,var(--gc) -152px 152px,var(--gc) -153px 153px,var(--gc) -154px 154px,var(--gc) -155px 155px,var(--gc) -156px 156px,var(--gc) -157px 157px,var(--gc) -158px 158px,var(--gc) -159px 159px,var(--gc) -160px 160px,var(--gc) -161px 161px,var(--gc) -162px 162px,var(--gc) -163px 163px,var(--gc) -164px 164px,var(--gc) -165px 165px,var(--gc) -166px 166px,var(--gc) -167px 167px,var(--gc) -168px 168px,var(--gc) -169px 169px;
+            }
+            .shadow1::first-line {
+              --gc: #5E5E60;
             }
             .shadow1 {
                 ---color: #EDEEE9;
@@ -121,7 +166,7 @@
         </style>
 
         <header class="">
-            <h2 class="h1 shadow1">Куда<br>мы идём?</h2>
+            <h2 class="h1 shadow1">BonusSystem<br>Standalone</h2>
         </header>
 
         <section>

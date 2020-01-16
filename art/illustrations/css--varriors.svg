@@ -4,9 +4,9 @@
 	 width="1000" height="333" viewBox="0 0 1000 333">
 <style type="text/css">
 <![CDATA[
-	.main{fill-rule:evenodd;clip-rule:evenodd;}
-	.css-fill{fill-rule:evenodd;clip-rule:evenodd;fill:#FFFFFF;}
-	.var{fill-rule:evenodd;clip-rule:evenodd;fill:hsl( 359, 54%, 53% );}
+	.main     {/**/}
+	.css-fill {fill:white;}
+	.var      {fill:hsl( 359, 54%, 53% );}
 ]]>
 </style>
 <g>

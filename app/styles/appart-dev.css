@@ -526,26 +526,26 @@ body {
   font-family: 'Vollkorn';
   font-weight: normal;
   font-style: normal;
-  src: url("../fonts/Vollkorn-Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/Vollkorn-Regular.woff2") format("woff2"), url("../fonts/Vollkorn-Regular.woff") format("woff"), url("../fonts/Vollkorn-Regular.ttf") format("truetype"), url("../fonts/Vollkorn-Regular.svg#Vollkorn-Regular") format("svg"); }
+  src: url("../fonts/Vollkorn-R.eot?#iefix") format("embedded-opentype"), url("../fonts/Vollkorn-R.woff2") format("woff2"), url("../fonts/Vollkorn-R.woff") format("woff"), url("../fonts/Vollkorn-R.ttf") format("truetype"), url("../fonts/Vollkorn-R.svg#Vollkorn-Regular") format("svg"); }
 @font-face {
   font-family: 'Vollkorn';
   font-weight: 700;
   font-style: normal;
-  src: url("../fonts/Vollkorn-Bold.eot?#iefix") format("embedded-opentype"), url("../fonts/Vollkorn-Bold.woff2") format("woff2"), url("../fonts/Vollkorn-Bold.woff") format("woff"), url("../fonts/Vollkorn-Bold.ttf") format("truetype"), url("../fonts/Vollkorn-Bold.svg#Vollkorn-Bold") format("svg"); }
+  src: url("../fonts/Vollkorn-B.eot?#iefix") format("embedded-opentype"), url("../fonts/Vollkorn-B.woff2") format("woff2"), url("../fonts/Vollkorn-B.woff") format("woff"), url("../fonts/Vollkorn-B.ttf") format("truetype"), url("../fonts/Vollkorn-B.svg#Vollkorn-Bold") format("svg"); }
 @font-face {
   font-family: 'Vollkorn';
   font-weight: normal;
   font-style: italic;
-  src: url("../fonts/Vollkorn-Italic.eot?#iefix") format("embedded-opentype"), url("../fonts/Vollkorn-Italic.woff2") format("woff2"), url("../fonts/Vollkorn-Italic.woff") format("woff"), url("../fonts/Vollkorn-Italic.ttf") format("truetype"), url("../fonts/Vollkorn-Italic.svg#Vollkorn-Italic") format("svg"); }
+  src: url("../fonts/Vollkorn-I.eot?#iefix") format("embedded-opentype"), url("../fonts/Vollkorn-I.woff2") format("woff2"), url("../fonts/Vollkorn-I.woff") format("woff"), url("../fonts/Vollkorn-I.ttf") format("truetype"), url("../fonts/Vollkorn-I.svg#Vollkorn-Italic") format("svg"); }
 /** Code Field Mono */
 @font-face {
   font-family: 'VT323';
   font-weight: normal;
   font-style: normal;
-  src: url("../fonts/VT323-Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/VT323-Regular.woff") format("woff"), url("../fonts/VT323-Regular.ttf") format("truetype"), url("../fonts/VT323-Regular.svg#VT323-Regular") format("svg"); }
+  src: url("../fonts/VT323-CODE.eot?#iefix") format("embedded-opentype"), url("../fonts/VT323-CODE.woff") format("woff"), url("../fonts/VT323-CODE.ttf") format("truetype"), url("../fonts/VT323-CODE.svg#VT323-Regular") format("svg"); }
 /** Fonts Hosted at Google */
 /*
-    <link rel="preconnect"   href="//fonts.gstatic.com">
+    <link rel="preconnect"   href="//fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic"
         media="none" onload="if(media!='all')media='all'"

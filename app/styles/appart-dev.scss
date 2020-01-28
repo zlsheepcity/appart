@@ -1,13 +1,19 @@
 @charset "UTF-8";
 /*  Appart Styles
  *  index file
- *  2020.1.28
+ *  2019.12.20
  */
 
 /** Compilation shortcuts
-scss -C --sourcemap=none app/styles/appart.scss app/styles/appart-ready.css
-sass --no-source-map app/styles/appart.scss app/styles/appart-ready.css
+scss -C --sourcemap=none app/styles/appart-dev.scss app/styles/appart-dev.css
+sass --no-source-map app/styles/appart-dev.scss app/styles/appart-dev.css
  */
+
+
+// -------------------------------------------- Quick Prototyping
+
+
+ // @import "components/prototype/prototype-sakura";
 
 
 // -------------------------------------------- System Core
@@ -33,7 +39,25 @@ sass --no-source-map app/styles/appart.scss app/styles/appart-ready.css
  // Functionality
 
     @import "components/contact-form/contact-form";
+
+ // Design
+
+    @import "components/svga-icons/svga-icons";
+    @import "components/catgrounds/catgrounds";
+
+ // Specific Cases
+
     @import "components/old-style-code-block/old-style-code-block";
+ // @import "components/data-table/data-table";
+
+
+ // Deprecated
+
+    @import "components/swed-design/swed-banner";
+    @import "components/swed-design/swed-button";
+    @import "components/swed-design/swed-dropdown";
+    @import "components/swed-design/swed-site-head";
+ // @import "components/journal-grid/journal-grid";
 
 
 // -------------------------------------------- System Utils
@@ -44,6 +68,11 @@ sass --no-source-map app/styles/appart.scss app/styles/appart-ready.css
     @import "components/icons/background-icons";
     @import "components/system-utils/article-markup";
 
+ // dev-mode
+
+    @import "components/system-core/color-palet--projects";
+    @import "components/system-utils/versions-fallback";
+    @import "components/system-utils/ultra-new";
 
 
 // -------------------------------------------- Custom

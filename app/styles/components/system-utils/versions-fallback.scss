@@ -225,6 +225,7 @@
 
 
 .group-content-rows { @extend .group-rows    !optional; }
+.rows               { @extend .group-rows    !optional; }
 .content-menu       { @extend .menulist      !optional; }
 
 

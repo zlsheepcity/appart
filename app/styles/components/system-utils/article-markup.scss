@@ -96,10 +96,6 @@ mark, .mark, [mark] {
 //* ------------------------------------- layout shortcuts
 
 
-.rows {
-    @extend .group-rows !optional;
-}
-
 .grid-king {
     @extend .grid-queen !optional;
   --width-root: 0;

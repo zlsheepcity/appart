@@ -26,15 +26,17 @@
 
     <!-- ༼°▽°༽ style boot -->
     <style>
-        body    { width: 100%; height: auto; overflow: hidden; }
-        img,svg { max-width: 100%; }
+        html       { margin:0; padding:0 0.25rem; }
+        body       { margin:0; padding:0; width:100%; height:auto; overflow-y:scroll; }
+        img,svg,hr { margin:0; border:0; max-width:100%; }
+        pre        { overflow:auto; }
     </style>
 
     <!-- ༼°▽°༽ prefetch boot -->
     <link rel="preload" href="app/fonts/Vollkorn-R.woff2" as="font">
-    <link rel="preload" href="app/fonts/Vollkorn-B.woff2"    as="font">
-    <link rel="preload" href="app/fonts/Vollkorn-I.woff2"  as="font">
-    <link rel="preload" href="app/fonts/VT323-CODE.woff"     as="font">
+    <link rel="preload" href="app/fonts/Vollkorn-B.woff2" as="font">
+    <link rel="preload" href="app/fonts/Vollkorn-I.woff2" as="font">
+    <link rel="preload" href="app/fonts/VT323-CODE.woff"  as="font">
 
     <!-- ༼°▽°༽ app boot -->
     <script>
@@ -88,11 +90,15 @@
 
 
     <link
-        href="app/styles/appart.css?v2019.9.29"
+        href="app/styles/appart-ready.css"
+        media="none" onload="if(media!='all')media='all'"
         rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic"
-        rel="stylesheet">
+
+    <noscript>
+        <link
+            href="app/styles/appart-ready.css"
+            rel="stylesheet" type="text/css">
+    </noscript>
 
 
     <!-- ========================================= APP -->

@@ -8,7 +8,7 @@
 
 
     <title>Appart</title>
-    <meta name="description" content="Frontend snippets with care for visual aesthetics, Art/html/css/js" />
+    <meta name="description" content="Frontend snippets with care for visual aesthetics, art/html/css/js" />
     <meta name="author"      content="zl 2020, zl.sheepcity@gmail.com" />
 
 
@@ -107,6 +107,7 @@
     <script defer src="app/script/app-core.js"></script>
 
     <!-- interface -->
+    <script defer src="app/styles/components/offsidebar/interface-offsidebar.js"></script>
     <script defer src="app/script/components/image-zzzoom.js"></script>
 
     <!-- ========================================= APP CUSTOM -->
@@ -114,52 +115,196 @@
     <!-- dev functions -->
     <script defer src="app/script/components/autofill-paragraphs.js"></script>
 
+    <style>
+        #Start h1 {
+            opacity: 0.05;
+        }
+        :root,
+        .color-model {
+            --HSL-sgBrand:               171, 55%, 71%;
+            --HSL-sgBrandDarken:         170, 45%, 41%;
+            --HSL-sgMinor:               201, 22%, 46%;
+            --HSL-sgAction:                0, 62%, 37%;
+            --HSL-sgActionDarken:          0, 67%, 27%;
+            --HSL-sgHighlight:           176, 53%, 94%;
+            --HSL-sgBlack:                 0,  0%,  1%;
+
+            --HSL-egDark:                220, 56%, 24%;
+            --HSL-egLight:               207, 57%, 75%;
+            --HSL-egAccent:               11, 86%, 63%;
+            --HSL-egHoverAccent:          11, 90%, 43%;
+            --HSL-egReaccent:            207, 57%, 51%;
+            --HSL-egHoverReaccent:       207, 61%, 41%;
+            --HSL-egLightReaccent:       207, 56%, 88%;
+            --HSL-egBlack:               240, 15%, 12%;
+            --HSL-egHighlight:           206, 57%, 95%;
+        }
+        .colors--secondary {
+            --back-color:         hsl(var(--HSL-sgMinor));
+            --back-color-accent:  var(--light-shadow);
+            --back-color-descent: var(--light-shadow);
+
+            --text-color:         white;
+            --text-color-accent:  hsl(var(--HSL-sgAction));
+            --text-color-descent: hsl(176, 20%, 80%);
+
+            --link-color:         hsl(var(--HSL-sgBrand));
+            --link-color-accent:  hsl(var(--HSL-sgBrandDarken));
+            --link-color-descent: var(--link-color);
+
+            --shadow-color: var(--shadow-color--for-light-base);
+            --light-shadow: var(--light-shadow--for-light-base);
+        }
+    </style>
+
 
     <!-- ========================================== ʕ⊙ᴥ⊙ʔ = -->
     <!-- ========================================= END HEAD -->
 </head>
 <body class="colors--primary">
 
-    <!-- ----------------------------------------- Project Header -->
+<!-- ========================================= Project Header -->
+<header  id="Start">
+    <div class="group-banner use-colors colors--secondary">
+        <h1>App <mark>&</mark> Art</h1>
+        <p class="text-inline-bigger">
+            Front-end components.<br>
+            Not a framework, but<br>
+            reusable code templates.
+        </p>
+    </div>
+</header>
+<!-- ========================================= Von Loader -->
+<div>
+    <style>
+        #von-loader {
+          --background-color: hsl(212, 34%, 29%);
+          --color:            hsl(226, 27%, 90%);
+          --size:     6rem;
+            z-index:  11;
+            position: fixed;
+            top:      0;
+            right:    0;
+            bottom:   0;
+            left:     0;
+            background-color: var(--background-color);
+            color:            var(--color);
+            transition:       opacity 240ms ease-out;
+            pointer-events:   none;
+            opacity:          0; }
+        #von-loader.is-active {
+            pointer-events:   all;
+            opacity:          1; }
+        #von-loader::after {
+            content:  '';
+            position: absolute;
+            z-index:  1;
+            top:      1.5rem;
+            left:     1.5rem;
+            width:    var(--size);
+            height:   var(--size);
+            background-size:     var(--size);
+            background-repeat:   no-repeat;
+            background-position: center center;
+         /* SVG: arrows circle loading */
+            background-image: url('data:image/svg+xml;utf8,<svg fill="white" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/></svg>');
 
-    <header id="Start">
+            animation: VonLoaderRotation 1s linear infinite; }
+            @keyframes VonLoaderRotation {
+                from { transform: rotate(360deg); }
+                to   { transform: rotate(  1deg); }
+            }
+    </style>
+    <div id="von-loader"></div>
+    <script>
+        function vonLoader () {
 
-        <section class="swed-banner use-colors colors--secondary">
-            <h1>App <mark>&</mark> Art</h1>
-            <p class="mini-paragraph text-inline-bigger">
-                Front-end components. Not a framework,
-                but reusable code templates.
-            </p>
-            <p class="native-sans text-block-smaller">
-                v2019.9.29<br><strong>Elisa</strong>
-            </p>
-        </section>
-        <section class="swed-banner text-block-smaller">
-            <a href="#Articles" class="swed-button">
-                <span class="svga-icon"><svg><use xlink:href="#svg-next"></use></svg></span>
-                read articles
-            </a>
-            <a href="#About" class="swed-button">
-                <span class="svga-icon"><svg><use xlink:href="#svg-next"></use></svg></span>
-                about project
-            </a>
-            <a href="https://github.com/zlsheepcity/appart" class="swed-button">
-                <span class="svga-icon"><svg><use xlink:href="#svg-github"></use></svg></span>
-                code sources
-            </a>
-        </section>
+            let loader = document.getElementById('von-loader')
+            if (!loader) return false
+            loader.classList.add('is-active')
 
-    </header>
+            let finish = () => { loader.classList.remove('is-active') }
+            if (window.addEventListener) window.addEventListener("load", finish, false)
+            else if (window.attachEvent) window.attachEvent("onload", finish)
+            else finish()
+        }
+        vonLoader()
+    </script>
+</div>
+<!-- ========================================= Von Burger -->
+<div>
+
+    <!-- Hamburger -->
+
+    <style>
+        #von-burger {
+          --background-color: gold;
+          --color:           black;
+            position: fixed;
+            z-index:  3;
+            top:      0;
+            right:    0;
+            width:  3em;
+            height: 3em;
+            cursor: pointer;
+         /* SVG: hamburger */
+            background-image: url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>');
+            background-size:     48px;
+            background-repeat:   no-repeat;
+            background-position: center center;
+            background-color:    var(--background-color);
+            color:               var(--color);
+            border-radius: 0 0 0 4px;
+        }
+        #von-burger:hover {
+            transition: background 120ms ease-in;
+          --background-color: goldenrod;
+        }
+    </style>
+    <button markup id="von-burger"></button>
+
+    <!-- Menu Bar -->
+
+    <aside   class="offsidebar ChaptersMenuBar">
+        <div class="offsidebar-container">
+            <header class="offsidebar-header bar-header">
+                <h2 class="h4">Table of contents</h2>
+            </header>
+            <nav    class="offsidebar-content">
+                <ol class="menulist">
+                    <li class="pb"><a href="#Start">Start</a></li>
+                    <li><a href="#JournalGrid">Journal Grid</a></li>
+                    <li><a href="#Typography">Web-Typography</a></li>
+                </ol>
+            </nav>
+        </div>
+    </aside>
+
+    <!-- Menu scripting -->
+
+    <script>
+        function Activate___ChaptersMenuBar() {
+            let  barName = 'ChaptersMenuBar'
+            let  bar_api = InterfaceOffsideBar(barName)
+            if  (bar_api)
+                 bar_api.delegateToggle(document.getElementById('von-burger'))
+        }
+        app.onload(Activate___ChaptersMenuBar)
+    </script>
+
+</div>
+
+
 
 
     <!-- ----------------------------------------- Side Menu -->
 
 
-    <article>
+    <article hidden>
 
         <!-- Menu Bar -->
 
-        <section class="ChaptersMenuBar offsidebar">
+        <section class="--ChaptersMenuBar offsidebar">
             <div class="sidepanel">
                 <header class="sidepanel-header">
                     <h2 class="h4">Table of Content</h2>
@@ -182,8 +327,10 @@
 
         <!-- Menu Scripting -->
 
-        <script defer src="app/styles/components/offsidebar/interface-offsidebar.js"></script>
-        <script>app.onload(f=>InterfaceOffsideBar('ChaptersMenuBar'))</script>
+        <!-- script defer src="app/styles/components/offsidebar/interface-offsidebar.js"></script -->
+        <script>
+            /*app.onload(f=>InterfaceOffsideBar('ChaptersMenuBar'))*/
+        </script>
 
     </article>
 

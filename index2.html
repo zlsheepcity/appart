@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- ========================================= HEAD CONTENT -->
+    <!-- ===================================== HEAD CONTENT -->
 
 
     <title>Appart</title>
@@ -21,7 +21,7 @@
     <link href="app/favicons/192x192.png" sizes="192x192" rel="icon" type="image/png">
 
 
-    <!-- ========================================= BOOT -->
+    <!-- ===================================== BOOT -->
 
 
     <!-- ༼°▽°༽ style boot -->
@@ -86,7 +86,7 @@
     </script>
 
 
-    <!-- ========================================= DESIGN -->
+    <!-- ===================================== DESIGN -->
 
 
     <link
@@ -101,7 +101,7 @@
     </noscript>
 
 
-    <!-- ========================================= APP -->
+    <!-- ===================================== APP -->
 
 
     <script defer src="app/script/app-core.js"></script>
@@ -110,13 +110,15 @@
     <script defer src="app/styles/components/offsidebar/interface-offsidebar.js"></script>
     <script defer src="app/script/components/image-zzzoom.js"></script>
 
-    <!-- ========================================= APP CUSTOM -->
+    <!-- ===================================== APP CUSTOM -->
 
     <!-- dev functions -->
     <script defer src="app/script/components/autofill-paragraphs.js"></script>
 
     <style>
-        #Start h1 {
+        s { opacity: 0.64; }
+        #Start h1,
+        [alt="CSS --varriors"] {
             opacity: 0.05;
         }
         :root,
@@ -158,12 +160,13 @@
     </style>
 
 
-    <!-- ========================================== ʕ⊙ᴥ⊙ʔ = -->
-    <!-- ========================================= END HEAD -->
+    <!-- ====================================== ʕ⊙ᴥ⊙ʔ = -->
+    <!-- ===================================== END HEAD -->
 </head>
 <body class="colors--primary">
 
 <!-- ========================================= Project Header -->
+
 <header  id="Start">
     <div class="group-banner use-colors colors--secondary">
         <h1>App <mark>&</mark> Art</h1>
@@ -174,7 +177,9 @@
         </p>
     </div>
 </header>
+
 <!-- ========================================= Von Loader -->
+
 <div>
     <style>
         #von-loader {
@@ -231,7 +236,9 @@
         vonLoader()
     </script>
 </div>
+
 <!-- ========================================= Von Burger -->
+
 <div>
 
     <!-- Hamburger -->
@@ -265,7 +272,7 @@
 
     <!-- Menu Bar -->
 
-    <aside   class="offsidebar ChaptersMenuBar">
+    <aside   class="offsidebar ChaptersMenuBar colors--ivory">
         <div class="offsidebar-container">
             <header class="offsidebar-header bar-header">
                 <h2 class="h4">Table of contents</h2>
@@ -294,193 +301,223 @@
 
 </div>
 
+<!-- ========================================= App Components -->
 
+<main class="chapter grid-king use-colors colors--root">
 
+    <header class="chapter-header">
+        <h2>App Components</h2>
+    </header>
 
-    <!-- ----------------------------------------- Side Menu -->
+    <!-- ===================================== Major Projects -->
 
+    <div class="chapter isontop sublayer">
 
-    <article hidden>
+        <article class="inngrid color-box">
+            <aside class="text-block-smaller text-color-descent">
+                <p>CSS, variables</p>
+            </aside>
+            <header class="chapter-header">
+                <h4>CSS --varriors</h4>
+                <p>
+                    Pattern & pre-defined classes<br>
+                    to use custom CSS values without
+                    <nobr>inline styling</nobr>.
+                </p>
+            </header>
+            <footer>
+                <figure>
+                    <a href="projects/css-varriors.html">
+                        <img
+                            src="art/illustrations/css--varriors.svg"
+                            alt="CSS --varriors"
+                            class="auto-margin width"
+                            style="--width:24rem">
+                    </a>
+                </figure>
+                <ul>
+                    <li>
+                        <a href="projects/css-varriors.html" class="link-inline">Project page</a>
+                    </li>
+                </ul>
+            </footer>
+        </article>
 
-        <!-- Menu Bar -->
-
-        <section class="--ChaptersMenuBar offsidebar">
-            <div class="sidepanel">
-                <header class="sidepanel-header">
-                    <h2 class="h4">Table of Content</h2>
-                </header>
-                <nav class="sidepanel-content">
-                    <ul class="content-menu js-for-ChaptersMenuBar">
-                        <li class="pb"><a href="#Start">Start</a></li>
-                        <li><a href="#JournalGrid">Journal Grid</a></li>
-                        <li><a href="#Typography">Web-Typography</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </section>
-
-        <!-- Menu Bartender -->
-
-        <nav class="nav-fly js-for-ChaptersMenuBar">
-            <figure class="svga-icon"><svg><use xlink:href="#svg-menu"></use></svg></figure>
-        </nav>
-
-        <!-- Menu Scripting -->
-
-        <!-- script defer src="app/styles/components/offsidebar/interface-offsidebar.js"></script -->
-        <script>
-            /*app.onload(f=>InterfaceOffsideBar('ChaptersMenuBar'))*/
-        </script>
-
-    </article>
-
-
-
-
-    <hr class="reading-pause">
-
-
-    <!-- ----------------------------------------- App Components -->
-
-    <div class="use-colors colors--root">
-
-    <article class="layer padding">
-
-        <header class="is-centered padding">
-            <h2>CSS Components</h2>
-        </header>
-        <section
-            class="group-collisting auto-margin"
-            style="--h4-font-size: var(--h5-font-size);">
-
-            <figure>
-                <h4>CSS Varriors</h4>
-                <p class="text-block-smaller">Replaced inline styling.</p>
-                <p><a
-                    href="https://github.com/zlsheepcity/appart/blob/master/app/styles/components/html-core/css-varriors.scss"
-                    class="link-inline">SCSS function</a></p>
-                <p><s>compiled CSS</s></p>
-                <p><s>research article</s></p>
-            </figure>
-
-            <figure>
-                <h4>Journal Grid</h4>
-                <p class="text-block-smaller">Two-columns content layout.</p>
-                <p><a
-                    href="https://github.com/zlsheepcity/appart/blob/master/app/styles/components/journal-grid/journal-grid.scss"
-                    class="link-inline">git source</a></p>
-                <p><a href="art-journal-grid.html" class="link-inline">demo/article</a></p>
-            </figure>
-
-            <figure class="fatground">
-                <h4>Catgrounds!</h4>
-                <p class="text-block-smaller">Design trick to make boring content more interesting.</p>
-                <p><s>project page</s></p>
-            </figure>
-
-            <figure>
-                <h4>Color Model</h4>
-                <p class="text-block-smaller">Pattern for switching different color palletes in one document.</p>
-                <p><a
-                    href="https://github.com/zlsheepcity/appart/blob/master/app/styles/components/color-model/color-model.scss"
-                    class="link-inline">git source</a></p>
-                <p><s>research article</s></p>
-            </figure>
-
-            <figure>
-                <h4>CSS Typography</h4>
-                <p class="text-block-smaller">Code snippets and research.</p>
-                <p><a
-                    href="https://github.com/zlsheepcity/appart/blob/master/app/styles/components/html-core/html-typography.scss"
-                    class="link-inline">git source</a></p>
-                <p><a href="#Typography" class="link-inline">demo</a></p>
-            </figure>
-
-            <figure>
-                <div class="pb is-centered js-for-ChaptersMenuBar">
-                    <img
-                        src="art/component-icons/component-icon--ofsidebar.svg"
-                        alt="ofsidebar component icon"
-                        class="width" style="--width:6em;">
-                </div>
-                <h4>Offsidebar</h4>
-                <p class="text-block-smaller">Expandable side-panel.</p>
-                <p><a
-                    href="https://github.com/zlsheepcity/appart/tree/master/app/styles/components/offsidebar"
-                    class="link-inline">git source</a></p>
-                <p><s>demo page</s></p>
-            </figure>
-
-            <figure>
-                <h4>UI Elements</h4>
-                <p class="text-block-smaller">Button, dropdown, e.t.c.</p>
-                <p><a
-                    href="https://github.com/zlsheepcity/appart/tree/master/app/styles/components/swed-design"
-                    class="link-inline">git source</a></p>
-            </figure>
-
-            <figure>
-                <h4>SVGA Icons</h4>
-                <p class="text-block-smaller">Shortcode for inline SVG-image</p>
-                <p><a
-                    href="https://github.com/zlsheepcity/appart/tree/master/app/styles/components/svga-icons"
-                    class="link-inline">git source</a></p>
-            </figure>
-
-        </section>
-    </article>
-
-
-    <article class="layer padding padding-top" style="--padding-top:0;">
-        <header class="is-centered padding">
-            <h2>JavaScript Components</h2>
-        </header>
-        <section
-            class="group-collisting auto-margin"
-            style="--h4-font-size: var(--h5-font-size);">
-
-            <figure>
-                <h4>Image Lazy Loader</h4>
-                <p class="text-block-smaller">Images are only loaded when it appears while scrolling.</p>
-                <p><a
-                    href="https://github.com/zlsheepcity/appart/blob/master/app/script/components/image-lazy-loader.js"
-                    class="link-inline">git source</a></p>
-            </figure>
-
-            <figure>
-                <h4>Image Zoom</h4>
-                <p class="text-block-smaller">Smooth image zoom to fit screen on click.</p>
-                <p><a
-                    href="https://github.com/zlsheepcity/appart/blob/master/app/script/components/image-zzzoom.js"
-                    class="link-inline">git source</a></p>
-            </figure>
-
-            <figure>
-                <h4>CSS Class Mutator</h4>
-                <p class="text-block-smaller">Shorthand function for managing an element class.</p>
-                <p><a
-                    href="https://github.com/zlsheepcity/appart/blob/master/app/script/components/css-class-mutator.js"
-                    class="link-inline">git source</a></p>
-            </figure>
-
-            <figure>
-                <h4>Scroll to Var</h4>
-                <p class="text-block-smaller">The scroll position affects the values of CSS variables.</p>
-                <p><a
-                    href="https://github.com/zlsheepcity/appart/blob/master/app/script/components/scroll-to-var.js"
-                    class="link-inline">git source</a></p>
-            </figure>
-
-            <figure>
-                <h4>AppKing.js</h4>
-                <p class="text-block-smaller">Vanilla js controller for unsystematized functions.</p>
-                <p><s>research article</s></p>
-            </figure>
-
-        </section>
-    </article>
+        <article class="inngrid color-box">
+            <aside class="text-block-smaller text-color-descent">
+                <p>CSS, grid, layout</p>
+            </aside>
+            <header class="chapter-header">
+                <h4>Article grid</h4>
+                <p>
+                    Grid layout for article content.<br>
+                    Simple markup for rich customization.
+                </p>
+            </header>
+            <ul>
+                <li>
+                    <a href="projects/article-grid.html" class="link-inline">Project page</a>
+                </li>
+            </ul>
+        </article>
 
     </div>
+
+    <!-- ===================================== Minor Projects -->
+
+    <header class="chapter-header">
+        <h2>Minor Projects</h2>
+    </header>
+
+    <div class="layer">
+        <section
+            class="group-collisting auto-margin"
+            style="--h4-font-size: var(--h5-font-size);">
+
+            <article>
+                <h4>CSS Color Model</h4>
+                <p class="text-block-smaller">Pattern for switching palletes in one document.</p>
+                <ul>
+                    <li>
+                        <a
+                            href="https://github.com/zlsheepcity/appart/blob/master/app/styles/components/color-model/color-model.scss"
+                            class="link-inline">git source</a>
+                    </li>
+                    <li>
+                        <s>research article</s>
+                    </li>
+                </ul>
+            </article>
+
+            <article>
+                <h4>CSS Typography</h4>
+                <p class="text-block-smaller">Code snippets and research.</p>
+                <ul>
+                    <li>
+                        <a
+                        href="https://github.com/zlsheepcity/appart/blob/master/app/styles/components/html-core/html-typography.scss"
+                        class="link-inline">git source</a>
+                    </li>
+                    <li>
+                        <a href="#Typography" class="link-inline">demo</a>
+                    </li>
+                </ul>
+            </article>
+
+            <article>
+                <h4>Offsidebar</h4>
+                <p class="text-block-smaller">Expandable side-panel. With love and care for aesthetic behavior.</p>
+                <ul>
+                    <li>
+                        <a
+                        href="https://github.com/zlsheepcity/appart/tree/master/app/styles/components/offsidebar"
+                        class="link-inline">git source</a>
+                    </li>
+                    <li>
+                        <s>demo page</s>
+                    </li>
+                </ul>
+                <figure>
+                    <img
+                        src="art/component-icons/component-icon--ofsidebar.svg"
+                        alt="offsidebar component icon"
+                        class="auto-margin width js-for-ChaptersMenuBar"
+                        style="--width:6em;">
+                </figure>
+            </article>
+
+            <article class="fatground">
+                <h4>CSS Catgrounds!</h4>
+                <p class="text-block-smaller">Design trick to make boring content more interesting.</p>
+                <ul><li><s>incomplete</s></li></ul>
+            </article>
+
+            <article>
+                <h4>SVGA Icons</h4>
+                <p class="text-block-smaller">Shortcode for inline SVG-images.</p>
+                <ul>
+                    <li>
+                        <a
+                        href="https://github.com/zlsheepcity/appart/tree/master/app/styles/components/svga-icons"
+                        class="link-inline">git source</a>
+                    </li>
+                </ul>
+            </article>
+
+            <article>
+                <h4>UI Elements</h4>
+                <p class="text-block-smaller">Button, dropdown, e.t.c.</p>
+                <ul>
+                    <li>
+                        <a
+                        href="https://github.com/zlsheepcity/appart/tree/master/app/styles/components/swed-design"
+                        class="link-inline">git source</a>
+                    </li>
+                </ul>
+            </article>
+
+            <article>
+                <h4>JS Image Lazy Loader</h4>
+                <p class="text-block-smaller">With IntersectionObserver.</p>
+                <ul>
+                    <li>
+                        <a
+                        href="https://github.com/zlsheepcity/appart/blob/master/app/script/components/image-lazy-loader.js"
+                        class="link-inline">git source</a>
+                    </li>
+                </ul>
+            </article>
+
+            <article>
+                <h4>JS Image Zoom</h4>
+                <p class="text-block-smaller">Smooth image zoom on click.</p>
+                <ul>
+                    <li>
+                        <a
+                        href="https://github.com/zlsheepcity/appart/blob/master/app/script/components/image-zzzoom.js"
+                        class="link-inline">git source</a>
+                    </li>
+                </ul>
+            </article>
+
+            <article>
+                <h4>CSS Class Manager</h4>
+                <p class="text-block-smaller">Shorthand function.</p>
+                <ul>
+                    <li>
+                        <a
+                    href="https://github.com/zlsheepcity/appart/blob/master/app/script/components/css-class-mutator.js"
+                    class="link-inline">git source</a>
+                    </li>
+                </ul>
+            </article>
+
+            <article>
+                <h4>JS Scroll to Var</h4>
+                <p class="text-block-smaller">The scroll position affects the values of CSS variables.</p>
+                <ul>
+                    <li>
+                        <a
+                    href="https://github.com/zlsheepcity/appart/blob/master/app/script/components/scroll-to-var.js"
+                    class="link-inline">git source</a>
+                    </li>
+                </ul>
+            </article>
+
+            <article>
+                <h4>AppKing.js</h4>
+                <p class="text-block-smaller">Vanilla js controller for functions out of system.</p>
+                <ul>
+                    <li>
+                        <s>incomplete</s>
+                    </li>
+                </ul>
+            </article>
+
+        </section>
+    </div>
+
+</main>
 
 
     <!-- ----------------------------------------- About project -->
@@ -526,7 +563,7 @@
     </article>
 
 
-    <!-- ========================================= PAGE CONTENT -->
+    <!-- ===================================== PAGE CONTENT -->
 
 
     <div id="Articles"></div>
@@ -762,7 +799,7 @@
 
 
 
-    <!-- ========================================= PAGE CUSTOM -->
+    <!-- ===================================== PAGE CUSTOM -->
 
 
     <!-- SVGA Icons -->

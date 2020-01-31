@@ -217,13 +217,34 @@
     </p>
 </nav>
 
+<!-- ========================================= Project Article -->
+
+<article class="chapter grid-king use-colors colors--secondary">
+
+    <header class="chapter-header">
+        <h2>Contact Form</h2>
+    </header>
+
+    <div class="inngrid">
+        <p>Optimized (but not required) for wordpress plugin <nobr mark>Contact Form 7</nobr></p>
+    </div>
+
+    <ul class="inngrid">
+        <li>
+            <a href="https://github.com/zlsheepcity/appart/tree/master/app/styles/components/contact-form">Code source</a>
+        </li>
+    </ul>
+
+</article>
+
 <!-- ========================================= Offsidebar -->
 
-<section>
+<section class="use-colors colors--secondary">
 <article id="OffsidebarContactForm" class="chapter grid-king">
 
     <header class="chapter-header">
-        <h2>Inside Offsidebar</h2>
+        <h2>Demos</h2>
+        <h3>Inside Offsidebar</h3>
         <div>
             <button class="toggle-ContactBar">Open Bar</button>
         </div>
@@ -338,6 +359,291 @@
     app.onload(DemoActivateContactForm)
 </script>
 </section>
+
+<!-- ========================================= Design -->
+
+<section>
+<style>
+    .el-demoform .form-design { position: relative; }
+    .el-demoform .form-loader { max-width: var(--max-width); }
+    .DemoformDarkDesign .form-loader.is-active::after {
+ /* SVG: arrows circle loading -- white */
+    background-image: url('data:image/svg+xml;utf8,<svg fill="white" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/></svg>');
+
+    }
+</style>
+<article class="chapter grid-king use-colors colors--primary el-demoform DemoformDarkDesign">
+    <header class="chapter-header">
+        <h3>On dark background</h3>
+    </header>
+    <div class="form-design form-functional">
+        <div class="wrap-form-plugin">
+            <div class="wrap-form">
+                <form>
+                    <div class="wrap-form-fields">
+
+                        <div class="wrap-field">
+                            <label><span class="field-label">Name <i>(required)</i></span><br>
+                            <span><input type="text" name="contact-name" value="Named von Person" size="40" class="" aria-required="true" aria-invalid="false">
+                            </span> </label>
+                        </div>
+
+                        <div class="wrap-field">
+                            <label><span class="field-label">Email <i>(required)</i></span><br>
+                            <span><input type="email" name="contact-mail" size="40" class="" aria-required="true" aria-invalid="false">
+                            </span> </label>
+                        </div>
+
+                        <div class="wrap-field">
+                            <label><span class="field-label">Your Message or Question</span><br>
+                            <span><textarea name="your-message" rows="3" aria-required="true" aria-invalid="false"></textarea>
+                            </span> </label>
+                        </div>
+
+                        <div class="wrap-field">
+                            <label><span class="field-label">Your Select</span><br>
+                            <span><select class="" name="your-select" aria-invalid="false">
+                                <option selected>This one is the best</option>
+                                <option>Another one</option>
+                                <option>Third one</option>
+                            </select>
+                            </span> </label>
+                        </div>
+
+                        <div class="wrap-field wrap-submit">
+                            <input type="submit" value="Send" class="form-design-button">
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="wrap-form-feedback">
+            <div class="feedback-design rows">
+                <h4 class="mark">Your message was sent successfully. Thanks!</h4>
+                <p>Our manager will reach out to you within the next 24 business hours.</p>
+                <p>Best regards,<br>Appart team!</p>
+                <div class="next-links text-block-bigger">
+                    <h6>Next:</h6>
+                    <ul>
+                        <li><span class="text-link">Home page</span></li>
+                        <li><span class="text-link js-form-reset">New message</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="form-loader"></div>
+    </div>
+    <footer class="chapter-note">
+        <div><button class="js-form-reset">Reset</button></div>
+        <div><button class="js-form-loading">Loading</button></div>
+        <div><button class="js-form-response">Response</button></div>
+    </footer>
+</article>
+<article class="chapter grid-king use-colors colors--ivory el-demoform DemoformLightDesign">
+    <header class="chapter-header">
+        <h3>On light background</h3>
+    </header>
+    <div class="form-design form-functional">
+        <div class="wrap-form-plugin">
+            <div class="wrap-form">
+                <form>
+                    <div class="wrap-form-fields">
+
+                        <div class="wrap-field">
+                            <label><span class="field-label">Name <i>(required)</i></span><br>
+                            <span><input type="text" name="contact-name" value="Named von Person" size="40" class="" aria-required="true" aria-invalid="false">
+                            </span> </label>
+                        </div>
+
+                        <div class="wrap-field">
+                            <label><span class="field-label">Email <i>(required)</i></span><br>
+                            <span><input type="email" name="contact-mail" size="40" class="" aria-required="true" aria-invalid="false">
+                            </span> </label>
+                        </div>
+
+                        <div class="wrap-field">
+                            <label><span class="field-label">Your Message or Question</span><br>
+                            <span><textarea name="your-message" rows="3" aria-required="true" aria-invalid="false"></textarea>
+                            </span> </label>
+                        </div>
+
+                        <div class="wrap-field">
+                            <label><span class="field-label">Your Select</span><br>
+                            <span><select class="" name="your-select" aria-invalid="false">
+                                <option selected>This one is the best</option>
+                                <option>Another one</option>
+                                <option>Third one</option>
+                            </select>
+                            </span> </label>
+                        </div>
+
+                        <div class="wrap-field wrap-submit">
+                            <input type="submit" value="Send" class="form-design-button">
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="wrap-form-feedback">
+            <div class="feedback-design rows">
+                <h4 class="mark">Your message was sent successfully. Thanks!</h4>
+                <p>Our manager will reach out to you within the next 24 business hours.</p>
+                <p>Best regards,<br>Appart team!</p>
+                <div class="next-links text-block-bigger">
+                    <h6>Next:</h6>
+                    <ul>
+                        <li><span class="text-link">Home page</span></li>
+                        <li><span class="text-link js-form-reset">New message</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="form-loader"></div>
+    </div>
+    <footer class="chapter-note">
+        <div><button class="js-form-reset">Reset</button></div>
+        <div><button class="js-form-loading">Loading</button></div>
+        <div><button class="js-form-response">Response</button></div>
+    </footer>
+</article>
+<article class="chapter grid-king use-colors colors--root native-sans el-demoform DemoformWhiteDesign">
+    <header class="chapter-header">
+        <h3>White background + Sans</h3>
+    </header>
+    <div class="form-design theme--white form-functional">
+        <div class="wrap-form-plugin">
+            <div class="wrap-form">
+                <form>
+                    <div class="wrap-form-fields">
+
+                        <div class="wrap-field">
+                            <label><span class="field-label">Name <i>(required)</i></span><br>
+                            <span><input type="text" name="contact-name" value="Named von Person" size="40" class="" aria-required="true" aria-invalid="false">
+                            </span> </label>
+                        </div>
+
+                        <div class="wrap-field">
+                            <label><span class="field-label">Email <i>(required)</i></span><br>
+                            <span><input type="email" name="contact-mail" size="40" class="" aria-required="true" aria-invalid="false">
+                            </span> </label>
+                        </div>
+
+                        <div class="wrap-field">
+                            <label><span class="field-label">Your Message or Question</span><br>
+                            <span><textarea name="your-message" rows="3" aria-required="true" aria-invalid="false"></textarea>
+                            </span> </label>
+                        </div>
+
+                        <div class="wrap-field">
+                            <label><span class="field-label">Your Select</span><br>
+                            <span><select class="" name="your-select" aria-invalid="false">
+                                <option selected>This one is the best</option>
+                                <option>Another one</option>
+                                <option>Third one</option>
+                            </select>
+                            </span> </label>
+                        </div>
+
+                        <div class="wrap-field wrap-submit">
+                            <input type="submit" value="Send" class="form-design-button">
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="wrap-form-feedback">
+            <div class="feedback-design rows">
+                <h4 class="mark">Your message was sent successfully. Thanks!</h4>
+                <p>Our manager will reach out to you within the next 24 business hours.</p>
+                <p>Best regards,<br>Appart team!</p>
+                <div class="next-links text-block-bigger">
+                    <h6>Next:</h6>
+                    <ul>
+                        <li><span class="text-link">Home page</span></li>
+                        <li><span class="text-link js-form-reset">New message</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="form-loader"></div>
+    </div>
+    <footer class="chapter-note">
+        <div><button class="js-form-reset">Reset</button></div>
+        <div><button class="js-form-loading">Loading</button></div>
+        <div><button class="js-form-response">Response</button></div>
+    </footer>
+</article>
+<script>
+    function DemoActivateDesignForm (name) {
+     // get api
+        let  selector = '.'+name
+        let  form_api = Init__ContactForm({selector})
+     // delegate action
+        //let  imitator = document.querySelector('.js-imitate-form')
+        //form_api.delegateResponse(imitator)
+    }
+    function DisableSubmitButtons () {
+        let forms = document.querySelectorAll('form')
+        forms.forEach(el=>el.onsubmit=f=>false)
+    }
+    app.onload(f=>DemoActivateDesignForm('DemoformDarkDesign'))
+    app.onload(f=>DemoActivateDesignForm('DemoformLightDesign'))
+    app.onload(f=>DemoActivateDesignForm('DemoformWhiteDesign'))
+    DisableSubmitButtons()
+</script>
+</section>
+
+<!-- ========================================= Validation Design -->
+
+<article class="chapter grid-king use-colors colors--ivory">
+    <header class="chapter-header">
+        <h3>Validation Design</h3>
+        <p>(wordpress wpcf7 style)</p>
+    </header>
+    <div class="grid-column-main form-design form-functional">
+        <div class="wrap-form-plugin">
+            <div class="wrap-form">
+                <form>
+                    <div class="wrap-form-fields">
+
+                        <div class="wrap-field">
+                            <label><span class="field-label">Name <i>(required)</i></span><br>
+                            <span><input type="text" name="contact-name" value="Named von Person" size="40" class="is-not-valid" aria-required="true" aria-invalid="false">
+                            <span role="alert" class="not-valid-tip">The field is required.</span>
+                            </span> </label>
+                        </div>
+
+                        <div class="wrap-field">
+                            <label><span class="field-label">Email <i>(required)</i></span><br>
+                            <span><input type="email" name="contact-mail" size="40" class="is-not-valid" aria-required="true" aria-invalid="false">
+                            <span role="alert" class="not-valid-tip">Validation errors occurred. Please confirm the field and submit form again.</span>
+                            </span> </label>
+                        </div>
+
+                        <div class="wrap-field">
+                            <label><span class="field-label">Your Message or Question</span><br>
+                            <span><textarea name="your-message" rows="3" class="is-not-valid" aria-required="true" aria-invalid="false"></textarea>
+                            <span role="alert" class="not-valid-tip">The field is required.</span>
+                            </span> </label>
+                        </div>
+
+                        <div class="wrap-field wrap-submit">
+                            <input type="submit" value="Send" class="form-design-button">
+                        </div>
+
+                        <div class="wpcf7-response-output wpcf7-display-none wpcf7-validation-errors" style="display: block;" role="alert">One or more fields have an error.<br>Please check and try again.</div>
+
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</article>
+
 
 
 </body>

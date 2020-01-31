@@ -20,16 +20,27 @@ function InterfaceOffsideBar ( dna={} ) {
     const classBackground = 'offsidebar-background'
     const queryBartender  = '.js-for-' + dna.name
 
+//  Interface
+
+    const activateEscape = e => {
+        e = e || window.event
+        if (e.key==='Escape' || e.key==='Esc') Api.close()
+    }
+
     const Api = {
+
+     // State controller
 
         getState: f => asidebar.classList.contains(classActive),
         setStateClosed: f => {
             asidebar.classList.remove(classActive)
             htmlwrap.classList.remove(classHasOverlay)
+            document.removeEventListener('keyup', activateEscape)
         },
         setStateOpen: f => {
             asidebar.classList.add(classActive)
             htmlwrap.classList.add(classHasOverlay)
+            document.addEventListener('keyup', activateEscape)
         },
         toggleState: f => {
             if (Api.getState()) Api.setStateClosed()

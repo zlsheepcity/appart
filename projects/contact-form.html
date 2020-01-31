@@ -4,15 +4,34 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- appseed 2020.1.2 -->
 
-    <!-- ========================================= HEAD CONTENT -->
+
+    <!-- ===================================== HEAD CONTENT -->
 
 
     <title>Contact Form</title>
 
+    <meta name="description"         content="Basic design & functions, html/css/js + optional support for wordpress ContactForm7" />
+    <meta name="author"              content="zl 2020, zl.sheepcity@gmail.com" />
 
-    <!-- ========================================= BOOT -->
+    <!-- ## MICRODATA -->
+    <meta property="og:url"          content="https://zlsheepcity.github.io/appart/projects/contact-form.html" />
+    <meta property="og:image"        content="https://zlsheepcity.github.io/appart/projects/article-grid--long-read.png" />
+    <meta property="og:image:width"  content="1200" />
+    <meta property="og:image:height" content="628" />
+    <meta property="og:type"         content="article" />
+    <meta property="og:locale"       content="en_US" />
+
+    <!-- FAVICON -->
+    <meta name="theme-color"             content="#314863">
+    <meta name="msapplication-TileColor" content="#314863">
+    <meta name="msapplication-TileImage" content="../app/favicons/144x144.png">
+    <link href="../app/favicons/180x180.png" sizes="180x180" rel="apple-touch-icon">
+    <link href="../app/favicons/192x192.png" sizes="192x192" rel="icon" type="image/png">
+
+
+
+    <!-- ===================================== BOOT -->
 
 
     <!-- ༼°▽°༽ style boot -->
@@ -77,7 +96,7 @@
     </script>
 
 
-    <!-- ========================================= DESIGN -->
+    <!-- ===================================== DESIGN -->
 
 
     <link
@@ -91,7 +110,7 @@
     </noscript>
 
 
-    <!-- ========================================= APP -->
+    <!-- ===================================== APP -->
 
 
     <!-- required core -->
@@ -109,11 +128,11 @@
     <script defer src="../app/script/components/autofill-paragraphs.js"></script>
 
 
-    <!-- ========================================= APP CUSTOM -->
+    <!-- ===================================== APP CUSTOM -->
 
 
-    <!-- ========================================== ʕ⊙ᴥ⊙ʔ = -->
-    <!-- ========================================= END HEAD -->
+    <!-- ====================================== ʕ⊙ᴥ⊙ʔ = -->
+    <!-- ===================================== END HEAD -->
 </head>
 <body class="colors--primary">
 
@@ -181,6 +200,144 @@
         vonLoader()
     </script>
 </div>
+
+<!-- ========================================= Appart Header -->
+
+<nav
+    class="grid-king use-colors colors--secondary text-block-smaller padding"
+    style="--padding: 0.25rem 0; --grid-row-gap: 0.25rem;">
+    <p>
+        Contact Form —
+         a<del class="opacity" style="--opacity:0.05">p</del>part of
+        <a href="../index.html" class="link-inline mark">appart</a>
+        project
+    </p>
+    <p class="grid-column--note">
+        2020.1.20
+    </p>
+</nav>
+
+<!-- ========================================= Offsidebar -->
+
+<section>
+<article id="OffsidebarContactForm" class="chapter grid-king">
+
+    <header class="chapter-header">
+        <h2>Inside Offsidebar</h2>
+        <div>
+            <button class="toggle-ContactBar">Open Bar</button>
+        </div>
+    </header>
+
+</article>
+<aside class="colors--ivory">
+    <article class="offsidebar from-eastside ContactBar">
+        <div class="offsidebar-container">
+
+            <header class="offsidebar-header bar-header">
+                <h4>Contact Us</h4>
+            </header>
+
+            <div class="offsidebar-content form-design form-functional">
+
+                <div class="wrap-form-plugin">
+                    <div class="wrap-form">
+                        <form>
+                            <div class="wrap-form-fields">
+
+                                <div class="wrap-field">
+                                    <label><span class="field-label">Name <i>(required)</i></span><br>
+                                    <span><input type="text" name="contact-name" size="40" class="" aria-required="true" aria-invalid="false">
+                                    </span> </label>
+                                </div>
+
+                                <div class="wrap-field">
+                                    <label><span class="field-label">Email <i>(required)</i></span><br>
+                                    <span><input type="email" name="contact-mail" size="40" class="" aria-required="true" aria-invalid="false">
+                                    </span> </label>
+                                </div>
+
+                                <div class="wrap-field">
+                                    <label><span class="field-label">Your Message or Question</span><br>
+                                    <span><textarea name="your-message" rows="3" aria-required="true" aria-invalid="false"></textarea>
+                                    </span> </label>
+                                </div>
+
+                                <div class="wrap-field">
+                                    <label><span class="field-label">Your Select</span><br>
+                                    <span><select class="" name="your-select" aria-invalid="false">
+                                        <option selected>This one is the best</option>
+                                        <option>Another one</option>
+                                        <option>Third one</option>
+                                    </select>
+                                    </span> </label>
+                                </div>
+
+                                <div class="wrap-field wrap-submit">
+                                    <input type="submit" value="Send" class="form-design-button">
+                                    <span class="form-loader"></span>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="wrap-form-feedback">
+                    <div class="feedback-design rows">
+                        <h4>Your message was sent successfully. Thanks!</h4>
+                        <p>Our manager will reach out to you within the next 24 business hours.</p>
+                        <p>Best regards,<br>Appart team!</p>
+                        <div class="next-links text-block-bigger">
+                            <p>Next:</p>
+                            <ul>
+                                <li>
+                                    <a
+                                    href="#OffsidebarContactForm" 
+                                    class="text-link js-for-ContactBar"
+                                    >Home page</a>
+                                </li>
+                                <li>
+                                    <span class="text-link js-form-reset">New message</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <footer class="offsidebar-footer bar-footer">
+                <div>
+                    <button class="js-form-reset">Reset</button>
+                    <button class="js-form-loading">Loading</button>
+                    <button class="js-form-response">Response</button>
+                </div>
+            </footer>
+
+
+        </div>
+    </article>
+</aside>
+<script>
+    function DemoActivateContactBar() {
+        let  bar_api = InterfaceOffsideBar('ContactBar')
+        if  (bar_api)
+             bar_api.delegateToggle(document.querySelector('.toggle-ContactBar'))
+    }
+    function DemoActivateContactForm () {
+     // get api
+        let  selector = '.ContactBar'
+        let  form_api = Init__ContactForm({selector})
+     // delegate action
+        //let  imitator = document.querySelector('.js-imitate-form')
+        //form_api.delegateResponse(imitator)
+    }
+    app.onload(DemoActivateContactBar)
+    app.onload(DemoActivateContactForm)
+</script>
+</section>
 
 
 </body>

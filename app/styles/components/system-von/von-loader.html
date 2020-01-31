@@ -1,11 +1,11 @@
 <!-- Von Loader -->
-<!-- 2020.1.2   -->
+<!-- 2020.1.30   -->
 
-<nav>
+<div>
     <style>
-        .von-loader {
+        #von-loader {
           --background-color: hsl(212, 34%, 29%);
-          --color:            hsl(226, 27%, 90%);
+          --color:            hsl(212, 27%, 90%);
           --size:     6rem;
             z-index:  11;
             position: fixed;
@@ -18,10 +18,10 @@
             transition:       opacity 240ms ease-out;
             pointer-events:   none;
             opacity:          0; }
-        .von-loader.is-active {
+        #von-loader.is-active {
             pointer-events:   all;
             opacity:          1; }
-        .von-loader::after {
+        #von-loader::after {
             content:  '';
             position: absolute;
             z-index:  1;
@@ -41,19 +41,25 @@
                 to   { transform: rotate(  1deg); }
             }
     </style>
-    <div class="von-loader"></div>
+    <div id="von-loader"></div>
     <script>
         function vonLoader () {
 
-            let loader = document.querySelector('.von-loader')
-            if (!loader) return false
-            loader.classList.add('is-active')
+            let loader = document.getElementById('von-loader')
+            if (!loader || !loader.classList) return false
 
             let finish = () => { loader.classList.remove('is-active') }
-            if (window.addEventListener) window.addEventListener("load", finish, false)
-            else if (window.attachEvent) window.attachEvent("onload", finish)
-            else finish()
+            let waitme = () => {
+                if (window.addEventListener)
+                    window.addEventListener("load", finish, false)
+                else if (window.attachEvent)
+                    window.attachEvent("onload", finish)
+                else finish()
+            }
+
+            loader.classList.add('is-active')
+            waitme()
         }
         vonLoader()
     </script>
-</nav>
+</div>

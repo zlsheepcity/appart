@@ -225,7 +225,7 @@
         function vonLoader () {
 
             let loader = document.getElementById('von-loader')
-            if (!loader) return false
+            if (!loader || !loader.classList) return false
             loader.classList.add('is-active')
 
             let finish = () => { loader.classList.remove('is-active') }

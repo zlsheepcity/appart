@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- appseed 2020.1.2 -->
+
+    <!-- ========================================= HEAD CONTENT -->
+
+
+    <title>Contact Form</title>
+
+
+    <!-- ========================================= BOOT -->
+
+
+    <!-- ༼°▽°༽ style boot -->
+    <style>
+        html       { margin:0; padding:0 0.25rem; }
+        body       { margin:0; padding:0; width:100%; height:auto; overflow-y:scroll; }
+        img,svg,hr { margin:0; border:0; max-width:100%; }
+        pre        { overflow:auto; }
+    </style>
+
+    <!-- ༼°▽°༽ prefetch boot -->
+    <link rel="preload" href="../app/fonts/Vollkorn-R.woff2" as="font">
+    <link rel="preload" href="../app/fonts/Vollkorn-B.woff2" as="font">
+    <link rel="preload" href="../app/fonts/Vollkorn-I.woff2" as="font">
+    <link rel="preload" href="../app/fonts/VT323-CODE.woff"  as="font">
+
+    <!-- ༼°▽°༽ app boot -->
+    <script>
+        function AppBoot() {
+
+         // The Noble Blastula
+            let app = this
+            app.has = { memory: [], arrived:true }
+            app.has.queens = [ 'onload', 'mutate' ]
+            /*
+            King has arrived --- let app = new AppBoot()
+            Take the Queen ----- app.attach('queen_name')(function)
+            Keep in memory ----- app.queen_name(function_parameters)
+            Execute later ------ app.onload(function)
+            2019.9.15
+            */
+
+         // The Noble Provocator
+            const proteinProvoker = function ImitateCriticalTasks () {
+              let tpp = new this.__proto__.constructor()
+              let must_have_a_memory = tpp.has.memory.push('something')
+              let must_accept_queens = like_this_one => true
+              tpp.attach('queen_id')(must_accept_queens)
+              tpp.queen_id('try this')
+            }
+
+         // Define responsibility
+            const TakeTheQueen = (queen) =>
+                {
+                    app[queen] =  ExecuteLater(queen)
+                    return (f) => ExecuteLater('update')({name:queen,f})
+                }
+            const KeepInMemory = (dna) => app.has.memory.push(dna)
+            const ExecuteLater =
+                 (responsible) =>
+                         (dna) => KeepInMemory({dna,for:responsible})
+
+         // Apply responsibility
+            app.attach = TakeTheQueen
+            app.has.queens.map( queen => app.attach(queen) )
+            app.ForceErrorsIfShouldBe =  proteinProvoker
+        }
+
+     // Run Immediately
+        let app = new AppBoot()
+        app.ForceErrorsIfShouldBe()
+    </script>
+
+
+    <!-- ========================================= DESIGN -->
+
+
+    <link
+        href="../app/styles/appart-dev.css?v2020.1.2"
+        media="none" onload="if(media!='all')media='all'"
+        rel="stylesheet" type="text/css">
+    <noscript>
+        <link
+            href="../app/styles/appart-dev.css?v2020.1.2"
+            rel="stylesheet" type="text/css">
+    </noscript>
+
+
+    <!-- ========================================= APP -->
+
+
+    <!-- required core -->
+    <script defer src="../app/script/app-core.js"></script>
+
+    <!-- optimization -->
+    <script defer src="../app/script/components/image-lazy-loader.js"></script>
+
+    <!-- interface -->
+    <script defer src="../app/styles/components/offsidebar/interface-offsidebar.js"></script>
+    <script defer src="../app/styles/components/contact-form/controller.js"></script>
+
+    <!-- dev functions -->
+    <script defer src="../app/script/components/survival-test.js"></script>
+    <script defer src="../app/script/components/autofill-paragraphs.js"></script>
+
+
+    <!-- ========================================= APP CUSTOM -->
+
+
+    <!-- ========================================== ʕ⊙ᴥ⊙ʔ = -->
+    <!-- ========================================= END HEAD -->
+</head>
+<body class="colors--primary">
+
+<!-- ========================================= Von Loader -->
+
+<div>
+    <style>
+        #von-loader {
+          --background-color: hsl(212, 34%, 29%);
+          --color:            hsl(212, 27%, 90%);
+          --size:     6rem;
+            z-index:  11;
+            position: fixed;
+            top:      0;
+            right:    0;
+            bottom:   0;
+            left:     0;
+            background-color: var(--background-color);
+            color:            var(--color);
+            transition:       opacity 240ms ease-out;
+            pointer-events:   none;
+            opacity:          0; }
+        #von-loader.is-active {
+            pointer-events:   all;
+            opacity:          1; }
+        #von-loader::after {
+            content:  '';
+            position: absolute;
+            z-index:  1;
+            top:      1.5rem;
+            left:     1.5rem;
+            width:    var(--size);
+            height:   var(--size);
+            background-size:     var(--size);
+            background-repeat:   no-repeat;
+            background-position: center center;
+         /* SVG: arrows circle loading */
+            background-image: url('data:image/svg+xml;utf8,<svg fill="white" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/></svg>');
+
+            animation: VonLoaderRotation 1s linear infinite; }
+            @keyframes VonLoaderRotation {
+                from { transform: rotate(360deg); }
+                to   { transform: rotate(  1deg); }
+            }
+    </style>
+    <div id="von-loader"></div>
+    <script>
+        function vonLoader () {
+
+            let loader = document.getElementById('von-loader')
+            if (!loader || !loader.classList) return false
+            loader.classList.add('is-active')
+
+            let finish = () => { loader.classList.remove('is-active') }
+            let waitme = () => {
+                if (window.addEventListener)
+                    window.addEventListener("load", finish, false)
+                else if (window.attachEvent)
+                    window.attachEvent("onload", finish)
+                else finish()
+            }
+
+            waitme()
+        }
+        vonLoader()
+    </script>
+</div>
+
+
+</body>
+</html>

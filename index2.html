@@ -241,8 +241,14 @@
                 <h2 class="h4">Table of contents</h2>
             </header>
             <nav    class="offsidebar-content">
-                <ol class="menulist">
-                    <li class="pb"><a href="#Start">Start</a></li>
+                <ol class="menulist js-for-ChaptersMenuBar">
+                    <li><a href="#Start">Start</a></li>
+                    <li><a href="#AboutProject">About Project</a></li>
+
+                    <li class="pt"><a href="#AppComponents">App Components</a></li>
+                    <li><a href="#MinorTools">Minor Tools</a></li>
+
+                    <li class="pt"><small>Articles</small></li>
                     <li><a href="#JournalGrid">Journal Grid</a></li>
                     <li><a href="#Typography">Web-Typography</a></li>
                 </ol>
@@ -256,8 +262,8 @@
         function Activate___ChaptersMenuBar() {
             let  barName = 'ChaptersMenuBar'
             let  bar_api = InterfaceOffsideBar(barName)
-            if  (bar_api)
-                 bar_api.delegateToggle(document.getElementById('von-burger'))
+            if (!bar_api)  return false
+            bar_api.delegateToggle(document.getElementById('von-burger'))
         }
         app.onload(Activate___ChaptersMenuBar)
     </script>
@@ -268,13 +274,13 @@
 
 <main class="chapter grid-king use-colors colors--root">
 
-    <header class="chapter-header">
-        <h2>App Components</h2>
-    </header>
-
     <!-- ===================================== Major Projects -->
 
-    <div class="chapter isontop inngrid-main-rw">
+    <div id="AppComponents" class="chapter isontop inngrid-main-rw">
+
+        <header class="chapter-header">
+            <h2>App Components</h2>
+        </header>
 
         <article class="inngrid-main-rw color-box el-product CssVarrior">
             <aside class="text-block-smaller text-color-descent">
@@ -346,22 +352,31 @@
 
     <!-- ===================================== Product Care Illustr. -->
 
-    <figure class="inngrid-east-side-rw">
+    <figure class="inngrid-east-side-rw first-grid-row">
         <img data-src="art/illustrations/illistr--products.svg" alt="Art illustration with love and components">
     </figure>
 
-    <!-- ===================================== Minor Projects -->
+    <!-- ===================================== Minor Tools -->
 
-    <header class="chapter-header">
-        <h2>Minor Projects</h2>
+    <header id="MinorTools" class="chapter-header">
+        <h2>Minor Tools</h2>
     </header>
 
     <div class="layer">
+
+        <style>
+            .el-topics h4 { color: var(--el-color, inherit); }
+            .el-topics-legend span { color: var(--el-color, inherit); }
+            .el-topic--css { --el-color: hsl( 13, 61%, 54%); }
+            .el-topic--js  { --el-color: hsl(184, 60%, 24%); }
+            .el-topic--des { --el-color: hsl(348, 35%, 49%); }
+        </style>
+
         <section
-            class="group-collisting auto-margin"
+            class="group-collisting auto-margin el-topics"
             style="--h4-font-size: var(--h5-font-size);">
 
-            <article>
+            <article class="el-topic--css">
                 <h4>CSS Color Model</h4>
                 <p class="text-block-smaller">Pattern for switching palletes in one document.</p>
                 <ul>
@@ -376,7 +391,7 @@
                 </ul>
             </article>
 
-            <article>
+            <article class="el-topic--css">
                 <h4>CSS Typography</h4>
                 <p class="text-block-smaller">Code snippets and research.</p>
                 <ul>
@@ -391,7 +406,22 @@
                 </ul>
             </article>
 
-            <article>
+            <article class="el-topic--css">
+                <h4>CSS Code Block</h4>
+                <p class="text-block-smaller">Old-style design.</p>
+                <ul>
+                    <li>
+                        <a
+                        href="https://github.com/zlsheepcity/appart/blob/master/app/styles/components/old-style-code-block/old-style-code-block.scss"
+                        class="link-inline">git source</a>
+                    </li>
+                    <li>
+                        <s>demo</s>
+                    </li>
+                </ul>
+            </article>
+
+            <article class="el-topic--css">
                 <h4>Offsidebar</h4>
                 <p class="text-block-smaller">Expandable side-panel. With love and care for aesthetic behavior.</p>
                 <ul>
@@ -409,13 +439,28 @@
                 </ul>
             </article>
 
-            <article class="fatground">
+            <article class="el-topic--css">
+                <h4>CSS Myocards</h4>
+                <p class="text-block-smaller">Responsive solution for cards with 2 childs.</p>
+                <ul>
+                    <li>
+                        <a
+                        href="https://github.com/zlsheepcity/appart/blob/master/app/styles/components/myocard/myocard.scss"
+                        class="link-inline">git source</a>
+                    </li>
+                    <li>
+                        <s>demo</s>
+                    </li>
+                </ul>
+            </article>
+
+            <article class="el-topic--des">
                 <h4>CSS Catgrounds!</h4>
                 <p class="text-block-smaller">Design trick to make boring content more interesting.</p>
                 <ul><li><s>incomplete</s></li></ul>
             </article>
 
-            <article>
+            <article class="el-topic--des">
                 <h4>SVGA Icons</h4>
                 <p class="text-block-smaller">Shortcode for inline SVG-images.</p>
                 <ul>
@@ -427,7 +472,7 @@
                 </ul>
             </article>
 
-            <article>
+            <article class="el-topic--des">
                 <h4>UI Elements</h4>
                 <p class="text-block-smaller">Button, dropdown, e.t.c.</p>
                 <ul>
@@ -439,7 +484,19 @@
                 </ul>
             </article>
 
-            <article>
+            <article class="el-topic--des">
+                <h4>Nice Colors</h4>
+                <p class="text-block-smaller">HSL shortcodes.</p>
+                <ul>
+                    <li>
+                        <a
+                        href="colors.html"
+                        class="link-inline">colors.html</a>
+                    </li>
+                </ul>
+            </article>
+
+            <article class="el-topic--js">
                 <h4>JS Image Lazy Loader</h4>
                 <p class="text-block-smaller">With IntersectionObserver.</p>
                 <ul>
@@ -451,7 +508,7 @@
                 </ul>
             </article>
 
-            <article>
+            <article class="el-topic--js">
                 <h4>JS Image Zoom</h4>
                 <p class="text-block-smaller">Smooth image zoom on click.</p>
                 <ul>
@@ -463,8 +520,8 @@
                 </ul>
             </article>
 
-            <article>
-                <h4>CSS Class Manager</h4>
+            <article class="el-topic--js">
+                <h4>JS DOM Class Manager</h4>
                 <p class="text-block-smaller">Shorthand function.</p>
                 <ul>
                     <li>
@@ -475,7 +532,7 @@
                 </ul>
             </article>
 
-            <article>
+            <article class="el-topic--js">
                 <h4>JS Scroll to Var</h4>
                 <p class="text-block-smaller">The scroll position affects the values of CSS variables.</p>
                 <ul>
@@ -487,7 +544,7 @@
                 </ul>
             </article>
 
-            <article>
+            <article class="el-topic--js">
                 <h4>AppKing.js</h4>
                 <p class="text-block-smaller">Vanilla js controller for functions out of system.</p>
                 <ul>
@@ -498,13 +555,23 @@
             </article>
 
         </section>
+
+        <footer class="el-topics-legend is-centered">
+            <div class="h3">
+                <span class="el-topic--css">CSS</span>
+                <span class="el-topic--des">Design</span>
+                <span class="el-topic--js">JS</span>
+            </div>
+        </footer>
+
     </div>
+
 
 </main>
 
 <!-- ========================================= About project -->
 
-<article id="About" class="chapter grid-king use-colors colors--secondary">
+<article id="AboutProject" class="chapter grid-king use-colors colors--secondary">
 
     <header class="chapter-header">
         <h2 class="h2">Project Description</h2>
@@ -514,9 +581,9 @@
     <div class="inngrid color-box">
         <p><b>App</b> — от технического термина application, <b>Art</b> — творчество. Игра слов символизирует связь между кодом и содержанием.</p>
 
-        <p>Проект appart создан для упрощённой вёрстки уникального контента. Уделяется много внимания ликвидации «некрасивых» ошибок. Например, дёргание контента под модальным окном.</p>
+        <p>Проект appart создан для упрощённой вёрстки и программирования оригинального контента. Компоненты веб интерфейсов создаются с любовью к эстетическим деталям и ощущениям.</p>
 
-        <p>Appart не фреймворк, а код для копирования в другие проекты.</p>
+        <p>Appart не фреймворк, а оптимизированный код для копирования в другие проекты.</p>
     </div>
 
     <div class="chapter-note">
@@ -525,13 +592,6 @@
             <p> — (фр.) поиск подходящего партнёра</p>
         </div>
     </div>
-
-    <footer class="text-inline-bigger">
-        <p>
-            zl, August 2019 — February 2020<br>
-            zl.sheepcity@gmail.com
-        </p>
-    </footer>
 
     <figure>
         <div>
@@ -543,14 +603,14 @@
         </div>
     </figure>
 
+    <footer class="text-inline-bigger">
+        <p>
+            zl, August 2019 — February 2020<br>
+            zl.sheepcity@gmail.com
+        </p>
+    </footer>
+
 </article>
-
-
-
-    <!-- ===================================== PAGE CONTENT -->
-
-
-    <div id="Articles"></div>
 
 
     <!-- ----------------------------------------- Journal Grid -->

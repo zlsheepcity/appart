@@ -1,16 +1,24 @@
-<!doctype html><!-- appart :: 8102 :: 2019.9.29 -->
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- ========================================= HEAD CONTENT -->
+    <!-- ===================================== HEAD CONTENT -->
 
 
     <title>Appart</title>
-    <meta name="description" content="Frontend code templates" />
-    <meta name="author"      content="zl 2019, zl.sheepcity@gmail.com" />
+    <meta name="description" content="Frontend snippets with care for visual aesthetics, art/html/css/js" />
+    <meta name="author"      content="zl 2020, zl.sheepcity@gmail.com" />
 
+
+    <!-- ## MICRODATA -->
+    <meta property="og:url"          content="https://zlsheepcity.github.io/appart/" />
+    <meta property="og:image"        content="https://zlsheepcity.github.io/appart/art/promo/Appart-Made-with-love.png" />
+    <meta property="og:image:width"  content="1200" />
+    <meta property="og:image:height" content="628" />
+    <meta property="og:type"         content="article" />
+    <meta property="og:locale"       content="en_US" />
 
     <!-- FAVICON -->
     <!-- 2019.1, best favicon service: https://realfavicongenerator.net/ -->
@@ -21,17 +29,22 @@
     <link href="app/favicons/192x192.png" sizes="192x192" rel="icon" type="image/png">
 
 
-    <!-- ========================================= BOOT -->
+    <!-- ===================================== BOOT -->
 
 
     <!-- ༼°▽°༽ style boot -->
     <style>
-        body    { width: 100%; height: auto; overflow: hidden; }
-        img,svg { max-width: 100%; }
+        html       { margin:0; padding:0 0.25rem; }
+        body       { margin:0; padding:0; width:100%; height:auto; overflow-y:scroll; }
+        img,svg,hr { margin:0; border:0; max-width:100%; }
+        pre        { overflow:auto; }
     </style>
 
     <!-- ༼°▽°༽ prefetch boot -->
-    <link rel="preconnect"   href="//fonts.gstatic.com">
+    <link rel="preload" href="app/fonts/Vollkorn-R.woff2" as="font">
+    <link rel="preload" href="app/fonts/Vollkorn-B.woff2" as="font">
+    <link rel="preload" href="app/fonts/Vollkorn-I.woff2" as="font">
+    <link rel="preload" href="app/fonts/VT323-CODE.woff"  as="font">
 
     <!-- ༼°▽°༽ app boot -->
     <script>
@@ -81,410 +94,639 @@
     </script>
 
 
-    <!-- ========================================= DESIGN -->
+    <!-- ===================================== DESIGN -->
 
 
     <link
-        href="app/styles/appart.css?v2019.9.29"
+        href="app/styles/appart.css"
+        media="none" onload="if(media!='all')media='all'"
         rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic"
-        rel="stylesheet">
+
+    <noscript>
+        <link
+            href="app/styles/appart.css"
+            rel="stylesheet" type="text/css">
+    </noscript>
 
 
-    <!-- ========================================= APP -->
+    <!-- ===================================== APP -->
 
 
     <script defer src="app/script/app-core.js"></script>
 
+    <!-- optimization -->
+    <script defer src="app/script/components/image-lazy-loader.js"></script>
+
     <!-- interface -->
+    <script defer src="app/styles/components/offsidebar/interface-offsidebar.js"></script>
     <script defer src="app/script/components/image-zzzoom.js"></script>
 
-    <!-- ========================================= APP CUSTOM -->
+    <!-- ===================================== APP CUSTOM -->
 
     <!-- dev functions -->
     <script defer src="app/script/components/autofill-paragraphs.js"></script>
 
+    <style>
+        s { opacity: 0.64; }
+    </style>
 
-    <!-- ========================================== ʕ⊙ᴥ⊙ʔ = -->
-    <!-- ========================================= END HEAD -->
+
+    <!-- ====================================== ʕ⊙ᴥ⊙ʔ = -->
+    <!-- ===================================== END HEAD -->
 </head>
 <body class="colors--primary">
 
-    <!-- ----------------------------------------- Project Header -->
+<!-- ========================================= Project Header -->
 
-    <header id="Start">
+<header  id="Start">
+    <div class="group-banner use-colors colors--secondary">
+        <h1>App <mark>&</mark> Art</h1>
+        <p class="text-inline-bigger">
+            Front-end components.<br>
+            Not a framework, but<br>
+            reusable code templates.
+        </p>
+    </div>
+</header>
+<nav class="pv">
+    <style>
+        .bart {
+            display:  inline-block;
+            vertical-align: middle;
+            padding:  0.25em 0.5em;
+            margin:         0.25em;
+            background-color: var(--back-color-accent);
+            text-decoration:  none;
+        }
+    </style>
+    <ul class="markup group-center text-block-bigger">
+        <li><a href="#AppComponents" class="bart">Components List</a></li>
+        <li><a href="#ArticleGrid" class="bart">Articles</a></li>
+        <li><a href="#AboutProject" class="bart">About</a></li>
+        <li>
+            <a href="https://github.com/zlsheepcity/appart" class="bart">
+                <span>Code Sources</span>
+            </a>
+        </li>
+    </ul>
+</nav>
 
-        <section class="swed-banner use-colors colors--secondary">
-            <h1>App <mark>&</mark> Art</h1>
-            <p class="mini-paragraph text-inline-bigger">
-                Front-end components. Not a framework,
-                but reusable code templates.
-            </p>
-            <p class="native-sans text-block-smaller">
-                v2019.9.29<br><strong>Elisa</strong>
-            </p>
-        </section>
-        <section class="swed-banner text-block-smaller">
-            <a href="#Articles" class="swed-button">
-                <span class="svga-icon"><svg><use xlink:href="#svg-next"></use></svg></span>
-                read articles
-            </a>
-            <a href="#About" class="swed-button">
-                <span class="svga-icon"><svg><use xlink:href="#svg-next"></use></svg></span>
-                about project
-            </a>
-            <a href="https://github.com/zlsheepcity/appart" class="swed-button">
-                <span class="svga-icon"><svg><use xlink:href="#svg-github"></use></svg></span>
-                code sources
-            </a>
-        </section>
+<!-- ========================================= Von Loader -->
 
+<div>
+    <style>
+        #von-loader {
+          --background-color: hsl(212, 34%, 29%);
+          --color:            hsl(226, 27%, 90%);
+          --size:     6rem;
+            z-index:  11;
+            position: fixed;
+            top:      0;
+            right:    0;
+            bottom:   0;
+            left:     0;
+            background-color: var(--background-color);
+            color:            var(--color);
+            transition:       opacity 240ms ease-out;
+            pointer-events:   none;
+            opacity:          0; }
+        #von-loader.is-active {
+            pointer-events:   all;
+            opacity:          1; }
+        #von-loader::after {
+            content:  '';
+            position: absolute;
+            z-index:  1;
+            top:      1.5rem;
+            left:     1.5rem;
+            width:    var(--size);
+            height:   var(--size);
+            background-size:     var(--size);
+            background-repeat:   no-repeat;
+            background-position: center center;
+         /* SVG: arrows circle loading */
+            background-image: url('data:image/svg+xml;utf8,<svg fill="white" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/></svg>');
+
+            animation: VonLoaderRotation 1s linear infinite; }
+            @keyframes VonLoaderRotation {
+                from { transform: rotate(360deg); }
+                to   { transform: rotate(  1deg); }
+            }
+    </style>
+    <div id="von-loader"></div>
+    <script>
+        function vonLoader () {
+
+            let loader = document.getElementById('von-loader')
+            if (!loader || !loader.classList) return false
+            loader.classList.add('is-active')
+
+            let finish = () => { loader.classList.remove('is-active') }
+            if (window.addEventListener) window.addEventListener("load", finish, false)
+            else if (window.attachEvent) window.attachEvent("onload", finish)
+            else finish()
+        }
+        vonLoader()
+    </script>
+</div>
+
+<!-- ========================================= Von Burger -->
+
+<div>
+
+    <!-- Hamburger -->
+
+    <style>
+        #von-burger {
+          --background-color: gold;
+          --color:           black;
+            position: fixed;
+            z-index:  3;
+            top:      0;
+            right:    0;
+            width:  3em;
+            height: 3em;
+            cursor: pointer;
+         /* SVG: hamburger */
+            background-image: url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>');
+            background-size:     24px;
+            background-repeat:   no-repeat;
+            background-position: center center;
+            background-color:    var(--background-color);
+            color:               var(--color);
+            border-radius: 0 0 0 4px;
+        }
+        #von-burger:hover {
+            transition: background 120ms ease-in;
+          --background-color: goldenrod;
+        }
+    </style>
+    <button markup id="von-burger"></button>
+
+    <!-- Menu Bar -->
+
+    <aside   class="offsidebar ChaptersMenuBar colors--ivory">
+        <div class="offsidebar-container">
+            <header class="offsidebar-header bar-header">
+                <h2 class="h4">Table of contents</h2>
+            </header>
+            <nav    class="offsidebar-content">
+                <ol class="menulist js-for-ChaptersMenuBar">
+                    <li><a href="#Start">Start</a></li>
+                    <li><a href="#AboutProject">About Project</a></li>
+
+                    <li class="pt"><small>Components List</small></li>
+                    <li><a href="#AppComponents">App Components</a></li>
+                    <li><a href="#MinorTools">Minor Tools</a></li>
+
+                    <li class="pt"><small>Articles</small></li>
+                    <li><a href="#ArticleGrid">Article Grid</a></li>
+                    <li><a href="#Typography">Web-Typography</a></li>
+
+                    <li class="pt"><small>Code Sources</small></li>
+                    <li>
+                        <a href="https://github.com/zlsheepcity/appart" class="bart">
+                            <span>Github repository</span>
+                        </a>
+                    </li>
+                </ol>
+            </nav>
+        </div>
+    </aside>
+
+    <!-- Menu scripting -->
+
+    <script>
+        function Activate___ChaptersMenuBar() {
+            let  barName = 'ChaptersMenuBar'
+            let  bar_api = InterfaceOffsideBar(barName)
+            if (!bar_api)  return false
+            bar_api.delegateToggle(document.getElementById('von-burger'))
+        }
+        app.onload(Activate___ChaptersMenuBar)
+    </script>
+
+</div>
+
+<!-- ========================================= App Components -->
+
+<main class="chapter grid-king use-colors colors--root">
+
+    <!-- ===================================== Major Projects -->
+
+    <div id="AppComponents" class="chapter isontop inngrid-main-rw">
+
+        <header class="chapter-header">
+            <h2>App Components</h2>
+        </header>
+
+        <article class="inngrid-main-rw color-box el-product CssVarrior">
+            <aside class="text-block-smaller text-color-descent">
+                <p>CSS, variables</p>
+            </aside>
+            <header class="chapter-header">
+                <h4>CSS --varriors</h4>
+                <p>
+                    Pattern & pre-defined classes<br>
+                    to use custom CSS values without
+                    <nobr>inline styling</nobr>.
+                </p>
+            </header>
+            <footer>
+                <figure hidden>
+                    <a href="projects/css-varriors.html">
+                        <img
+                            src="art/illustrations/css--varriors.svg"
+                            alt="CSS --varriors"
+                            class="auto-margin width"
+                            style="--width:24rem">
+                    </a>
+                </figure>
+                <ul>
+                    <li>
+                        <a href="projects/css-varriors.html" class="link-inline">Project page</a>
+                    </li>
+                </ul>
+            </footer>
+        </article>
+
+        <article class="inngrid-main-rw color-box el-product">
+            <aside class="text-block-smaller text-color-descent">
+                <p>CSS, grid, layout</p>
+            </aside>
+            <header class="chapter-header">
+                <h4>Article grid</h4>
+                <p>
+                    Grid layout for article content.<br>
+                    Simple markup for rich customization.
+                </p>
+            </header>
+            <ul>
+                <li>
+                    <a href="projects/article-grid.html" class="link-inline">Project page</a>
+                </li>
+            </ul>
+        </article>
+
+        <article class="inngrid-main-rw color-box el-product">
+            <aside class="text-block-smaller text-color-descent">
+                <p>CSS, form markup, wordpress</p>
+            </aside>
+            <header class="chapter-header">
+                <h4>Contact Form</h4>
+                <p>
+                    Optimized (but not required) for<br>
+                    wordpress plugin <nobr>Contact Form 7</nobr>
+                </p>
+            </header>
+            <ul>
+                <li>
+                    <a href="projects/contact-form.html" class="link-inline">Project page</a>
+                </li>
+            </ul>
+        </article>
+
+    </div>
+
+    <!-- ===================================== Product Care Illustr. -->
+
+    <figure class="inngrid-east-side-rw first-grid-row">
+        <img src="art/illustrations/illistr--products.svg" alt="Art illustration with love and components">
+    </figure>
+
+    <!-- ===================================== Minor Tools -->
+
+    <header id="MinorTools" class="chapter-header">
+        <h2>Minor Tools</h2>
     </header>
 
+    <div class="layer">
 
-    <!-- ----------------------------------------- Side Menu -->
+        <style>
+            .el-topics h4 { color: var(--el-color, inherit); }
+            .el-topics-legend span { color: var(--el-color, inherit); }
+            .el-topic--css { --el-color: hsl( 13, 61%, 54%); }
+            .el-topic--js  { --el-color: hsl(184, 60%, 24%); }
+            .el-topic--des { --el-color: hsl(348, 35%, 49%); }
+        </style>
 
-
-    <article>
-
-        <!-- Menu Bar -->
-
-        <section class="ChaptersMenuBar offsidebar">
-            <div class="sidepanel">
-                <header class="sidepanel-header">
-                    <h2 class="h4">Table of Content</h2>
-                </header>
-                <nav class="sidepanel-content">
-                    <ul class="content-menu js-for-ChaptersMenuBar">
-                        <li class="pb"><a href="#Start">Start</a></li>
-                        <li><a href="#JournalGrid">Journal Grid</a></li>
-                        <li><a href="#Typography">Web-Typography</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </section>
-
-        <!-- Menu Bartender -->
-
-        <nav class="nav-fly js-for-ChaptersMenuBar">
-            <figure class="svga-icon"><svg><use xlink:href="#svg-menu"></use></svg></figure>
-        </nav>
-
-        <!-- Menu Scripting -->
-
-        <script defer src="app/styles/components/offsidebar/interface-offsidebar.js"></script>
-        <script>app.onload(f=>InterfaceOffsideBar('ChaptersMenuBar'))</script>
-
-    </article>
-
-
-
-
-    <hr class="reading-pause">
-
-
-    <!-- ----------------------------------------- App Components -->
-
-    <div class="use-colors colors--root">
-
-    <article class="layer padding">
-
-        <header class="is-centered padding">
-            <h2>CSS Components</h2>
-        </header>
         <section
-            class="group-collisting auto-margin"
+            class="group-collisting auto-margin el-topics"
             style="--h4-font-size: var(--h5-font-size);">
 
-            <figure>
-                <h4>CSS Varriors</h4>
-                <p class="text-block-smaller">Replaced inline styling.</p>
-                <p><a
-                    href="https://github.com/zlsheepcity/appart/blob/master/app/styles/components/html-core/css-varriors.scss"
-                    class="link-inline">SCSS function</a></p>
-                <p><s>compiled CSS</s></p>
-                <p><s>research article</s></p>
-            </figure>
+            <article class="el-topic--css">
+                <h4>CSS Color Model</h4>
+                <p class="text-block-smaller">Pattern for switching palletes in one document.</p>
+                <ul>
+                    <li>
+                        <a
+                            href="https://github.com/zlsheepcity/appart/blob/master/app/styles/components/color-model/color-model.scss"
+                            class="link-inline">git source</a>
+                    </li>
+                    <li>
+                        <s>research article</s>
+                    </li>
+                </ul>
+            </article>
 
-            <figure>
-                <h4>Journal Grid</h4>
-                <p class="text-block-smaller">Two-columns content layout.</p>
-                <p><a
-                    href="https://github.com/zlsheepcity/appart/blob/master/app/styles/components/journal-grid/journal-grid.scss"
-                    class="link-inline">git source</a></p>
-                <p><a href="art-journal-grid.html" class="link-inline">demo/article</a></p>
-            </figure>
-
-            <figure class="fatground">
-                <h4>Catgrounds!</h4>
-                <p class="text-block-smaller">Design trick to make boring content more interesting.</p>
-                <p><s>project page</s></p>
-            </figure>
-
-            <figure>
-                <h4>Color Model</h4>
-                <p class="text-block-smaller">Pattern for switching different color palletes in one document.</p>
-                <p><a
-                    href="https://github.com/zlsheepcity/appart/blob/master/app/styles/components/color-model/color-model.scss"
-                    class="link-inline">git source</a></p>
-                <p><s>research article</s></p>
-            </figure>
-
-            <figure>
+            <article class="el-topic--css">
                 <h4>CSS Typography</h4>
                 <p class="text-block-smaller">Code snippets and research.</p>
-                <p><a
-                    href="https://github.com/zlsheepcity/appart/blob/master/app/styles/components/html-core/html-typography.scss"
-                    class="link-inline">git source</a></p>
-                <p><a href="#Typography" class="link-inline">demo</a></p>
-            </figure>
+                <ul>
+                    <li>
+                        <a
+                        href="https://github.com/zlsheepcity/appart/blob/master/app/styles/components/html-core/html-typography.scss"
+                        class="link-inline">git source</a>
+                    </li>
+                    <li>
+                        <a href="#Typography" class="link-inline">demo</a>
+                    </li>
+                </ul>
+            </article>
 
-            <figure>
-                <div class="pb is-centered js-for-ChaptersMenuBar">
-                    <img
-                        src="art/component-icons/component-icon--ofsidebar.svg"
-                        alt="ofsidebar component icon"
-                        class="width" style="--width:6em;">
-                </div>
+            <article class="el-topic--css">
+                <h4>CSS Code Block</h4>
+                <p class="text-block-smaller">Old-style design.</p>
+                <ul>
+                    <li>
+                        <a
+                        href="https://github.com/zlsheepcity/appart/blob/master/app/styles/components/old-style-code-block/old-style-code-block.scss"
+                        class="link-inline">git source</a>
+                    </li>
+                    <li>
+                        <s>demo</s>
+                    </li>
+                </ul>
+            </article>
+
+            <article class="el-topic--css">
                 <h4>Offsidebar</h4>
-                <p class="text-block-smaller">Expandable side-panel.</p>
-                <p><a
-                    href="https://github.com/zlsheepcity/appart/tree/master/app/styles/components/offsidebar"
-                    class="link-inline">git source</a></p>
-                <p><s>demo page</s></p>
-            </figure>
+                <p class="text-block-smaller">Expandable side-panel. With love and care for aesthetic behavior.</p>
+                <ul>
+                    <li>
+                        <a
+                        href="https://github.com/zlsheepcity/appart/tree/master/app/styles/components/offsidebar"
+                        class="link-inline">git source</a>
+                    </li>
+                    <li>
+                        <span class="link-inline js-for-ChaptersMenuBar">open bar</span>
+                    </li>
+                    <li>
+                        <s>demo page</s>
+                    </li>
+                </ul>
+            </article>
 
-            <figure>
+            <article class="el-topic--css">
+                <h4>CSS Myocards</h4>
+                <p class="text-block-smaller">Responsive solution for cards with 2 childs.</p>
+                <ul>
+                    <li>
+                        <a
+                        href="https://github.com/zlsheepcity/appart/blob/master/app/styles/components/myocard/myocard.scss"
+                        class="link-inline">git source</a>
+                    </li>
+                    <li>
+                        <s>demo</s>
+                    </li>
+                </ul>
+            </article>
+
+            <article class="el-topic--des">
+                <h4>CSS Catgrounds!</h4>
+                <p class="text-block-smaller">Design trick to make boring content more interesting.</p>
+                <ul><li><s>incomplete</s></li></ul>
+            </article>
+
+            <article class="el-topic--des">
+                <h4>SVGA Icons</h4>
+                <p class="text-block-smaller">Shortcode for inline SVG-images.</p>
+                <ul>
+                    <li>
+                        <a
+                        href="https://github.com/zlsheepcity/appart/tree/master/app/styles/components/svga-icons"
+                        class="link-inline">git source</a>
+                    </li>
+                </ul>
+            </article>
+
+            <article class="el-topic--des">
                 <h4>UI Elements</h4>
                 <p class="text-block-smaller">Button, dropdown, e.t.c.</p>
-                <p><a
-                    href="https://github.com/zlsheepcity/appart/tree/master/app/styles/components/swed-design"
-                    class="link-inline">git source</a></p>
-            </figure>
+                <ul>
+                    <li>
+                        <a
+                        href="https://github.com/zlsheepcity/appart/tree/master/app/styles/components/swed-design"
+                        class="link-inline">git source</a>
+                    </li>
+                </ul>
+            </article>
 
-            <figure>
-                <h4>SVGA Icons</h4>
-                <p class="text-block-smaller">Shortcode for inline SVG-image</p>
-                <p><a
-                    href="https://github.com/zlsheepcity/appart/tree/master/app/styles/components/svga-icons"
-                    class="link-inline">git source</a></p>
-            </figure>
+            <article class="el-topic--des">
+                <h4>Nice Colors</h4>
+                <p class="text-block-smaller">HSL shortcodes.</p>
+                <ul>
+                    <li>
+                        <a
+                        href="colors.html"
+                        class="link-inline">colors.html</a>
+                    </li>
+                </ul>
+            </article>
 
-        </section>
-    </article>
+            <article class="el-topic--js">
+                <h4>JS Image Lazy Loader</h4>
+                <p class="text-block-smaller">With IntersectionObserver.</p>
+                <ul>
+                    <li>
+                        <a
+                        href="https://github.com/zlsheepcity/appart/blob/master/app/script/components/image-lazy-loader.js"
+                        class="link-inline">git source</a>
+                    </li>
+                </ul>
+            </article>
 
+            <article class="el-topic--js">
+                <h4>JS Image Zoom</h4>
+                <p class="text-block-smaller">Smooth image zoom on click.</p>
+                <ul>
+                    <li>
+                        <a
+                        href="https://github.com/zlsheepcity/appart/blob/master/app/script/components/image-zzzoom.js"
+                        class="link-inline">git source</a>
+                    </li>
+                </ul>
+            </article>
 
-    <article class="layer padding padding-top" style="--padding-top:0;">
-        <header class="is-centered padding">
-            <h2>JavaScript Components</h2>
-        </header>
-        <section
-            class="group-collisting auto-margin"
-            style="--h4-font-size: var(--h5-font-size);">
-
-            <figure>
-                <h4>Image Lazy Loader</h4>
-                <p class="text-block-smaller">Images are only loaded when it appears while scrolling.</p>
-                <p><a
-                    href="https://github.com/zlsheepcity/appart/blob/master/app/script/components/image-lazy-loader.js"
-                    class="link-inline">git source</a></p>
-            </figure>
-
-            <figure>
-                <h4>Image Zoom</h4>
-                <p class="text-block-smaller">Smooth image zoom to fit screen on click.</p>
-                <p><a
-                    href="https://github.com/zlsheepcity/appart/blob/master/app/script/components/image-zzzoom.js"
-                    class="link-inline">git source</a></p>
-            </figure>
-
-            <figure>
-                <h4>CSS Class Mutator</h4>
-                <p class="text-block-smaller">Shorthand function for managing an element class.</p>
-                <p><a
+            <article class="el-topic--js">
+                <h4>JS DOM Class Manager</h4>
+                <p class="text-block-smaller">Shorthand function.</p>
+                <ul>
+                    <li>
+                        <a
                     href="https://github.com/zlsheepcity/appart/blob/master/app/script/components/css-class-mutator.js"
-                    class="link-inline">git source</a></p>
-            </figure>
+                    class="link-inline">git source</a>
+                    </li>
+                </ul>
+            </article>
 
-            <figure>
-                <h4>Scroll to Var</h4>
+            <article class="el-topic--js">
+                <h4>JS Scroll to Var</h4>
                 <p class="text-block-smaller">The scroll position affects the values of CSS variables.</p>
-                <p><a
+                <ul>
+                    <li>
+                        <a
                     href="https://github.com/zlsheepcity/appart/blob/master/app/script/components/scroll-to-var.js"
-                    class="link-inline">git source</a></p>
-            </figure>
+                    class="link-inline">git source</a>
+                    </li>
+                </ul>
+            </article>
 
-            <figure>
+            <article class="el-topic--js">
                 <h4>AppKing.js</h4>
-                <p class="text-block-smaller">Vanilla js controller for unsystematized functions.</p>
-                <p><s>research article</s></p>
-            </figure>
+                <p class="text-block-smaller">Vanilla js controller for functions out of system.</p>
+                <ul>
+                    <li>
+                        <s>incomplete</s>
+                    </li>
+                </ul>
+            </article>
 
         </section>
-    </article>
+
+        <footer class="el-topics-legend is-centered">
+            <div class="h3">
+                <span class="el-topic--css">CSS</span>
+                <span class="el-topic--des">Design</span>
+                <span class="el-topic--js">JS</span>
+            </div>
+        </footer>
 
     </div>
 
 
-    <!-- ----------------------------------------- About project -->
+</main>
+
+<!-- ========================================= About Project -->
+
+<article id="AboutProject" class="chapter grid-king use-colors colors--secondary">
+
+    <header class="chapter-header">
+        <h2 class="h2">Project Description</h2>
+        <p  class="h4">(in russian)</p>
+    </header>
 
 
-    <article id="About" class="journal-grid centrale use-colors colors--swed-third">
+    <div class="inngrid color-box">
+        <p><b>App</b> — от технического термина application, <b>Art</b> — творчество. <b>Appart</b> (фр.) — поиск подходящего партнёра. Игра слов символизирует связь между кодом и содержанием.</p>
 
-        <section class="keep-base chapter use-colors colors--secondary">
+        <p>Проект appart создан для упрощённой вёрстки и программирования оригинального контента. Компоненты веб интерфейсов создаются с любовью к эстетическим деталям и ощущениям.</p>
 
-            <header>
-                <h2 class="h2">Project Description</h2>
-                <p  class="h4">(in russian)</p>
-            </header>
+        <p>Appart не фреймворк, а оптимизированный код для копирования в другие проекты.</p>
+    </div>
 
-            <div class="note">
-                <div>
-                    <p class="h2">appart</p>
-                    <p> — (фр.) поиск подходящего партнёра</p>
-                </div>
-            </div>
+    <figure class="inngrid-east-side">
+        <div>
+            <img
+                src="art/fox-author.svg"
+                alt="Fox Drawing"
+                class="opacity"
+                style="--opacity:0.32;">
+        </div>
+    </figure>
 
-            <div class="box">
-                <p><b>App</b> — от технического термина application, <b>Art</b> — творчество. Игра слов означает связь между кодом и содержанием.</p>
+    <footer class="text-inline-bigger">
+        <p>
+            zl, August 2019 — February 2020<br>
+            zl.sheepcity@gmail.com
+        </p>
+    </footer>
 
-                <p>Проект appart создан для упрощённой вёрстки уникального контента. Внимание уделяется ликвидации «некрасивых» ошибок, таких как, дёргание контента под модальным окном.</p>
+</article>
 
-                <p>Appart не фреймворк, а код для копирования в другие проекты.</p>
-            </div>
+<!-- ========================================= Articles -->
 
-            <footer class="text-inline-bigger">
-                <p>
-                    zl, August 2019<br>
-                    zl.sheepcity@gmail.com
-                </p>
-            </footer>
+<article id="ArticleGrid" class="chapter grid-king">
 
-            <figure class="wide box opacity" style="--opacity:0.6;">
-                <div><img src="art/fox-author.svg" alt="Fox Drawing"></div>
-            </figure>
-
-        </section>
-
-    </article>
-
-
-    <!-- ========================================= PAGE CONTENT -->
-
-
-    <div id="Articles"></div>
-
-
-    <!-- ----------------------------------------- Journal Grid -->
-
-
-    <article id="JournalGrid" class="journal-grid chapter">
-
-        <nav
-            class="font-size padding-bottom"
-            style="--font-size:3rem; --padding-bottom:20vh;">
-            <a href="#Start" class="markup">
-                <figure class="svga-icon base-size">
-                    <svg><use xlink:href="#svg-up"></use></svg>
-                </figure>
-            </a>
-            <button class="markup js-for-ChaptersMenuBar">
-                <figure class="svga-icon base-size">
-                    <svg><use xlink:href="#svg-menu"></use></svg>
-                </figure>
-            </button>
-        </nav>
-
-        <header class="wide">
+        <header class="chapter-header">
             <h2 class="h1"><mark>§1.</mark><br> CSS-grid for articles</h2>
             <p class="midi-paragraph">
-                Journal-looks article layout with side-notes and various column-merging properties. Has constant spaces, layout for small screens.
+                Journal-looks article layout with side-notes and various column-merging properties. Has constant spaces, layout for smaller screens.
             </p>
         </header>
 
         <nav class="nav-header journal-grid use-colors">
             <p>
-                <mark>Journal Grid —</mark>
-                <a href="art-journal-grid.html" class="link-inline">demo page</a>
+                <mark>Grid-queen —</mark>
+                <a href="projects/article-grid.html" class="link-inline">project page</a>
             </p>
         </nav>
 
-        <section class="keep-base chapter use-colors colors--ivory">
-
-            <section class="block">
-                <p txt></p>
-                <p txt></p>
-            </section>
-
-            <aside class="note">
-                <p txt></p>
-            </aside>
-
-            <p txt></p>
-
-            <figure class="keep-wide pv">
-                <div><img
-                    src="art/illustrations/austria.svg"
-                    alt=""
-                    class="auto-margin zzz"></div>
-                <figcaption class="note">
-                    <p><strong>Burg Hochosterwitz</strong>, one of Austria's most impressive medieval castles.</p>
-                </figcaption>
-            </figure>
-
-            <section class="keep-wide color-box">
-                <section class="block text-block-bigger">
+        <section class="chapter subgrid-wrap use-colors colors--ivory">
+            <div class="sublayer opacity" style="--opacity:0.64">
+                <header class="chapter-header">
+                    <p class="h2">Lorem Ipsum</p>
+                </header>
+                <div class="inngrid">
                     <p txt></p>
                     <p txt></p>
-                </section>
-                <aside class="note">
+                </div>
+                <aside class="chapter-note">
                     <p txt></p>
                 </aside>
-            </section>
-
+                <div class="inngrid color-box text-block-bigger">
+                    <p txt></p>
+                </div>
+                <figure class="subgrid-wrap">
+                    <div><img
+                        src="art/illustrations/austria.svg"
+                        alt="Burg Hochosterwitz illustration"
+                        class="auto-margin"></div>
+                    <figcaption class="chapter-note s-align">
+                        <p><strong>Burg Hochosterwitz</strong>, one of Austria's most impressive medieval castles.</p>
+                    </figcaption>
+                </figure>
+                <div class="subgrid-wrap-east color-box">
+                    <div class="inngrid">
+                        <div class="text-block-bigger"><p txt></p></div>
+                        <p txt></p>
+                    </div>
+                    <aside class="chapter-note first-grid-row">
+                        <p txt></p>
+                    </aside>
+                </div>
+            </div>
+            <footer class="sublayer">
+                <div class="h3">
+                    ...continue: <a href="projects/article-grid.html">Longread demo</a>
+                </div>
+                <figure class="inngrid-wrap">
+                    <img data-src="projects/article-grid--long-read.png" alt="Grid article preview">
+                </figure>
+            </footer>
         </section>
 
-    </article>
+</article>
 
+<article id="Typography" class="chapter grid-king">
 
-    <!-- ----------------------------------------- Typography Demo -->
+    <header class="chapter-header">
+        <h2 class="h1"><mark>§2.</mark><br> Web-Typography</h2>
+        <p class="midi-paragraph">
+            Supporter classes and variables — em-based-size presets, types collections, etc.
+        </p>
+    </header>
 
+    <nav class="nav-header journal-grid use-colors">
+        <p>
+            <mark>Web-Typography</mark> —
+            <a href="https://github.com/zlsheepcity/appart/blob/master/app/styles/components/html-core/html-typography.scss" class="link-inline">git source</a>
+        </p>
+    </nav>
 
-    <article id="Typography" class="journal-grid chapter">
+    <section class="chapter subgrid-wrap use-colors colors--ivory">
 
-        <nav
-            class="font-size padding-bottom"
-            style="--font-size:3rem; --padding-bottom:20vh;">
-            <a href="#Start" class="markup">
-                <figure class="svga-icon base-size">
-                    <svg><use xlink:href="#svg-up"></use></svg>
-                </figure>
-            </a>
-            <button class="markup js-for-ChaptersMenuBar">
-                <figure class="svga-icon base-size">
-                    <svg><use xlink:href="#svg-menu"></use></svg>
-                </figure>
-            </button>
-        </nav>
-
-        <header class="wide">
-            <h2 class="h1"><mark>§2.</mark><br> Web-Typography</h2>
-            <p class="midi-paragraph">
-                Supporter classes and variables — em-based-size presets, types collections, etc.
-            </p>
-        </header>
-
-        <nav class="nav-header journal-grid use-colors">
-            <p>
-                <mark>Web-Typography</mark> —
-                <a href="https://github.com/zlsheepcity/appart/blob/master/app/styles/components/html-core/html-typography.scss" class="link-inline">git source</a>
-            </p>
-        </nav>
-
-        <section class="chapter keep-base  use-colors colors--ivory">
-
-            <header class="wide is-centered">
+            <header class="inngrid-wrap is-centered pb">
                 <div class="h1">Web-Typography testpage</div>
                 <div class="h2">Web-Typography testpage</div>
                 <div class="h3">Web-Typography testpage</div>
@@ -494,26 +736,26 @@
                 <small>Web-Typography testpage</small>
             </header>
 
-            <section class="wide">
+            <section class="inngrid-wrap-east">
 
                 <header class="chapter-header">
                     <h2>Paragraph readable width</h2>
                 </header>
 
                 <h3>
-                    <mark>.paragraph</mark>
-                    Max width limit (42em)
+                    <mark>.maxi-paragraph</mark>
+                    Max readable limit (42em)
                 </h3>
-                <div class="paragraph group-content-rows">
+                <div class="maxi-paragraph group-rows">
                     <div><span txt></span><span txt></span></div>
                     <div><span txt></span><span txt></span></div>
                 </div>
 
                 <h3>
-                    <mark>.midi-paragraph</mark>
-                    Optimal middle-size (24em)
+                    <mark>.paragraph</mark>
+                    Golden ratio (32em)
                 </h3>
-                <div class="midi-paragraph group-content-rows">
+                <div class="paragraph group-rows">
                     <div txt></div><div txt></div>
                 </div>
 
@@ -522,12 +764,12 @@
                         <mark>.mini-paragraph</mark>
                         Minimal readable width (12em)
                     </h3>
-                    <div class="mini-paragraph group-content-rows">
+                    <div class="mini-paragraph group-rows">
                         <div>Front-end components. Not a framework, but reusable code templates.</div>
                         <div>Atom classes for maintainable inline CSS</div>
                         <div>CSS grid template for big articles with a lot of content, illustrations and creative visuals.</div>
                     </div>
-                    <div class="mini-paragraph group-content-rows text-inline-bigger">
+                    <div class="mini-paragraph group-rows text-inline-bigger">
                         <div>Front-end components. Not a framework, but reusable code templates.</div>
                         <div>Atom classes for maintainable inline CSS</div>
                         <div>CSS grid template for big articles with a lot of content, illustrations and creative visuals.</div>
@@ -536,46 +778,50 @@
 
             </section>
 
-            <h2 class="chapter-header">Facetypes collection</h2>
+            <header class="chapter-header">
+                <h2>Facetypes collection</h2>
+            </header>
 
-            <div class="keep-grid" style="font-family: var(--font-family--tufte-serif);">
+            <div class="subgrid-wrap-east" style="font-family: var(--font-family--tufte-serif);">
                 <h3 class="mark">tufte-serif</h3>
-                <section class="block">
+                <section class="inngrid">
                     <p txt></p>
                     <p txt class="text-block-bigger"></p>
                     <p txt class="text-block-smaller"></p>
                 </section>
-                <div class="note keep-font-size">
+                <div class="grid-column--note">
                     <p>297351 years<br>&amp;#$@*</p>
                 </div>
             </div>
-            <div class="keep-grid" style="font-family: var(--font-family--tufte-sans);">
+
+            <div class="subgrid-wrap-east" style="font-family: var(--font-family--tufte-sans);">
                 <h3 class="mark">tufte-sans</h3>
-                <section class="block">
+                <section class="inngrid">
                     <p txt></p>
                     <p txt class="text-block-bigger"></p>
                     <p txt class="text-block-smaller"></p>
                 </section>
-                <div class="note keep-font-size">
+                <div class="grid-column--note">
                     <p>297351 years<br>&amp;#$@*</p>
                 </div>
             </div>
-            <div class="keep-grid" style="font-family: var(--font-family--native-sans);">
+            <div class="subgrid-wrap-east" style="font-family: var(--font-family--native-sans);">
                 <h3 class="mark">native-sans</h3>
-                <section class="block">
+                <section class="inngrid">
                     <p txt></p>
                     <p txt class="text-block-bigger"></p>
                     <p txt class="text-block-smaller"></p>
                 </section>
-                <div class="note keep-font-size">
+                <div class="grid-column--note">
                     <p>297351 years<br>&amp;#$@*</p>
                 </div>
             </div>
 
 
-            <h2 class="chapter-header">Font-size modifyers</h2>
+            <header class="chapter-header">
+                <h2>Font-size modifyers</h2>
+            </header>
 
-            <div class="block">
                 <div>
                     <span txt></span>
                     <mark class="text-inline-bigger">[.text-inline-bigger]</mark>
@@ -598,105 +844,28 @@
                     <mark>.text-block-smaller</mark>
                     <span txt></span>
                 </div>
-            </div>
 
-        </section>
+    </section>
 
-    </article>
-
+</article>
 
 
-    <!-- ========================================= PAGE CUSTOM -->
+<!-- ========================================= Page Design -->
 
+<style>
+    .el-product {
+        background-repeat: no-repeat;
+        background-size: auto 100%;
+        background-position: center right;
+     /* SVG: product care mark */
+        background-image: url('data:image/svg+xml;utf8,<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><g style="opacity:0.05"><path d="M49.9,154.2c5.1-3.3,9-5.9,13.4-8.8c2.2-11.4-1.8-22.9-1.5-34.1c-4.7-4.9-9-9.5-13.3-14c-5.9-6.3-9.1-6.4-16.4-0.7 c-2.2,1.8-4.3,3.7-6.5,5.5c-0.4,0.4-1.4,0-3.5,0c-0.7-2.1-2.5-4.8-2.1-7C25.9,65.9,44,51.7,68,44.5c4.4-1.2,10.4-0.5,14.5,1.6 c17.1,8.9,28.2,23.4,36.2,43.5c-8.8,0-16-1.4-22.5,0.4c-5.7,1.6-10.5,7-16.6,11.2c-3-3.3-6.2-6.6-10.9-11.7c-1.1,4.1-2.3,6.7-2.2,9 c0.7,8.1,1.9,16,2.9,24.1c0.7,5.9,1.8,11.7,2.1,17.5C72.1,156,69.1,158.1,49.9,154.2z"/><path d="M127.4,50.8c9.4-8.1,20.3-8.6,30.8-10.4c9.8-1.6,15.3,1.4,18.1,10.7c3.9,13.6,5,27.4-0.1,41.1c-2.1,5.5-3.5,11.9-7,15.9 c-10.5,11.5-7.5,24.1-5.5,37.4c5,1.4,9.4,2.5,16.4,4.4c-13.1,8.4-24.9,10.7-41,9.9c4.7-3.6,6.6-5.3,8.8-6.7c2.3-1.4,5-2.3,8-3.8 c-1.4-11.5-2.6-22.3-3.7-32.2c-6.9-4.8-13.9-7.7-18.1-13c-5.8-7.5-6.8-17.5-6.6-27.3C127.4,67.8,127.4,59.2,127.4,50.8z M134.8,53.2c-1,14.4-0.7,26.7,1.9,38.9c1.5,7,6.1,10.7,11.7,10.8c9,0.3,17-5.6,18.6-14.4c2.2-12.9,2.9-25.6-1.1-39.3 c-6.6,0.4-12.8,0.7-19.1,1.4C143.4,50.8,140.1,51.9,134.8,53.2z"/></g></svg>');
+    }
+    .el-product.CssVarrior {
+     /* SVG: half varrior */
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200"><g style="opacity:0.05"><path d="M175.7,165c-7.5,4.4-18.1,35.1-18.2,35c-4-5.6,9.5-33.8,0.9-33.4c-28.5,0.9-2,26-19.8,33.1c4.3-1.1-4-30.4-20-31.4 c-33-2.5-0.8-60.2-11.5-61c-34.7-3.1,3.5,21.4-13.4,26.3c-3.5,0.8-24.9-44.2-28.8-50.2c-6.3-0.6-4.3,18-9.1,16.9 c-5.3-1.3,1.7-18.4-4.5-18.4c-3,0-8.1,16.4-10.9,12.4c-1.6-2.2,1-13.7,0.5-16.6c-1.1-5.5-17.8,8.4-20.6,3.6 c-2.9-5.2,9.4-10.4,9.4-16.4c-0.4-6.7-15.1-2.6-15.1-7.9c-0.2-3.1,14.2-5.2,15.6-5.6c4.9-1.8-5.7-13.2-5.7-16.5 c6.1,1.2,11.3,4.7,17.4,6.6c9.1,2.8,5.1-18.3,8.9-18.7c8-1,2.7,17.4,9.8,18c2,0.1,13.5-14.2,14.4-10.5c2,6.7-1.8,14.8-2.7,21.5 c-0.5,5.7,15.1-3.9,17.2,2c1.3,3.5-12,9.2-14.8,11.4c-3,2,12.7,11.6,13.1,14c1.2,6.2-24.2-2.5-9.4,12.3 c11.2,13.1,8.9,15.2,24.3,6.2c12-7.2,8.9-35.4,12.3-46.7c5-17.4,16.3-27.4,28.4-39.6c48.8-48.7,65.1,74.7,52.3,100.3 c8.6-15.7-38.1-45.8-28.8-49.7c22.9-9,4.2-27.3-14.3-27.3c-35.4-1.1-6.3,21.8-6.3,33.2c0,17.5-26.8,6.5-28.1,13.4 c-3.8,17.1-9.9,38.8-7.9,56.7C112.6,184.1,175.7,145.5,175.7,165C173.4,166.4,175.7,163.8,175.7,165z M38.7,51.2 c-9.9,9.9,16,28.1,25,22.7C79.2,65.2,55.3,40,38.7,51.2z"/><path d="M147,53.6c-4.1,1.6-8.4-9.4,0.4-9.8C153.4,46.2,153.3,49.5,147,53.6C146.3,53.8,149.3,53.1,147,53.6z"/><path d="M169.8,49.2c-3.3,4.9-6,4.6-8.2-0.9C164.1,42.9,166.8,43.2,169.8,49.2C169.7,51.1,169.8,46.6,169.8,49.2z"/><path d="M47.8,64.8c-6.4-6,4.2-19.2,10.2-8.2C61.4,63.5,55.3,71.3,47.8,64.8C45.3,62.5,48.6,65.6,47.8,64.8z"/></g></svg>');
+    }
+</style>
 
-    <!-- SVGA Icons -->
-    <div hidden>
-        <svg id="UsedIcons">
-            <symbol id="svg-next" viewBox="0 0 24 24">
-                <!--title>Arrow Next, material icons</title-->
-                <path d="M0 0h24v24H0z" fill="none"/>
-                <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
-            </symbol>
-            <symbol id="svg-back" viewBox="0 0 24 24">
-                <!--title>Arrow Back, material icons</title-->
-                <path d="M0 0h24v24H0z" fill="none"/>
-                <path d="M0 0h24v24H0z" fill="none"/><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
-            </symbol>
-            <symbol id="svg-up" viewBox="0 0 24 24">
-                <!--title>Arrow Up, material icons</title-->
-                <path d="M0-.75h24v24H0z" fill="none"/>
-                <path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"/>
-            </symbol>
-            <symbol id="svg-down" viewBox="0 0 24 24">
-                <!--title>Chevron Down, material icons</title-->
-                <path d="M0-.75h24v24H0z" fill="none"/>
-                <path d="M7.41 7.84L12 12.42l4.59-4.58L18 9.25l-6 6-6-6z"/>
-            </symbol>
-            <symbol id="svg-menu" viewBox="0 0 24 24">
-                <!--title>Hamburger, material icons</title-->
-                <path d="M0 0h24v24H0z" fill="none"/>
-                <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
-            </symbol>
-            <symbol id="svg-check" viewBox="0 0 24 24">
-                <!--title>Check, material icons</title-->
-                <path d="M0 0h24v24H0z" fill="none"/>
-                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
-            </symbol>
-            <symbol id="svg-close" viewBox="0 0 24 24">
-                <!--title>Close X, material icons</title-->
-                <path d="M0 0h24v24H0z" fill="none"/>
-                <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
-            </symbol>
-
-            <symbol id="svg-email" viewBox="0 0 24 24">
-                <!--title>Email, material icons</title-->
-                <path d="M0 0h24v24H0z" fill="none"/>
-                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V8l8 5 8-5v10zm-8-7L4 6h16l-8 5z"/>
-            </symbol>
-            <symbol id="svg-phone" viewBox="0 0 24 24">
-                <!--title>Phone, material icons</title-->
-                <path d="M0 0h24v24H0z" fill="none"/>
-                <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
-            </symbol>
-            <symbol id="svg-skype" viewBox="-12 -12 88 88">
-                <!--title>Skype, custom 2019.6.27</title-->
-                <path d="M61.7 37.3v.3l-.1-.6.1.3A29.3 29.3 0 0 0 60 20a29.7 29.7 0 0 0-16-16A29.5 29.5 0 0 0 32 1.6a32.1 32.1 0 0 0-5.7.5s.2 0 .3.2l-.7-.1.4-.1A18 18 0 0 0 5.2 5.3a17.8 17.8 0 0 0-3 21.3s0-.2.2-.3v.7l-.1-.4a31 31 0 0 0 2 17 29.7 29.7 0 0 0 16 16C23.8 61.2 27.8 62 32 62a28.2 28.2 0 0 0 5.3-.5l-.3-.2.6.1h-.3A17.2 17.2 0 0 0 46 64a17.9 17.9 0 0 0 15.6-26.6zm-29.6 13c-10.8 0-15.6-5.3-15.6-9.2 0-2 1.6-3.5 3.6-3.5 4.6 0 3.4 6.7 12 6.7 4.3 0 6.8-2.4 6.8-4.8 0-1.5-.8-3.1-3.6-3.8l-9.6-2.4c-7.7-1.9-9-6-9-10 0-8.1 7.6-11.1 14.7-11.1 6.6 0 14.4 3.6 14.4 8.5 0 2-1.8 3.2-3.9 3.2-4 0-3.2-5.4-11-5.4-4 0-6.1 1.7-6.1 4.3s3 3.3 5.8 4l7 1.5c7.8 1.8 9.8 6.2 9.8 10.5 0 6.6-5 11.5-15.3 11.5zm4.9 11c0 .2.1.2.3.3l.3-.1zm24.6-23.7l.1-.3-.1-.4zM2.3 26.3l-.1.3.2.4zm24.3-24l-.3-.1H26z"/>
-            </symbol>
-            <symbol id="svg-telegram" viewBox="-48 -48 624 624">
-                <!--title>Telegram Square, custom 2019.6.27</title-->
-                <path fill="currentColor" d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm121.8 169.9l-40.7 191.8c-3 13.6-11.1 16.9-22.4 10.5l-62-45.7-29.9 28.8c-3.3 3.3-6.1 6.1-12.5 6.1l4.4-63.1 114.9-103.8c5-4.4-1.1-6.9-7.7-2.5l-142 89.4-61.2-19.1c-13.3-4.2-13.6-13.3 2.8-19.7l239.1-92.2c11.1-4 20.8 2.7 17.2 19.5z"/>
-            </symbol>
-            <symbol id="svg-chat" viewBox="-48 -48 624 624">
-                <!--title>Chat Bubble, font-awesome</title-->
-                <path fill="currentColor" d="M256 32C114.6 32 0 125.1 0 240c0 49.6 21.4 95 57 130.7C44.5 421.1 2.7 466 2.2 466.5c-2.2 2.3-2.8 5.7-1.5 8.7S4.8 480 8 480c66.3 0 116-31.8 140.6-51.4 32.7 12.3 69 19.4 107.4 19.4 141.4 0 256-93.1 256-208S397.4 32 256 32zM128 272c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm128 0c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm128 0c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32z"/>
-            </symbol>
-
-            <symbol id="svg-linkedin" viewBox="0 0 448 512">
-                <!--title>Linkedin Square, font-awesome</title-->
-                <path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/>
-            </symbol>
-            <symbol id="svg-twitter" viewBox="0 0 448 512">
-                <!--title>Twitter Square, font-awesome</title-->
-                <path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-48.9 158.8c.2 2.8.2 5.7.2 8.5 0 86.7-66 186.6-186.6 186.6-37.2 0-71.7-10.8-100.7-29.4 5.3.6 10.4.8 15.8.8 30.7 0 58.9-10.4 81.4-28-28.8-.6-53-19.5-61.3-45.5 10.1 1.5 19.2 1.5 29.6-1.2-30-6.1-52.5-32.5-52.5-64.4v-.8c8.7 4.9 18.9 7.9 29.6 8.3a65.447 65.447 0 0 1-29.2-54.6c0-12.2 3.2-23.4 8.9-33.1 32.3 39.8 80.8 65.8 135.2 68.6-9.3-44.5 24-80.6 64-80.6 18.9 0 35.9 7.9 47.9 20.7 14.8-2.8 29-8.3 41.6-15.8-4.9 15.2-15.2 28-28.8 36.1 13.2-1.4 26-5.1 37.8-10.2-8.9 13.1-20.1 24.7-32.9 34z"/>
-            </symbol>
-            <symbol id="svg-facebook" viewBox="0 0 448 512">
-                <!--title>Facebook Square, font-awesome</title-->
-                <path d="M400 32H48A48 48 0 0 0 0 80v352a48 48 0 0 0 48 48h137.25V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.27c-30.81 0-40.42 19.12-40.42 38.73V256h68.78l-11 71.69h-57.78V480H400a48 48 0 0 0 48-48V80a48 48 0 0 0-48-48z"/>
-            </symbol>
-            <symbol id="svg-youtube" viewBox="0 0 448 512">
-                <!--title>Youtube Square, font-awesome</title-->
-                <path d="M186.8 202.1l95.2 54.1-95.2 54.1V202.1zM448 80v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V80c0-26.5 21.5-48 48-48h352c26.5 0 48 21.5 48 48zm-42 176.3s0-59.6-7.6-88.2c-4.2-15.8-16.5-28.2-32.2-32.4C337.9 128 224 128 224 128s-113.9 0-142.2 7.7c-15.7 4.2-28 16.6-32.2 32.4-7.6 28.5-7.6 88.2-7.6 88.2s0 59.6 7.6 88.2c4.2 15.8 16.5 27.7 32.2 31.9C110.1 384 224 384 224 384s113.9 0 142.2-7.7c15.7-4.2 28-16.1 32.2-31.9 7.6-28.5 7.6-88.1 7.6-88.1z"/>
-            </symbol>
-            <symbol id="svg-instagram" viewBox="0 0 448 512">
-                <!--title>Instagram, font-awesome</title-->
-                <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/>
-            </symbol>
-            <symbol id="svg-github" viewBox="0 0 448 512">
-                <!--title>Github Square, font-awesome</title-->
-                <path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM277.3 415.7c-8.4 1.5-11.5-3.7-11.5-8 0-5.4.2-33 .2-55.3 0-15.6-5.2-25.5-11.3-30.7 37-4.1 76-9.2 76-73.1 0-18.2-6.5-27.3-17.1-39 1.7-4.3 7.4-22-1.7-45-13.9-4.3-45.7 17.9-45.7 17.9-13.2-3.7-27.5-5.6-41.6-5.6-14.1 0-28.4 1.9-41.6 5.6 0 0-31.8-22.2-45.7-17.9-9.1 22.9-3.5 40.6-1.7 45-10.6 11.7-15.6 20.8-15.6 39 0 63.6 37.3 69 74.3 73.1-4.8 4.3-9.1 11.7-10.6 22.3-9.5 4.3-33.8 11.7-48.3-13.9-9.1-15.8-25.5-17.1-25.5-17.1-16.2-.2-1.1 10.2-1.1 10.2 10.8 5 18.4 24.2 18.4 24.2 9.7 29.7 56.1 19.7 56.1 19.7 0 13.9.2 36.5.2 40.6 0 4.3-3 9.5-11.5 8-66-22.1-112.2-84.9-112.2-158.3 0-91.8 70.2-161.5 162-161.5S388 165.6 388 257.4c.1 73.4-44.7 136.3-110.7 158.3zm-98.1-61.1c-1.9.4-3.7-.4-3.9-1.7-.2-1.5 1.1-2.8 3-3.2 1.9-.2 3.7.6 3.9 1.9.3 1.3-1 2.6-3 3zm-9.5-.9c0 1.3-1.5 2.4-3.5 2.4-2.2.2-3.7-.9-3.7-2.4 0-1.3 1.5-2.4 3.5-2.4 1.9-.2 3.7.9 3.7 2.4zm-13.7-1.1c-.4 1.3-2.4 1.9-4.1 1.3-1.9-.4-3.2-1.9-2.8-3.2.4-1.3 2.4-1.9 4.1-1.5 2 .6 3.3 2.1 2.8 3.4zm-12.3-5.4c-.9 1.1-2.8.9-4.3-.6-1.5-1.3-1.9-3.2-.9-4.1.9-1.1 2.8-.9 4.3.6 1.3 1.3 1.8 3.3.9 4.1zm-9.1-9.1c-.9.6-2.6 0-3.7-1.5s-1.1-3.2 0-3.9c1.1-.9 2.8-.2 3.7 1.3 1.1 1.5 1.1 3.3 0 4.1zm-6.5-9.7c-.9.9-2.4.4-3.5-.6-1.1-1.3-1.3-2.8-.4-3.5.9-.9 2.4-.4 3.5.6 1.1 1.3 1.3 2.8.4 3.5zm-6.7-7.4c-.4.9-1.7 1.1-2.8.4-1.3-.6-1.9-1.7-1.5-2.6.4-.6 1.5-.9 2.8-.4 1.3.7 1.9 1.8 1.5 2.6z"/>
-            </symbol>
-        </svg>
-    </div>
 
 </body>
 </html>

@@ -1,15 +1,15 @@
-<!doctype html>
+<!doctype html><!-- appart :: 8102 :: 2019.9.29 -->
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- ===================================== HEAD CONTENT -->
+    <!-- ========================================= HEAD CONTENT -->
 
 
     <title>Appart</title>
-    <meta name="description" content="Frontend snippets with care for visual aesthetics, art/html/css/js" />
-    <meta name="author"      content="zl 2020, zl.sheepcity@gmail.com" />
+    <meta name="description" content="Frontend code templates" />
+    <meta name="author"      content="zl 2019, zl.sheepcity@gmail.com" />
 
 
     <!-- FAVICON -->
@@ -21,22 +21,17 @@
     <link href="app/favicons/192x192.png" sizes="192x192" rel="icon" type="image/png">
 
 
-    <!-- ===================================== BOOT -->
+    <!-- ========================================= BOOT -->
 
 
     <!-- ༼°▽°༽ style boot -->
     <style>
-        html       { margin:0; padding:0 0.25rem; }
-        body       { margin:0; padding:0; width:100%; height:auto; overflow-y:scroll; }
-        img,svg,hr { margin:0; border:0; max-width:100%; }
-        pre        { overflow:auto; }
+        body    { width: 100%; height: auto; overflow: hidden; }
+        img,svg { max-width: 100%; }
     </style>
 
     <!-- ༼°▽°༽ prefetch boot -->
-    <link rel="preload" href="app/fonts/Vollkorn-R.woff2" as="font">
-    <link rel="preload" href="app/fonts/Vollkorn-B.woff2" as="font">
-    <link rel="preload" href="app/fonts/Vollkorn-I.woff2" as="font">
-    <link rel="preload" href="app/fonts/VT323-CODE.woff"  as="font">
+    <link rel="preconnect"   href="//fonts.gstatic.com">
 
     <!-- ༼°▽°༽ app boot -->
     <script>
@@ -86,463 +81,296 @@
     </script>
 
 
-    <!-- ===================================== DESIGN -->
+    <!-- ========================================= DESIGN -->
 
 
     <link
-        href="app/styles/appart-ready.css"
-        media="none" onload="if(media!='all')media='all'"
+        href="app/styles/appart-v2019.09.29.css"
         rel="stylesheet" type="text/css">
-
-    <noscript>
-        <link
-            href="app/styles/appart-ready.css"
-            rel="stylesheet" type="text/css">
-    </noscript>
+    <link
+        href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic"
+        rel="stylesheet">
 
 
-    <!-- ===================================== APP -->
+    <!-- ========================================= APP -->
 
 
     <script defer src="app/script/app-core.js"></script>
 
     <!-- interface -->
-    <script defer src="app/styles/components/offsidebar/interface-offsidebar.js"></script>
     <script defer src="app/script/components/image-zzzoom.js"></script>
 
-    <!-- ===================================== APP CUSTOM -->
+    <!-- ========================================= APP CUSTOM -->
 
     <!-- dev functions -->
     <script defer src="app/script/components/autofill-paragraphs.js"></script>
 
-    <style>
-        s { opacity: 0.64; }
-    </style>
 
-
-    <!-- ====================================== ʕ⊙ᴥ⊙ʔ = -->
-    <!-- ===================================== END HEAD -->
+    <!-- ========================================== ʕ⊙ᴥ⊙ʔ = -->
+    <!-- ========================================= END HEAD -->
 </head>
 <body class="colors--primary">
 
-<!-- ========================================= Project Header -->
+    <!-- ----------------------------------------- Project Header -->
 
-<header  id="Start">
-    <div class="group-banner use-colors colors--secondary">
-        <h1>App <mark>&</mark> Art</h1>
-        <p class="text-inline-bigger">
-            Front-end components.<br>
-            Not a framework, but<br>
-            reusable code templates.
-        </p>
-    </div>
-</header>
+    <header id="Start">
 
-<!-- ========================================= Von Loader -->
+        <section class="swed-banner use-colors colors--secondary">
+            <h1>App <mark>&</mark> Art</h1>
+            <p class="mini-paragraph text-inline-bigger">
+                Front-end components. Not a framework,
+                but reusable code templates.
+            </p>
+            <p class="native-sans text-block-smaller">
+                v2019.9.29<br><strong>Elisa</strong>
+            </p>
+        </section>
+        <section class="swed-banner text-block-smaller">
+            <a href="#Articles" class="swed-button">
+                <span class="svga-icon"><svg><use xlink:href="#svg-next"></use></svg></span>
+                read articles
+            </a>
+            <a href="#About" class="swed-button">
+                <span class="svga-icon"><svg><use xlink:href="#svg-next"></use></svg></span>
+                about project
+            </a>
+            <a href="https://github.com/zlsheepcity/appart" class="swed-button">
+                <span class="svga-icon"><svg><use xlink:href="#svg-github"></use></svg></span>
+                code sources
+            </a>
+        </section>
 
-<div>
-    <style>
-        #von-loader {
-          --background-color: hsl(212, 34%, 29%);
-          --color:            hsl(226, 27%, 90%);
-          --size:     6rem;
-            z-index:  11;
-            position: fixed;
-            top:      0;
-            right:    0;
-            bottom:   0;
-            left:     0;
-            background-color: var(--background-color);
-            color:            var(--color);
-            transition:       opacity 240ms ease-out;
-            pointer-events:   none;
-            opacity:          0; }
-        #von-loader.is-active {
-            pointer-events:   all;
-            opacity:          1; }
-        #von-loader::after {
-            content:  '';
-            position: absolute;
-            z-index:  1;
-            top:      1.5rem;
-            left:     1.5rem;
-            width:    var(--size);
-            height:   var(--size);
-            background-size:     var(--size);
-            background-repeat:   no-repeat;
-            background-position: center center;
-         /* SVG: arrows circle loading */
-            background-image: url('data:image/svg+xml;utf8,<svg fill="white" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/></svg>');
-
-            animation: VonLoaderRotation 1s linear infinite; }
-            @keyframes VonLoaderRotation {
-                from { transform: rotate(360deg); }
-                to   { transform: rotate(  1deg); }
-            }
-    </style>
-    <div id="von-loader"></div>
-    <script>
-        function vonLoader () {
-
-            let loader = document.getElementById('von-loader')
-            if (!loader || !loader.classList) return false
-            loader.classList.add('is-active')
-
-            let finish = () => { loader.classList.remove('is-active') }
-            if (window.addEventListener) window.addEventListener("load", finish, false)
-            else if (window.attachEvent) window.attachEvent("onload", finish)
-            else finish()
-        }
-        vonLoader()
-    </script>
-</div>
-
-<!-- ========================================= Von Burger -->
-
-<div>
-
-    <!-- Hamburger -->
-
-    <style>
-        #von-burger {
-          --background-color: gold;
-          --color:           black;
-            position: fixed;
-            z-index:  3;
-            top:      0;
-            right:    0;
-            width:  3em;
-            height: 3em;
-            cursor: pointer;
-         /* SVG: hamburger */
-            background-image: url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>');
-            background-size:     24px;
-            background-repeat:   no-repeat;
-            background-position: center center;
-            background-color:    var(--background-color);
-            color:               var(--color);
-            border-radius: 0 0 0 4px;
-        }
-        #von-burger:hover {
-            transition: background 120ms ease-in;
-          --background-color: goldenrod;
-        }
-    </style>
-    <button markup id="von-burger"></button>
-
-    <!-- Menu Bar -->
-
-    <aside   class="offsidebar ChaptersMenuBar colors--ivory">
-        <div class="offsidebar-container">
-            <header class="offsidebar-header bar-header">
-                <h2 class="h4">Table of contents</h2>
-            </header>
-            <nav    class="offsidebar-content">
-                <ol class="menulist">
-                    <li class="pb"><a href="#Start">Start</a></li>
-                    <li><a href="#JournalGrid">Journal Grid</a></li>
-                    <li><a href="#Typography">Web-Typography</a></li>
-                </ol>
-            </nav>
-        </div>
-    </aside>
-
-    <!-- Menu scripting -->
-
-    <script>
-        function Activate___ChaptersMenuBar() {
-            let  barName = 'ChaptersMenuBar'
-            let  bar_api = InterfaceOffsideBar(barName)
-            if  (bar_api)
-                 bar_api.delegateToggle(document.getElementById('von-burger'))
-        }
-        app.onload(Activate___ChaptersMenuBar)
-    </script>
-
-</div>
-
-<!-- ========================================= App Components -->
-
-<main class="chapter grid-king use-colors colors--root">
-
-    <header class="chapter-header">
-        <h2>App Components</h2>
     </header>
 
-    <!-- ===================================== Major Projects -->
 
-    <div class="chapter isontop sublayer">
+    <!-- ----------------------------------------- Side Menu -->
 
-        <article class="inngrid color-box">
-            <aside class="text-block-smaller text-color-descent">
-                <p>CSS, variables</p>
-            </aside>
-            <header class="chapter-header">
-                <h4>CSS --varriors</h4>
-                <p>
-                    Pattern & pre-defined classes<br>
-                    to use custom CSS values without
-                    <nobr>inline styling</nobr>.
-                </p>
-            </header>
-            <footer>
-                <figure hidden>
-                    <a href="projects/css-varriors.html">
-                        <img
-                            src="art/illustrations/css--varriors.svg"
-                            alt="CSS --varriors"
-                            class="auto-margin width"
-                            style="--width:24rem">
-                    </a>
-                </figure>
-                <ul>
-                    <li>
-                        <a href="projects/css-varriors.html" class="link-inline">Project page</a>
-                    </li>
-                </ul>
-            </footer>
-        </article>
 
-        <article class="inngrid color-box">
-            <aside class="text-block-smaller text-color-descent">
-                <p>CSS, grid, layout</p>
-            </aside>
-            <header class="chapter-header">
-                <h4>Article grid</h4>
-                <p>
-                    Grid layout for article content.<br>
-                    Simple markup for rich customization.
-                </p>
-            </header>
-            <ul>
-                <li>
-                    <a href="projects/article-grid.html" class="link-inline">Project page</a>
-                </li>
-            </ul>
-        </article>
+    <article>
 
-        <article class="inngrid color-box">
-            <aside class="text-block-smaller text-color-descent">
-                <p>CSS, form markup, wordpress</p>
-            </aside>
-            <header class="chapter-header">
-                <h4>Contact Form</h4>
-                <p>
-                    Optimized (but not required) for<br>
-                    wordpress plugin <nobr>Contact Form 7</nobr>
-                </p>
-            </header>
-            <ul>
-                <li>
-                    <a href="projects/contact-form.html" class="link-inline">Project page</a>
-                </li>
-            </ul>
-        </article>
+        <!-- Menu Bar -->
 
-    </div>
+        <section class="ChaptersMenuBar offsidebar">
+            <div class="sidepanel">
+                <header class="sidepanel-header">
+                    <h2 class="h4">Table of Content</h2>
+                </header>
+                <nav class="sidepanel-content">
+                    <ul class="content-menu js-for-ChaptersMenuBar">
+                        <li class="pb"><a href="#Start">Start</a></li>
+                        <li><a href="#JournalGrid">Journal Grid</a></li>
+                        <li><a href="#Typography">Web-Typography</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </section>
 
-    <!-- ===================================== Minor Projects -->
+        <!-- Menu Bartender -->
 
-    <header class="chapter-header">
-        <h2>Minor Projects</h2>
-    </header>
+        <nav class="nav-fly js-for-ChaptersMenuBar">
+            <figure class="svga-icon"><svg><use xlink:href="#svg-menu"></use></svg></figure>
+        </nav>
 
-    <div class="layer">
+        <!-- Menu Scripting -->
+
+        <script defer src="app/styles/components/offsidebar/interface-offsidebar.js"></script>
+        <script>app.onload(f=>InterfaceOffsideBar('ChaptersMenuBar'))</script>
+
+    </article>
+
+
+
+
+    <hr class="reading-pause">
+
+
+    <!-- ----------------------------------------- App Components -->
+
+    <div class="use-colors colors--root">
+
+    <article class="layer padding">
+
+        <header class="is-centered padding">
+            <h2>CSS Components</h2>
+        </header>
         <section
             class="group-collisting auto-margin"
             style="--h4-font-size: var(--h5-font-size);">
 
-            <article>
-                <h4>CSS Color Model</h4>
-                <p class="text-block-smaller">Pattern for switching palletes in one document.</p>
-                <ul>
-                    <li>
-                        <a
-                            href="https://github.com/zlsheepcity/appart/blob/master/app/styles/components/color-model/color-model.scss"
-                            class="link-inline">git source</a>
-                    </li>
-                    <li>
-                        <s>research article</s>
-                    </li>
-                </ul>
-            </article>
+            <figure>
+                <h4>CSS Varriors</h4>
+                <p class="text-block-smaller">Replaced inline styling.</p>
+                <p><a
+                    href="https://github.com/zlsheepcity/appart/blob/master/app/styles/components/html-core/css-varriors.scss"
+                    class="link-inline">SCSS function</a></p>
+                <p><s>compiled CSS</s></p>
+                <p><s>research article</s></p>
+            </figure>
 
-            <article>
+            <figure>
+                <h4>Journal Grid</h4>
+                <p class="text-block-smaller">Two-columns content layout.</p>
+                <p><a
+                    href="https://github.com/zlsheepcity/appart/blob/master/app/styles/components/journal-grid/journal-grid.scss"
+                    class="link-inline">git source</a></p>
+                <p><a href="art-journal-grid.html" class="link-inline">demo/article</a></p>
+            </figure>
+
+            <figure class="fatground">
+                <h4>Catgrounds!</h4>
+                <p class="text-block-smaller">Design trick to make boring content more interesting.</p>
+                <p><s>project page</s></p>
+            </figure>
+
+            <figure>
+                <h4>Color Model</h4>
+                <p class="text-block-smaller">Pattern for switching different color palletes in one document.</p>
+                <p><a
+                    href="https://github.com/zlsheepcity/appart/blob/master/app/styles/components/color-model/color-model.scss"
+                    class="link-inline">git source</a></p>
+                <p><s>research article</s></p>
+            </figure>
+
+            <figure>
                 <h4>CSS Typography</h4>
                 <p class="text-block-smaller">Code snippets and research.</p>
-                <ul>
-                    <li>
-                        <a
-                        href="https://github.com/zlsheepcity/appart/blob/master/app/styles/components/html-core/html-typography.scss"
-                        class="link-inline">git source</a>
-                    </li>
-                    <li>
-                        <a href="#Typography" class="link-inline">demo</a>
-                    </li>
-                </ul>
-            </article>
+                <p><a
+                    href="https://github.com/zlsheepcity/appart/blob/master/app/styles/components/html-core/html-typography.scss"
+                    class="link-inline">git source</a></p>
+                <p><a href="#Typography" class="link-inline">demo</a></p>
+            </figure>
 
-            <article>
-                <h4>Offsidebar</h4>
-                <p class="text-block-smaller">Expandable side-panel. With love and care for aesthetic behavior.</p>
-                <ul>
-                    <li>
-                        <a
-                        href="https://github.com/zlsheepcity/appart/tree/master/app/styles/components/offsidebar"
-                        class="link-inline">git source</a>
-                    </li>
-                    <li>
-                        <s>demo page</s>
-                    </li>
-                </ul>
-                <figure>
+            <figure>
+                <div class="pb is-centered js-for-ChaptersMenuBar">
                     <img
                         src="art/component-icons/component-icon--ofsidebar.svg"
-                        alt="offsidebar component icon"
-                        class="auto-margin width js-for-ChaptersMenuBar"
-                        style="--width:6em;">
-                </figure>
-            </article>
+                        alt="ofsidebar component icon"
+                        class="width" style="--width:6em;">
+                </div>
+                <h4>Offsidebar</h4>
+                <p class="text-block-smaller">Expandable side-panel.</p>
+                <p><a
+                    href="https://github.com/zlsheepcity/appart/tree/master/app/styles/components/offsidebar"
+                    class="link-inline">git source</a></p>
+                <p><s>demo page</s></p>
+            </figure>
 
-            <article class="fatground">
-                <h4>CSS Catgrounds!</h4>
-                <p class="text-block-smaller">Design trick to make boring content more interesting.</p>
-                <ul><li><s>incomplete</s></li></ul>
-            </article>
-
-            <article>
-                <h4>SVGA Icons</h4>
-                <p class="text-block-smaller">Shortcode for inline SVG-images.</p>
-                <ul>
-                    <li>
-                        <a
-                        href="https://github.com/zlsheepcity/appart/tree/master/app/styles/components/svga-icons"
-                        class="link-inline">git source</a>
-                    </li>
-                </ul>
-            </article>
-
-            <article>
+            <figure>
                 <h4>UI Elements</h4>
                 <p class="text-block-smaller">Button, dropdown, e.t.c.</p>
-                <ul>
-                    <li>
-                        <a
-                        href="https://github.com/zlsheepcity/appart/tree/master/app/styles/components/swed-design"
-                        class="link-inline">git source</a>
-                    </li>
-                </ul>
-            </article>
+                <p><a
+                    href="https://github.com/zlsheepcity/appart/tree/master/app/styles/components/swed-design"
+                    class="link-inline">git source</a></p>
+            </figure>
 
-            <article>
-                <h4>JS Image Lazy Loader</h4>
-                <p class="text-block-smaller">With IntersectionObserver.</p>
-                <ul>
-                    <li>
-                        <a
-                        href="https://github.com/zlsheepcity/appart/blob/master/app/script/components/image-lazy-loader.js"
-                        class="link-inline">git source</a>
-                    </li>
-                </ul>
-            </article>
-
-            <article>
-                <h4>JS Image Zoom</h4>
-                <p class="text-block-smaller">Smooth image zoom on click.</p>
-                <ul>
-                    <li>
-                        <a
-                        href="https://github.com/zlsheepcity/appart/blob/master/app/script/components/image-zzzoom.js"
-                        class="link-inline">git source</a>
-                    </li>
-                </ul>
-            </article>
-
-            <article>
-                <h4>CSS Class Manager</h4>
-                <p class="text-block-smaller">Shorthand function.</p>
-                <ul>
-                    <li>
-                        <a
-                    href="https://github.com/zlsheepcity/appart/blob/master/app/script/components/css-class-mutator.js"
-                    class="link-inline">git source</a>
-                    </li>
-                </ul>
-            </article>
-
-            <article>
-                <h4>JS Scroll to Var</h4>
-                <p class="text-block-smaller">The scroll position affects the values of CSS variables.</p>
-                <ul>
-                    <li>
-                        <a
-                    href="https://github.com/zlsheepcity/appart/blob/master/app/script/components/scroll-to-var.js"
-                    class="link-inline">git source</a>
-                    </li>
-                </ul>
-            </article>
-
-            <article>
-                <h4>AppKing.js</h4>
-                <p class="text-block-smaller">Vanilla js controller for functions out of system.</p>
-                <ul>
-                    <li>
-                        <s>incomplete</s>
-                    </li>
-                </ul>
-            </article>
+            <figure>
+                <h4>SVGA Icons</h4>
+                <p class="text-block-smaller">Shortcode for inline SVG-image</p>
+                <p><a
+                    href="https://github.com/zlsheepcity/appart/tree/master/app/styles/components/svga-icons"
+                    class="link-inline">git source</a></p>
+            </figure>
 
         </section>
+    </article>
+
+
+    <article class="layer padding padding-top" style="--padding-top:0;">
+        <header class="is-centered padding">
+            <h2>JavaScript Components</h2>
+        </header>
+        <section
+            class="group-collisting auto-margin"
+            style="--h4-font-size: var(--h5-font-size);">
+
+            <figure>
+                <h4>Image Lazy Loader</h4>
+                <p class="text-block-smaller">Images are only loaded when it appears while scrolling.</p>
+                <p><a
+                    href="https://github.com/zlsheepcity/appart/blob/master/app/script/components/image-lazy-loader.js"
+                    class="link-inline">git source</a></p>
+            </figure>
+
+            <figure>
+                <h4>Image Zoom</h4>
+                <p class="text-block-smaller">Smooth image zoom to fit screen on click.</p>
+                <p><a
+                    href="https://github.com/zlsheepcity/appart/blob/master/app/script/components/image-zzzoom.js"
+                    class="link-inline">git source</a></p>
+            </figure>
+
+            <figure>
+                <h4>CSS Class Mutator</h4>
+                <p class="text-block-smaller">Shorthand function for managing an element class.</p>
+                <p><a
+                    href="https://github.com/zlsheepcity/appart/blob/master/app/script/components/css-class-mutator.js"
+                    class="link-inline">git source</a></p>
+            </figure>
+
+            <figure>
+                <h4>Scroll to Var</h4>
+                <p class="text-block-smaller">The scroll position affects the values of CSS variables.</p>
+                <p><a
+                    href="https://github.com/zlsheepcity/appart/blob/master/app/script/components/scroll-to-var.js"
+                    class="link-inline">git source</a></p>
+            </figure>
+
+            <figure>
+                <h4>AppKing.js</h4>
+                <p class="text-block-smaller">Vanilla js controller for unsystematized functions.</p>
+                <p><s>research article</s></p>
+            </figure>
+
+        </section>
+    </article>
+
     </div>
 
-</main>
 
-<!-- ========================================= About project -->
-
-<article id="About" class="chapter grid-king use-colors colors--secondary">
-
-    <header class="chapter-header">
-        <h2 class="h2">Project Description</h2>
-        <p  class="h4">(in russian)</p>
-    </header>
-
-    <div class="inngrid color-box">
-        <p><b>App</b> — от технического термина application, <b>Art</b> — творчество. Игра слов символизирует связь между кодом и содержанием.</p>
-
-        <p>Проект appart создан для упрощённой вёрстки уникального контента. Уделяется много внимания ликвидации «некрасивых» ошибок. Например, дёргание контента под модальным окном.</p>
-
-        <p>Appart не фреймворк, а код для копирования в другие проекты.</p>
-    </div>
-
-    <div class="chapter-note">
-        <div>
-            <p class="h3">appart</p>
-            <p> — (фр.) поиск подходящего партнёра</p>
-        </div>
-    </div>
-
-    <footer class="text-inline-bigger">
-        <p>
-            zl, August 2019 — February 2020<br>
-            zl.sheepcity@gmail.com
-        </p>
-    </footer>
-
-    <figure>
-        <div>
-            <img
-                src="art/fox-author.svg"
-                alt="Fox Drawing"
-                class="opacity"
-                style="--opacity:0.32;">
-        </div>
-    </figure>
-
-</article>
+    <!-- ----------------------------------------- About project -->
 
 
+    <article id="About" class="journal-grid centrale use-colors colors--swed-third">
 
-    <!-- ===================================== PAGE CONTENT -->
+        <section class="keep-base chapter use-colors colors--secondary">
+
+            <header>
+                <h2 class="h2">Project Description</h2>
+                <p  class="h4">(in russian)</p>
+            </header>
+
+            <div class="note">
+                <div>
+                    <p class="h2">appart</p>
+                    <p> — (фр.) поиск подходящего партнёра</p>
+                </div>
+            </div>
+
+            <div class="box">
+                <p><b>App</b> — от технического термина application, <b>Art</b> — творчество. Игра слов означает связь между кодом и содержанием.</p>
+
+                <p>Проект appart создан для упрощённой вёрстки уникального контента. Внимание уделяется ликвидации «некрасивых» ошибок, таких как, дёргание контента под модальным окном.</p>
+
+                <p>Appart не фреймворк, а код для копирования в другие проекты.</p>
+            </div>
+
+            <footer class="text-inline-bigger">
+                <p>
+                    zl, August 2019<br>
+                    zl.sheepcity@gmail.com
+                </p>
+            </footer>
+
+            <figure class="wide box opacity" style="--opacity:0.6;">
+                <div><img src="art/fox-author.svg" alt="Fox Drawing"></div>
+            </figure>
+
+        </section>
+
+    </article>
+
+
+    <!-- ========================================= PAGE CONTENT -->
 
 
     <div id="Articles"></div>
@@ -778,7 +606,7 @@
 
 
 
-    <!-- ===================================== PAGE CUSTOM -->
+    <!-- ========================================= PAGE CUSTOM -->
 
 
     <!-- SVGA Icons -->

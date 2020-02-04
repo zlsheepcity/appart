@@ -127,38 +127,202 @@
 <style>
     .producer-arena {
         position: relative;
+        z-index: 0;
         min-height: 12rem;
-        background-color: slategray;
+
+        background: transparent;
+        overflow: hidden;
+
+        display: grid;
+        grid-template-columns: [arena] 1fr [producers] max-content;
+        justify-content: stretch;
+        align-items: stretch;
+
+    }
+    .producer-arena::before {
+        content: '';
+        position: absolute;
+        z-index: -2;
+        top:      0;
+        right:    0;
+        bottom:   0;
+        left:     0;
+        background-color: hsla(201, 22%, 46%,1);
     }
     .producers {
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        width: 24em;
-        background-color: hsla(0,0%,0%,0.25);
+        grid-column: producers;
+        max-width: 20rem;
+        padding-left: 0.75rem;
+        background-color: hsla(201, 22%, 46%,0.85);
+        color: white;
     }
     .producer__label {
-        padding-top: 1.5rem;
-        padding-bottom: 1.5rem;
-        padding-left: 1.5rem;
-        padding-right: 1.5rem;
+      --sx: 0.75rem;
+      --sy: 0.75rem;
+      --background-color: transparent;
+      --transform: scale(1);
+        padding: var(--sy) var(--sx);
+        background-color: var(--background-color);
+        transition: 320ms var(--timing-function--focusZoom);
+        transition-property: transform;
+        transform:  var(--transform);
+        transform-origin: right center;
+        position: relative; 
     }
-    .producer__label:focus {
-        margin-top: 3rem;
-        margin-bottom: 3rem;
+    .producer__label:hover {
+      --background-color: hsla(201, 22%, 46%,1);
+      --transform: scale(1.125);
+    }
+    .producer.is-active .producer__label {
+      --background-color: hsla(201, 52%, 26%,1);
+      --transform: scale(1.25);
+      transition-property: transform, background;
+      z-index: 1;
+    }
+    .producer__label .is-provider {
+        display: block;
+        font-size: 0.8em;
+        line-height: 1.25;
+        color: hsl(171, 45%, 81%);
+    }
+    .producer__label .is-game {
+        display: block;
+        line-height: 1.25;
+    }
+    .producer__show {
+        position: absolute;
+        z-index: -1;
+        top:      0;
+        right:    0;
+        bottom:   0;
+        left:     0;
+        pointer-events: none;
+        transform: translateX(-200%);
+    }
+    .producer.is-active .producer__show {
+        transform: translateX(0);
+    }
+    .producer__show .show-bg {
+        position: absolute;
+        z-index: -1;
+        top:      0;
+        right:    0;
+        bottom:   0;
+        left:     0;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 320ms var(--timing-function--focusZoom);
+    }
+    .producer.is-active .show-bg {
+        opacity: 1;
+    }
+    .producer__show .show-bg-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: left center;
+    }
+    .producer__show .show-el {
+        position: absolute;
+        z-index: -1;
+        top:      0;
+        right:    0;
+        bottom:   0;
+        left:     0;
+        pointer-events: none;
+        overflow: hidden;
+    }
+    .producer__show .show-el-img {
+        position: absolute;
+        bottom: 0;
+        max-width:  60%;
+        max-height: 90%;
+        transform: translateX(-100%);
+        transition: transform 640ms var(--timing-function--openJump);
+    }
+    .producer.is-active .show-el-img {
+        transform: translateX(0);
     }
 </style>
 
 <div class="producer-arena">
     <div class="producers">
+
         <div class="producer">
-            <div class="markup producer__label">
-                <mark>Tom Horn</mark> <span>Monster Madness</span>
+            <div class="producer__label">
+                <span class="is-provider">Tom Horn</span>
+                <span class="is-game">Monster Madness</span>
+            </div>
+            <div class="producer__show">
+                <div class="show-bg">
+                    <img class="show-bg-img" data-src="https://www.softgamings.com/content/uploads/spinomenal_bg.jpg" alt="">
+                </div>
+                <div class="show-el">
+                    <img class="show-el-img" data-src="https://www.softgamings.com/content/uploads/spinomenal_lilith.png" alt="">
+                </div>
             </div>
         </div>
+
+        <div class="producer">
+            <div class="producer__label">
+                <span class="is-provider">Microgaming</span>
+                <span class="is-game">Bookie of Odds</span>
+            </div>
+            <div class="producer__show">
+                <div class="show-bg">
+                    <img class="show-bg-img" data-src="https://www.softgamings.com/content/uploads/betsoft_bg.jpg" alt="">
+                </div>
+                <div class="show-el">
+                    <img class="show-el-img" data-src="https://www.softgamings.com/content/uploads/chili_betsoft.png" alt="">
+                </div>
+            </div>
+        </div>
+
+        <div class="producer">
+            <div class="producer__label">
+                <span class="is-provider">Microgaming</span>
+                <span class="is-game">Book of Oz</span>
+            </div>
+        </div>
+
+        <div class="producer">
+            <div class="producer__label">
+                <span class="is-provider">Playson Direct</span>
+                <span class="is-game">Burning Wins<br>classic 5 lines</span>
+            </div>
+        </div>
+
+        <div class="producer">
+            <div class="producer__label">
+                <span class="is-provider">PlaynGo</span>
+                <span class="is-game">Book of Dead</span>
+            </div>
+        </div>
+
+        <div class="producer">
+            <div class="producer__label">
+                <span class="is-provider">NetEnt</span>
+                <span class="is-game">Gonzo`s Quest</span>
+            </div>
+        </div>
+
     </div>
 </div>
+
+<script>
+    function activate_producers_list(select='.producers') {
+        const ACTIVE = 'is-active'
+        let producers = [...document.querySelectorAll(select + ' .producer')]
+        let reset_producers = f => producers.map( el => el.classList.remove(ACTIVE) )
+        let activate_th = el => el.classList.add(ACTIVE)
+        let ui_action = e => {
+                reset_producers()
+                activate_th(e.currentTarget)
+            }
+        producers.map( el => el.addEventListener('click', ui_action) )
+    }
+    app.onload(activate_producers_list)
+</script>
 
 </body>
 </html>

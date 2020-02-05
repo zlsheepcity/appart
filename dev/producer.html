@@ -267,9 +267,15 @@
         transform: translateX(0);
     }
     .producer__show .show-el-img {
-        display: block;
-        max-width:  90%;
-        max-height: 90%;
+        display:   block;
+      --max-width:  100%;
+      --max-height:  90%;
+      --align-self: flex-end;
+      --margin:     0 auto;
+        max-width:  var(--max-width);
+        max-height: var(--max-height);
+        align-self: var(--align-self);
+        margin:     var(--margin);
     }
     .producer.is-active .show-el-img {
         animation-name: show-el-pulse;
@@ -289,7 +295,7 @@
     .producer__show .show-to {
         position: absolute;
         left: 0;
-        bottom: 0;
+        top: 0;
         padding: 1rem;
         transform: translateX(-100%) scale(2);
         transform-origin: right center;
@@ -319,7 +325,10 @@
         padding: 0.5em 0.25em;
         margin:  0.25em 0.5em;
     }
-
+/*    .producers.opa .producer__label {
+        transition: all 440ms;
+        transform: translateY(-63px);
+    }*/
 </style>
 
 <div class="producer-arena">
@@ -335,7 +344,7 @@
                     <img class="show-bg-img" data-src="https://www.softgamings.com/content/uploads/spinomenal_bg.jpg" alt="">
                 </div>
                 <div class="show-el">
-                    <img class="show-el-img" data-src="https://www.softgamings.com/content/uploads/spinomenal_lilith.png" alt="">
+                    <img class="show-el-img" style="--max-width:300%" data-src="https://www.softgamings.com/content/uploads/spinomenal_lilith.png" alt="">
                 </div>
                 <div class="show-to">
                     <div class="show-to-link"><a href="#">Game info</a></div>
@@ -401,6 +410,8 @@
         let ui_action = e => {
                 reset_producers()
                 activate_th(e.currentTarget)
+                //let opa = document.querySelectorAll(select)
+                //opa[0].classList.toggle('opa')
             }
         producers.map( el => el.addEventListener('click', ui_action) )
     }

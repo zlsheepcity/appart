@@ -68,6 +68,7 @@ body {
     display: flex;
     justify-content: flex-start;
 }
+.el-menu.is-hidden { display: none; }
 
 .menu-button {
     width:    var(--menu-size);
@@ -181,12 +182,21 @@ body {
 }
 .el-intro-message {
     grid-area: text;
-    font-size:3rem;
+    font-size:4rem;
 }
 .el-intro-button {
     grid-area: entrance;
     background-color: hsl(359, 54%, 53%);
     font-size: 4rem;
+}
+
+.el-launch-app {
+    background-color: hsl(359, 54%, 53%);
+    font-size: 4rem;
+    width: 16rem;
+    margin: 0 auto;
+    padding: 0 2rem;
+    
 }
 
 
@@ -294,7 +304,7 @@ body {
     font-size: 4rem;
 }
 .el-stop-the-button {
-    margin: 4rem auto 0 auto;
+    margin: var(--menu-size) auto 0 auto;
     transform: scale(2);
 }
 .menu-button.el-stop-the-button         { background-image: url(../art/eye-3.svg);  }

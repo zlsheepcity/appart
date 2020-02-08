@@ -161,7 +161,7 @@ body {
     position: fixed;
     z-index:  1;
 
-    padding:   calc( 2*var(--menu-size) + 1rem) 1rem 1rem 1rem;
+    padding:   calc( 1*var(--menu-size) + 1rem) 1rem 1rem 1rem;
 }
 .screen:not(.is-active) {
     transform: translateX(100%);
@@ -177,6 +177,7 @@ body {
     grid-template-rows: 1fr min-content;
     grid-template-areas: 'logo text' 'logo entrance';
     align-content: stretch;
+    padding-top: 1rem;
 }
 .el-intro-message {
     grid-area: text;
@@ -293,7 +294,7 @@ body {
     font-size: 4rem;
 }
 .el-stop-the-button {
-    margin: var(--menu-size) auto 0 auto;
+    margin: 4rem auto 0 auto;
     transform: scale(2);
 }
 .menu-button.el-stop-the-button         { background-image: url(../art/eye-3.svg);  }

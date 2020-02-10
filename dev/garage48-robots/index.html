@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- ===================================== HEAD CONTENT -->
+
+    <title>RVM-1</title>
+
+    <!-- ===================================== DESIGN -->
+
+    <link
+        href="app/styles.css?v2020.2.8"
+        rel="stylesheet" type="text/css">
+
+</head>
+<body>
+
+<!-- ========================================= Menu -->
+
+<nav class="el-menu">
+    <div class="menu-button back"></div>
+    <div class="menu-button help"></div>
+    <div class="menu-button stop"></div>
+    <div class="menu-button good"></div>
+</nav>
+
+
+<!-- ========================================= Launch -->
+
+<article id="Launch" class="screen">
+    <div class="box el-launch-app">
+        Run
+    </div>
+</article>
+
+
+<!-- ========================================= Intro -->
+
+<article id="Intro" class="screen">
+    <div class="box el-intro-message">
+        <div>Hi, I`m the <span class="text-color-accent">Refilling Vending Machine</span> RVM-1</div>
+    </div>
+    <div class="box el-intro-button">
+        Start
+    </div>
+</article>
+
+<!-- ========================================= Products -->
+
+<article id="Products" class="screen"></article>
+
+<!-- ========================================= Size -->
+
+<article id="Setup" class="screen">
+    <div class="box size-s">
+        <div class="label">50 ml</div>
+    </div>
+    <div class="box size-m">
+        <div class="label">100 ml</div>
+    </div>
+    <div class="box size-l">
+        <div class="label">250 ml</div>
+    </div>
+</article>
+
+<!-- ========================================= Prepare -->
+
+<article id="Prepare" class="screen">
+    <div class="box el-confirm-your-choice">
+        <div>
+            <span class="title">Confirmation screen</span><br>
+            Selected liquid is good.<br>
+            Made by natural ingredients.<br>
+            <span class="text-color-accent">Dont drink.</span> Wash your dish.<br>
+            <br><br>
+            Please, confirm or cancel.
+        </div>
+    </div>
+</article>
+
+<!-- ========================================= Action -->
+
+<article id="Action" class="screen">
+    <div class="box el-hold-the-button">
+        Hold the button
+    </div>
+</article>
+
+<!-- ========================================= Pump -->
+
+<article id="Pump" class="screen">
+    <div class="el-machine">
+        <div class="el-pump"></div>
+        <div class="el-bubbles"></div>
+    </div>
+</article>
+
+<!-- ========================================= Logo -->
+
+<article id="PumpNumbers" class="screen">
+    <div class="el-gas-numbers">
+        <div class="volume">
+            <span class="gas-volume-value">240</span>
+            <span class="ml">ml</span>
+        </div>
+        <div class="summ">
+            <span class="gas-volume-value">1.32</span>
+            <span class="ml">€</span>
+        </div>
+    </div>
+</article>
+
+<!-- ========================================= Thanks -->
+
+<article id="Thanks" class="screen">
+    <div class="box el-thank-you">
+        Thank You!
+    </div>
+    <div class="box el-about-illustration">
+        <img src="art/about.svg" alt="Infographics">
+    </div>
+    <div class="box">
+        The planet is saved
+        <span class="saved-icon"></span>
+    </div>
+</article>
+
+<!-- ========================================= Help -->
+
+<article id="Help" class="screen">
+    <div class="box el-help-text">
+        About ( in brief )
+    </div>
+    <div class="box el-about-illustration">
+        <img src="art/about.svg" alt="Infographics">
+    </div>
+</article>
+
+<!-- ========================================= JS -->
+
+<script src="app/ui.js"></script>
+<script src="app/web.js"></script>
+<script>
+
+    const api = {
+
+        setupProducts: (
+             data = [
+                 { id:1, vol:0.90, label:'Shower Gel' },
+                 { id:2, vol:0.75, label:'Liquid Soap' },
+                 { id:3, vol:0.80, label:'Some Liquid' },
+                 { id:4, vol:0.32, label:'Awesome Liquid' },
+                 { id:5, vol:0.00, label:'Is Empty' },
+                 { id:6, vol:0.10, label:'Is Not Enought' }
+             ]
+            ) => app.updateProducts(data),
+
+        updateProduct: ( data = {id:1, vol:1.00} ) => app.updateProduct(data),
+
+        run: f => {
+            ui.screen('Launch')//ui.screen('Launch')
+        },
+
+        messageOfConfirmedAction: f => console.log('LOG: Action confirmed'),
+        messageOfUserStart: f => console.log('LOG: User start')
+
+    }
+
+    api.setupProducts()
+    api.run()
+    //web.connect()
+
+</script>
+
+</body>
+</html>

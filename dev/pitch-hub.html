@@ -119,7 +119,92 @@
 </head>
 <body class="colors--root">
 
-<!-- ========================================= SUMMARY -->
+<!-- ========================================= Pitch-Hub -->
+
+<div class="pitch-hub pitch-hub--garage48">
+    <div class="pitches">
+
+        <div class="pitch" style="--el-max-width:300%;">
+            <div class="pitch-label">
+                <span class="t-tag">Spinomenal</span>
+                <span class="t-title">Lilith’s Passion Enhanced</span>
+            </div>
+            <div class="pitch-show">
+                <div class="pitch-show-bg">
+                    <img class="i-show-bg" data-src="https://www.softgamings.com/content/uploads/spinomenal_bg.jpg" alt="Lilith’s Passion Enhanced">
+                </div>
+                <div class="pitch-show-el">
+                    <img class="i-show-el" data-src="https://www.softgamings.com/content/uploads/spinomenal_lilith.png" alt="Lilith’s Passion Enhanced">
+                </div>
+                <div class="pitch-show-to">
+                    <div class="a-show-to"><a href="#">Game info</a></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="pitch">
+            <div class="pitch-label">
+                <span class="t-tag">Tom Horn</span>
+                <span class="t-title">Monster Madness</span>
+            </div>
+            <div class="pitch-show">
+                <div class="pitch-show-bg"></div>
+                <div class="pitch-show-el"></div>
+                <div class="pitch-show-to"></div>
+            </div>
+        </div>
+
+        <div class="pitch active-pitch">
+            <div class="pitch-label">
+                <span class="t-tag">Microgaming</span>
+                <span class="t-title">Bookie of Odds</span>
+            </div>
+            <div class="pitch-show">
+                <div class="pitch-show-bg"></div>
+                <div class="pitch-show-el"></div>
+                <div class="pitch-show-to"></div>
+            </div>
+        </div>
+
+        <div class="pitch">
+            <div class="pitch-label">
+                <span class="t-tag">Microgaming</span>
+                <span class="t-title">Book of Oz</span>
+            </div>
+            <div class="pitch-show">
+                <div class="pitch-show-bg"></div>
+                <div class="pitch-show-el"></div>
+                <div class="pitch-show-to"></div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- ========================================= Pitch-engine -->
+
+<script>
+    function StartPitchHub(hub='.pitch-hub') {
+        let pitches  = [...document.querySelectorAll(hub + ' .pitch')]
+        const ACTIVE = 'active-pitch'
+
+        let activityReset = f => pitches.map( el => el.classList.remove(ACTIVE) )
+        let activitySetTo = p => p.classList.add(ACTIVE)
+        let eventToSelect = e => {
+            activityReset()
+            activitySetTo(e.currentTarget)
+            }
+        let domMapEvents = f => {
+            pitches.map( el => el.addEventListener('click', eventToSelect) )
+        }
+
+     // init
+        domMapEvents()
+    }
+    app.onload(StartPitchHub)
+</script>
+
+<!-- ========================================= Producers -->
 
 <div class="producer-arena">
     <div class="producers">

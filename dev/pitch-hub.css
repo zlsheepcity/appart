@@ -1,3 +1,259 @@
+/** Pitch Slider
+ *  v2020.2.11
+ */
+
+/** -------------------------------- settings */
+
+.pitch-hub {
+  --banner-height: 24rem;
+  --pitches-width: 10rem;
+
+  --align-pitches:  left;
+  --align-show:     right;
+  --align-template: [pitches] max-content [show] 1fr;
+ /*
+  --align-pitches:  right;
+  --align-show:     left;
+  --align-template: [show] 1fr [pitches] max-content;
+ */
+
+ /* Theme: Garage48 */
+  --back-color-hub:            hsla(201,  22%,  46%, 1   );
+  --back-color-hub-shadow:     hsla(201,   0%,   0%, 0.25);
+  --text-color-hub:            hsla(201,   0%, 100%, 1   );
+
+  --back-color-pitches:        hsla(201,  22%,  46%, 0.85);
+  --back-color-pitches-hover:  hsla(201,  22%,  46%, 1   );
+  --back-color-pitches-active: hsla(201,  52%,  26%, 1   );
+  --text-color-pitches:        hsla(201,   0%, 100%, 1   );
+  --text-color-pitches-tag:    hsla(171,  45%,  81%, 1   );
+
+}
+
+
+/** -------------------------------- wrap */
+
+.pitch-hub {
+    position:   relative;
+    z-index:    0;
+    width:      100%;
+    height:     var(--banner-height);
+    max-height: 100vh;
+    overflow:   hidden;
+
+    display:         grid;
+    justify-content: stretch;
+    align-items:     stretch;
+
+    grid-template-columns: var(--align-template);
+    color:                 var(--text-color-hub);
+}
+.pitch-hub::before {
+ /* Default background */
+    background-color:      var(--back-color-hub);
+    content: '';
+    position: absolute;
+    z-index: -2;
+    top:      0;
+    right:    0;
+    bottom:   0;
+    left:     0;
+}
+.pitch-hub::after {
+ /* Shadow */
+    background-image:
+        linear-gradient(
+            to bottom,
+            transparent 96%,
+            var(--back-color-hub-shadow)
+        );
+    pointer-events: none;
+    content: '';
+    position: absolute;
+    z-index:  2;
+    top:      0;
+    right:    0;
+    bottom:   0;
+    left:     0;
+
+}
+
+/** -------------------------------- labels */
+
+.pitches {
+    grid-column:     pitches;
+    max-width: var(--pitches-width);
+    height:    100%;
+
+    background-color: var(--back-color-pitches);
+    color:            var(--text-color-pitches);
+}
+.pitch-label {
+  --sx: 0.75rem;
+  --sy: 0.75rem;
+    padding: 1rem var(--sx) var(--sy) var(--sx);
+}
+.pitch-label .t-tag {
+    display: block;
+    font-size: 0.8em;
+    line-height: 1.25;
+    color: hsl(171, 45%, 81%);
+}
+.pitch-label .t-title {
+    display: block;
+    line-height: 1.25;
+}
+
+/** -------------------------------- label states */
+
+.pitch:hover  .pitch-label { z-index: 1; }
+.active-pitch .pitch-label { z-index: 2; }
+
+.pitch-label {
+  --background-color:    transparent;
+  --transform:           scale(1);
+    position:            relative;
+    background-color:    var(--background-color);
+    transform:           var(--transform);
+    transform-origin:    var(--align-pitches, left) center;
+    transition-duration: 320ms;
+    transition-property: transform;
+    transition-timing-function: var(--timing-function--focusZoom);
+}
+
+.pitch-label:hover {
+  --background-color:    var(--back-color-pitches-hover);
+  --transform:           scale(1.125);
+  }
+
+.active-pitch .pitch-label {
+  --background-color:    var(--back-color-pitches-active);
+  --transform:           scale(1.25);
+    transition-property: transform, background;
+}
+
+/** -------------------------------- slide */
+
+.pitch {
+  --translate-show: -200%;
+  --translate-el:   -100%;
+  --bg-opacity:      0;
+  --el-max-width:    100%;
+  --el-max-height:   90%;
+  --el-align-self:   flex-end;
+  --el-margin:       0 auto;
+  --el-animation:    none;
+  --link-pointer:    none;
+  --link-transofrm:  translateX(200%) scale(2);
+}
+.pitch.active-pitch {
+  --translate-show:  0;
+  --translate-el:    0;
+  --bg-opacity:      1;
+  --el-animation:    show-el-pulse;
+  --link-pointer:    all;
+  --link-transofrm:  translateX(0) scale(1);
+}
+
+.pitch-show {
+    position: absolute;
+    z-index: -1;
+    top:      0;
+    right:    0;
+    bottom:   0;
+    left:     0;
+    transform:       translateX( var(--translate-show) );
+    pointer-events:  none;
+}
+.pitch-show-bg {
+    position: absolute;
+    z-index: -1;
+    top:      0;
+    right:    0;
+    bottom:   0;
+    left:     0;
+    pointer-events: none;
+    opacity:        var(--bg-opacity);
+    transition:     opacity 320ms;
+    transition-timing-function: var(--timing-function--focusZoom);
+}
+.pitch-show-bg .i-show-bg {
+    width:           100%;
+    height:          100%;
+    object-fit:      cover;
+    object-position: var(--align-show) center;
+}
+.pitch-show-el {
+    position: absolute;
+    z-index: -1;
+    top:      0;
+    right:    0;
+    bottom:   0;
+    left:     0;
+    pointer-events:  none;
+    overflow:        hidden;
+    display:         flex;
+    justify-content: center;
+    align-content:   flex-end;
+    align-items:     flex-end;
+    transform:  translateX( var(--translate-el) );
+    transition: transform 320ms;
+    transition-timing-function: var(--timing-function--focusZoom);
+}
+.pitch-show-el .i-show-el {
+    display:   block;
+    transform-origin: center bottom;
+    max-width:  var(--el-max-width);
+    max-height: var(--el-max-height);
+    align-self: var(--el-align-self);
+    margin:     var(--el-margin);
+    animation:  var(--el-animation);
+    animation-duration:        1280ms;
+    animation-fill-mode:       both;
+    animation-iteration-count: infinite;
+    animation-iteration-count: 1;
+}
+
+.pitch-show-to {
+    position:  absolute;
+    right:     0;
+    bottom:    0;
+    padding:   1rem;
+    pointer-events:   var(--link-pointer);
+    transform:        var(--link-transofrm);
+    transform-origin: right center;
+    transition:       transform 240ms;
+    transition-timing-function: var(--timing-function--openJump);
+}
+
+.a-show-to>a {
+    display:          inline-block;
+    background-color: hsl(0, 67%, 27%);
+    border: 2px solid currentColor;
+    color: white;
+    padding: 0.25em 0.5em;
+    margin:  0.5em 0.25em;
+    text-decoration: underline;
+    text-decoration-color: hsla(0,0%,100%,0.25);
+    font-size: 1.5em;
+    line-height: 1;
+    border-radius: 4px;
+    transition: padding 240ms, margin 240ms;
+}
+.a-show-to>a:hover {
+    background-color: hsl(0, 47%, 47%);
+    padding: 0.5em 0.25em;
+    margin:  0.25em 0.5em;
+}
+
+@keyframes show-el-pulse {
+    from { transform: scale3d(1, 1, 1); }
+    50%  { transform: scale3d(1.05, 1.05, 1.05); }
+    to   { transform: scale3d(1, 1, 1); }
+}
+
+/** -------------------------------- producers */
+
 .producer-arena {
     position: relative;
     z-index: 0;

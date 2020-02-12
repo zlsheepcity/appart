@@ -6,16 +6,12 @@
 
 .pitch-hub {
   --banner-height: 24rem;
-  --pitches-width: 10rem;
+  --pitches-width: 12rem;
 
-  --align-pitches:  left;
-  --align-show:     right;
-  --align-template: [pitches] max-content [show] 1fr;
- /*
   --align-pitches:  right;
   --align-show:     left;
   --align-template: [show] 1fr [pitches] max-content;
- */
+
 
  /* Theme: Garage48 */
   --back-color-hub:            hsla(201,  22%,  46%, 1   );
@@ -23,7 +19,7 @@
   --text-color-hub:            hsla(201,   0%, 100%, 1   );
 
   --back-color-pitches:        hsla(201,  22%,  46%, 0.85);
-  --back-color-pitches-hover:  hsla(201,  22%,  46%, 1   );
+  --back-color-pitches-hover:  hsla(201,  22%,  46%, 0   );
   --back-color-pitches-active: hsla(201,  52%,  26%, 1   );
   --text-color-pitches:        hsla(201,   0%, 100%, 1   );
   --text-color-pitches-tag:    hsla(171,  45%,  81%, 1   );
@@ -81,17 +77,28 @@
 /** -------------------------------- labels */
 
 .pitches {
+  --pdu: 0.75rem; /* padding unit */
     grid-column:     pitches;
     max-width: var(--pitches-width);
     height:    100%;
+    padding-left: 1rem;
 
     background-color: var(--back-color-pitches);
     color:            var(--text-color-pitches);
 }
+.pitches-header {
+    padding: calc(2*var(--pdu)) var(--pdu);
+}
+.pitches-header .t-title {
+    font-size: 2em;
+    line-height: 1;
+    color: hsl(171, 45%, 81%);
+}
 .pitch-label {
-  --sx: 0.75rem;
-  --sy: 0.75rem;
-    padding: 1rem var(--sx) var(--sy) var(--sx);
+    padding: var(--pdu);
+}
+.pitch-label-caption {
+    padding-top: 0.25rem;
 }
 .pitch-label .t-tag {
     display: block;
@@ -103,6 +110,46 @@
     display: block;
     line-height: 1.25;
 }
+
+.pitch-label-link {
+    opacity:        0;
+    pointer-events: none;
+}
+.active-pitch .pitch-label-link {
+    opacity:        1;
+    pointer-events: all;
+}
+
+.pitch-label-link .t-link {
+    position: absolute;
+    z-index:  1;
+    top:      0;
+    right:    0;
+    bottom:   0;
+    left:     0;
+}
+.pitch-label-link::before {
+  --size:     3rem;
+    content:  '';
+    display:  block;
+    position: absolute;
+    z-index: -1;
+    top:      calc( 50% - 0.5*var(--size));
+    right:    0;
+    width:    var(--size);
+    height:   var(--size);
+    background-image: url('data:image/svg+xml;utf8,<svg fill="hsl(0, 72%, 62%)" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>');
+    background-repeat:   no-repeat;
+    background-position: right center;
+    background-size:     var(--size) var(--size);
+    transform: scale(var(--is-active-pitch));
+    transition: transform 440ms;
+    transition-timing-function: var(--timing-function--openJump);
+}
+.pitch-label-link .t-aria {
+    display: none;
+}
+
 
 /** -------------------------------- label states */
 
@@ -123,20 +170,34 @@
 
 .pitch-label:hover {
   --background-color:    var(--back-color-pitches-hover);
-  --transform:           scale(1.125);
+  --transform:           scale(1.1);
+  background: linear-gradient(
+    270deg,
+    hsla(201,  52%,  26%, 1   ),
+    hsla(201,  32%,  46%, 0   ) 80%,
+    hsla(201,  32%,  46%, 0   )
+    );
   }
 
 .active-pitch .pitch-label {
   --background-color:    var(--back-color-pitches-active);
+    background: linear-gradient(
+        145deg,
+        hsla(201,  52%,  26%, 1   ),
+        hsla(201,  32%,  46%, 1   )
+        );
   --transform:           scale(1.25);
     transition-property: transform, background;
+
+    box-shadow: 0px 2px 4px var(--back-color-hub-shadow);
 }
 
 /** -------------------------------- slide */
 
 .pitch {
+  --is-active-pitch: 0;
   --translate-show: -200%;
-  --translate-el:   -100%;
+  --translate-el:    100%;
   --bg-opacity:      0;
   --el-max-width:    100%;
   --el-max-height:   90%;
@@ -147,6 +208,7 @@
   --link-transofrm:  translateX(200%) scale(2);
 }
 .pitch.active-pitch {
+  --is-active-pitch: 1;
   --translate-show:  0;
   --translate-el:    0;
   --bg-opacity:      1;

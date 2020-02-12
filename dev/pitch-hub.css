@@ -24,6 +24,7 @@
   --text-color-pitches:        hsla(201,   0%, 100%, 1   );
   --text-color-pitches-tag:    hsla(171,  45%,  81%, 1   );
 
+  --text-color-accent:         hsl(171, 45%, 81%);
 }
 
 
@@ -74,6 +75,104 @@
 
 }
 
+/** -------------------------------- pitchlist label */
+
+/* content design */
+
+.pitchlist-label {
+    padding:        0.75em 0.25em 0.75em 0.75em;
+    line-height:    1.25;
+}
+.pitchlist-label .t-prefx {
+    display:        block;
+    font-size:      0.8em;
+    color:          var(--text-color-accent);
+}
+.pitchlist-label .t-title {
+    display:        block;
+}
+.pitchlist-label .t-aria { display: none; }
+
+/* layout */
+
+.pitchlist-label {
+    position:          relative;
+
+  --background:        transparent;
+  --box-shadow:        none;
+  --transform:         scale(1);
+
+    background:        var(--background);
+    box-shadow:        var(--box-shadow);
+    transform:         var(--transform);
+    transform-origin:  right center;
+
+  --hover-transform:   scale(1.1);
+  --active-transform:  scale(1.25);
+
+    transition-property:        transform;
+    transition-duration:        320ms;
+    transition-timing-function: var(--timing-function--focusZoom);
+
+
+  --active-box-shadow: 0px 2px 4px var(--back-color-hub-shadow);
+  --active-background: linear-gradient(145deg,
+        hsla(201,  52%,  26%, 1   ),
+        hsla(201,  32%,  46%, 1   )
+    );
+}
+.pitchlist-label .label-texts {
+
+}
+.pitchlist-label .t-link {
+    opacity:        var(--is-active-pitch, 0);
+    pointer-events: var(--state--pointer-events, none);
+    display:  block;
+    position: absolute;
+    z-index:  1;
+    top:      0;
+    right:    0;
+    bottom:   0;
+    left:     0;
+}
+.pitchlist-label::before {
+  --size:     3rem;
+    content:  '';
+    display:  block;
+    position: absolute;
+    z-index: -1;
+    top:      calc( 50% - 0.5*var(--size));
+    right:    0;
+    width:    var(--size);
+    height:   var(--size);
+
+    background-image: url('data:image/svg+xml;utf8,<svg fill="hsl(0, 72%, 62%)" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>');
+    background-repeat:   no-repeat;
+    background-position: right center;
+    background-size:     var(--size) var(--size);
+
+    transform:                  scale(var(--is-active-pitch));
+    transition-property:        transform;
+    transition-duration:        440ms;
+    transition-timing-function: var(--timing-function--openJump);
+    transition-delay:           120ms;
+}
+
+/* hover & active */
+
+.pitchlist-label:hover {
+  --transform:        var(--hover-transform);
+}
+.active-pitch .pitchlist-label {
+  --transform:        var(--active-transform);
+  --background:       var(--active-background);
+  --box-shadow:       var(--active-box-shadow);
+
+  --is-active-pitch:       1;
+  --state--pointer-events: all;
+}
+
+
 /** -------------------------------- labels */
 
 .pitches {
@@ -81,7 +180,7 @@
     grid-column:     pitches;
     max-width: var(--pitches-width);
     height:    100%;
-    padding-left: 1rem;
+    padding-left: 0.75rem;
 
     background-color: var(--back-color-pitches);
     color:            var(--text-color-pitches);
@@ -95,7 +194,10 @@
     color: hsl(171, 45%, 81%);
 }
 .pitch-label {
+    /*
     padding: var(--pdu);
+    padding: var(--pdu) 1rem;
+    */
 }
 .pitch-label-caption {
     padding-top: 0.25rem;
@@ -145,6 +247,7 @@
     transform: scale(var(--is-active-pitch));
     transition: transform 440ms;
     transition-timing-function: var(--timing-function--openJump);
+    transition-delay: 120ms;
 }
 .pitch-label-link .t-aria {
     display: none;
@@ -161,22 +264,24 @@
   --transform:           scale(1);
     position:            relative;
     background-color:    var(--background-color);
+    /*
     transform:           var(--transform);
     transform-origin:    var(--align-pitches, left) center;
     transition-duration: 320ms;
     transition-property: transform;
     transition-timing-function: var(--timing-function--focusZoom);
+    */
 }
 
 .pitch-label:hover {
   --background-color:    var(--back-color-pitches-hover);
   --transform:           scale(1.1);
-  background: linear-gradient(
+  /*background: linear-gradient(
     270deg,
     hsla(201,  52%,  26%, 1   ),
     hsla(201,  32%,  46%, 0   ) 80%,
     hsla(201,  32%,  46%, 0   )
-    );
+    );*/
   }
 
 .active-pitch .pitch-label {

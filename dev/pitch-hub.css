@@ -5,6 +5,7 @@
 /** -------------------------------- settings */
 
 .pitch-hub {
+
   --banner-height: 24rem;
   --pitches-width: 12rem;
 
@@ -12,8 +13,8 @@
   --align-show:     left;
   --align-template: [show] 1fr [pitches] max-content;
 
-
  /* Theme: Garage48 */
+
   --back-color-hub:            hsla(201,  22%,  46%, 1   );
   --back-color-hub-shadow:     hsla(201,   0%,   0%, 0.25);
   --text-color-hub:            hsla(201,   0%, 100%, 1   );
@@ -25,6 +26,20 @@
   --text-color-pitches-tag:    hsla(171,  45%,  81%, 1   );
 
   --text-color-accent:         hsl(171, 45%, 81%);
+}
+
+/** -------------------------------- scroll func */
+
+.pitch-hub {
+  --current-item-index: 0;
+  --average-item-size:  4rem;
+}
+.pitches-header,
+.pitch-label {
+  --i: var(--current-item-index, 0);
+  --h: var(--average-item-size,  4rem);
+    transition: transform 120ms ease-in-out;
+    transform:  translateY(calc( -1*var(--i)*var(--h) ));
 }
 
 
@@ -202,6 +217,7 @@
 .pitch-label-caption {
     padding-top: 0.25rem;
 }
+/*
 .pitch-label .t-tag {
     display: block;
     font-size: 0.8em;
@@ -212,7 +228,7 @@
     display: block;
     line-height: 1.25;
 }
-
+*/
 .pitch-label-link {
     opacity:        0;
     pointer-events: none;
@@ -255,16 +271,18 @@
 
 
 /** -------------------------------- label states */
-
+/*
 .pitch:hover  .pitch-label { z-index: 1; }
 .active-pitch .pitch-label { z-index: 2; }
+*/
 
 .pitch-label {
+        /*
   --background-color:    transparent;
   --transform:           scale(1);
     position:            relative;
     background-color:    var(--background-color);
-    /*
+
     transform:           var(--transform);
     transform-origin:    var(--align-pitches, left) center;
     transition-duration: 320ms;
@@ -273,19 +291,15 @@
     */
 }
 
+
+
 .pitch-label:hover {
-  --background-color:    var(--back-color-pitches-hover);
-  --transform:           scale(1.1);
-  /*background: linear-gradient(
-    270deg,
-    hsla(201,  52%,  26%, 1   ),
-    hsla(201,  32%,  46%, 0   ) 80%,
-    hsla(201,  32%,  46%, 0   )
-    );*/
+  /* --background-color:    var(--back-color-pitches-hover);
+  --transform:           scale(1.1); */
   }
 
 .active-pitch .pitch-label {
-  --background-color:    var(--back-color-pitches-active);
+  /* --background-color:    var(--back-color-pitches-active);
     background: linear-gradient(
         145deg,
         hsla(201,  52%,  26%, 1   ),
@@ -294,7 +308,7 @@
   --transform:           scale(1.25);
     transition-property: transform, background;
 
-    box-shadow: 0px 2px 4px var(--back-color-hub-shadow);
+    box-shadow: 0px 2px 4px var(--back-color-hub-shadow); */
 }
 
 /** -------------------------------- slide */

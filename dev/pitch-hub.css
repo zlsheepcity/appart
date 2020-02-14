@@ -90,6 +90,31 @@
 
 }
 
+/** -------------------------------- list of pitches */
+
+.pitches {
+    --pdu: 0.75rem; /* padding unit */
+      grid-column:     pitches;
+      max-width: var(--pitches-width);
+      height:    100%;
+      padding-left: 0.75rem;
+  
+      background-color: var(--back-color-pitches);
+      color:            var(--text-color-pitches);
+  }
+  .pitches-header {
+      padding: calc(2*var(--pdu)) var(--pdu);
+  }
+  .pitches-header .t-title {
+      font-size: 2em;
+      line-height: 1;
+      color: hsl(171, 45%, 81%);
+  }
+  .pitches-header .t-more-link {
+      color: var(--text-color-accent);
+      text-decoration: underline;
+  }
+
 /** -------------------------------- pitchlist label */
 
 /* content design */
@@ -157,7 +182,7 @@
     position: absolute;
     z-index: -1;
     top:      calc( 50% - 0.5*var(--size));
-    right:    0;
+    right:    -0.25rem;
     width:    var(--size);
     height:   var(--size);
 
@@ -187,137 +212,12 @@
   --state--pointer-events: all;
 }
 
-
-/** -------------------------------- labels */
-
-.pitches {
-  --pdu: 0.75rem; /* padding unit */
-    grid-column:     pitches;
-    max-width: var(--pitches-width);
-    height:    100%;
-    padding-left: 0.75rem;
-
-    background-color: var(--back-color-pitches);
-    color:            var(--text-color-pitches);
-}
-.pitches-header {
-    padding: calc(2*var(--pdu)) var(--pdu);
-}
-.pitches-header .t-title {
-    font-size: 2em;
-    line-height: 1;
-    color: hsl(171, 45%, 81%);
-}
-.pitch-label {
-    /*
-    padding: var(--pdu);
-    padding: var(--pdu) 1rem;
-    */
-}
-.pitch-label-caption {
-    padding-top: 0.25rem;
-}
-/*
-.pitch-label .t-tag {
-    display: block;
-    font-size: 0.8em;
-    line-height: 1.25;
-    color: hsl(171, 45%, 81%);
-}
-.pitch-label .t-title {
-    display: block;
-    line-height: 1.25;
-}
-*/
-.pitch-label-link {
-    opacity:        0;
-    pointer-events: none;
-}
-.active-pitch .pitch-label-link {
-    opacity:        1;
-    pointer-events: all;
-}
-
-.pitch-label-link .t-link {
-    position: absolute;
-    z-index:  1;
-    top:      0;
-    right:    0;
-    bottom:   0;
-    left:     0;
-}
-.pitch-label-link::before {
-  --size:     3rem;
-    content:  '';
-    display:  block;
-    position: absolute;
-    z-index: -1;
-    top:      calc( 50% - 0.5*var(--size));
-    right:    0;
-    width:    var(--size);
-    height:   var(--size);
-    background-image: url('data:image/svg+xml;utf8,<svg fill="hsl(0, 72%, 62%)" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>');
-    background-repeat:   no-repeat;
-    background-position: right center;
-    background-size:     var(--size) var(--size);
-    transform: scale(var(--is-active-pitch));
-    transition: transform 440ms;
-    transition-timing-function: var(--timing-function--openJump);
-    transition-delay: 120ms;
-}
-.pitch-label-link .t-aria {
-    display: none;
-}
-
-
-/** -------------------------------- label states */
-/*
-.pitch:hover  .pitch-label { z-index: 1; }
-.active-pitch .pitch-label { z-index: 2; }
-*/
-
-.pitch-label {
-        /*
-  --background-color:    transparent;
-  --transform:           scale(1);
-    position:            relative;
-    background-color:    var(--background-color);
-
-    transform:           var(--transform);
-    transform-origin:    var(--align-pitches, left) center;
-    transition-duration: 320ms;
-    transition-property: transform;
-    transition-timing-function: var(--timing-function--focusZoom);
-    */
-}
-
-
-
-.pitch-label:hover {
-  /* --background-color:    var(--back-color-pitches-hover);
-  --transform:           scale(1.1); */
-  }
-
-.active-pitch .pitch-label {
-  /* --background-color:    var(--back-color-pitches-active);
-    background: linear-gradient(
-        145deg,
-        hsla(201,  52%,  26%, 1   ),
-        hsla(201,  32%,  46%, 1   )
-        );
-  --transform:           scale(1.25);
-    transition-property: transform, background;
-
-    box-shadow: 0px 2px 4px var(--back-color-hub-shadow); */
-}
-
 /** -------------------------------- slide */
 
 .pitch {
   --is-active-pitch: 0;
   --translate-show: -200%;
   --translate-el:    100%;
-  --bg-opacity:      0;
   --el-max-width:    100%;
   --el-max-height:   90%;
   --el-align-self:   flex-end;
@@ -330,10 +230,20 @@
   --is-active-pitch: 1;
   --translate-show:  0;
   --translate-el:    0;
-  --bg-opacity:      1;
   --el-animation:    show-el-pulse;
   --link-pointer:    all;
   --link-transofrm:  translateX(0) scale(1);
+}
+@media screen and (max-width:42rem) {
+    .pitch.active-pitch {
+        --translate-el:    -20%;
+    }
+}
+
+@keyframes show-el-pulse {
+    from { transform: scale3d(1, 1, 1); }
+    50%  { transform: scale3d(1.05, 1.05, 1.05); }
+    to   { transform: scale3d(1, 1, 1); }
 }
 
 .pitch-show {
@@ -354,7 +264,7 @@
     bottom:   0;
     left:     0;
     pointer-events: none;
-    opacity:        var(--bg-opacity);
+    opacity:        var(--is-active-pitch);
     transition:     opacity 320ms;
     transition-timing-function: var(--timing-function--focusZoom);
 }
@@ -395,40 +305,65 @@
     animation-iteration-count: 1;
 }
 
-.pitch-show-to {
-    position:  absolute;
-    right:     0;
-    bottom:    0;
-    padding:   1rem;
-    pointer-events:   var(--link-pointer);
-    transform:        var(--link-transofrm);
-    transform-origin: right center;
-    transition:       transform 240ms;
-    transition-timing-function: var(--timing-function--openJump);
+/** -------------------------------- description */
+
+.pitch-show-description {
+    position: absolute;
+    z-index:  1;
+    bottom: 0;
+    left: 0;
+    max-width: 42rem;
+
+    pointer-events: var(--link-pointer);
+    margin: 1rem;
+    padding: 1rem 2rem 1rem 1rem;
+}
+@media screen and (max-width:64rem) {
+    .pitch-show-description { display: none; }
+}
+.pitch-show-description::before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    top:      0;
+    right:    0;
+    bottom:   0;
+    left:     0;
+    background-color: var(--back-color-pitches);
+    transform: scaleY(var(--is-active-pitch));
+    transform-origin: left bottom;
+    transition: transform 320ms;
+    transition-timing-function: var(--timing-function--focusZoom);
+}
+.t-show-description-prefx,
+.t-show-description-title,
+.t-show-description-about,
+.t-show-description-link {
+    opacity:        var(--is-active-pitch);
+    transition:     opacity 320ms;
+    transition-timing-function: var(--timing-function--focusZoom);
+    transition-delay: 320ms;
 }
 
-.a-show-to>a {
-    display:          inline-block;
-    background-color: hsl(0, 67%, 27%);
-    border: 2px solid currentColor;
-    color: white;
-    padding: 0.25em 0.5em;
-    margin:  0.5em 0.25em;
-    text-decoration: underline;
-    text-decoration-color: hsla(0,0%,100%,0.25);
-    font-size: 1.5em;
+.t-show-description-prefx {
+    color:          var(--text-color-accent);
+}
+.t-show-description-title {
+    font-size: 2em;
     line-height: 1;
-    border-radius: 4px;
-    transition: padding 240ms, margin 240ms;
+    padding-bottom: 1rem;
 }
-.a-show-to>a:hover {
-    background-color: hsl(0, 47%, 47%);
-    padding: 0.5em 0.25em;
-    margin:  0.25em 0.5em;
+.t-show-description-link {
+    padding-top: 1rem;
+    /*
+    margin-right: -1rem;
+    margin-bottom: -1rem;
+    text-align: right;
+    */
 }
-
-@keyframes show-el-pulse {
-    from { transform: scale3d(1, 1, 1); }
-    50%  { transform: scale3d(1.05, 1.05, 1.05); }
-    to   { transform: scale3d(1, 1, 1); }
+.show-description-a {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    background-color: hsl(0, 72%, 42%);
+    text-decoration: none;
 }

@@ -117,13 +117,12 @@
     <!-- ====================================== ʕ⊙ᴥ⊙ʔ = -->
     <!-- ===================================== END HEAD -->
 </head>
-<body class="colors--root">
+<body class="colors--root native-sans">
 
 
 <!-- ========================================= Pitch-Hub -->
 
-<div id="MainPitchHub" class="pitch-hub pitch-hub--garage48"
-    style="--back-color-hub:slategray; --current-item-index: 0;">
+<div id="MainPitchHub" class="pitch-hub pitch-hub--garage48">
     <div class="pitches">
 
         <div class="pitches-header">
@@ -149,6 +148,20 @@
                 <div class="pitch-show-el">
                     <img class="i-show-el" data-src="https://www.softgamings.com/content/uploads/BookofOz_StackedLogo_02.png" alt="Book of Oz">
                 </div>
+                <div class="pitch-show-description">
+                    <div class="t-show-description-prefx">Microgaming</div>
+                    <div class="t-show-description-title">Book of Oz</div>
+                    <div class="t-show-description-about">
+                        <ul>
+                            <li>850+ games</li>
+                            <li>96% average RTP</li>
+                            <li>Jackpots</li>
+                        </ul>
+                    </div>
+                    <div class="t-show-description-link">
+                        <a class="show-description-a" href="#">Learn more</a>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -171,6 +184,21 @@
                 <div class="pitch-show-el">
                     <img class="i-show-el" data-src="https://www.softgamings.com/content/uploads/PlaynGo-Book_of_Dead-icon.png" alt="Book of Dead">
                 </div>
+                <div class="pitch-show-description">
+                    <div class="t-show-description-prefx">PlaynGo</div>
+                    <div class="t-show-description-title">Book of Dead</div>
+                    <div class="t-show-description-about">
+                        <ul>
+                            <li>Scatter/Wild Symbol</li>
+                            <li>Free Spins Feature</li>
+                            <li>250,000 Coin Jackpot</li>
+                            <li>Gamble Feature</li>
+                        </ul>
+                    </div>
+                    <div class="t-show-description-link">
+                        <a class="show-description-a" href="#">Learn more</a>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -191,7 +219,21 @@
                     <img class="i-show-bg" data-src="https://www.softgamings.com/content/uploads/spinomenal_bg.jpg" alt="Lilith’s Passion Enhanced">
                 </div>
                 <div class="pitch-show-el">
-                    <img class="i-show-el" data-src="https://www.softgamings.com/content/uploads/spinomenal_lilith.png" alt="Lilith’s Passion Enhanced">
+                    <img class="i-show-el" data-src="https://www.softgamings.com/content/uploads/spinomenal_lilith_cut.png" alt="Lilith’s Passion Enhanced">
+                </div>
+                <div class="pitch-show-description">
+                    <div class="t-show-description-prefx">PlaynGo</div>
+                    <div class="t-show-description-title">Lilith’s Passion Enhanced</div>
+                    <div class="t-show-description-about">
+                        <ul>
+                            <li>Scatter/Wild Symbol</li>
+                            <li>Free Spins Feature</li>
+                            <li>250,000 Coin Jackpot</li>
+                        </ul>
+                    </div>
+                    <div class="t-show-description-link">
+                        <a class="show-description-a" href="#">Learn more</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -257,13 +299,13 @@
                     <img class="i-show-bg" data-src="https://www.softgamings.com/content/uploads/tomhorn_bg.jpg" alt="Monster Madness">
                 </div>
                 <div class="pitch-show-el">
-                    <img class="i-show-el" data-src="https://www.softgamings.com/content/uploads/tomhorn_monstr.png" alt="Monster Madness">
+                    <img class="i-show-el" data-src="https://www.softgamings.com/content/uploads/tomhorn_monstr_cut.png" alt="Monster Madness">
                 </div>
             </div>
         </div>
 
         <div class="pitches-header">
-            <div class="t-title">More Games...</div>
+            <a class="t-more-link" href="#">More Games...</a>
         </div>
 
     </div>
@@ -313,7 +355,7 @@
         const API = {
             pitches: pitchers,
             current: 0,
-            delay:   3000,
+            delay:   4000,
             isPaused:    f => pitchHub.wrapper.paused,
             isLoaded:    f => pitchHub.loaded,
             setScroll:   i => pitchHub.wrapper.Scroll(i),
@@ -333,15 +375,15 @@
                 API.startTimer()
             },
             startTimer: f => setTimeout( API.timeoutAction, API.delay),
-            start: i => {
+            start: withoutTimer => {
                 if ( !API.isLoaded ) return false
-                API.selectPitch(i || 0)
-                API.startTimer()
+                API.selectPitch(0)
+                if (withoutTimer!==false) API.startTimer()
             }
         }
 
         load()
-        API.start()
+        API.start(true)
         return API
     }
     app.onload(f=>PitchHub('#MainPitchHub'))

@@ -130,7 +130,7 @@
             <div class="t-title">Popular Games</div>
         </div>
 
-        <div class="pitch active-pitch">
+        <div class="pitch">
             <div class="pitch-label">
                 <div class="pitchlist-label">
                     <div class="label-texts">
@@ -152,7 +152,7 @@
             </div>
         </div>
 
-        <div class="pitch">
+        <div class="pitch active-pitch">
             <div class="pitch-label">
                 <div class="pitchlist-label">
                     <div class="label-texts">
@@ -262,6 +262,10 @@
             </div>
         </div>
 
+        <div class="pitches-header">
+            <div class="t-title">More Games...</div>
+        </div>
+
     </div>
 </div>
 
@@ -269,142 +273,79 @@
 <!-- ========================================= Pitch-engine -->
 
 <script>
-    function PitchHub( hub = '.pitch-hub' ) {
-        const ACTIVE = 'active-pitch'
-        //const load
-
-        let pitches       = []
-        let PitchObject   = function (el) {
-            this.position = pitches.length
-            this.label    = el.querySelector('.t-title').textContent
-            this.dom      = el
-            this.Activate = f => el.classList.add(ACTIVE)
-            this.Reset    = f => el.classList.remove(ACTIVE)
-        }
-        let domPitches    = [...document.querySelectorAll(hub + ' .pitch')]
-        domPitches.map( el => pitches.push(new PitchObject(el)) )
-        return pitches
-        /*
-            load
-            run
-
-            - resetAllActivity
-            - setActiveTarget
-            - setScrollIndex
-
-            setByClick
-            setByIndex
-            setNext
-        */
-    }
-    function StartPitchHub(hub='.pitch-hub') {
-        let pitches  = [...document.querySelectorAll(hub + ' .pitch')]
-        const ACTIVE =    'active-pitch'
-
-        let activityReset = f => pitches.map( el => el.classList.remove(ACTIVE) )
-        let activitySetTo = p => p.classList.add(ACTIVE)
-        let eventToSelect = e => {
-            activityReset()
-            activitySetTo(e.currentTarget)
+    function PitchHub(hub = '.pitch-hub') {
+        const pitchHub = { loaded: false }
+        const pitchers = []
+        const load = function() {
+            let DOM = {
+                pitchHub: document.querySelector(hub),
+                pitchers: [...document.querySelectorAll(hub + ' .pitch')],
+                getLabel: el => el.querySelector('.t-title').textContent,
+                setActiv: el => el.classList.add('active-pitch'),
+                setPasiv: el => el.classList.remove('active-pitch'),
+                addEvent:(el, f) => el.addEventListener('click', f),
+                mouseInn:(el, f) => el.addEventListener('mouseenter', f),
+                mouseOut:(el, f) => el.addEventListener('mouseleave', f),
+                updIndex:(el, i) => el.style.setProperty('--current-item-index', i)
             }
-        let domMapEvents = f => {
-            pitches.map( el => el.addEventListener('click', eventToSelect) )
+            let PitchItem     = function (el) { if (!el) return false
+                this.position = pitchers.length
+                this.label    = DOM.getLabel(el)
+                this.dom      = el
+                this.Activate = f => DOM.setActiv(el)
+                this.Reset    = f => DOM.setPasiv(el)
+                let selectMe  = e => API.selectPitch(this.position)
+                this.listener = DOM.addEvent(el, selectMe)
+            }
+            let PitchWrapper  = function (el) { if (!el) return false
+                this.dom = el
+                this.paused = false
+                this.Pause = e => { this.paused = true  }
+                this.Play  = e => { this.paused = false }
+                this.Scroll = i => DOM.updIndex(el, i)
+                this.inn = DOM.mouseInn(el, this.Pause)
+                this.out = DOM.mouseOut(el, this.Play)
+            }
+            pitchHub.wrapper = new PitchWrapper(DOM.pitchHub)
+            if (pitchHub.wrapper.dom) pitchHub.loaded = true
+            DOM.pitchers.map( el => pitchers.push( new PitchItem(el) ) )
+        }
+        const API = {
+            pitches: pitchers,
+            current: 0,
+            delay:   3000,
+            isPaused:    f => pitchHub.wrapper.paused,
+            isLoaded:    f => pitchHub.loaded,
+            setScroll:   i => pitchHub.wrapper.Scroll(i),
+            selectPitch: i => {
+                API.pitches.map( pitch => pitch.Reset() ) // reset all
+                API.pitches[i].Activate()                 // activate current
+                API.current = i || 0                      // save current
+                API.setScroll(i)                          // update wrapper position
+            },
+            selectNext:  f => {
+                let next = API.current + 1                // define next
+                if (next>= API.pitches.length) next = 0   // check for cycle
+                API.selectPitch(next)                     // select next
+            },
+            timeoutAction: f => {
+                if ( !API.isPaused() ) API.selectNext()
+                API.startTimer()
+            },
+            startTimer: f => setTimeout( API.timeoutAction, API.delay),
+            start: i => {
+                if ( !API.isLoaded ) return false
+                API.selectPitch(i || 0)
+                API.startTimer()
+            }
         }
 
-     // init
-        domMapEvents()
-        eventToSelect({currentTarget:pitches[1]})
+        load()
+        API.start()
+        return API
     }
-    app.onload(f=>StartPitchHub('#MainPitchHub'))
-</script>
+    app.onload(f=>PitchHub('#MainPitchHub'))
 
-<!-- ========================================= Producers -->
-
-<div class="producer-arena">
-    <div class="producers">
-
-        <div class="producer">
-            <div class="producer__label">
-                <span class="is-provider">Tom Horn</span>
-                <span class="is-game">Monster Madness</span>
-            </div>
-            <div class="producer__show">
-                <div class="show-bg">
-                    <img class="show-bg-img" data-src="https://www.softgamings.com/content/uploads/spinomenal_bg.jpg" alt="">
-                </div>
-                <div class="show-el">
-                    <img class="show-el-img" style="--max-width:300%" data-src="https://www.softgamings.com/content/uploads/spinomenal_lilith.png" alt="">
-                </div>
-                <div class="show-to">
-                    <div class="show-to-link"><a href="#">Game info</a></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="producer">
-            <div class="producer__label">
-                <span class="is-provider">Microgaming</span>
-                <span class="is-game">Bookie of Odds</span>
-            </div>
-            <div class="producer__show">
-                <div class="show-bg">
-                    <img class="show-bg-img" data-src="https://www.softgamings.com/content/uploads/betsoft_bg.jpg" alt="">
-                </div>
-                <div class="show-el">
-                    <img class="show-el-img" data-src="https://www.softgamings.com/content/uploads/chili_betsoft.png" alt="">
-                </div>
-                <div class="show-to">
-                    <div class="show-to-link"><a href="#">Game info</a></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="producer">
-            <div class="producer__label">
-                <span class="is-provider">Microgaming</span>
-                <span class="is-game">Book of Oz</span>
-            </div>
-        </div>
-
-        <div class="producer">
-            <div class="producer__label">
-                <span class="is-provider">Playson Direct</span>
-                <span class="is-game">Burning Wins</span>
-            </div>
-        </div>
-
-        <div class="producer">
-            <div class="producer__label">
-                <span class="is-provider">PlaynGo</span>
-                <span class="is-game">Book of Dead</span>
-            </div>
-        </div>
-
-        <div class="producer">
-            <div class="producer__label">
-                <span class="is-provider">NetEnt</span>
-                <span class="is-game">Gonzo`s Quest</span>
-            </div>
-        </div>
-
-    </div>
-</div>
-
-<script>
-    function activate_producers_list(select='.producers') {
-        const ACTIVE = 'is-active'
-        let producers = [...document.querySelectorAll(select + ' .producer')]
-        let reset_producers = f => producers.map( el => el.classList.remove(ACTIVE) )
-        let activate_th = el => el.classList.add(ACTIVE)
-        let ui_action = e => {
-                reset_producers()
-                activate_th(e.currentTarget)
-                //let opa = document.querySelectorAll(select)
-                //opa[0].classList.toggle('opa')
-            }
-        producers.map( el => el.addEventListener('click', ui_action) )
-    }
-    app.onload(activate_producers_list)
 </script>
 
 </body>

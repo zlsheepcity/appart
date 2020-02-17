@@ -336,14 +336,19 @@
                 this.dom      = el
                 this.Activate = f => DOM.setActiv(el)
                 this.Reset    = f => DOM.setPasiv(el)
-                let selectMe  = e => API.selectPitch(this.position)
+                let selectMe  = e => {
+                    API.selectPitch(this.position) // Activate selected
+                    pitchHub.wrapper.Stop()        // Stop autoplay
+                }
                 this.listener = DOM.addEvent(el, selectMe)
             }
             let PitchWrapper  = function (el) { if (!el) return false
                 this.dom = el
                 this.paused = false
-                this.Pause = e => { this.paused = true  }
-                this.Play  = e => { this.paused = false }
+                this.stoped = false
+                this.Stop  = e => { this.stoped = true }
+                this.Pause = e => { this.paused = true }
+                this.Play  = e => { this.paused = this.stoped ? true : false }
                 this.Scroll = i => DOM.updIndex(el, i)
                 this.inn = DOM.mouseInn(el, this.Pause)
                 this.out = DOM.mouseOut(el, this.Play)
@@ -357,6 +362,7 @@
             current: 0,
             delay:   4000,
             isPaused:    f => pitchHub.wrapper.paused,
+            isStoped:    f => pitchHub.wrapper.stoped,
             isLoaded:    f => pitchHub.loaded,
             setScroll:   i => pitchHub.wrapper.Scroll(i),
             selectPitch: i => {
@@ -372,7 +378,7 @@
             },
             timeoutAction: f => {
                 if ( !API.isPaused() ) API.selectNext()
-                API.startTimer()
+                if ( !API.isStoped() ) API.startTimer()
             },
             startTimer: f => setTimeout( API.timeoutAction, API.delay),
             start: withoutTimer => {

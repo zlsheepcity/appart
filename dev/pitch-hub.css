@@ -78,6 +78,11 @@
             to bottom,
             transparent 96%,
             var(--back-color-hub-shadow)
+        ),
+        linear-gradient(
+            to top,
+            transparent 96%,
+            var(--back-color-hub-shadow)
         );
     pointer-events: none;
     content: '';
@@ -87,7 +92,6 @@
     right:    0;
     bottom:   0;
     left:     0;
-
 }
 
 /** -------------------------------- list of pitches */
@@ -192,10 +196,6 @@
     background-size:     var(--size) var(--size);
 
     transform:                  scale(var(--is-active-pitch));
-    transition-property:        transform;
-    transition-duration:        440ms;
-    transition-timing-function: var(--timing-function--openJump);
-    transition-delay:           120ms;
 }
 
 /* hover & active */
@@ -210,6 +210,12 @@
 
   --is-active-pitch:       1;
   --state--pointer-events: all;
+}
+.active-pitch .pitchlist-label::before {
+    transition-property:        transform;
+    transition-duration:        440ms;
+    transition-timing-function: var(--timing-function--openJump);
+    transition-delay:           120ms;
 }
 
 /** -------------------------------- slide */

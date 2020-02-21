@@ -1,0 +1,226 @@
+/** -------------------------------- colors */
+
+.colors--SG-root {
+  --back-color:         white;
+  --back-color-accent:  hsl(var(--HSL-sgHighlight));
+  --back-color-descent: var(--light-shadow);
+
+  --text-color:         hsl(var(--HSL-sgBlack));
+  --text-color-accent:  hsl(var(--HSL-sgMinor));
+  --text-color-descent: hsl(0, 0%, 62%);
+
+  --link-color:         hsl(var(--HSL-sgBrandDarken));
+  --link-color-accent:  hsl(var(--HSL-sgBrandDarken));
+  --link-color-descent: var(--link-color);
+
+  --shadow-color: var(--shadow-color--for-light-base);
+  --light-shadow: var(--light-shadow--for-light-base);
+}
+
+.colors--SG-brand {
+  --back-color:         hsl(var(--HSL-sgBrand));
+  --back-color-accent:  var(--light-shadow);
+  --back-color-descent: var(--light-shadow);
+
+  --text-color:         hsl(var(--HSL-sgBlack));
+  --text-color-accent:  hsl(var(--HSL-sgAction));
+  --text-color-descent: hsl(var(--HSL-sgMinor));
+
+  --link-color:         hsl(var(--HSL-sgBlack));
+  --link-color-accent:  var(--link-color);
+  --link-color-descent: white;
+
+  --shadow-color: var(--shadow-color--for-light-base);
+  --light-shadow: var(--light-shadow--for-light-base);
+}
+
+.colors--SG-minor {
+  --back-color:         hsl(var(--HSL-sgMinor));
+  --back-color-accent:  var(--light-shadow);
+  --back-color-descent: var(--light-shadow);
+
+  --text-color:         white;
+  --text-color-accent:  hsl(var(--HSL-sgAction));
+  --text-color-descent: hsl(176, 20%, 80%);
+
+  --link-color:         hsl(var(--HSL-sgBrand));
+  --link-color-accent:  hsl(var(--HSL-sgBrandDarken));
+  --link-color-descent: var(--link-color);
+
+  --shadow-color: var(--shadow-color--for-light-base);
+  --light-shadow: var(--light-shadow--for-light-base);
+}
+
+.colors--SG-action {
+  --back-color:         hsl(var(--HSL-sgAction));
+  --back-color-accent:  hsl(var(--HSL-sgActionDarken));
+  --back-color-descent: var(--light-shadow);
+
+  --text-color:         white;
+  --text-color-accent:  hsl(var(--HSL-sgHighlight));
+  --text-color-descent: hsl(var(--HSL-sgHighlight));
+
+  --link-color:         white;
+  --link-color-accent:  var(--link-color);
+  --link-color-descent: var(--link-color);
+
+  --shadow-color: var(--shadow-color--for-light-base);
+  --light-shadow: var(--light-shadow--for-light-base);
+}
+
+/** -------------------------------- header design */
+
+.theme-sg .cam-header-grid {
+  --back-color:      hsl(171, 55%, 71%);
+  --back-color-logo: hsl(  0,  0%,  1%);
+  --back-color-info: hsl(201, 22%, 46%);
+  --back-color-menu: transparent;
+  --back-color-lang: hsl(201, 32%, 36%);
+
+  --cell-width-logo: 24rem;
+  --cell-width-lang: 12rem;
+  --cell-width-icon:  6rem;
+  --cell-min-height:  4rem;
+}
+.theme-sg .header-grid-logo {}
+.theme-sg .header-grid-info {}
+.theme-sg .header-grid-menu {}
+.theme-sg .header-grid-lang {}
+
+/** -------------------------------- grid system */
+
+.cam-header-grid {
+    display: grid;
+    grid-template-areas:   var(--grid-template-areas);
+    grid-template-columns: var(--grid-template-columns);
+    grid-template-rows:    var(--grid-template-rows);
+
+  --grid-template-columns: var(--cell-width-logo) 1fr var(--cell-width-lang);
+  --grid-template-areas:
+        'logo info lang'
+        'logo menu menu';
+  --grid-template-rows:
+        minmax(var(--cell-min-height), min-content)
+        minmax(var(--cell-min-height), min-content);
+}
+@media (max-width:45em) {
+    .cam-header-grid {
+      --grid-template-columns: 1fr var(--cell-width-icon);
+      --grid-template-areas:
+        'logo lang'
+        'logo menu'
+        'info info';
+      --grid-template-rows:
+            minmax(var(--cell-min-height), min-content)
+            minmax(var(--cell-min-height), min-content)
+            minmax(var(--cell-min-height), min-content);
+    }
+}
+
+.header-grid-logo { grid-area: logo; }
+.header-grid-info { grid-area: info; }
+.header-grid-menu { grid-area: menu; }
+.header-grid-lang { grid-area: lang; }
+
+.header-grid-logo,
+.header-grid-info,
+.header-grid-menu,
+.header-grid-lang {
+    display:         flex;
+    flex-direction:  row;
+    align-items:     center;
+    align-content:   center;
+    justify-content: center;
+}
+
+
+/** -------------------------------- design system */
+
+.headcam {
+  --transition-timing-function: var(--timing-function--focusZoom);
+  --transition-duration:        240ms;
+  --transition-delay:           320ms;
+  --opacity-duration:           120ms;
+  --opacity-delay:                0ms;
+
+  --transform:                  scaleY(var(--headcam-binary-state, 1));
+  --transform-origin:           top center;
+
+  --headcam-binary-state: 0;
+}
+.headcam:hover {
+  --headcam-binary-state: 1;
+  --transition-delay:     0ms;
+  --opacity-delay:        440ms;
+}
+
+.cam-header-grid {
+    position: relative;
+    z-index:  0;
+  --back-color:          var(--back-color);
+}
+
+.header-grid-logo,
+.header-grid-info,
+.header-grid-menu,
+.header-grid-lang {
+    position: relative;
+    z-index:  0;
+}
+.header-grid-logo>*,
+.header-grid-info>*,
+.header-grid-menu>*,
+.header-grid-lang>* {
+    opacity:                    var(--headcam-binary-state);
+    transition-property:        opacity;
+    transition-duration:        var(--opacity-duration);
+    transition-delay:           var(--opacity-delay);
+    transition-timing-function: var(--transition-timing-function);
+}
+
+
+.header-grid-logo {
+  --back-color:          var(--back-color-logo);
+  --transition-delay:    0ms;
+  --transform:           scaleX(var(--headcam-binary-state, 1));
+  --transform-origin:    left center;
+}
+.header-grid-info {
+  --back-color:          var(--back-color-info);
+  --transition-delay:    240ms;
+}
+.header-grid-menu {
+  --back-color:          var(--back-color-menu);
+  --transition-delay:    240ms;
+}
+.header-grid-lang {
+  --back-color:          var(--back-color-lang);
+  --transition-delay:    360ms;
+  --transition-duration: 120ms;
+  --transform:           scaleX(var(--headcam-binary-state, 1));
+  --transform-origin:    right center;
+}
+
+.header-grid-logo::before,
+.header-grid-info::before,
+.header-grid-menu::before,
+.header-grid-lang::before,
+.cam-header-grid::before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    top:      0;
+    right:    0;
+    bottom:   0;
+    left:     0;
+    transition-property:        transform;
+    transition-duration:        var(--transition-duration);
+    transition-delay:           var(--transition-delay);
+    transition-timing-function: var(--transition-timing-function);
+    background-color:           var(--back-color);
+
+    transform:                  var(--transform);
+    transform-origin:           var(--transform-origin);
+}
+
+/** EOF headcam */

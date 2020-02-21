@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- appseed 2020.1.30 -->
+
+    <!-- ===================================== HEAD CONTENT -->
+
+
+    <title>Headcam</title>
+
+
+    <!-- ===================================== BOOT -->
+
+
+    <!-- ༼°▽°༽ style boot -->
+    <style>
+        html       { margin:0; padding:0 0.25rem; }
+        body       { margin:0; padding:0; width:100%; height:auto; overflow-y:scroll; }
+        img,svg,hr { margin:0; border:0; max-width:100%; }
+        pre        { overflow:auto; }
+    </style>
+
+    <!-- ༼°▽°༽ prefetch boot -->
+    <link rel="preload" href="../app/fonts/Vollkorn-R.woff2" as="font" crossorigin>
+    <link rel="preload" href="../app/fonts/Vollkorn-B.woff2" as="font" crossorigin>
+    <link rel="preload" href="../app/fonts/Vollkorn-I.woff2" as="font" crossorigin>
+    <link rel="preload" href="../app/fonts/VT323-CODE.woff"  as="font" crossorigin>
+
+    <!-- ༼°▽°༽ app boot -->
+    <script>
+        function AppBoot() {
+
+         // The Noble Blastula
+            let app = this
+            app.has = { memory: [], arrived:true }
+            app.has.queens = [ 'onload', 'mutate' ]
+            /*
+            King has arrived --- let app = new AppBoot()
+            Take the Queen ----- app.attach('queen_name')(function)
+            Keep in memory ----- app.queen_name(function_parameters)
+            Execute later ------ app.onload(function)
+            2019.9.15
+            */
+
+         // The Noble Provocator
+            const proteinProvoker = function ImitateCriticalTasks () {
+              let tpp = new this.__proto__.constructor()
+              let must_have_a_memory = tpp.has.memory.push('something')
+              let must_accept_queens = like_this_one => true
+              tpp.attach('queen_id')(must_accept_queens)
+              tpp.queen_id('try this')
+            }
+
+         // Define responsibility
+            const TakeTheQueen = (queen) =>
+                {
+                    app[queen] =  ExecuteLater(queen)
+                    return (f) => ExecuteLater('update')({name:queen,f})
+                }
+            const KeepInMemory = (dna) => app.has.memory.push(dna)
+            const ExecuteLater =
+                 (responsible) =>
+                         (dna) => KeepInMemory({dna,for:responsible})
+
+         // Apply responsibility
+            app.attach = TakeTheQueen
+            app.has.queens.map( queen => app.attach(queen) )
+            app.ForceErrorsIfShouldBe =  proteinProvoker
+        }
+
+     // Run Immediately
+        let app = new AppBoot()
+        app.ForceErrorsIfShouldBe()
+    </script>
+
+
+    <!-- ===================================== DESIGN -->
+
+
+    <link
+        href="../app/styles/appart-dev.css?v2020.1.2"
+        rel="stylesheet" type="text/css">
+    <link
+        href="headcam.css"
+        rel="stylesheet" type="text/css">
+
+
+    <!-- ===================================== APP -->
+
+
+    <!-- required core -->
+    <script defer src="../app/script/app-core.js"></script>
+
+
+    <!-- ===================================== APP CUSTOM -->
+
+
+    <!-- ====================================== ʕ⊙ᴥ⊙ʔ = -->
+    <!-- ===================================== END HEAD -->
+</head>
+<body class="colors--root native-sans">
+
+
+<!-- ========================================= Header component -->
+
+<div class="headcam theme-sg">
+    <div class="cam-header-grid">
+        <div class="header-grid-logo"><div>Logo</div></div>
+        <div class="header-grid-menu"><div>Menu</div></div>
+        <div class="header-grid-lang"><div>Language</div></div>
+        <div class="header-grid-info"><div>Contacts</div></div>
+    </div>
+</div>
+
+
+</div>
+
+<!-- ========================================= Headcam-engine -->
+
+
+<!-- ========================================= Placeholder -->
+
+<div class="height use-colors colors--ivory" style="--height:200vw"></div>
+
+<script>
+
+</script>
+
+</body>
+</html>

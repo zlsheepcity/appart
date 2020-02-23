@@ -6,13 +6,17 @@
 
   --layer0-scale:    1;
   --layer0-scale-to: 1.1;
+
   --layer0-cover:    top right;
   --layer0-cover-to: bottom right;
+
   --layer0-frameset: timeline-ennoia-ninini-img;
   --layer0-function: cubic-bezier(0.165,  0.84,  0.44,  1); /*SmoothFocus*/
 
   --layer1-frameset: timeline-ennoia-ninini-noize-1;
   --layer1-image:    url(../art/welcome/ninini-mask-b.svg);
+  --layer1-opacity0: 0.25;
+  --layer1-opacity1: 0.5;
 
   --layer2-frameset: timeline-ennoia-ninini-noize-2;
   --layer2-image:    url(../art/welcome/ninini-mask-a.svg);
@@ -32,24 +36,23 @@
 @keyframes timeline-ennoia-ninini-noize-1 {
     0% {
         transform: scale( var(--layer0-scale) );
-        opacity: 0.25;
+        opacity:   var(--layer1-opacity0);
     }
     10% {
         transform: scale( var(--layer0-scale) );
     }
     44% {
         transform: scale( var(--layer0-scale-to) );
-        opacity: 0.5;
+        opacity:   var(--layer1-opacity1);
     }
     60% {
-        opacity: 0.25;
+        opacity:   var(--layer1-opacity0);
     }
     90% {
         transform: scale( var(--layer0-scale) );
-        opacity: 0.25;
     }
     100% {
-        opacity: 0.25;
+        opacity:   var(--layer1-opacity0);
     }
 }
 @keyframes timeline-ennoia-ninini-noize-2 {

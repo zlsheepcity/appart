@@ -1,7 +1,7 @@
 .banner-ninini.ennoia-theme {
   --back-color:     slategray;
 
-  --animation-fulltime: 12000ms;
+  --animation-fulltime: 20s;
   --animation-function: ease-in-out;
   --img-layer-frameset: timeline-ennoia-ninini-img;
   --img-layer-cover:    top right;
@@ -9,6 +9,9 @@
   --img-layer-scale:    1;
   --img-layer-scale-to: 1.2;
   --img-layer-function: cubic-bezier(0.165,  0.84,  0.44,  1); /*SmoothFocus*/
+
+  --nza-layer-frameset: timeline-ennoia-ninini-noize-a;
+  --nzb-layer-frameset: timeline-ennoia-ninini-noize-b;
 
 }
 @keyframes timeline-ennoia-ninini-img {
@@ -22,32 +25,66 @@
         transform: scale( var(--img-layer-scale) );
     }
 }
+@keyframes timeline-ennoia-ninini-noize-a {
+    0% {
+        transform: scale( var(--img-layer-scale) );
+        opacity: 0.125;
+    }
+    44% {
+        transform: scale( var(--img-layer-scale-to) );
+        opacity: 0.5;
+    }
+    60% {
+        opacity: 0.125;
+    }
+    90% {
+        transform: scale( var(--img-layer-scale) );
+        opacity: 0.25;
+    }
+    100% {
+        opacity: 0.125;
+    }
+}
+@keyframes timeline-ennoia-ninini-noize-b {
+    0% {
+        transform: scale( var(--img-layer-scale) );
+        opacity: 0.5;
+    }
+    36% {
+        transform: scale( var(--img-layer-scale-to) );
+        opacity: 0;
+    }
+    60% {
+        opacity: 0.5;
+    }
+    80% {
+        opacity: 0;
+    }
+    100% {
+        transform: scale( var(--img-layer-scale) );
+        opacity: 0.5;
+    }
+}
 
 
-
-.ban-ninini-figure {
+.ban-ninini {
     position:   relative; z-index: 0;
     width:      100%;
     min-height: 100vh;
+    overflow:   hidden;
 
     background-color: var(--back-color);
 }
 
+.ban-ninini-figure {
+}
+
 .el-ninini-picture {
     position: absolute; z-index: -1;
-    overflow: hidden;
     top:      0;
     right:    0;
     bottom:   0;
     left:     0;
-}
-.el-ninini-img {
-    display:          block;
-    min-height:       100%;
-    min-width:        100%;
-    object-fit:       cover;
-
-    object-position:  var(--img-layer-cover);
     transform-origin: var(--img-layer-cover-to);
     transition:       transform;
     transition-duration:        var(--animation-fulltime);
@@ -58,6 +95,55 @@
         infinite
         var(--animation-function);
 }
-.el-ninini-picture:hover .el-ninini-img {
-    
+.el-ninini-img {
+    position:         relative; z-index: 0;
+    display:          block;
+    min-height:       100%;
+    min-width:        100%;
+    object-fit:       cover;
+    object-position:  var(--img-layer-cover);
+}
+.ban-ninini-figure::after {
+    content:  '';
+    position: absolute; z-index:1;
+    top:      0;
+    right:    0;
+    bottom:   0;
+    left:     0;
+    background-image:    url(../art/welcome/ninini-mask-b.svg);
+    background-size:     cover;
+    background-repeat:   no-repeat;
+    background-position: var(--img-layer-cover);
+
+    transform-origin: var(--img-layer-cover-to);
+    transition:       transform;
+    transition-duration:        var(--animation-fulltime);
+    transition-timing-function: var(--img-layer-function);
+    animation:
+        var(--nza-layer-frameset)
+        var(--animation-fulltime)
+        infinite
+        var(--animation-function);
+}
+.ban-ninini-figure::before {
+    content:  '';
+    position: absolute; z-index:1;
+    top:      0;
+    right:    0;
+    bottom:   0;
+    left:     0;
+    background-image:    url(../art/welcome/ninini-mask-a.svg);
+    background-size:     cover;
+    background-repeat:   no-repeat;
+    background-position: var(--img-layer-cover);
+
+    transform-origin: var(--img-layer-cover-to);
+    transition:       transform;
+    transition-duration:        var(--animation-fulltime);
+    transition-timing-function: var(--img-layer-function);
+    animation:
+        var(--nzb-layer-frameset)
+        var(--animation-fulltime)
+        infinite
+        var(--animation-function);
 }

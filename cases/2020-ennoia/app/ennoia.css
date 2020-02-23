@@ -7,7 +7,7 @@
   --img-layer-cover:    top right;
   --img-layer-cover-to: bottom right;
   --img-layer-scale:    1;
-  --img-layer-scale-to: 1.2;
+  --img-layer-scale-to: 1.1;
   --img-layer-function: cubic-bezier(0.165,  0.84,  0.44,  1); /*SmoothFocus*/
 
   --nza-layer-frameset: timeline-ennoia-ninini-noize-a;
@@ -28,21 +28,21 @@
 @keyframes timeline-ennoia-ninini-noize-a {
     0% {
         transform: scale( var(--img-layer-scale) );
-        opacity: 0.125;
+        opacity: 0.25;
     }
     44% {
         transform: scale( var(--img-layer-scale-to) );
         opacity: 0.5;
     }
     60% {
-        opacity: 0.125;
+        opacity: 0.25;
     }
     90% {
         transform: scale( var(--img-layer-scale) );
         opacity: 0.25;
     }
     100% {
-        opacity: 0.125;
+        opacity: 0.25;
     }
 }
 @keyframes timeline-ennoia-ninini-noize-b {
@@ -52,16 +52,16 @@
     }
     36% {
         transform: scale( var(--img-layer-scale-to) );
-        opacity: 0;
+        opacity: 0.2;
     }
     60% {
         opacity: 0.5;
     }
     80% {
-        opacity: 0;
+        transform: scale( var(--img-layer-scale) );
+        opacity: 0.2;
     }
     100% {
-        transform: scale( var(--img-layer-scale) );
         opacity: 0.5;
     }
 }

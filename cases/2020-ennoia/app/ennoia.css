@@ -3,65 +3,69 @@
 
   --animation-fulltime: 16s;
   --animation-function: ease-in-out;
-  --img-layer-frameset: timeline-ennoia-ninini-img;
-  --img-layer-cover:    top right;
-  --img-layer-cover-to: bottom right;
-  --img-layer-scale:    1;
-  --img-layer-scale-to: 1.1;
-  --img-layer-function: cubic-bezier(0.165,  0.84,  0.44,  1); /*SmoothFocus*/
 
-  --nza-layer-frameset: timeline-ennoia-ninini-noize-a;
-  --nzb-layer-frameset: timeline-ennoia-ninini-noize-b;
+  --layer0-scale:    1;
+  --layer0-scale-to: 1.1;
+  --layer0-cover:    top right;
+  --layer0-cover-to: bottom right;
+  --layer0-frameset: timeline-ennoia-ninini-img;
+  --layer0-function: cubic-bezier(0.165,  0.84,  0.44,  1); /*SmoothFocus*/
+
+  --layer1-frameset: timeline-ennoia-ninini-noize-1;
+  --layer1-image:    url(../art/welcome/ninini-mask-b.svg);
+
+  --layer2-frameset: timeline-ennoia-ninini-noize-2;
+  --layer2-image:    url(../art/welcome/ninini-mask-a.svg);
 
 }
 @keyframes timeline-ennoia-ninini-img {
     0% {
-        transform: scale( var(--img-layer-scale) );
+        transform: scale( var(--layer0-scale) );
     }
     40% {
-        transform: scale( var(--img-layer-scale-to) );
+        transform: scale( var(--layer0-scale-to) );
     }
     100% {
-        transform: scale( var(--img-layer-scale) );
+        transform: scale( var(--layer0-scale) );
     }
 }
-@keyframes timeline-ennoia-ninini-noize-a {
+@keyframes timeline-ennoia-ninini-noize-1 {
     0% {
-        transform: scale( var(--img-layer-scale) );
+        transform: scale( var(--layer0-scale) );
         opacity: 0.25;
     }
     10% {
-        transform: scale( var(--img-layer-scale) );
+        transform: scale( var(--layer0-scale) );
     }
     44% {
-        transform: scale( var(--img-layer-scale-to) );
+        transform: scale( var(--layer0-scale-to) );
         opacity: 0.5;
     }
     60% {
         opacity: 0.25;
     }
     90% {
-        transform: scale( var(--img-layer-scale) );
+        transform: scale( var(--layer0-scale) );
         opacity: 0.25;
     }
     100% {
         opacity: 0.25;
     }
 }
-@keyframes timeline-ennoia-ninini-noize-b {
+@keyframes timeline-ennoia-ninini-noize-2 {
     0% {
-        transform: scale( var(--img-layer-scale) );
+        transform: scale( var(--layer0-scale) );
         opacity: 0.5;
     }
     36% {
-        transform: scale( var(--img-layer-scale-to) );
+        transform: scale( var(--layer0-scale-to) );
         opacity: 0.2;
     }
     60% {
         opacity: 0.5;
     }
     80% {
-        transform: scale( var(--img-layer-scale) );
+        transform: scale( var(--layer0-scale) );
         opacity: 0.2;
     }
     100% {
@@ -70,7 +74,7 @@
 }
 
 
-.ban-ninini {
+.banner-ninini {
     position:   relative; z-index: 0;
     width:      100%;
     min-height: 100vh;
@@ -88,12 +92,12 @@
     right:    0;
     bottom:   0;
     left:     0;
-    transform-origin: var(--img-layer-cover-to);
+    transform-origin: var(--layer0-cover-to);
     transition:       transform;
     transition-duration:        var(--animation-fulltime);
-    transition-timing-function: var(--img-layer-function);
+    transition-timing-function: var(--layer0-function);
     animation:
-        var(--img-layer-frameset)
+        var(--layer0-frameset)
         var(--animation-fulltime)
         infinite
         var(--animation-function);
@@ -104,7 +108,7 @@
     min-height:       100%;
     min-width:        100%;
     object-fit:       cover;
-    object-position:  var(--img-layer-cover);
+    object-position:  var(--layer0-cover);
 }
 .ban-ninini-figure::after {
     content:  '';
@@ -113,17 +117,17 @@
     right:    0;
     bottom:   0;
     left:     0;
-    background-image:    url(../art/welcome/ninini-mask-b.svg);
+    background-image:    var(--layer1-image);
     background-size:     cover;
     background-repeat:   no-repeat;
-    background-position: var(--img-layer-cover);
+    background-position: var(--layer0-cover);
 
-    transform-origin: var(--img-layer-cover-to);
+    transform-origin: var(--layer0-cover-to);
     transition:       transform;
     transition-duration:        var(--animation-fulltime);
-    transition-timing-function: var(--img-layer-function);
+    transition-timing-function: var(--layer0-function);
     animation:
-        var(--nza-layer-frameset)
+        var(--layer1-frameset)
         var(--animation-fulltime)
         infinite
         var(--animation-function);
@@ -135,17 +139,17 @@
     right:    0;
     bottom:   0;
     left:     0;
-    background-image:    url(../art/welcome/ninini-mask-a.svg);
+    background-image:    var(--layer2-image);
     background-size:     cover;
     background-repeat:   no-repeat;
-    background-position: var(--img-layer-cover);
+    background-position: var(--layer0-cover);
 
-    transform-origin: var(--img-layer-cover-to);
+    transform-origin: var(--layer0-cover-to);
     transition:       transform;
     transition-duration:        var(--animation-fulltime);
-    transition-timing-function: var(--img-layer-function);
+    transition-timing-function: var(--layer0-function);
     animation:
-        var(--nzb-layer-frameset)
+        var(--layer2-frameset)
         var(--animation-fulltime)
         infinite
         var(--animation-function);

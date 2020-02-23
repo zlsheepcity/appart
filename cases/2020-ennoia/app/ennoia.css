@@ -211,13 +211,14 @@
     max-width: 80vw;
 }
 .el-ninini-promo-img {
-  --opacity: 0.25;
-  --scale:   1.25;
-  --moveXY:  0, 25%;
+  --opacity: 0;
+  --scale:   1.05;
+  --moveXY:  0, 5%;
     opacity:   var(--opacity);
     transform: scale(var(--scale)) translate(var(--moveXY));
+    transform-origin: top center;
     transition-property:        opacity, transform;
-    transition-duration:        360ms;
+    transition-duration:        240ms;
     transition-timing-function: cubic-bezier(0.6, 0.04,  0.98,  0.335);
 }
 .el-ninini-promo-img.is-active {

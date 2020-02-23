@@ -1,27 +1,25 @@
 .banner-ninini.ennoia-theme {
   --back-color:     slategray;
 
-  --animation-fulltime: 8000ms;
+  --animation-fulltime: 12000ms;
   --animation-function: ease-in-out;
-  --img-layer-scale-a:  1;
-  --img-layer-scale-b:  1.2;
-  --img-layer-scale-c:  1.125;
+  --img-layer-frameset: timeline-ennoia-ninini-img;
+  --img-layer-cover:    top right;
+  --img-layer-cover-to: bottom right;
+  --img-layer-scale:    1;
+  --img-layer-scale-to: 1.2;
   --img-layer-function: cubic-bezier(0.165,  0.84,  0.44,  1); /*SmoothFocus*/
 
-
-  --xximg-layer-function: cubic-bezier(0.175,  0.885, 0.320, 1.275); /*OpenJump*/
-  --xximg-layer-posXY: 0, 0;
-  --xximg-layer-posXY-to: -2%, 4%;
 }
 @keyframes timeline-ennoia-ninini-img {
     0% {
-        transform: scale( var(--img-layer-scale-a) );
+        transform: scale( var(--img-layer-scale) );
     }
-    60% {
-        transform: scale( var(--img-layer-scale-b) );
+    40% {
+        transform: scale( var(--img-layer-scale-to) );
     }
     100% {
-        transform: scale( var(--img-layer-scale-a) );
+        transform: scale( var(--img-layer-scale) );
     }
 }
 
@@ -44,16 +42,18 @@
     left:     0;
 }
 .el-ninini-img {
-    display:         block;
-    object-fit:      cover;
-    object-position: right top;
-    min-height:      100%;
-    min-width:       100%;
+    display:          block;
+    min-height:       100%;
+    min-width:        100%;
+    object-fit:       cover;
 
-    transition:    transform var(--animation-fulltime);
+    object-position:  var(--img-layer-cover);
+    transform-origin: var(--img-layer-cover-to);
+    transition:       transform;
+    transition-duration:        var(--animation-fulltime);
     transition-timing-function: var(--img-layer-function);
     animation:
-        timeline-ennoia-ninini-img
+        var(--img-layer-frameset)
         var(--animation-fulltime)
         infinite
         var(--animation-function);

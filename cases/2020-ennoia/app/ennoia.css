@@ -1,0 +1,63 @@
+.banner-ninini.ennoia-theme {
+  --back-color:     slategray;
+
+  --animation-fulltime: 8000ms;
+  --animation-function: ease-in-out;
+  --img-layer-scale-a:  1;
+  --img-layer-scale-b:  1.2;
+  --img-layer-scale-c:  1.125;
+  --img-layer-function: cubic-bezier(0.165,  0.84,  0.44,  1); /*SmoothFocus*/
+
+
+  --xximg-layer-function: cubic-bezier(0.175,  0.885, 0.320, 1.275); /*OpenJump*/
+  --xximg-layer-posXY: 0, 0;
+  --xximg-layer-posXY-to: -2%, 4%;
+}
+@keyframes timeline-ennoia-ninini-img {
+    0% {
+        transform: scale( var(--img-layer-scale-a) );
+    }
+    60% {
+        transform: scale( var(--img-layer-scale-b) );
+    }
+    100% {
+        transform: scale( var(--img-layer-scale-a) );
+    }
+}
+
+
+
+.ban-ninini-figure {
+    position:   relative; z-index: 0;
+    width:      100%;
+    min-height: 100vh;
+
+    background-color: var(--back-color);
+}
+
+.el-ninini-picture {
+    position: absolute; z-index: -1;
+    overflow: hidden;
+    top:      0;
+    right:    0;
+    bottom:   0;
+    left:     0;
+}
+.el-ninini-img {
+    display:         block;
+    object-fit:      cover;
+    object-position: right top;
+    min-height:      100%;
+    min-width:       100%;
+
+    transition:    transform var(--animation-fulltime);
+    transition-timing-function: var(--img-layer-function);
+    animation:
+        timeline-ennoia-ninini-img
+        var(--animation-fulltime)
+        infinite
+        var(--animation-function);
+}
+.el-ninini-picture:hover .el-ninini-img {
+    
+}

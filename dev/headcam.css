@@ -144,7 +144,7 @@
   --opacity-delay:                0ms;
 
   --transform:                  scaleY(var(--headcam-binary-state, 1));
-  --transform-origin:           top center;
+  --transform-origin:           bottom center;
 
   --headcam-binary-state: 0;
 }
@@ -188,6 +188,7 @@
 .header-grid-info {
   --back-color:          var(--back-color-info);
   --transition-delay:    240ms;
+    --transform-origin:           top center;
 }
 .header-grid-menu {
   --back-color:          var(--back-color-menu);

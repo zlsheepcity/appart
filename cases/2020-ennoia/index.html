@@ -37,7 +37,7 @@
         href="../../app/styles/appart-dev.css?v2020.1.2"
         rel="stylesheet" type="text/css">
     <link
-        href="app/ennoia.css?v1.screenScroll"
+        href="app/ennoia.css?v1.twoScreens"
         rel="stylesheet" type="text/css">
 
 
@@ -51,11 +51,11 @@
 </head>
 <body>
 
-<header class="WelcomeBack-screen">
+<div class="welcome-back-screen">
     <article class="banner-ninini ennoia-theme">
         <header class="ban-ninini-header"></header>
         <figure class="ban-ninini-figure">
-            <div class="el-ninini-picture">
+            <div class="el-ninini-intro">
                 <img
                     src="art/welcome/ninini-welcome.jpg"
                     alt="cover image"
@@ -65,13 +65,66 @@
         </figure>
         <footer class="ban-ninini-footer"></footer>
     </article>
-</header>
+</div>
 
+<div class="welcome-front-screen">
+    <article class="header-ninini ennoia-theme">
+        <figure class="hdr-ninini-figure">
+            <div class="el-ninini-promo">
+                <img
+                    src="art/welcome/saul-art.png"
+                    alt="cover image"
+                    class="el-ninini-promo-img">
+            </div>
+        </figure>
+    </article>
+</div>
 
+<script>
+    function welcomeScreenUI () {
+        const Dom = {
+            triger1: document.querySelector('.welcome-front-screen'),
+            target1: document.querySelector('.welcome-back-screen'),
+            target2: document.querySelector('.el-ninini-promo-img')
+        }
+        const ChangeWithObserver = function() {
+         // Define observer
+            const ObserverTask  = entries => entries.forEach(ObservationTask)
+            const ObservationTask = entry => entry.isIntersecting ? HideCover(entry.target) : ShowCover(entry.target)
+            const RemoveObservation = el => LazyObserver.unobserve(el)
+            const HideCover = el => {
+                  Dom.target1.classList.add('is-hidden')
+            }
+            const ShowCover = el => {
+                  Dom.target1.classList.remove('is-hidden')
+            }
+         // Run observer
+            let LazyObserver = new IntersectionObserver(ObserverTask, { rootMargin:'-25% 0px' })
+            LazyObserver.observe(Dom.triger1)
+            console.log(LazyObserver)
+            
+         // devine logo
+            const LogoObserverTask = entries => entries.forEach(LogoObservationTask)
+            const LogoObservationTask = entry => entry.isIntersecting ? ActivateLogo(entry.target, true) : ActivateLogo(entry.target, false)
+            const ActivateLogo = (el, status) => {
+                if (status) Dom.target2.classList.add('is-active')
+                else        Dom.target2.classList.remove('is-active')
+            }
+            let LogoObserver = new IntersectionObserver(LogoObserverTask, { rootMargin:'-50% 0px' })
+            LogoObserver.observe(Dom.target2)
+            console.log(LogoObserver)
+            
+        }
+        if ('IntersectionObserver' in window) ChangeWithObserver()
+        console.log('ready')
+    }
+    document.addEventListener('DOMContentLoaded', welcomeScreenUI)
+</script>
 
 
 <!-- =========================================== ʕ⊙ᴥ⊙ʔ -->
 <!-- ========================================= BODY END -->
+<!--
 
 <article class="banner-ninini">
     <header class="ban-ninini-header"></header>
@@ -81,6 +134,7 @@
     </figure>
     <footer class="ban-ninini-footer"></footer>
 </article>
+-->
 
 </body>
 </html>

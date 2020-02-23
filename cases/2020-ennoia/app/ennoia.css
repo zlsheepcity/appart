@@ -89,14 +89,24 @@
 .ban-ninini-figure {
 }
 
-.el-ninini-picture {
+.el-ninini-intro {
     position: absolute; z-index: -1;
     top:      0;
     right:    0;
     bottom:   0;
     left:     0;
-    transform-origin: var(--layer0-cover-to);
-    transition:       transform;
+}
+.el-ninini-img {
+    display:          block;
+    min-height:       100%;
+    min-width:        100%;
+    object-fit:       cover;
+    object-position:  var(--layer0-cover);
+}
+
+.ban-ninini-figure .el-ninini-intro {
+    transform-origin:           var(--layer0-cover-to);
+    transition-property:        transform;
     transition-duration:        var(--animation-fulltime);
     transition-timing-function: var(--layer0-function);
     animation:
@@ -105,14 +115,7 @@
         infinite
         var(--animation-function);
 }
-.el-ninini-img {
-    position:         relative; z-index: 0;
-    display:          block;
-    min-height:       100%;
-    min-width:        100%;
-    object-fit:       cover;
-    object-position:  var(--layer0-cover);
-}
+.ban-ninini-figure::before,
 .ban-ninini-figure::after {
     content:  '';
     position: absolute; z-index:1;
@@ -120,13 +123,15 @@
     right:    0;
     bottom:   0;
     left:     0;
-    background-image:    var(--layer1-image);
-    background-size:     cover;
-    background-repeat:   no-repeat;
-    background-position: var(--layer0-cover);
+}
+.ban-ninini-figure::after {
+    background-image:           var(--layer1-image);
+    background-size:            cover;
+    background-repeat:          no-repeat;
+    background-position:        var(--layer0-cover);
 
-    transform-origin: var(--layer0-cover-to);
-    transition:       transform;
+    transform-origin:           var(--layer0-cover-to);
+    transition-property:        transform;
     transition-duration:        var(--animation-fulltime);
     transition-timing-function: var(--layer0-function);
     animation:
@@ -136,19 +141,13 @@
         var(--animation-function);
 }
 .ban-ninini-figure::before {
-    content:  '';
-    position: absolute; z-index:1;
-    top:      0;
-    right:    0;
-    bottom:   0;
-    left:     0;
-    background-image:    var(--layer2-image);
-    background-size:     cover;
-    background-repeat:   no-repeat;
-    background-position: var(--layer0-cover);
+    background-image:           var(--layer2-image);
+    background-position:        var(--layer0-cover);
+    background-size:            cover;
+    background-repeat:          no-repeat;
 
-    transform-origin: var(--layer0-cover-to);
-    transition:       transform;
+    transform-origin:           var(--layer0-cover-to);
+    transition-property:        transform;
     transition-duration:        var(--animation-fulltime);
     transition-timing-function: var(--layer0-function);
     animation:
@@ -156,4 +155,73 @@
         var(--animation-fulltime)
         infinite
         var(--animation-function);
+}
+
+.welcome-back-screen {
+    position: relative; z-index: 0;
+    width:  100%;
+    height: 100vh;
+}
+.welcome-back-screen>* {
+    position: fixed; z-index: -1;
+    top:      0;
+    right:    0;
+    bottom:   0;
+    left:     0;
+}
+.welcome-back-screen::after {
+    content:  '';
+    pointer-events: none;
+    position: absolute; z-index: -1;
+    top:      0;
+    right:    0;
+    bottom:   0;
+    left:     0;
+  --opacity:  0;
+    opacity:  var(--opacity);
+    background-color: black;
+    transition-property:        opacity;
+    transition-duration:        360ms;
+    transition-timing-function: cubic-bezier(0.6, 0.04,  0.98,  0.335);
+}
+
+.welcome-back-screen.is-hidden::after {
+  --opacity:  0.8;
+}
+.welcome-front-screen {
+    position: relative; z-index: 0;
+    min-height: 100vh;
+    box-shadow: 0 0 2rem black;
+    background-color: white;
+}
+.header-ninini {
+    width:  100%;
+    height: 100vh;
+    overflow: hidden;
+}
+.hdr-ninini-figure {
+    width:  100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+.el-ninini-promo {
+    max-width: 80vw;
+}
+.el-ninini-promo-img {
+  --opacity: 0.25;
+  --scale:   1.25;
+  --moveXY:  0, 25%;
+    opacity:   var(--opacity);
+    transform: scale(var(--scale)) translate(var(--moveXY));
+    transition-property:        opacity, transform;
+    transition-duration:        360ms;
+    transition-timing-function: cubic-bezier(0.6, 0.04,  0.98,  0.335);
+}
+.el-ninini-promo-img.is-active {
+  --opacity: 1;
+  --scale:   1;
+  --moveXY:  0, 0;
 }

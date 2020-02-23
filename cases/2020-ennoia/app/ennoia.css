@@ -1,7 +1,7 @@
 .banner-ninini.ennoia-theme {
   --back-color:     slategray;
 
-  --animation-fulltime: 20s;
+  --animation-fulltime: 16s;
   --animation-function: ease-in-out;
   --img-layer-frameset: timeline-ennoia-ninini-img;
   --img-layer-cover:    top right;
@@ -29,6 +29,9 @@
     0% {
         transform: scale( var(--img-layer-scale) );
         opacity: 0.25;
+    }
+    10% {
+        transform: scale( var(--img-layer-scale) );
     }
     44% {
         transform: scale( var(--img-layer-scale-to) );

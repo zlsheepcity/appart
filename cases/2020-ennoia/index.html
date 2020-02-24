@@ -4,37 +4,116 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- appseed 2020.2.22 -->
+    <!-- appseed 2020.2.22 ninini -->
 
     <!-- ===================================== HEAD CONTENT -->
 
 
     <title>ennoiart</title>
+    <meta name="description" content="">
+    <meta name="author"      content="zl">
 
-    <!-- FAVICON -->
-    <!-- 2019.1, best favicon service: https://realfavicongenerator.net/ -->
-    <meta name="theme-color" content="#7391a5">
-    <meta name="msapplication-TileColor" content="#7391a5">
-    <meta name="msapplication-TileImage" content="app/favicons/144x144.png">
-    <link href="../../app/favicons/180x180.png" sizes="180x180" rel="apple-touch-icon">
-    <link href="../../app/favicons/192x192.png" sizes="192x192" rel="icon" type="image/png">
+
+    <!-- ## MICRODATA -->
+    <meta property="og:url"          content="">
+    <meta property="og:image"        content="">
+    <meta property="og:image:width"  content="1200">
+    <meta property="og:image:height" content="628">
+    <meta property="og:type"         content="article">
+    <meta property="og:locale"       content="en_US">
+
+
+    <!-- ===================================== FAVICON -->
+
+
+    <meta name="theme-color"             content="#314863">
+    <meta name="msapplication-TileColor" content="#314863">
+    <meta name="msapplication-TileImage" content="art/icon512.png">
+    <link type="image/png" rel="icon"       href="art/icon512.png">
+    <link rel="apple-touch-icon"            href="art/icon512.png">
+
 
     <!-- ===================================== BOOT -->
 
 
     <!-- ༼°▽°༽ style boot -->
     <style>
-        html       { margin:0; padding:0 0.25rem; }
-        body       { margin:0; padding:0; width:100%; height:auto; overflow-y:scroll; }
-        img,svg,hr { margin:0; border:0; max-width:100%; }
-        pre        { overflow:auto; }
+        html       { margin:0; padding:0  0.25rem; }
+        body       { margin:0; padding:0; width:100%; height:auto; }
+        img,svg,hr { margin:0; border: 0; max-width:100%; }
+        body       { overflow-y:scroll; }
     </style>
+
+
+    <!-- ༼°▽°༽ screen von loader -->
+    <style id="von-loader-style">
+        #von-loader { /* settings */
+          --back-color:       hsl(212, 34%, 29%);
+          --text-color:       hsl(226, 27%, 90%);
+          --icon-size:        6rem;
+         /* SVG: arrows circle loading */
+          --icon-image: url('data:image/svg+xml;utf8,<svg fill="white" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/></svg>'); }
+        #von-loader {
+          --state-opacity:    0;
+          --state-pointer:    none;
+            transition:       opacity 240ms ease-out;
+            background-color: var(--back-color);
+            color:            var(--text-color);
+            pointer-events:   var(--state-pointer);
+            opacity:          var(--state-opacity);         
+            position: fixed;  z-index: 100;
+            top:      0;
+            right:    0;
+            bottom:   0;
+            left:     0; }
+        #von-loader.is-active {
+          --state-opacity:    1;
+          --state-pointer:    all; }
+        #von-loader::after {
+            content:  '';
+            position: absolute; z-index: 1;
+            top:      calc(40% - 0.5*var(--icon-size));
+            left:     calc(50% - 0.5*var(--icon-size));
+            width:    var(--icon-size);
+            height:   var(--icon-size);
+            background-image:    var(--icon-image);
+            background-size:     var(--icon-size);
+            background-repeat:   no-repeat;
+            background-position: center center;
+            animation: VonLoaderRotation 1s linear infinite; }
+            @keyframes VonLoaderRotation {
+                from { transform: rotate(360deg); }
+                to   { transform: rotate(  1deg); }
+            }
+    </style>
+    <script id="von-loader-script">
+        function vonLoader ( autostart = true ) {
+            let screen = document.querySelector('body')
+            let loader = document.createElement('div')
+                loader.id = "von-loader"
+                screen.appendChild(loader)
+            let ACTIVE = 'is-active'
+            let show   = () => { loader.classList.add(ACTIVE); }
+            let hide   = () => { loader.classList.remove(ACTIVE) }
+            let action = () => {
+                if (window.addEventListener) window.addEventListener("load", hide, false)
+                else if (window.attachEvent) window.attachEvent(   "onload", hide)
+                else hide() }
+            let start = () => {
+                show()
+                action() }
+            let init = autostart => {
+                if (autostart) start()
+                return { loader, show, hide, start } }
+            return init(autostart)
+        }
+    </script>
+
 
     <!-- ༼°▽°༽ prefetch boot -->
     <link rel="preload" href="../../app/fonts/Vollkorn-R.woff2" as="font">
     <link rel="preload" href="../../app/fonts/Vollkorn-B.woff2" as="font">
     <link rel="preload" href="../../app/fonts/Vollkorn-I.woff2" as="font">
-    <link rel="preload" href="../../app/fonts/VT323-CODE.woff"  as="font">
 
 
     <!-- ===================================== DESIGN -->
@@ -56,7 +135,7 @@
 
     <!-- ===================================== HEAD END -->
 </head>
-<body>
+<body><script>vonLoader()</script>
 
 <div class="welcome-back-screen">
     <article class="banner-ninini ennoia-theme">

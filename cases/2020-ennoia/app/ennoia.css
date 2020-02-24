@@ -4,93 +4,88 @@
   --animation-fulltime: 12s;
   --animation-function: ease-in-out;
 
-  --layer0-scale:    1;
-  --layer0-scale-to: 1.1;
+  --scaleA: 1;
+  --scaleB: 1.1;
 
-  --layer0-cover:    top right;
-  --layer0-cover-to: bottom right;
+  --coverA:    top right;
+  --coverB: bottom right;
 
   --layer0-frameset: timeline-ennoia-ninini-img;
   --layer0-function: cubic-bezier(0.165,  0.84,  0.44,  1); /*SmoothFocus*/
 
   --layer1-frameset: timeline-ennoia-ninini-noize-1;
-  --layer1-image:    url(../art/welcome/ninini-mask.svg);
-  --layer1-opacity0: 0.25;
-  --layer1-opacity1: 0.5;
+  --layer1-image:    url(../art/welcome/ninini-mask1.svg);
+  --layer1-opacityA: 0.25;
+  --layer1-opacityB: 0.50;
 
   --layer2-frameset: timeline-ennoia-ninini-noize-2;
-  --layer2-image:    url(../art/welcome/ninini-mask-white.svg);
+  --layer2-image:    url(../art/welcome/ninini-mask2.svg);
+  --layer2-opacityA: 0.20;
+  --layer2-opacityB: 0.05;
 
 }
 @keyframes timeline-ennoia-ninini-img {
     0% {
-        transform: scale( var(--layer0-scale) );
+        transform: scale(var(--scaleA));
     }
     40% {
-        transform: scale( var(--layer0-scale-to) );
+        transform: scale(var(--scaleB));
     }
     100% {
-        transform: scale( var(--layer0-scale) );
+        transform: scale(var(--scaleA));
     }
 }
 @keyframes timeline-ennoia-ninini-noize-1 {
     0% {
-        transform: scale( var(--layer0-scale) );
-        opacity:   var(--layer1-opacity0);
+        transform: scale(var(--scaleA));
+        opacity: var(--layer1-opacityA);
     }
     10% {
-        transform: scale( var(--layer0-scale) );
+        transform: scale(var(--scaleA));
     }
     44% {
-        transform: scale( var(--layer0-scale-to) );
-        opacity:   var(--layer1-opacity1);
+        transform: scale(var(--scaleB));
+        opacity: var(--layer1-opacityB);
     }
     60% {
-        opacity:   var(--layer1-opacity0);
+        opacity: var(--layer1-opacityA);
     }
     90% {
-        transform: scale( var(--layer0-scale) );
+        transform: scale(var(--scaleA));
     }
     100% {
-        opacity:   var(--layer1-opacity0);
+        opacity: var(--layer1-opacityA);
     }
 }
 @keyframes timeline-ennoia-ninini-noize-2 {
     0% {
-        transform: scale( var(--layer0-scale) );
-        opacity: 0.5;
+        transform: scale(var(--scaleA));
+        opacity: var(--layer2-opacityA);
     }
     36% {
-        transform: scale( var(--layer0-scale-to) );
-        opacity: 0.2;
+        transform: scale(var(--scaleB));
+        opacity: var(--layer2-opacityB);
     }
     60% {
-        opacity: 0.5;
+        opacity: var(--layer2-opacityA);
     }
     80% {
-        transform: scale( var(--layer0-scale) );
-        opacity: 0.2;
+        transform: scale(var(--scaleA));
+        opacity: var(--layer2-opacityB);
     }
     100% {
-        opacity: 0.5;
+        opacity: var(--layer2-opacityA);
     }
 }
 
 
 .banner-ninini {
+    background-color: var(--back-color);
     position:   relative; z-index: 0;
     width:      100%;
     min-height: 100vh;
     overflow:   hidden;
-
-    background-color: var(--back-color);
 }
-.ban-ninini-header {
-    
-}
-.ban-ninini-figure {
-}
-
 .el-ninini-intro {
     position: absolute; z-index: -1;
     top:      0;
@@ -103,16 +98,21 @@
     min-height:       100%;
     min-width:        100%;
     object-fit:       cover;
-    object-position:  var(--layer0-cover);
+    object-position:  var(--coverA);
 }
 
+/** layers threesome */
+
+.ban-ninini-figure::before,
+.ban-ninini-figure::after,
 .ban-ninini-figure .el-ninini-intro {
-    transform-origin:           var(--layer0-cover-to);
+    transform-origin:           var(--coverB);
     transition-property:        transform;
     transition-duration:        var(--animation-fulltime);
     transition-timing-function: var(--layer0-function);
+  --animation-name:             var(--layer0-frameset);
     animation:
-        var(--layer0-frameset)
+        var(--animation-name)
         var(--animation-fulltime)
         infinite
         var(--animation-function);
@@ -126,39 +126,23 @@
     right:    0;
     bottom:   0;
     left:     0;
+
+  --background-image:           var(--layer1-image);
+    background-image:           var(--background-image);
+    background-position:        var(--coverA);
+    background-size:            cover;
+    background-repeat:          no-repeat;
 }
 .ban-ninini-figure::after {
-    background-image:           var(--layer1-image);
-    background-size:            cover;
-    background-repeat:          no-repeat;
-    background-position:        var(--layer0-cover);
-
-    transform-origin:           var(--layer0-cover-to);
-    transition-property:        transform;
-    transition-duration:        var(--animation-fulltime);
-    transition-timing-function: var(--layer0-function);
-    animation:
-        var(--layer1-frameset)
-        var(--animation-fulltime)
-        infinite
-        var(--animation-function);
+  --background-image:           var(--layer1-image);
+  --animation-name:             var(--layer1-frameset);
 }
 .ban-ninini-figure::before {
-    background-image:           var(--layer2-image);
-    background-position:        var(--layer0-cover);
-    background-size:            cover;
-    background-repeat:          no-repeat;
-
-    transform-origin:           var(--layer0-cover-to);
-    transition-property:        transform;
-    transition-duration:        var(--animation-fulltime);
-    transition-timing-function: var(--layer0-function);
-    animation:
-        var(--layer2-frameset)
-        var(--animation-fulltime)
-        infinite
-        var(--animation-function);
+  --background-image:           var(--layer2-image);
+  --animation-name:             var(--layer2-frameset);
 }
+
+/** back screen */
 
 .welcome-back-screen {
     position: relative; z-index: 0;

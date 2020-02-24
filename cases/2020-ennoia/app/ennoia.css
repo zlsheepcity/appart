@@ -125,8 +125,8 @@
     justify-content:  flex-start;
 
     font-size: 10vmax;
-    line-height: 1;
-    padding:  4vw;
+    line-height: 0.75;
+    padding:  20vh 4vw;
     color: hsla(0,0%,0%,0.8);
 }
 .el-ninini-message>a {

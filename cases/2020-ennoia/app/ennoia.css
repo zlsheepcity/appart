@@ -1,7 +1,7 @@
 .banner-ninini.ennoia-theme {
   --back-color:     slategray;
 
-  --animation-fulltime: 16s;
+  --animation-fulltime: 12s;
   --animation-function: ease-in-out;
 
   --layer0-scale:    1;
@@ -14,12 +14,12 @@
   --layer0-function: cubic-bezier(0.165,  0.84,  0.44,  1); /*SmoothFocus*/
 
   --layer1-frameset: timeline-ennoia-ninini-noize-1;
-  --layer1-image:    url(../art/welcome/ninini-mask-b.svg);
+  --layer1-image:    url(../art/welcome/ninini-mask.svg);
   --layer1-opacity0: 0.25;
   --layer1-opacity1: 0.5;
 
   --layer2-frameset: timeline-ennoia-ninini-noize-2;
-  --layer2-image:    url(../art/welcome/ninini-mask-a.svg);
+  --layer2-image:    url(../art/welcome/ninini-mask-white.svg);
 
 }
 @keyframes timeline-ennoia-ninini-img {

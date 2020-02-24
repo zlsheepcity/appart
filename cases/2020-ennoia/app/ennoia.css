@@ -85,7 +85,9 @@
 
     background-color: var(--back-color);
 }
-
+.ban-ninini-header {
+    
+}
 .ban-ninini-figure {
 }
 
@@ -225,4 +227,52 @@
   --opacity: 1;
   --scale:   1;
   --moveXY:  0, 0;
+}
+
+
+.el-topmenu {
+    position: relative; z-index: 2;
+    display: flex;
+    align-content: center;
+    align-items:   center;
+    justify-content: center;
+    background-color: hsl(204, 22%, 55%);
+    color:            hsl(226, 27%, 90%);
+    box-shadow:       0 0 2rem black;
+
+    transition-property:        opacity, transform;
+    transition-duration:        240ms;
+    transition-timing-function: cubic-bezier(0.6, 0.04,  0.98,  0.335);
+}
+.topmenu-link {
+    padding: 0.5rem 1rem;
+    color: inherit;
+    text-decoration: none;
+    opacity: 0.64;
+    transform: scale(1);
+    transform-origin: top center;
+    transition-property:        opacity, transform;
+    transition-duration:        240ms;
+    transition-timing-function: cubic-bezier(0.6, 0.04,  0.98,  0.335);
+}
+.topmenu-link:hover {
+    opacity: 1;
+    background-color: rgba(0,0,0,0.05);
+}
+.welcome-back-screen.is-hidden .el-topmenu {
+    opacity: 0;
+}
+
+.squares {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 1rem;
+    max-width: 44rem;
+    margin: 0 auto;
+    padding: 4rem 1rem;
+    background-color: white;
+}
+.squares>* {
+    background-color: rgba(0,0,0,0.1);
+    padding-top: 100%;
 }

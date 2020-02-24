@@ -60,7 +60,7 @@
 
 <div class="welcome-back-screen">
     <article class="banner-ninini ennoia-theme">
-        <header class="ban-ninini-header">
+        <header hidden class="ban-ninini-header">
             <div class="el-topmenu">
                 <a  class="topmenu-link" href="#">gallery</a>
                 <a  class="topmenu-link" href="#">products</a>
@@ -133,7 +133,7 @@
             const LogoObservationTask = entry => entry.isIntersecting ? ActivateLogo(entry.target, true) : ActivateLogo(entry.target, false)
             const ActivateLogo = (el, status) => {
                 if (status) Dom.target2.classList.add('is-active')
-                else        Dom.target2.classList.remove('is-active')
+                //else        Dom.target2.classList.remove('is-active')
             }
             let LogoObserver = new IntersectionObserver(LogoObserverTask, { rootMargin:'-50% 0px' })
             LogoObserver.observe(Dom.target2)

@@ -1,28 +1,26 @@
 .banner-ninini.ennoia-theme {
-  --back-color:     slategray;
 
+  --back-color: slategray;
   --animation-fulltime: 12s;
   --animation-function: ease-in-out;
 
+ /* how image is zoomed */
   --scaleA: 1;
   --scaleB: 1.1;
 
+ /* image crop alignment */
   --coverA:    top right;
   --coverB: bottom right;
 
+  --layer1-image:    url(../art/welcome/ninini-mask1.svg);
+  --layer2-image:    url(../art/welcome/ninini-mask2.svg);
+}
+
+/** main layer for background image */
+
+.banner-ninini.ennoia-theme {
   --layer0-frameset: timeline-ennoia-ninini-img;
   --layer0-function: cubic-bezier(0.165,  0.84,  0.44,  1); /*SmoothFocus*/
-
-  --layer1-frameset: timeline-ennoia-ninini-noize-1;
-  --layer1-image:    url(../art/welcome/ninini-mask1.svg);
-  --layer1-opacityA: 0.25;
-  --layer1-opacityB: 0.50;
-
-  --layer2-frameset: timeline-ennoia-ninini-noize-2;
-  --layer2-image:    url(../art/welcome/ninini-mask2.svg);
-  --layer2-opacityA: 0.20;
-  --layer2-opacityB: 0.05;
-
 }
 @keyframes timeline-ennoia-ninini-img {
     0% {
@@ -34,6 +32,18 @@
     100% {
         transform: scale(var(--scaleA));
     }
+}
+
+/** layers for effects */
+
+.banner-ninini.ennoia-theme {
+  --layer1-frameset: timeline-ennoia-ninini-noize-1;
+  --layer1-opacityA: 0.25;
+  --layer1-opacityB: 0.50;
+
+  --layer2-frameset: timeline-ennoia-ninini-noize-2;
+  --layer2-opacityA: 0.20;
+  --layer2-opacityB: 0.05;
 }
 @keyframes timeline-ennoia-ninini-noize-1 {
     0% {
@@ -78,6 +88,7 @@
     }
 }
 
+/** layout */
 
 .banner-ninini {
     background-color: var(--back-color);
@@ -100,16 +111,37 @@
     object-fit:       cover;
     object-position:  var(--coverA);
 }
+.el-ninini-message {
+    pointer-events: all;
+    position: absolute; z-index: 1;
+    top:      0;
+    right:    0;
+    bottom:   0;
+    left:     0;
+
+    display:          flex;
+    align-content:    flex-end;
+    align-items:      flex-end;
+    justify-content:  flex-start;
+
+    font-size: 10vmax;
+    line-height: 1;
+    padding:  4vw;
+    color: hsla(0,0%,0%,0.8);
+}
+.el-ninini-message>a {
+    text-decoration: none;
+}
 
 /** layers threesome */
 
 .ban-ninini-figure::before,
 .ban-ninini-figure::after,
 .ban-ninini-figure .el-ninini-intro {
-    transform-origin:           var(--coverB);
     transition-property:        transform;
     transition-duration:        var(--animation-fulltime);
     transition-timing-function: var(--layer0-function);
+    transform-origin:           var(--coverB);
   --animation-name:             var(--layer0-frameset);
     animation:
         var(--animation-name)
@@ -217,10 +249,10 @@
 
 .el-topmenu {
     position: relative; z-index: 2;
-    display: flex;
-    align-content: center;
-    align-items:   center;
-    justify-content: center;
+    display:          flex;
+    align-content:    center;
+    align-items:      center;
+    justify-content:  center;
     background-color: hsl(204, 22%, 55%);
     color:            hsl(226, 27%, 90%);
     box-shadow:       0 0 2rem black;

@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- appseed 2020.2.22 ninini -->
+
+    <!-- ===================================== HEAD CONTENT -->
+
+
+    <title>AppSeed</title>
+    <meta name="description" content="">
+    <meta name="author"      content="zl">
+
+
+    <!-- ## MICRODATA -->
+    <meta property="og:url"          content="">
+    <meta property="og:image"        content="">
+    <meta property="og:image:width"  content="1200">
+    <meta property="og:image:height" content="628">
+    <meta property="og:type"         content="article">
+    <meta property="og:locale"       content="en_US">
+
+
+    <!-- ===================================== FAVICON -->
+
+
+    <meta name="theme-color"             content="#314863">
+    <meta name="msapplication-TileColor" content="#314863">
+    <meta name="msapplication-TileImage" content="art/icon512.png">
+    <link type="image/png" rel="icon"       href="art/icon512.png">
+    <link rel="apple-touch-icon"            href="art/icon512.png">
+
+
+    <!-- ===================================== BOOT SERVICE -->
+
+
+    <!-- ༼°▽°༽ style boot -->
+    <style>
+        html       { margin:0; padding:0  0.25rem; }
+        body       { margin:0; padding:0; width:100%; height:auto; }
+        img,svg,hr { margin:0; border: 0; max-width:100%; }
+        body       { overflow-y:scroll; }
+    </style>
+
+
+    <!-- ༼°▽°༽ screen von loader -->
+    <style id="von-loader-style">
+        #von-loader { /* settings */
+          --back-color:       hsl(212, 34%, 29%);
+          --text-color:       hsl(226, 27%, 90%);
+          --icon-size:        6rem;
+         /* SVG: arrows circle loading */
+          --icon-image: url('data:image/svg+xml;utf8,<svg fill="white" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/></svg>'); }
+        #von-loader {
+          --state-opacity:    0;
+          --state-pointer:    none;
+            transition:       opacity 240ms ease-out;
+            background-color: var(--back-color);
+            color:            var(--text-color);
+            pointer-events:   var(--state-pointer);
+            opacity:          var(--state-opacity);         
+            position: fixed;  z-index: 100;
+            top:      0;
+            right:    0;
+            bottom:   0;
+            left:     0; }
+        #von-loader.is-active {
+          --state-opacity:    1;
+          --state-pointer:    all; }
+        #von-loader::after {
+            content:  '';
+            position: absolute; z-index: 1;
+            top:      calc(40% - 0.5*var(--icon-size));
+            left:     calc(50% - 0.5*var(--icon-size));
+            width:    var(--icon-size);
+            height:   var(--icon-size);
+            background-image:    var(--icon-image);
+            background-size:     var(--icon-size);
+            background-repeat:   no-repeat;
+            background-position: center center;
+            animation: VonLoaderRotation 1s linear infinite; }
+            @keyframes VonLoaderRotation {
+                from { transform: rotate(360deg); }
+                to   { transform: rotate(  1deg); }
+            }
+    </style>
+    <script id="von-loader-script">
+        function vonLoader ( autostart = true ) {
+            let screen = document.querySelector('body')
+            let loader = document.createElement('div')
+                loader.id = "von-loader"
+                screen.appendChild(loader)
+            let ACTIVE = 'is-active'
+            let show   = () => { loader.classList.add(ACTIVE); }
+            let hide   = () => { loader.classList.remove(ACTIVE) }
+            let action = () => {
+                if (window.addEventListener) window.addEventListener("load", hide, false)
+                else if (window.attachEvent) window.attachEvent(   "onload", hide)
+                else hide() }
+            let start = () => {
+                show()
+                action() }
+            let init = autostart => {
+                if (autostart) start()
+                return { loader, show, hide, start } }
+            return init(autostart)
+        }
+    </script>
+
+
+    <!-- ༼°▽°༽ prefetch boot -->
+    <link rel="preload" href="app/fonts/Vollkorn-R.woff2" as="font">
+    <link rel="preload" href="app/fonts/Vollkorn-B.woff2" as="font">
+    <link rel="preload" href="app/fonts/Vollkorn-I.woff2" as="font">
+    <link rel="preload" href="app/fonts/VT323-CODE.woff"  as="font">
+
+
+    <!-- Fonts Hosted at Google -->
+    <link rel="preconnect"   href="//fonts.gstatic.com" crossorigin>
+    <link
+        media="none" onload="if(media!='all')media='all'"
+        href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic"
+        rel="stylesheet">
+    <link
+        media="none" onload="if(media!='all')media='all'"
+        href="https://fonts.googleapis.com/css?family=VT323"
+        rel="stylesheet">
+<noscript>
+    <link
+        media="all"
+        href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic"
+        rel="stylesheet">
+    <link
+        media="all"
+        href="https://fonts.googleapis.com/css?family=VT323"
+        rel="stylesheet">
+</noscript>
+
+
+    <!-- ===================================== DESIGN -->
+
+
+    <link
+        media="none" onload="if(media!='all')media='all'"
+        href="app/system.css"
+        rel="stylesheet" type="text/css">
+        <link
+        media="none" onload="if(media!='all')media='all'"
+        href="app/design.css"
+        rel="stylesheet" type="text/css">
+<noscript>
+    <link
+        media="all"
+        href="app/system.css"
+        rel="stylesheet" type="text/css">
+    <link
+        media="all"
+        href="app/design.css"
+        rel="stylesheet" type="text/css">
+</noscript>
+
+
+
+
+    <!-- ===================================== APP -->
+
+
+    <!-- ༼°▽°༽ app boot -->
+    <script id="app-boot-script">
+        function AppBoot() {
+
+         // The Noble Blastula
+            let app = this
+            app.has = { memory: [], arrived:true }
+            app.has.queens = [ 'onload', 'mutate' ]
+            /*
+            King has arrived --- let app = new AppBoot()
+            Take the Queen ----- app.attach('queen_name')(function)
+            Keep in memory ----- app.queen_name(function_parameters)
+            Execute later ------ app.onload(function)
+            2019.9.15
+            */
+
+         // The Noble Provocator
+            const proteinProvoker = function ImitateCriticalTasks () {
+              let tpp = new this.__proto__.constructor()
+              let must_have_a_memory = tpp.has.memory.push('something')
+              let must_accept_queens = like_this_one => true
+              tpp.attach('queen_id')(must_accept_queens)
+              tpp.queen_id('try this')
+            }
+
+         // Define responsibility
+            const TakeTheQueen = (queen) =>
+                {
+                    app[queen] =  ExecuteLater(queen)
+                    return (f) => ExecuteLater('update')({name:queen,f})
+                }
+            const KeepInMemory = (dna) => app.has.memory.push(dna)
+            const ExecuteLater =
+                 (responsible) =>
+                         (dna) => KeepInMemory({dna,for:responsible})
+
+         // Apply responsibility
+            app.attach = TakeTheQueen
+            app.has.queens.map( queen => app.attach(queen) )
+            app.ForceErrorsIfShouldBe =  proteinProvoker
+        }
+
+     // Run Immediately
+        let app = new AppBoot()
+        app.ForceErrorsIfShouldBe()
+    </script>
+
+    <!-- required core -->
+    <script defer src="app/script/app-core.js"></script>
+
+    <!-- optimization -->
+    <script defer src="app/script/components/image-lazy-loader.js"></script>
+
+    <!-- interface -->
+    <script defer src="app/styles/components/offsidebar/interface-offsidebar.js"></script>
+    <script defer src="app/styles/components/contact-form/controller.js"></script>
+    <script defer src="app/script/components/image-zzzoom.js"></script>
+    <script defer src="app/script/components/css-class-mutator.js"></script>
+    <script defer src="app/script/components/scroll-to-var.js"></script>
+    <script>app.attach('wayway')</script>
+    <script defer src="app/script/components/headroom.js"></script>
+
+    <!-- dev functions -->
+    <script defer src="app/script/components/survival-test.js"></script>
+    <script defer src="app/script/components/autofill-paragraphs.js"></script>
+
+
+    <!-- ===================================== CUSTOM -->
+
+
+    <!-- ===================================== HEAD END -->
+</head>
+<body class="colors--primary"><script>vonLoader()</script>
+
+
+<!-- ========================================= CONTENT -->
+
+
+...
+
+
+<!-- =========================================== ʕ⊙ᴥ⊙ʔ -->
+<!-- ========================================= BODY END -->
+
+</body>
+</html>

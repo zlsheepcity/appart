@@ -26,8 +26,8 @@
     <!-- ===================================== FAVICON -->
 
 
-    <meta name="theme-color"             content="#314863">
-    <meta name="msapplication-TileColor" content="#314863">
+    <meta name="theme-color"             content="#c84649">
+    <meta name="msapplication-TileColor" content="#c84649">
     <meta name="msapplication-TileImage" content="art/icon512.png">
     <link type="image/png" rel="icon"       href="art/icon512.png">
     <link rel="apple-touch-icon"            href="art/icon512.png">
@@ -48,7 +48,7 @@
     <!-- ༼°▽°༽ screen von loader -->
     <style id="von-loader-style">
         #von-loader { /* settings */
-          --back-color:       hsl(212, 34%, 29%);
+          --back-color:       hsl(359, 54%, 53%);
           --text-color:       hsl(226, 27%, 90%);
           --icon-size:        6rem;
          /* SVG: arrows circle loading */
@@ -233,8 +233,8 @@
     <section class="chapter isontop article grid-queen">
 
         <nav class="chapter-menu grid-column--note">
-            <div class="chapter-menu-title menu-home"><span>Home</span></div>
-            <div class="chapter-menu-title">Services</div>
+            <a href="#Start" class="as-title menu-home"><span>Home</span></a>
+            <div class="as-title">Services</div>
             <ul class="chapter-menu-list">
                 <li><a href="#ProductDevelopment">Product Development</a></li>
                 <li><a href="#FrontEndDevelopment">Front-End Development</a></li>
@@ -244,7 +244,7 @@
                 <li><a href="#PaymentSystemsIntegration">Payment Systems Integration</a></li>
                 <li><a href="#TechnicalSupportServices">TechnicalSupportServices</a></li>
             </ul>
-            <div class="chapter-menu-title">Contact Us</div>
+            <div class="as-title menu-contact js-for-ContactBar"><span>Contact Us</span></div>
         </nav>
 
         <div class="article-content inngrid">
@@ -317,10 +317,307 @@
 
             <p>If you have any feedback for us, would like to know more about what we can do for you or you simply want to share your ideas on how we can improve, feel free to fill in the box with your email, name, and phone number and we will contact you as soon as possible.</p>
 
+            <div class="contact-button">
+                <div class="as-button js-for-ContactBar">Fill the form</div>
+            </div>
+
         </div>
     </section>
 
 </article>
+
+
+<!-- ========================================= CONTACT FORM -->
+
+
+<aside class="">
+    <article class="offsidebar from-eastside ContactBar">
+        <div class="offsidebar-container">
+
+            <header class="offsidebar-header bar-header">
+                <h4>Contact Us</h4>
+            </header>
+
+            <div class="offsidebar-content form-design form-functional">
+
+                <div class="wrap-form-plugin">
+                    <div class="wrap-form">
+                        <form>
+                            <div class="wrap-form-fields">
+
+                                <div class="wrap-field">
+                                    <label><span class="field-label">Name <i>(required)</i></span><br>
+                                    <span><input type="text" name="contact-name" size="40" class="" aria-required="true" aria-invalid="false">
+                                    </span> </label>
+                                </div>
+
+                                <div class="wrap-field">
+                                    <label><span class="field-label">Email <i>(required)</i></span><br>
+                                    <span><input type="email" name="contact-mail" size="40" class="" aria-required="true" aria-invalid="false">
+                                    </span> </label>
+                                </div>
+
+                                <div class="wrap-field">
+                                    <label><span class="field-label">Your Message or Question</span><br>
+                                    <span><textarea name="your-message" rows="3" aria-required="true" aria-invalid="false"></textarea>
+                                    </span> </label>
+                                </div>
+
+                                <div class="wrap-field wrap-submit">
+                                    <input hidden type="submit" value="Send" class="form-design-button js-form-response">
+                                    <input type="button" value="Send" class="form-design-button js-form-response">
+                                    <span class="form-loader"></span>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="wrap-form-feedback">
+                    <div class="feedback-design rows">
+                        <h4>Your message was sent successfully. Thanks!</h4>
+                        <p>Our manager will reach out to you within the next 24 business hours.</p>
+                        <p>Best regards,<br>IT Team!</p>
+                        <div class="next-links text-block-bigger">
+                            <p>Next:</p>
+                            <ul>
+                                <li>
+                                    <a
+                                    href="#Start" 
+                                    class="text-link js-for-ContactBar"
+                                    >Go Home</a>
+                                </li>
+                                <li>
+                                    <span class="text-link js-form-reset">New message</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </article>
+</aside>
+<script>
+    function InterfaceOffsideBar ( dna={} ) {
+
+    // Intro
+        if ( typeof(dna)==='string' ) dna = {name:dna}
+        if ( dna.name ) dna.el = document.querySelector('.'+dna.name)
+        if ( !dna.el  ) return false;
+
+    // Core
+
+        const asidebar = dna.el
+        const htmlwrap = document.querySelector('html')
+
+        const classActive     = 'is-active'
+        const classHasOverlay = 'has-offsidebar-overlay'
+        const classBarOverlay = 'offsidebar-overlay'
+        const classBackground = 'offsidebar-background'
+        const queryBartender  = '.js-for-' + dna.name
+
+    //  Interface
+
+        const activateEscape = e => {
+            e = e || window.event
+            if (e.key==='Escape' || e.key==='Esc') Api.close()
+        }
+
+        const Api = {
+
+        // State controller
+
+            getState: f => asidebar.classList.contains(classActive),
+            setStateClosed: f => {
+                asidebar.classList.remove(classActive)
+                htmlwrap.classList.remove(classHasOverlay)
+                document.removeEventListener('keyup', activateEscape)
+            },
+            setStateOpen: f => {
+                asidebar.classList.add(classActive)
+                htmlwrap.classList.add(classHasOverlay)
+                document.addEventListener('keyup', activateEscape)
+            },
+            toggleState: f => {
+                if (Api.getState()) Api.setStateClosed()
+                else                Api.setStateOpen()
+            },
+
+        // Public
+
+            open:   e => Api.setStateOpen(),
+            close:  e => Api.setStateClosed(),
+            toggle: e => Api.toggleState(),
+
+        // Delegators
+
+            delegateOpen: el => {
+                if (el) el.addEventListener('click', Api.open)
+            },
+            delegateClose: el => {
+                if (el) el.addEventListener('click', Api.close)
+            },
+            delegateToggle: el => {
+                if (el) el.addEventListener('click', Api.toggle)
+            }
+
+        }
+
+        const Construct_this_bar = () => {
+
+        // find/create background
+            let background = asidebar.querySelector('.'+classBackground)
+            if(!background) {
+                background = document.createElement('div')
+                background.classList.add(classBackground)
+                asidebar.prepend(background)
+            }
+
+        // find/create shadow overlay
+            let baroverlay = asidebar.querySelector('.'+classBarOverlay)
+            if(!baroverlay) {
+                baroverlay = document.createElement('div')
+                baroverlay.classList.add(classBarOverlay)
+                asidebar.prepend(baroverlay)
+            }
+            Api.delegateClose(baroverlay)
+
+        // find and activate bartenders
+            let bartenders = [...document.querySelectorAll(queryBartender)]
+                bartenders.forEach(Api.delegateToggle)
+        }
+
+    // Initialize
+        Construct_this_bar()
+        return Api
+    }
+    function Init__ContactForm (dna={}) {
+
+        const Mom = dna.el || document.querySelector(dna.selector || '.form-functional')
+        if ( !Mom ) return false
+
+        const hasStateLoading  = 'has-state-loading'
+        const hasStateResponse = 'has-state-response'
+        const isActive         = 'is-active'
+
+        const Dom = {
+            Former: Mom.classList.contains('form-functional') ? Mom : Mom.querySelector('.form-functional'),
+            Loader: Mom.querySelector('.form-loader') || Mom.querySelector('.ajax-loader'),
+            Answer: Mom.querySelector('.wrap-form-feedback'),
+            elWpcf: Mom.querySelector('.wpcf7'),
+            controllersReset: Mom.querySelectorAll('.js-form-reset'),
+            controllersLoad:  Mom.querySelectorAll('.js-form-loading'),
+            controllersResponse:  Mom.querySelectorAll('.js-form-response')
+        }
+
+        const Api = {
+
+            setStateLoading: e => {
+                if (Dom.Former) Dom.Former.classList.add(hasStateLoading)
+                if (Dom.Loader) Dom.Loader.classList.add(isActive)
+            },
+            remStateLoading: e => {
+                if (Dom.Former) Dom.Former.classList.remove(hasStateLoading)
+                if (Dom.Loader) Dom.Loader.classList.remove(isActive)
+            },
+            setStateResponse: e => {
+                if (Dom.Former) Dom.Former.classList.add(hasStateResponse)
+                if (Dom.Answer) Dom.Answer.classList.add(isActive)
+            },
+            remStateResponse: e => {
+                if (Dom.Former) Dom.Former.classList.remove(hasStateResponse)
+                if (Dom.Answer) Dom.Answer.classList.remove(isActive)
+            },
+            clearResponse: e => {
+                let ResponseToClean = Mom.querySelector('.wrap-validation-response')
+                if (ResponseToClean)  ResponseToClean.innerHTML = ''
+            },
+            resetState: e => {
+                Api.remStateLoading()
+                Api.remStateResponse()
+            },
+            setState: s => {
+                Api.resetState()
+                let command = 'setState'+s
+                return typeof(Api[command]) === 'function' ? Api[command]() : false
+            },
+            resetForm: e => {
+                Api.resetState()
+                Api.clearResponse()
+            },
+        // combo
+            stateLoading:  e => Api.setState('Loading'),
+            stateResponse: e => Api.setState('Response'),
+
+        // Delegators
+
+            delegateReset: el => {
+                if (el) el.addEventListener('click', Api.resetForm)
+            },
+            delegateLoading: el => {
+                if (el) el.addEventListener('click', Api.stateLoading)
+            },
+            delegateResponse: el => {
+                if (el) el.addEventListener('click', Api.stateResponse)
+            },
+
+        }
+
+        const Activate__core_events = ()=> {
+            Dom.controllersReset.forEach( el=>Api.delegateReset(el) )
+            Dom.controllersLoad.forEach( el=>Api.delegateLoading(el) )
+            Dom.controllersResponse.forEach( el=>Api.delegateResponse(el) )
+        }
+
+        const Integration__wpcf7 = ()=> {
+        if ( !Dom.elWpcf ) return false
+        const AddEvent = Dom.elWpcf.addEventListener
+
+            // success result
+                AddEvent( 'wpcf7mailsent', Api.stateResponse )
+
+            // try again error
+            // AddEvent( 'wpcf7mailfailed', e=>{} )
+
+            // every form submit
+            // AddEvent( 'wpcf7submit',     e=>{} )
+
+            // validation error
+            // AddEvent( 'wpcf7invalid',    e=>{} )
+
+            // Fields data inside event functions:
+            //     const inputs = e.detail.inputs
+            //     inputs[0].name
+            //     inputs[0].value
+        }
+
+    // Initialize
+        Activate__core_events()
+        Integration__wpcf7()
+        return Api
+    }
+    function ActivateContactBar() {
+        let  bar_api = InterfaceOffsideBar('ContactBar')
+        if  (bar_api)
+             bar_api.delegateToggle(document.querySelector('.toggle-ContactBar'))
+    }
+    function ActivateContactForm () {
+     // get api
+        let  selector = '.ContactBar'
+        let  form_api = Init__ContactForm({selector})
+     // delegate action
+        //let  imitator = document.querySelector('.js-imitate-form')
+        //form_api.delegateResponse(imitator)
+    }
+
+    // autorun
+    ActivateContactBar()
+    ActivateContactForm()
+</script>
 
 
 <!-- =========================================== ʕ⊙ᴥ⊙ʔ -->

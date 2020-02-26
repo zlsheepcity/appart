@@ -2,11 +2,11 @@
  *  2019.12.30
  *
  *  CSS
- *
+ *  Default path: ../fonts/
  */
 
 
-/** Primary Text Serif */
+/** -------------------------------------------- Serif Texts  */
 
 @font-face {
     font-family: 'Vollkorn';
@@ -44,7 +44,7 @@
 }
 
 
-/** Code Field Mono */
+/** -------------------------------------------- Mono Codeblock */
 
 @font-face {
     font-family: 'VT323';
@@ -58,27 +58,32 @@
 }
 
 
-/** Fonts Hosted at Google */
-
+/** -------------------------------------------- Fonts Hosted at Google */
 /*
+
     <link rel="preconnect"   href="//fonts.gstatic.com" crossorigin>
+
     <link
-        href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic"
         media="none" onload="if(media!='all')media='all'"
+        href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic"
         rel="stylesheet">
     <link
-        href="https://fonts.googleapis.com/css?family=VT323"
         media="none" onload="if(media!='all')media='all'"
+        href="https://fonts.googleapis.com/css?family=VT323"
         rel="stylesheet">
 
-    <noscript>
-        <link
-            href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic"
-            rel="stylesheet">
-        <link
-            href="https://fonts.googleapis.com/css?family=VT323"
-            rel="stylesheet">
-    </noscript>
- */
+<noscript>
+    <link
+        media="all"
+        href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic"
+        rel="stylesheet">
+    <link
+        media="all"
+        href="https://fonts.googleapis.com/css?family=VT323"
+        rel="stylesheet">
+</noscript>
+
+*/
+
 
 /*  EOF Hosted Fonts */

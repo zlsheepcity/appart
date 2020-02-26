@@ -1,65 +1,69 @@
 <!-- Von Loader -->
-<!-- 2020.1.30   -->
+<!-- 2020.2.22 ninini -->
 
-<div>
-    <style>
-        #von-loader {
-          --background-color: hsl(212, 34%, 29%);
-          --color:            hsl(212, 27%, 90%);
-          --size:     6rem;
-            z-index:  11;
-            position: fixed;
-            top:      0;
-            right:    0;
-            bottom:   0;
-            left:     0;
-            background-color: var(--background-color);
-            color:            var(--color);
-            transition:       opacity 240ms ease-out;
-            pointer-events:   none;
-            opacity:          0; }
-        #von-loader.is-active {
-            pointer-events:   all;
-            opacity:          1; }
-        #von-loader::after {
-            content:  '';
-            position: absolute;
-            z-index:  1;
-            top:      1.5rem;
-            left:     1.5rem;
-            width:    var(--size);
-            height:   var(--size);
-            background-size:     var(--size);
-            background-repeat:   no-repeat;
-            background-position: center center;
-         /* SVG: arrows circle loading */
-            background-image: url('data:image/svg+xml;utf8,<svg fill="white" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/></svg>');
-
-            animation: VonLoaderRotation 1s linear infinite; }
-            @keyframes VonLoaderRotation {
-                from { transform: rotate(360deg); }
-                to   { transform: rotate(  1deg); }
-            }
-    </style>
-    <div id="von-loader"></div>
-    <script>
-        function vonLoader () {
-
-            let loader = document.getElementById('von-loader')
-            if (!loader || !loader.classList) return false
-
-            let finish = () => { loader.classList.remove('is-active') }
-            let waitme = () => {
-                if (window.addEventListener)
-                    window.addEventListener("load", finish, false)
-                else if (window.attachEvent)
-                    window.attachEvent("onload", finish)
-                else finish()
-            }
-
-            loader.classList.add('is-active')
-            waitme()
+<!-- ༼°▽°༽ screen von loader -->
+<style id="von-loader-style">
+    #von-loader { /* settings */
+        --back-color:       hsl(212, 34%, 29%);
+        --text-color:       hsl(212, 27%, 90%);
+        --icon-size:        6rem;
+        /* SVG: arrows circle loading */
+        --icon-image: url('data:image/svg+xml;utf8,<svg fill="white" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/></svg>'); }
+    #von-loader {
+        --state-opacity:    0;
+        --state-pointer:    none;
+        transition:       opacity 240ms ease-out;
+        background-color: var(--back-color);
+        color:            var(--text-color);
+        pointer-events:   var(--state-pointer);
+        opacity:          var(--state-opacity);         
+        position: fixed;  z-index: 100;
+        top:      0;
+        right:    0;
+        bottom:   0;
+        left:     0; }
+    #von-loader.is-active {
+        --state-opacity:    1;
+        --state-pointer:    all; }
+    #von-loader::after {
+        content:  '';
+        position: absolute; z-index: 1;
+        top:      calc(40% - 0.5*var(--icon-size));
+        left:     calc(50% - 0.5*var(--icon-size));
+        width:    var(--icon-size);
+        height:   var(--icon-size);
+        background-image:    var(--icon-image);
+        background-size:     var(--icon-size);
+        background-repeat:   no-repeat;
+        background-position: center center; }
+    #von-loader.is-active::after {
+        animation: VonLoaderRotation 1s linear infinite; }
+        @keyframes VonLoaderRotation {
+            from { transform: rotate(360deg); }
+            to   { transform: rotate(  1deg); }
         }
-        vonLoader()
-    </script>
-</div>
+</style>
+<script id="von-loader-script">
+    function vonLoader ( autostart = true ) {
+        let ACTIVE = 'is-active'
+        let THISID = 'von-loader'
+        let screen = document.querySelector('body')
+        let loader = document.createElement('div')
+            loader.id = THISID
+            screen.appendChild(loader)
+        let show   = () => { loader.classList.add(ACTIVE); }
+        let hide   = () => { loader.classList.remove(ACTIVE) }
+        let action = () => {
+            if (window.addEventListener) window.addEventListener("load", hide, false)
+            else if (window.attachEvent) window.attachEvent(   "onload", hide)
+            else hide() }
+        let start  = () => { show(); action(); }
+        let init   = autostart => {
+            if (autostart) start()
+            return { loader, show, hide, start } }
+        return init(autostart)
+    }
+</script>
+
+<!-- Run Inside Body -->
+<script>vonLoader()</script>

@@ -1,0 +1,51 @@
+@charset "UTF-8";
+/*  Appart Style Constructor
+ *  2020.2.22 ninini
+ */
+
+/** Compilation shortcuts
+scss -C --sourcemap=none app/styles/constructor.scss app/styles/system-ready.css
+sass --no-source-map     app/styles/constructor.scss app/styles/system-ready.css
+ */
+
+
+// -------------------------------------------- System Core
+
+
+    @import "components/system-core/css-settings";
+    @import "components/system-core/css-animations";
+    @import "components/system-core/html-markup";
+    @import "components/system-core/html-typography";
+    //@import "components/system-core/fonts";
+    @import "components/system-core/color-model";
+
+
+// -------------------------------------------- Components
+
+
+ // Layout
+
+    @import "components/article-grid/grid-queen";
+    @import "components/offsidebar/offsidebar";
+    //@import "components/myocard/myocard";
+
+ // Functionality
+
+    @import "components/contact-form/contact-form";
+    //@import "components/old-style-code-block/old-style-code-block";
+
+
+// -------------------------------------------- System Utils
+
+
+    @import "components/system-utils/css-workers";
+    @import "components/system-utils/css-varriors";
+    //@import "components/icons/background-icons";
+    @import "components/system-utils/article-markup";
+
+
+
+// -------------------------------------------- Custom
+
+
+/*  EOF Appart style constructor */

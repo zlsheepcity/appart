@@ -7,6 +7,7 @@
 }
 
 /** sticky anchor list */
+
 @media (min-width: 42rem) {
     .chapter-menu {
         position: sticky; z-index: 1;
@@ -127,12 +128,8 @@
 }
 
 
-
-
-
 .banner-ninini.ennoia-theme {
-
-    --back-color: var(--link-color);
+    --back-color:         var(--link-color);
     --animation-fulltime: 12s;
     --animation-function: ease-in-out;
   
@@ -146,84 +143,84 @@
   
     --layer1-image:    url(../art/decoration-b.svg);
     --layer2-image:    url(../art/decoration-c.svg);
-  }
+}
+
+/** main layer for background image */
+
+    .banner-ninini.ennoia-theme {
+        --layer0-frameset: timeline-ennoia-ninini-img;
+        --layer0-function: cubic-bezier(0.165,  0.84,  0.44,  1); /*SmoothFocus*/
+        --layer0-opacityA: 0.1;
+        --layer0-opacityB: 0.3;
+    }
+    @keyframes timeline-ennoia-ninini-img {
+        0% {
+            transform: scale(var(--scaleA));
+            opacity: var(--layer0-opacityA);
+        }
+        40% {
+            transform: scale(var(--scaleB));
+            opacity: var(--layer0-opacityB);
+        }
+        100% {
+            transform: scale(var(--scaleA));
+            opacity: var(--layer0-opacityA);
+        }
+    }
   
-  /** main layer for background image */
-  
-  .banner-ninini.ennoia-theme {
-    --layer0-frameset: timeline-ennoia-ninini-img;
-    --layer0-function: cubic-bezier(0.165,  0.84,  0.44,  1); /*SmoothFocus*/
-    --layer0-opacityA: 0.1;
-    --layer0-opacityB: 0.3;
-  }
-  @keyframes timeline-ennoia-ninini-img {
-      0% {
-          transform: scale(var(--scaleA));
-          opacity: var(--layer0-opacityA);
-      }
-      40% {
-          transform: scale(var(--scaleB));
-          opacity: var(--layer0-opacityB);
-      }
-      100% {
-          transform: scale(var(--scaleA));
-          opacity: var(--layer0-opacityA);
-      }
-  }
-  
-  /** layers for effects */
-  
-  .banner-ninini.ennoia-theme {
-    --layer1-frameset: timeline-ennoia-ninini-noize-1;
-    --layer1-opacityA: 0.2;
-    --layer1-opacityB: 0.3;
-  
-    --layer2-frameset: timeline-ennoia-ninini-noize-2;
-    --layer2-opacityA: 0.1;
-    --layer2-opacityB: 0.05;
-  }
-  @keyframes timeline-ennoia-ninini-noize-1 {
-      0% {
-          transform: scale(var(--scaleA));
-          opacity: var(--layer1-opacityA);
-      }
-      10% {
-          transform: scale(var(--scaleA));
-      }
-      44% {
-          transform: scale(var(--scaleB));
-          opacity: var(--layer1-opacityB);
-      }
-      60% {
-          opacity: var(--layer1-opacityA);
-      }
-      90% {
-          transform: scale(var(--scaleA));
-      }
-      100% {
-          opacity: var(--layer1-opacityA);
-      }
-  }
-  @keyframes timeline-ennoia-ninini-noize-2 {
-      0% {
-          transform: scale(var(--scaleA));
-          opacity: var(--layer2-opacityA);
-      }
-      36% {
-          transform: scale(var(--scaleB));
-          opacity: var(--layer2-opacityB);
-      }
-      60% {
-          opacity: var(--layer2-opacityA);
-      }
-      80% {
-          transform: scale(var(--scaleA));
-          opacity: var(--layer2-opacityB);
-      }
-      100% {
-          opacity: var(--layer2-opacityA);
-      }
-  }
+/** layers for effects */
+
+    .banner-ninini.ennoia-theme {
+        --layer1-frameset: timeline-ennoia-ninini-noize-1;
+        --layer1-opacityA: 0.2;
+        --layer1-opacityB: 0.3;
+    
+        --layer2-frameset: timeline-ennoia-ninini-noize-2;
+        --layer2-opacityA: 0.1;
+        --layer2-opacityB: 0.05;
+    }
+    @keyframes timeline-ennoia-ninini-noize-1 {
+        0% {
+            transform: scale(var(--scaleA));
+            opacity: var(--layer1-opacityA);
+        }
+        10% {
+            transform: scale(var(--scaleA));
+        }
+        44% {
+            transform: scale(var(--scaleB));
+            opacity: var(--layer1-opacityB);
+        }
+        60% {
+            opacity: var(--layer1-opacityA);
+        }
+        90% {
+            transform: scale(var(--scaleA));
+        }
+        100% {
+            opacity: var(--layer1-opacityA);
+        }
+    }
+    @keyframes timeline-ennoia-ninini-noize-2 {
+        0% {
+            transform: scale(var(--scaleA));
+            opacity: var(--layer2-opacityA);
+        }
+        36% {
+            transform: scale(var(--scaleB));
+            opacity: var(--layer2-opacityB);
+        }
+        60% {
+            opacity: var(--layer2-opacityA);
+        }
+        80% {
+            transform: scale(var(--scaleA));
+            opacity: var(--layer2-opacityB);
+        }
+        100% {
+            opacity: var(--layer2-opacityA);
+        }
+    }
   
   /** layout */
   
@@ -354,8 +351,13 @@
 
 .offsidebar .bar-header,
 .offsidebar .bar-footer {
-    color: var(--text-color);
     background-color: var(--link-color);
+    color:            var(--text-color);
+}
+.form-design .form-design-button {
+    font-size: 1.25em;
+    line-height: 1;
+    border-radius: 0;
 }
 
 .contact-button {

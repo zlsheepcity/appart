@@ -1,0 +1,208 @@
+/** Decorative banner with animated background
+ *  2020.2.27
+ *
+ *  CSS
+ *
+ */
+
+
+ /** -------------------------------- Banner API */
+
+
+.banner-ninini.ennoia-theme {
+  --back-color:         slateblue;
+  --banner-min-height:  100vh;
+  --animation-fulltime: 12s;
+  --animation-function: ease-in-out;
+  --transform-function: cubic-bezier(0.165,0.84,0.44,1); /*SmoothFocus*/
+
+ /* zoom effect for image */
+  --scaleA: 1;
+  --scaleB: 1.1;
+
+ /* image crop alignment */
+  --coverA: center center;
+  --coverB: bottom right;
+
+ /* major layer */
+  --layer0-image:    url(art/decoration-0.svg);
+  --layer0-fadeA:    0.1;
+  --layer0-fadeB:    0.3;
+
+ /* minor layers */
+  --layer1-image:    url(art/decoration-1.svg);
+  --layer1-fadeA:    0.2;
+  --layer1-fadeB:    0.3;
+  --layer2-image:    url(art/decoration-2.svg);
+  --layer2-fadeA:    0.1;
+  --layer2-fadeB:    0.05;
+}
+
+
+/** -------------------------------- Animation Keyframse */
+
+
+/** major layer timeline */
+
+    .banner-ninini.ennoia-theme {
+      --layer0-frameset: timeline-ennoia-ninini-img;
+    } @keyframes         timeline-ennoia-ninini-img {
+        0%   {  transform: scale(var(--scaleA));
+                opacity:   var(--layer0-fadeA);}
+        40%  {  transform: scale(var(--scaleB));
+                opacity:   var(--layer0-fadeB);}
+        100% {  transform: scale(var(--scaleA));
+                opacity:   var(--layer0-fadeA);}
+    }
+
+/** minor layers timeline */
+
+    .banner-ninini.ennoia-theme {
+      --layer1-frameset: timeline-ennoia-ninini-noize-1;
+    } @keyframes         timeline-ennoia-ninini-noize-1 {
+        0%   {  transform: scale(var(--scaleA));
+                opacity:   var(--layer1-fadeA);}
+        10%  {  transform: scale(var(--scaleA));}
+        44%  {  transform: scale(var(--scaleB));
+                opacity:   var(--layer1-fadeB);}
+        60%  {  opacity:   var(--layer1-fadeA);}
+        90%  {  transform: scale(var(--scaleA));}
+        100% {  opacity:   var(--layer1-fadeA);}
+    }
+    .banner-ninini.ennoia-theme {
+      --layer2-frameset: timeline-ennoia-ninini-noize-2;
+    } @keyframes         timeline-ennoia-ninini-noize-2 {
+        0%   {  transform: scale(var(--scaleA));
+                opacity:   var(--layer2-fadeA);}
+        36%  {  transform: scale(var(--scaleB));
+                opacity:   var(--layer2-fadeB);}
+        60%  {  opacity:   var(--layer2-fadeA);}
+        80%  {  transform: scale(var(--scaleA));
+                opacity:   var(--layer2-fadeB);}
+        100% {  opacity:   var(--layer2-fadeA);}
+    }
+
+
+/** -------------------------------- Major Layout */
+
+
+.banner-ninini {
+    position:         relative; z-index: 0;
+    overflow:         hidden;
+    width:            100%;
+    min-height:       var(--banner-min-height, 100vh);
+    background-color: var(--back-color, transparent);
+}
+
+
+/** -------------------------------- Animated Component */
+
+
+/** Layouts */
+
+.ban-ninini-animation .animation-wrap {
+    position: absolute; z-index: -1;
+    top:      0;
+    right:    0;
+    bottom:   0;
+    left:     0;
+}
+.ban-ninini-animation .animation-img {
+    display:          block;
+    min-height:       100%;
+    min-width:        100%;
+    object-fit:       cover;
+    object-position:  var(--coverA, center);
+}
+.ban-ninini-animation .animation-box {
+    position: absolute; z-index: 0;
+    top:      0;
+    right:    0;
+    bottom:   0;
+    left:     0;
+  --background-image:           var(--layer0-image);
+    background-image:           var(--background-image, none);
+    background-position:        var(--coverA);
+    background-size:            cover;
+    background-repeat:          no-repeat;
+}
+.ban-ninini-animation::before,
+.ban-ninini-animation::after {
+    content:  '';
+    position: absolute; z-index: 1;
+    top:      0;
+    right:    0;
+    bottom:   0;
+    left:     0;
+    background-image:           var(--background-image, none);
+    background-position:        var(--coverA);
+    background-size:            cover;
+    background-repeat:          no-repeat;
+    pointer-events: none;
+}
+
+/** Animation */
+
+.ban-ninini-animation::before,
+.ban-ninini-animation::after,
+.ban-ninini-animation .animation-wrap {
+    transition-property:        transform;
+    transition-duration:        var(--animation-fulltime);
+    transition-timing-function: var(--transform-function);
+    transform-origin:           var(--coverB);
+  --animation-name:             var(--layer0-frameset);
+    animation:
+        var(--animation-name)
+        var(--animation-fulltime)
+        infinite
+        var(--animation-function);
+}
+.ban-ninini-animation::before {
+  --background-image:           var(--layer1-image);
+  --animation-name:             var(--layer1-frameset);
+}
+.ban-ninini-animation::after {
+  --background-image:           var(--layer2-image);
+  --animation-name:             var(--layer2-frameset);
+}
+
+
+/** -------------------------------- Minor Components */
+
+
+/** On screen message text */
+
+.banner-ninini.ennoia-theme {
+  --message-font-size:   4vw;
+  --message-padding:     4vw;
+  --message-line-height: 1;
+  --message-text-color:  hsla(0,0%,0%,0.8);
+ /* flex align */
+  --message-align-content: flex-start;
+  --message-justify-content:   center;
+}
+.ban-ninini-message {
+    pointer-events: all;
+    position: absolute; z-index: 1;
+    top:      0;
+    right:    0;
+    bottom:   0;
+    left:     0;
+
+ /* position on screen */
+    display:          flex;
+    justify-content:  var(--message-justify-content);
+    align-content:    var(--message-align-content);
+    align-items:      var(--message-align-content);
+
+    font-size:   var(--message-font-size);
+    line-height: var(--message-line-height);
+    padding:     var(--message-padding);
+    color:       var(--message-text-color);
+ } .ban-ninini-message>a {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+/** EOF banner-ninini */

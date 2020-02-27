@@ -340,12 +340,12 @@
 <!-- ========================================= Goes Away Screen -->
 
 
-<article id="GoesAwayScreen" class="goes-away-screen demo-content">
+<article id="GoesAwayScreen" class="screen-goes-away demo-content">
 
 <!-- Component -->
 
 <style>
-.goes-away-screen {
+.screen-goes-away {
   --height:   100vh;
     position: relative; z-index: -1;
     width:    100%;
@@ -353,18 +353,18 @@
   --fade-opacity:        0;
   --fade-pointer-events: none;
 }
-.goes-away-screen.is-away {
+.screen-goes-away.is-away {
   --fade-opacity:        0.8;
   --fade-pointer-events: all;
 }
-.goes-away-screen>* {
+.screen-goes-away>* {
     position: fixed; z-index: -1;
     top:      0;
     left:     0;
     width:    100%;
     height:   100vh;
 }
-.goes-away-screen::after {
+.screen-goes-away::after {
     content:  '';
     pointer-events: var(--fade-pointer-events);
     position: absolute; z-index: -1;
@@ -379,7 +379,7 @@
     transition-duration:        360ms;
     transition-timing-function: cubic-bezier(0.6,0.04,0.98,0.335); /*ActionFocus*/
 }
-.goes-next-screen {
+.screen-goes-next {
     position: relative; z-index: 0;
   --box-shadow: 0 0.5rem 2rem rgba(0,0,0,1);
     box-shadow: var(--box-shadow);
@@ -391,10 +391,10 @@
 <!-- Template -->
 
 <!-- 
-    <article class="goes-away-screen">
+    <article class="screen-goes-away">
         <div>...</div>
     </article>
-    <article class="goes-next-screen">
+    <article class="screen-goes-next">
         ...
     </article>
  -->
@@ -402,11 +402,11 @@
 <!-- Demo Content -->
 
     <style>
-        .goes-away-screen.demo-content ~ * {
+        .screen-goes-away.demo-content ~ * {
             position: relative; z-index: 0;
             background-color: var(--back-color);
         }
-        .goes-away-screen.demo-content > .banner-ninini {
+        .screen-goes-away.demo-content > .banner-ninini {
             --back-color: hsl(212, 34%, 29%);
             --message-align-content: flex-end;
         }
@@ -415,12 +415,12 @@
     <article class="banner-ninini ennoia-theme demo-content colors--secondary">
         <figure class="ban-ninini-animation">
             <div class="animation-wrap"><div class="animation-box"></div></div>
-            <figcaption class="ban-ninini-message">.goes-away-screen</figcaption>
+            <figcaption class="ban-ninini-message">.screen-goes-away</figcaption>
         </figure>
     </article>
 
 </article>
-<article class="goes-next-screen">
+<article class="screen-goes-next">
     <div style="height: 50vh;"></div>
 </article>
 

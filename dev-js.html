@@ -126,6 +126,36 @@
 </head>
 <body class="colors--primary native-sans">
 
+    <!-- ----------------------------------------- Insect Observer -->
+
+    <article>
+        <style>
+
+        </style>
+        <section class="screen use-colors colors--secondary">
+            secondary
+        </section>
+        <section class="screen use-colors colors--ivory">
+            ivory-a
+        </section>
+        <section class="screen use-colors colors--ivory">
+            ivory-b
+        </section>
+        <script>
+            function insect(dna = {}) {
+                const obOptions = {}
+                const hasInsect = f=>false
+                const notInsect = f=>false
+                const Insectask = o => o.isIntersecting ? hasInsect(o) : notInsect(o)
+                const Delegator = entries => entries.forEach(Insectask)
+                const Entomolog = new IntersectionObserver(Delegator, settings)
+                const API = {
+                    state: false
+                }
+            }
+        </script>
+    </article>
+
     <!-- ----------------------------------------- SVG Under DIV -->
 
     <article class="journal-grid chapter">

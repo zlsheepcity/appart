@@ -146,6 +146,7 @@
             function insect00( dna = {} ) {
                 let polymerase = {
                     el:  q => document.querySelector(q) || false,
+                    els: q => [...document.querySelectorAll(q)],
                     add: f => ff=>{ rna.elTarget.classList.add(rna.marker) },
                     rem: f => ff=>{ rna.elTarget.classList.remove(rna.marker) }
                 }
@@ -159,29 +160,26 @@
                     elTarget:    polymerase.el(dna.target)
                     }, dna)
                 rna.Invalid = function() {
-                    if(!this.elTrigger)              return true
-                    if(!this.elTarget)               return true
-                    if(typeof(this.fy)!=='function') return true
-                    if(typeof(this.fn)!=='function') return true
-                    console.log('is valid')
+                    if(!'IntersectionObserver' in window) return true
+                    if(!this.elTrigger)                   return true
+                    if(!this.elTarget)                    return true
+                    if(typeof(this.fy)!=='function')      return true
+                    if(typeof(this.fn)!=='function')      return true
                     return false }
                 if (rna.Invalid()) return false
 
+
                 const hasInsect = e => {
                     if (API.state) return false
-                    console.log('hasInsect')
                     API.setState(true)
                     API.runFYes(e)
                     API.stopOnce()
                 }
                 const notInsect = e => {
                     if (API.itwas && !API.state) return false
-                    console.log('notInsect')
                     API.setState(false)
                     API.runFNot(e)
                 }
-                const setState  = x => { API.state=!!x; if (API.state) API.itwas=true; }
-                const stopOnce  = f => { if (rna.once && API.itwas) API.stop() }
                 const runInsect = f => Entomolog.observe(rna.elTrigger)
                 const offInsect = f => Entomolog.unobserve(rna.elTrigger)
                 const Delegator = entries => entries.forEach(Insectask)
@@ -189,6 +187,9 @@
                 const DeOptions = {rootMargin:rna.margin}
                 const Entomolog = new IntersectionObserver(Delegator, DeOptions)
 
+
+                const setState  = x => { API.state=!!x; if (API.state) API.itwas=true; }
+                const stopOnce  = f => { if (rna.once && API.itwas) API.stop() }
                 const API = {
                     data:   { dna:rna },
                     state:    false,
@@ -202,18 +203,14 @@
                     stop:     offInsect,
                     run:      runInsect
                 }
-                console.group('insect00')
-                console.log(polymerase)
-                console.log(rna)
-                console.log(API)
-                console.groupEnd()
                 API.run()
             }
             insect00({
                 trigger: '.insect2c',
                 target:  '#insect1',
-                margin:  '0% 0% 0% 0%',
-                once: false,
+                //margin:  '0% 0% 0% 0%',
+                //once: false,
+                //marker: 'on-screen'
                 //fy: f=>console.log('yes'),
                 //fn: f=>console.log('no'),
                 //elTrigger: document.querySelector('.insect2c'),

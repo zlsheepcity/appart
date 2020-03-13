@@ -3,11 +3,11 @@
  */
 
 .ennoia-html {
-  --icon-size: 10vw;
+  --icon-size: 5vw;
 }
 @media (max-width:64rem) {
 .ennoia-html {
-  --icon-size: 20vw;
+  --icon-size: 10vw;
 }
 }
 
@@ -16,7 +16,7 @@
 }
 .SideMenuBar .offsidebar-header {
     height: var(--icon-size);
-    width:  calc( var(--icon-size) * 2.5 );
+    width:  calc( var(--icon-size) * 5 );
     max-width: 100%;
 }
 
@@ -45,10 +45,13 @@
 
     background-color: var(--back-color);
     color:            var(--text-color);
+    padding-right:    var(--icon-size);
 }
 .ennoia-header .el-logo {
     margin-left:  0;
-    margin-right: auto;
+    margin-right: 0;
+    width:  var(--icon-size);
+    height: var(--icon-size);
 }
 .ennoia-header .i-logo {
     max-height:  var(--icon-size);
@@ -120,11 +123,11 @@
 }
 
 .ennoia-art.banner-ninini {
-    min-height: 50vh;
+    min-height: 40vw;
 }
 
 .ennoia-design {
-    min-height: 50vh;
+    min-height: 40vw;
     position: relative;
 
     display:         flex;
@@ -178,6 +181,8 @@
     justify-content: center;
     align-items:     flex-start;
     align-content:   flex-start;
+
+    display: none;
 }
 .screen-button .label {
     margin-top: 4rem;

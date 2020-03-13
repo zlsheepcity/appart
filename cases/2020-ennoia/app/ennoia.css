@@ -114,6 +114,43 @@
     ---border-left: 8rem solid var(--back-color);
 }
 
+.ennoia-art.banner-ninini {
+    min-height: 50vh;
+}
+
+.ennoia-design {
+    min-height: 50vh;
+
+    display:         flex;
+    flex-direction:  row;
+    flex-wrap:       wrap;
+    justify-content: center;
+    align-items:     center;
+    align-content:   center;
+
+  --back-color:         white;
+  --back-color-accent:  snow;
+  --back-color-descent: whitesmoke;
+
+  --text-color:         black;
+  --text-color-accent:  darkslategray;
+  --text-color-descent: lightslategray;
+
+  --link-color:         firebrick;
+  --link-color-accent:  darkred;
+  --link-color-descent: lightsteelblue;
+
+  --shadow-color: var(--shadow-color--for-light-base);
+  --light-shadow: var(--light-shadow--for-light-base);
+
+    background-color: var(--back-color);
+    color:            var(--text-color);
+
+}
+.das-bild {
+    padding: 1.5rem;
+}
+
 
 
 

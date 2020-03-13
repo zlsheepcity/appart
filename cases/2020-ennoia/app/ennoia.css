@@ -120,6 +120,7 @@
 
 .ennoia-design {
     min-height: 50vh;
+    position: relative;
 
     display:         flex;
     flex-direction:  row;
@@ -151,6 +152,34 @@
     padding: 1.5rem;
 }
 
+.screen-button {
+
+    position: absolute; z-index: 2;
+    top:      0;
+    right:    0;
+    bottom:   0;
+    left:     0;
+    pointer-events: none;
+
+    display:         flex;
+    flex-direction:  row;
+    flex-wrap:       wrap;
+    justify-content: center;
+    align-items:     center;
+    align-content:   center;
+}
+.screen-button .label {
+    pointer-events: all;
+}
+.screen-button .label-link {
+    padding: 0.25rem 1rem 0.5rem 1rem;
+    font-size: 2rem;
+    line-height:  1;
+    text-decoration: none;
+    color: white;
+    background-color: black;
+    letter-spacing: 2px;
+}
 
 
 

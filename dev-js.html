@@ -143,6 +143,33 @@
             ivory-b
         </section>
         <script>
+            function insect01( dna = {} ) {
+                const model = {
+                    margin:      '0% 0% 0% 0%', // observer margin
+                    marker:      'on-screen',   // classname when visible
+                    trigger:     '.insect',     // css query for elements to observe scroll
+                    target:      '',            // css query for elements to add/remove marker
+                    onVisible:   false,         // positive event function
+                    onInvisible: false,         // negative event function
+                    elTrigger:   false,         // node
+                    elTarget:    false,         // node
+                    elTriggers:  false,         // nodes array
+                    elTargets:   false,         // nodes array
+                    fy:          false,         // positive toggle class
+                    fn:          false,         // negative toggle class
+                    once:        false          // do once, else toggle each time
+                }
+                const polymerase = {
+                    fy: rna => rna.elTargets.map(el=>el.classList.add(rna.marker)),
+                    fn: rna => rna.elTargets.map(el=>el.classList.remove(rna.marker)),
+                    //elTrigger: dna.trigger
+                    elTriggers: [],
+                    elTargets:  [],
+                }
+                const rna = Object.assign( model, polymerase, dna )
+
+                return rna
+            }
             function insect00( dna = {} ) {
                 let polymerase = {
                     el:  q => document.querySelector(q) || false,
@@ -208,7 +235,7 @@
             insect00({
                 trigger: '.insect2c',
                 target:  '#insect1',
-                //margin:  '0% 0% 0% 0%',
+                margin:  '-50% 0% -25% 0%',
                 //once: false,
                 //marker: 'on-screen'
                 //fy: f=>console.log('yes'),
@@ -216,6 +243,7 @@
                 //elTrigger: document.querySelector('.insect2c'),
                 //elTarget:  document.querySelector('#insect1')
             })
+            console.log(insect01())
         </script>
     </article>
 

@@ -123,11 +123,11 @@
 }
 
 .ennoia-art.banner-ninini {
-    min-height: 40vw;
+    min-height: calc(9/16*100vw);
 }
 
 .ennoia-design {
-    min-height: 40vw;
+    min-height: calc(9/16*100vw);
     position: relative;
 
     display:         flex;

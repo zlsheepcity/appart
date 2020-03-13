@@ -1,3 +1,125 @@
+/** Ennoia Home Page
+    2020.3.13
+ */
+
+.ennoia-header {
+  --sp:      1.5rem;
+  --icon-size: 5rem;
+}
+@media (max-width:64rem) {
+    .ennoia-header {
+      --sp:        4vw;
+      --icon-size: calc(160/1000*92vw);
+    }
+}
+
+.ennoia-header {
+    display:         flex;
+    flex-direction:  row;
+    flex-wrap:       wrap;
+    justify-content: center;
+    align-items:     center;
+    align-content:   center;
+
+  --back-color:         var(--c--NobleBlack);
+  --back-color-accent:  var(--c--NobleNight);
+  --back-color-descent: var(--light-shadow);
+
+  --text-color:         var(--c--NobleWhite);
+  --text-color-accent:  var(--c--NobleAccent);
+  --text-color-descent: var(--c--NobleDay);
+
+  --link-color:         var(--c--NobleAccent);
+  --link-color-accent:  var(--c--NobleAction);
+  --link-color-descent: var(--c--NobleAction);
+
+  --shadow-color: var(--shadow-color--for-dark-base);
+  --light-shadow: var(--light-shadow--for-dark-base);
+
+    background-color: var(--back-color);
+    color:            var(--text-color);
+}
+.ennoia-header .el-logo {
+    padding:      var(--sp);
+    margin-left:  0;
+    margin-right: auto;
+}
+.ennoia-header .i-logo {
+    max-height:  var(--icon-size);
+}
+.ennoia-header .i-hamburger {
+    padding:          var(--sp);
+    background-color: var(--back-color);
+    position: fixed;
+    z-index:  3;
+    top:      0;
+    left:     0;
+  --scale: 1;
+  --size:   calc( var(--sp) + var(--icon-size) + var(--sp) );
+    width:  var(--size);
+    height: var(--size);
+}
+.ennoia-header .i-hamburger:hover {
+  --scale: 1.25;
+}
+.ennoia-header .i-hamburger::before {
+    content: '';
+    position: absolute;
+    z-index:  1;
+    top:      var(--sp);
+    left:     var(--sp);
+    width:    var(--icon-size);
+    height:   var(--icon-size);
+    background-size: contain;
+    background-position: 0 0;
+    background-repeat: no-repeat;
+ /* SVG: ennoia-e */
+    background-image: url('data:image/svg+xml;utf8,<svg fill="white" width="160" height="160" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg"><rect y="11.1" width="147.4" height="31.8"/><rect y="63.8" width="147.4" height="31.8"/><rect y="117.1" width="147.4" height="31.8"/></svg>');
+
+    transform-origin: center center;
+    transition: transform 120ms ease-in-out;
+    transform: scale(var(--scale));
+}
+
+.ennoia-header .header-menu {
+    margin-left:  auto;
+    margin-right: auto;
+}
+.header-menu {
+    display:         flex;
+    flex-direction:  row;
+    flex-wrap:       wrap;
+    justify-content: flex-start;
+    align-items:     center;
+    align-content:   center;
+}
+.header-menu .item {
+    display: block;
+    padding: var(--sp);
+  --text-decoration: none;
+    text-decoration: var(--text-decoration);
+
+ /* 20/32 */
+  --font-size:   var(--inc-font-size, 1.25em);
+  --line-height: calc(32/20);
+    font-size:   var(--font-size);
+    line-height: var(--line-height);
+}
+.header-menu .item:hover {
+  --text-decoration: underline;
+}
+
+.home-chapter {
+    height: 40vh;
+    ---border-left: 8rem solid var(--back-color);
+}
+
+
+
+
+
+/** Unsorted */
+
 .banner-ninini.ennoia-theme {
 
   --back-color: slategray;

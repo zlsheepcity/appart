@@ -92,6 +92,19 @@ mark, .mark, [mark] {
     @extend .back-color-accent !optional;
 }
 
+.devbox {
+    background-color: var(--back-color-descent);
+    color:            var(--text-color-descent);
+    min-height:  6rem;
+    font-size:   2rem;
+    line-height: 1;
+
+    display:         flex;
+    justify-content: center;
+    align-items:     center;
+    align-content:   center;
+}
+
 
 //* ------------------------------------- layout shortcuts
 

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="ennoia-html">
 <head>
 
     <meta charset="utf-8">
@@ -10,8 +10,8 @@
 
 
     <title>ennoia</title>
-    <meta name="description" content="">
-    <meta name="author"      content="zl">
+    <meta name="description" content="art & design">
+    <meta name="author"      content="ennoia, zl">
 
     <!-- ## MICRODATA -->
     <meta property="og:url"          content="https://zlsheepcity.github.io/appart/cases/2020-ennoia/layout.html">
@@ -60,18 +60,27 @@
 
     <!-- ===================================== CUSTOM -->
 
+    <script defer src="../../app/styles/components/offsidebar/interface-offsidebar.js"></script>
+    <script>
+        function ConstructSideMenu() {
+            let bar_api = InterfaceOffsideBar('SideMenuBar')
+        }
+        document.addEventListener('DOMContentLoaded', ConstructSideMenu)
+    </script>
+    
+
 
     <!-- =====================================  ʕ⊙ᴥ⊙ʔ -->
     <!-- ===================================== HEAD END -->
 </head>
-<body class="colors--primary native-sans">
+<body class="ennoia-body colors--primary native-sans">
 
 <!-- ========================================= CONTENT -->
 
 <header class="ennoia-header">
     <figure class="el-logo">
-        <img class="i-logo" src="art/ui/ennoia.svg" alt="ennoia.com">
-        <nav class="i-hamburger"></nav>
+        <img class="i-logo" src="art/ui/ennoia-logo.svg" alt="ennoia.com">
+        <nav class="i-hamburger js-for-SideMenuBar"></nav>
     </figure>
     <ul class="header-menu markup">
         <li><a class="item" href="#">art</a></li>
@@ -81,14 +90,22 @@
     </ul>
 </header>
 
-<article class="ennoia-art banner-ninini ennoia-theme">
-    <header hidden class="ban-ninini-header">
-        <div class="el-topmenu">
-            <a  class="topmenu-link" href="#Home">gallery</a>
-            <a  class="topmenu-link" href="#Home">products</a>
-            <a  class="topmenu-link" href="#Home">contacts</a>
-        </div>
-    </header>
+<section class="offsidebar from-westside SideMenuBar">
+    <div class="offsidebar-container">
+        <header class="offsidebar-header"></header>
+        <section class="offsidebar-content bar-content">
+            <ul class="sidebar-menu markup">
+                <li><a class="item" href="#">art</a></li>
+                <li><a class="item" href="#">design</a></li>
+                <li><a class="item" href="#">articles</a></li>
+                <li><a class="item" href="#">contacts</a></li>
+            </ul>
+        </section>
+    </div>
+</section>
+
+
+<article class="banner-ninini ennoia-theme ennoia-art">
     <figure class="ban-ninini-figure">
         <div class="el-ninini-intro">
             <img
@@ -96,11 +113,7 @@
                 alt="cover image"
                 class="el-ninini-img">
         </div>
-        <figcaption hidden class="el-ninini-message">
-            <a href="#Home">Как красиво!</a>
-        </figcaption>
     </figure>
-    <footer class="ban-ninini-footer"></footer>
     <div class="screen-button">
         <div class="label">
             <a class="label-link" href="#">art</a>
@@ -110,7 +123,7 @@
 
 <article class="ennoia-design">
     <figure class="das-bild">
-        <img src="art/welcome/ennoia-fractal.svg" alt="ennoia design">
+        <img class="el-img" src="art/welcome/ennoia-fractal.svg" alt="ennoia design">
     </figure>
     <div class="screen-button">
         <div class="label">

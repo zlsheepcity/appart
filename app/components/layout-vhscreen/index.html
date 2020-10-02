@@ -59,137 +59,59 @@
 <script>
 
     ///*///  Begin
-
     function GoodEventLauncher (DNA) {
 
     //  Description
+    //  Event listener combined with animation frame
+    //  2020.10.2
 
-        const {event}   = DNA // REQUIRED The name of the event
-        const {f}       = DNA // REQUIRED Function to launch
-        const {once}    = DNA // boolean option to remove listener
-        const {details} = DNA // function details ({e,window}) { //event fired }
+        const {event}   = DNA // Event name
+        const {on}      = DNA // Event target
+        const {f}       = DNA // Function to launch
+        const {prepare} = DNA // Function to launch out of frame
+        const {capture} = DNA // Event API option
+        const {once}    = DNA // Event API option
+        const {passive} = DNA // Event API option
+        const listen = { capture, once, passive }
 
     //  Web API 2020
 
-      //window.addEventListener
-      //window.removeEventListener
-        window.requestAnimationFrame =
-        window.requestAnimationFrame ||
-        window.webkitRequestAnimationFrame ||
-        window.mozRequestAnimationFrame ;
+        const RAF =
+            window.requestAnimationFrame       ||
+            window.webkitRequestAnimationFrame ||
+            window.mozRequestAnimationFrame    ||
+            f=>f();
 
-    //  Workflow
+    //  Workflow description
 
-        let   Worker = undefined
-        let   Vacant = true
-        const Assign = o => window.addEventListener( o.event, o.to )
-        const Action = e => NewJob( !!details && details({e,window}) )
-        const NewJob = o => {
-            !!Vacant && window.requestAnimationFrame(Launch)
-              Vacant = false
-        }
-        const Launch = o => {
-              !!once && window.removeEventListener(event, Action)
-              !!f && f()    // mission
-              Vacant = true // complete
-        }
+        const Worker = (!!on && on.addEventListener && on) || window
+        const GetJob = o => Worker.addEventListener( o.event, o.to, listen )
+        const StopIt = o => Worker.removeEventListener( o.event, o.to, listen )
 
-    //  DEV
+        let   Vacant = true // debouncing pattern
+        const Launch = o => { !!f      && f()         ; Vacant = true  }
+        const DoWork = o => { !!Vacant && RAF(Launch) ; Vacant = false }
+        const Action = e => DoWork( !!prepare && prepare(e) )
 
-        const ListenTo = o => window.addEventListener( o.event, o.f )
-        const Reaction = e => {
-            // save state
-            // request tick
-        }
-        const DoAction = o => {
-             !activity && RAF(exe)
-              activity = true
-        }
-        const DoAction = o => {
-            !!havetime && RAF(exe)
-              havetime = false
-        }
-        const InAction = false
+    //  API
 
+        let RNA = this
+        RNA.Polymerase = dna => Object.assign(RNA, dna)
+        RNA.start  = o => GetJob({ event, to:Action })
+        RNA.stop   = o => StopIt({ event, to:Action })
 
-        const Assign = o => window.addEventListener( o.event, o.to )
-        const Action = e => {
-            // save state
-            // request tick
-        }
+    //  Run
 
-        task
-        state
-        initiator
-        attack
-        action
-        start
-        ready
-        MainTask
-        frame
-        WeWant({ event, fires:Action })
-        Assign({ event, to:action })
-        Action
-        Assign
-        Create
-        Launch
-        NewJob
-        Protein
-        Missle
-        WhetMe
-        
-        let   Vacant = true
-        const Create
-            !!friendly
-        friendly
-        vacant
-        
-        listener({ event, f:DoAction })
-        Launcher
-        whenfired
-        Activity
-        InAction
-        havetime
-            inFreeState
-            readyToRun
-            available*
-        let isInAction
-        let permission = true
-        const Executed = o => {
-            !!f && f() // mission complete
-            //if (!once)
-        }
-              
-      //const 
+        RNA.Polymerase(DNA)
+        RNA.start()
 
+    //  Usage example
+    //  f = some action
+    //  GoodEventLauncher({ f, event:'resize' })
+    //  GoodEventLauncher({ f, event:'click', on:element, once:true })
 
-        // Debouncer pattern
-        function LordReframe (f) {
-            this.callback = f
-            this.callstop = false
-        }
-        LordReframe.prototype = {
-
-        }
-
-    //  Action
-
-        // wrap f to reaction
-        
-        
-        Reaction = ... REQ
-        ListenTo({event,f:Reaction})
-
-        
     }
-
-    /* Usage example
-
-    f = action
-    ReframeExecution({event:'resize',f})
-
-///*///
-
+    ///*/// End
 
 
 </script>

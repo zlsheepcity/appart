@@ -58,27 +58,43 @@
 
 <script>
 
-    ///*/// Lord Reframe
+    ///*///  Begin
 
-    function ReframeExecution (dna) {
-        const {event,f,once} = dna
+    function GoodEventLauncher (DNA) {
+
+    //  Description
+
+        const {event}   = DNA // REQUIRED The name of the event
+        const {f}       = DNA // REQUIRED Function to launch
+        const {once}    = DNA // boolean option to remove listener
+        const {details} = DNA // function details ({e,window}) { //event fired }
 
     //  Web API 2020
 
       //window.addEventListener
+      //window.removeEventListener
         window.requestAnimationFrame =
         window.requestAnimationFrame ||
         window.webkitRequestAnimationFrame ||
         window.mozRequestAnimationFrame ;
 
-        const EVL =
-              window.addEventListener
-        const RAF =
-              window.requestAnimationFrame ||
-              window.webkitRequestAnimationFrame ||
-              window.mozRequestAnimationFrame ;
+    //  Workflow
 
-    //  Actors
+        let   Worker = undefined
+        let   Vacant = true
+        const Assign = o => window.addEventListener( o.event, o.to )
+        const Action = e => NewJob( !!details && details({e,window}) )
+        const NewJob = o => {
+            !!Vacant && window.requestAnimationFrame(Launch)
+              Vacant = false
+        }
+        const Launch = o => {
+              !!once && window.removeEventListener(event, Action)
+              !!f && f()    // mission
+              Vacant = true // complete
+        }
+
+    //  DEV
 
         const ListenTo = o => window.addEventListener( o.event, o.f )
         const Reaction = e => {
@@ -94,6 +110,43 @@
               havetime = false
         }
         const InAction = false
+
+
+        const Assign = o => window.addEventListener( o.event, o.to )
+        const Action = e => {
+            // save state
+            // request tick
+        }
+
+        task
+        state
+        initiator
+        attack
+        action
+        start
+        ready
+        MainTask
+        frame
+        WeWant({ event, fires:Action })
+        Assign({ event, to:action })
+        Action
+        Assign
+        Create
+        Launch
+        NewJob
+        Protein
+        Missle
+        WhetMe
+        
+        let   Vacant = true
+        const Create
+            !!friendly
+        friendly
+        vacant
+        
+        listener({ event, f:DoAction })
+        Launcher
+        whenfired
         Activity
         InAction
         havetime

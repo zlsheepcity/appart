@@ -4,9 +4,9 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- app quickseed 2020.2.22 ninini -->
+    <!-- app quickseed 2020.10.2 voyage -->
 
-    <!-- ===================================== HEAD CONTENT -->
+    <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ HEAD CONTENT -->
 
 
     <title>VH Screen</title>
@@ -14,49 +14,81 @@
     <meta name="author"      content="zl">
 
 
-    <!-- ===================================== BOOT SERVICE -->
+    <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ BOOT SERVICE -->
 
 
-    <!-- ༼°▽°༽ style boot -->
+    <!-- style boot zl 2020 -->
     <style>
-        html       { margin:0; padding:0  0.25rem; }
-        body       { margin:0; padding:0; width:100%; height:auto; }
-        img,svg,hr { margin:0; border: 0; display:block; max-width:100%; }
-        body       { overflow-y: scroll; }
+
+        /* box model */
+        html { margin:0; padding:0;     height:100%; }
+        body { margin:0; padding:0; min-height:100%; }
+        *,*:before,*:after { box-sizing: border-box; }
+
+        /* media markup */
+        img, svg, canvas, picture, figure, figcaption {
+            display:   block;
+            max-width: 100%;
+            margin:    0;
+            padding:   0;
+            border:    0; }
+
+        /* design & UX */
+        html { cursor:default; scroll-behavior:smooth; }
+        body { overflow-y:scroll; }
+        input, button, label, select, textarea, summary,
+        a, [tabindex] { touch-action:manipulation; }
+
+        @media screen and (prefers-reduced-motion:reduce) {
+            /* do less animations */ }
+
     </style>
 
 
-    <!-- ===================================== GOOGLE FONTS -->
+    <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ GOOGLE FONTS -->
 
 
-    <!-- ༼°▽°༽ prefetch boot -->
     <link rel="preconnect"   href="//fonts.gstatic.com" crossorigin>
+    <noscript>
+        <link
+            media="all"
+            href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic"
+            rel="stylesheet">
+    </noscript>
 
-    <link
-        media="all"
-        href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic"
-        rel="stylesheet">
+        <link
+            media="none" onload="if(media!='all')media='all'"
+            href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic"
+            rel="stylesheet">
+
     <style>
         body {
           --font-family: Vollkorn, Georgia, serif;
             font-family: var(--font-family);
         }
+
+        /* Font rendering 2019 */
+        html { -ms-text-size-adjust:     100%;
+               -webkit-text-size-adjust: 100%; }
+        body {  text-rendering: optimizeLegibility;
+               -webkit-font-smoothing: antialiased; }
+
     </style>
 
 
-    <!-- ===================================== DESIGN -->
+    <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ DESIGN -->
 
-    <!-- ===================================== CUSTOM -->
+    <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ CUSTOM -->
 
-    <!-- =====================================  ʕ⊙ᴥ⊙ʔ -->
-    <!-- ===================================== HEAD END -->
+    <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ʕ⊙ᴥ⊙ʔ -->
+    <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ HEAD END -->
 
 </head>
 <body>
 
-<!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ COMPONENT -->
+<!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Event Launcher -->
 
-<script>
+<script class="jsEventLauncher">
     function GoodEventLauncher (DNA) {
 
     //  Description
@@ -70,7 +102,7 @@
         const {capture} = DNA // Event API option
         const {once}    = DNA // Event API option
         const {passive} = DNA // Event API option
-        const listen = { capture, once, passive }
+        const options = { capture, once, passive }
 
     //  Web API 2020
 
@@ -79,53 +111,56 @@
                  || window.mozRequestAnimationFrame
                  || function (o) {o()} ;
 
-    //  Workflow description
+    //  Workflow
 
         const Worker = (!!on && on.addEventListener && on) || window
-        const GetJob = o => Worker.addEventListener( o.event, o.to, listen )
-        const StopIt = o => Worker.removeEventListener( o.event, o.to, listen )
+        const Listen = o => Worker.addEventListener( event, Notice, options )
+        const StopIt = o => Worker.removeEventListener( event, Notice, options )
+        const Notice = e => DoWork( !!prepare && prepare(e) )
 
         let   Vacant = true // debouncing pattern
-        const Launch = o => { !!f      && f()         ; Vacant = true  }
         const DoWork = o => { !!Vacant && RAF(Launch) ; Vacant = false }
-        const Action = e => DoWork( !!prepare && prepare(e) )
+        const Launch = o => { !!f      && f()         ; Vacant = true  }
 
     //  API
 
-        const RNA = {}
-        RNA.Polymerase = dna => Object.assign(RNA, dna)
-        RNA.start  = o => GetJob({ event, to:Action })
-        RNA.stop   = o => StopIt({ event, to:Action })
+        let API = {
+            play: Listen,
+            stop: StopIt,
+        }
 
     //  Run
 
-        RNA.Polymerase(DNA)
-        RNA.start()
-        return RNA
+        API.play()
+        return API
 
     }
 </script>
 
-<!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ EXAMPLE -->
+<!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ TEST EXAMPLE -->
 
-<blockquote>
+<section hidden>
 
-    <button class="stop">Stop it</button>
-    <script >let butOf = document.querySelector('.stop')</script>
+    <blockquote>
 
-    <button class="start">Restart (only once)</button>
-    <script >let butOn = document.querySelector('.start')</script>
+        <button class="stop">Stop it</button>
+        <script >let butOf = document.querySelector('.stop')</script>
 
-</blockquote>
+        <button class="start">Restart (only once)</button>
+        <script >let butOn = document.querySelector('.start')</script>
 
-<script>
+    </blockquote>
 
-    let f = o => console.log('Launch f')
-    let Tester = GoodEventLauncher({ event:'resize', f })
-    GoodEventLauncher({ event:'click', on:butOf, f:Tester.stop  })
-    GoodEventLauncher({ event:'click', on:butOn, f:Tester.start, once:true })
+    <script>
 
-</script>
+        let f = o => console.log('Launch f')
+        let Tester = GoodEventLauncher({ event:'resize', f })
+        GoodEventLauncher({ event:'click', on:butOf, f:Tester.stop  })
+        GoodEventLauncher({ event:'click', on:butOn, f:Tester.play, once:true })
+
+    </script>
+
+</section>
 
 <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ BODY END -->
 

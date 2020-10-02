@@ -52,13 +52,11 @@
     <!-- ===================================== HEAD END -->
 
 </head>
-<body class="colors--primary">
+<body>
 
-<!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Reframe -->
+<!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ COMPONENT -->
 
 <script>
-
-    ///*///  Begin
     function GoodEventLauncher (DNA) {
 
     //  Description
@@ -76,11 +74,10 @@
 
     //  Web API 2020
 
-        const RAF =
-            window.requestAnimationFrame       ||
-            window.webkitRequestAnimationFrame ||
-            window.mozRequestAnimationFrame    ||
-            f=>f();
+        const RAF = window.requestAnimationFrame
+                 || window.webkitRequestAnimationFrame
+                 || window.mozRequestAnimationFrame
+                 || function (o) {o()} ;
 
     //  Workflow description
 
@@ -95,7 +92,7 @@
 
     //  API
 
-        let RNA = this
+        const RNA = {}
         RNA.Polymerase = dna => Object.assign(RNA, dna)
         RNA.start  = o => GetJob({ event, to:Action })
         RNA.stop   = o => StopIt({ event, to:Action })
@@ -104,26 +101,33 @@
 
         RNA.Polymerase(DNA)
         RNA.start()
-
-    //  Usage example
-    //  f = some action
-    //  GoodEventLauncher({ f, event:'resize' })
-    //  GoodEventLauncher({ f, event:'click', on:element, once:true })
+        return RNA
 
     }
-    ///*/// End
+</script>
 
+<!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ EXAMPLE -->
+
+<blockquote>
+
+    <button class="stop">Stop it</button>
+    <script >let butOf = document.querySelector('.stop')</script>
+
+    <button class="start">Restart (only once)</button>
+    <script >let butOn = document.querySelector('.start')</script>
+
+</blockquote>
+
+<script>
+
+    let f = o => console.log('Launch f')
+    let Tester = GoodEventLauncher({ event:'resize', f })
+    GoodEventLauncher({ event:'click', on:butOf, f:Tester.stop  })
+    GoodEventLauncher({ event:'click', on:butOn, f:Tester.start, once:true })
 
 </script>
 
-
-<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ CONTENT -->
-<!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ CONTENT -->
-
-
-
-
-<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ BODY END -->
+<!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ BODY END -->
 
 </body>
 </html>

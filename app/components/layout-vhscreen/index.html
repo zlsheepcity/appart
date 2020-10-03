@@ -32,11 +32,23 @@
             padding:   0;
             border:    0; }
 
+        /* prototype markup */
+        :root{ --sy:0.75rem; --sx:1rem; }
+        .box { padding: var(--sy) var(--sx); }
+         h1,h2,h3,h4,h5,h6, p, blockquote {
+            margin: 0;
+            padding-bottom: 0.75rem; }
+        .ul, .ol, dl {
+            margin:  0;
+            padding: 0;
+            list-style-position: outside; }
+        
+
         /* design & UX */
         html { cursor:default; scroll-behavior:smooth; }
         body { overflow-y:scroll; }
         input, button, label, select, textarea, summary,
-        a, [tabindex] { touch-action:manipulation; }
+        [tabindex], a { touch-action:manipulation; }
 
         @media screen and (prefers-reduced-motion:reduce) {
             /* do less animations */ }
@@ -65,6 +77,8 @@
         body {
           --font-family: Vollkorn, Georgia, serif;
             font-family: var(--font-family);
+          --line-height: 1.5;
+            line-height: var(--line-height);
         }
 
         /* Font rendering 2019 */
@@ -135,7 +149,8 @@
 </script>
 
 
-<!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ VHS -->
+<!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ^^VHS -->
+
 
 <style>
     .vhs {
@@ -143,7 +158,39 @@
     }
 </style>
 
-<!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Test Screens -->
+<style name="vhs-demo">
+
+    .box {
+        padding:         2.25em;
+        display:           flex;
+        flex-direction:  column;
+        justify-content: center;
+        align-items:     center;
+        align-content:   center;
+    }
+
+    hr {
+        display:  block;
+        width:     100%;
+        min-height: 3em;
+        border:       0;
+        margin:  0 auto;
+        background: hsla( 222 44% 44% / 0.125 );
+    }
+    hr.hr120 { height: 120vh; }
+    hr.hr100 { height: 100vh; }
+    hr.hr60  { height:  60vh; }
+    hr.hr40  { height:  40vh; }
+
+    .dm-ht { padding: 2.25em 0; }
+    .dm-ht>section {
+        max-width:  32em;
+        margin:   0 auto;
+        padding: 0.75em 2em;
+    }
+</style>
+
+<!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ^^Test Screens -->
 
 <style>
     section.vhs { background-color: var(--bgc,transparent); }
@@ -154,6 +201,57 @@
     section.vhs:nth-of-type(5) { --bgc: hsl( 15, 75%, 30%); }
     section.vhs:nth-of-type(6) { --bgc: hsl( 34, 20%, 33%); }
 </style>
+
+<section class="vhs dm dm-1">
+    <header  class="box">Unwrapped section</header>
+    <section class="box">Content</section>
+    <footer  class="box">Extra content <hr class="hr40"></footer>
+</section>
+
+<section class="vhs dm dm-2">
+    <div class="vhs-screen">
+        <header class="box">Screen banner <hr class="hr40"></header>
+    </div>
+</section>
+
+<section class="vhs dm dm-ht">
+    <section>
+
+        <p>
+            Если честно, я думаю, что открыл будущую звезду. Он сказал, что его зовут Guntars Kļūdiņš и ему 15 лет.
+
+        <p>
+            Без дальнейших тренировок этот игрок будет иметь навык Пас на уровне слабо. Тренируйте его правильно, и он вполне сможет увеличить навык Нападение до недостаточно, даже оглянуться не успеете! 
+
+        <p>
+            Такие игроки, как он, полезны на поле, он очень быстрый. Все что ему осталось - научиться играть.
+
+        <p>
+            Edgars Aigars
+
+    </section>
+    <section><hr></section>
+    <section>
+
+        <p>
+            Стоит отметить, что Guntars Kļūdiņš очень спокоен и миролюбив.
+
+        <p>
+            У Guntars Kļūdiņš конечно есть другие неплохие качества, но иногда мне хочется чтобы он был более эмоционален на поле.
+
+    </section>
+    <section>
+        <ul>
+            <li>Вратарь	неизвестно
+            <li>Защита	плохо(3)
+            <li>Полузащита	сносно(6)
+            <li>Фланг	слабо(4)
+            <li>Пас	хорошо(7)
+            <li>Нападение	недостаточно(5)
+            <li>Стандарты	неизвестно
+       </ul>
+    </section>
+</section>
 
 <section class="vhs">
     <div class="vvv">

@@ -17,8 +17,7 @@
     <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ BOOT SERVICE -->
 
 
-    <!-- style boot zl 2020 -->
-    <style>
+    <style name="style boot zl 2020">
 
         /* box model */
         html { margin:0; padding:0;     height:100%; }
@@ -61,7 +60,8 @@
             href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic"
             rel="stylesheet">
 
-    <style>
+    <style name="apply fonts">
+
         body {
           --font-family: Vollkorn, Georgia, serif;
             font-family: var(--font-family);
@@ -76,10 +76,6 @@
     </style>
 
 
-    <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ DESIGN -->
-
-    <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ CUSTOM -->
-
     <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ʕ⊙ᴥ⊙ʔ -->
     <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ HEAD END -->
 
@@ -88,7 +84,8 @@
 
 <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Event Launcher -->
 
-<script class="jsEventLauncher">
+
+<script name="forEventLauncher">
     function GoodEventLauncher (DNA) {
 
     //  Description
@@ -137,29 +134,160 @@
     }
 </script>
 
-<!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ TEST EXAMPLE -->
 
-<section hidden>
+<!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ VHS -->
 
-    <blockquote>
+<style>
+    .vhs {
+        position: relative;
+    }
+</style>
 
-        <button class="stop">Stop it</button>
-        <script >let butOf = document.querySelector('.stop')</script>
+<!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Test Screens -->
 
-        <button class="start">Restart (only once)</button>
-        <script >let butOn = document.querySelector('.start')</script>
+<style>
+    section.vhs { background-color: var(--bgc,transparent); }
+    section.vhs:nth-of-type(1) { --bgc: hsl(204, 22%, 55%); }
+    section.vhs:nth-of-type(2) { --bgc: hsl( 13, 61%, 54%); }
+    section.vhs:nth-of-type(3) { --bgc: hsl( 53, 38%, 41%); }
+    section.vhs:nth-of-type(4) { --bgc: hsl( 41, 66%, 48%); }
+    section.vhs:nth-of-type(5) { --bgc: hsl( 15, 75%, 30%); }
+    section.vhs:nth-of-type(6) { --bgc: hsl( 34, 20%, 33%); }
+</style>
 
-    </blockquote>
+<section class="vhs">
+    <div class="vvv">
+        Welcome screen
+        <div style="height:50vh; width:50vw; margin:0 auto; background-color: rgba(0,0,0,0.25)"></div>
+    </div>
+</section>
 
-    <script>
+<section class="vhs">
+    <div class="vvv">
+        Post welcome
+    </div>
+</section>
 
-        let f = o => console.log('Launch f')
-        let Tester = GoodEventLauncher({ event:'resize', f })
-        GoodEventLauncher({ event:'click', on:butOf, f:Tester.stop  })
-        GoodEventLauncher({ event:'click', on:butOn, f:Tester.play, once:true })
+<article>
+    <div class="vvv">
+        No VHS here
+    </div>
+</article>
 
-    </script>
+<section class="vhs">
+    <div class="vvv">
+        Fill height
+    </div>
+</section>
 
+<section class="vhs">
+    <div class="vvv">
+        Fill height with overflow
+        <div style="height:150vh"></div>
+    </div>
+</section>
+
+<section class="vhs">
+    <div class="vvv">
+        Short One
+    </div>
+</section>
+
+<section class="vhs">
+    <div class="vvv">
+        Short One
+    </div>
+</section>
+
+<!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Test Screens 1 --
+
+<style>
+    .vhs {
+        
+    }
+    .vhs-screen-box {
+        position: relative;
+        height: 90vh;
+        overflow:   hidden;
+    }
+    .vhs-picture {
+
+    }
+    .vhs-picture picture {
+        --overflow:   hidden;
+        position:   absolute;
+        z-index:   -1;
+        top:        0;
+        right:      0;
+        bottom:     0;
+        left:       0;
+    }
+    .vhs-picture img {
+        height: 100%;
+        width:  100%;
+        object-fit: cover;
+        object-position: 50% 50%;
+        transform: scale(1.0)
+    }
+</style>
+<style>
+    section > :first-child { margin-top:0 }
+    section > :last-child  { margin-bottom:0 }
+
+    .--First  { background-color: hsl( 13, 61%, 54%); }
+    .Second { background-color: hsl(212, 34%, 29%); }
+    .Third  { background-color: hsl(202, 29%, 54%); }
+
+    .Second { min-height: 100vh; }
+    .First2 { opacity: 0.75; }
+    .First {
+        position: sticky;
+        top: 0;
+        z-index: -1;
+    }
+</style>
+
+<section class="First">
+    <article class="vhs-screen-box">
+        <div class="vhs-picture">
+            <picture>
+                <img src="sheepground-x.jpg" alt="">
+            </picture>
+        </div>
+        <div class="box-title">First</div>
+    </article>
+</section>
+
+
+
+<section class="Second">
+    <h3 class="box-title">Second</h3>
+</section>
+
+<section class="Third">
+    <h3 class="box-title">Third</h3>
+</section>
+
+<section class="First">
+    <article class="vhs-screen-box">
+        <div class="vhs-picture">
+            <picture>
+                <img src="sheepground-xs.jpg" alt="">
+            </picture>
+        </div>
+        <div class="box-title">First</div>
+    </article>
+</section>
+
+<section class="First2">
+    <article class="vhs-screen-box">
+        <div class="vhs-picture">
+            <picture>
+                <img src="sheepground-b.jpg" alt="">
+            </picture>
+        </div>
+        <h3 class="box-title">Last</h3>
+    </article>
 </section>
 
 <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ BODY END -->

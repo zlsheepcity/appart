@@ -32,17 +32,15 @@
             padding:   0;
             border:    0; }
 
-        /* prototype markup */
-        :root{ --sy:0.75rem; --sx:1rem; }
-        .box { padding: var(--sy) var(--sx); }
-         h1,h2,h3,h4,h5,h6, p, blockquote {
+        /* prototype harmony */
+        body { line-height: 1.5; }
+        h1,h2,h3,h4,h5,h6, p, blockquote {
             margin: 0;
             padding-bottom: 0.75rem; }
-        .ul, .ol, dl {
+        ul, ol, dl {
             margin:  0;
             padding: 0;
             list-style-position: outside; }
-        
 
         /* design & UX */
         html { cursor:default; scroll-behavior:smooth; }
@@ -160,27 +158,48 @@
 
 <style name="vhs-demo">
 
-    .box {
-        padding:         2.25em;
+    /* block placeholder */
+
+    hr {
+        display:  block;
+        width:     100%;
+        min-height: 6em;
+        border:       0;
+        margin:  0 auto;
+    }
+    hr {
+        background-image: repeating-linear-gradient(
+            135deg,
+            var(--c1),
+            var(--c1) 0.75em,
+            var(--c2) 0.75em,
+            var(--c2) 1.50em);
+      --c1: hsla( 222 44% 44% / 0.125 );
+      --c2: hsla( 222 44% 44% / 0.0125 );
+    }
+    hr.h200 { height: 200vh }
+    hr.h110 { height: 110vh }
+    hr.h100 { height: 100vh }
+    hr.h90  { height:  90vh }
+    hr.h60  { height:  60vh }
+    hr.h50  { height:  50vh }
+    hr.h40  { height:  40vh }
+    hr.h25  { height:  25vh }
+
+    /*.*/
+
+    .box, .xbox {
+        padding:   2.25rem 3rem;
         display:           flex;
         flex-direction:  column;
         justify-content: center;
         align-items:     center;
         align-content:   center;
     }
-
-    hr {
-        display:  block;
-        width:     100%;
-        min-height: 3em;
-        border:       0;
-        margin:  0 auto;
-        background: hsla( 222 44% 44% / 0.125 );
+    .xbox {
+        background-color: hsla( 333 33% 33% / 0.125 );
+        font-size: 2em;
     }
-    hr.hr120 { height: 120vh; }
-    hr.hr100 { height: 100vh; }
-    hr.hr60  { height:  60vh; }
-    hr.hr40  { height:  40vh; }
 
     .dm-ht { padding: 2.25em 0; }
     .dm-ht>section {
@@ -202,15 +221,20 @@
     section.vhs:nth-of-type(6) { --bgc: hsl( 34, 20%, 33%); }
 </style>
 
+
+<section class="vhs dm-welcome">
+    <header class="box">Welcome <hr></header>
+</section>
+
 <section class="vhs dm dm-1">
-    <header  class="box">Unwrapped section</header>
-    <section class="box">Content</section>
-    <footer  class="box">Extra content <hr class="hr40"></footer>
+    <header  class="xbox">Unwrapped section</header>
+    <section class="box">Content <hr></section>
+    <footer  class="box">Extra content <hr class="h110"></footer>
 </section>
 
 <section class="vhs dm dm-2">
     <div class="vhs-screen">
-        <header class="box">Screen banner <hr class="hr40"></header>
+        <header class="xbox">Screen banner <hr></header>
     </div>
 </section>
 
@@ -221,7 +245,7 @@
             Если честно, я думаю, что открыл будущую звезду. Он сказал, что его зовут Guntars Kļūdiņš и ему 15 лет.
 
         <p>
-            Без дальнейших тренировок этот игрок будет иметь навык Пас на уровне слабо. Тренируйте его правильно, и он вполне сможет увеличить навык Нападение до недостаточно, даже оглянуться не успеете! 
+            Без дальнейших тренировок этот игрок будет иметь навык Пас на уровне слабо. Тренируйте его правильно, и он вполне сможет увеличить навык Нападение до недостаточно, даже оглянуться не успеете!
 
         <p>
             Такие игроки, как он, полезны на поле, он очень быстрый. Все что ему осталось - научиться играть.

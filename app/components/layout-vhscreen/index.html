@@ -155,7 +155,7 @@
         let vh = window.innerHeight * 0.01
         let px =`${vh}px`
         document.documentElement.style.setProperty('--vh', px)
-        };toVH();
+        };toVH();//GoodEventLauncher({ event:'resize', f:toVH })
 </script>
 
 <style name="vhs-component">
@@ -174,16 +174,19 @@
     .vhs-welcome {
       --height:     calc( var(--vh,1vh) * 100 );
         min-height: var(--height);
+        max-height: 100vh;
         position:   sticky;
         z-index:    0;
         top:        0;
     }
     .vhs-head {
+        max-height: 100vh;
         position:   sticky;
         z-index:    0;
         top:        0;
     }
     .vhs-butt {
+        max-height: 100vh;
         position:   sticky;
         z-index:   -1;
         bottom:     0;
@@ -297,7 +300,7 @@
         </picture>
     </div>
     <div class="xbox bg">.vhs-welcome</div>
-    <div class="box">Oveflow <hr class="h60"></div>
+    <div class="box">Oveflow <hr class="h25"></div>
 </section>
 
 <section class="vhs">

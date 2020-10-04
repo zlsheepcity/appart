@@ -150,14 +150,12 @@
 
 <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ^^VHS -->
 
-<script name="vhs-init">
+<script name="vhs-initial-value">
     const toVH = f => {
         let vh = window.innerHeight * 0.01
         let px =`${vh}px`
-        document.documentElement.style.setProperty('--vh',px)
-    }
-    toVH()
-    GoodEventLauncher({ event:'resize', f:toVH })
+        document.documentElement.style.setProperty('--vh', px)
+        };toVH();
 </script>
 
 <style name="vhs-component">
@@ -165,7 +163,7 @@
     .vhs-head,
     .vhs-butt,
     .vhs {
-      --height: calc( var(--vh,1vh) * 100 );
+      --height:      100vh;
         position: relative;
     }
     .screen.vhs-head,
@@ -174,11 +172,11 @@
         height: var(--height);
     }
     .vhs-welcome {
-        height: var(--height);
+      --height:     calc( var(--vh,1vh) * 100 );
+        min-height: var(--height);
         position:   sticky;
         z-index:    0;
         top:        0;
-      --transition: height 100ms linear;
     }
     .vhs-head {
         position:   sticky;
@@ -299,6 +297,7 @@
         </picture>
     </div>
     <div class="xbox bg">.vhs-welcome</div>
+    <div class="box">Oveflow <hr class="h60"></div>
 </section>
 
 <section class="vhs">

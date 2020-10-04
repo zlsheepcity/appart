@@ -155,7 +155,8 @@
         let vh = window.innerHeight * 0.01
         let px =`${vh}px`
         document.documentElement.style.setProperty('--vh',px)
-        } toVH();
+    }
+    toVH()
     GoodEventLauncher({ event:'resize', f:toVH })
 </script>
 
@@ -177,6 +178,7 @@
         position:   sticky;
         z-index:    0;
         top:        0;
+      --transition: height 100ms linear;
     }
     .vhs-head {
         position:   sticky;

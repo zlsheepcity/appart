@@ -131,6 +131,7 @@
         const DoWork = o => { !!Vacant && RAF(Launch) ; Vacant = false }
         const Launch = o => { !!f      && f()         ; Vacant = true  }
 
+
     //  API
 
         let API = {
@@ -149,18 +150,33 @@
 
 <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ^^VHS -->
 
+<script name="vhs-init">
+    const toVH = f => {
+        let vh = window.innerHeight * 0.01
+        let px =`${vh}px`
+        document.documentElement.style.setProperty('--vh',px)
+        } toVH();
+    GoodEventLauncher({ event:'resize', f:toVH })
+</script>
 
-<style>
+<style name="vhs-component">
+    .vhs-welcome,
     .vhs-head,
     .vhs-butt,
     .vhs {
-      --height:      100vh;
+      --height: calc( var(--vh,1vh) * 100 );
         position: relative;
     }
     .screen.vhs-head,
     .screen.vhs-butt,
     .screen.vhs {
         height: var(--height);
+    }
+    .vhs-welcome {
+        height: var(--height);
+        position:   sticky;
+        z-index:    0;
+        top:        0;
     }
     .vhs-head {
         position:   sticky;
@@ -237,9 +253,9 @@
         align-content:   center;
     }
     .xbox {
-        background-color: hsla( 333 33% 33% / 0.125 );
         font-size: 2em;
     }
+    .bg { background-color: hsla( 333 33% 33% / 0.125 ); }
 
     /*.*/
 
@@ -260,9 +276,7 @@
         margin:   0 auto;
         padding: 0.75em 2em;
     }
-</style>
 
-<style>
     section.vhs { background-color: var(--bgc,transparent); }
     section.vhs:nth-of-type(1) { --bgc: hsl(204, 22%, 55%); }
     section.vhs:nth-of-type(2) { --bgc: hsl( 13, 61%, 54%); }
@@ -274,6 +288,24 @@
 
 <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ^^Test Screens -->
 
+<section class="vhs-screen-slider">
+
+<section class="vhs-welcome">
+    <div class="vhs-picture">
+        <picture>
+            <img src="sheepground-a.jpg" alt="">
+        </picture>
+    </div>
+    <div class="xbox bg">.vhs-welcome</div>
+</section>
+
+<section class="vhs">
+    <div class="box"><hr class="h40"></div>
+    <div class="box"><hr class="h40"></div>
+    <div class="box"><hr class="h40"></div>
+</section>
+
+</section>
 
 <section class="vhs-screen-slider">
 
@@ -283,7 +315,7 @@
             <img src="sheepground-a.jpg" alt="">
         </picture>
     </div>
-    <header class="box">Welcome <hr></header>
+    <header class="xbox">Welcome <hr></header>
 </section>
 
 <section class="vhs dm dm-1">
@@ -398,96 +430,24 @@
     </div>
 </section>
 
-<!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Test Screens 1 --
 
-<style>
-    .vhs {
-        
-    }
-    .vhs-screen-box {
-        position: relative;
-        height: 90vh;
-        overflow:   hidden;
-    }
-    .vhs-picture {
+<!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Footer -->
 
-    }
-    .vhs-picture picture {
-        --overflow:   hidden;
-        position:   absolute;
-        z-index:   -1;
-        top:        0;
-        right:      0;
-        bottom:     0;
-        left:       0;
-    }
-    .vhs-picture img {
-        height: 100%;
-        width:  100%;
-        object-fit: cover;
-        object-position: 50% 50%;
-        transform: scale(1.0)
-    }
-</style>
-<style>
-    section > :first-child { margin-top:0 }
-    section > :last-child  { margin-bottom:0 }
+<footer class="vhs-screen-slider">
 
-    .--First  { background-color: hsl( 13, 61%, 54%); }
-    .Second { background-color: hsl(212, 34%, 29%); }
-    .Third  { background-color: hsl(202, 29%, 54%); }
-
-    .Second { min-height: 100vh; }
-    .First2 { opacity: 0.75; }
-    .First {
-        position: sticky;
-        top: 0;
-        z-index: -1;
-    }
-</style>
-
-<section class="First">
-    <article class="vhs-screen-box">
-        <div class="vhs-picture">
-            <picture>
-                <img src="sheepground-x.jpg" alt="">
-            </picture>
-        </div>
-        <div class="box-title">First</div>
-    </article>
+<section class="vhs">
+    <header class="xbox">Footer <hr class="h60"></header>
+    <section class="box">The end.</section>
 </section>
 
+<hr class="h60"
+    style="background:linear-gradient(hsl(204, 22%, 55%), transparent)">
 
-
-<section class="Second">
-    <h3 class="box-title">Second</h3>
+<section class="vhs-butt">
+    <img src="sheepground-f.jpg" style="width:100%" alt="">
 </section>
 
-<section class="Third">
-    <h3 class="box-title">Third</h3>
-</section>
-
-<section class="First">
-    <article class="vhs-screen-box">
-        <div class="vhs-picture">
-            <picture>
-                <img src="sheepground-xs.jpg" alt="">
-            </picture>
-        </div>
-        <div class="box-title">First</div>
-    </article>
-</section>
-
-<section class="First2">
-    <article class="vhs-screen-box">
-        <div class="vhs-picture">
-            <picture>
-                <img src="sheepground-b.jpg" alt="">
-            </picture>
-        </div>
-        <h3 class="box-title">Last</h3>
-    </article>
-</section>
+</footer>
 
 <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ BODY END -->
 

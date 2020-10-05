@@ -94,7 +94,7 @@
 </head>
 <body>
 
-<!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Event Launcher -->
+<!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ^^Event Launcher -->
 
 
 <script name="forEventLauncher">
@@ -150,28 +150,41 @@
 
 <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ^^VHS -->
 
-<script name="vhs-initial-value">
+<script name="js-vhs-init">
     const toVH = f => {
         let vh = window.innerHeight * 0.01
         let px =`${vh}px`
-        document.documentElement.style.setProperty('--vh', px)
+        let name = '--vh-initial'
+        document.documentElement.style.setProperty(name, px)
         };toVH();//GoodEventLauncher({ event:'resize', f:toVH })
 </script>
+<style name="css-vhs-components">
+/* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ screens */
+    /** 2020.10.5 */
 
-<style name="vhs-component">
-    .vhs-welcome,
+    .vhs-screens-wrap {}
+
+    /** vhs - default name for each section in wrap */
+
+    .vhs-cover,
     .vhs-head,
     .vhs-butt,
     .vhs {
       --height:      100vh;
         position: relative;
     }
+    .screen.vhs-cover,
     .screen.vhs-head,
     .screen.vhs-butt,
     .screen.vhs {
         height: var(--height);
     }
-    .vhs-welcome {
+
+    /** vhs-cover - precize screen size
+        unique on page
+        unvisible screen overflow
+        fixed, goes deep */
+    .vhs-cover {
       --height:     calc( var(--vh,1vh) * 100 );
         min-height: var(--height);
         max-height: 100vh;
@@ -179,6 +192,11 @@
         z-index:    0;
         top:        0;
     }
+
+    /** vhs-head, vhs-butt - decoration or title sliders
+        unique in wrap, not used together in wrap
+        unvisible screen overflow
+        fixed, goes deep */
     .vhs-head {
         max-height: 100vh;
         position:   sticky;
@@ -191,6 +209,11 @@
         z-index:   -1;
         bottom:     0;
     }
+
+/* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ elements */
+
+    /** vhs-picture - element with object-fit
+        <picutre> is used for transform, etc. */
     .vhs-picture {
         position:   absolute;
         z-index:   -1;
@@ -210,7 +233,8 @@
         object-position: 50% 50%;
         transform: scale(1.0)
     }
-    .vhs-screen-slider {}
+
+/* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ end */
 </style>
 
 <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ SYSTEM -->
@@ -291,9 +315,9 @@
 
 <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ^^Test Screens -->
 
-<section class="vhs-screen-slider">
+<section class="vhs-screens-wrap">
 
-<section class="vhs-welcome">
+<section class="vhs-cover">
     <div class="vhs-picture">
         <picture>
             <img src="sheepground-a.jpg" alt="">
@@ -311,15 +335,15 @@
 
 </section>
 
-<section class="vhs-screen-slider">
+<section class="vhs-screens-wrap">
 
 <section class="vhs-head screen dm-welcome">
     <div class="vhs-picture">
         <picture>
-            <img src="sheepground-a.jpg" alt="">
+            <img src="sheepground-b.jpg" alt="">
         </picture>
     </div>
-    <header class="xbox">Welcome <hr></header>
+    <header class="xbox">Chapter Header <hr></header>
 </section>
 
 <section class="vhs dm dm-1">
@@ -374,7 +398,7 @@
 </section>
 
 </section>
-<section class="vhs-screen-slider">
+<section class="vhs-screens-wrap">
 
 <section class="vhs">
     <hr class="h110">
@@ -437,7 +461,7 @@
 
 <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Footer -->
 
-<footer class="vhs-screen-slider">
+<footer class="vhs-screens-wrap">
 
 <section class="vhs">
     <header class="xbox">Footer <hr class="h60"></header>

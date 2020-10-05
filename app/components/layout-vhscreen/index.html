@@ -94,8 +94,7 @@
 </head>
 <body>
 
-<!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ^^Event Launcher -->
-
+<!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Event Launcher -->
 
 <script name="forEventLauncher">
     function GoodEventLauncher (DNA) {
@@ -147,7 +146,6 @@
     }
 </script>
 
-
 <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ^^VHS -->
 
 <script name="js-vhs-init">
@@ -163,26 +161,28 @@
     /** 2020.10.5 */
 
     .vhs-screens-wrap {}
+    .vhs-screens-wrap>* { position: relative; }
 
     /** vhs - default name for each section in wrap */
 
     .vhs-cover,
     .vhs-head,
     .vhs-butt,
+    .vhs-hole,
     .vhs {
       --height:      100vh;
-        position: relative;
     }
     .screen.vhs-cover,
     .screen.vhs-head,
     .screen.vhs-butt,
+    .screen.vhs-hole,
     .screen.vhs {
         height: var(--height);
     }
 
     /** vhs-cover - precize screen size
         unique on page
-        unvisible screen overflow
+        cut overflow
         fixed, goes deep */
     .vhs-cover {
       --height:     calc( var(--vh,1vh) * 100 );
@@ -195,7 +195,7 @@
 
     /** vhs-head, vhs-butt - decoration or title sliders
         unique in wrap, not used together in wrap
-        unvisible screen overflow
+        cut overflow
         fixed, goes deep */
     .vhs-head {
         max-height: 100vh;
@@ -208,6 +208,18 @@
         position:   sticky;
         z-index:   -1;
         bottom:     0;
+    }
+
+    /** vhs-hole - fixed background image
+        fixed, goes deep */
+    .vhs-hole {
+      --image: none;
+      --color: inherit;
+        background-image: var(--image);
+        background-color: var(--color);
+        background-size:        cover;
+        background-attachment:  fixed;
+        background-position:  50% 50%;
     }
 
 /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ elements */
@@ -288,7 +300,7 @@
 
 </style>
 
-<!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ^^DEMO -->
+<!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ^^DEMO CSS -->
 
 <style name="vhs-demo">
 
@@ -315,6 +327,8 @@
 
 <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ^^Test Screens -->
 
+<!-- vhs-cover -->
+
 <section class="vhs-screens-wrap">
 
 <section class="vhs-cover">
@@ -335,6 +349,8 @@
 
 </section>
 
+<!-- vhs-head -->
+
 <section class="vhs-screens-wrap">
 
 <section class="vhs-head screen dm-welcome">
@@ -343,7 +359,7 @@
             <img src="sheepground-b.jpg" alt="">
         </picture>
     </div>
-    <header class="xbox">Chapter Header <hr></header>
+    <header class="xbox cs">.vhs-head<hr></header>
 </section>
 
 <section class="vhs dm dm-1">
@@ -353,10 +369,23 @@
 </section>
 
 <section class="vhs dm dm-2">
-    <div class="vhs-screen">
-        <header class="xbox">Screen banner <hr></header>
+    <div class="">
+        <header class="xbox">Wrapped section <hr></header>
     </div>
 </section>
+
+<section class="vhs-hole" style="--image:url(sheepground-c.jpg);">
+    <header class="xbox cs">.vhs-hole</header>
+    <section class="box"><hr class="h40"></section>
+    <section class="box"><hr class="h40"></section>
+    <section class="box"><hr class="h40"></section>
+</section>
+
+<article>
+    <div class="xbox">
+        No VHS here
+    </div>
+</article>
 
 <section class="vhs dm dm-ht">
     <section>
@@ -398,6 +427,9 @@
 </section>
 
 </section>
+
+<!-- vhs-butt -->
+
 <section class="vhs-screens-wrap">
 
 <section class="vhs">
@@ -427,36 +459,8 @@
     </div>
 </section>
 
-<article>
-    <div class="vvv">
-        No VHS here
-    </div>
-</article>
 
-<section class="vhs">
-    <div class="vvv">
-        Fill height
-    </div>
-</section>
 
-<section class="vhs">
-    <div class="vvv">
-        Fill height with overflow
-        <div style="height:150vh"></div>
-    </div>
-</section>
-
-<section class="vhs">
-    <div class="vvv">
-        Short One
-    </div>
-</section>
-
-<section class="vhs">
-    <div class="vvv">
-        Short One
-    </div>
-</section>
 
 
 <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Footer -->

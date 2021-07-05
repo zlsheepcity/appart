@@ -112,9 +112,7 @@
 }
 
 
-
-
-/** - - - - - - - - - - - - - - - - - - Markup */
+/** - - - - - - - - - - - - - - - - - - Browser */
 
 
 /** Minimal box model */
@@ -145,7 +143,7 @@
     }
 
 
-/** Clear design for semantic markup */
+/** - - - - - - - - - - - - - - - - - - Semantic markup */
 
     figure, figcaption, fieldset, legend {
         display: block;
@@ -281,7 +279,7 @@ body {
     }
 
 
-/** appart default font settings */
+/** - - - - - - - - - - - - - - - - - - appart default font settings */
     :root {
       --font-family:             var(--font-family--tufte-serif);
       --font-family-secondary:   var(--font-family--tufte-sans);
@@ -311,7 +309,7 @@ body {
         font-feature-settings: 'subs' on;
     }
 
-/** Native font stack 2018 */
+/** - - - - - - - - - - - - - - - - - - Native font stack 2018 */
 :root {
   --font-family--native-sans:
        -apple-system,        /* Safari for macOS and iOS (San Francisco) */
@@ -329,7 +327,7 @@ body {
        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; /* Emoji */
 }
 
-/** Tufte 2018
+/** - - - - - - - - - - - - - - - - - - Tufte 2018
  *  book-style design
  *  @import url('https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic');
  */
@@ -353,53 +351,7 @@ body {
 }
 
 
-/** Paragraph component */
-
-/*
-    Readable text block has width limit,
-    approx ~ 42em in most typefaces, choise of design.
-
-    Minimal readable width for small paragraphs,
-    approx ~ 12em.
-
-    Additional mid-value for cards/descriptions.
-    approx ~ 24em, wide range.
-
-    Values tested in the 2020 by zl
- */
-    :root {
-      --paragraph-width--max: 42em;
-      --paragraph-width--opt: 32em;
-      --paragraph-width--mid: 24em;
-      --paragraph-width--min: 12em;
-    }
-    @media all and (max-width:12em) { :root { --paragraph-width--min: 100%; } }
-
-    .paragraph {
-      --max-width: var(--paragraph-width--opt);
-      --min-width: var(--paragraph-width--min);
-        max-width: var(--max-width);
-        min-width: var(--min-width);
-    }
-    .maxi-paragraph {
-      --max-width: var(--paragraph-width--max);
-      --min-width: var(--paragraph-width--min);
-        max-width: var(--max-width);
-        min-width: var(--min-width);
-    }
-    .midi-paragraph {
-      --max-width: var(--paragraph-width--mid);
-      --min-width: var(--paragraph-width--min);
-        max-width: var(--max-width);
-        min-width: var(--min-width);
-    }
-    .mini-paragraph {
-      --max-width: var(--paragraph-width--min);
-        max-width: var(--max-width);
-    }
-
-
-/** Font-size system LH 1.5 */
+/** - - - - - - - - - - - - - - - - - - Font-size system LH 1.5 */
 
     :root {
      /* 64/80 */
@@ -460,7 +412,28 @@ body {
     }
 }
 
-/** Font-size */
+/** - - - - - - - - - - - - - - - - - - Font-size */
+
+/**
+h1 {
+    font-size:   var(--h1-font-size);
+    line-height: var(--h1-line-height);}
+h2 {
+    font-size:   var(--h2-font-size);
+    line-height: var(--h2-line-height);}
+h3 {
+    font-size:   var(--h3-font-size);
+    line-height: var(--h3-line-height);}
+h4 {
+    font-size:   var(--h4-font-size);
+    line-height: var(--h4-line-height);}
+h5 {
+    font-size:   var(--h5-font-size);
+    line-height: var(--h5-line-height);}
+h6 {
+    font-size:   var(--h6-font-size);
+    line-height: var(--h6-line-height);}
+*/
 
 .h1 {
     font-size:   var(--h1-font-size);
@@ -475,11 +448,11 @@ body {
     font-size:   var(--h4-font-size);
     line-height: var(--h4-line-height);}
 .h5 {
-    font-size:   var(--inc-font-size);
-    line-height: var(--inc-line-height);}
+    font-size:   var(--h5-font-size);
+    line-height: var(--h5-line-height);}
 .h6 {
-    font-size:   var(--p-font-size);
-    line-height: var(--p-line-height);}
+    font-size:   var(--h6-font-size);
+    line-height: var(--h6-line-height);}
 
 .text-inline-bigger {
  /* 20/24 */

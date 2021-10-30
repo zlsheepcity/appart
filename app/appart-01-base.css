@@ -1,0 +1,241 @@
+/** appart base
+ *  presets and basic setup
+ *  2021.9.7
+ *  zl
+ */
+
+/* - - - - - - - - - - - - - - - - - - Spacing Units */
+
+
+:root {
+  --line-height:   1.5;
+  --row-space:     1.5rem;                              /* Vertical */
+  --col-space:     1.5rem;                              /* Horizontal */
+  --mid-space:     2.5rem;                              /* Bigger 1 */
+  --big-space:       4rem;                              /* Bigger 2 */
+  --all-space:     var(--row-space) var(--col-space);   /* Combo Shortcode */
+}
+
+/** - - - - - - - - - - - - - - - - - - Browser */
+
+
+/** Minimal box model */
+    *, *:before, *:after { box-sizing: border-box; }
+    html                 { height: 100%; }
+    html, body           { margin: 0; padding: 0; }
+
+/** Full-height 2019
+    https://css-tricks.com/some-things-you-oughta-know-when-working-with-viewport-units/
+*/  body {
+        min-height:  100vh;
+        min-height: -webkit-fill-available;
+        min-height: -moz-available;
+        min-height:  available;
+        min-height: -webkit-stretch;
+        min-height: -moz-stretch;
+        min-height:  stretch;
+    }
+
+/** Scroll behavoir */
+    html { scroll-behavior: smooth; cursor: default; }
+    body { overflow-y: scroll; }
+
+/** Tap on clickable element */
+    a, area, button, input, label, select, summary, textarea, [tabindex] {
+       -ms-touch-action: manipulation;
+           touch-action: manipulation;
+    }
+
+
+/** - - - - - - - - - - - - - - - - - - Easing Functions */
+
+
+:root {
+  --timing-function--focusZoom: cubic-bezier(0.165,  0.84,  0.44,  1);
+  --timing-function--openJump:  cubic-bezier(0.175,  0.885, 0.320, 1.275);
+  --timing-function--closeJump: cubic-bezier(0.600, -0.280, 0.735, 0.045);
+  --timing-function--Welcome:   cubic-bezier(0.6,    0.04,  0.98,  0.335);
+}
+
+
+/** - - - - - - - - - - - - - - - - - - Animations Presets */
+
+
+@keyframes SimplePulse {
+    from { transform: scale3d(1, 1, 1); }
+    50%  { transform: scale3d(1.05, 1.05, 1.05); }
+    to   { transform: scale3d(1, 1, 1); }
+}
+
+.animation--pulse {
+    animation-name: SimplePulse;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+
+@keyframes SimpleRotation {
+    from {transform: rotate(0deg);}
+    to   {transform: rotate(359deg);}
+}
+
+.animation--rotate {
+    animation-name: SimpleRotation;
+    animation-duration: 1s;
+}
+
+@keyframes DanceLikeHappy {
+      0% { transform: rotate( 13deg) scale(2); }
+     25% { transform: rotate(  0deg);          }
+     50% { transform: rotate(-13deg) scale(2); }
+     75% { transform: rotate(  0deg);          }
+    100% { transform: rotate( 13deg) scale(2); }
+}
+
+.animation--dance-like-happy {
+    animation-name:            SimpleDancer;
+    animation-duration:        800ms;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    transform:        rotate(0);
+    transform-origin: bottom center;
+}
+
+@keyframes ShakeLikeRefuse {
+    10%, 90%      { transform: translate3d(-1px, 0, 0); }
+    20%, 80%      { transform: translate3d( 2px, 0, 0); }
+    30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+    40%, 60%      { transform: translate3d( 4px, 0, 0); }
+}
+
+.animation--shake-like-refuse:hover {
+    animation-name:            ShakeLikeRefuse;
+    animation-duration:        0.82s;
+    animation-timing-function: cubic-bezier(.36,.07,.19,.97);
+    animation-fill-mode:       both;
+    transform:           translate3d(0, 0, 0);
+    perspective:         1000px;
+    backface-visibility: hidden;
+}
+
+
+/** - - - - - - - - - - - - - - - - - - Animation CSS Snippets
+
+    animation-name:            my-animation;
+    animation-duration:        1s;
+    animation-iteration-count: 1;
+    animation-iteration-count: infinite;
+    animation-timing-function: cubic-bezier(0.4,0,0.2,1);
+    animation-fill-mode:       forwards;
+    animation-direction:       normal;
+    animation-delay:           2s;
+    animation-play-state:      initial;
+
+*/
+
+@media screen and (prefers-reduced-motion: reduce) {
+    /* do less animations */
+}
+@media screen and (prefers-reduced-motion: no-preference) {
+    /* do animations */
+}
+
+
+/** - - - - - - - - - - - - - - - - - - Semantic Markup Reset */
+
+
+    figure, figcaption, fieldset, legend {
+        display: block;
+        margin:  0;
+        padding: 0;
+        border:  0;
+        white-space: normal;
+    }
+
+    main, article, section, aside, header, footer, nav {
+        display: block;
+    }
+
+    pre, code {
+        display: block;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        margin:  0;
+        padding: 0;
+        font-family: inherit;
+        font-size:   inherit;
+        line-height: inherit;
+        font-weight: inherit;
+    }
+
+    p, blockquote {
+        margin:  0;
+        padding: 0;
+        font:    inherit;
+    }
+
+    button {
+        padding:    0.25em 1.5em;
+        border:     0;
+        font:       inherit;
+      --background-color: var(--back-color-accent, transparent);
+        background-color: var(--background-color);
+      --color:            var(--text-color, inherit);
+        color:            var(--color);
+    }
+
+    a { color: inherit; }
+
+    ul, ol {
+        padding:  0;
+        margin:   0;
+        margin-left: var(--col-space, 1.5em);
+    }
+
+    nav ul, nav ol {
+        margin-left: 0;
+    }
+
+    td, th {
+        text-align:     left;
+        vertical-align: top;
+        padding-top:    0.25em;
+        padding-bottom: 0.25em;
+    }
+
+    hr {
+        background: transparent;
+        box-shadow: none;
+        border:  0;
+        margin:  0;
+
+     /* use as empty space */
+        display:    block;
+        font-size:  inherit;
+        height:     var(--mid-space, 2.5rem);
+    }
+
+
+/** Images and Media */
+
+    img, svg, canvas,
+    figure, figcaption,
+    iframe, embed, object {
+        display:   block;
+        max-width: 100%;
+        margin:    0;
+        padding:   0;
+        border:    0;
+    }
+
+
+
+
+/** - - - - - - - - - - - - - - - - - - Typography */
+
+
+/** - - - - - - - - - - - - - - - - - - Markup workers */
+
+
+
+/*  EOF appart base */

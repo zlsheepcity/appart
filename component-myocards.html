@@ -1,0 +1,428 @@
+<!doctype html>
+<html la-root-re-vars lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- ===================================== HEAD CONTENT -->
+
+
+    <title>Myocards Component</title>
+    <meta name="description" content="Frontend code templates" />
+    <meta name="author"      content="zl 2019, zl.sheepcity@gmail.com" />
+
+
+    <!-- FAVICON -->
+    <!-- 2019.1, best favicon service: https://realfavicongenerator.net/ -->
+    <meta name="theme-color" content="#314863">
+    <meta name="msapplication-TileColor" content="#314863">
+    <meta name="msapplication-TileImage" content="app/favicons/144x144.png">
+    <link href="app/favicons/180x180.png" sizes="180x180" rel="apple-touch-icon">
+    <link href="app/favicons/192x192.png" sizes="192x192" rel="icon" type="image/png">
+
+
+    <!-- ===================================== BOOT -->
+
+
+    <!-- ༼°▽°༽ style boot -->
+    <style>
+        html,body { margin: 0; padding: 0; }
+        body      { width: 100%; height: auto; overflow-y: scroll; }
+        img,svg   { max-width: 100%; }
+    </style>
+
+    <!-- ༼°▽°༽ prefetch boot -->
+    <link rel="preconnect"   href="//fonts.gstatic.com">
+    <link rel="preload"      href="app/fonts/Vollkorn-R.woff2"  as="font">
+    <link rel="preload"      href="art/bergamot-just-browse-here.svg" as="image">
+    <!-- INFO: https://3perf.com/blog/link-rels/ -->
+
+    <!-- ༼°▽°༽ app boot -->
+    <script>
+        function AppBoot() {
+
+         // The Noble Blastula
+            let app = this
+            app.has = { memory: [], arrived:true }
+            app.has.queens = [ 'onload', 'mutate' ]
+            /*
+            King has arrived --- let app = new AppBoot()
+            Take the Queen ----- app.attach('queen_name')(function)
+            Keep in memory ----- app.queen_name(function_parameters)
+            Execute later ------ app.onload(function)
+            2019.9.15
+            */
+
+         // The Noble Provocator
+            const proteinProvoker = function ImitateCriticalTasks () {
+              let tpp = new this.__proto__.constructor()
+              let must_have_a_memory = tpp.has.memory.push('something')
+              let must_accept_queens = like_this_one => true
+              tpp.attach('queen_id')(must_accept_queens)
+              tpp.queen_id('try this')
+            }
+
+         // Define responsibility
+            const TakeTheQueen = (queen) =>
+                {
+                    app[queen] =  ExecuteLater(queen)
+                    return (f) => ExecuteLater('update')({name:queen,f})
+                }
+            const KeepInMemory = (dna) => app.has.memory.push(dna)
+            const ExecuteLater =
+                 (responsible) =>
+                         (dna) => KeepInMemory({dna,for:responsible})
+
+         // Apply responsibility
+            app.attach = TakeTheQueen
+            app.has.queens.map( queen => app.attach(queen) )
+            app.ForceErrorsIfShouldBe =  proteinProvoker
+        }
+
+     // Run Immediately
+        let app = new AppBoot()
+        app.ForceErrorsIfShouldBe()
+    </script>
+
+
+    <!-- ===================================== DESIGN -->
+
+
+    <link
+        href="app/styles/appart-dev.css?v2019.12.18"
+        media="none" onload="if(media!='all')media='all'"
+        rel="stylesheet" type="text/css">
+
+    <noscript>
+        <link
+            href="app/styles/appart-dev.css?v2019.12.18"
+            rel="stylesheet" type="text/css">
+    </noscript>
+
+
+
+    <!-- ===================================== APP -->
+
+
+    <script defer src="app/script/app-core.js"></script>
+
+    <!-- optimization -->
+    <script defer src="app/script/components/image-lazy-loader.js"></script>
+
+    <!-- interface -->
+    <script defer src="app/styles/components/offsidebar/interface-offsidebar.js"></script>
+    <script defer src="app/styles/components/contact-form/controller.js"></script>
+    <script defer src="app/script/components/image-zzzoom.js"></script>
+
+    <!-- dev functions -->
+    <script defer src="app/script/components/survival-test.js"></script>
+    <script defer src="app/script/components/autofill-paragraphs.js"></script>
+
+
+    <!-- ===================================== APP CUSTOM -->
+
+
+    <style>
+        .nav-title {
+            background-color:  gold;
+            color:            black;
+            padding-top:    0.75rem;
+            padding-bottom: 0.75rem;
+            padding-right:     3rem;
+          --h1-font-size:    1.5rem;
+          --h1-line-height:       1;
+          --grid-column--default: var(--grid-column--wrap-text-east);
+        }
+    </style>
+
+
+    <!-- ===================================== ʕ⊙ᴥ⊙ʔ = -->
+    <!-- ===================================== END HEAD -->
+</head>
+<body class="colors--primary">
+
+<!-- ========================================= Myocards -->
+
+<article>
+    <header class="nav-title grid-king" id="Myocards">
+        <h2 class="h1">Myocards</h2>
+    </header>
+
+    <article class="chapter">
+
+        <header class="grid-king">
+            <h2>Myocards</h2>
+            <p>
+              Resize browser to change layout
+            </p>
+            <p>
+              <a href="https://github.com/zlsheepcity/appart/blob/master/app/styles/components/myocard/myocard.scss">myocard.css</a>
+            </p>
+        </header>
+
+        <!-- -------------------------------- Avatars -->
+
+        <style>
+            .el-avatar-icon {
+              --width: 14rem;
+                width: var(--width);
+            }
+            .el-avatar-big {
+              --width: 24rem;
+                width: var(--width);
+            }
+        </style>
+
+
+        <section class="myocard">
+            <section>
+                <div>
+                    <img src="art/bergamot-just-browse-here.svg"
+                         class="el-avatar-big" alt="">
+               </div>
+           </section>
+            <section>
+                <div>
+                    <p class="auto text-block-bigger"></p>
+               </div>
+           </section>
+        </section>
+
+        <section class="myocard is-banner back-color-accent">
+            <section>
+                <div>
+                    <p class="auto text-block-bigger"></p>
+               </div>
+           </section>
+            <section>
+                <div>
+                    <img src="art/bergamot-just-browse-here.svg"
+                         class="el-avatar-icon" alt="">
+               </div>
+           </section>
+        </section>
+
+        <!-- -------------------------------- Align-top -->
+
+        <header class="grid-king chapter">
+            <h2>align-top</h2>
+        </header>
+
+        <section class="myocard align-top">
+            <section>
+                <div>
+                    <section class="rows">
+                    <h4>First Part</h4>
+                    <p class="auto"></p>
+                    </section>
+               </div>
+           </section>
+            <section>
+                <div>
+                    <section class="rows">
+                    <h4>Second Part</h4>
+                    <p class="auto"></p>
+                    <p class="auto"></p>
+                    <p class="auto"></p>
+                    </section>
+               </div>
+           </section>
+        </section>
+
+
+
+
+
+        <!-- -------------------------------- Inside Grid -->
+
+        <article class="chapter use-colors colors--ivory">
+        <section class="grid-queen is-without-root">
+
+            <h2>Inside Grid</h2>
+
+            <section class="grid-column--wrap subgrid-content">
+
+                <section class="myocard is-banner back-color-accent">
+                    <section>
+                        <div>
+                            <img src="art/bergamot-just-browse-here.svg"
+                                 class="el-avatar-icon" alt="">
+                       </div>
+                   </section>
+                    <section>
+                        <div>
+                            <p class="auto text-block-bigger"></p>
+                       </div>
+                   </section>
+                </section>
+
+                <section class="myocard is-banner wrap-order-reverse back-color-accent">
+                    <section>
+                        <div>
+                            <p class="auto text-block-bigger"></p>
+                       </div>
+                   </section>
+                    <section>
+                        <div>
+                            <img src="art/illustrations/austria.svg"
+                                 class="el-avatar-icon" alt="">
+                       </div>
+                   </section>
+                </section>
+
+            </section>
+            <section class="grid-column--wrap">
+                <section class="myocard align-top">
+                    <section>
+                        <div>
+                            <section class="rows">
+                            <h4>First Part</h4>
+                            <p class="auto"></p>
+                            </section>
+                       </div>
+                   </section>
+                    <section>
+                        <div>
+                            <section class="rows">
+                            <h4>Second Part</h4>
+                            <p class="auto"></p>
+                            <p class="auto"></p>
+                            <p class="auto"></p>
+                            </section>
+                       </div>
+                   </section>
+                </section>
+            </section>
+        </section>
+        </article>
+
+        <!-- -------------------------------- Cases -->
+
+        <section class="myocard">
+            <section>
+                <div>
+                    <h2>Universal Wrap</h2>
+               </div>
+           </section>
+            <section>
+                <div>
+                    <section class="rows">
+                    <p class="auto"></p>
+                    <big><mark>Learn More</mark></big>
+                    </section>
+               </div>
+           </section>
+        </section>
+
+        <section class="myocard">
+            <section>
+                <div>
+                    <h2>Long Multicontent Title inside Wrap</h2>
+               </div>
+           </section>
+            <section>
+                <div>
+                    <p class="auto"></p>
+               </div>
+           </section>
+        </section>
+
+        <div class="chapter back-color-accent">
+            <section class="myocard">
+
+                <section class="myocard is-banner">
+                    <header>
+                        <div>
+                            Meet our team at G2E Asia<br>
+                            3-4 December 2019<br>
+                            Marriot Manila, Philippines<br>
+                        </div>
+                    </header>
+                    <figure>
+                        <img src="art/illustrations/austria.svg"
+                             class="el-avatar-icon" alt="Logo">
+                    </figure>
+                </section>
+
+                <footer>
+                    <div>
+                        <button class="swed-button">
+                            <span>Book a meeting</span>
+                        </button>
+                    </div>
+                </footer>
+
+            </section>
+        </div>
+
+        <section class="el-myocardist chapter">
+
+            <style>
+                .el-myocardist .myocard { --card-max-width: 52rem; }
+                .el-myocardist .myocard + .myocard { margin-top: 2rem; }
+                .el-myocardist .myocard { background-color: var(--back-color-accent); }
+            </style>
+
+            <div class="myocard">
+                <div><p>When it comes to payment systems.</p></div>
+                <div><p>Self-Service Solution</p></div>
+            </div>
+
+            <div class="myocard">
+                <div><p>A few additional perks include full access to geolocation technologies.</p></div>
+                <div><p>Self-Service Customisation Options</p></div>
+            </div>
+
+            <div class="myocard">
+                <div>
+                    <h4>When it comes to payment systems, the Self-Service solution supports both Visa and MasterCard.</h4>
+                </div>
+                <div>
+                    <p>Self-Service Solution</p>
+                </div>
+            </div>
+
+            <div class="myocard">
+                <div>
+                    <h3>When it comes.</h3>
+                </div>
+                <div>
+                    <div><p>A few additional perks include full access to geolocation technologies.</p></div>
+                </div>
+            </div>
+
+        </section>
+
+    </article>
+    <article class="chapter use-colors colors--root">
+
+        <header class="grid-queen chapter isontop">
+            <h2>Template</h2>
+        </header>
+
+        <section class="myocard">
+            <section>
+                <div>
+                    <img src="art/illustrations/austria.svg"
+                         class="el-avatar-big" alt="">
+               </div>
+           </section>
+            <section>
+                <div>
+                    <section class="rows">
+                    <p class="auto"></p>
+                    <p class="auto"></p>
+                    </section>
+               </div>
+           </section>
+        </section>
+
+    </article>
+
+</article>
+
+
+<!-- ========================================= PAGE CUSTOM -->
+
+</body>
+</html>

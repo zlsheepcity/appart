@@ -194,7 +194,7 @@
             else if (window.attachEvent) window.attachEvent("onload", finish)
             else finish()
         }
-        vonLoader()
+        // vonLoader() // retired 2021
     </script>
 </nav>
 <!-- ========================================= Von Burger -->
@@ -269,90 +269,50 @@
 </nav>
 <!-- ========================================= ʕ⊙ᴥ⊙ʔ -->
 
+<!-- ========================================= Auto-Growing Textarea -->
 
-<!-- ========================================= SVG Backgrounds -->
-
-<article class="use-colors colors--ivory">
-    <header class="nav-title grid-king" id="SVGBackgrounds">
-        <h2 class="h1">SVG Backgrounds</h2>
+<article>
+    <header class="nav-title grid-king" id="AutoGrowTextarea">
+        <h2 class="h1">Auto-Growing Textarea</h2>
     </header>
+    <!-- Source: https://css-tricks.com/the-cleanest-trick-for-autogrowing-textareas/ -->
+
     <style>
-        .bgicon {
-            display: inline-block;
-            width:   3rem;
-            height:  3rem;
-            background-size:     100%;
-            background-repeat:   no-repeat;
-            background-position: center center;
-        }
-        .bgicon:hover {
-            z-index: 1;
-            background-color: var(--back-color-accent);
-            transition: transform 120ms ease-in;
-            transform: scale(2);
-            transform-origin: bottom center;
+        .auto-grow-textarea--demowrap {
+            padding: 2rem;
+            background-color: hsl(212, 34%, 29%);
         }
     </style>
-    <section class="grid-king chapter">
-        <section>
-            <div class="bgicon background-image--close"></div>
-            <div class="bgicon background-image--loading"></div>
-            <div class="bgicon background-image--info"></div>
-            <div class="bgicon background-image--menu"></div>
-        </section>
-    </section>
 
-    <article class="chapter grid-king">
-        <header>
-            <h2 mark>.is-icon</h2>
-        </header>
-        <figure>
-            <h3>
-            <span class="is-icon background-image--info"></span>
-            H3-size Icon
-            </h3>
-            <h4>
-                <span class="is-icon background-image--info"></span>
-                H4-size Icon
-            </h4>
-            <p>
-                <span class="is-icon background-image--info"></span>
-                Icon
-            </p>
-        </figure>
-        <figure>
-            <h3>
-                <span style="--zoom:1.25;" class="is-icon background-image--info"></span>
-                H3-size Icon, Zoom 1.25
-            </h3>
-            <p>
-                <span style="--zoom:1.5;" class="is-icon background-image--info"></span>
-                Icon, Zoom 1.5
-                <span style="--zoom:1.5;" class="is-icon background-image--info use-filter--black-is-white"></span>
-                Use color filter
-            </p>
-            <p>
-                <span class="is-icon background-image--info"></span>
-                Icon
-            </p>
-        </figure>
-        <figure>
-            <h3>
-                <span style="--width:3em;" class="is-icon background-image--info"></span>
-                Width:3em
-            </h3>
-            <p>
-                <span style="--width:2em;" class="is-icon background-image--info"></span>
-                Width:2em
-                <span style="--width:2em;" class="is-icon background-image--info use-filter--black-is-white"></span>
-                Use color filter
-            </p>
-            <p>
-                <span class="is-icon background-image--info"></span>
-                Icon
-            </p>
-        </figure>
-    </article>
+    <style>
+        .auto-grow-textarea { display: grid; }
+        .auto-grow-textarea textarea,
+        .auto-grow-textarea::after {
+            grid-area: 1 / 1 / 2 / 2;
+        }
+        .auto-grow-textarea::after {
+            content: attr(data-replicated-value) " ";
+            /* space to preventy jumpy behavior */
+            visibility: hidden;
+        }
+        .auto-grow-textarea-design textarea,
+        .auto-grow-textarea-design::after {
+            border: 0.075em solid currentColor;
+            padding: 0.5em;
+            font: inherit;
+            white-space: pre-wrap;
+            min-height: 8em;
+            max-width: 40em;
+        }
+    </style>
+
+    <section class="auto-grow-textarea--demowrap">
+        <div class="auto-grow-textarea auto-grow-textarea-design">
+            <textarea name="xxx" id="xxx"
+                onInput="this.parentNode.dataset.replicatedValue = this.value"
+                >So you’ve got a textarea, which cannot auto expand height. Instead, you exactly replicate the look, content, and position of the element in another element. You hide the replica visually (might as well leave the one that’s technically-functional visible).</textarea>
+        </div>
+    </section>
 
 </article>
 
@@ -1833,6 +1793,92 @@
             app.onload(f=>InterfaceOffsideBar('OverflowBarWestside'))
         </script>
 
+    </article>
+
+</article>
+
+<!-- ========================================= SVG Backgrounds -->
+
+<article class="use-colors colors--ivory">
+    <header class="nav-title grid-king" id="SVGBackgrounds">
+        <h2 class="h1">SVG Backgrounds</h2>
+    </header>
+    <style>
+        .bgicon {
+            display: inline-block;
+            width:   3rem;
+            height:  3rem;
+            background-size:     100%;
+            background-repeat:   no-repeat;
+            background-position: center center;
+        }
+        .bgicon:hover {
+            z-index: 1;
+            background-color: var(--back-color-accent);
+            transition: transform 120ms ease-in;
+            transform: scale(2);
+            transform-origin: bottom center;
+        }
+    </style>
+    <section class="grid-king chapter">
+        <section>
+            <div class="bgicon background-image--close"></div>
+            <div class="bgicon background-image--loading"></div>
+            <div class="bgicon background-image--info"></div>
+            <div class="bgicon background-image--menu"></div>
+        </section>
+    </section>
+
+    <article class="chapter grid-king">
+        <header>
+            <h2 mark>.is-icon</h2>
+        </header>
+        <figure>
+            <h3>
+            <span class="is-icon background-image--info"></span>
+            H3-size Icon
+            </h3>
+            <h4>
+                <span class="is-icon background-image--info"></span>
+                H4-size Icon
+            </h4>
+            <p>
+                <span class="is-icon background-image--info"></span>
+                Icon
+            </p>
+        </figure>
+        <figure>
+            <h3>
+                <span style="--zoom:1.25;" class="is-icon background-image--info"></span>
+                H3-size Icon, Zoom 1.25
+            </h3>
+            <p>
+                <span style="--zoom:1.5;" class="is-icon background-image--info"></span>
+                Icon, Zoom 1.5
+                <span style="--zoom:1.5;" class="is-icon background-image--info use-filter--black-is-white"></span>
+                Use color filter
+            </p>
+            <p>
+                <span class="is-icon background-image--info"></span>
+                Icon
+            </p>
+        </figure>
+        <figure>
+            <h3>
+                <span style="--width:3em;" class="is-icon background-image--info"></span>
+                Width:3em
+            </h3>
+            <p>
+                <span style="--width:2em;" class="is-icon background-image--info"></span>
+                Width:2em
+                <span style="--width:2em;" class="is-icon background-image--info use-filter--black-is-white"></span>
+                Use color filter
+            </p>
+            <p>
+                <span class="is-icon background-image--info"></span>
+                Icon
+            </p>
+        </figure>
     </article>
 
 </article>

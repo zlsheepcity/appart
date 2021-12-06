@@ -9,7 +9,7 @@
 
     <title>Appart</title>
     <meta name="description" content="Frontend snippets with care for visual aesthetics, art/html/css/js" />
-    <meta name="author"      content="zl 2020, zl.sheepcity@gmail.com" />
+    <meta name="author"      content="zl 2022, zl.sheepcity@gmail.com" />
 
 
     <!-- ## MICRODATA -->
@@ -142,9 +142,9 @@
     <div class="group-banner use-colors colors--secondary">
         <h1>App <mark>&</mark> Art</h1>
         <p class="text-inline-bigger">
-            Front-end components.<br>
-            Not a framework, but<br>
-            reusable code templates.
+            front-end experiments<br>
+            rare cases research<br>
+            and code templates
         </p>
     </div>
 </header>
@@ -160,12 +160,11 @@
         }
     </style>
     <ul class="markup group-center text-block-bigger">
-        <li><a href="#AppComponents" class="bart">Components List</a></li>
-        <li><a href="#ArticleGrid" class="bart">Articles</a></li>
+        <li><a href="#AppComponents" class="bart">Content</a></li>
         <li><a href="#AboutProject" class="bart">About</a></li>
         <li>
             <a href="https://github.com/zlsheepcity/appart" class="bart">
-                <span>Code Sources</span>
+                <span>github.com/zlsheepcity/appart</span>
             </a>
         </li>
     </ul>
@@ -226,7 +225,7 @@
             else if (window.attachEvent) window.attachEvent("onload", finish)
             else finish()
         }
-        // vonLoader() // dead 2021
+        // vonLoader() // retired 2021
     </script>
 </div>
 
@@ -273,13 +272,14 @@
             <nav    class="offsidebar-content">
                 <ol class="menulist js-for-ChaptersMenuBar">
                     <li><a href="#Start">Start</a></li>
-                    <li><a href="#AboutProject">About Project</a></li>
+                    <li><a href="#AboutProject">About Appart</a></li>
 
-                    <li class="pt"><small>Components List</small></li>
-                    <li><a href="#AppComponents">App Components</a></li>
-                    <li><a href="#MinorTools">Minor Tools</a></li>
+                    <li class="pt"><small>Content</small></li>
+                    <li><a href="#AppComponents">Projects</a></li>
+                    <li><a href="#MinorTools">Components</a></li>
 
                     <li class="pt"><small>Articles</small></li>
+                    <li><a href="#StyledCodeBlock">Styled code-block</a></li>
                     <li><a href="#ArticleGrid">Article Grid</a></li>
                     <li><a href="#Typography">Web-Typography</a></li>
 
@@ -317,7 +317,7 @@
     <div id="AppComponents" class="chapter isontop inngrid-main-rw">
 
         <header class="chapter-header">
-            <h2>App Components</h2>
+            <h2>Projects</h2>
         </header>
 
         <article class="inngrid-main-rw color-box el-product CssVarrior">
@@ -397,7 +397,7 @@
     <!-- ===================================== Minor Tools -->
 
     <header id="MinorTools" class="chapter-header">
-        <h2>Minor Tools</h2>
+        <h2>Components</h2>
     </header>
 
     <div class="layer">
@@ -621,8 +621,6 @@
         <p><b>App</b> — от технического термина application, <b>Art</b> — творчество. <b>Appart</b> (фр.) — поиск подходящего партнёра. Игра слов символизирует связь между кодом и содержанием.</p>
 
         <p>Проект appart создан для упрощённой вёрстки и программирования оригинального контента. Компоненты веб интерфейсов создаются с любовью к эстетическим деталям и ощущениям.</p>
-
-        <p>Appart не фреймворк, а оптимизированный код для копирования в другие проекты.</p>
     </div>
 
     <figure class="inngrid-east-side">
@@ -637,7 +635,7 @@
 
     <footer class="text-inline-bigger">
         <p>
-            zl, August 2019 — February 2020<br>
+            zl, August 2019 — December 2021<br>
             zl.sheepcity@gmail.com
         </p>
     </footer>
@@ -646,10 +644,40 @@
 
 <!-- ========================================= Articles -->
 
+<article id="StyledCodeBlock" class="chapter grid-king">
+
+    <header class="chapter-header">
+        <h2 class="h1"><mark>§3.</mark><br> Styled code-block</h2>
+        <p class="midi-paragraph">
+            Tribute to the lost source
+        </p>
+    </header>
+
+    <section class="inngrid-wrap-east">
+
+<pre class="code-block">
+.code-block  {
+    font-family: 'VT323', 'Courier New', Courier, monospace;
+    font-size:   1.25em;
+    line-height: 1.25;
+    font-weight: normal;
+    font-variant-ligatures: none;
+
+    tab-size:    4;
+    white-space: pre;
+
+    <mark>[...]</mark>
+    <a href="https://github.com/zlsheepcity/appart/blob/master/app/styles/components/old-style-code-block/old-style-code-block.scss">Link</a>
+}
+</pre>
+    </section>
+
+</article>
+
 <article id="ArticleGrid" class="chapter grid-king">
 
         <header class="chapter-header">
-            <h2 class="h1"><mark>§1.</mark><br> CSS-grid for articles</h2>
+            <h2 class="h1"><mark>§2.</mark><br> CSS-grid for articles</h2>
             <p class="midi-paragraph">
                 Journal-looks article layout with side-notes and various column-merging properties. Has constant spaces, layout for smaller screens.
             </p>
@@ -711,7 +739,7 @@
 <article id="Typography" class="chapter grid-king">
 
     <header class="chapter-header">
-        <h2 class="h1"><mark>§2.</mark><br> Web-Typography</h2>
+        <h2 class="h1"><mark>§1.</mark><br> Web-Typography</h2>
         <p class="midi-paragraph">
             Supporter classes and variables — em-based-size presets, types collections, etc.
         </p>

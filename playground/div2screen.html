@@ -6,11 +6,67 @@
 </head>
 <body>
 
+    <!-- Components -->
+    <style>
+
+        .card {
+          --height-ratio: calc(3/4);
+
+            display: grid;
+
+            background-color: olivedrab;
+            color: white;
+        }
+        .card > * , .card::before { grid-area: 1/1; }
+
+        .card:hover {
+
+        }
+
+        .card::before {
+            content: "";
+            pointer-events: none;
+            padding-top: calc( var(--height-ratio, 0) * 100% );
+        }
+
+        .card-illustration {
+            width: 100%;
+            padding:  0;
+            margin:   0;
+            overflow: hidden;
+            display: grid;
+            place-items: center;
+        }
+        .card-illustration img {
+            display: block;
+            width: 100%;
+            width: calc(100% - 2em);
+        }
+
+        .card-content {
+            align-self: end;
+            padding: 1em 1em 2em 1em;
+            background-color: hsla(0,0%,0%,0.15);
+        }
+
+        .cards {
+            display: grid;
+            grid-gap: 1px;
+            grid-template-columns: repeat(5, 1fr);
+        }
+        .cards > :nth-child(1) {
+          --height-ratio: 0;
+            grid-column: span 2;
+        }
+
+    </style>
+
     <style>
         html, body {
             margin:  0;
             padding: 0;
         }
+        *, *:before, *:after { box-sizing: border-box; }
         .grid {
             display: grid;
             grid-gap: 1px;
@@ -52,8 +108,93 @@
         [data-key="d"] { grid-row: span 2; }
     </style>
 
+    <div class="cards">
+        <div class="card">
+            <div class="card-content">
+                Card Content
+            </div>
+        </div>
+        <div class="card">
+            <figure class="card-illustration">
+                <img src="../art/illustrations/calendar/001-jan.svg" alt="January Illustration">
+            </figure>
+            <div class="card-content">
+                January
+            </div>
+        </div>
+        <div class="card">
+            <figure class="card-illustration">
+                <img src="../art/illustrations/calendar/002-feb.svg" alt="February Illustration">
+            </figure>
+            <div class="card-content">
+                February
+            </div>
+        </div>
+        <div class="card">
+            <figure class="card-illustration">
+                <img src="../art/illustrations/calendar/003-mar.svg" alt="March Illustration">
+            </figure>
+            <div class="card-content">
+                March
+            </div>
+        </div>
+        <div class="card">
+            <figure class="card-illustration">
+                <img src="../art/illustrations/calendar/004-apr.svg" alt="April Illustration">
+            </figure>
+            <div class="card-content">
+                April
+            </div>
+        </div>
+        <div class="card">
+            <figure class="card-illustration">
+                <img src="../art/illustrations/calendar/005-may.svg" alt="May Illustration">
+            </figure>
+            <div class="card-content">
+                May
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-content">
+                Card Content
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-content">
+                Card Content
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-content">
+                Card Content
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-content">
+                Card Content
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-content">
+                Card Content
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-content">
+                Card Content
+            </div>
+        </div>
+    </div>
+
     <div class="grid">
-        <div data-key="a"></div>
+        <div data-key="a" class="card">
+            The Pseudo Element Tactic
+            This is what has become, I think, the best way to handle an aspect ratio box that has completely arbitrary content in it. Keith Grant has a good writeup on it. Marc Hinse had an explanation and demos back in 2013.
+
+            With this technique, you get the aspect ratio box with less markup, and it’s still safe if the content exceeds the height.
+
+            The trick is to apply the % padding to a pseudo-element instead of the box itself. You float the pseudo-element, so the content inside can be inside nicely, then clear the float.
+        </div>
         <div data-key="b"></div>
         <div data-key="c"></div>
         <div data-key="d"></div>
@@ -63,7 +204,11 @@
         <div data-key="i"></div>
         <div data-key="j"></div>
         <div data-key="k"></div>
-        <div data-key="l"></div>
+        <div data-key="l">
+            <div class="card">
+                Card Inner
+            </div>
+        </div>
     </div>
 
     <div id="box"></div>

@@ -37,8 +37,8 @@
     }
 
 /** Scroll behavoir */
-    html { scroll-behavior: smooth; cursor: default; }
-    body { overflow-y: scroll; }
+    html { scroll-behavior:smooth; cursor:default; }
+    body { overflow-y:scroll; scrollbar-gutter:stable; }
 
 /** Tap on clickable element */
     a, area, button, input, label, select, summary, textarea, [tabindex] {
@@ -226,6 +226,10 @@
         margin:    0;
         padding:   0;
         border:    0;
+    }
+
+    img {
+        object-fit: cover;
     }
 
 

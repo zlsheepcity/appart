@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>div2screen</title>
+</head>
+<body>
+
+    <style>
+        html, body {
+            margin:  0;
+            padding: 0;
+        }
+        .grid {
+            display: grid;
+            grid-gap: 1px;
+            grid-template-columns: repeat(5, 1fr);
+            /*
+            grid-template-areas:
+                "a b c c d"
+                "e e f g g"
+                "i j j k l";
+            /**/
+        }
+        .grid > * {
+            display:     grid;
+            place-items: center;
+            padding:     1em;
+            min-height: 10vh;
+            color:            whitesmoke;
+            background-color: darksalmon;
+            text-transform:   uppercase;
+            font-family:      sans-serif;
+        }
+        .grid > *:before { content: attr(data-key); }
+        /**
+        [data-key="a"] { grid-area: a; }
+        [data-key="b"] { grid-area: b; }
+        [data-key="c"] { grid-area: c; }
+        [data-key="d"] { grid-area: d; }
+        [data-key="e"] { grid-area: e; }
+        [data-key="f"] { grid-area: f; }
+        [data-key="g"] { grid-area: g; }
+        [data-key="i"] { grid-area: i; }
+        [data-key="j"] { grid-area: j; }
+        [data-key="k"] { grid-area: k; }
+        [data-key="l"] { grid-area: l; }
+        /**/
+        [data-key="c"],
+        [data-key="e"],
+        [data-key="j"] { grid-column: span 2; }
+        [data-key="d"] { grid-row: span 2; }
+    </style>
+
+    <div class="grid">
+        <div data-key="a"></div>
+        <div data-key="b"></div>
+        <div data-key="c"></div>
+        <div data-key="d"></div>
+        <div data-key="e"></div>
+        <div data-key="f"></div>
+        <div data-key="g"></div>
+        <div data-key="i"></div>
+        <div data-key="j"></div>
+        <div data-key="k"></div>
+        <div data-key="l"></div>
+    </div>
+
+    <div id="box"></div>
+
+    <style>
+        #box {
+            position: absolute;
+            top:  60vh;
+            left: 40vw;
+            width: 20vmin;
+            height: 20vmin;
+            background-color: indianred;
+            background-image: url(../art/illustrations/calendar/001-jan.svg);
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: 50% 50%;
+            transition: all 240ms ease-out;
+        }
+        #box.screen {
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 80vh;
+        }
+    </style>
+
+    <script>
+        const elBox = document.querySelector('#box');
+        const action = () => {
+            elBox.classList.toggle('screen');
+        }
+        elBox.addEventListener('click', action);
+
+    </script>
+
+</body>
+</html>

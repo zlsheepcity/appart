@@ -3,32 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <title>div2screen</title>
+    <style>
+        html, body {
+            margin:  0;
+            padding: 0;
+        }
+        *, *:before, *:after { box-sizing: border-box; }
+    </style>
 </head>
 <body>
 
     <!-- Components -->
+
     <style>
+
+        /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Card Layout */
 
         .card {
           --height-ratio: calc(3/4);
-
+          --padding-unit: 1em;
             display: grid;
-
-            background-color: olivedrab;
-            color: white;
         }
         .card > * , .card::before { grid-area: 1/1; }
-
-        .card:hover {
-
-        }
-
         .card::before {
             content: "";
             pointer-events: none;
             padding-top: calc( var(--height-ratio, 0) * 100% );
         }
-
         .card-illustration {
             width: 100%;
             padding:  0;
@@ -39,84 +40,75 @@
         }
         .card-illustration img {
             display: block;
-            width: 100%;
-            width: calc(100% - 2em);
+            width: calc(100% - 2*var(--padding-unit,0) );
         }
-
         .card-content {
             align-self: end;
+        }
+
+        /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Full Screen Card Layout */
+
+        .screenCard {
+            position: fixed;
+            z-index:  1;
+            top:    0;
+            left:   0;
+            width:  100%;
+            height: 100vh;
+            pointer-events: none;
+        }
+        .screenCard >* { pointer-events: all; }
+
+        .screenCard .card {
+          --height-ratio: 0;
+            position: absolute;
+            transition: all 120ms ease-out;
+        }
+        .screenCard .card.is-screen {
+          --height-ratio: 0;
+            position: absolute;
+            top:    0 !important;
+            left:   0 !important;
+            width:  100% !important;
+            height: 100% !important;
+            transition: all 240ms ease-out;
+        }
+
+        /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Grid Layout */
+
+        .cards {
+          --columns: 4;
+            display: grid;
+            grid-gap: 1px;
+            grid-template-columns: repeat( var(--columns), 1fr );
+        }
+
+        /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Design */
+
+        .card {
+          --padding-unit: 1em;
+            background-color: olivedrab;
+            color: white;
+        }
+        .card-content {
             padding: 1em 1em 2em 1em;
             background-color: hsla(0,0%,0%,0.15);
         }
-
-        .cards {
-            display: grid;
-            grid-gap: 1px;
-            grid-template-columns: repeat(5, 1fr);
-        }
-        .cards > :nth-child(1) {
-          --height-ratio: 0;
-            grid-column: span 2;
+        .screenCard .card {
+            background-color: wheat;
         }
 
+        /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
     </style>
 
-    <style>
-        html, body {
-            margin:  0;
-            padding: 0;
-        }
-        *, *:before, *:after { box-sizing: border-box; }
-        .grid {
-            display: grid;
-            grid-gap: 1px;
-            grid-template-columns: repeat(5, 1fr);
-            /*
-            grid-template-areas:
-                "a b c c d"
-                "e e f g g"
-                "i j j k l";
-            /**/
-        }
-        .grid > * {
-            display:     grid;
-            place-items: center;
-            padding:     1em;
-            min-height: 10vh;
-            color:            whitesmoke;
-            background-color: darksalmon;
-            text-transform:   uppercase;
-            font-family:      sans-serif;
-        }
-        .grid > *:before { content: attr(data-key); }
-        /**
-        [data-key="a"] { grid-area: a; }
-        [data-key="b"] { grid-area: b; }
-        [data-key="c"] { grid-area: c; }
-        [data-key="d"] { grid-area: d; }
-        [data-key="e"] { grid-area: e; }
-        [data-key="f"] { grid-area: f; }
-        [data-key="g"] { grid-area: g; }
-        [data-key="i"] { grid-area: i; }
-        [data-key="j"] { grid-area: j; }
-        [data-key="k"] { grid-area: k; }
-        [data-key="l"] { grid-area: l; }
-        /**/
-        [data-key="c"],
-        [data-key="e"],
-        [data-key="j"] { grid-column: span 2; }
-        [data-key="d"] { grid-row: span 2; }
-    </style>
+    <!-- Markup -->
 
     <div class="cards">
         <div class="card">
-            <div class="card-content">
-                Card Content
-            </div>
-        </div>
-        <div class="card">
             <figure class="card-illustration">
-                <img src="../art/illustrations/calendar/001-jan.svg" alt="January Illustration">
+                <img
+                    src="../art/illustrations/calendar/001-jan.svg"
+                    alt="January Illustration">
             </figure>
             <div class="card-content">
                 January
@@ -124,7 +116,9 @@
         </div>
         <div class="card">
             <figure class="card-illustration">
-                <img src="../art/illustrations/calendar/002-feb.svg" alt="February Illustration">
+                <img
+                    src="../art/illustrations/calendar/002-feb.svg"
+                    alt="February Illustration">
             </figure>
             <div class="card-content">
                 February
@@ -132,7 +126,9 @@
         </div>
         <div class="card">
             <figure class="card-illustration">
-                <img src="../art/illustrations/calendar/003-mar.svg" alt="March Illustration">
+                <img
+                    src="../art/illustrations/calendar/003-mar.svg"
+                    alt="March Illustration">
             </figure>
             <div class="card-content">
                 March
@@ -140,7 +136,9 @@
         </div>
         <div class="card">
             <figure class="card-illustration">
-                <img src="../art/illustrations/calendar/004-apr.svg" alt="April Illustration">
+                <img
+                    src="../art/illustrations/calendar/004-apr.svg"
+                    alt="April Illustration">
             </figure>
             <div class="card-content">
                 April
@@ -148,99 +146,138 @@
         </div>
         <div class="card">
             <figure class="card-illustration">
-                <img src="../art/illustrations/calendar/005-may.svg" alt="May Illustration">
+                <img
+                    src="../art/illustrations/calendar/005-may.svg"
+                    alt="May Illustration">
             </figure>
             <div class="card-content">
                 May
             </div>
         </div>
         <div class="card">
+            <figure class="card-illustration">
+                <img
+                    src="../art/illustrations/calendar/006-jun.svg"
+                    alt="June Illustration">
+            </figure>
             <div class="card-content">
-                Card Content
+                June
             </div>
         </div>
         <div class="card">
+            <figure class="card-illustration">
+                <img
+                    src="../art/illustrations/calendar/007-jul.svg"
+                    alt="July Illustration">
+            </figure>
             <div class="card-content">
-                Card Content
+                July
             </div>
         </div>
         <div class="card">
+            <figure class="card-illustration">
+                <img
+                    src="../art/illustrations/calendar/008-aug.svg"
+                    alt="August Illustration">
+            </figure>
             <div class="card-content">
-                Card Content
+                August
             </div>
         </div>
         <div class="card">
+            <figure class="card-illustration">
+                <img
+                    src="../art/illustrations/calendar/009-sep.svg"
+                    alt="September Illustration">
+            </figure>
             <div class="card-content">
-                Card Content
+                September
             </div>
         </div>
         <div class="card">
+            <figure class="card-illustration">
+                <img
+                    src="../art/illustrations/calendar/010-oct.svg"
+                    alt="October Illustration">
+            </figure>
             <div class="card-content">
-                Card Content
+                October
             </div>
         </div>
         <div class="card">
+            <figure class="card-illustration">
+                <img
+                    src="../art/illustrations/calendar/011-nov.svg"
+                    alt="November Illustration">
+            </figure>
             <div class="card-content">
-                Card Content
+                November
+            </div>
+        </div>
+        <div class="card">
+            <figure class="card-illustration">
+                <img
+                    src="../art/illustrations/calendar/012-dec.svg"
+                    alt="December Illustration">
+            </figure>
+            <div class="card-content">
+                December
             </div>
         </div>
     </div>
+    <div class="screenCard"></div>
 
-    <div class="grid">
-        <div data-key="a" class="card">
-            The Pseudo Element Tactic
-            This is what has become, I think, the best way to handle an aspect ratio box that has completely arbitrary content in it. Keith Grant has a good writeup on it. Marc Hinse had an explanation and demos back in 2013.
-
-            With this technique, you get the aspect ratio box with less markup, and it’s still safe if the content exceeds the height.
-
-            The trick is to apply the % padding to a pseudo-element instead of the box itself. You float the pseudo-element, so the content inside can be inside nicely, then clear the float.
-        </div>
-        <div data-key="b"></div>
-        <div data-key="c"></div>
-        <div data-key="d"></div>
-        <div data-key="e"></div>
-        <div data-key="f"></div>
-        <div data-key="g"></div>
-        <div data-key="i"></div>
-        <div data-key="j"></div>
-        <div data-key="k"></div>
-        <div data-key="l">
-            <div class="card">
-                Card Inner
-            </div>
-        </div>
-    </div>
-
-    <div id="box"></div>
-
-    <style>
-        #box {
-            position: absolute;
-            top:  60vh;
-            left: 40vw;
-            width: 20vmin;
-            height: 20vmin;
-            background-color: indianred;
-            background-image: url(../art/illustrations/calendar/001-jan.svg);
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: 50% 50%;
-            transition: all 240ms ease-out;
-        }
-        #box.screen {
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 80vh;
-        }
-    </style>
+    <!-- Actions -->
 
     <script>
-        const elBox = document.querySelector('#box');
-        const action = () => {
-            elBox.classList.toggle('screen');
-        }
-        elBox.addEventListener('click', action);
+
+
+        const elRoot = document.querySelector('BODY');
+        const elGrid   = elRoot.querySelector('.cards');
+        const elScreen = elRoot.querySelector('.screenCard');
+        const elsCards = elGrid.querySelectorAll('.card');
+
+        const OpenCard = elSource => {
+            const elScreencard = elSource.cloneNode(true);
+            const rect = elSource.getBoundingClientRect();
+            elScreencard.style = [
+                'top:', rect.top, 'px;',
+                'left:', rect.left, 'px;',
+                'width:', rect.width, 'px;',
+                'height:', rect.height, 'px;',
+            ].join('');
+
+            elScreen.innerHTML = '';
+            elScreen.appendChild(elScreencard);
+            const forceReflow = elScreencard.offsetWidth;
+            elScreencard.classList.add('is-screen');
+
+            console.time('transition');
+            elScreencard.addEventListener(
+                'transitionend',
+                ()=>console.timeEnd('transition'),
+                {once:true}
+            );
+
+            elScreencard.addEventListener(
+                'click',
+                ev => {
+                    elScreencard.classList.remove('is-screen');
+                    elScreencard.addEventListener(
+                       'transitionend',
+                        ev => {
+                            elScreen.innerHTML = '';
+                        },
+                        {once:true}
+                    );
+                }
+            );
+        };
+
+        // run
+        elsCards.forEach(el=>{
+            el.addEventListener('click', e=>OpenCard(el));
+        });
 
     </script>
 

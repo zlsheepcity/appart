@@ -13,10 +13,9 @@
 </head>
 <body>
 
-    <!-- Components -->
+    <!-- Cards Components -->
 
     <style>
-
         /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Card Layout */
 
         .card {
@@ -83,7 +82,12 @@
             grid-template-columns: repeat( var(--columns), 1fr );
         }
 
-        /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Design */
+        /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
+    </style>
+
+    <!-- Cards Design -->
+
+    <style>
 
         .card {
           --padding-unit: 1em;
@@ -98,10 +102,9 @@
             background-color: wheat;
         }
 
-        /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
     </style>
 
-    <!-- Markup -->
+    <!-- Cards Markup -->
 
     <div class="cards">
         <div class="card">
@@ -231,7 +234,6 @@
 
     <script>
 
-
         const elRoot = document.querySelector('BODY');
         const elGrid   = elRoot.querySelector('.cards');
         const elScreen = elRoot.querySelector('.screenCard');
@@ -274,7 +276,12 @@
             );
         };
 
-        // run
+    </script>
+
+    <!-- Run Script -->
+
+    <script>
+
         elsCards.forEach(el=>{
             el.addEventListener('click', e=>OpenCard(el));
         });

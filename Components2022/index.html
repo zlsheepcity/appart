@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>appart components 2022</title>
+    <meta name="author" content="zl, 2022.1.3" />
+
+    <style>
+        *, *:before, *:after { box-sizing: border-box; }
+        html, body, figure   { margin:  0; padding: 0; }
+    </style>
+
+    <style>
+        body {
+          --color-back: hsl(226, 15%, 12%); /* NobleBlack */
+          --color-text: hsl(226, 27%, 90%); /* NobleWhite */
+          --color-mark: hsl(359, 54%, 53%); /* NobleAccent */
+          --color-link: hsl(359, 44%, 66%);
+          --color-past: hsl(359, 33%, 77%);
+
+            background-color: var(--color-back);
+            color:            var(--color-text);
+
+          --box-padding: 1rem 1.25rem;
+
+            font-family: sans-serif;
+            line-height: 1.5;
+        }
+        a         { color: var(--color-link); }
+        a:active  { color: var(--color-mark); }
+        a:visited { color: var(--color-past); }
+        mark {
+            background:  transparent;
+            color: var(--color-mark);
+        }
+        [box], .box { padding: var(--box-padding); }
+        h1, h2 {
+            text-transform: uppercase;
+            margin-top:  0;
+            line-height: 1;
+        }
+    </style>
+
+    <style>
+        .ap-content-grid {
+          --content-areas:  'menu main';
+          --content-columns: auto auto ;
+
+          --content-areas:  'main menu';
+          --content-columns: auto auto ;
+
+            display:  grid;
+            grid-gap: 1rem;
+            align-items:  start;
+            grid-auto-flow: row;
+            grid-auto-rows: min-content;
+            grid-template-areas:   var(--content-areas);
+            grid-template-columns: var(--content-columns);
+        }
+        .ap-content-main { grid-area: main; }
+        .ap-content-menu { grid-area: menu; }
+
+        .ap-content-menu {
+            position: sticky;
+            top: 0;
+        }
+        .ap-content-menu-skip {
+            position:  absolute;
+            transform: scale(0);
+        }
+        .ap-content-menu li a {
+            display: inline-flex;
+            padding: 0 .2em .5em;
+            margin-bottom:  .5em;
+        }
+    </style>
+</head>
+<body>
+
+    <header box>
+        <h1>appart <mark>components 2022</mark></h1>
+    </header>
+
+    <section class="ap-content-grid">
+        <nav class="ap-content-menu box">
+            <h2>Navigation</h2>
+            <p class="ap-content-menu-skip">
+                <a tabindex="1" href="#SkipNavigation">Skip navigation</a>
+            </p>
+            <ul>
+                <li><a href="#">Art in the Age of Mechanical Reproduction</a></li>
+                <li><a href="#22">Mechanical Reproduction</a></li>
+                <li><a href="#33">Age of Mechanical Reproduction</a></li>
+            </ul>
+        </nav>
+        <div class="ap-content-main box" id="SkipNavigation">
+            <h2>
+                <mark>Art</mark> in the <mark>Age</mark> of<br>
+                <mark>Mechanical</mark><br>
+                Reproduction
+            </h2>
+            The Work of Art in the Age of Mechanical Reproduction tools Bill Keller Pictures of Goats section Google News Snarkmarket the other longer Book Review Paul Steiger David Foster Wallace WaPo synergize, layoffs CPC writing newsonomics nut graf The Work of Art in the Age of Mechanical Reproduction in the slot free as in beer linking Snarkmarket, paidContent Romenesko SEO <a href="#ww">Walter Lippmann</a> eHow every dog loves food Jay Rosen get me rewrite semipermeable. hackgate Sulzberger <a href="#">David Foster Wallace</a> abundance TweetDeck DocumentCloud newsroom cafe, gotta grok it before you rock it David Foster Wallace shoot a photo Robin Sloan SEO, curation metered model social media optimization paidContent gamification.
+            <section style="min-height: 200vh;"></section>
+        </div>
+    </section>
+
+    <main>
+        <div class="ap-content-full box">
+            Bill Keller Pictures of Goats section Google News Snarkmarket the other longer Book Review Paul Steiger David Foster Wallace WaPo synergize, layoffs CPC writing newsonomics nut graf The Work of Art in the Age of Mechanical Reproduction in the slot free as in beer linking Snarkmarket, paidContent Romenesko SEO Walter Lippmann eHow every dog loves food Jay Rosen get me rewrite semipermeable. hackgate Sulzberger David Foster Wallace abundance TweetDeck DocumentCloud newsroom cafe, gotta grok it before you rock it David Foster Wallace shoot a photo Robin Sloan SEO, curation metered model social media optimization paidContent gamification.
+        </div>
+        <div box>
+            Bill Keller Pictures of Goats section Google News Snarkmarket the other longer Book Review Paul Steiger David Foster Wallace WaPo synergize, layoffs CPC writing newsonomics nut graf The Work of Art in the Age of Mechanical Reproduction in the slot free as in beer linking Snarkmarket, paidContent Romenesko SEO Walter Lippmann eHow every dog loves food Jay Rosen get me rewrite semipermeable. hackgate Sulzberger David Foster Wallace abundance TweetDeck DocumentCloud newsroom cafe, gotta grok it before you rock it David Foster Wallace shoot a photo Robin Sloan SEO, curation metered model social media optimization paidContent gamification.
+            <section style="min-height: 100vh;"></section>
+        </div>
+        <div box>
+            Bill Keller Pictures of Goats section Google News Snarkmarket the other longer Book Review Paul Steiger David Foster Wallace WaPo synergize, layoffs CPC writing newsonomics nut graf The Work of Art in the Age of Mechanical Reproduction in the slot free as in beer linking Snarkmarket, paidContent Romenesko SEO Walter Lippmann eHow every dog loves food Jay Rosen get me rewrite semipermeable. hackgate Sulzberger David Foster Wallace abundance TweetDeck DocumentCloud newsroom cafe, gotta grok it before you rock it David Foster Wallace shoot a photo Robin Sloan SEO, curation metered model social media optimization paidContent gamification.
+        </div>
+    </main>
+
+</body>
+</html>

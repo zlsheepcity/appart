@@ -17,6 +17,10 @@
             color:            hsl( 66, 61%, 88%);
             background-color: var(--bc, slategray);
         }
+        figcaption {
+            display: flex;
+            gap: 0 2em;
+        }
         figure[bg] { color:   hsl(240, 15%, 12%); }
         article.colors {
             border-radius: 0em;
@@ -65,10 +69,15 @@
 
         <figure
             style="--bc:var(--c--NobleWhite)" bg>
-            <figcaption>hsl(226, 27%, 90%)</figcaption>
+            <figcaption>
+                <span>hsl(226, 27%, 90%)</span>
+                <span>hsl(226 27% 90%) </span>
+                <span>hsla(226, 27%, 90%, 1)</span>
+                <span>NobleWhite</span>
+            </figcaption>
         </figure>
         <figure
-            style="--bc:var(--c--NobleDay)">
+            style="--bc:var(--c--NobleDay)" bg>
             <figcaption>hsl(226, 32%, 75%)</figcaption>
         </figure>
         <figure
@@ -79,7 +88,12 @@
 
         <figure
             style="--bc:var(--c--NobleBlack)">
-            <figcaption>hsl(226, 15%, 12%)</figcaption>
+            <figcaption>
+                <span>hsl(226, 15%, 12%)</span>
+                <span>hsl(226 15% 12%)</span>
+                <span>hsla(226, 15%, 12%, 1)</span>
+                <span>NobleBlack</span>
+            </figcaption>
         </figure>
         <figure
             style="--bc:var(--c--NobleNight)">
@@ -95,7 +109,12 @@
         </figure>
         <figure
             style="--bc:var(--c--NobleAccent)">
-            <figcaption>hsl(359, 54%, 53%)</figcaption>
+            <figcaption>
+                <span>hsl(359, 54%, 53%)</span>
+                <span>hsl(359 54% 53%)</span>
+                <span>hsla(359, 54%, 53%, 1)</span>
+                <span>NobleAccent</span>
+            </figcaption>
         </figure>
         <figure
             style="--bc:var(--c--NobleAction)">

@@ -133,6 +133,9 @@
           --h1-line-height:       1;
           --grid-column--default: var(--grid-column--wrap-text-east);
         }
+        p {
+            padding-bottom: 1em;
+        }
     </style>
 
 
@@ -268,6 +271,148 @@
     </script>
 </nav>
 <!-- ========================================= ʕ⊙ᴥ⊙ʔ -->
+
+<!-- ========================================= Sandbox -->
+
+<article>
+    <header class="nav-title grid-king"><h2>Sandbox</h2></header>
+    <section style="padding:4em;">
+
+        <p>Input Type Range in 2022</p>
+
+        <style>
+            .test-range, .no-test-range {
+                padding: 2em;
+                margin-bottom: 2em;
+                background-color: darkslateblue;
+                background-color: hsl(222 32% 32%);
+                border-bottom: 1em solid hsl(222 42% 22%);
+                color: white;
+                display: flex;
+                gap: 1em;
+                align-items: center;
+            }
+
+            /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~  */
+            /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Input Type Range in 2022 */
+            /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~  */
+
+            .test-range input[type="range"] {
+               -webkit-appearance: none; /* Hide default slider */
+                appearance: none;
+                width: 100%; /* Specific width is required for Firefox. */
+                background: transparent; /* Otherwise white in Chrome */
+
+                background: transparent;
+                accent-color: cyan;
+                width: 32em;
+                font-size: 2rem;
+            }
+
+            /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Track */
+
+            /***** 2022 Chrome, Safari, Opera, and Edge Chromium *****/
+            .test-range input[type="range"]::-webkit-slider-runnable-track {
+               -webkit-appearance: none;
+                appearance: none;
+
+                background-color: hsl(222 22% 62%);
+                height: 1em;
+                border-radius: 1em;
+            }
+            /******** 2022 Firefox ********/
+            .test-range input[type="range"]::-moz-range-track {
+               -webkit-appearance: none;
+                appearance: none;
+
+                background-color: hsl(222 22% 62%);
+                height: 1em;
+                border-radius: 1em;
+            }
+
+            /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Thumb */
+
+            /***** Chrome, Safari, Opera, and Edge Chromium *****/
+            .test-range input[type="range"]::-webkit-slider-thumb {
+               -webkit-appearance: none;
+                appearance: none;
+
+                background-color: hsl(222 62% 22%);
+                height: 1em;
+                width:  1em;
+                border-radius: 1em;
+                transform: scale(0.8);
+            }
+            /***** Firefox *****/
+            .test-range input[type="range"]::-moz-range-thumb {
+             /* Removes default */
+                border: none;
+                border-radius: 0;
+
+                background-color: hsl(222 62% 22%);
+                height: 1em;
+                width:  1em;
+                border-radius: 1em;
+                transform: scale(0.8);
+            }
+
+            /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Focus */
+
+            /* Removes default */
+            .test-range input[type="range"]:focus { outline: none; }
+
+            /***** Chrome, Safari, Opera, and Edge Chromium *****/
+            .test-range input[type="range"]:focus::-webkit-slider-thumb {
+                outline: 0.25em solid hsl(188 78% 68%);
+                outline-offset: 0.125em;
+            }
+
+            /******** Firefox ********/
+            .test-range input[type="range"]:focus::-moz-range-thumb {
+                outline: 0.25em solid hsl(188 78% 68%);
+                outline-offset: 0.125em;
+            }
+
+            /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~  */
+            /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~  */
+
+        </style>
+        <section class="test-range">
+            <input type="range" name="r1">
+        </section>
+        <section class="no-test-range">
+           <label for="r2">Default appearance</label>
+            <input type="range" name="r2">
+        </section>
+
+        <p>As you probably know spelling and grammar error markers use wavy underlines in some platforms like Linux or Windows, though not in all of them as they use dotted underlines on Mac. In Chromium they’re painted on a separated codepath, totally independent of how CSS text decorations are painted.</p>
+
+        <style>
+            .flex-double {
+                display: flex;
+                padding: 0.5em 1em;
+                gap: 1em;
+                font-size: 2em;
+                background-color: indigo;
+                align-items: center;
+            }
+            .pseudo::grammar-error,
+            .pseudo::spelling { color: pink; }
+            .decora {
+                text-decoration: wavy pink underline;
+                line-height: 2;
+            }
+            .spaced { letter-spacing: 0.25em; }
+        </style>
+
+        <div class="flex-double">
+            <textarea class="pseudo">pseuda elementa</textarea>
+            <span class="decora">text-decoration</span>
+            <span class="decora spaced">letter-spacing</span>
+        </div>
+
+    </section>
+</article>
 
 <!-- ========================================= Auto-Growing Textarea -->
 

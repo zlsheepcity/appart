@@ -1,0 +1,83 @@
+/* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~  */
+/* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Input Type Range in 2022 */
+/* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~  */
+
+.input-type-range input[type="range"] {
+   -webkit-appearance:none; appearance:none; /* Hide default slider */
+    width: 100%; /* Specific width is required for Firefox */
+    background: transparent; /* Otherwise white in Chrome */
+}
+
+.input-type-range input[type="range"] {
+  --theme-hue:  2022;
+  --theme-size:  1em;
+  --thumb-scale: 0.8;
+  --thumb-scale: 1;
+
+  --border-radius: var(--theme-size);
+  --color-track:   hsl( var(--theme-hue, 222) 22% 62%);
+  --color-thumb:   hsl( var(--theme-hue, 222) 37% 27%);
+  --color-accent:  hsl(188 78% 68%); /* NobleCyan */
+}
+
+/* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Track */
+
+/***** 2022 Chrome, Safari, Opera, and Edge Chromium *****/
+.input-type-range input[type="range"]::-webkit-slider-runnable-track {
+   -webkit-appearance:none; appearance:none;
+    background-color: var(--color-track,     lightgray);
+    height:           var(--theme-size,      1em);
+    border-radius:    var(--border-radius,   1em);
+}
+/******** 2022 Firefox ********/
+.input-type-range input[type="range"]::-moz-range-track {
+   -webkit-appearance:none; appearance:none;
+    background-color: var(--color-track,     lightgray);
+    height:           var(--theme-size,      1em);
+    border-radius:    var(--border-radius,   1em);
+}
+
+/* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Thumb */
+
+/***** Chrome, Safari, Opera, and Edge Chromium *****/
+.input-type-range input[type="range"]::-webkit-slider-thumb {
+   -webkit-appearance:none; appearance:none;
+    background-color: var(--color-thumb,     black);
+    height:           var(--theme-size,      1em);
+    width:            var(--theme-size,      1em);
+    border-radius:    var(--border-radius,   1em);
+    transform: scale( var(--thumb-scale,     0.8));
+    border: 3px solid var(--color-track,     lightgray);
+}
+/***** Firefox *****/
+.input-type-range input[type="range"]::-moz-range-thumb {
+   -webkit-appearance:none; appearance:none;
+    border: none;     /* Removes default */
+    border-radius: 0; /* Removes default */
+
+    background-color: var(--color-thumb,     black);
+    height:           var(--theme-size,      1em);
+    width:            var(--theme-size,      1em);
+    border-radius:    var(--border-radius,   1em);
+    transform: scale( var(--thumb-scale,     0.8));
+}
+
+/* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Focus */
+
+/* Removes default */
+.input-type-range input[type="range"]:focus { outline: none; }
+
+/***** Chrome, Safari, Opera, and Edge Chromium *****/
+.input-type-range input[type="range"]:focus::-webkit-slider-thumb {
+    outline: 3px solid var(--color-accent, cyan);
+    outline-offset: 0;
+}
+
+/******** Firefox ********/
+.input-type-range input[type="range"]:focus::-moz-range-thumb {
+    outline: 3px solid var(--color-accent, cyan);
+    outline-offset: 0;
+}
+
+/* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~  */
+/* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~  */

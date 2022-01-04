@@ -27,27 +27,39 @@
             line-height: 1.5;
         }
         a         { color: var(--color-link); }
-        a:active  { color: var(--color-mark); }
         a:visited { color: var(--color-past); }
+        a:active  { color: var(--color-mark); }
+        p { max-width: 42em; }
+        h1, h2 {
+            text-transform: uppercase;
+            vertical-align: baseline;
+            vertical-align: text-top;
+            margin-top:  0;
+            line-height: 1;
+        }
+        h1 { font-size: 3rem; margin-bottom: 0; }
+        [box], .box { padding: var(--box-padding, 1rem); }
+        .screen-reader-only {
+            position:  absolute;
+            transform: scale(0);
+        }
+    </style>
+    <style>
         mark {
             background:  transparent;
             color: var(--color-mark);
         }
-        [box], .box { padding: var(--box-padding); }
-        h1, h2 {
-            text-transform: uppercase;
-            margin-top:  0;
-            line-height: 1;
-        }
+        [a]  { color: lime; }
+        [b]  { color: hsl(188 78% 68%); /* NobleCyan */ }
+        [c]  { color: gold; }
+        [xm] { font-size: 1.5em; }
+        [xl] { font-size: 2.0em; }
     </style>
-
     <style>
         .ap-content-grid {
           --content-areas:  'menu main';
-          --content-columns: auto auto ;
-
           --content-areas:  'main menu';
-          --content-columns: auto auto ;
+          --content-columns: auto max-content;
 
             display:  grid;
             grid-gap: 1rem;
@@ -64,16 +76,51 @@
             position: sticky;
             top: 0;
         }
-        .ap-content-menu-skip {
-            position:  absolute;
-            transform: scale(0);
+    </style>
+    <style>
+        .navigation-box {
+            padding: var(--box-padding, 1rem);
         }
-        .ap-content-menu li a {
+        .navigation-box ul {
+            padding-left: 0;
+            margin-left: 1.5em;
+        }
+        .navigation-box li a {
             display: inline-flex;
             padding: 0 .2em .5em;
             margin-bottom:  .5em;
         }
     </style>
+    <style>
+        .ap-article-grid {
+          --article-columns:
+              [main] auto
+              [meta] 20em ;
+
+            display:  grid;
+            align-items:  start;
+            grid-auto-flow: row;
+            grid-auto-rows: min-content;
+            grid-template-columns: var(--article-columns);
+            margin-bottom:  4em;
+            padding-bottom: 2em;
+        }
+        .ap-article-grid >* {
+            grid-column: main;
+            padding: var(--box-padding, 1rem);
+        }
+        .ap-article-grid >header {
+            grid-column: 1/-1;
+        }
+
+        .ap-article-grid {
+            background-color: hsl(222 22% 22%);
+        }
+        .ap-article-grid >header {
+            padding-top: 2em;
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="input-type-range.css">
 </head>
 <body>
 
@@ -82,40 +129,100 @@
     </header>
 
     <section class="ap-content-grid">
-        <nav class="ap-content-menu box">
+        <nav class="ap-content-menu navigation-box">
+<!--
+        <h1>
+            <mark xm>appart</mark><br>
+            <span>components</span><br>
+            <mark a xl>2022</mark>
+        </h1>
+-->
             <h2>Navigation</h2>
-            <p class="ap-content-menu-skip">
-                <a tabindex="1" href="#SkipNavigation">Skip navigation</a>
-            </p>
+            <a href="#SkipNavigation" class="screen-reader-only" tabindex="-1">
+                Skip navigation
+            </a>
+
             <ul>
+                <li><a href="#InputTypeRange">Input Type Range</a></li>
                 <li><a href="#">Art in the Age of Mechanical Reproduction</a></li>
                 <li><a href="#22">Mechanical Reproduction</a></li>
                 <li><a href="#33">Age of Mechanical Reproduction</a></li>
             </ul>
         </nav>
-        <div class="ap-content-main box" id="SkipNavigation">
+        <div class="ap-content-main" id="SkipNavigation">
+
+        <!-- ## Input Type Range -->
+
+        <article class="ap-article-grid" id="InputTypeRange">
+            <header>
+                <h2>
+                    <mark c>Cross-Browser</mark> Input<br>
+                    <mark xl>Type Range</mark><br>
+                    <span xm>in <mark b>2022</mark></span>
+                </h2>
+            </header>
+            <style>
+                .input-type-range input[name="range1"] {
+                  --theme-size: 1.25rem;
+                }
+                .input-type-range input[name="range2"] {
+                  --theme-size: 2rem;
+                }
+                .input-type-range input[name="range3"] {
+                  --theme-hue:   60;
+                  --theme-size: 1.25rem;
+                  --border-radius: 0;
+                }
+                .input-type-range input[name="range4"] {
+                  --theme-hue:   122;
+                  --theme-size: 1.25rem;
+                  --border-radius: 0;
+                }
+                .input-type-range input[name="range5"] {
+                  --theme-hue:    322;
+                  --theme-size: 1.25rem;
+                  --thumb-scale: 2;
+                }
+            </style>
+            <section class="input-type-range">
+                <input type="range" name="range0" min="0" max="100" value="50" />
+                <input type="range" name="range1" min="0" max="100" value="100" />
+                <input type="range" name="range2" min="0" max="100" value="0" />
+            </section>
+            <section class="input-type-range">
+                <input type="range" name="range3" min="0" max="10" value="6" />
+                <input type="range" name="range4" min="0" max="10" value="8" />
+            </section>
+            <section class="input-type-range">
+                <input type="range" name="range5" min="0" max="10" value="7" />
+            </section>
+            <section>
+                <pre>
+                  --theme-hue:    22;
+                  --theme-size: 2rem;
+                  --border-radius: 0;
+                </pre>
+            </section>
+        </article>
+
+        <!-- Test Design -->
+
+        <article box>
             <h2>
-                <mark>Art</mark> in the <mark>Age</mark> of<br>
-                <mark>Mechanical</mark><br>
-                Reproduction
+                <mark b>Art</mark> in the
+                <mark a>Age</mark> of<br>
+                <mark c xl>Mechanical</mark><br>
+                <mark xm>Reproduction</mark>
             </h2>
-            The Work of Art in the Age of Mechanical Reproduction tools Bill Keller Pictures of Goats section Google News Snarkmarket the other longer Book Review Paul Steiger David Foster Wallace WaPo synergize, layoffs CPC writing newsonomics nut graf The Work of Art in the Age of Mechanical Reproduction in the slot free as in beer linking Snarkmarket, paidContent Romenesko SEO <a href="#ww">Walter Lippmann</a> eHow every dog loves food Jay Rosen get me rewrite semipermeable. hackgate Sulzberger <a href="#">David Foster Wallace</a> abundance TweetDeck DocumentCloud newsroom cafe, gotta grok it before you rock it David Foster Wallace shoot a photo Robin Sloan SEO, curation metered model social media optimization paidContent gamification.
+            <p>The Work of Art in the Age of Mechanical Reproduction tools Bill Keller Pictures of Goats section Google News Snarkmarket the other longer Book Review Paul Steiger David Foster Wallace WaPo synergize, layoffs CPC writing newsonomics nut graf The Work of Art in the Age of Mechanical Reproduction in the slot free as in beer linking Snarkmarket, paidContent Romenesko SEO <a href="#ww">Walter Lippmann</a> eHow every dog loves food Jay Rosen get me rewrite semipermeable. hackgate Sulzberger <a href="#">David Foster Wallace</a> abundance TweetDeck DocumentCloud newsroom cafe, gotta grok it before you rock it David Foster Wallace shoot a photo Robin Sloan SEO, curation metered model social media optimization paidContent gamification.
+            </p>
             <section style="min-height: 200vh;"></section>
+        </article>
+
+        <!-- End of Articles -->
+
         </div>
     </section>
-
-    <main>
-        <div class="ap-content-full box">
-            Bill Keller Pictures of Goats section Google News Snarkmarket the other longer Book Review Paul Steiger David Foster Wallace WaPo synergize, layoffs CPC writing newsonomics nut graf The Work of Art in the Age of Mechanical Reproduction in the slot free as in beer linking Snarkmarket, paidContent Romenesko SEO Walter Lippmann eHow every dog loves food Jay Rosen get me rewrite semipermeable. hackgate Sulzberger David Foster Wallace abundance TweetDeck DocumentCloud newsroom cafe, gotta grok it before you rock it David Foster Wallace shoot a photo Robin Sloan SEO, curation metered model social media optimization paidContent gamification.
-        </div>
-        <div box>
-            Bill Keller Pictures of Goats section Google News Snarkmarket the other longer Book Review Paul Steiger David Foster Wallace WaPo synergize, layoffs CPC writing newsonomics nut graf The Work of Art in the Age of Mechanical Reproduction in the slot free as in beer linking Snarkmarket, paidContent Romenesko SEO Walter Lippmann eHow every dog loves food Jay Rosen get me rewrite semipermeable. hackgate Sulzberger David Foster Wallace abundance TweetDeck DocumentCloud newsroom cafe, gotta grok it before you rock it David Foster Wallace shoot a photo Robin Sloan SEO, curation metered model social media optimization paidContent gamification.
-            <section style="min-height: 100vh;"></section>
-        </div>
-        <div box>
-            Bill Keller Pictures of Goats section Google News Snarkmarket the other longer Book Review Paul Steiger David Foster Wallace WaPo synergize, layoffs CPC writing newsonomics nut graf The Work of Art in the Age of Mechanical Reproduction in the slot free as in beer linking Snarkmarket, paidContent Romenesko SEO Walter Lippmann eHow every dog loves food Jay Rosen get me rewrite semipermeable. hackgate Sulzberger David Foster Wallace abundance TweetDeck DocumentCloud newsroom cafe, gotta grok it before you rock it David Foster Wallace shoot a photo Robin Sloan SEO, curation metered model social media optimization paidContent gamification.
-        </div>
-    </main>
 
 </body>
 </html>

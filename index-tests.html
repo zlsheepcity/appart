@@ -278,7 +278,207 @@
     <header class="nav-title grid-king"><h2>Sandbox</h2></header>
     <section style="padding:4em;">
 
-        <p>Input Type Range in 2022</p>
+        <style>
+            .dm-candy-caption {
+                font-family: sans-serif;
+                font-size: 2rem;
+                margin-bottom: 2rem;
+            }
+            .ar-candy-caption {
+                text-transform: uppercase;
+                font-weight:    bold;
+                line-height:    0.75;
+
+                display: inline-flex;
+                flex-direction: column;
+                align-items: start;
+                gap: 0.25em 0;
+            }
+            .ar-candy-caption >* {
+                display: flex;
+                flex-direction: row;
+                align-items: start;
+                gap: 0 0.25em;
+            }
+
+            .ar-candy-caption {
+              --tint-a: inherit;
+              --tint-b: hsl(188,78%,53%); /* NobleCyan */
+              --tint-c: hsl(359,54%,53%); /* NobleAccent */
+              --tint-d: hsl(051,98%,53%); /* NobleGold */
+              --tint-e: hsl(120,88%,53%); /* NobleLime */
+
+              --tint-c: hsl(188,78%,53%); /* NobleCyan */
+              --tint-r: hsl(359,54%,53%); /* NobleAccent */
+              --tint-y: hsl(051,98%,53%); /* NobleGold */
+              --tint-g: hsl(120,88%,53%); /* NobleLime */
+            }
+
+            .ar-candy-caption [size-a] { font-size: 1.00em; }
+            .ar-candy-caption [size-b] { font-size: 1.50em; }
+            .ar-candy-caption [size-c] { font-size: 2.00em; }
+            .ar-candy-caption [size-d] { font-size: 3.00em; }
+            .ar-candy-caption [size-z] { font-size: 0.75em; }
+
+            .ar-candy-caption [tint-a] { color: var(--tint-a); }
+            .ar-candy-caption [tint-b] { color: var(--tint-b); }
+            .ar-candy-caption [tint-c] { color: var(--tint-c); }
+            .ar-candy-caption [tint-d] { color: var(--tint-d); }
+            .ar-candy-caption [tint-e] { color: var(--tint-e); }
+
+            .ar-candy-caption [tint-c] { color: var(--tint-c); }
+            .ar-candy-caption [tint-r] { color: var(--tint-r); }
+            .ar-candy-caption [tint-y] { color: var(--tint-y); }
+            .ar-candy-caption [tint-g] { color: var(--tint-g); }
+
+            .ar-candy-caption [align-end] { align-items: end; }
+
+        </style>
+
+        <section class="dm-candy-caption">
+            <div class="ar-candy-caption">
+                <b row size-a tint-a>
+                    <b size-a tint-b> colored</b>
+                    <b size-a tint-a> headings</b>
+                </b>
+                <b row size-c tint-c>
+                    <b size-a tint-a> attract</b>
+                </b>
+                <b row size-a tint-a>
+                    <b size-z tint-a> and</b>
+                    <b size-b tint-d> inspire</b>
+                </b>
+            </div>
+        </section>
+
+        <section class="dm-candy-caption">
+            <div class="ar-candy-caption">
+                <b row size-a tint-a>
+                    <b size-a tint-c> colored</b>
+                    <b size-a tint-a> headings</b>
+                </b>
+                <b row size-a tint-a>
+                    <b size-c tint-c> attract</b>
+                </b>
+                <b row size-a tint-a>
+                    <b size-z tint-r> and</b>
+                    <b size-b tint-y> inspire</b>
+                </b>
+            </div>
+        </section>
+
+        <section class="dm-candy-caption">
+            <div class="ar-candy-caption">
+                <b row size-a tint-a align-end>
+                    <b size-a tint-r> Auto</b>
+                    <b size-b tint-g> Growing</b>
+                </b>
+                <b row size-c tint-a>
+                    <b size-a tint-y> Textarea</b>
+                </b>
+                <b row size-a tint-a>
+                    <b size-a tint-a> Simple</b>
+                    <b size-a tint-a> Realisation</b>
+                </b>
+            </div>
+        </section>
+
+        <section class="dm-candy-caption">
+            <div class="ar-candy-caption">
+                <b row size-a tint-a>
+                    <b size-a tint-b> Colored</b>
+                    <b size-a tint-a> headings</b>
+                </b>
+                <b row size-b tint-a>
+                    <b size-a tint-a> grab</b>
+                    <b size-a tint-c> attention</b>
+                </b>
+                <b row size-a tint-a>
+                    <b size-z tint-a> and</b>
+                    <b size-c tint-d> inspire</b>
+                </b>
+            </div>
+        </section>
+
+        <section class="dm-candy-caption" style="font-size: 3em;">
+            <div class="ar-candy-caption">
+                <b row size-a tint-a>
+                    <b size-a tint-b> Colored</b>
+                    <b size-a tint-a> headings</b>
+                </b>
+                <b row size-b tint-a>
+                    <b size-a tint-a> grab</b>
+                    <b size-a tint-c> attention</b>
+                </b>
+                <b row size-a tint-a>
+                    <b size-z tint-a> and</b>
+                    <b size-c tint-e> inspire</b>
+                </b>
+            </div>
+        </section>
+
+        <section class="dm-candy-caption" style="font-size: 1.5em;">
+            <div class="ar-candy-caption">
+                <b row size-a tint-a>
+                    <b size-a tint-b> Colored</b>
+                    <b size-a tint-a> headings</b>
+                </b>
+                <b row size-b tint-a>
+                    <b size-a tint-a> grab</b>
+                    <b size-a tint-c> attention</b>
+                </b>
+                <b row size-a tint-a>
+                    <b size-z tint-a> and</b>
+                    <b size-c tint-d> inspire</b>
+                </b>
+            </div>
+        </section>
+
+        <section class="dm-candy-caption">
+            <div class="ar-candy-caption">
+                Colored headings
+                attract attention
+                and inspire
+            </div>
+        </section>
+
+        <hr>
+
+        <p>As you probably know spelling and grammar error markers use wavy underlines in some platforms like Linux or Windows, though not in all of them as they use dotted underlines on Mac. In Chromium they’re painted on a separated codepath, totally independent of how CSS text decorations are painted.</p>
+
+        <style>
+            .flex-double {
+                display: flex;
+                padding: 0.5em 1em;
+                gap: 1em;
+                font-size: 2em;
+                background-color: indigo;
+                align-items: center;
+            }
+            .pseudo::grammar-error,
+            .pseudo::spelling { color: pink; }
+            .decora {
+                text-decoration: wavy pink underline;
+                line-height: 2;
+            }
+            .spaced { letter-spacing: 0.25em; }
+        </style>
+
+        <div class="flex-double">
+            <textarea class="pseudo">pseuda elementa</textarea>
+            <span class="decora">text-decoration</span>
+            <span class="decora spaced">letter-spacing</span>
+        </div>
+
+    </section>
+</article>
+
+<!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Input Type Range in 2022 -->
+
+<article>
+    <header class="nav-title grid-king" id="AutoGrowTextarea">
+        <h2 class="h1">Input Type Range in 2022</h2>
+    </header>
 
         <style>
             .test-range, .no-test-range {
@@ -386,33 +586,6 @@
             <input type="range" name="r2">
         </section>
 
-        <p>As you probably know spelling and grammar error markers use wavy underlines in some platforms like Linux or Windows, though not in all of them as they use dotted underlines on Mac. In Chromium they’re painted on a separated codepath, totally independent of how CSS text decorations are painted.</p>
-
-        <style>
-            .flex-double {
-                display: flex;
-                padding: 0.5em 1em;
-                gap: 1em;
-                font-size: 2em;
-                background-color: indigo;
-                align-items: center;
-            }
-            .pseudo::grammar-error,
-            .pseudo::spelling { color: pink; }
-            .decora {
-                text-decoration: wavy pink underline;
-                line-height: 2;
-            }
-            .spaced { letter-spacing: 0.25em; }
-        </style>
-
-        <div class="flex-double">
-            <textarea class="pseudo">pseuda elementa</textarea>
-            <span class="decora">text-decoration</span>
-            <span class="decora spaced">letter-spacing</span>
-        </div>
-
-    </section>
 </article>
 
 <!-- ========================================= Auto-Growing Textarea -->

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>split-html-root</title>
+    <script>
+        class SplitHtmlPart extends HTMLElement {
+
+            async connectedCallback() {
+                let content = await fetch( 'split-html-part.html' )
+                this.innerHTML = await content.text()
+            }
+
+        }
+        customElements.define( 'html-part', SplitHtmlPart )
+    </script>
+</head>
+<body>
+    <h1>Split-html-root</h1>
+    <html-part></html-part>
+</body>
+</html>

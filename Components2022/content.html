@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>appart components 2022</title>
+    <meta name="author" content="zl, 2022.1.13" />
+
+    <!-- CSS Reset -->
+    <style>
+        *, *:before, *:after { box-sizing: border-box; }
+        html, body, figure   { margin:  0; padding: 0; }
+        html {-moz-text-size-adjust: none;
+           -webkit-text-size-adjust: none;
+                   text-size-adjust: none; }
+    </style>
+
+    <!-- Base Theme -->
+    <style>
+       :root {
+          --color-back: hsl(226, 15%, 12%); /* NobleBlack */
+          --color-text: hsl(226, 27%, 90%); /* NobleWhite */
+          --color-mark: hsl(359, 54%, 53%); /* NobleAccent */
+          --color-link: hsl(359, 44%, 66%);
+          --color-past: hsl(359, 33%, 77%);
+          --color-high: hsl(188, 78%, 68%); /* NobleCyan */
+
+          --box-padding: 1rem 1.25rem;
+        }
+        body {
+            background-color: var(--color-back);
+            color:            var(--color-text);
+            font-family: system-ui;
+            line-height: 1.5;
+        }
+        a         { color: var(--color-link); }
+        a:visited { color: var(--color-past); }
+        a:active  { color: var(--color-high); }
+        mark      { color: var(--color-mark); background-color: transparent; }
+        p, h1, h2 { margin-top: 0; max-width: 42em; }
+
+       [box] ,.box { padding: var(--box-padding, 1rem); }
+       [display-source] {
+            display:     block;
+            font-family: monospace;
+            white-space: pre-wrap;
+            padding:     0 1rem 2rem 1rem;
+            color: lime;
+        }
+    </style>
+
+    <!-- Content Layout -->
+    <style>
+        .ap-content-grid {
+          --content-areas:  'main menu';
+          --content-columns: auto max-content;
+
+            display:  grid;
+            grid-gap: 1rem;
+            align-items:  start;
+            grid-auto-flow: row;
+            grid-auto-rows: min-content;
+            grid-template-areas:   var(--content-areas);
+            grid-template-columns: var(--content-columns);
+        }
+        .ap-content-main { grid-area: main; }
+        .ap-content-menu { grid-area: menu; }
+        .ap-content-menu {
+            position: sticky;
+            top: 0;
+        }
+    </style>
+
+    <!-- Content Design -->
+    <style>
+        .ap-content-main >article {
+            margin-bottom: 4rem;
+        }
+        .ap-content-main >article>header>h2 {
+            font-size: 2rem;
+        }
+        .ap-content-main details {
+            background-color: hsl(226, 17%, 20%);
+            padding: var(--box-padding, 1rem);
+        }
+        .ap-content-main summary {
+            cursor: default;
+            width: max-content;
+            max-width: 80%;
+        }
+        .ap-content-main summary:hover {
+            color: var(--color-high);
+        }
+    </style>
+
+</head>
+<body>
+
+    <header box>
+        <style> h1 {text-transform:uppercase} </style>
+        <h1> appart <mark>components 2022</mark> </h1>
+    </header>
+
+    <section class="ap-content-grid">
+        <div class="ap-content-main" id="ReadContent">
+
+        <!-- Custom Article Function -->
+
+        <script>
+            const customArticle = name => {
+                const HTMLFile = name + '.html';
+                class HTMLArticle extends HTMLElement {
+                    async connectedCallback() {
+                        let  innerHTML = await fetch(HTMLFile);
+                        this.innerHTML = await innerHTML.text();
+                    }
+                }
+                customElements.define(name, HTMLArticle);
+            }
+        </script>
+
+        <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Colored Headings -->
+
+        <article box id="ColoredHeadings">
+            <header>
+                <h2 class="ar-candy-caption">
+                    <b row size-a tint-a>
+                        <b size-a tint-c> colored</b>
+                        <b size-a tint-a> headings</b>
+                    </b>
+                    <b row size-a tint-a>
+                        <b size-c tint-m> attract</b>
+                    </b>
+                    <b row size-a tint-a>
+                        <b size-z tint-a> and</b>
+                        <b size-b tint-y> inspire</b>
+                    </b>
+                </h2>
+            </header>
+            <script>customArticle('article-candy-caption')</script>
+            <article-candy-caption />
+        </article>
+
+        <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Article template-->
+
+        <article box>
+            <header>
+                <h2 class="ar-candy-caption">
+                    <b row size-a tint-a>
+                        <b size-a tint-c> Article</b>
+                    </b>
+                    <b row size-a tint-a>
+                        <b size-b tint-m> template</b>
+                    </b>
+                </h2>
+            </header>
+        </article>
+
+        <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ END of Articles -->
+
+        </div>
+    </section>
+
+</body>
+</html>

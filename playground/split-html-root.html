@@ -7,16 +7,64 @@
         class SplitHtmlPart extends HTMLElement {
 
             async connectedCallback() {
-                let content = await fetch( 'split-html-part.html' )
-                this.innerHTML = await content.text()
+                let content = await fetch( 'split-html-part.html' );
+
+                // use global
+                // this.innerHTML = await content.text();
+
+                // use shadow
+                 const host = this.attachShadow({mode: 'open'});
+                 host.innerHTML = await content.text();
             }
 
         }
-        customElements.define( 'html-part', SplitHtmlPart )
+        customElements.define( 'html-part', SplitHtmlPart );
+
     </script>
+    <style>
+        body {
+            font-family: system-ui;
+        }
+    </style>
 </head>
 <body>
-    <h1>Split-html-root</h1>
+    <template id="dialog-template">
+        <div>dialog-template</div>
+        <script>
+            console.log('inner script');
+        </script>
+    </template>
+
+        <script>
+            console.log('inner start');
+        </script>
+
+    <h1>Split-html-root 2</h1>
+    <div>test</div>
     <html-part></html-part>
+
+    <script>
+        const p=document.createElement('p');
+        p.textContent='Web Components are awesome, what do you think?';
+        const body = document.querySelector('body');
+        body.appendChild(p);
+
+        const template = document.getElementById('dialog-template');
+
+        document.body.appendChild(
+          document.importNode(template.content, true)
+        );
+
+        const useTemplate = async () => {
+            let sectionTemplate = document.createElement('template');
+            let content = await fetch( 'split-html-part.html' );
+            sectionTemplate.innerHTML = await content.text();
+            document.body.appendChild(sectionTemplate);
+            document.body.appendChild(
+              document.importNode(sectionTemplate.content, true)
+            );
+        }
+        useTemplate();
+    </script>
 </body>
 </html>

@@ -1,3 +1,25 @@
-<div>
-    split-html-part
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        div { color: red; }
+    </style>
+    <div id="zzz">
+        split-html-part 6:script
+    </div>
+    <script>
+        const p=document.createElement('p');
+        p.textContent='Webbbbb';
+        const body = document.querySelector('#zzz');
+        body.appendChild(p);
+    </script>
+    <script>
+        console.log('split-html-part 5:script');
+    </script>
+</body>
+</html>
+

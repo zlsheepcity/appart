@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Colored Headings</title>
+</head>
+<body>
+<article>
+
+
+    <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ CSS Code -->
+
+    <details>
+    <summary>CSS code</summary>
+
+    <h4>Font settings</h4>
+
+    <style display-source>
+        .ar-candy-caption {
+
+         /* Font-based magic numbers */
+          --font-family:    sans-serif;
+          --line-height:    0.75;
+          --space:          0.25em;
+
+            text-transform: uppercase;
+            font-weight:    bold;
+            font-family:    var(--font-family);
+            line-height:    var(--line-height);
+        }
+    </style>
+
+    <h4>Color and size models</h4>
+
+    <style display-source>
+        .ar-candy-caption {
+
+         /* Color model: CMYG, G for Green */
+          --tint-a: inherit;
+          --tint-c: hsl(184,74%,54%);
+          --tint-m: hsl(334,64%,54%);
+          --tint-y: hsl(414,84%,54%);
+          --tint-g: hsl(114,44%,54%);
+
+         /* Size model: …XYZ ← A → BCD… */
+          --size-a: 1.00em;
+          --size-b: 1.50em;
+          --size-c: 2.00em;
+          --size-d: 3.00em;
+          --size-z: 0.75em;
+        }
+    </style>
+
+    <h4>Layout</h4>
+
+    <style display-source>
+        .ar-candy-caption {
+            display:        inline-flex;
+            flex-direction: column;
+            gap:            var(--space) 0;
+        }
+        .ar-candy-caption [row] {
+            display:        inline-flex;
+            flex-direction: row;
+            align-items:    flex-start;
+            gap:            0 var(--space);
+        }
+    </style>
+
+    <h4>Attributes</h4>
+
+    <style display-source>
+        .ar-candy-caption [align-end] { align-items: flex-end; }
+
+        .ar-candy-caption [size-a] { --font-size: var(--size-a); }
+        .ar-candy-caption [size-b] { --font-size: var(--size-b); }
+        .ar-candy-caption [size-c] { --font-size: var(--size-c); }
+        .ar-candy-caption [size-d] { --font-size: var(--size-d); }
+        .ar-candy-caption [size-z] { --font-size: var(--size-z); }
+
+        .ar-candy-caption [tint-a] { --color: var(--tint-a); }
+        .ar-candy-caption [tint-c] { --color: var(--tint-c); }
+        .ar-candy-caption [tint-m] { --color: var(--tint-m); }
+        .ar-candy-caption [tint-y] { --color: var(--tint-y); }
+        .ar-candy-caption [tint-g] { --color: var(--tint-g); }
+
+        .ar-candy-caption * {
+            font-size: var(--font-size, inherit);
+            color:     var(--color,     inherit);
+        }
+    </style>
+
+    </details>
+
+    <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Markup -->
+
+    <details>
+    <summary>Markup Template</summary>
+
+    <textarea readonly class="code-block" style="width:100%; min-height: 22em">
+
+        <div class="ar-candy-caption">
+            <b row size-a tint-a>
+                <b size-a tint-y> colored</b>
+                <b size-a tint-a> headings</b>
+            </b>
+            <b row size-a tint-a>
+                <b size-c tint-m> attract</b>
+            </b>
+            <b row size-a tint-a>
+                <b size-z tint-a> and</b>
+                <b size-b tint-c> inspire</b>
+            </b>
+        </div>
+
+    </textarea>
+
+    </details>
+
+    <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Examples -->
+
+    <style>
+        .dm-candy-caption--grid {
+            display: grid;
+            grid-template-columns: repeat( auto-fit, minmax(32rem, 1fr) );
+            grid-gap:  2rem;
+            font-size: 2rem;
+            padding: 2rem 0;
+            font-family: system-ui;
+        }
+        .dm-candy-caption {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            padding: 0 2rem;
+            font-family: system-ui;
+        }
+    </style>
+
+    <section class="dm-candy-caption--grid">
+        <div class="ar-candy-caption" style="font-size: 3rem;">
+            <b row size-a tint-a>
+                <b size-a tint-y> colored</b>
+                <b size-a tint-a> headings</b>
+            </b>
+            <b row size-a tint-a>
+                <b size-c tint-m> attract</b>
+            </b>
+            <b row size-a tint-a>
+                <b size-z tint-a> and</b>
+                <b size-b tint-c> inspire</b>
+            </b>
+        </div>
+        <div class="ar-candy-caption">
+            <b row size-a tint-a>
+                <b size-a tint-c> colored</b>
+                <b size-a tint-a> headings</b>
+            </b>
+            <b row size-a tint-a>
+                <b size-c tint-c> attract</b>
+            </b>
+            <b row size-a tint-a>
+                <b size-z tint-a> and</b>
+                <b size-b tint-m> inspire</b>
+            </b>
+        </div>
+        <div class="ar-candy-caption" style="font-size: 1rem;">
+            <b row size-a tint-a>
+                <b size-a tint-g> colored</b>
+                <b size-a tint-a> headings</b>
+            </b>
+            <b row size-a tint-a>
+                <b size-c tint-m> attract</b>
+            </b>
+            <b row size-a tint-a>
+                <b size-z tint-a> and</b>
+                <b size-b tint-y> inspire</b>
+            </b>
+        </div>
+        <div class="ar-candy-caption">
+            <b row size-a tint-a align-end>
+                <b size-a tint-m> Auto</b>
+                <b size-b tint-g> Growing</b>
+            </b>
+            <b row size-c tint-a>
+                <b size-a tint-y> Textarea</b>
+            </b>
+            <b row size-a tint-a>
+                <b size-a tint-a> Simple</b>
+                <b size-a tint-a> Realisation</b>
+            </b>
+        </div>
+        <div class="ar-candy-caption">
+            <b row size-a tint-a align-end>
+                <b size-b tint-y> Any</b>
+                <b size-z tint-a> Custom</b>
+            </b>
+            <b row size-a tint-a>
+                <b size-b tint-y> Heading</b>
+            </b>
+            <b row size-a tint-c>
+                <b size-a tint-a> Insert</b>
+                <b size-a tint-a> Here</b>
+            </b>
+        </div>
+    </section>
+
+    <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ END -->
+
+</article>
+</body>
+</html>

@@ -44,7 +44,7 @@
             font-family: monospace;
             white-space: pre-wrap;
             padding:     0 1rem 2rem 1rem;
-            color: lime;
+            color:       hsl(91, 100%, 50%);
         }
     </style>
 
@@ -79,15 +79,16 @@
             font-size: 2rem;
         }
         .ap-content-main details {
-            background-color: hsl(226, 17%, 20%);
-            padding: var(--box-padding, 1rem);
+            margin-bottom: 1rem;
+            margin-top: 1rem;
         }
         .ap-content-main summary {
             cursor: default;
             width: max-content;
             max-width: 80%;
         }
-        .ap-content-main summary:hover {
+        .ap-content-main summary:hover,
+        .ap-content-main summary:focus {
             color: var(--color-high);
         }
     </style>
@@ -99,12 +100,10 @@
         <style> h1 {text-transform:uppercase} </style>
         <h1> appart <mark>components 2022</mark> </h1>
     </header>
-
     <section class="ap-content-grid">
         <div class="ap-content-main" id="ReadContent">
 
         <!-- Custom Article Function -->
-
         <script>
             const customArticle = name => {
                 const HTMLFile = name + '.html';
@@ -118,8 +117,46 @@
             }
         </script>
 
-        <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Colored Headings -->
+        <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Growing Textarea -->
+        <article box id="GrowingTextarea">
+            <header>
+                <h2 class="ar-candy-caption">
+                    <b row size-a tint-a align-end>
+                        <b size-a tint-m> Auto</b>
+                        <b size-b tint-g> Growing</b>
+                    </b>
+                    <b row size-c tint-a>
+                        <b size-a tint-y> Textarea</b>
+                    </b>
+                    <b row size-a tint-a>
+                        <b size-a tint-a> Simple</b>
+                        <b size-a tint-a> Realisation</b>
+                    </b>
+                </h2>
+            </header>
+            <script>customArticle('article-growing-textarea')</script>
+            <article-growing-textarea />
+        </article>
 
+        <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Code Block -->
+        <article box id="CodeBlock">
+            <header>
+                <h2 class="ar-candy-caption">
+                    <b row size-a tint-y>
+                        <b size-b tint-a> Retro</b>
+                        <b size-b tint-a> Styled</b>
+                    </b>
+                    <b row size-a tint-a>
+                        <b size-c tint-g> Code</b>
+                        <b size-b tint-a> Block</b>
+                    </b>
+                </h2>
+            </header>
+            <script>customArticle('article-code-block')</script>
+            <article-code-block />
+        </article>
+
+        <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Colored Headings -->
         <article box id="ColoredHeadings">
             <header>
                 <h2 class="ar-candy-caption">
@@ -140,19 +177,22 @@
             <article-candy-caption />
         </article>
 
-        <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Article template-->
-
-        <article box>
+        <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Article Template -->
+        <article box id="ArticleTemplate">
             <header>
                 <h2 class="ar-candy-caption">
                     <b row size-a tint-a>
-                        <b size-a tint-c> Article</b>
+                        <b size-a tint-a> Article</b>
                     </b>
                     <b row size-a tint-a>
-                        <b size-b tint-m> template</b>
+                        <b size-a tint-a> Template</b>
+                    </b>
+                    <b row size-a tint-a>
+                        <b size-a tint-a> Header</b>
                     </b>
                 </h2>
             </header>
+            <div style="height:100vh;"></div>
         </article>
 
         <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ END of Articles -->

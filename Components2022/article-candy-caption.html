@@ -12,10 +12,10 @@
 
     <details>
     <summary>CSS code</summary>
+    <style display-source code-block>
 
-    <h4>Font settings</h4>
+        /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Font settings */
 
-    <style display-source>
         .ar-candy-caption {
 
          /* Font-based magic numbers */
@@ -28,11 +28,9 @@
             font-family:    var(--font-family);
             line-height:    var(--line-height);
         }
-    </style>
 
-    <h4>Color and size models</h4>
+        /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Color and size models */
 
-    <style display-source>
         .ar-candy-caption {
 
          /* Color model: CMYG, G for Green */
@@ -49,11 +47,9 @@
           --size-d: 3.00em;
           --size-z: 0.75em;
         }
-    </style>
 
-    <h4>Layout</h4>
+        /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Layout */
 
-    <style display-source>
         .ar-candy-caption {
             display:        inline-flex;
             flex-direction: column;
@@ -65,11 +61,9 @@
             align-items:    flex-start;
             gap:            0 var(--space);
         }
-    </style>
 
-    <h4>Attributes</h4>
+        /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Attributes */
 
-    <style display-source>
         .ar-candy-caption [align-end] { align-items: flex-end; }
 
         .ar-candy-caption [size-a] { --font-size: var(--size-a); }
@@ -89,38 +83,38 @@
             color:     var(--color,     inherit);
         }
     </style>
-
     </details>
 
     <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Markup -->
 
     <details>
     <summary>Markup Template</summary>
-
-    <textarea readonly class="code-block" style="width:100%; min-height: 22em">
+    <textarea readonly code-block style="width:100%; min-height: 22em">
 
         <div class="ar-candy-caption">
             <b row size-a tint-a>
-                <b size-a tint-y> colored</b>
-                <b size-a tint-a> headings</b>
+                <b size-a tint-y> colored </b>
+                <b size-a tint-a> headings </b>
             </b>
             <b row size-a tint-a>
-                <b size-c tint-m> attract</b>
+                <b size-c tint-m> attract </b>
             </b>
             <b row size-a tint-a>
-                <b size-z tint-a> and</b>
-                <b size-b tint-c> inspire</b>
+                <b size-z tint-a> and </b>
+                <b size-b tint-c> inspire </b>
             </b>
         </div>
 
     </textarea>
-
     </details>
 
     <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Examples -->
 
+    <details>
+    <summary>Examples</summary>
+
     <style>
-        .dm-candy-caption--grid {
+        .demo-candy-captions {
             display: grid;
             grid-template-columns: repeat( auto-fit, minmax(32rem, 1fr) );
             grid-gap:  2rem;
@@ -128,15 +122,9 @@
             padding: 2rem 0;
             font-family: system-ui;
         }
-        .dm-candy-caption {
-            font-size: 2rem;
-            margin-bottom: 2rem;
-            padding: 0 2rem;
-            font-family: system-ui;
-        }
     </style>
 
-    <section class="dm-candy-caption--grid">
+    <section class="demo-candy-captions">
         <div class="ar-candy-caption" style="font-size: 3rem;">
             <b row size-a tint-a>
                 <b size-a tint-y> colored</b>
@@ -163,7 +151,7 @@
                 <b size-b tint-m> inspire</b>
             </b>
         </div>
-        <div class="ar-candy-caption" style="font-size: 1rem;">
+        <div class="ar-candy-caption" style="font-size: 1.5rem;">
             <b row size-a tint-a>
                 <b size-a tint-g> colored</b>
                 <b size-a tint-a> headings</b>
@@ -190,6 +178,16 @@
             </b>
         </div>
         <div class="ar-candy-caption">
+            <b row size-a tint-y>
+                <b size-b tint-a> Retro</b>
+                <b size-b tint-a> Styled</b>
+            </b>
+            <b row size-a tint-a>
+                <b size-c tint-g> Code</b>
+                <b size-b tint-a> Block</b>
+            </b>
+        </div>
+        <div class="ar-candy-caption" style="font-size: 2.5rem;">
             <b row size-a tint-a align-end>
                 <b size-b tint-y> Any</b>
                 <b size-z tint-a> Custom</b>
@@ -203,6 +201,8 @@
             </b>
         </div>
     </section>
+
+    </details>
 
     <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ END -->
 

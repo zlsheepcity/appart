@@ -75,7 +75,8 @@
         .ap-content-main >article {
             margin-bottom: 4rem;
         }
-        .ap-content-main >article>header>h2 {
+        .ap-content-main header>h1,
+        .ap-content-main header>h2 {
             font-size: 2rem;
         }
         .ap-content-main details {
@@ -140,20 +141,14 @@
 
         <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Code Block -->
         <article box id="CodeBlock">
-            <header>
-                <h2 class="ar-candy-caption">
-                    <b row size-a tint-y>
-                        <b size-b tint-a> Retro</b>
-                        <b size-b tint-a> Styled</b>
-                    </b>
-                    <b row size-a tint-a>
-                        <b size-c tint-g> Code</b>
-                        <b size-b tint-a> Block</b>
-                    </b>
-                </h2>
-            </header>
             <script>customArticle('article-code-block')</script>
             <article-code-block />
+
+<!--
+            <script>article('code-block')</script>
+            <script-articles-code-block />
+-->
+
         </article>
 
         <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Colored Headings -->

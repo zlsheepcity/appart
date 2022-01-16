@@ -11,6 +11,19 @@
 </head>
 <body>
 
+    <header>
+        <h1 class="ar-candy-caption">
+            <b row size-a tint-y>
+                <b size-b tint-a> Retro</b>
+                <b size-b tint-a> Styled</b>
+            </b>
+            <b row size-a tint-a>
+                <b size-c tint-g> Code</b>
+                <b size-b tint-a> Block</b>
+            </b>
+        </h1>
+    </header>
+
     <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ CSS code -->
 
     <details>
@@ -29,6 +42,7 @@
         }
 
         /** Google Font
+            @import url('https://fonts.googleapis.com/css?family=VT323');
             <link
                 href="https://fonts.googleapis.com/css?family=VT323"
                 rel="stylesheet">
@@ -131,8 +145,8 @@
         }
 
         @keyframes CodeBlockScanline {
-            from { background-position: 0 -3.3em; }
-            to   { transform: translateY(100%);   }
+            from { transform: translateY(-4em); }
+            to   { transform: translateY(100%); }
         }
 
         /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Scrollbar */
@@ -170,9 +184,8 @@
         font-weight:  normal;
         font-variant-ligatures: none;
     }
-    <mark>[Mark]</mark>
     <a href="#">Link</a>
-    <mark><a href="#">[Mark Link]</a></mark>
+    <mark>[Mark]</mark> <mark><a href="#">[Mark Link]</a></mark>
     </code>
 
     <h4>&lt;code code-block theme-green&gt;</h4>
@@ -190,6 +203,7 @@
     </code>
 
     </details>
+
 
 </body>
 </html>

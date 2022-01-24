@@ -287,6 +287,36 @@
     <header class="nav-title grid-king"><h2>Sandbox</h2></header>
     <section style="padding:4em;">
 
+
+        <h1>Please Select a Vehicles:</h1>
+
+        <input type="text" list="auto-complete">
+        <datalist id="auto-complete">
+            <option value="Airplane"></option>
+            <option value="Cars"></option>
+            <option value="Motorcycle"></option>
+            <option value="Bikes"></option>
+            <option value="Taxi"></option>
+            <option value="Bus"></option>
+            <option value="Van"></option>
+        </datalist>
+
+        <div>
+            <style>
+                meter {
+                    width: min(100%, 32rem);
+                }
+                meter::-webkit-meter-optimum-value {
+                    background-color: hotpink;
+                }
+            </style>
+            <label for="meter">Available Space: </label>
+            <meter value="95" max="100"></meter>
+        </div>
+        <div>
+            <progress></progress>
+        </div>
+
         <hr>
 
         <p>As you probably know spelling and grammar error markers use wavy underlines in some platforms like Linux or Windows, though not in all of them as they use dotted underlines on Mac. In Chromium they’re painted on a separated codepath, totally independent of how CSS text decorations are painted.</p>

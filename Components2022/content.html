@@ -72,21 +72,21 @@
 
     <!-- Content Design -->
     <style>
-        .ap-content-main >article {
-            margin-bottom: 4rem;
+        .ap-content-main > article {
+            margin-bottom: 2rem;
         }
         .ap-content-main header>h1,
         .ap-content-main header>h2 {
-            font-size: 2rem;
+            font-size:     2rem;
         }
         .ap-content-main details {
             margin-bottom: 1rem;
-            margin-top: 1rem;
+            margin-top:    1rem;
         }
         .ap-content-main summary {
-            cursor: default;
-            width: max-content;
-            max-width: 80%;
+            cursor:        default;
+            width:         max-content;
+            max-width:     80%;
         }
         .ap-content-main summary:hover,
         .ap-content-main summary:focus {
@@ -106,70 +106,42 @@
 
         <!-- Custom Article Function -->
         <script>
-            const customArticle = name => {
-                const HTMLFile = name + '.html';
+            const article = name => {
+                const HTMLTag  = `script-articles-${name}`;
+                const HTMLFile = `article-${name}.html`;
                 class HTMLArticle extends HTMLElement {
                     async connectedCallback() {
-                        let  innerHTML = await fetch(HTMLFile);
-                        this.innerHTML = await innerHTML.text();
-                    }
-                }
-                customElements.define(name, HTMLArticle);
-            }
+                        try { // read the content
+                            let  innerHTML = await fetch(HTMLFile);
+                            this.innerHTML = await innerHTML.text();
+                        } catch { // put the link
+                            const link = document.createElement('a');
+                            link.href = HTMLFile;
+                            link.innerHTML = HTMLFile;
+                            this.append(link);
+                        };
+                    };
+                };
+                customElements.define(HTMLTag, HTMLArticle);
+            };
         </script>
 
-        <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Growing Textarea -->
+        <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Articles -->
+
         <article box id="GrowingTextarea">
-            <header>
-                <h2 class="ar-candy-caption">
-                    <b row size-a tint-a align-end>
-                        <b size-a tint-m> Auto</b>
-                        <b size-b tint-g> Growing</b>
-                    </b>
-                    <b row size-c tint-a>
-                        <b size-a tint-y> Textarea</b>
-                    </b>
-                    <b row size-a tint-a>
-                        <b size-a tint-a> Simple</b>
-                        <b size-a tint-a> Realisation</b>
-                    </b>
-                </h2>
-            </header>
-            <script>customArticle('article-growing-textarea')</script>
-            <article-growing-textarea />
+            <script>article('growing-textarea')</script>
+            <script-articles-growing-textarea />
         </article>
 
-        <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Code Block -->
         <article box id="CodeBlock">
-            <script>customArticle('article-code-block')</script>
-            <article-code-block />
-
-<!--
             <script>article('code-block')</script>
             <script-articles-code-block />
--->
-
         </article>
 
-        <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Colored Headings -->
+
         <article box id="ColoredHeadings">
-            <header>
-                <h2 class="ar-candy-caption">
-                    <b row size-a tint-a>
-                        <b size-a tint-c> colored</b>
-                        <b size-a tint-a> headings</b>
-                    </b>
-                    <b row size-a tint-a>
-                        <b size-c tint-m> attract</b>
-                    </b>
-                    <b row size-a tint-a>
-                        <b size-z tint-a> and</b>
-                        <b size-b tint-y> inspire</b>
-                    </b>
-                </h2>
-            </header>
-            <script>customArticle('article-candy-caption')</script>
-            <article-candy-caption />
+            <script>article('candy-caption')</script>
+            <script-articles-candy-caption />
         </article>
 
         <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Article Template -->

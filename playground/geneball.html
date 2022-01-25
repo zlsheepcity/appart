@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>gene ball</title>
+</head>
+<body>
+    <pre>
+        ABPT
+        RGFH
+    </pre>
+    <script>
+        const log = msg => console.log(msg)
+        const tab = msg => console.table({...msg})
+        const GeneFactory = function() {
+            let DNA  = this
+            DNA.SEED ='RGFH'
+            DNA.BornGene = base => {
+                const  f = x => Math.floor( Math.random()*x.length )
+                const  g = x =>(base||x[f(x)])+x[f(x)]+x[f(x)]+x[f(x)]
+                return g(DNA.SEED)
+            }
+            DNA.GeneCreate = base => {
+                const  f = x => x[Math.floor( Math.random()*x.length )]
+                const  g = x => x[0]+f(x)+f(x)+f(x)
+                let seed = DNA.SEED
+                let head = base || f(seed)
+                return g(head+seed)
+            }
+            DNA.GrowGene = blob => {
+                const { gene, next } = blob
+            }
+            DNA.JoinPair = pair => {
+                // const { a, b, }
+            }
+        };
+        const SheepFactory = function() {
+            let DNA  = this
+            DNA.code = {r:[],g:[],f:[],h:[]}
+            DNA.FillCode = (code) => {
+                let i = 'r'
+                const isFreeBase = !code[i].length
+                const lastGene = code[i][code[i].length-1]
+                const inviteChar = isFreeBase ? i : lastGene[3]
+            }
+            
+        };
+
+
+
+        
+
+        const lib = {
+            GeneEvents: {
+                R: [
+                    {
+                        name:'RR Double Run',
+                        rule: G => G[3] === 'R',
+                    },
+                    {
+                        name:'RH Hit & Run',
+                        rule: G => G[3] === 'H',
+                    },
+                ],
+            },
+        };
+        const GeneEvents = {
+            R:Gene => {
+                let R = lib.GeneEvents.R
+                let G = Gene // mix
+                let F = GeneEvent => GeneEvent.rule
+                let H = GeneEvent => log(GeneEvent.name)
+                let action = R => F(R)(G) && H(R)
+                R.map(action)
+            }
+        }
+        GeneEvents.R('RRGHH0')
+        let X = new GeneFactory()
+
+        console.log('X Gene', X.BornGene('X'))
+        console.log('D Gene', X.BornGene())
+
+        const sheep = {
+            AR:[X.GeneCreate('R')],
+            BG:[X.GeneCreate('G')],
+            PF:[X.GeneCreate('F')],
+            TH:[X.GeneCreate('H')]
+        }
+        tab(sheep)
+
+    </script>
+</body>
+</html>

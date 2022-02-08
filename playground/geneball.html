@@ -3,6 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>gene ball</title>
+    <style>
+        body { background: wheat; }
+        @layer main {
+            body { background: wheat; }
+        }
+    </style>
 </head>
 <body>
     <pre>
@@ -12,6 +18,58 @@
     <script>
         const log = msg => console.log(msg)
         const tab = msg => console.table({...msg})
+        const GeneFactory = function() {
+            let DNA  = this
+            DNA.SEED ='RGFHIAEO'
+            DNA.BASE ='RGFH'
+            DNA.GeneSeed = base => {
+                const  r = DNA.BASE;
+                const  g = x => x[0]+f(x)+f(x)+f(x);
+                const  f = x => x[Math.floor( Math.random()*x.length )];
+                const  h = base ||f(r);
+                return g(h+r);
+            };
+        }
+        const GeneFactoryTest = function(GeneFactory) {
+            let X = new GeneFactory()
+            let GeneSeedF1 = r => Array.from('123456789012').map(x=>X.GeneSeed(r))
+            log('GeneSeed R/G/F/H');
+            log(GeneSeedF1('R'))
+            log(GeneSeedF1('G'))
+            log(GeneSeedF1('F'))
+            log(GeneSeedF1('H'))
+        }
+        const SheepFactory = function() {
+            let DNA  = this
+            DNA.code = {r:[],g:[],f:[],h:[]}
+            DNA.FillCode = (code) => {
+                let i = 'r'
+                const isFreeBase = !code[i].length
+                const lastGene = code[i][code[i].length-1]
+                const inviteChar = isFreeBase ? i : lastGene[3]
+            }
+            
+        };
+/*
+RGFH
+MBPT
+IAE
+
+sheep
+ship
+    nuke
+        rgfh
+        e:  exp, game played
+        a:  atf, focus points
+        i:  ini, initiative
+        o:  empty
+    pool
+        
+
+        s:  svg
+            mods:
+                r*r*:
+
         const GeneFactory = function() {
             let DNA  = this
             DNA.SEED ='RGFH'
@@ -34,21 +92,8 @@
                 // const { a, b, }
             }
         };
-        const SheepFactory = function() {
-            let DNA  = this
-            DNA.code = {r:[],g:[],f:[],h:[]}
-            DNA.FillCode = (code) => {
-                let i = 'r'
-                const isFreeBase = !code[i].length
-                const lastGene = code[i][code[i].length-1]
-                const inviteChar = isFreeBase ? i : lastGene[3]
-            }
-            
-        };
+*/
 
-
-
-        
 
         const lib = {
             GeneEvents: {
@@ -77,16 +122,17 @@
         GeneEvents.R('RRGHH0')
         let X = new GeneFactory()
 
-        console.log('X Gene', X.BornGene('X'))
-        console.log('D Gene', X.BornGene())
+        console.log('X Gene', X.GeneSeed('X'))
+        console.log('D Gene', X.GeneSeed())
 
         const sheep = {
-            AR:[X.GeneCreate('R')],
-            BG:[X.GeneCreate('G')],
-            PF:[X.GeneCreate('F')],
-            TH:[X.GeneCreate('H')]
+            AR:[X.GeneSeed('R')],
+            BG:[X.GeneSeed('G')],
+            PF:[X.GeneSeed('F')],
+            TH:[X.GeneSeed('H')]
         }
         tab(sheep)
+        GeneFactoryTest(GeneFactory);
 
     </script>
     <!-- 

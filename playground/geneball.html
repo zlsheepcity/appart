@@ -63,14 +63,24 @@
         const NobleSheep = function NobleSheepFactory
         (...genes) {
             const noble = Object.assign(this, ...genes)
-            noble.profile = f => log({NobleSheep:'·',...noble})
-            noble.display = f => {
-                console.group('NobleSheep')
-                noble.profile()
+            noble.Profile = f => log({NobleSheep:'·',...noble})
+            noble.Display = f => {
+                console.group(['NobleSheep',noble.name || ''].join(': '))
+                noble.Profile()
                 for (i in noble.nuke) log(i, noble.nuke[i])
                 console.groupEnd()
                 }
             noble.nuke = genes.nuke || GEN.Nuke()
+
+            noble.GenePower = G => {
+                //let genes = Object.keys(noble.nuke)
+                const n = noble.nuke
+                let power = 0
+                for (i in n) power +=
+                    (n[i].join('').match(new RegExp(G, "g")) || [])
+                    .length
+                return power
+            }
 
             // run
             GEN.NukeFill(noble)
@@ -79,8 +89,26 @@
         /**/ // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Run
 
         const Sheep = new NobleSheep({msg})
-        Sheep.msg('Hi')
-        Sheep.display()
+//        Sheep.msg('Hi')
+//        Sheep.display()
+//        log('Gene power R:', Sheep.GenePower('R'))
+
+        const Team = [
+            new NobleSheep({name:'Player Geta'}),
+            new NobleSheep({name:'Player Hita'}),
+        ];
+        Team[0].Display()
+        Team[1].Display()
+        msg(
+            ( x => G => l =>
+            [ Team[x].name, l, Team[x].GenePower(G) ].join(' ')
+            )(1)('H')('hit')
+        );
+        msg(
+            ( x => G => l =>
+            [ Team[x].name, l, Team[x].GenePower(G) ].join(' ')
+            )(0)('G')('get')
+        );
 
         /**/ // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ End
 
@@ -185,20 +213,20 @@ ship
                 R.map(action)
             }
         }
-        GeneEvents.R('RRGHH0')
-        let X = new GeneFactory()
-
-        console.log('X Gene', X.GeneSeed('X'))
-        console.log('D Gene', X.GeneSeed())
-
-        const sheep = {
-            AR:[X.GeneSeed('R')],
-            BG:[X.GeneSeed('G')],
-            PF:[X.GeneSeed('F')],
-            TH:[X.GeneSeed('H')]
-        }
-        tab(sheep)
-        GeneFactoryTest(GeneFactory);
+//        GeneEvents.R('RRGHH0')
+//        let X = new GeneFactory()
+//
+//        console.log('X Gene', X.GeneSeed('X'))
+//        console.log('D Gene', X.GeneSeed())
+//
+//        const sheep = {
+//            AR:[X.GeneSeed('R')],
+//            BG:[X.GeneSeed('G')],
+//            PF:[X.GeneSeed('F')],
+//            TH:[X.GeneSeed('H')]
+//        }
+//        tab(sheep)
+//        GeneFactoryTest(GeneFactory);
 
     </script>
     <!-- 

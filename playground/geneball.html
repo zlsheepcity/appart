@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>gene ball</title>
-    <style>
-        body { background: wheat; }
-        @layer main {
-            body { background: wheat; }
-        }
-    </style>
+    <script>
+        const log = (...msg) => console.log(...msg)
+        const msg = msg => console.log('..', msg)
+        const tab = msg => console.table({...msg})
+    </script>
 </head>
 <body>
     <pre>
@@ -16,8 +15,75 @@
         RGFH
     </pre>
     <script>
-        const log = msg => console.log(msg)
-        const tab = msg => console.table({...msg})
+
+        /**/ // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Noble
+
+        const NobleGenetics = function NobleGeneticsFactory
+        (...dna) {
+            const noble = Object.assign(this, ...dna)
+            noble.profile = f => log({NobleGenetics:'·',...noble})
+
+            noble.WorldSettings = {
+                SEED: 'RGFHIAEO',
+                PACE:  4,//4
+                }
+            const GEN = Object.assign(this, noble.WorldSettings)
+
+            noble.Nuke = base => {
+                const  r = [...GEN.SEED];
+                const  g = x => x.reduce(f, {});
+                const  f = (a,b) => (a[b]=h(b),a);
+                const  h = x => [];
+                return g(r)
+                }
+
+            noble.NukeFill = (dna, base) => {
+                const  r = Object.keys(dna.nuke).slice(0, GEN.PACE);
+                const  g = x => x.reduce(f, {})
+                const  f = (a,b) => (a[b]=h(b),a);
+                const  h = G => [GEN.Gene(G)];
+                dna.nuke = {...dna.nuke, ...g(r)}
+                //dna.nuke = Object.keys(dna.nuke).map(G=>GEN.Gene(G))
+                }
+
+            noble.Gene = base => {
+                const  r = GEN.SEED.substr(0, GEN.PACE);
+                const  g = x => h[0]+f(x)+f(x)+f(x);
+                const  f = x => x[Math.floor( Math.random()*x.length )];
+                const  h = base || f(r);
+                return g(h+r);
+                }
+
+        };
+
+        const GEN = new NobleGenetics({msg})
+        GEN.profile()
+        log(GEN.Gene())
+
+        const NobleSheep = function NobleSheepFactory
+        (...genes) {
+            const noble = Object.assign(this, ...genes)
+            noble.profile = f => log({NobleSheep:'·',...noble})
+            noble.display = f => {
+                console.group('NobleSheep')
+                noble.profile()
+                for (i in noble.nuke) log(i, noble.nuke[i])
+                console.groupEnd()
+                }
+            noble.nuke = genes.nuke || GEN.Nuke()
+
+            // run
+            GEN.NukeFill(noble)
+        };
+
+        /**/ // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Run
+
+        const Sheep = new NobleSheep({msg})
+        Sheep.msg('Hi')
+        Sheep.display()
+
+        /**/ // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ End
+
         const GeneFactory = function() {
             let DNA  = this
             DNA.SEED ='RGFHIAEO'

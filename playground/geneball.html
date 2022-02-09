@@ -20,16 +20,24 @@
 
         const NobleGenetics = function NobleGeneticsFactory
         (...dna) {
-            const noble = Object.assign(this, ...dna)
-            noble.profile = f => log({NobleGenetics:'·',...noble})
+            const Noble = Object.assign(this, ...dna)
+            Noble.profile = f => log({NobleGenetics:'·',...Noble})
 
-            noble.WorldSettings = {
+            Noble.WorldSettings = {
                 SEED: 'RGFHIAEO',
                 PACE:  4,//4
                 }
-            const GEN = Object.assign(this, noble.WorldSettings)
+            const GEN = Object.assign(this, Noble.WorldSettings)
 
-            noble.Nuke = base => {
+            let mCharEater = Char => Eater => {
+                const r = [...Char]
+                const g = list => list.reduce(f,0)
+                const f = (counter, g) => counter + h(g)
+                const h = Eater
+                return g(r);
+                }
+
+            Noble.Nuke = base => {
                 const  r = [...GEN.SEED];
                 const  g = x => x.reduce(f, {});
                 const  f = (a,b) => (a[b]=h(b),a);
@@ -37,22 +45,27 @@
                 return g(r)
                 }
 
-            noble.NukeFill = (dna, base) => {
-                const  r = Object.keys(dna.nuke).slice(0, GEN.PACE);
-                const  g = x => x.reduce(f, {})
-                const  f = (a,b) => (a[b]=h(b),a);
-                const  h = G => [GEN.Gene(G)];
-                dna.nuke = {...dna.nuke, ...g(r)}
-                //dna.nuke = Object.keys(dna.nuke).map(G=>GEN.Gene(G))
-                }
-
-            noble.Gene = base => {
+            Noble.Gene = base => {
                 const  r = GEN.SEED.substr(0, GEN.PACE);
                 const  g = x => h[0]+f(x)+f(x)+f(x);
                 const  f = x => x[Math.floor( Math.random()*x.length )];
                 const  h = base || f(r);
                 return g(h+r);
                 }
+
+            Noble.NukeCharSize = oO => {
+                let { nuke, char } = oO || {}
+                let ObjectNukeSizer = G =>
+                    Object.keys(nuke).reduce(
+                        (power, g) => power +
+                        (nuke[g]
+                            .join('')
+                            .match(new RegExp(G,"g"))
+                            || []
+                        ).length
+                        ,0);
+                return mCharEater(char)(ObjectNukeSizer);
+            };
 
         };
 
@@ -62,28 +75,41 @@
 
         const NobleSheep = function NobleSheepFactory
         (...genes) {
-            const noble = Object.assign(this, ...genes)
-            noble.Profile = f => log({NobleSheep:'·',...noble})
-            noble.Display = f => {
-                console.group(['NobleSheep',noble.name || ''].join(': '))
-                noble.Profile()
-                for (i in noble.nuke) log(i, noble.nuke[i])
+            const Noble = Object.assign(this, ...genes)
+            Noble.Profile = f => log({NobleSheep:'·',...Noble})
+            Noble.Display = f => {
+                console.group(['NobleSheep',Noble.name || ''].join(': '))
+                Noble.Profile()
+                for (i in Noble.nuke) log(i, Noble.nuke[i])
                 console.groupEnd()
                 }
-            noble.nuke = genes.nuke || GEN.Nuke()
+            Noble.nuke = genes.nuke || GEN.Nuke()
 
-            noble.GenePower = G => {
-                //let genes = Object.keys(noble.nuke)
-                const n = noble.nuke
-                let power = 0
-                for (i in n) power +=
-                    (n[i].join('').match(new RegExp(G, "g")) || [])
-                    .length
-                return power
-            }
+            Noble.NukeFill = (dna, base) => {
+                const  r = Object.keys(dna.nuke).slice(0, GEN.PACE);
+                const  g = x => x.reduce(f, {})
+                const  f = (a,b) => (a[b]=h(b),a);
+                const  h = G => [GEN.Gene(G)];
+                dna.nuke = {...dna.nuke, ...g(r)}
+                //dna.nuke = Object.keys(dna.nuke).map(G=>GEN.Gene(G))
+                }
+
+            Noble.GenePower = G => {
+                const NUKE = Noble.nuke
+                const GPower = g =>
+                    Object.keys(NUKE).reduce(
+                        (power, key) => power +
+                        (NUKE[key]
+                            .join('')
+                            .match(new RegExp(g,"g"))
+                            || []
+                        ).length
+                        ,0);
+                return [...G].reduce( (p,g) => p+GPower(g) , 0)
+            };
 
             // run
-            GEN.NukeFill(noble)
+            Noble.NukeFill(Noble)
         };
 
         /**/ // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Run
@@ -102,13 +128,16 @@
         msg(
             ( x => G => l =>
             [ Team[x].name, l, Team[x].GenePower(G) ].join(' ')
-            )(1)('H')('hit')
+            )(1)('HF')('hit')
         );
         msg(
             ( x => G => l =>
             [ Team[x].name, l, Team[x].GenePower(G) ].join(' ')
-            )(0)('G')('get')
+            )(0)('GR')('get')
         );
+
+        log( GEN.NukeCharSize({...Team[1], char:'FH'}) );
+        log( GEN.NukeCharSize({...Team[0], char:'GR'}) );
 
         /**/ // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ End
 

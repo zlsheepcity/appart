@@ -45,20 +45,28 @@
             Gen.Nuke = oO => oO && oO.nuke || {G:[],H:[]}
             Gen.nuke = {G:[],H:[]}
 
+            let NukeSeed = G => [Gen.Gene(G),Gen.Gene(G),Gen.Gene(G)];
+            let NukeWeed = A => {
+                let PairLovePower = Gen.PairLovePower
+            };
             Gen.Nuke = oO => {
                 const  r = [...Gen.SEED]
                 const  g = x => x.reduce(f, {})
                 const  f = (a,G) => (a[G]=h(G),a)
-                const  h = G => [Gen.Seed(G),Gen.Seed(G)]
+                const  h = NukeSeed
                 return oO && oO.nuke || g(r);
                 };
-            Gen.Seed = base => {
+            Gen.Gene = base => {
                 const  r = Gen.SEED
                 const  g = r => h[0]+f(h+r)+f(h+r)+f(h+r)
                 const  f = x => x[Math.floor( Math.random()*x.length )]
                 const  h = base || f(r)
                 return g(r);
                 };
+            Gen.PairLovePower =
+                (a,b) => [...a].reduce(
+                    (p,g,i) => b[i] === g? ++p :p
+                        ,0);
         };
 
         const NobleGenetics = function NobleGeneticsFactory

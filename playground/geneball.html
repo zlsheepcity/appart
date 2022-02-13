@@ -45,9 +45,29 @@
             Gen.Nuke = oO => oO && oO.nuke || {G:[],H:[]}
             Gen.nuke = {G:[],H:[]}
 
-            let NukeSeed = G => [Gen.Gene(G),Gen.Gene(G),Gen.Gene(G)];
-            let NukeWeed = A => {
-                let PairLovePower = Gen.PairLovePower
+            let NukeSeed = G => Gen.NukeWeed([Gen.Gene(G),Gen.Gene(G),Gen.Gene(G)]);
+            Gen.NukeWeed = acid => {
+                let AcidThreesome = abc => {
+                    let [a,b,c] = abc
+                    let h = Gen.PairLovePower
+                    let friendly = h(c,b) > 1
+                    let winner =
+                      1 < h(c,a) && Math.random()*h(c,a)
+                        > Math.random()*h(b,a)
+                        ? c:b;
+                    return friendly ? [b,c] : [winner] ;
+                    };
+                return acid.reduce(
+                    (w,g) => {
+                        if (!w.length) return [g];
+                        let base = [w[0][0],w[0][0],w[0][0],w[0][0]].join('')
+                        let last = w.slice(-1)[0]
+                        let home = w.length >1 ? w.slice(-2)[0] :base
+                        return [
+                          ...w.slice(0, -1),
+                          ...AcidThreesome([ home, last, g ])
+                        ];
+                    }, []);
             };
             Gen.Nuke = oO => {
                 const  r = [...Gen.SEED]
@@ -81,6 +101,7 @@
         };
 
         let Gen = new fromGeneticsLibrary()
+        log( "NukeWeed ['RRFF', 'RRGG', 'RFFF']:", Gen.NukeWeed(['RRFF', 'RRGG', 'RFFF']) )
         //let Gen = new fromGeneticsLibrary( new NobleGenetics() )
         //Gen.SayHi()
 

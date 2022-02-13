@@ -19,7 +19,7 @@
 
         const NobleWorld = function NobleWorldFactory
         (dna) {
-            const World = Object.assign(this, dna)
+            const World = Object.assign(this,dna)
             World.Story = [World.name||'MainController',{dna}]
             World.SayHi = f=> log({Hi:World.Story[0], ...World})
 
@@ -27,50 +27,106 @@
                 let name = data.name || data.toString() || 'Aita'
                 return {name}
             };
+
+            //World.Takes = oO => Gen.Take(oO)
         };
         let TheWorld = new NobleWorld()
         TheWorld.SayHi()
 
+        /**/ // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Genetics
+
+        const fromGeneticsLibrary = function
+        (dna) {
+            let Gen = Object.assign(this,dna)
+            Gen.SEED = 'RGFH'
+            Gen.Stimul = oO => StimulFrom(oO)
+            let StimulFrom = oO => ({G:2,H:7})
+            Gen.Take = oO => Object.assign(oO,Gen)
+            Gen.Nuke = oO => oO && oO.nuke || {G:[],H:[]}
+            Gen.nuke = {G:[],H:[]}
+
+            Gen.Nuke = oO => {
+                const  r = [...Gen.SEED]
+                const  g = x => x.reduce(f, {})
+                const  f = (a,G) => (a[G]=h(G),a)
+                const  h = G => [Gen.Seed(G),Gen.Seed(G)]
+                return oO && oO.nuke || g(r);
+                };
+            Gen.Seed = base => {
+                const  r = Gen.SEED
+                const  g = r => h[0]+f(h+r)+f(h+r)+f(h+r)
+                const  f = x => x[Math.floor( Math.random()*x.length )]
+                const  h = base || f(r)
+                return g(r);
+                };
+        };
+
+        const NobleGenetics = function NobleGeneticsFactory
+        (dna) {
+            const Noble = Object.assign(this,dna)
+            Noble.Story = [Noble.name||'Gina',{dna}]
+            Noble.SayHi = f=> log({Hi:Noble.Story[0], ...Noble})
+
+            const StimulFrom = oO => ({G:2,H:7})
+            Noble.Stimul = oO => StimulFrom(oO)
+
+        };
+
+        let Gen = new fromGeneticsLibrary()
+        //let Gen = new fromGeneticsLibrary( new NobleGenetics() )
+        //Gen.SayHi()
 
         /**/ // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ The Person
 
         const NoblePerson = function NoblePersonFactory
         (dna) {
-            const Noble = Object.assign(this, dna)
+            const Noble = Object.assign(this,dna)
             Noble.Story = [Noble.name||'Was born Noble',{dna}]
             Noble.SayHi = f=> log({Hi:Noble.Story[0], ...Noble})
+            //Gen.Take(Noble)
         };
 
         let Sheep1 = new NoblePerson(TheWorld.GivesPassportFor('Sheep One'))
         Sheep1.SayHi()
         let Sheep2 = new NoblePerson()
         Sheep2.SayHi()
+        let theBallPassport = TheWorld.GivesPassportFor('The Ball')
+        let TheBall = new NoblePerson(theBallPassport)
+        TheBall.SayHi()
+
+        //let ss = TheWorld.Takes(new NoblePerson())
 
 
         /**/ // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ The Game
 
         const NobleGame = function NobleGameFactory
         (dna) {
-            const Noble = Object.assign(this, dna)
+            const Noble = Object.assign(this,dna)
             Noble.Story = [Noble.name||'GameController',{dna}]
             Noble.SayHi = f=> log({Hi:Noble.Story[0], ...Noble})
+
+            Noble.RoundRobin = (Ball, Hiter, Geter) => {
+                console.group('RoundRobin')
+                let hit = Gen.Stimul(Hiter)
+                log('Hit:', hit)
+                console.groupEnd()
+            };
         };
 
         let TheGame = new NobleGame()
         TheGame.SayHi()
+        TheGame.RoundRobin({},{},{})
 
-        /**/ // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Noble
+        /**/ // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 
-        const NobleGenetics = function NobleGeneticsFactory
-        (...dna) {
-            const Noble = Object.assign(this, ...dna)
-            Noble.profile = f => log({NobleGenetics:'·',...Noble})
+        const OldschoolGEN = dna => {
+            const Noble = this
 
             Noble.WorldSettings = {
                 SEED: 'RGFHIAEO',
                 PACE:  4,//4
                 }
-            const GEN = Object.assign(this, Noble.WorldSettings)
+            const GEN = Object.assign(Noble, Noble.WorldSettings)
 
             let mCharEater = Char => Eater => {
                 const r = [...Char]
@@ -109,11 +165,10 @@
                         ,0);
                 return mCharEater(char)(ObjectNukeSizer);
             };
-
+            return Noble;
         };
-
-        const GEN = new NobleGenetics({msg})
-        GEN.profile()
+        const GEN = new NobleGenetics(OldschoolGEN({msg}))
+        GEN.SayHi()
         log(GEN.Gene())
 
         const NobleSheep = function NobleSheepFactory
@@ -220,6 +275,9 @@
 RGFH
 MBPT
 IAE
+
+arr4 = [1, 2, [3, 4, [5, 6, [7, 8, [9, 10]]]]];
+arr4.flat(Infinity);
 
 sheep
 ship

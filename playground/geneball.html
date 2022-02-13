@@ -45,11 +45,10 @@
             Gen.Nuke = oO => oO && oO.nuke || {G:[],H:[]}
             Gen.nuke = {G:[],H:[]}
 
-            let NukeSeed = G => Gen.NukeWeed([Gen.Gene(G),Gen.Gene(G),Gen.Gene(G)]);
-            Gen.NukeWeed = acid => {
+            Gen.AcidWeed = acid => {
                 let AcidThreesome = abc => {
                     let [a,b,c] = abc
-                    let h = Gen.PairLovePower
+                    let h = Gen.PairLoveStimul
                     let friendly = h(c,b) > 1
                     let winner =
                       1 < h(c,a) && Math.random()*h(c,a)
@@ -69,11 +68,15 @@
                         ];
                     }, []);
             };
+            Gen.Fill = oO => Oo => {
+                const acid = G => Gen.AcidWeed([...oO.nuke[G], ...Oo.nuke[G]])
+                Object.keys(Oo.nuke).map( G=> {oO.nuke[G]=acid(G)} )
+            }
             Gen.Nuke = oO => {
                 const  r = [...Gen.SEED]
                 const  g = x => x.reduce(f, {})
                 const  f = (a,G) => (a[G]=h(G),a)
-                const  h = NukeSeed
+                const  h = G => [Gen.Gene(G)]
                 return oO && oO.nuke || g(r);
                 };
             Gen.Gene = base => {
@@ -83,10 +86,48 @@
                 const  h = base || f(r)
                 return g(r);
                 };
-            Gen.PairLovePower =
-                (a,b) => [...a].reduce(
-                    (p,g,i) => b[i] === g? ++p :p
+            Gen.PairLoveStimul =
+                (AAAA,BBBB) => [...AAAA].reduce(
+                    (p,g,i) => BBBB[i] === g? ++p :p
                         ,0);
+            Gen.Welcome = o =>
+                Object.assign( o,{
+                    nuke: Gen.Nuke(),
+                    Take: function (oO) {
+                        log('this.nuke', this.nuke);
+                        log('Oo.nuke', oO.nuke);
+                        this.nuke.H=[]
+                        log('this.nuke', this.nuke);
+                        },
+                    Fill: function (oO, keys) {
+                        (keys || Object.keys(this.nuke))
+                        .map( G => {
+                            let fill = {nuke:{ [G]:this.nuke[G] }}
+                            Gen.Fill(oO)(fill)
+                        });
+                        },
+                });
+
+            Gen.NukeCharStimul = (oO, char) => {
+                let { nuke} = oO || {nuke:{O:[]}}
+                let CharEater = Char => Eater => {
+                    const r = [...Char]
+                    const g = list => list.reduce(f,0)
+                    const f = (counter, G) => counter + h(G)
+                    const h = Eater
+                    return g(r);
+                    }
+                let ObjectNukeSizer = G =>
+                    Object.keys(nuke).reduce(
+                        (power, g) => power +
+                        (nuke[g]
+                            .join('')
+                            .match(new RegExp(G,"g"))
+                            || []
+                        ).length
+                        ,0);
+                return CharEater(char)(ObjectNukeSizer);
+                };
         };
 
         const NobleGenetics = function NobleGeneticsFactory
@@ -101,18 +142,18 @@
         };
 
         let Gen = new fromGeneticsLibrary()
-        log( "NukeWeed ['RRFF', 'RRGG', 'RFFF']:", Gen.NukeWeed(['RRFF', 'RRGG', 'RFFF']) )
+        log( "AcidWeed Test ['RRFF', 'RRGG', 'RFFF']:", Gen.AcidWeed(['RRFF', 'RRGG', 'RFFF']) )
         //let Gen = new fromGeneticsLibrary( new NobleGenetics() )
         //Gen.SayHi()
 
         /**/ // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ The Person
 
-        const NoblePerson = function NoblePersonFactory
+        const NoblePerson = function
         (dna) {
             const Noble = Object.assign(this,dna)
             Noble.Story = [Noble.name||'Was born Noble',{dna}]
             Noble.SayHi = f=> log({Hi:Noble.Story[0], ...Noble})
-            //Gen.Take(Noble)
+            Gen.Welcome(Noble)
         };
 
         let Sheep1 = new NoblePerson(TheWorld.GivesPassportFor('Sheep One'))
@@ -124,6 +165,9 @@
         TheBall.SayHi()
 
         //let ss = TheWorld.Takes(new NoblePerson())
+        log('Sheep2.nuke 1', Sheep2.nuke)
+        Sheep1.Fill(Sheep2, ['R','H'])
+        log('Sheep2.nuke 2', Sheep2.nuke)
 
 
         /**/ // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ The Game
@@ -145,6 +189,26 @@
         let TheGame = new NobleGame()
         TheGame.SayHi()
         TheGame.RoundRobin({},{},{})
+
+        //const TestGameRun = f => {
+            let TeamA = [
+                new NoblePerson(TheWorld.GivesPassportFor('A1')),
+                new NoblePerson(TheWorld.GivesPassportFor('A2')),
+                new NoblePerson(TheWorld.GivesPassportFor('A3')),
+                ];
+            let TeamB = [
+                new NoblePerson(TheWorld.GivesPassportFor('B1')),
+                new NoblePerson(TheWorld.GivesPassportFor('B2')),
+                new NoblePerson(TheWorld.GivesPassportFor('B3')),
+                ];
+            let Ball = new NoblePerson(TheWorld.GivesPassportFor('Ball'))
+            console.group('Game Run')
+            console.log(['TeamA', ...TeamA])
+            console.log(['TeamB', ...TeamB])
+            console.log(['Ball', Ball])
+            console.groupEnd()
+        //};
+        //TestGameRun();
 
         /**/ // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 
@@ -199,6 +263,11 @@
         const GEN = new NobleGenetics(OldschoolGEN({msg}))
         GEN.SayHi()
         log(GEN.Gene())
+        log('NukeCharStimul H', Ball.nuke, Gen.NukeCharStimul(Ball,'H'))
+        log('NukeCharStimul G', Ball.nuke, Gen.NukeCharStimul(Ball,'G'))
+        TeamA[0].Fill(Ball, ['H'])
+        log('NukeCharStimul H', Ball.nuke, Gen.NukeCharStimul(Ball,'H'))
+        log('NukeCharStimul G', Ball.nuke, Gen.NukeCharStimul(Ball,'G'))
 
         const NobleSheep = function NobleSheepFactory
         (...genes) {

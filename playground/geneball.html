@@ -14,6 +14,7 @@
         ABPT
         RGFH
     </pre>
+    <script src="geneball--libs.js"></script>
     <script>
         /**/ // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ The World
 
@@ -41,7 +42,7 @@
 
         /**/ // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Genetics
 
-        const fromGeneticsLibrary = function
+        const fromGeneticsLibrary2 = function
         (dna) {
             let Gen = Object.assign(this,dna)
             Gen.SEED = 'RGFH'
@@ -51,29 +52,56 @@
             Gen.Nuke = oO => oO && oO.nuke || {G:[],H:[]}
             Gen.nuke = {G:[],H:[]}
 
-            Gen.AcidWeed = acid => {
-                let AcidThreesome = abc => {
-                    let [a,b,c] = abc
-                    let h = Gen.PairLoveStimul
-                    let friendly = h(c,b) > 1
-                    let winner =
-                      1 < h(c,a) && Math.random()*h(c,a)
-                        > Math.random()*h(b,a)
-                        ? c:b;
-                    return friendly ? [b,c] : [winner] ;
-                    };
-                return acid.reduce(
-                    (w,g) => {
-                        if (!w.length) return [g];
-                        let base = [w[0][0],w[0][0],w[0][0],w[0][0]].join('')
-                        let last = w.slice(-1)[0]
-                        let home = w.length >1 ? w.slice(-2)[0] :base
-                        return [
-                          ...w.slice(0, -1),
-                          ...AcidThreesome([ home, last, g ])
-                        ];
-                    }, []);
-            };
+//            Gen.AcidWeed = acid => {
+//                let AcidThreesome = abc => {
+//                    let [a,b,c] = abc
+//                    let h = Gen.PairLoveStimul
+//                    let friendly = h(c,b) > 1
+//                    let winner =
+//                      1 < h(c,a) && Math.random()*h(c,a)
+//                        > Math.random()*h(b,a)
+//                        ? c:b;
+//                    return friendly ? [b,c] : [winner] ;
+//                    };
+//                return acid.reduce(
+//                    (w,g) => {
+//                        if (!w.length) return [g];
+//                        let base = [w[0][0],w[0][0],w[0][0],w[0][0]].join('')
+//                        let last = w.slice(-1)[0]
+//                        let home = w.length >1 ? w.slice(-2)[0] :base
+//                        return [
+//                          ...w.slice(0, -1),
+//                          ...AcidThreesome([ home, last, g ])
+//                        ];
+//                    }, []);
+//            };
+    Gen.GeneMask =
+        o => [...Gen.Gene()]
+               .fill(o||'O')
+                .join('');
+
+    Gen.AcidWeed = acid => acid.reduce(
+        (AcW,G) => {
+            const b = Gen.GeneMask(AcW[0] && AcW[0][0])
+            const h = AcW.length >1 ? AcW.slice(-2)[0]:b
+            const r = AcW.slice(0, -1)
+            const g = AcW.slice(-1)[0]
+            const f = Gen.AcidThreesome
+            return !!!AcW.length? [G] :[...r,...f(h,g,G)];
+        },[]);
+
+    Gen.AcidThreesome =
+    (a,b,c) => {
+        if (Array.isArray(a)) [a,b,c] = a
+        let h = Gen.PairLoveStimul
+        let friendly = h(c,b) > 1
+        let winner =
+          1 < h(c,a) && Math.random()*h(c,a)
+            > Math.random()*h(b,a)
+            ? c:b;
+        return friendly ? [b,c] : [winner] ;
+        };
+
             Gen.Fill = oO => Oo => {
                 const acid = G => Gen.AcidWeed([...oO.nuke[G], ...Oo.nuke[G]])
                 Object.keys(Oo.nuke).map( G=> {oO.nuke[G]=acid(G)} )
@@ -220,7 +248,7 @@
                 let Sheep = f =>  Squad()[Noble.currentSheep[Noble.currentSquad]]
                 let Ball = {inPlay:true};
 
-                while( Ball.inPlay && Noble.currentTouch<64 ) {
+                while( Ball.inPlay && Noble.currentTouch<6 ) {
                     Noble.currentTouch++
                     log('Noble.currentTouch',Noble.currentTouch)
                     Ball = Noble[Noble.stages[Noble.currentStage]]( Ball, Sheep() )
@@ -230,11 +258,12 @@
             };
 
             Noble.RoundRobin = (Ball, Player) => {
-                console.group('RoundRobin '+Noble.currentScore.join(':'))
+                console.groupCollapsed('RoundRobin '+Noble.currentScore.join(':'))
                 Ball = new NoblePerson(
                     TheWorld.GivesPassportFor('Ball #' +
                    (Noble.currentScore.reduce((B,l)=>l+B,1)) )
                 )
+                Gen.Fill(Ball)({nuke:Gen.Nuke(1)})
                 TheWorld.DisplaysNuke(Ball)
 
                 // Touch
@@ -249,10 +278,10 @@
 
                 // Log
                 TheWorld.DisplaysNuke(Player, Ball)
+                console.groupEnd()
                 log(Player.name, 'hit the ball')
                 if (success) log('succes', {hit,get})
                 if(!success) log('serve failed', {hit,get})
-                console.groupEnd()
 
                 // End
                 if(!success) Noble.currentScore[ Noble.currentSquad ? 0:1 ]++
@@ -263,7 +292,7 @@
                 return Ball;
             };
             Noble.RoundGet = (Ball, Player) => {
-                console.group('RoundGet')
+                console.groupCollapsed('RoundGet')
 
                 const passed = N=>N.G>N.H
                 Ball.inPlay = true
@@ -276,10 +305,10 @@
 
                 // Log
                 TheWorld.DisplaysNuke(Player, Ball)
+                console.groupEnd('RoundGet')
                 log( Player.name, 'get the ball')
                 if (success) log('succes', {hit,get})
                 if(!success) log('failed', {hit,get})
-                console.groupEnd('RoundGet')
 
                 // End
                 if(!success) Noble.currentScore[ Noble.currentSquad ? 0:1 ]++
@@ -289,9 +318,12 @@
                 return Ball;
             };
             Noble.RoundFix = (Ball, Player) => {
+                console.group('RoundFix')
                 console.log('currentScore',Noble.currentScore)
                 console.log('currentSquad',Noble.currentSquad)
                 console.log('currentSheep',Noble.currentSheep)
+                console.groupEnd('RoundFix')
+                Ball.inPlay = false
                 return Ball;
             }
         };
@@ -411,12 +443,6 @@
         };
         const GEN = new NobleGenetics(OldschoolGEN({msg}))
         GEN.SayHi()
-        log(GEN.Gene())
-        log('NukeCharStimul H', Ball.nuke, Gen.NukeCharStimul(Ball,'H'))
-        log('NukeCharStimul G', Ball.nuke, Gen.NukeCharStimul(Ball,'G'))
-        TeamA[0].Fill(Ball, ['H'])
-        log('NukeCharStimul H', Ball.nuke, Gen.NukeCharStimul(Ball,'H'))
-        log('NukeCharStimul G', Ball.nuke, Gen.NukeCharStimul(Ball,'G'))
 
         const NobleSheep = function NobleSheepFactory
         (...genes) {

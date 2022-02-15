@@ -39,8 +39,74 @@ const fromGeneticsLibrary = function
                .fill(o||'O')
                 .join('');
 
-    Gen.PairLoveStimul =
+    Gen.GeneLoveStimul =
         (AAAA,BBBB) => [...AAAA].reduce(
             (p,g,i) => BBBB[i] === g? ++p :p
                 ,0);
+
+    // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Acid
+
+    // ['RRRR','HHHH','RRFF'] => ['RRRR','RRFF']
+    Gen.AcidWeed = acid => acid.reduce(
+       (AcW,G) => {
+            const b = Gen.GeneMask(AcW[0] && AcW[0][0])
+            const h = AcW.length >1 ? AcW.slice(-2)[0]:b
+            const r = AcW.slice(0, -1)
+            const g = AcW.slice(-1)[0]
+            const f = Gen.AcidChallenge
+            return !!!AcW.length? [G] :[...r,...f(h,g,G)];
+        },[]);
+
+    Gen.AcidChallenge =
+       (a,b,c) => {
+        if (Array.isArray(a)) [a,b,c] = a
+        let h = Gen.GeneLoveStimul
+        let friendly = h(c,b) > 1
+        let winner =
+          1 < h(c,a) && Math.random()*h(c,a)
+            > Math.random()*h(b,a)
+            ? c:b;
+        return friendly ? [b,c] : [winner] ;
+        };
+
+    // (['HHHH','HGGG'])('H') = 5
+    Gen.AcidStimul = acid => G =>
+        [...G].reduce(
+            (power,g) => power+
+            (acid.join('')
+                .match(new RegExp(g,'g')) || [])
+                    .length
+            ,0);
+
+
+    // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Nuke
+
+    // ({H:['HHHH'],G:['GGGH']})('H') = 5
+    Gen.NukeStimul = nuke => G =>
+        Object.keys(nuke).reduce(
+            (power,g) => power+
+            Gen.AcidStimul(nuke[g])(G)
+            ,0);
+
+    // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+
+            Gen.Fill = oO => Oo => {
+                const acid = G => Gen.AcidWeed([...oO.nuke[G], ...Oo.nuke[G]])
+                Object.keys(Oo.nuke).map( G=> {oO.nuke[G]=acid(G)} )
+            }
+
+            Gen.Welcome = o =>
+                Object.assign( o,{
+                    nuke: Gen.Nuke(),
+                    Fill: function (oO, keys) {
+                        (keys || Object.keys(this.nuke))
+                        .map( G => {
+                            let fill = {nuke:{ [G]:this.nuke[G] }}
+                            Gen.Fill(oO)(fill)
+                        });
+                        },
+                    Hit: function (oO) { this.Fill(oO,['H']) },
+                    Get: function (oO) { this.Fill(oO,['G']) },
+                    Stimul: function (G) { return Gen.NukeStimul(this.nuke)(G) },
+                });
 };

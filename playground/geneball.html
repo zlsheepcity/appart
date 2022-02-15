@@ -28,6 +28,12 @@
                 return {name}
             };
 
+            World.DisplaysNuke = (...o) => o.map( oO =>{
+                console.group(oO.name)
+                for (i in oO.nuke) log(i, oO.nuke[i])
+                console.groupEnd(oO.name)
+            });
+
             //World.Takes = oO => Gen.Take(oO)
         };
         let TheWorld = new NobleWorld()
@@ -86,19 +92,23 @@
                 const  h = base || f(r)
                 return g(r);
                 };
+
+            Gen.BasedSeed = base => {
+                const eed = Gen.SEED
+                const src = Gen.SEED
+                const f = x => x[Math.floor( Math.random()*x.length )]
+                const h = base || f(src)
+                const r = (p,g) => !p? h :p +f(h+src)
+                return [...eed].reduce(r,'') ;};
+
             Gen.PairLoveStimul =
                 (AAAA,BBBB) => [...AAAA].reduce(
                     (p,g,i) => BBBB[i] === g? ++p :p
                         ,0);
+
             Gen.Welcome = o =>
                 Object.assign( o,{
                     nuke: Gen.Nuke(),
-                    Take: function (oO) {
-                        log('this.nuke', this.nuke);
-                        log('Oo.nuke', oO.nuke);
-                        this.nuke.H=[]
-                        log('this.nuke', this.nuke);
-                        },
                     Fill: function (oO, keys) {
                         (keys || Object.keys(this.nuke))
                         .map( G => {
@@ -106,6 +116,9 @@
                             Gen.Fill(oO)(fill)
                         });
                         },
+                    Hit: function (oO) { this.Fill(oO,['H']) },
+                    Get: function (oO) { this.Fill(oO,['G']) },
+                    Stimul: function (G) { return Gen.NukeCharStimul(this,G) },
                 });
 
             Gen.NukeCharStimul = (oO, char) => {
@@ -178,17 +191,113 @@
             Noble.Story = [Noble.name||'GameController',{dna}]
             Noble.SayHi = f=> log({Hi:Noble.Story[0], ...Noble})
 
-            Noble.RoundRobin = (Ball, Hiter, Geter) => {
-                console.group('RoundRobin')
-                let hit = Gen.Stimul(Hiter)
-                log('Hit:', hit)
-                console.groupEnd()
+            Noble.stages = ['RoundRobin','RoundGet','RoundFix','RoundHit']
+
+            Noble.Reset = () => {
+                Noble.currentTouch = 0
+                Noble.currentStage = 0
+                Noble.currentSquad = 0
+                Noble.currentSheep = [0,0]
+                Noble.currentScore = [0,0]
+            }
+            Noble.Reset()
+            Noble.CurrentStageName = f => Noble.stages[Noble.currentStage]
+            Noble.CurrentStageUpdate = f => {
+                Noble.currentStage ++
+                if (Noble.currentStage>= Noble.stages.length)
+                    Noble.currentStage = 1
+            }
+            Noble.CurrentSquadChange = f =>
+                { Noble.currentSquad = Noble.currentSquad ? 0:1 }
+            Noble.CurrentSheepChange = f =>
+                { Noble.currentSheep[Noble.currentSquad] =
+                ++Noble.currentSheep[Noble.currentSquad] %3 }
+
+            Noble.Start = (SquadA, SquadB) => {
+                Noble.Reset()
+                let Squad = f => [SquadA, SquadB][Noble.currentSquad]
+                let Stage = f =>  Noble.stages[Noble.currentRound]
+                let Sheep = f =>  Squad()[Noble.currentSheep[Noble.currentSquad]]
+                let Ball = {inPlay:true};
+
+                while( Ball.inPlay && Noble.currentTouch<64 ) {
+                    Noble.currentTouch++
+                    log('Noble.currentTouch',Noble.currentTouch)
+                    Ball = Noble[Noble.stages[Noble.currentStage]]( Ball, Sheep() )
+                }
+                log('score',Noble.currentScore)
+                log('touch',Noble.currentTouch)
             };
+
+            Noble.RoundRobin = (Ball, Player) => {
+                console.group('RoundRobin '+Noble.currentScore.join(':'))
+                Ball = new NoblePerson(
+                    TheWorld.GivesPassportFor('Ball #' +
+                   (Noble.currentScore.reduce((B,l)=>l+B,1)) )
+                )
+                TheWorld.DisplaysNuke(Ball)
+
+                // Touch
+                const passed = N=>N.H>N.G
+                Ball.inPlay = true
+                Player.Hit(Ball)
+
+                // Results
+                let hit = Ball.Stimul('H')
+                let get = Ball.Stimul('G')
+                let success = passed({H:hit,G:get})
+
+                // Log
+                TheWorld.DisplaysNuke(Player, Ball)
+                log(Player.name, 'hit the ball')
+                if (success) log('succes', {hit,get})
+                if(!success) log('serve failed', {hit,get})
+                console.groupEnd()
+
+                // End
+                if(!success) Noble.currentScore[ Noble.currentSquad ? 0:1 ]++
+                if (success) Noble.CurrentStageUpdate()
+                Noble.CurrentSheepChange()
+                if (success) Noble.CurrentSquadChange()
+                Ball.inPlay = !!success
+                return Ball;
+            };
+            Noble.RoundGet = (Ball, Player) => {
+                console.group('RoundGet')
+
+                const passed = N=>N.G>N.H
+                Ball.inPlay = true
+                TheWorld.DisplaysNuke(Ball)
+                Player.Get(Ball)
+
+                let hit = Ball.Stimul('H')
+                let get = Ball.Stimul('G')
+                let success = passed({H:hit,G:get})
+
+                // Log
+                TheWorld.DisplaysNuke(Player, Ball)
+                log( Player.name, 'get the ball')
+                if (success) log('succes', {hit,get})
+                if(!success) log('failed', {hit,get})
+                console.groupEnd('RoundGet')
+
+                // End
+                if(!success) Noble.currentScore[ Noble.currentSquad ? 0:1 ]++
+                if (success) Noble.CurrentStageUpdate()
+                Noble.CurrentSheepChange()
+                Ball.inPlay = !!success
+                return Ball;
+            };
+            Noble.RoundFix = (Ball, Player) => {
+                console.log('currentScore',Noble.currentScore)
+                console.log('currentSquad',Noble.currentSquad)
+                console.log('currentSheep',Noble.currentSheep)
+                return Ball;
+            }
         };
 
         let TheGame = new NobleGame()
         TheGame.SayHi()
-        TheGame.RoundRobin({},{},{})
 
         //const TestGameRun = f => {
             let TeamA = [
@@ -202,11 +311,51 @@
                 new NoblePerson(TheWorld.GivesPassportFor('B3')),
                 ];
             let Ball = new NoblePerson(TheWorld.GivesPassportFor('Ball'))
-            console.group('Game Run')
-            console.log(['TeamA', ...TeamA])
-            console.log(['TeamB', ...TeamB])
-            console.log(['Ball', Ball])
-            console.groupEnd()
+            const LevelUp = oO => {
+                let nuke = {
+                    R: [Gen.Gene('R'),Gen.Gene('R')],
+                    G: [Gen.Gene('G'),Gen.Gene('G')],
+                    F: [Gen.Gene('F'),Gen.Gene('F')],
+                    H: [Gen.Gene('H'),Gen.Gene('H')],
+                }
+                Gen.Fill(oO)({nuke})
+            }
+            LevelUp(TeamA[0])
+            LevelUp(TeamB[0])
+            LevelUp(TeamA[1])
+            LevelUp(TeamB[1])
+
+            let score = [0,0]
+            TheGame.RoundRobin(Ball,TeamA[0])
+            if(!Ball.inPlay) {
+                score[1]++;
+                TheGame.RoundRobin(Ball,TeamB[0])
+                if(!Ball.inPlay) {
+                    score[0]++;
+                } else {
+                    TheGame.RoundGet(Ball,TeamA[1])
+                    if(!Ball.inPlay) {
+                        score[1]++;
+                    }
+                }
+            } else {
+                TheGame.RoundGet(Ball,TeamB[0])
+                if(!Ball.inPlay) {
+                    score[0]++;
+                    TheGame.RoundRobin(Ball,TeamA[1])
+                    if(!Ball.inPlay) {
+                        score[1]++;
+                    } else {
+                        TheGame.RoundGet(Ball,TeamB[1])
+                        if(!Ball.inPlay) {
+                            score[0]++;
+                        }
+                    }
+                }
+
+            }
+            log('score',score)
+
         //};
         //TestGameRun();
 
@@ -455,6 +604,9 @@ ship
 //        }
 //        tab(sheep)
 //        GeneFactoryTest(GeneFactory);
+
+
+        TheGame.Start(TeamA, TeamB)
 
     </script>
     <!-- 

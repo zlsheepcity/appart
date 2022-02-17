@@ -171,21 +171,8 @@
                 };
         };
 
-        const NobleGenetics = function NobleGeneticsFactory
-        (dna) {
-            const Noble = Object.assign(this,dna)
-            Noble.Story = [Noble.name||'Gina',{dna}]
-            Noble.SayHi = f=> log({Hi:Noble.Story[0], ...Noble})
-
-            const StimulFrom = oO => ({G:2,H:7})
-            Noble.Stimul = oO => StimulFrom(oO)
-
-        };
-
-        let Gen = new fromGeneticsLibrary()
+        
         log( "AcidWeed Test ['RRFF', 'RRGG', 'RFFF']:", Gen.AcidWeed(['RRFF', 'RRGG', 'RFFF']) )
-        //let Gen = new fromGeneticsLibrary( new NobleGenetics() )
-        //Gen.SayHi()
 
         /**/ // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ The Person
 
@@ -197,21 +184,14 @@
             Gen.Welcome(Noble)
         };
 
-        let Sheep1 = new NoblePerson(TheWorld.GivesPassportFor('Sheep One'))
-        Sheep1.SayHi()
-        let Sheep2 = new NoblePerson()
-        Sheep2.SayHi()
-        let theBallPassport = TheWorld.GivesPassportFor('The Ball')
-        let TheBall = new NoblePerson(theBallPassport)
-        TheBall.SayHi()
-
-        //let ss = TheWorld.Takes(new NoblePerson())
-        log('Sheep2.nuke 1', Sheep2.nuke)
-        Sheep1.Fill(Sheep2, ['R','H'])
-        log('Sheep2.nuke 2', Sheep2.nuke)
-
 
         /**/ // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ The Game
+
+        const GameBegins = function
+        (dna) {
+            const Game = Object.assign(this,dna)
+            
+        };
 
         const NobleGame = function NobleGameFactory
         (dna) {
@@ -393,57 +373,6 @@
 
         /**/ // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 
-        const OldschoolGEN = dna => {
-            const Noble = this
-
-            Noble.WorldSettings = {
-                SEED: 'RGFHIAEO',
-                PACE:  4,//4
-                }
-            const GEN = Object.assign(Noble, Noble.WorldSettings)
-
-            let mCharEater = Char => Eater => {
-                const r = [...Char]
-                const g = list => list.reduce(f,0)
-                const f = (counter, G) => counter + h(G)
-                const h = Eater
-                return g(r);
-                }
-
-            Noble.Nuke = base => {
-                const  r = [...GEN.SEED];
-                const  g = x => x.reduce(f, {});
-                const  f = (a,b) => (a[b]=h(b),a);
-                const  h = x => [];
-                return g(r)
-                }
-
-            Noble.Gene = base => {
-                const  r = GEN.SEED.substr(0, GEN.PACE);
-                const  g = x => h[0]+f(x)+f(x)+f(x);
-                const  f = x => x[Math.floor( Math.random()*x.length )];
-                const  h = base || f(r);
-                return g(h+r);
-                }
-
-            Noble.NukeCharSize = oO => {
-                let { nuke, char } = oO || {}
-                let ObjectNukeSizer = G =>
-                    Object.keys(nuke).reduce(
-                        (power, g) => power +
-                        (nuke[g]
-                            .join('')
-                            .match(new RegExp(G,"g"))
-                            || []
-                        ).length
-                        ,0);
-                return mCharEater(char)(ObjectNukeSizer);
-            };
-            return Noble;
-        };
-        const GEN = new NobleGenetics(OldschoolGEN({msg}))
-        GEN.SayHi()
-
         const NobleSheep = function NobleSheepFactory
         (...genes) {
             const Noble = Object.assign(this, ...genes)
@@ -485,30 +414,7 @@
 
         /**/ // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Run
 
-        const Sheep = new NobleSheep({msg})
-//        Sheep.msg('Hi')
-//        Sheep.display()
-//        log('Gene power R:', Sheep.GenePower('R'))
 
-        const Team = [
-            new NobleSheep({name:'Player Geta'}),
-            new NobleSheep({name:'Player Hita'}),
-        ];
-        Team[0].Display()
-        Team[1].Display()
-        msg(
-            ( x => G => l =>
-            [ Team[x].name, l, Team[x].GenePower(G) ].join(' ')
-            )(1)('HF')('hit')
-        );
-        msg(
-            ( x => G => l =>
-            [ Team[x].name, l, Team[x].GenePower(G) ].join(' ')
-            )(0)('GR')('get')
-        );
-
-        log( GEN.NukeCharSize({...Team[1], char:'FH'}) );
-        log( GEN.NukeCharSize({...Team[0], char:'GR'}) );
 
         /**/ // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ End
 

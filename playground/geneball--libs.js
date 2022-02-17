@@ -1,6 +1,6 @@
 /**/ // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Genetics
 
-const fromGeneticsLibrary = function
+const GeneticsLibrary = function
 (dna) {
     let Gen = Object.assign(this,dna)
 
@@ -15,7 +15,7 @@ const fromGeneticsLibrary = function
         return g(r);
         };
 
-    // ['RGFH','RHFG']
+    // ['RGFH','RHFG',...]
     Gen.Acid = level => base => {
         const r = Array(level||0).fill(0)
         const g = r => r.map(f)
@@ -23,13 +23,13 @@ const fromGeneticsLibrary = function
         return g(r);
         };
 
-    // {R:[],F:[],G:[],H:[]}
+    // {R:[],G:[],F:[],H:[]}
     Gen.Nuke = level => {
         const  r = [...Gen.SEED]
         const  g = x => x.reduce(f, {})
         const  f = (a,G) => (a[G]=h(G),a)
         const  h = G => Gen.Acid(level)(G)
-        return g(r); // {}
+        return g(r);
         };
 
     // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Gene
@@ -81,6 +81,15 @@ const fromGeneticsLibrary = function
 
     // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Nuke
 
+    // {R:[],F:[],G:[],H:[]}
+    Gen.BabyNuke = level => {
+        const  r = Gen.Nuke(level)
+        const  g = G => Gen.AcidWeed(r[G])
+        const  f = (n,G) => ({...n, [G]:g(G)})
+        const  h = Object.keys(r).reduce(f,{})
+        return h; // {}
+        };
+
     // ({H:['HHHH'],G:['GGGH']})('H') = 5
     Gen.NukeStimul = nuke => G =>
         Object.keys(nuke).reduce(
@@ -88,25 +97,91 @@ const fromGeneticsLibrary = function
             Gen.AcidStimul(nuke[g])(G)
             ,0);
 
-    // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+    // oO{RGFH} + {RGFH} = oO{RGFH}
+    Gen.NukeFill = oO => fill => {
+        const acid = G => Gen.AcidWeed([...oO.nuke[G], ...fill[G]])
+        return Object.keys(fill).map( G=> {oO.nuke[G] = acid(G)} );
+    }
 
-            Gen.Fill = oO => Oo => {
-                const acid = G => Gen.AcidWeed([...oO.nuke[G], ...Oo.nuke[G]])
-                Object.keys(Oo.nuke).map( G=> {oO.nuke[G]=acid(G)} )
-            }
 
-            Gen.Welcome = o =>
-                Object.assign( o,{
-                    nuke: Gen.Nuke(),
-                    Fill: function (oO, keys) {
-                        (keys || Object.keys(this.nuke))
-                        .map( G => {
-                            let fill = {nuke:{ [G]:this.nuke[G] }}
-                            Gen.Fill(oO)(fill)
-                        });
-                        },
-                    Hit: function (oO) { this.Fill(oO,['H']) },
-                    Get: function (oO) { this.Fill(oO,['G']) },
-                    Stimul: function (G) { return Gen.NukeStimul(this.nuke)(G) },
+    // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Artefacts
+
+    Gen.Fill = oO => Oo => {
+        const acid = G => Gen.AcidWeed([...oO.nuke[G], ...Oo.nuke[G]])
+        Object.keys(Oo.nuke).map( G=> {oO.nuke[G]=acid(G)} )
+    }
+
+    Gen.Welcome = o =>
+        Object.assign( o,{
+            nuke: Gen.Nuke(),
+            Fill: function (oO, keys) {
+                (keys || Object.keys(this.nuke))
+                .map( G => {
+                    let fill = {nuke:{ [G]:this.nuke[G] }}
+                    Gen.Fill(oO)(fill)
                 });
+                },
+            Hit: function (oO) { this.Fill(oO,['H']) },
+            Get: function (oO) { this.Fill(oO,['G']) },
+            Stimul: function (G) { return Gen.NukeStimul(this.nuke)(G) },
+        });
+
+    // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+};
+
+let Gen = new GeneticsLibrary()
+let testGen = f => {
+    const n = Gen.Nuke(3)
+    const m = Gen.Nuke(3)
+    const o = {nuke:{...m}}
+    const d = Gen.NukeFill(o)(n)
+    const b = o.nuke
+    f ?
+    console.groupCollapsed('Test Gen...') : console.group('Test Gen')
+    console.log('Gene', Gen.Gene())
+    console.log('Acid', Gen.Acid(3)('R'))
+    console.log('Nuke / NukeStimul / NukeFill')
+    console.log('..'); for (G in n)
+    console.log(G, Gen.NukeStimul(n)(G), n[G])
+    console.log('..'); for (G in m)
+    console.log(G, Gen.NukeStimul(m)(G), m[G])
+    console.log('..'); for (G in b)
+    console.log(G, Gen.NukeStimul(b)(G), b[G])
+    console.groupEnd()
+    return 'Test OK'
+};
+
+const NameWizard = base => {
+    const Header = 'DMNLTGH'
+    const Bodies = ['INA','ORA','ANA','IKO']
+    const f = oo => oo[Math.floor( Math.random()*oo.length )]
+    return (base || f(Header)) + f(Bodies);
+};
+
+const GMO = function GeneticallyModifiedObject
+(dna) {
+    let GMO = Object.assign(this,dna)
+    let NukeStimul = Gen.NukeStimul
+    let NukeFill   = Gen.NukeFill
+    GMO.nuke       = Gen.BabyNuke(GMO.level||0)
+    GMO.name       = GMO.name || NameWizard()
+
+    GMO.Stimul = function (G) { return NukeStimul(this.nuke)(G) }
+
+    GMO.Run  = function (oO) { this.Fill(oO,['R']) }
+    GMO.Get  = function (oO) { this.Fill(oO,['G']) }
+    GMO.Fix  = function (oO) { this.Fill(oO,['F']) }
+    GMO.Hit  = function (oO) { this.Fill(oO,['H']) }
+    GMO.Fill = function (oO, keys) {
+        let N = {...this.nuke}
+        (keys || Object.keys(N))
+        .map( G=> NukeFill(oO)({[G]:N[G]}) );
+        };
+
+    GMO.Profile = function () {
+        console.group('oO:'+this.name)
+        for (G in this.nuke)
+        console.log(G, NukeStimul(this.nuke)(G), this.nuke[G])
+        console.groupEnd()
+        };
 };

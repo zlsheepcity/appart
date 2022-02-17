@@ -153,7 +153,7 @@ let testGen = f => {
 
 const NameWizard = base => {
     const Header = 'DMNLTGH'
-    const Bodies = ['INA','ORA','ANA','IKO']
+    const Bodies = ['ina','ora','ana','iko','uni']
     const f = oo => oo[Math.floor( Math.random()*oo.length )]
     return (base || f(Header)) + f(Bodies);
 };
@@ -199,14 +199,33 @@ const GameState = function
     };
     State.Balls = []
     State.Teams = [[],[]]
+
+    State.Touch = f => State.currentTouch
+    State.TouchChange = f => { State.currentTouch++ }
+    State.TouchReset  = f => { State.currentTouch=0 }
     State.Squad = f => State.Teams[State.currentSquad]
+    State.SquadChange = f => { State.currentSquad=State.currentSquad ? 0:1 }
     State.Sheep = f => State.Squad()[State.currentSheep[State.currentSquad]]
+    State.SheepChange = f =>
+        { State.currentSheep[State.currentSquad] =
+        ++State.currentSheep[State.currentSquad] %3 }
+    State.StageReset  = f => State.StageUpdate(false)
+    State.StageChange = f => State.StageUpdate(true)
+    State.StageUpdate = keepPlaying => {
+        keepPlaying
+          ? State.currentStage ++
+          : State.currentStage =0
+        if( State.currentStage>=3 )
+            State.currentStage =1 };
+    State.ScoreChange = f => {
+        State.currentPoint++
+        State.currentScore[State.currentSquad]++ };
 
     State.Start = function (dna) {
 
         // init
         Object.assign(State,dna)
-        logGameStateStarted(State)
+        logGame(State,'GameStart')
 
         // run
         State.Stage()
@@ -214,36 +233,72 @@ const GameState = function
 
     State.Stage = function () {
 
-        // play
+        // init
         const AllStages = ['StageRun','StageGet','StageFix','StageHit']
-        const PlayStage = State[AllStages[State.currentStage]]
+        const PlayStage = f => State[AllStages[State.currentStage]]()
+
+        for (t=1;t<11;t++) {
+
         PlayStage()
 
-        // check score
-        const scoreContinue = S=> (M=> S[0]<M && S[1]<M)
-        const winnerDecided = !scoreContinue(State.currentScore)(3)
-        if (winnerDecided) return State.StageComplete();
-        logGameStateCheckScore(State)
+        // score
+        if (!State.Balls[State.currentPoint].inPlay) State.ScoreChange()
+        const ScoreContinue = S=> (M=> S[0]<M && S[1]<M)
+        const winnerDecided = !ScoreContinue(State.currentScore)(3)
+        if (winnerDecided) return State.GameComplete();
 
+        };
+        return State.GameComplete();
     };
     State.StageRun = function () {
 
-        // init
+        // Init
         const BallRefreshProfile = {level:1,name:'Ball-'+State.currentPoint}
         State.Balls[State.currentPoint] = new GMO(BallRefreshProfile)
+        State.currentTouch = 0
+        logGameStage(State,'StageRunInit')
+
+        // Take
         const Ball = State.Balls[State.currentPoint]
         const Sheep = State.Sheep()
-        logGameStateStageRunBall(State)
+        Ball.inPlay = true
+        logGameStage(State,'StageRunTake')
 
-        // hit
+        // Fill
         Sheep.Hit(Ball)
-        logGameStateStageRunHit(State)
+        State.currentTouch++
+        logGameStage(State,'StageRunFill')
+
+        // Ball
+        let Rule = O=>O.H>O.G
+        let pass = Rule({H:Ball.Stimul('H'),G:Ball.Stimul('G')})
+        let miss = !pass
+        let none = false
+        if (miss) State.SheepChange()
+        if (true) State.SquadChange()
+        if (pass) State.StageChange()
+        if (miss) Ball.inPlay = false
+        logGameStage(State,'StageRunBall')
+    };
+    State.StageGet = function () {
+
+        // Take
+        const Ball = State.Balls[State.currentPoint]
+        const Sheep = State.Sheep()
+        logGameStage(State,'StageGetTake')
+
+        // Fill
+        Sheep.Get(Ball)
+        logGameStage(State,'StageGetFill')
+
+        // Ball
+        logGameStage(State,'StageGetBall')
     };
 
     // Servants
 
-    State.StageComplete = function () {
-        logGameStateStageComplete(State)
+    State.GameComplete = function () {
+        logGame(State,'GameFinish')
     };
 
     State.QuickStart = function () {
@@ -257,6 +312,7 @@ const GameState = function
     // init
     State.Reset()
 };
+
 let testGame = f => {
   f?console.groupCollapsed('testGame...')
    :console.group('testGame')
@@ -267,25 +323,46 @@ let testGame = f => {
 };  console.log('testGame()');
   //console.log('g=new GameState();g.QuickStart()')
 
-let logGameStateStarted = game => {
-    log('~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~')
-    log('Game Start')
-    log('Score:',game.currentScore)
-    log('Teams:',game.Teams)
+
+let logGame = (Game, step) => { log('..',step)
+    if('GameStart' === step) {
+        log('~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~')
+        log('Teams:',Game.Teams)
+        log(Game.Teams[0].reduce((s,g)=>[...s,g.name],[]))
+        log(Game.Teams[1].reduce((s,g)=>[...s,g.name],[]))
+        log('~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~')
+    };
+    if('GameFinish' === step) {
+        log('~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~')
+        log('Final score:',Game.currentScore)
+        log(Game)
+    };
 };
-let logGameStateCheckScore = game => {
-    log('Game continues. Score:',game.currentScore)
-};
-let logGameStateStageComplete = game => {
-    log('Game ended.', 'Stage:', game.currentStage)
-    log('Score:',game.currentScore)
-};
-let logGameStateStageRunBall = game => {
-    log('StageRun - Ball prepare')
-    game.Balls[game.currentPoint].Profile(1)
-    game.Sheep().Profile(1)
-};
-let logGameStateStageRunHit = game => {
-    log('StageRun - Hit')
-    game.Balls[game.currentPoint].Profile(1)
+let logGameStage = (Game, step) => { log('..',step)
+    if('StageRunInit' === step) {
+        log('Current score:',Game.currentScore)
+        log('~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~')
+        };
+    if('StageRunTake' === step) {
+        Game.Sheep().Profile(1)
+        Game.Balls[Game.currentPoint].Profile(1)
+        };
+    if('StageRunFill' === step) {
+        Game.Balls[Game.currentPoint].Profile(1)
+        };
+    if('StageRunBall' === step) {
+        log('H',Game.Balls[Game.currentPoint].Stimul('H'),
+            'G',Game.Balls[Game.currentPoint].Stimul('G'))
+        log('Ball in play:', Game.Balls[Game.currentPoint].inPlay)
+        log('..')
+        };
+    if('StageGetTake' === step) {
+        Game.Sheep().Profile(1)
+        Game.Balls[Game.currentPoint].Profile(1)
+        };
+    if('StageGetFill' === step) {
+        Game.Balls[Game.currentPoint].Profile(1)
+        };
+    if('StageGetBall' === step) {
+        };
 };

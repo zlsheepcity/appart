@@ -200,27 +200,6 @@ const GameState = function
     State.Balls = []
     State.Teams = [[],[]]
 
-    State.Touch = f => State.currentTouch
-    State.TouchChange = f => { State.currentTouch++ }
-    State.TouchReset  = f => { State.currentTouch=0 }
-    State.Squad = f => State.Teams[State.currentSquad]
-    State.SquadChange = f => { State.currentSquad=State.currentSquad ? 0:1 }
-    State.Sheep = f => State.Squad()[State.currentSheep[State.currentSquad]]
-    State.SheepChange = f =>
-        { State.currentSheep[State.currentSquad] =
-        ++State.currentSheep[State.currentSquad] %3 }
-    State.StageReset  = f => State.StageUpdate(false)
-    State.StageChange = f => State.StageUpdate(true)
-    State.StageUpdate = keepPlaying => {
-        keepPlaying
-          ? State.currentStage ++
-          : State.currentStage =0
-        if( State.currentStage>=3 )
-            State.currentStage =1 };
-    State.ScoreChange = f => {
-        State.currentPoint++
-        State.currentScore[State.currentSquad]++ };
-
     State.Start = function (dna) {
 
         // init
@@ -230,19 +209,21 @@ const GameState = function
         // run
         State.Stage()
     };
-
     State.Stage = function () {
 
         // init
         const AllStages = ['StageRun','StageGet','StageFix','StageHit']
         const PlayStage = f => State[AllStages[State.currentStage]]()
 
-        for (t=1;t<11;t++) {
+        for (t=1;t<21;t++) {
 
         PlayStage()
 
         // score
-        if (!State.Balls[State.currentPoint].inPlay) State.ScoreChange()
+        let inPlay =State.Balls[State.currentPoint].inPlay
+        if(!inPlay) State.ScoreChange()
+        if(!inPlay) logGame(State,'GameMiss')
+        if(!inPlay) State.StageReset()
         const ScoreContinue = S=> (M=> S[0]<M && S[1]<M)
         const winnerDecided = !ScoreContinue(State.currentScore)(3)
         if (winnerDecided) return State.GameComplete();
@@ -255,7 +236,7 @@ const GameState = function
         // Init
         const BallRefreshProfile = {level:1,name:'Ball-'+State.currentPoint}
         State.Balls[State.currentPoint] = new GMO(BallRefreshProfile)
-        State.currentTouch = 0
+        State.TouchReset()
         logGameStage(State,'StageRunInit')
 
         // Take
@@ -266,7 +247,7 @@ const GameState = function
 
         // Fill
         Sheep.Hit(Ball)
-        State.currentTouch++
+        State.TouchUpdate()
         logGameStage(State,'StageRunFill')
 
         // Ball
@@ -289,18 +270,93 @@ const GameState = function
 
         // Fill
         Sheep.Get(Ball)
+        State.TouchUpdate()
         logGameStage(State,'StageGetFill')
 
         // Ball
+        let Rule = O=>O.G>O.H
+        let pass = Rule({H:Ball.Stimul('H'),G:Ball.Stimul('G')})
+        let miss = !pass
+        let none = false
+        if (true) State.SheepChange()
+        if (miss) State.SquadChange()
+        if (pass) State.StageChange()
+        if (miss) Ball.inPlay = false
         logGameStage(State,'StageGetBall')
+    };
+    State.StageFix = function () {
+
+        // Take
+        const Ball = State.Balls[State.currentPoint]
+        const Sheep = State.Sheep()
+        logGameStage(State,'StageFixTake')
+
+        // Fill
+        Sheep.Fix(Ball)
+        State.TouchUpdate()
+        logGameStage(State,'StageFixFill')
+
+        // Ball
+        let Rule = O=>true
+        let pass = Rule({H:Ball.Stimul('H'),G:Ball.Stimul('G')})
+        let miss = !pass
+        let none = false
+        if (pass) State.SheepChange()
+        if (miss) State.SquadChange()
+        if (pass) State.StageChange()
+        if (miss) Ball.inPlay = false
+        logGameStage(State,'StageFixBall')
+    };
+    State.StageHit = function () {
+
+        // Take
+        const Ball = State.Balls[State.currentPoint]
+        const Sheep = State.Sheep()
+        logGameStage(State,'StageHitTake')
+
+        // Fill
+        Sheep.Hit(Ball)
+        State.TouchUpdate()
+        logGameStage(State,'StageHitFill')
+
+        // Ball
+        let Rule = O=>O.H>O.G
+        let pass = Rule({H:Ball.Stimul('H'),G:Ball.Stimul('G')})
+        let miss = !pass
+        let none = false
+        if (none) State.SheepChange()
+        if (true) State.SquadChange()
+        if (pass) State.StageChange()
+        if (miss) Ball.inPlay = false
+        logGameStage(State,'StageHitBall')
     };
 
     // Servants
 
+    State.Touch = f => State.currentTouch
+    State.TouchUpdate = f => { State.currentTouch++ }
+    State.TouchReset  = f => { State.currentTouch=0 }
+    State.Squad = f => State.Teams[State.currentSquad]
+    State.SquadChange = f => { State.currentSquad=State.currentSquad ? 0:1 }
+    State.Sheep = f => State.Squad()[State.currentSheep[State.currentSquad]]
+    State.SheepChange = f =>
+        { State.currentSheep[State.currentSquad] =
+        ++State.currentSheep[State.currentSquad] %3 }
+    State.StageReset  = f => State.StageUpdate(false)
+    State.StageChange = f => State.StageUpdate(true)
+    State.StageUpdate = keepPlaying => {
+        keepPlaying
+          ? State.currentStage ++
+          : State.currentStage =0
+        if( State.currentStage >3 )
+            State.currentStage =1 };
+    State.ScoreChange = f => {
+        State.currentPoint++
+        State.currentScore[State.currentSquad]++ };
+
     State.GameComplete = function () {
         logGame(State,'GameFinish')
     };
-
     State.QuickStart = function () {
         const level = 3
         const Teams = [
@@ -324,12 +380,14 @@ let testGame = f => {
   //console.log('g=new GameState();g.QuickStart()')
 
 
-let logGame = (Game, step) => { log('..',step)
+let logGame = (Game, step) => { log('##',step)
     if('GameStart' === step) {
         log('~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~')
         log('Teams:',Game.Teams)
         log(Game.Teams[0].reduce((s,g)=>[...s,g.name],[]))
+        for (i in Game.Teams[0]) Game.Teams[0][i].Profile(1)
         log(Game.Teams[1].reduce((s,g)=>[...s,g.name],[]))
+        for (i in Game.Teams[1]) Game.Teams[1][i].Profile(1)
         log('~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~')
     };
     if('GameFinish' === step) {
@@ -337,8 +395,13 @@ let logGame = (Game, step) => { log('..',step)
         log('Final score:',Game.currentScore)
         log(Game)
     };
+    if('GameMiss' === step) {
+        log('~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~')
+        log('Miss on stage:',Game.currentStage)
+        log('Stage touches:',Game.currentTouch)
+    };
 };
-let logGameStage = (Game, step) => { log('..',step)
+let logGameStage = (Game, step) => { log('##',step)
     if('StageRunInit' === step) {
         log('Current score:',Game.currentScore)
         log('~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~')
@@ -348,12 +411,14 @@ let logGameStage = (Game, step) => { log('..',step)
         Game.Balls[Game.currentPoint].Profile(1)
         };
     if('StageRunFill' === step) {
+        log('.. Touch:',Game.currentTouch)
         Game.Balls[Game.currentPoint].Profile(1)
         };
     if('StageRunBall' === step) {
-        log('H',Game.Balls[Game.currentPoint].Stimul('H'),
+        log('..',
+            'H',Game.Balls[Game.currentPoint].Stimul('H'),
             'G',Game.Balls[Game.currentPoint].Stimul('G'))
-        log('Ball in play:', Game.Balls[Game.currentPoint].inPlay)
+        log('.. Ball in play:', Game.Balls[Game.currentPoint].inPlay)
         log('..')
         };
     if('StageGetTake' === step) {
@@ -361,8 +426,41 @@ let logGameStage = (Game, step) => { log('..',step)
         Game.Balls[Game.currentPoint].Profile(1)
         };
     if('StageGetFill' === step) {
+        log('.. Touch:',Game.currentTouch)
         Game.Balls[Game.currentPoint].Profile(1)
         };
     if('StageGetBall' === step) {
+        log('..',
+            'H',Game.Balls[Game.currentPoint].Stimul('H'),
+            'G',Game.Balls[Game.currentPoint].Stimul('G'))
+        log('.. Ball in play:', Game.Balls[Game.currentPoint].inPlay)
+        log('..')
+        };
+    if('StageFixTake' === step) {
+        Game.Sheep().Profile(1)
+        Game.Balls[Game.currentPoint].Profile(1)
+        };
+    if('StageFixFill' === step) {
+        log('.. Touch:',Game.currentTouch)
+        Game.Balls[Game.currentPoint].Profile(1)
+        };
+    if('StageFixBall' === step) {
+        log('.. Ball in play:', Game.Balls[Game.currentPoint].inPlay)
+        log('..')
+        };
+    if('StageHitTake' === step) {
+        Game.Sheep().Profile(1)
+        Game.Balls[Game.currentPoint].Profile(1)
+        };
+    if('StageHitFill' === step) {
+        log('.. Touch:',Game.currentTouch)
+        Game.Balls[Game.currentPoint].Profile(1)
+        };
+    if('StageHitBall' === step) {
+        log('..',
+            'H',Game.Balls[Game.currentPoint].Stimul('H'),
+            'G',Game.Balls[Game.currentPoint].Stimul('G'))
+        log('.. Ball in play:', Game.Balls[Game.currentPoint].inPlay)
+        log('..')
         };
 };

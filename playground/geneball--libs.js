@@ -136,20 +136,20 @@ let testGen = f => {
     const o = {nuke:{...m}}
     const d = Gen.NukeFill(o)(n)
     const b = o.nuke
-    f ?
-    console.groupCollapsed('Test Gen...') : console.group('Test Gen')
+  f?console.groupCollapsed('testGen...')
+   :console.group('testGen')
     console.log('Gene', Gen.Gene())
     console.log('Acid', Gen.Acid(3)('R'))
     console.log('Nuke / NukeStimul / NukeFill')
-    console.log('..'); for (G in n)
+    console.log('...'); for (G in n)
     console.log(G, Gen.NukeStimul(n)(G), n[G])
-    console.log('..'); for (G in m)
+    console.log('...'); for (G in m)
     console.log(G, Gen.NukeStimul(m)(G), m[G])
-    console.log('..'); for (G in b)
+    console.log('...'); for (G in b)
     console.log(G, Gen.NukeStimul(b)(G), b[G])
     console.groupEnd()
-    return 'Test OK'
-};
+    return 'testOK'
+};  console.log('testGen()');
 
 const NameWizard = base => {
     const Header = 'DMNLTGH'
@@ -174,14 +174,118 @@ const GMO = function GeneticallyModifiedObject
     GMO.Hit  = function (oO) { this.Fill(oO,['H']) }
     GMO.Fill = function (oO, keys) {
         let N = {...this.nuke}
-        (keys || Object.keys(N))
-        .map( G=> NukeFill(oO)({[G]:N[G]}) );
+        let K = keys || Object.keys(N)
+        K.map( G=> NukeFill(oO)({[G]:N[G]}) );
         };
 
-    GMO.Profile = function () {
-        console.group('oO:'+this.name)
+    GMO.Profile = function (s) {
+        console[s?'groupCollapsed':'group']('oO:'+this.name)
         for (G in this.nuke)
         console.log(G, NukeStimul(this.nuke)(G), this.nuke[G])
         console.groupEnd()
-        };
+        return 'Looks good' ;};
+};
+
+const GameState = function
+(dna) {
+    const State = Object.assign(this,dna)
+    State.Reset = function () {
+        State.currentPoint = 0
+        State.currentTouch = 0
+        State.currentStage = 0
+        State.currentSquad = 0
+        State.currentSheep = [0,0]
+        State.currentScore = [0,0]
+    };
+    State.Balls = []
+    State.Teams = [[],[]]
+    State.Squad = f => State.Teams[State.currentSquad]
+    State.Sheep = f => State.Squad()[State.currentSheep[State.currentSquad]]
+
+    State.Start = function (dna) {
+
+        // init
+        Object.assign(State,dna)
+        logGameStateStarted(State)
+
+        // run
+        State.Stage()
+    };
+
+    State.Stage = function () {
+
+        // play
+        const AllStages = ['StageRun','StageGet','StageFix','StageHit']
+        const PlayStage = State[AllStages[State.currentStage]]
+        PlayStage()
+
+        // check score
+        const scoreContinue = S=> (M=> S[0]<M && S[1]<M)
+        const winnerDecided = !scoreContinue(State.currentScore)(3)
+        if (winnerDecided) return State.StageComplete();
+        logGameStateCheckScore(State)
+
+    };
+    State.StageRun = function () {
+
+        // init
+        const BallRefreshProfile = {level:1,name:'Ball-'+State.currentPoint}
+        State.Balls[State.currentPoint] = new GMO(BallRefreshProfile)
+        const Ball = State.Balls[State.currentPoint]
+        const Sheep = State.Sheep()
+        logGameStateStageRunBall(State)
+
+        // hit
+        Sheep.Hit(Ball)
+        logGameStateStageRunHit(State)
+    };
+
+    // Servants
+
+    State.StageComplete = function () {
+        logGameStateStageComplete(State)
+    };
+
+    State.QuickStart = function () {
+        const level = 3
+        const Teams = [
+            [new GMO({level}), new GMO({level}), new GMO({level})],
+            [new GMO({level}), new GMO({level}), new GMO({level})]]
+        State.Start({Teams});
+    };
+
+    // init
+    State.Reset()
+};
+let testGame = f => {
+  f?console.groupCollapsed('testGame...')
+   :console.group('testGame')
+    let Game = new GameState()
+    Game.QuickStart()
+    console.groupEnd()
+    return 'testOK'
+};  console.log('testGame()');
+  //console.log('g=new GameState();g.QuickStart()')
+
+let logGameStateStarted = game => {
+    log('~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~')
+    log('Game Start')
+    log('Score:',game.currentScore)
+    log('Teams:',game.Teams)
+};
+let logGameStateCheckScore = game => {
+    log('Game continues. Score:',game.currentScore)
+};
+let logGameStateStageComplete = game => {
+    log('Game ended.', 'Stage:', game.currentStage)
+    log('Score:',game.currentScore)
+};
+let logGameStateStageRunBall = game => {
+    log('StageRun - Ball prepare')
+    game.Balls[game.currentPoint].Profile(1)
+    game.Sheep().Profile(1)
+};
+let logGameStateStageRunHit = game => {
+    log('StageRun - Hit')
+    game.Balls[game.currentPoint].Profile(1)
 };

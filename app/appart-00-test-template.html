@@ -13,12 +13,34 @@
     <link
         href="../app/appart-03-typography.css"
         rel="stylesheet" type="text/css">
+    <link
+        href="../app/appart-04-colors.css"
+        rel="stylesheet" type="text/css">
+
+    <link
+        media="all"
+        href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic"
+        rel="stylesheet">
+    <link
+        media="all"
+        href="https://fonts.googleapis.com/css?family=VT323"
+        rel="stylesheet">
 
 </head>
 <body>
     <style>
+        body {
+            background-color: var(--color-PaperBack);
+            color:            var(--color-PaperDark);
+            ---font-size: 125%;
+            ---line-height: 1.2;
+        }
         article {
             padding: 2em;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            ---font-family: var(--font-family-secondary);
+            font-weight: bolder;
         }
     </style>
     <article>

@@ -148,7 +148,7 @@ let testGen = f => {
     console.log('...'); for (G in b)
     console.log(G, Gen.NukeStimul(b)(G), b[G])
     console.groupEnd()
-    return 'testOK'
+    return 'testOK';
 };  console.log('testGen()');
 
 const NameWizard = base => {

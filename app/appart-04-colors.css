@@ -1,0 +1,32 @@
+/** appart colors
+ *  css preset-kit
+ *  2022.4.5
+ *  zl
+ */
+
+:root {
+ /* Paper Palette */
+  --color-PaperBack:   hsl( 37, 55%, 85%);
+  --color-PaperDark:   hsl(  0,  0%,  8%);
+ /* Noble Palette */
+  --color-NobleBlack:  hsl(226, 15%, 12%);
+  --color-NobleWhite:  hsl(226, 27%, 90%);
+  --color-NobleNight:  hsl(226, 17%, 20%);
+  --color-NobleDay:    hsl(226, 32%, 75%);
+  --color-NobleSky:    hsl(204, 22%, 55%);
+  --color-NobleSea:    hsl(212, 34%, 29%);
+  --color-NobleSunset: hsl(359, 28%, 82%);
+  --color-NobleAccent: hsl(359, 54%, 53%);
+  --color-NobleAction: hsl(359, 59%, 43%);
+ /* Ivory Palette */
+  --color-Ivory:       hsl( 53, 66%, 80%);
+  --color-IvoryAccent: hsl( 53, 70%, 76%);
+  --color-IvoryDark:   hsl(204,  4%, 22%);
+  --color-IvoryGray:   hsl(204,  8%, 38%);
+ /* App Palette */
+  --color-AppBlue:     hsl(202, 81%, 23%);
+  --color-AppGreen:    hsl(155, 31%, 62%);
+  --color-AppGold:     hsl( 42, 79%, 53%);
+  --color-AppRed:      hsl( 15, 75%, 30%);
+  --color-AppBrown:    hsl( 34, 20%, 33%);
+}

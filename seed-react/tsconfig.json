@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
+    "baseUrl": "./",
     "paths": {
       "Auth": ["src/auth"],
       "Auth/*": ["src/auth/*"],
@@ -20,6 +20,7 @@
       "Pages/*": ["src/pages/*"],
       "Src/*": ["src/*"]
     },
+    "jsx": "react",
     "module": "esnext",
     "moduleResolution": "node",
     "target": "es5",
@@ -29,7 +30,6 @@
     "allowSyntheticDefaultImports": true,
     "isolatedModules": true,
     "strict": true,
-    "jsx": "react",
     "resolveJsonModule": true
   },
   "exclude": ["node_modules", "dist"],

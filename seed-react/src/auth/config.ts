@@ -1,0 +1,2 @@
+//nom:AuthConfig
+export default {}

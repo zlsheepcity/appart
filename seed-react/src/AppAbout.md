@@ -1,8 +1,8 @@
 # //nom:App
-- [index.tsx](index.tsx)
-- [App.tsx](App.tsx)
+- [index.tsx](index.tsx) — entry point
+- [App.tsx](App.tsx) — application
 
-## Configurable params
+## Configurations
 - [AppConfig.tsx](AppConfig.ts)
 
 ## Docs

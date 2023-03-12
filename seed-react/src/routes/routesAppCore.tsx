@@ -15,7 +15,7 @@ export const routesAppCore:IRoutes = {
     path: '/',
     title: 'Index',
     roleRequired: false,
-    component: PAGES.HomeIndex,
+    component: <PAGES.HomeIndex />,
   },
 
   AuthLogin: {
@@ -23,7 +23,7 @@ export const routesAppCore:IRoutes = {
     path: '/login',
     title: 'Login',
     roleRequired: false,
-    component: PAGES.AuthLogin,
+    component: <PAGES.AuthLogin />,
   },
 
   AuthLoginMode: {
@@ -32,7 +32,7 @@ export const routesAppCore:IRoutes = {
     path: '/login/:mode',
     title: 'Login',
     roleRequired: false,
-    component: PAGES.AuthLogin,
+    component: <PAGES.AuthLogin />,
   },
 
   AuthLogout: {
@@ -40,7 +40,7 @@ export const routesAppCore:IRoutes = {
     path: '/logout',
     title: 'Logout',
     roleRequired: false,
-    component: PAGES.AuthLogout,
+    component: <PAGES.AuthLogout />,
   },
 
   AuthProfile: {
@@ -48,7 +48,7 @@ export const routesAppCore:IRoutes = {
     path: '/profile',
     title: 'Profile',
     roleRequired: true,
-    component: PAGES.AuthProfile,
+    component: <PAGES.AuthProfile />,
   },
 
   AuthHome: {
@@ -56,7 +56,7 @@ export const routesAppCore:IRoutes = {
     path: '/home',
     title: 'Home',
     roleRequired: false,
-    component: PAGES.HomeIndex,
+    component: <PAGES.HomeIndex />,
   },
 };
 

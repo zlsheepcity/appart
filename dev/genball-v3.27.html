@@ -1,0 +1,219 @@
+<script>
+    // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+    // Create
+    // Reveal
+    // Update
+    // Delete
+    // Read
+    // Reload
+    // Review
+    // Reread
+    // Report
+    // Raiden
+/*
+    GM.Serve()
+    MTO: {M:4,T:2,O:8,H:2,L:6,G:2}
+    HLG: {M:7,T:4,O:2,H:9,L:2,G:6}
+
+    do { Touch() }
+    while GM.active
+    const Touch =O=> {
+        let bumba
+            squad
+            touch
+            rules
+        if (touch) Get() else Serve()
+        Update(bumba,{progress,assignee})
+        {
+            progress: touch,
+            assignee: squad[field][touch]
+        }
+        Map rules.MakeEventsHappen
+            event => {b,s,t} => Update(bumba,{comment})
+        Commit(bumba)
+        //
+    Party
+        squad: [[O],[O]],
+        score: [0,0],
+        bumba: {O},
+        stage: [],
+        nuke
+            .stage: [],
+        Stage
+    services
+        StageReveal ,// stage[last]
+        StageCreate ,// stage.push
+        StageFinish ,// stage[last] => Stage.Update({finish})
+        PartyWelcome // nuke.dna -> transcription party
+        SquadRegister
+        SquadReorder // ([a, ...bc]) => ([...bc, a])
+        TargetSheep
+
+    Stage
+        transcription (dna)
+            bumba: {O},
+            score: [0,0],
+            field: 0,
+            touch: 0,
+            touchCounter: 0,
+            ...dna
+        DNA.transcription =
+        dna => ({
+            ...Object.assign(this, model, dna)
+        });
+
+        Touch
+    services
+        Welcome
+            set nuke = nuke.dna
+
+        ScoreUpdate
+        TouchCreate
+        TouchResolve
+            Party.SquadReorder(Squad)
+            Stage.StageIsComplete
+        StageReset (dna)
+        StageIsComplete // score >= 21
+    
+    Touch
+    services
+        Squad: Party.Squad[field]
+        Sheep: Party.Squad[field][touch]
+    run
+    const Touch =O=> {
+        // fin
+        Stage.ScoreUpdate(score)
+        Stage.TouchResolve()
+    }
+    const Touch =O=> {
+        set
+            sheep:squad
+        
+        KB.GetTask({assignee})
+        UI.ProvideTouch({Stage})
+        touchProvide
+        touchRequest
+        touchRespons
+        resolve
+            set touch
+    };
+
+
+*/
+let DNA:{[key:string]:any} = {}
+let DNA = this
+let Transcription 
+DNA.transcription =
+dna => ( seed => Object.assign(this, seed, dna);
+dna => ({
+    ...Object.assign(this, model, dna)
+});
+
+    // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+    const Stage = function (dna) {
+        let Transcription = rna => ( //: GEN.T
+            model => Object.assign(this, model, {O:this,model})
+        )({ //: GEN.M
+            bumba: {},
+            score: [0,0],
+            field: 0,
+            touch: 0,
+            touchCounter: 0,
+         ...(dna||{}),
+         ...(rna||{}),
+        });
+        const { O:Stage, bumba:Bumba } = Transcription({Transcription})
+        Stage.History =O=> console.log('Stage.History:', O);
+        Stage.Profile =O=> console.log('Stage.Profile:', Stage);
+        Stage.Welcome =O=>
+            ( ([DNA]) =>{
+                DNA.Transcription({...DNA.model, ...O})
+                DNA.History({D:'Welcome Stage', O:DNA})
+            })([Stage]);
+        Stage.ScoreUpdate =O=>
+            ( ([DNA]) =>{
+                DNA.score = (([q,p]) => ([d,b]) => [ !d?q:q+1, !b?p:p+1 ])(DNA.score)(O.score)
+                DNA.History({D:'Current Score', O:DNA.score})
+            })([Stage]);
+    };
+
+    const kanbanTaskStory = {
+        data: '',
+    };
+    const kanbanTaskComment = {
+        name: '',
+    };
+    const kanbanTaskState = {
+        estimate: 0,
+        assignee: false,
+        resolved: false,
+        progress: 'backlog', //todo//inprogress//done//
+        comments: [kanbanTaskComment],
+    };
+    const kanbanTask = {
+        story: [kanbanTaskStory],
+        state: [kanbanTaskState],
+        nuke:{
+            type: 'feat', //bugs//
+            init: kanbanTaskState,
+            state: [kanbanTaskState],
+        },
+    };
+    const { pushAndReturn } = {
+        pushAndReturn:( //=> pushAndReturn(item)(list,constructor)
+            ([R,C])=> O=> ([b,c,d])=> (d||R(O))(b.push((c||C)(O)))
+        )([
+            O=> i=> ({ ...O, i:--i }), // <= default return format
+            O=> O,                  // <= default item constructor
+        ]),
+    }
+    // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+    const KanbanBoard = function(dna) {
+        const {
+            O:DNA,
+            tasks,
+            state,
+        }=( model => Object.assign(this, model, dna)
+        )({ O:this,
+            tasks: [],
+            state: [],
+         ...dna
+        });
+        DNA.test =O=> dna.test && dna.test(O||DNA)
+        DNA.makeTask =O=> ({...O, ...kanbanTask, ...O})
+        DNA.takeTask =O=> ( p=> ([b,d]) => (p)(b.push(d(O))) )(i=>({O,i:--i}))([tasks, DNA.makeTask])
+        DNA.takeTask =O=> pushAndReturn(O)([tasks, DNA.makeTask, 0])
+        DNA.giveTask =O=> tasks[O?.i||0]
+        DNA.giveList =O=> tasks
+        DNA.dsAssignee =O=> O?.state?.assignee ||0
+        DNA.isAssignee =O=> O?.state?.assignee !==false
+        DNA.isResolved =O=> O?.state?.resolved !==false
+
+    };
+    // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+    const TASKS = [
+        {title: 'Investigate incoming ball'},
+    ].map( o=> ({...o, ...kanbanTask, ...o}) );
+    // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+    const KanbanBoardOld = function(dna) {
+        const {
+            O:DNA,
+            tasks,
+            story,
+        }=( nuke => Object.assign( this,dna,{nuke} ))({
+            O:this,
+            tasks: [],
+            story: [],
+         ...dna.nuke,
+             }).nuke;
+        DNA.test =O=> dna.test && dna.test(O||DNA)
+        DNA.makeTask =O=> ({...O, ...kanbanTask, ...O})
+        DNA.takeTask =O=> (l=>({O,i:--l}))(tasks.push(DNA.makeTask(O)))
+        DNA.giveTask =O=> tasks[O?.i||0]
+        DNA.giveList =O=> tasks
+        DNA.dsAssignee =O=> O?.state?.assignee ||0
+        DNA.isAssignee =O=> O?.state?.assignee !==false
+        DNA.isResolved =O=> O?.state?.resolved !==false
+
+    };
+</script>

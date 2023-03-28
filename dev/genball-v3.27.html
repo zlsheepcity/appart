@@ -1,4 +1,160 @@
 <script>
+/*
+123 132 330
+213 231 303
+312 321 033
+CHAR X
+GENE XXX
+ACID [XXX,XXX,XXX]
+
+
+303 312 321
+     F
+132 330 231
+
+123 213 033
+
+132 231 330
+321 303 312
+033 213 123
+*/
+
+const ATF_MATRIXi = {
+  A:243, D:342, F:441,
+  G:432, H:414, L:423,
+  M:144, S:324, T:234,
+}
+const ATF_MATRIX = {
+  A:132, D:231, F:330,
+  G:321, H:303, L:312,
+  M:033, S:213, T:123,
+}
+const ATF = {
+  A:{G:1,F:3,H:2}, D:{G:2,F:3,H:1}, F:{G:3,F:3,H:0},
+  G:{G:3,F:2,H:1}, H:{G:3,F:0,H:3}, L:{G:3,F:1,H:2},
+  M:{G:0,F:3,H:3}, S:{G:2,F:1,H:3}, T:{G:1,F:2,H:3},
+}
+const Vitamins = {
+  A:{ char:'Aina',
+      chars:[...'ABC'],
+      charm: 132,
+      moves:{
+        G:{T:'Content CRM'},
+        F:{T:'Update config'},
+        H:{T:'Automized deploy'},
+      },
+    },
+    D:{ char:'Dina',
+        chars:[...'D'],
+        charm: 231,
+        moves:{
+          G:{T:'Experienced trick'},
+          F:{T:'HotFix'},
+          H:{T:'Skip test'},
+        },
+      },
+      F:{ char:'Funi',
+          chars:[...'F'],
+          charm: 330,
+          moves:{
+            G:{T:''},
+            F:{T:''},
+            H:{T:''},
+          },
+        },
+  G:{ char:'Aina',
+      chars:[...'ABC'],
+      charm: 132,
+      moves:{
+        G:{T:'Content CRM'},
+        F:{T:'Update config'},
+        H:{T:'Automized deploy'},
+      },
+    },
+    H:{ char:'Dina',
+        chars:[...'D'],
+        charm: 231,
+        moves:{
+          G:{T:'Experienced trick'},
+          F:{T:'HotFix'},
+          H:{T:'Skip test'},
+        },
+      },
+      L:{ char:'Funi',
+          chars:[...'F'],
+          charm: 330,
+          moves:{
+            G:{T:''},
+            F:{T:''},
+            H:{T:''},
+          },
+        },
+}
+
+const PickListItemIndex = list => Math.floor( Math.random()*list.length )
+const PickListItem = list => list[PickListItemIndex(list)]
+const MakeListSafe  = (list,skip) => list.filter(candidate=>!skip.filter(taken=>taken===candidate))
+const UT = {
+  PickListItemIndex,
+  PickListItem,
+  MakeListSafe,
+}
+
+const CHARSEED = 'TGFLSDAHM'
+const CHARPOOL = [...CHARSEED]
+
+const CharPick = ({pool}) => {
+  let list = pool || CHARPOOL
+  let char = UT.PickListItem(list)
+  return char;
+};
+
+const PoolSafe = ({pool,skip}) => {
+  let list = pool || CHARPOOL
+  let except = skip || []
+  let listSafe = UT.MakeListSafe(list,except)
+  return [...listSafe];
+};
+
+const GeneMake = ({pool}) => {
+  let gene = [...'XXX']
+  gene[0] = CharPick({pool:PoolSafe({pool,skip:gene})})
+  gene[1] = CharPick({pool:PoolSafe({pool,skip:gene})})
+  gene[2] = CharPick({pool:PoolSafe({pool,skip:gene})})
+  return gene.join('')
+};
+
+
+const run = () => {
+  let tim1 = GeneMake()
+  let pool = PoolSafe({skip:tim1})
+  let tim2 = GeneMake({pool})
+  let poo2 = PoolSafe({skip:pool})
+  console.table({
+    team1: tim1,
+    team2: tim2,
+    poolC: poo2,
+  })
+}
+
+
+
+
+const acidseed = 'Oina Tina Sina Mina Hina Gina Aina Funi'
+const acid = acidseed.split(' ')
+const aminacid = acid.map(o=>o[0])//.join('')
+
+const uIndexPick = list => Math.floor( Math.random()*list.length )
+const acidPick = (acid) => acid[uIndexPick(acid)]
+const acidMix3 = (acid = aminacid) => {
+    const ne = taken => o=>taken!==o
+    const take = acidPick(acid)
+    const make = acidPick(acid.filter(ne(take)))
+    const give = acidPick(acid.filter(ne(take)).filter(ne(make)))
+    return [take,make,give].join('·')
+}
+
+
     // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
     // Create
     // Reveal

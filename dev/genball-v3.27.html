@@ -37,16 +37,64 @@ const CHARDATA = {
         G:1321, H:1303, L:1312,
         M:1033, S:1213, T:1123,
         },
+    chado: {
+        A:[
+          { T:'Content CRM' },
+          { T:'Update config' },
+          { T:'Automized deploy' },
+          ],
+          D:[
+            { T:'Experienced trick' },
+            { T:'HotFix' },
+            { T:'Skip check' },
+            ],
+            F:[
+              { T:'Cheat' },
+              { T:'Push master' },
+              { T:'Discuss' },
+              ],
+        G:[
+          { T:'Block issue' },
+          { T:'Outsource' },
+          { T:'Demo presentation' },
+          ],
+          H:[
+            { T:'Keep' },
+            { T:'Develop' },
+            { T:'Skip Reports' },
+            ],
+            L:[
+              { T:'Delegate' },
+              { T:'Use libs' },
+              { T:'Full test' },
+              ],
+        M:[
+          { T:'Rush' },
+          { T:'Block' },
+          { T:'Documentation' },
+          ],
+          S:[
+            { T:'Deep view' },
+            { T:'Research' },
+            { T:'Detailed check' },
+            ],
+            T:[
+              { T:'Reject' },
+              { T:'Refactoring' },
+              { T:'Backlog' },
+              ],
+    }, // chado
 }; // CHARDATA eof
 const CharExctract = (char,data)=> (O,key)=>({...O, [key]:data[key][char] })
 const CharRibosome = G=> D=> Object.keys(D).reduce(CharExctract(G[0],D),{G}) //(CHAR)(DATA)
 const HarmRibosome = G=> D=> ({harm:[...`${D['charm'][G]}`].slice(1).map(x=>x*1)}) //(CHAR)(DATA)
-const MakeRibosome = G=> D=> ({  //(CHAR)(DATA)
+const MakeRibosome = G=> D=> ({ //(CHAR)(DATA)
   A:{ make:[
       { T:'Content CRM' },
       { T:'Update config' },
       { T:'Automized deploy' },
       ],
+      profile: 'ABC',
     },
     D:{ make:[
         { T:'Experienced trick' },
@@ -59,6 +107,7 @@ const MakeRibosome = G=> D=> ({  //(CHAR)(DATA)
           { T:'Push master' },
           { T:'Discuss' },
           ],
+          profile: 'Funicia',
         },
   G:{ make:[
       { T:'Block issue' },
@@ -71,6 +120,7 @@ const MakeRibosome = G=> D=> ({  //(CHAR)(DATA)
         { T:'Develop' },
         { T:'Skip Reports' },
         ],
+        profile: 'cold',
       },
       L:{ make:[
           { T:'Delegate' },
@@ -113,7 +163,7 @@ const CharPick = ({pool}) => {
   return char;
 };
 const PoolSafe = ({pool,skip}) => {
-  let source = pool || []
+  let source = pool || CHARPOOL
   let except = skip || []
   let result = UT.MakeListSafe(source,except)
   return [...result];
@@ -128,13 +178,57 @@ const GeneMake = ({pool,skip}) => {
   return [A,B,C].join('')
 };
 // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+const ProfileViewer =G=> {
+  console.group(`${G} Profile`)
+  console.log('Profile:', GEM[G].profile)
+  console.log('History:', GEM[G].history)
+  console.log('Actions:', GEM[G].make.map(O=>O.T).join(', '))
+  console.groupEnd()
+};
 const VariantViewer =O=> {
-  let GenA = GeneMake({})
-  let GenB = GeneMake({skip:GenA})
-  console.log('GenA/GenB:',GenA,GenB)
-  console.log('GEMS:',GEM)
+  let GnA = GeneMake({})
+  let GnAMake = [...GnA].map( (G,i)=>GEM[G].chado[i].T )
+  let GnAHarm = [...GnA].map( (G,i)=>GEM[G].harm[i] ).join('')
+  let GnB = 'XXX'
+  GnB = [GnB[0],GnB[1],GnB[2]].join('')
+  let Option0 = PoolSafe({skip:[...GnA,...GnB]})
+  let Select0 = CharPick({pool:Option0})
+  GnB = [Select0,GnB[1],GnB[2]].join('')
+  let Option1 = PoolSafe({skip:[...GnA,...GnB]})
+  let Select1 = CharPick({pool:Option1})
+  GnB = [GnB[0],Select1,GnB[2]].join('')
+  let Option2 = PoolSafe({skip:[...GnA,...GnB]})
+  let Select2 = CharPick({pool:Option2})
+  GnB = [GnB[0],GnB[1],Select2].join('')
+  let GnBMake = [...GnB].map( (G,i)=>GEM[G].chado[i].T )
+  let GnBHarm = [...GnB].map( (G,i)=>GEM[G].harm[i] ).join('')
+  let ReportH = [...GnA].map( (G,i)=>`${GEM[G].harm[i]}:${GEM[GnB[i]].harm[i]}` )
+  //let ReportF = ReportH.reduce( (f,s)=>f*1+s[2]*1-1*s[0], 1)>0
+  let ReportF = ReportH.reduce(
+    (T,S)=>(([A,x,B]) => F =>F(A,B)+T)([...S])((A,B)=>(A>B?-1:A<B?1:0)),
+//    (T,S)=>{
+//      return 
+//    }
+//    (f,s)=>{
+//      const [a,x,b] = [...s]
+//      console.log('ReportF', a,b, a>b?-1:a<b?1:0 )
+//      return f*1+(s[2]*1)-(1*s[0])
+//    },
+    1)>0
+  console.group('Touch')
+    console.log([...GnA].map(G=>GEM[G].char).join('·'),GnAHarm, GnAMake)
+    console.log(Option0,'·',Select0)
+    console.log(Option1,'·',Select1)
+    console.log(Option2,'·',Select2)
+    console.log([...GnB].map(G=>GEM[G].char).join('·'),GnBHarm,GnBMake)
+    console.log(ReportF?'WIN':'LOS',ReportH)
+    ProfileViewer(Select0)
+    ProfileViewer(Select1)
+    ProfileViewer(Select2)
+  console.groupEnd()
 }; // VariantViewer eof
 // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+console.log('GEMS:',GEM)
 VariantViewer()
 // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~

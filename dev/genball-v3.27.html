@@ -1,29 +1,144 @@
 <script>
-/*
-123 132 330
-213 231 303
-312 321 033
-CHAR X
-GENE XXX
-ACID [XXX,XXX,XXX]
-
-
-303 312 321
-     F
-132 330 231
-
-123 213 033
-
+    let help = {T:'Help'}
+/** ADF
 132 231 330
 321 303 312
 033 213 123
-*/
+**/
+//CHAR X
+//GENE XXX
+//ACID [XXX,XXX,XXX]
 
-const ATF_MATRIXi = {
-  A:243, D:342, F:441,
-  G:432, H:414, L:423,
-  M:144, S:324, T:234,
+// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+const PickListItemIndex = list => Math.floor( Math.random()*list.length )
+const PickListItem = list => list[PickListItemIndex(list)]
+const MakeListSafe  = (list,skip) => list.filter(item=>!skip.includes(item))
+const UT = {
+  PickListItemIndex,
+  PickListItem,
+  MakeListSafe,
 }
+// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+const CHARSEED = 'ADFGHLMST'
+const CHARPOOL = [...CHARSEED]
+const CHARDATA = {
+    char: {
+        A:'Aina', D:'Dina', F:'Funi',
+        G:'Gina', H:'Hina', L:'Lina',
+        M:'Mina', S:'Sina', T:'Tina',
+        },
+    chars: {
+        A:[...'ABC'], D:[...'D'  ], F:[...'FU' ],
+        G:[...'G'  ], H:[...'HJ' ], L:[...'L'  ],
+        M:[...'M'  ], S:[...'S'  ], T:[...'T'  ],
+        },
+    charm: {
+        A:1132, D:1231, F:1330,
+        G:1321, H:1303, L:1312,
+        M:1033, S:1213, T:1123,
+        },
+}; // CHARDATA eof
+const CharExctract = (char,data)=> (O,key)=>({...O, [key]:data[key][char] })
+const CharRibosome = G=> D=> Object.keys(D).reduce(CharExctract(G[0],D),{G}) //(CHAR)(DATA)
+const HarmRibosome = G=> D=> ({harm:[...`${D['charm'][G]}`].slice(1).map(x=>x*1)}) //(CHAR)(DATA)
+const MakeRibosome = G=> D=> ({  //(CHAR)(DATA)
+  A:{ make:[
+      { T:'Content CRM' },
+      { T:'Update config' },
+      { T:'Automized deploy' },
+      ],
+    },
+    D:{ make:[
+        { T:'Experienced trick' },
+        { T:'HotFix' },
+        { T:'Skip check' },
+        ],
+      },
+      F:{ make:[
+          { T:'Cheat' },
+          { T:'Push master' },
+          { T:'Discuss' },
+          ],
+        },
+  G:{ make:[
+      { T:'Block issue' },
+      { T:'Outsource' },
+      { T:'Demo presentation' },
+      ],
+    },
+    H:{ make:[
+        { T:'Keep' },
+        { T:'Develop' },
+        { T:'Skip Reports' },
+        ],
+      },
+      L:{ make:[
+          { T:'Delegate' },
+          { T:'Use libs' },
+          { T:'Full test' },
+          ],
+        },
+  M:{ make:[
+      { T:'Rush' },
+      { T:'Block' },
+      { T:'Documentation' },
+      ],
+    },
+    S:{ make:[
+        { T:'Deep view' },
+        { T:'Research' },
+        { T:'Detailed check' },
+        ],
+      },
+      T:{ make:[
+          { T:'Reject' },
+          { T:'Refactoring' },
+          { T:'Backlog' },
+          ],
+        },
+})[G[0]];// MakeRibosome eof
+const GEM = Object.values(CHARDATA.char).reduce(
+  (OO,GEM)=> (G=> ({
+    ...OO,
+      [G]: {
+        ...CharRibosome(G)(CHARDATA),
+        ...HarmRibosome(G)(CHARDATA),
+        ...MakeRibosome(G)(CHARDATA),
+      },
+  }))(GEM[0]), {} );
+// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+const CharPick = ({pool}) => {
+  let list = pool || CHARPOOL
+  let char = UT.PickListItem(list)
+  return char;
+};
+const PoolSafe = ({pool,skip}) => {
+  let source = pool || []
+  let except = skip || []
+  let result = UT.MakeListSafe(source,except)
+  return [...result];
+};
+const GeneMake = ({pool,skip}) => {
+  let source = pool || [...CHARPOOL]
+  let except = skip || []
+  let P = E => PoolSafe({pool:source,skip:[...except,...E]})
+  let A = CharPick({ pool:P([]) })
+  let B = CharPick({ pool:P([A]) })
+  let C = CharPick({ pool:P([A,B]) })
+  return [A,B,C].join('')
+};
+// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+const VariantViewer =O=> {
+  let GenA = GeneMake({})
+  let GenB = GeneMake({skip:GenA})
+  console.log('GenA/GenB:',GenA,GenB)
+  console.log('GEMS:',GEM)
+}; // VariantViewer eof
+// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+VariantViewer()
+// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 const ATF_MATRIX = {
   A:132, D:231, F:330,
   G:321, H:303, L:312,
@@ -34,110 +149,10 @@ const ATF = {
   G:{G:3,F:2,H:1}, H:{G:3,F:0,H:3}, L:{G:3,F:1,H:2},
   M:{G:0,F:3,H:3}, S:{G:2,F:1,H:3}, T:{G:1,F:2,H:3},
 }
-const Vitamins = {
-  A:{ char:'Aina',
-      chars:[...'ABC'],
-      charm: 132,
-      moves:{
-        G:{T:'Content CRM'},
-        F:{T:'Update config'},
-        H:{T:'Automized deploy'},
-      },
-    },
-    D:{ char:'Dina',
-        chars:[...'D'],
-        charm: 231,
-        moves:{
-          G:{T:'Experienced trick'},
-          F:{T:'HotFix'},
-          H:{T:'Skip test'},
-        },
-      },
-      F:{ char:'Funi',
-          chars:[...'F'],
-          charm: 330,
-          moves:{
-            G:{T:''},
-            F:{T:''},
-            H:{T:''},
-          },
-        },
-  G:{ char:'Aina',
-      chars:[...'ABC'],
-      charm: 132,
-      moves:{
-        G:{T:'Content CRM'},
-        F:{T:'Update config'},
-        H:{T:'Automized deploy'},
-      },
-    },
-    H:{ char:'Dina',
-        chars:[...'D'],
-        charm: 231,
-        moves:{
-          G:{T:'Experienced trick'},
-          F:{T:'HotFix'},
-          H:{T:'Skip test'},
-        },
-      },
-      L:{ char:'Funi',
-          chars:[...'F'],
-          charm: 330,
-          moves:{
-            G:{T:''},
-            F:{T:''},
-            H:{T:''},
-          },
-        },
-}
-
-const PickListItemIndex = list => Math.floor( Math.random()*list.length )
-const PickListItem = list => list[PickListItemIndex(list)]
-const MakeListSafe  = (list,skip) => list.filter(candidate=>!skip.filter(taken=>taken===candidate))
-const UT = {
-  PickListItemIndex,
-  PickListItem,
-  MakeListSafe,
-}
-
-const CHARSEED = 'TGFLSDAHM'
-const CHARPOOL = [...CHARSEED]
-
-const CharPick = ({pool}) => {
-  let list = pool || CHARPOOL
-  let char = UT.PickListItem(list)
-  return char;
-};
-
-const PoolSafe = ({pool,skip}) => {
-  let list = pool || CHARPOOL
-  let except = skip || []
-  let listSafe = UT.MakeListSafe(list,except)
-  return [...listSafe];
-};
-
-const GeneMake = ({pool}) => {
-  let gene = [...'XXX']
-  gene[0] = CharPick({pool:PoolSafe({pool,skip:gene})})
-  gene[1] = CharPick({pool:PoolSafe({pool,skip:gene})})
-  gene[2] = CharPick({pool:PoolSafe({pool,skip:gene})})
-  return gene.join('')
-};
 
 
-const run = () => {
-  let tim1 = GeneMake()
-  let pool = PoolSafe({skip:tim1})
-  let tim2 = GeneMake({pool})
-  let poo2 = PoolSafe({skip:pool})
-  console.table({
-    team1: tim1,
-    team2: tim2,
-    poolC: poo2,
-  })
-}
 
-
+/*
 
 
 const acidseed = 'Oina Tina Sina Mina Hina Gina Aina Funi'
@@ -154,6 +169,7 @@ const acidMix3 = (acid = aminacid) => {
     return [take,make,give].join('·')
 }
 
+*/
 
     // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
     // Create
@@ -256,6 +272,9 @@ const acidMix3 = (acid = aminacid) => {
 
 
 */
+
+/*
+
 let DNA:{[key:string]:any} = {}
 let DNA = this
 let Transcription 
@@ -372,4 +391,6 @@ dna => ({
         DNA.isResolved =O=> O?.state?.resolved !==false
 
     };
+
+*/
 </script>

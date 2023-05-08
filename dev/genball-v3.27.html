@@ -1,5 +1,49 @@
 <script>
-    let help = {T:'Help'}
+    let help = {T:'Help',V:'v4.4',S:'Dev'}
+</script>
+abb app bar
+bin com cut
+dem dev ent
+err fuu goo
+<script> // 4.4
+
+const AcidFlatChars = acid => (F=> OO=> F(OO) )(OO=> [...OO.join('')] )([...acid||""])//['G']
+const AcidCharacter = acid => (F=> AcidFlatChars(acid).reduce(F,{}) )((O,G)=>({...O,[G]:(O[G]||0)+1}))//{G:1}
+const AcidCharCount = acid => char=> AcidCharacter(acid)[char] ||0 //0
+
+const GENSources = {
+    protein: {
+    //PowerAcid: RNA=> RNA?.nuke?.acid||[],
+      PowerChar: RNA=> G=> (A=> AcidCharCount(A)(G) )(RNA?.nuke?.acid||[]),
+    },
+}
+const GMOFactory = function GMO(dna) {
+  let DNA = [this, {}, dna];
+  let RNA = Object.assign(...DNA)
+  let GEN = RNA.GEN
+  RNA.NUKESEED ={
+      acid: [],
+      char: '',
+      name: '',
+  };
+  RNA.nuke = {...RNA.NUKESEED}
+};
+const GENLibrary = function(dna) {
+  let DNA = [this, GENSources, dna]
+  let RNA = Object.assign(...DNA)
+  RNA.GMO = GMOFactory
+  RNA.LOG = console.log
+  RNA.Profile = O=> RNA.LOG(RNA)
+  RNA.Polymerase = O=> RNA
+  RNA.Ribosome = O=> !!RNA
+}
+const GEN = new GENLibrary()
+
+</script>
+Webpack project with React App
+- webpack docs
+- App developer manual
+
 /** ADF
 132 231 330
 321 303 312

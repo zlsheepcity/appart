@@ -42,8 +42,13 @@ export const authUserLocalStorageUpdate = authUserLocalStorageCreate
 export const authUserLocalStorageDelete = async ():Promise<IResponse> => {
   let response:IResponse = responseTemplate
   try {
-    // localStorageDeleteUser()
-    localStorageDeleteAllData()
+
+    // Option 1: delete only authUser related data
+    localStorageDeleteUser()
+
+    // Option 2: delete all data
+    // localStorageDeleteAllData()
+
     response = responseTemplateSuccess
   } catch(error) {
     response = { ...responseTemplateReject, message:JSON.stringify(error) }
@@ -63,7 +68,7 @@ const localStorageDeleteAllData = () => {
   localStorage.clear()
 }
 
-// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Export container
 export const localStorageCRUD = {
   create: authUserLocalStorageCreate,
   read: authUserLocalStorageRead,

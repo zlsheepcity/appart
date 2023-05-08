@@ -1,43 +1,42 @@
 //nom:authRole
+import { AuthConfig } from 'Auth'
+import {
+  IObject as IO,
+} from 'Interfaces'
 // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ roles
 
-export const AUTH_ROLE_BASE = {
-  guest: 'guest',
-  developer: 'developer',
-};
+const rolesList:string[] = AuthConfig.roles || []
+const rolesListSuperusers:string[] = AuthConfig.rolesSuperusers || []
+const rolesListToKeyObject = (obj:IO, role:string) => ({...obj, [role]:role})
 
-export const AUTH_ROLE_PROJECT = {
-  super_user: 'super_admin',
-};
-
-export const AUTH_ROLE = {
-  ...AUTH_ROLE_BASE,
-  ...AUTH_ROLE_PROJECT,
-};
-
+export const AUTH_ROLE = rolesList.reduce(rolesListToKeyObject, {})
 export const AUTH_ROLES_LIST_ALL = Object.values(AUTH_ROLE)
+export const AUTH_ROLES_LIST_SUPERUSERS = rolesListSuperusers
 
 // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ utils
 
-export const authRolesMatchList = (
+const compareTwoArraysForAnyMatch = (
+  target:string[] = [],
+  source:string[] = [],
+):boolean => {
+  return target.filter( item => source.includes(item) ).length > 0;
+}
+
+// Role direct match
+export const authRoleMatchRoles = (
   roles:string[] = [],
   access:string[] = [],
 ):boolean => {
   if (!access.length) return true; // no restrictions
   if (!roles.length) return false; // no roles
-  if (roles.filter( role => access.includes(role) ).length > 0) return true;
-  return false;
+  return compareTwoArraysForAnyMatch(roles, access)
 };
 
-export const authRolesMatchAccessList = (
+// Role match with extended settings
+export const authRoleMatchAccess = (
   roles:string[] = [],
   access:string[] = [],
-):boolean => authRolesMatchList(
-  roles,
-  [
-    ...access,
-    // Super users:
-    AUTH_ROLE.super_user,
-    AUTH_ROLE.developer,
-  ]
-);
+):boolean => {
+  const accessExtended = [...access, ...AUTH_ROLES_LIST_SUPERUSERS]
+  return authRoleMatchRoles(roles, accessExtended);
+};

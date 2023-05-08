@@ -18,9 +18,9 @@ import {
 export interface IAuthContext {
   auth: boolean;
   authUser: IAuthUser;
-  authUserLogout: () => Promise<boolean>;
+  authUserLogout: () => Promise<IResponse>;
   authUserLogin: (credentials:IAuthCredentials, remember:boolean) => Promise<IResponse>;
-  authUserSet: (user:IAuthUser, remember:boolean) => Promise<IAuthUser>;
+  authUserSet: (user:IAuthUser, remember:boolean) => Promise<IResponse>;
 };
 export const authContextInitial:IAuthContext = {
   auth: false,
@@ -32,7 +32,7 @@ export const authContextInitial:IAuthContext = {
 
 const AuthContext = React.createContext<IAuthContext>(authContextInitial)
 
-// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ AuthProvider
+// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Provider Component
 
 export interface IAuthProviderProps {
   user: IAuthUser;
@@ -43,22 +43,21 @@ export const ReactProviderAuth:React.FC<IAuthProviderProps> = ({ user, children 
   let [auth, setAuth] = React.useState(!!user.id)
 
   const authUserLogout = async () => {
-    const success = await appAuthUserLogout()
-    setAuthUser(authUserTemplate)
-    return success;
+    const response = await appAuthUserLogout()
+    if (response.success) setAuthUser(authUserTemplate)
+    return response;
   }
 
   const authUserLogin = async (credentials:IAuthCredentials, remember:boolean) => {
     const response = await appAuthUserLogin(credentials, remember)
-    const user = response.data
-    setAuthUser(user)
+    if (response.success) setAuthUser(response.data)
     return response;
   }
 
   const authUserSet = async (user:IAuthUser, remember:boolean) => {
-    await appAuthUserSet(user, remember)
-    setAuthUser(user)
-    return user;
+    const response = await appAuthUserSet(user, remember)
+    if (response.success) setAuthUser(response.data)
+    return response;
   }
 
   React.useEffect(() => { // watch authUser

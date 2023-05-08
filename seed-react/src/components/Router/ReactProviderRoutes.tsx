@@ -10,8 +10,8 @@ import {
   IRoute,
   IRoutes
 } from 'Interfaces'
-import { routes } from 'Routes'
-import { ProtectedRoute } from './ProtectedRoute'
+import { routes } from './routes'
+import { ProtectedRoute } from 'Components'
 import { Error404 as Error404Page } from 'Pages'
 
 // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Convert routes
@@ -23,6 +23,7 @@ Object.keys(routesKeyAdded).forEach(
 )
 
 const routesForReactRouter:IRouteObject[] = [
+
   // convert routes
   ...Object.values(routes).map(
     (route:IRoute) => ({
@@ -30,7 +31,8 @@ const routesForReactRouter:IRouteObject[] = [
       element: <ProtectedRoute route={route} />,
     })
   ),
-  // special routes
+
+  // append special routes
   { path: '*', element: <Error404Page /> }
 ]
 

@@ -1,12 +1,11 @@
-//nom:RoutesConfig
 import { IRoutes } from 'Interfaces'
 import { routesAppCore } from './routesAppCore'
-import { routes as routesPROJECT } from './routesPROJECT'
+import { routes as routesAppProject } from 'Src/AppRoutes'
 
 // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 export const routes:IRoutes = {
   ...routesAppCore,
-  ...routesPROJECT,
+  ...routesAppProject,
 };
 
 // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~

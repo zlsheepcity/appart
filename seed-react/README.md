@@ -1,2 +1,2 @@
 # react app boilerplate //nom:Abb
-## [About/Documentation](./documentation/README.md)
+- [About/Documentation](./documentation/README.md)

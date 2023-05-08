@@ -1,4 +1,3 @@
-//nom:RoutesConfig
 import React from 'react'
 import {
   IObject as IO,
@@ -8,10 +7,16 @@ import {
 
 // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 export const routes:IRoutes = {
-  ProjectPageTemplate: {
+  CustomPageTemplate: {
     ...routeTemplate,
-    path: '/',
-    title: 'ProjectPageTemplate',
+    path: '/template',
+    title: 'TemplatePage',
+    component: <div></div>,
+  },
+  CustomPageTemplateAllProps: {
+    ...routeTemplate,
+    path: '/template',
+    title: 'TemplatePage',
     roleRequired: false,
     roleAccessList: [],
     component: <div></div>,

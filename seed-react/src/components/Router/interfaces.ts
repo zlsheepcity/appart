@@ -1,6 +1,6 @@
 import { IObject as IO } from 'Interfaces'
 
-// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ IRoute
+// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ IRoute 2023.03.14
 
 export interface IRoute extends IO {
   path?: string;

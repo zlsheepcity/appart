@@ -4,10 +4,11 @@ import {
 } from 'Pages'
 
 // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
-const Gateway:React.FC = () => {
-  return <HomePublic />;
+const HomePageGateway:React.FC = () => {
+  const HomeComponent = <HomePublic />
+  return HomeComponent;
 }
 
 // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
-export const HomeIndex = Gateway
+export const HomeIndex = HomePageGateway
 export default HomeIndex

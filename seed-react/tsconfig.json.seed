@@ -14,8 +14,6 @@
       "Interfaces/*": ["src/interfaces/*"],
       "Pages": ["src/pages"],
       "Pages/*": ["src/pages/*"],
-      "Routes": ["src/routes"],
-      "Routes/*": ["src/routes/*"],
       "Utils": ["src/utils"],
       "Utils/*": ["src/utils/*"],
       "Src/*": ["src/*"]

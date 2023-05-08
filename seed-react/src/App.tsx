@@ -1,5 +1,5 @@
 import React from 'react'
-import { ReactProviderRoutes } from 'Routes'
+import { ReactProviderRoutes } from 'Components/Router'
 import {
   ReactProviderAuth,
   IAuthUser,

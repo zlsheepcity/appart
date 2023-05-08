@@ -1,37 +1,25 @@
-import {
-  IObject as IO,
-  IDocument,
-  IResponse,
-} from 'Interfaces'
-import { AUTH_ROLE } from 'Auth';
+import { IObject as IO } from 'Interfaces'
+import { AUTH_ROLE } from 'Auth'
 
-// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ IAuthUser
 
-export interface IAuthUserBase extends IO {
+export interface IAuthUser extends IO {
   token?: string;
   auth?: boolean;
-  rolesList?: string[];
-  rememberDevice?: boolean;
-}
-export interface IAuthUserDocument extends IO {
+  roles?: string[];
   id?: number;
   name?: string;
   surname?: string;
   email?: string;
   active?: boolean;
+  rememberDevice?: boolean;
 }
-export interface IAuthUser
-  extends
-    IAuthUserBase, 
-    IAuthUserDocument,
-    IO {}
-
 export const authUserTemplate:IAuthUser = {
-  id: 0,
-  rolesList: [AUTH_ROLE.guest],
+  auth: false,
+  roles: [AUTH_ROLE.guest],
 }
 
-// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ IAuthCredentials
 
 export interface IAuthCredentials {
   email: string;

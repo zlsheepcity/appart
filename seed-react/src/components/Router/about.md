@@ -1,7 +1,4 @@
-# //nom:Routes
-- [index.ts](../index.ts)
-
-# Docs
+# Router docs
 - [react-router](https://reactrouter.com/en/v6.3.0/api)
 - [@types/react-router-dom](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/react-router-dom/index.d.ts)
 - [history](https://github.com/remix-run/history/tree/dev/docs)
@@ -9,27 +6,29 @@
 # Developer guides
 
 ## Routes config
-- [interfaces.ts](../interfaces.ts)
-- [routes.tsx](../routes.tsx)
-- - [routesAppCore.tsx](../routes.tsx)
+- [interfaces.ts](./interfaces.ts)
+- [routes.tsx](./routes.tsx)
+  - [routesAppCore.tsx](./routes.tsx) — login, 404, etc...
+  - [AppRoutes.tsx](../../AppRoutes.tsx)
+
 ```ts
 const routes:IRoutes = {
-  ProjectPageTemplate: {
+  CustomPageTemplate: {
     ...routeTemplate,
-    path: '/ProjectPage',
-    title: 'ProjectPageTemplate',
+    path: '/TemplatePath',
+    title: 'TemplateTitle',
     component: <PageComponent />,
   },
-  // ...
 }
 ```
 
 ## Add routes provider
-- [ReactProviderRoutes](../components/ReactProviderRoutes.tsx)
+- [ReactProviderRoutes](./components/ReactProviderRoutes.tsx)
 - [App.tsx](../../App.tsx)
-```ts
-// App.tsx
-import { ReactProviderRoutes } from 'Routes'
+
+#### App.tsx
+```tsx
+import { ReactProviderRoutes } from 'Components'
 export const App:React.FC = () => {
   return(
     <div id="App">
@@ -40,9 +39,9 @@ export const App:React.FC = () => {
 ```
 
 ## Use routes provider
-```ts
-// Component.tsx
-import { useRoutesProvider } from 'Routes'
+#### Component.tsx
+```tsx
+import { useRoutesProvider } from 'Components'
 export const Component:React.FC = () => {
   const { routes, routePath } = useRoutesProvider()
   return <>...</>;

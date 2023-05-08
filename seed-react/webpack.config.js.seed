@@ -21,7 +21,6 @@ module.exports = (env) =>{
         Components: path.resolve(__dirname, 'src/components/'),
         Interfaces: path.resolve(__dirname, 'src/interfaces/'),
         Pages: path.resolve(__dirname, 'src/pages/'),
-        Routes: path.resolve(__dirname, 'src/routes/'),
         Utils: path.resolve(__dirname, 'src/utils/'),
         Src: path.resolve(__dirname, 'src/')
       },

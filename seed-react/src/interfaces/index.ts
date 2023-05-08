@@ -1,6 +1,6 @@
 // app core
 export * from './common'
 
-// re-export app parts
-export * from 'Routes/interfaces'
+// app components
 export * from 'Auth/interfaces'
+export * from 'Components/Router/interfaces'

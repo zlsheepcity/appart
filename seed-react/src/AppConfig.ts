@@ -8,6 +8,15 @@ const AppConfigCore = {
 const AppConfigProject = {
   name: 'AbbTemplate',
   defaultHtmlTitle: 'AbbTemplate',
+  authRoles: [
+    'guest',
+    'admin',
+    'developer',
+  ],
+  authRolesSuperusers: [
+    'admin',
+    'developer',
+  ],
 };
 
 // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ 

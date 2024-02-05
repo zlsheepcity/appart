@@ -1,0 +1,120 @@
+/** css.12xMarkup
+  * v2024.2.4
+  */
+
+/** ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ HTML attributes */
+
+    [hidden] { display: none; }
+
+    [contenteditable] {
+        color: var(--accent-color, inherit);
+        border-left: 1em solid currentColor;
+    }
+
+    [display-source] {
+        display: block;
+        padding: 0 1em 1em 0;
+        margin:  0 0   1em 0;
+        max-width: max-content;
+        font-family: monospace;
+        white-space: pre;
+        overflow-x: auto;
+    }
+
+/** ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Semantic reset */
+
+    figure, figcaption, fieldset, legend {
+        display: block;
+        margin:  0;
+        padding: 0;
+        border:  0;
+        white-space: normal;
+    }
+
+    main, article, section, aside, header, footer, nav {
+        display: block;
+    }
+
+    pre, code {
+        display: block;
+    }
+
+    /* reset headers ?*/
+
+    h1, h2, h3, h4, h5, h6 {
+        margin:  0;
+        padding: 0;
+        font-family: inherit;
+        font-size:   inherit;
+        line-height: inherit;
+        font-weight: inherit;
+    }
+
+    /*!*/
+
+    p, blockquote {
+        margin:  0;
+        padding: 0;
+        font:    inherit;
+    }
+
+/** ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Semantic normalize */
+
+    button {
+        padding: 0.25em 1.5em;
+        border:  0;
+        font:    inherit;
+        cursor:  pointer;
+        background-color: var(--accent-color, transparent);
+                   color: var(--foreground-color, inherit);
+    }
+
+    a { color: inherit; }
+
+    ul, ol {
+        padding:  0;
+        margin:   0;
+        margin-left: 1.5em;
+    }
+
+    td, th {
+        text-align:     left;
+        vertical-align: top;
+        padding-top:    0.25em;
+        padding-bottom: 0.25em;
+    }
+
+/** ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Media normalize */
+
+    img, svg, canvas,
+    figure, figcaption,
+    iframe, embed, object {
+        display:   block;
+        max-width: 100%;
+        margin:    0;
+        padding:   0;
+        border:    0;
+    }
+
+    img {
+        object-fit: cover;
+    }
+
+/** ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Better usage */
+
+    hr {
+        height: 3em;
+        background: transparent;
+        box-shadow: none;
+        border:  0;
+        margin:  0;
+        display:    block;
+        font-size:  inherit;
+    }
+
+    center {
+        display: grid;
+        place-items: center;
+    }
+
+/** ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ END */

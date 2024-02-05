@@ -24,37 +24,21 @@
 
     <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~>> CSS stylesheet -->
     <link
+        href="app/css.12xMarkup.css"
+        type="text/css" rel="stylesheet" media="all">
+    <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ -->
+    <link
         href="layoutGallery.css"
         type="text/css" rel="stylesheet" media="all">
     <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ -->
 
     <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~>> CSS CUSTOM -->
     <style>
-        img, video, svg {
-            margin: 0;
-            border: 0;
-            max-width: 100%;
-            display:  block;
-        }
-
-        p {
-            margin: 0;
-        }
-
-        center {
-            display: grid;
-            place-items: center;
-        }
-
         [mocktext] {
             font-style: italic;
             font-size:  1.25em;
             letter-spacing: 0.1em;
             opacity: 0.64;
-        }
-
-        .links a {
-            line-height: 2;
         }
     </style>
     <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ -->
@@ -63,8 +47,29 @@
 <body class="">
 
 <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~>> header -->
-<article class="layoutBook">
-    <style display-source class="layoutBookFull">
+<article class="layoutBook articleWelcomeTheme">
+    <style>
+        .articleWelcomeTheme figure {
+            position: absolute;
+            pointer-events: none;
+            opacity: 0.12;
+            height:  100%;
+            width:   100%;
+            grid-column: 1 / -1;
+        }
+        .articleWelcomeTheme figure img {
+            margin-left: auto;
+            margin-right:  2%;
+            margin-top:    2%;
+            max-height:   92%;
+            max-width:    92%;
+        }
+        .articleWelcomeTheme [display-source] {
+          --accent-color: var(--foreground-color);
+            margin-bottom: 0;
+        }
+    </style>
+    <style display-source contenteditable spellcheck=false>
         body {
           --color--PaperTone: hsl( 37, 55%, 85%);
           --color--PaperDark: hsl(  0,  0%,  8%);
@@ -86,6 +91,13 @@
             text-decoration: underline;
         }
     </style>
+    <figure>
+        <img src="../art/illustrations/illistr--products.svg" alt="Made with love">
+    </figure>
+</article>
+<article class="layoutBook">
+
+
     <header>
         <h1>
             app<span accent>art</span>
@@ -112,13 +124,14 @@
         <li>
             <a href="https://zlsheepcity.github.io/zlib/appart.html">
                 appart snippets 2024</a>
-            — same topics, less presentations
+              — same topics, less presentations
         </li>
     </ul>
     <section>
         <h4>About</h4>
         <p>
-            Frontend code snippets for copy-paste features without dependencies.
+            Frontend research project.
+            Code snippets for copy-paste features without dependencies.
         </p>
         <p>
             appart means mix of engineering (app) and art
@@ -127,11 +140,10 @@
             Higlighted code is contenteditable with live changes
         </p>
     </section>
-    <style display-source contenteditable class="layoutBookFull">
+    <style display-source contenteditable spellcheck=false class="layoutBookFull">
         [contenteditable] {
-          --color: var(--accent-color);
-            color: var(--color);
-            border-left: 1em solid var(--color);
+            color: var(--accent-color, inherit);
+            border-left: 1em solid currentColor;
         }
 
         [display-source] {
@@ -463,7 +475,7 @@
         </article>
     </style>
     <style display-source contenteditable>
-    /** ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ layoutBook 24.1.23 */
+    /** ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ layoutBook 24.2.4 */
 
         .layoutBook {
 
@@ -515,6 +527,7 @@
         .layoutBook >header     {grid-column:var(--grid-column-wrap)} /* double column */
         .layoutBook >footer     {grid-column:var(--grid-column-wrap)} /* double column */
         .layoutBook >article    {grid-column:var(--grid-column-full)} /* overlay */
+        .layoutBook >style      {grid-column:var(--grid-column-full)} /* overlay */
 
         .layoutBook >.layoutBookText {grid-column:var(--grid-column-text)}
         .layoutBook >.layoutBookWrap {grid-column:var(--grid-column-wrap)}

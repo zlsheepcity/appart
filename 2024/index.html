@@ -28,7 +28,7 @@
         type="text/css" rel="stylesheet" media="all">
     <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ -->
     <link
-        href="layoutGallery.css"
+        href="app/layoutGallery.css"
         type="text/css" rel="stylesheet" media="all">
     <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ -->
 
@@ -46,8 +46,33 @@
 </head>
 <body class="">
 
-<!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~>> header -->
+<!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~>> cover -->
 <article class="layoutBook articleWelcomeTheme">
+    <style display-source contenteditable spellcheck=false>
+        body {
+          --colorPaperTone: hsl( 37, 55%, 85%);
+          --colorPaperDark: hsl(  0,  0%,  8%);
+          --colorPaperRose: hsl(359, 59%, 43%);
+
+          --background-color: var(--colorPaperDark);
+          --foreground-color: var(--colorPaperTone);
+              --accent-color: var(--colorPaperRose);
+        }
+
+        body {
+            background-color: var(--background-color);
+            margin: 0; color: var(--foreground-color);
+            font-family: monospace;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: underline;
+        }
+    </style>
+    <figure>
+        <img src="../art/illustrations/illistr--products.svg" alt="Made with love">
+    </figure>
     <style>
         .articleWelcomeTheme figure {
             position: absolute;
@@ -65,46 +90,23 @@
             max-width:    92%;
         }
         .articleWelcomeTheme [display-source] {
-          --accent-color: var(--foreground-color);
             margin-bottom: 0;
         }
-    </style>
-    <style display-source contenteditable spellcheck=false>
-        body {
-          --color--PaperTone: hsl( 37, 55%, 85%);
-          --color--PaperDark: hsl(  0,  0%,  8%);
-          --color--PaperRose: hsl(359, 59%, 43%);
-
-          --background-color: var(--color--PaperDark);
-          --foreground-color: var(--color--PaperTone);
-              --accent-color: var(--color--PaperRose);
-        }
-
-        body {
-            background-color: var(--background-color);
-            margin: 0; color: var(--foreground-color);
-            font-family: monospace; overflow-y:scroll;
-        }
-
-        a {
-            color: inherit;
-            text-decoration: underline;
+        .articleWelcomeTheme {
+            margin-bottom: 2em;
         }
     </style>
-    <figure>
-        <img src="../art/illustrations/illistr--products.svg" alt="Made with love">
-    </figure>
 </article>
+
+<!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~>> introduction -->
 <article class="layoutBook">
-
-
     <header>
         <h1>
             app<span accent>art</span>
             frontend
         </h1>
         <p>
-            v2024.2.4 keiko
+            v2024.2.13 keiko
         </p>
     </header>
     <style>
@@ -126,6 +128,10 @@
                 appart snippets 2024</a>
               — same topics, less presentations
         </li>
+        <li>
+            <a href="https://zlsheepcity.github.io/appart/appart2020.html">
+                archieves 2020</a>
+        </li>
     </ul>
     <section>
         <h4>About</h4>
@@ -134,7 +140,7 @@
             Code snippets for copy-paste features without dependencies.
         </p>
         <p>
-            appart means mix of engineering (app) and art
+            The title means mix of engineering (app) and arts
         </p>
         <p accent>
             Higlighted code is contenteditable with live changes
@@ -162,7 +168,7 @@
 <details class="detailsWithSummaryHeader" --open>
     <summary>
         <header>
-            extended details»summary
+            html «details»
             <span class="detailsMarkerShowHide">
                 <span>[show]</span>
                 <span>[hide]</span>
@@ -173,7 +179,7 @@
         <details class="detailsWithSummaryHeader" open>
             <summary>
                 <header>
-                    extended details»summary
+                    html «details»
                     <span class="detailsMarkerShowHide">
                         <span>[show]</span>
                         <span>[hide]</span>
@@ -239,66 +245,12 @@
     </style>
 </details>
 
-<!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~>> html quickstart -->
-<details class="detailsWithSummaryHeader" open>
-    <summary>
-        <header>
-            <span accent>html</span> quickstart
-            <span class="detailsMarkerShowHide">
-                <span>[show]</span>
-                <span>[hide]</span>
-            </span>
-        </header>
-    </summary>
-    <article class="articleSecondaryDesign layoutBook">
-        <ul class="text-block-bigger">
-            <li>
-                <a href="htmlseed.html">
-                    htmlseed.html file
-                </a>
-            </li>
-            <li>
-                <a href="htmlseedAllFeatures.html">
-                    htmlseedAllFeatures.html file
-                </a>
-            </li>
-            <li>
-                <a href="CSS.css">
-                    css snippets file
-                </a>
-            </li>
-            <li>
-                <a href="https://zlsheepcity.github.io/appart/colors.html">
-                    color collection
-                </a>
-            </li>
-        </ul>
-        <style display-source contenteditable class="layoutBookFull">
-            .articleSecondaryDesign {
-              --color--NobleBlack:  hsl(226, 15%, 12%);
-              --color--NobleWhite:  hsl(226, 27%, 90%);
-              --color--NobleSky:    hsl(204, 22%, 55%);
-
-              --background-color: var(--color--NobleBlack);
-              --foreground-color: var(--color--NobleWhite);
-                  --accent-color: var(--color--NobleSky);
-            }
-
-            .articleSecondaryDesign {
-                background-color: var(--background-color);
-                           color: var(--foreground-color);
-                padding: 1em 0;
-                margin:  1em 0;
-            }
-        </style>
-    </article>
-</details>
 
 <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~>> css combos -->
-<details class="detailsWithSummaryHeader" open>
+<details class="detailsWithSummaryHeader" --open>
     <summary>
         <header>
-            <span accent>css</span> snippets
+            css snippet combos
             <span class="detailsMarkerShowHide">
                 <span>[show]</span>
                 <span>[hide]</span>
@@ -335,9 +287,6 @@
             place-items: center;
         }
 
-        @media all and (max-width:42em) and (min-width:64em) {
-        }/* /media */
-
         :root {
           --timing-function--theFocusZoom: cubic-bezier(0.165,  0.84,  0.44,  1);
           --timing-function--theOpenJump:  cubic-bezier(0.175,  0.885, 0.320, 1.275);
@@ -347,7 +296,124 @@
 
         /** ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
     </style>
+    <style display-source contenteditable spellcheck=false class="layoutBookFull">
+        .articleSecondaryDesign {
+          --colorNobleBlack:  hsl(226, 15%, 12%);
+          --colorNobleWhite:  hsl(226, 27%, 90%);
+          --colorNobleSky:    hsl(204, 22%, 55%);
+
+          --background-color: var(--colorNobleBlack);
+          --foreground-color: var(--colorNobleWhite);
+              --accent-color: var(--colorNobleSky);
+        }
+
+        .articleSecondaryDesign {
+            background-color: var(--background-color);
+                       color: var(--foreground-color);
+            padding: 1em 0;
+            margin:  1em 0;
+        }
+    </style>
 </details>
+
+
+<!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~>> flexBasis -->
+<details class="detailsWithSummaryHeader" open>
+    <summary>
+        <header>
+            flex basis
+            <span class="detailsMarkerShowHide">
+                <span>[show]</span>
+                <span>[hide]</span>
+            </span>
+        </header>
+    </summary>
+    <article class="articleSecondaryDesign layoutBook">
+        <div class="layoutBookFull">
+            <div class="demoFlexBasis">
+            <img src="art/svgSetDrakai11.svg" alt="">
+            <img src="art/svgSetDrakai12.svg" alt="">
+            <img src="art/svgSetDrakai13.svg" alt="">
+            </div>
+        </div>
+        <style display-source contenteditable spellcheck=false class="layoutBookFull">
+        /** ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
+
+            .demoFlexBasis {
+                display:   flex;
+                flex-wrap: wrap;
+            }
+            .demoFlexBasis >* {
+              --breakpoint: 609px;
+                flex-basis: calc(var(--breakpoint) * 696969 - 100% * 696969);
+                max-width:  100%;
+                min-width:   33%;
+            }
+
+        /** ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
+        </style>
+    </article>
+</details>
+
+
+<!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~>> CSSblendMode -->
+<details class="detailsWithSummaryHeader" open>
+    <summary>
+        <header>
+            background blend mode
+            <span class="detailsMarkerShowHide">
+                <span>[show]</span>
+                <span>[hide]</span>
+            </span>
+        </header>
+    </summary>
+    <article class="articleSecondaryDesign layoutBook">
+        <section class="layoutBookFull">
+            <section class="layoutGallery">
+                <section class="gridline XXX">
+                    <img class="Wratio fitme"
+                         src="art/artBackgroundMagenta.jpg"
+                         alt="art_placeholder">
+                    <div class="DemoBlendModePlayground Wratio outlined"
+                         style=""
+                         ></div>
+                    <img class="Wratio fitme"
+                         src="art/artBackgroundBlack.jpg"
+                         alt="art_placeholder">
+                </section>
+            </section>
+        </section>
+        <style display-source contenteditable spellcheck=false class="layoutBookFull">
+        /** ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ blend mode demo */
+        /** 24.2.13 **/
+
+            .DemoBlendModePlayground {
+                background:
+                /** Layer0: */
+                    url(art/artBackgroundMagenta.jpg)
+                ,/* Layer1: */
+                    url(art/artBackgroundBlack.jpg)
+                ,/* Layer2: */
+                    transparent
+                ;
+                background-blend-mode:
+                /** Layer0: */
+                    screen
+                ,/* Layer1: */
+                    multiply
+                ,/* Layer2: */
+                    multiply
+                ;
+                background-size: cover;
+                background-attachment: scroll;
+                background-position: 50% 50%;
+            }
+
+        /** ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ /blend mode demo */
+        </style>
+    </article>
+</details>
+
 
 <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~>> css topics -->
 <details class="detailsWithSummaryHeader" open>
@@ -360,6 +426,7 @@
             </span>
         </header>
     </summary>
+
     <article class="articleSecondaryDesign layoutBook">
         <ul class="text-block-bigger">
             <li><a href="app/css.11xBase.css">app/css.11xBase.css</a></li>
@@ -428,22 +495,7 @@
             <img src="art/svgSetDrakai13.svg" alt="">
             </div>
         </div>
-        <style display-source class="layoutBookFull">
-        /** ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
 
-            .demoFlexBasis {
-                display: flex;
-                flex-wrap: wrap;
-            }
-            .demoFlexBasis >* {
-              --breakpoint: 600px;
-                flex-basis: calc(var(--breakpoint) * 99999 - 100% * 99999);
-                max-width: 100%;
-                min-width: 33%;
-            }
-
-        /** ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
-        </style>
     </article>
 </details>
 <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~>> layoutBook -->
@@ -869,7 +921,7 @@
     <section class="articleCandyPageUpdated">
         <style>
         /** ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Candy caption */
-        /** 24.1.23 **/
+        /** 24.2.13 **/
 
             /** Layout */
 
@@ -896,14 +948,19 @@
               --space:          0.25em;
             }
             .textCandyCaption {
-                text-transform: uppercase;
-                font-weight:    bold;
-                font-family:    var(--font-family);
-                line-height:    var(--line-height);
+                text-decoration: none;
+                text-transform:  uppercase;
+                font-weight:     bold;
+                font-family:     var(--font-family);
+                line-height:     var(--line-height);
             }
             .textCandyCaption * {
                 font-size: var(--font-size, inherit);
                 color:     var(--color,     inherit);
+            }
+            a.textCandyCaption:hover,
+            a:hover .textCandyCaption {
+                transform: translateY(-0.2em);
             }
 
             /** Model tint&size 2023 */

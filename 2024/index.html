@@ -26,7 +26,6 @@
     <link
         href="app/css.12xMarkup.css"
         type="text/css" rel="stylesheet" media="all">
-    <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ -->
     <link
         href="app/layoutGallery.css"
         type="text/css" rel="stylesheet" media="all">
@@ -39,6 +38,18 @@
             font-size:  1.25em;
             letter-spacing: 0.1em;
             opacity: 0.64;
+        }
+        hr[article-divider] {--height: 20vh}
+        hr[section-divider] {--height: 10vh}
+        hr[article-divider],
+        hr[section-divider] {
+            height: var(--height);
+            background: transparent;
+            box-shadow: none;
+            border:  0;
+            margin:  0;
+            display:    block;
+            font-size:  inherit;
         }
     </style>
     <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ -->
@@ -422,6 +433,376 @@
         </ul>
     </article>
 </details>
+
+<!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~>> layoutValley -->
+<details class="detailsWithSummaryHeader" --open>
+    <summary>
+        <header>
+            parallax scroll code
+            <span class="detailsMarkerShowHide">
+                <span>[show]</span>
+                <span>[hide]</span>
+            </span>
+        </header>
+    </summary>
+    <article class="layoutBook">
+    <style display-source contenteditable spellcheck=false class="layoutBookFull">
+    /** ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ layoutValley */
+    /** 24.4.6 book **/
+
+        .layoutValley,
+        .layoutValley.defaultSettings {
+          --height--total: 100vh;
+          --width--total:  100vw;
+          --width--image:  100vw;
+            background: lightskyblue;
+        }
+
+    /** Main container */
+
+        .layoutValley {
+            height:    var(--height--total);
+            width:     var(--width--total);
+            max-width: 100%;
+            overflow:  hidden;
+            position:  relative;
+        }
+
+    /** Layer position */
+
+        .layoutValley [sky-header],
+        .layoutValley [sky-layers]>*,
+        .layoutValley [sea-layers]>*,
+        .layoutValley [sea-footer] {
+            position: absolute;
+            left:  0;
+            right: 0;
+        }
+        .layoutValley [sky-header]   {top:-1px; z-index:1}
+        .layoutValley [sky-layers]>* {top:0}
+        .layoutValley [sea-layers]>* {bottom:0}
+        .layoutValley [sea-footer]   {bottom:-1px}
+
+    /** Layer geometry */
+
+        .layoutValley [sky-header],
+        .layoutValley [sky-layers]>*,
+        .layoutValley [sea-layers]>*,
+        .layoutValley [sea-footer] {
+            height: var(--rangeHeight, 0);
+            width:  100%;
+            display:     grid;
+            place-items: center;
+            margin:      0;
+            padding:     0;
+        }
+
+    /** Layer background image element */
+
+        .layoutValley [sky-header]:before,
+        .layoutValley [sky-layers]>*:before,
+        .layoutValley [sea-layers]>*:before,
+        .layoutValley [sea-footer]:before {
+            content:  '';
+            display:  block;
+            position: absolute;
+            left:  0;
+            right: 0;
+            height: 100%;
+            pointer-events: none; /* default */
+        }
+        .layoutValley [sky-header]:before,
+        .layoutValley [sky-layers]>*:before {top: -1px;}
+        .layoutValley [sea-layers]>*:before,
+        .layoutValley [sea-footer]:before {bottom: -1px;}
+
+    /** Layer extended underground element */
+
+        .layoutValley [sky-layers]>*:after,
+        .layoutValley [sea-layers]>*:after {
+            content:  '';
+            display:  block;
+            position: absolute;
+            left:  0;
+            right: 0;
+            height: var(--height--total);
+            pointer-events: none; /* default */
+        }
+        .layoutValley [sky-layers]>*:after {bottom: 100%; bottom: calc(100% - 1px);}
+        .layoutValley [sea-layers]>*:after {top:    100%; top:    calc(100% - 1px);}
+
+    /** Layer images */
+
+        .layoutValley [sky-header]:before,
+        .layoutValley [sky-layers]>*:before,
+        .layoutValley [sea-layers]>*:before,
+        .layoutValley [sea-footer]:before {
+            background-image:  var(--rangeImage);
+            background-size:   var(--width--image) var(--rangeHeight);
+            background-color:  transparent;
+            background-repeat: no-repeat;
+            background-position: 50% calc(50% * 0.5 * (var(--rangeDirection, 1) + 1));
+            pointer-events: all; /* override default */
+        }
+        .layoutValley [sky-layers]>*:after,
+        .layoutValley [sea-layers]>*:after {
+            background-color: var(--rangeColor, transparent);
+            pointer-events: all; /* override default */
+        }
+
+     /** Offset formula */
+
+        .layoutValley [sky-layers]>* ,
+        .layoutValley [sea-layers]>* {
+          --a: var(--rangeOffsetStartPoint, 0);
+          --b: var(--rangeOffsetFinishPoint, 0);
+          --s: var(--rangeScroll, 0); /* covered distance modifyer [0..1] */
+          --D: var(--rangeDirection, 1); /* [-1,1] */
+          --offset: calc(var(--a) - var(--s) * (var(--a) - var(--b)));
+          --result: calc(var(--D) * var(--offset));
+            transform: translateY(var(--result));
+        }
+        .layoutValley [sky-layers]>* {--rangeDirection:  1;}
+        .layoutValley [sea-layers]>* {--rangeDirection: -1;}
+        .layoutValley [sky-layers]>* {--rangeOffsetStartPoint:  var(--rangeOffsetMin);}
+        .layoutValley [sky-layers]>* {--rangeOffsetFinishPoint: var(--rangeOffsetMax);}
+        .layoutValley [sea-layers]>* {--rangeOffsetStartPoint:  var(--rangeOffsetMax);}
+        .layoutValley [sea-layers]>* {--rangeOffsetFinishPoint: var(--rangeOffsetMin);}
+
+    /** ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ /layoutValley */
+    </style>
+    <style display-source contenteditable spellcheck=false class="layoutBookFull">
+    /** ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ moutRangeWelcome */
+    /** 2024.2.14 */
+
+        .layoutValley.moutRangeWelcome [sky-header]   {--rangeHeight: 10vw}
+        .layoutValley.moutRangeWelcome [sky-layers]>* {--rangeHeight: 10vw}
+        .layoutValley.moutRangeWelcome [sea-layers]>* {--rangeHeight: 10vw}
+        .layoutValley.moutRangeWelcome [sea-footer]   {--rangeHeight: 12vw}
+
+        .layoutValley.moutRangeWelcome [sky-layers]>:nth-child(1) {--rangeOffsetMax: 32vw}
+        .layoutValley.moutRangeWelcome [sky-layers]>:nth-child(2) {--rangeOffsetMax: 20vw}
+        .layoutValley.moutRangeWelcome [sky-layers]>:nth-child(3) {--rangeOffsetMax: 14vw}
+        .layoutValley.moutRangeWelcome [sky-layers]>:nth-child(4) {--rangeOffsetMax: 8vw}
+
+        .layoutValley.moutRangeWelcome [sky-layers]>:nth-child(1) {--rangeOffsetMin: 5vw}
+        .layoutValley.moutRangeWelcome [sky-layers]>:nth-child(2) {--rangeOffsetMin: 4vw}
+        .layoutValley.moutRangeWelcome [sky-layers]>:nth-child(3) {--rangeOffsetMin: 3vw}
+        .layoutValley.moutRangeWelcome [sky-layers]>:nth-child(4) {--rangeOffsetMin: 2vw}
+
+        .layoutValley.moutRangeWelcome [sea-layers]>:nth-child(1) {--rangeOffsetMax: 32vw}
+        .layoutValley.moutRangeWelcome [sea-layers]>:nth-child(2) {--rangeOffsetMax: 26vw}
+        .layoutValley.moutRangeWelcome [sea-layers]>:nth-child(3) {--rangeOffsetMax: 18vw}
+        .layoutValley.moutRangeWelcome [sea-layers]>:nth-child(4) {--rangeOffsetMax: 12vw}
+
+        .layoutValley.moutRangeWelcome [sea-layers]>:nth-child(1) {--rangeOffsetMin: 8vw}
+        .layoutValley.moutRangeWelcome [sea-layers]>:nth-child(2) {--rangeOffsetMin: 6vw}
+        .layoutValley.moutRangeWelcome [sea-layers]>:nth-child(3) {--rangeOffsetMin: 5vw}
+        .layoutValley.moutRangeWelcome [sea-layers]>:nth-child(4) {--rangeOffsetMin: 3vw}
+
+        .layoutValley.moutRangeWelcome [sky-layers]>:nth-child(1) {--rangeColor: transparent;}
+        .layoutValley.moutRangeWelcome [sky-layers]>:nth-child(2) {--rangeColor: hsl(212, 21%, 70%);}
+        .layoutValley.moutRangeWelcome [sky-layers]>:nth-child(3) {--rangeColor: hsl(212, 17%, 80%);}
+        .layoutValley.moutRangeWelcome [sky-layers]>:nth-child(4) {--rangeColor: hsl(212, 12%, 90%);}
+
+        .layoutValley.moutRangeWelcome [sea-layers]>:nth-child(1) {--rangeColor: hsl(212, 25%, 45%);}
+        .layoutValley.moutRangeWelcome [sea-layers]>:nth-child(2) {--rangeColor: hsl(212, 30%, 40%);}
+        .layoutValley.moutRangeWelcome [sea-layers]>:nth-child(3) {--rangeColor: hsl(212, 35%, 35%);}
+        .layoutValley.moutRangeWelcome [sea-layers]>:nth-child(4) {--rangeColor: hsl(212, 40%, 30%);}
+
+        .layoutValley.moutRangeWelcome [sky-header]               {--rangeImage: url(art/valleyClouds10PaperDark.svg);}
+        .layoutValley.moutRangeWelcome [sky-layers]>:nth-child(1) {--rangeImage: url(art/valleyClouds11.png);}
+        .layoutValley.moutRangeWelcome [sky-layers]>:nth-child(2) {--rangeImage: url(art/valleyClouds12.svg);}
+        .layoutValley.moutRangeWelcome [sky-layers]>:nth-child(3) {--rangeImage: url(art/valleyClouds13.svg);}
+        .layoutValley.moutRangeWelcome [sky-layers]>:nth-child(4) {--rangeImage: url(art/valleyClouds14.svg);}
+        .layoutValley.moutRangeWelcome [sea-layers]>:nth-child(1) {--rangeImage: url(art/valleyRange11.svg);}
+        .layoutValley.moutRangeWelcome [sea-layers]>:nth-child(2) {--rangeImage: url(art/valleyRange12.svg);}
+        .layoutValley.moutRangeWelcome [sea-layers]>:nth-child(3) {--rangeImage: url(art/valleyRange13.svg);}
+        .layoutValley.moutRangeWelcome [sea-layers]>:nth-child(4) {--rangeImage: url(art/valleyRange14.svg);}
+        .layoutValley.moutRangeWelcome [sea-footer]               {--rangeImage: url(art/valleyRange10PaperDark.svg);}
+
+    /** ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ moutRangeWelcome media screen */
+
+        @media screen and (max-aspect-ratio: 1/1) {
+
+        .layoutValley.moutRangeWelcome {
+          --height--total: max(60vh, 100vw);
+          --width--image: 200vw;
+        }
+
+        .layoutValley.moutRangeWelcome [sky-header]   {--rangeHeight:20vw}
+        .layoutValley.moutRangeWelcome [sky-layers]>* {--rangeHeight:20vw}
+        .layoutValley.moutRangeWelcome [sea-layers]>* {--rangeHeight:20vw}
+        .layoutValley.moutRangeWelcome [sea-footer]   {--rangeHeight:24vw}
+
+        .layoutValley.moutRangeWelcome [sky-layers]>:nth-child(1) {--rangeOffsetMax: 54vw}
+        .layoutValley.moutRangeWelcome [sky-layers]>:nth-child(2) {--rangeOffsetMax: 36vw}
+        .layoutValley.moutRangeWelcome [sky-layers]>:nth-child(3) {--rangeOffsetMax: 26vw}
+        .layoutValley.moutRangeWelcome [sky-layers]>:nth-child(4) {--rangeOffsetMax: 14vw}
+
+        .layoutValley.moutRangeWelcome [sky-layers]>:nth-child(1) {--rangeOffsetMin:  5vw}
+        .layoutValley.moutRangeWelcome [sky-layers]>:nth-child(2) {--rangeOffsetMin:  4vw}
+        .layoutValley.moutRangeWelcome [sky-layers]>:nth-child(3) {--rangeOffsetMin:  3vw}
+        .layoutValley.moutRangeWelcome [sky-layers]>:nth-child(4) {--rangeOffsetMin:  2vw}
+
+        .layoutValley.moutRangeWelcome [sea-layers]>:nth-child(1) {--rangeOffsetMax: 64vw}
+        .layoutValley.moutRangeWelcome [sea-layers]>:nth-child(2) {--rangeOffsetMax: 52vw}
+        .layoutValley.moutRangeWelcome [sea-layers]>:nth-child(3) {--rangeOffsetMax: 36vw}
+        .layoutValley.moutRangeWelcome [sea-layers]>:nth-child(4) {--rangeOffsetMax: 24vw}
+
+        .layoutValley.moutRangeWelcome [sea-layers]>:nth-child(1) {--rangeOffsetMin: 10vw}
+        .layoutValley.moutRangeWelcome [sea-layers]>:nth-child(2) {--rangeOffsetMin:  8vw}
+        .layoutValley.moutRangeWelcome [sea-layers]>:nth-child(3) {--rangeOffsetMin:  6vw}
+        .layoutValley.moutRangeWelcome [sea-layers]>:nth-child(4) {--rangeOffsetMin:  4vw}
+
+        }/* /media */
+
+    /** ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ moutRangeSupersheep */
+
+        .moutRangeSupersheep [fly-sheep] {
+            position: absolute;
+            top:      50%;
+            right:    0;
+            width:    10vmin;
+            height:   10vmin;
+            transform:
+                translateX( var(--where,0) )
+                scale( var(--sheep,1) )
+                ;
+          --where: calc(-1 * 100vmax * var(--x) + 40vh); /* ax+b */
+          --sheep: calc(1 + (1 - var(--x)) * 3);         /* a(1-x)+b */
+          --x: var(--rangeScroll,0); /* covered distance [0..1] */
+        }
+
+        .moutRangeSupersheep [fly-sheep] img {
+            object-fit: contain;
+        }
+
+    /** ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
+    </style>
+    <script display-source class="layoutBookFull">
+    /** ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ EventDebouncer */
+    /** 24.1.29 */
+
+        function EventDebouncer (callback) {
+            this.callback = callback;
+            this.ticking = false;
+        };
+        EventDebouncer.prototype = {
+            constructor: EventDebouncer,
+            update:
+                function() {
+                    this.callback && this.callback();
+                    this.ticking = false;
+                },
+            requestTick:
+                function() {
+                    if(!this.ticking) {
+                        const action = this.action || (this.action = this.update.bind(this));
+                        requestAnimationFrame(action);
+                        this.ticking = true;
+                    }
+                },
+            handleEvent:
+                function() {
+                    this.requestTick();
+                },
+        };
+
+    /** ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ /EventDebouncer */
+    </script>
+    <script display-source class="layoutBookFull">
+    /** ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ObservableRangearea */
+    /** 24.1.29 */
+
+        function runObservableRangearea (areaElement) {
+            const DOM = {
+                area: areaElement,
+                windowHeight: window.innerHeight,
+            };
+            const state = {
+                active: false,
+                boundingClientRect: {},
+                intersectionRect: {},
+                rootBounds: {},
+            };
+            const setRatioVar = () => {
+                const wt = window.pageYOffset;
+                const wh = DOM.windowHeight;
+                const vt = DOM.area.offsetTop;
+                const vh = DOM.area.offsetHeight;
+                const wayStart = vt - wh > 0 ? vt - wh : 0;
+                const wayEnd = vt + vh;
+                const wayDistance = wh + vh || 1;
+                const wayDP = (wt - wayStart) / wayDistance;
+                const rangeScroll = wayDP<0 ? 0 : wayDP>1 ? 1 : wayDP;
+                DOM.area.style.setProperty('--rangeScroll', `${rangeScroll}`);
+            }
+            const eventOnScroll = new EventDebouncer(setRatioVar);
+            const eventOnScrollActivate = () => {
+                if(!state.active) {
+                    state.active = true;
+                    window.addEventListener('scroll', eventOnScroll);
+                }
+            }
+            const eventOnScrollDeactivate = () => {
+                if (state.active) {
+                    state.active = false;
+                    window.removeEventListener('scroll', eventOnScroll);
+                }
+            }
+            const obAction = entries => entries.forEach(entry => {
+                const {isIntersecting} = entry;
+                if ( isIntersecting ) eventOnScrollActivate();
+                if (!isIntersecting ) eventOnScrollDeactivate();
+            });
+            const obOption = {
+                rootMargin: '0% 0% 0% 0%',
+                threshold:  [0],
+            };
+            const ObserverN1 = new IntersectionObserver(obAction,obOption);
+            eventOnScroll.handleEvent();
+            ObserverN1.observe(DOM.area);
+        }
+
+    /** ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ /ObservableRangearea */
+    </script>
+    </article>
+</details>
+
+<!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~>> DIVIDER: moutRangeWelcome -->
+<article>
+    <section class="layoutValley moutRangeWelcome moutRangeSupersheep"
+             id="moutRangeSupersheepObservableRangearea">
+        <section sky-header></section>
+        <section sky-layers><p><p><p><p></section>
+        <section sea-layers><p><p><p><p></section>
+        <section fly-sheep>
+            <img class=""
+                 src="art/supersheep11.svg"
+                 alt="Суперовца летит">
+        </section>
+        <section sea-footer></section>
+    </section>
+    <section class="layoutBook">
+        <script display-source class="layoutBookFull">
+        // LAUNCH moutRangeSupersheep
+        (function moutRangeSupersheepObserver () {
+            const id = 'moutRangeSupersheepObservableRangearea';
+            const el = document.getElementById(id);
+            runObservableRangearea(el);
+        })();
+        </script>
+        <ul>
+            <li>
+                <a href="https://zlsheepcity.github.io/zlib/22-cssComponents/layoutValley.html">
+                    Parallax scroll playground article
+                </a>
+            </li>
+        </ul>
+    </section>
+    <hr section-divider />
+</article>
 
 
 <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~>> candy features -->

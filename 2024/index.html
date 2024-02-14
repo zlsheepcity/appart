@@ -179,11 +179,14 @@
         <details class="detailsWithSummaryHeader" open>
             <summary>
                 <header>
+
                     html «details»
+
                     <span class="detailsMarkerShowHide">
                         <span>[show]</span>
                         <span>[hide]</span>
                     </span>
+
                 </header>
             </summary>
             ...
@@ -250,7 +253,7 @@
 <details class="detailsWithSummaryHeader" --open>
     <summary>
         <header>
-            css snippet combos
+            css combos
             <span class="detailsMarkerShowHide">
                 <span>[show]</span>
                 <span>[hide]</span>
@@ -297,6 +300,8 @@
         /** ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
     </style>
     <style display-source contenteditable spellcheck=false class="layoutBookFull">
+    /** ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
+
         .articleSecondaryDesign {
           --colorNobleBlack:  hsl(226, 15%, 12%);
           --colorNobleWhite:  hsl(226, 27%, 90%);
@@ -313,6 +318,8 @@
             padding: 1em 0;
             margin:  1em 0;
         }
+
+    /** ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
     </style>
 </details>
 
@@ -360,7 +367,7 @@
 <details class="detailsWithSummaryHeader" open>
     <summary>
         <header>
-            background blend mode
+            blend mode
             <span class="detailsMarkerShowHide">
                 <span>[show]</span>
                 <span>[hide]</span>
@@ -374,7 +381,7 @@
                     <img class="Wratio fitme"
                          src="art/artBackgroundMagenta.jpg"
                          alt="art_placeholder">
-                    <div class="DemoBlendModePlayground Wratio outlined"
+                    <div class="Wratio outlined demoBlendMode"
                          style=""
                          ></div>
                     <img class="Wratio fitme"
@@ -384,120 +391,110 @@
             </section>
         </section>
         <style display-source contenteditable spellcheck=false class="layoutBookFull">
-        /** ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ blend mode demo */
-        /** 24.2.13 **/
+        /** ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
 
-            .DemoBlendModePlayground {
+            .demoBlendMode {
                 background:
-                /** Layer0: */
+                /** Layer1: */
                     url(art/artBackgroundMagenta.jpg)
-                ,/* Layer1: */
-                    url(art/artBackgroundBlack.jpg)
                 ,/* Layer2: */
-                    transparent
+                    url(art/artBackgroundBlack.jpg)
                 ;
                 background-blend-mode:
-                /** Layer0: */
+                /** Layer1: */
                     screen
-                ,/* Layer1: */
-                    multiply
                 ,/* Layer2: */
                     multiply
                 ;
-                background-size: cover;
+                background-size:       cover;
                 background-attachment: scroll;
-                background-position: 50% 50%;
+                background-position:   50% 50%;
             }
 
-        /** ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ /blend mode demo */
+        /** ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
         </style>
-    </article>
-</details>
-
-
-<!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~>> css topics -->
-<details class="detailsWithSummaryHeader" open>
-    <summary>
-        <header>
-            css topics
-            <span class="detailsMarkerShowHide">
-                <span>[show]</span>
-                <span>[hide]</span>
-            </span>
-        </header>
-    </summary>
-
-    <article class="articleSecondaryDesign layoutBook">
-        <ul class="text-block-bigger">
-            <li><a href="app/css.11xBase.css">app/css.11xBase.css</a></li>
-            <li><a href="app/css.12xMarkup.css">app/css.12xMarkup.css</a></li>
-            <li><a href="app/css.13xTypography.css">app/css.13xTypography.css</a></li>
-            <li><a href="app/css.14xColors.css">app/css.14xColors.css</a></li>
-            <li><a href="app/css.15xLayouts.css">app/css.15xLayouts.css</a></li>
-            <li><a href="app/css.16xTools.css">app/css.16xTools.css</a></li>
+        <ul>
+            <li>
+                <a href="https://zlsheepcity.github.io/zlib/22-cssComponents/imagesBlendMode.html">
+                    Blend mode playground article
+                </a>
+            </li>
         </ul>
     </article>
-    <article class="articleSecondaryDesign layoutBook">
-        <h4>background-blend-mode</h4>
-        <blockquote class="text-block-bigger">
-            → <a href="22-cssComponents/imagesBlendMode.html">Playground page</a>
-        </blockquote>
-        <style>
-        /** ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ blend mode demo */
-        /** 24.1.25 **/
-
-            .cssBackgroundBlendMode.DemoBlendModePlayground {
-                background:
-                /** Layer0: */
-                    url(art/artBackgroundMagenta.jpg)
-                ,/* Layer1: */
-                    url(art/artBackgroundBlack.jpg)
-                ,/* Layer2: */
-                    transparent
-                ;
-                background-blend-mode:
-                /** Layer0: */
-                    screen
-                ,/* Layer1: */
-                    multiply
-                ;
-                background-size: cover;
-                background-attachment: fixed;
-                background-position: 50% 50%;
-            }
-
-        /** ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ /blend mode demo */
-        </style>
-        <section class="layoutBookFull">
-            <section class="layoutGallery">
-                <section class="gridline XXX">
-                    <img class="Wratio fitme"
-                         src="art/artBackgroundMagenta.jpg"
-                         alt="art_placeholder">
-                    <div class="DemoBlendModePlayground cssBackgroundBlendMode Wratio outlined"
-                         style="background-attachment:scroll;"
-                         ></div>
-                    <img class="Wratio fitme"
-                         src="art/artBackgroundBlack.jpg"
-                         alt="art_placeholder">
-                </section>
-            </section>
-        </section>
-    </article>
-    <article class="articleSecondaryDesign layoutBook">
-        <header>
-            <h4>flex-basis</h4>
-        </header>
-        <div class="layoutBookFull">
-            <div class="demoFlexBasis">
-            <img src="art/svgSetDrakai11.svg" alt="">
-            <img src="art/svgSetDrakai12.svg" alt="">
-            <img src="art/svgSetDrakai13.svg" alt="">
-            </div>
-        </div>
-
-    </article>
 </details>
+
+
+<!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~>> candy features -->
+<article class="articleSecondaryDesign layoutBook">
+    <section class="articleFeaturesGrid layoutBookFull">
+        <section>
+            <a class="textCandyCaption"
+               href="https://zlsheepcity.github.io/zlib/22-cssComponents/formGrowingTextarea.html">
+                <b row size-a tint-a laydown>
+                    <b size-a tint-m> Form</b>
+                    <b size-b tint-g> Growing</b>
+                </b>
+                <b row size-c tint-a>
+                    <b size-a tint-y> Textarea</b>
+                </b>
+                <b row size-a tint-a>
+                    <b size-a tint-a> Simple</b>
+                    <b size-a tint-a> Realisation</b>
+                </b>
+            </a>
+        </section>
+        <section>
+            <a class="textCandyCaption"
+               href="https://zlsheepcity.github.io/zlib/22-cssComponents/svgPathTrailProgress.html">
+                <b row size-a tint-a laydown>
+                    <b size-c tint-a> SVG</b>
+                    <b size-b tint-g> Path</b>
+                </b>
+                <b row size-c tint-a>
+                    <b size-z tint-g> Progress</b>
+                </b>
+                <b row size-a tint-a>
+                    <b size-z tint-y> Trail</b>
+                    <b size-a tint-m> Animation</b>
+                </b>
+            </a>
+        </section>
+        <section>
+            <a class="textCandyCaption"
+               href="https://zlsheepcity.github.io/zlib/22-cssComponents/textCandyCaption.html">
+                <b row size-a tint-a laydown>
+                    <b size-b tint-y> Any</b>
+                    <b size-z tint-a> Custom</b>
+                </b>
+                <b row size-a tint-a>
+                    <b size-b tint-y> Heading</b>
+                </b>
+                <b row size-a tint-c>
+                    <b size-a tint-a> Insert</b>
+                    <b size-a tint-a> Here</b>
+                </b>
+            </a>
+        </section>
+    </section>
+    <style>
+        .articleFeaturesGrid:is(.layoutBookFull),
+        .articleFeaturesGrid {
+            display: block;
+          --padding:  1em;
+            margin: 1em 0;
+          --grid-gap: 1em;
+          --grid-template-columns: repeat(3, 1fr);
+            font-size: min(4vw, 2em);
+        }
+        .articleFeaturesGrid >section {
+            display: inline-grid;
+            place-items: center;
+            padding: 1em;
+        }
+    </style>
+</article>
+
+
 <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~>> layoutBook -->
 <details class="detailsWithSummaryHeader" --open>
     <summary>
@@ -694,78 +691,6 @@
     </article>
 </details>
 
-<!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~>> candy features -->
-<article class="articleSecondaryDesign layoutBook">
-    <header>
-        <h3>candy features</h3>
-    </header>
-    <section class="articleFeaturesGrid layoutBookFull">
-        <section>
-            <a class="textCandyCaption"
-               href="https://zlsheepcity.github.io/zlib/22-cssComponents/formGrowingTextarea.html">
-                <b row size-a tint-a laydown>
-                    <b size-a tint-m> Form</b>
-                    <b size-b tint-g> Growing</b>
-                </b>
-                <b row size-c tint-a>
-                    <b size-a tint-y> Textarea</b>
-                </b>
-                <b row size-a tint-a>
-                    <b size-a tint-a> Simple</b>
-                    <b size-a tint-a> Realisation</b>
-                </b>
-            </a>
-        </section>
-        <section>
-            <a class="textCandyCaption"
-               href="https://zlsheepcity.github.io/zlib/22-cssComponents/svgPathTrailProgress.html">
-                <b row size-a tint-a laydown>
-                    <b size-c tint-a> SVG</b>
-                    <b size-b tint-g> Path</b>
-                </b>
-                <b row size-c tint-a>
-                    <b size-z tint-g> Progress</b>
-                </b>
-                <b row size-a tint-a>
-                    <b size-z tint-y> Trail</b>
-                    <b size-a tint-m> Animation</b>
-                </b>
-            </a>
-        </section>
-        <section>
-            <a class="textCandyCaption"
-               href="https://zlsheepcity.github.io/zlib/22-cssComponents/textCandyCaption.html">
-                <b row size-a tint-a laydown>
-                    <b size-b tint-y> Any</b>
-                    <b size-z tint-a> Custom</b>
-                </b>
-                <b row size-a tint-a>
-                    <b size-b tint-y> Heading</b>
-                </b>
-                <b row size-a tint-c>
-                    <b size-a tint-a> Insert</b>
-                    <b size-a tint-a> Here</b>
-                </b>
-            </a>
-        </section>
-    </section>
-    <style>
-        .articleFeaturesGrid:is(.layoutBookFull),
-        .articleFeaturesGrid {
-            display: block;
-          --padding:  1em;
-            margin: 1em 0;
-          --grid-gap: 1em;
-          --grid-template-columns: repeat(3, 1fr);
-            font-size: min(4vw, 2em);
-        }
-        .articleFeaturesGrid >section {
-            display: inline-grid;
-            place-items: center;
-            padding: 1em;
-        }
-    </style>
-</article>
 <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~>> JS EventDebouncer + DynamicVH -->
 <details class="detailsWithSummaryHeader" --open>
     <summary>
@@ -1003,9 +928,9 @@
                 <b size-c tint-y> . </b>
             </b>
             <b row size-a tint-a>
-                <b size-c tint-y> 1 </b>
+                <b size-c tint-y> 2 </b>
                 <b size-b tint-a> . </b>
-                <b size-d tint-m> 29 </b>
+                <b size-d tint-m> 14 </b>
             </b>
         </div>
     </section>

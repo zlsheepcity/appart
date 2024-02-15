@@ -57,7 +57,7 @@
 </head>
 <body class="">
 
-<!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~>> cover -->
+<!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~>> cover code -->
 <article class="layoutBook articleWelcomeTheme">
     <style display-source contenteditable spellcheck=false>
         body {
@@ -117,7 +117,7 @@
             frontend
         </h1>
         <p>
-            v2024.2.13 keiko
+            v2024.2.15 keiko
         </p>
     </header>
     <style>
@@ -145,17 +145,18 @@
         </li>
     </ul>
     <section>
+
         <h4>About</h4>
         <p>
-            Frontend research project.
-            Code snippets for copy-paste features without dependencies.
-        </p>
+            Research project, nice frontend features
+            </p>
         <p>
             The title means mix of engineering (app) and arts
-        </p>
+            </p>
         <p accent>
             Higlighted code is contenteditable with live changes
-        </p>
+            </p>
+
     </section>
     <style display-source contenteditable spellcheck=false class="layoutBookFull">
         [contenteditable] {
@@ -257,6 +258,97 @@
 
     /** ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ /details»summary */
     </style>
+</details>
+
+<!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~>> JS EventDebouncer -->
+<details class="detailsWithSummaryHeader" --open>
+    <summary>
+        <header>
+            js EventDebouncer
+            <span class="detailsMarkerShowHide">
+                <span>[show]</span>
+                <span>[hide]</span>
+            </span>
+        </header>
+    </summary>
+    <script display-source class="layoutBookFull">
+    /** ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ EventDebouncer */
+    /** 24.2.14 */
+
+        function EventDebouncer (callback) {
+            this.callback = callback;
+            this.ticking = false;
+        };
+        EventDebouncer.prototype = {
+            constructor: EventDebouncer,
+            update:
+                function() {
+                    this.callback && this.callback();
+                    this.ticking = false;
+                },
+            requestTick:
+                function() {
+                    if(!this.ticking) {
+                        const action = this.action || (this.action = this.update.bind(this));
+                        requestAnimationFrame(action);
+                        this.ticking = true;
+                    }
+                },
+            handleEvent:
+                function() {
+                    this.requestTick();
+                },
+        };
+
+    /** USAGE:
+
+        const themeAction = f => 'do something';
+        const eventAction = new EventDebouncer(themeAction);
+        window.addEventListener('scroll',eventAction,false);
+        eventAction.handleEvent();
+
+        **/
+
+    /** ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ /EventDebouncer */
+    </script>
+</details>
+
+<!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~>> JS DynamicVH -->
+<details class="detailsWithSummaryHeader" --open>
+    <summary>
+        <header>
+            js DynamicVH
+            <span class="detailsMarkerShowHide">
+                <span>[show]</span>
+                <span>[hide]</span>
+            </span>
+        </header>
+    </summary>
+    <script display-source class="layoutBookWrap">
+    /** ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ /DynamicVH */
+    /** 2024.2.14 */
+
+        (function activateDynamicVH () {
+            const setVH = () => {
+                let vh = window.innerHeight * 0.01;
+                let pn = '--vh';
+                let pv = `${vh}px`;
+                document.documentElement
+                    .style.setProperty(pn,pv);
+                };
+            const event = new EventDebouncer(setVH);
+            window.addEventListener('resize',event);
+            event.handleEvent();
+        })();
+
+    /** USAGE:
+
+        min-height: calc( var(--vh, 1vh) *100 );
+
+        **/
+
+    /** ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ /DynamicVH */
+    </script>
 </details>
 
 
@@ -385,7 +477,7 @@
             </span>
         </header>
     </summary>
-    <article class="articleSecondaryDesign layoutBook">
+    <article class="articleSecondaryDesign articleSecondaryLast layoutBook">
         <section class="layoutBookFull">
             <section class="layoutGallery">
                 <section class="gridline XXX">
@@ -431,8 +523,107 @@
                 </a>
             </li>
         </ul>
+        <style>
+        /** ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
+
+            .articleSecondaryDesign,
+            .articleSecondaryLast {
+                padding-bottom: 0;
+                margin-bottom: 10vmin;
+            }
+            .articleSecondaryDesign:after,
+            .articleSecondaryLast:after {
+                content:  '';
+                display:  block;
+                width:    100%;
+                height:   12vw;
+                background-image:  url(art/valleyRange10PaperDark.svg);
+                background-size:   100vw 12vw;
+                background-color:  transparent;
+                background-repeat: no-repeat;
+                background-position: 50% 1px;
+                grid-column: 1/-1;
+            }
+
+        /** ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
+        </style>
     </article>
 </details>
+
+<!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~>> candyFeatures -->
+<article class="articleCandies">
+    <div class="articleCandiesContent">
+        <section>
+            <a class="textCandyCaption"
+               href="https://zlsheepcity.github.io/zlib/22-cssComponents/formGrowingTextarea.html">
+                <b row size-a tint-a laydown>
+                    <b size-a tint-m> Form</b>
+                    <b size-b tint-g> Growing</b>
+                </b>
+                <b row size-c tint-a>
+                    <b size-a tint-y> Textarea</b>
+                </b>
+                <b row size-a tint-a>
+                    <b size-a tint-a> Simple</b>
+                    <b size-a tint-a> Realisation</b>
+                </b>
+            </a>
+        </section>
+        <section>
+            <a class="textCandyCaption"
+               href="https://zlsheepcity.github.io/zlib/22-cssComponents/svgPathTrailProgress.html">
+                <b row size-a tint-a laydown>
+                    <b size-c tint-a> SVG</b>
+                    <b size-b tint-g> Path</b>
+                </b>
+                <b row size-c tint-a>
+                    <b size-z tint-g> Progress</b>
+                </b>
+                <b row size-a tint-a>
+                    <b size-z tint-y> Trail</b>
+                    <b size-a tint-m> Animation</b>
+                </b>
+            </a>
+        </section>
+        <section>
+            <a class="textCandyCaption"
+               href="https://zlsheepcity.github.io/zlib/22-cssComponents/textCandyCaption.html">
+                <b row size-a tint-a laydown>
+                    <b size-b tint-y> Any</b>
+                    <b size-z tint-a> Custom</b>
+                </b>
+                <b row size-a tint-a>
+                    <b size-b tint-y> Heading</b>
+                </b>
+                <b row size-a tint-c>
+                    <b size-a tint-a> Insert</b>
+                    <b size-a tint-a> Here</b>
+                </b>
+            </a>
+        </section>
+    </div>
+    <style>
+    /** ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
+
+        .articleCandies {
+            padding: 5vmin 0 10vmin 0;
+            display: grid;
+            place-items: center;
+        }
+        .articleCandiesContent {
+            display: block;
+            padding:   1em;
+            font-size: min(4vw,2em);
+        }
+        .articleCandiesContent >* {
+            padding: 1em;
+            display: inline-grid;
+            place-items:  center;
+        }
+
+    /** ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
+    </style>
+</article>
 
 <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~>> layoutValley -->
 <details class="detailsWithSummaryHeader" --open>
@@ -681,39 +872,8 @@
     /** ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
     </style>
     <script display-source class="layoutBookFull">
-    /** ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ EventDebouncer */
-    /** 24.1.29 */
-
-        function EventDebouncer (callback) {
-            this.callback = callback;
-            this.ticking = false;
-        };
-        EventDebouncer.prototype = {
-            constructor: EventDebouncer,
-            update:
-                function() {
-                    this.callback && this.callback();
-                    this.ticking = false;
-                },
-            requestTick:
-                function() {
-                    if(!this.ticking) {
-                        const action = this.action || (this.action = this.update.bind(this));
-                        requestAnimationFrame(action);
-                        this.ticking = true;
-                    }
-                },
-            handleEvent:
-                function() {
-                    this.requestTick();
-                },
-        };
-
-    /** ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ /EventDebouncer */
-    </script>
-    <script display-source class="layoutBookFull">
     /** ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ObservableRangearea */
-    /** 24.1.29 */
+    /** 24.2.14 */
 
         function runObservableRangearea (areaElement) {
             const DOM = {
@@ -732,7 +892,6 @@
                 const vt = DOM.area.offsetTop;
                 const vh = DOM.area.offsetHeight;
                 const wayStart = vt - wh > 0 ? vt - wh : 0;
-                const wayEnd = vt + vh;
                 const wayDistance = wh + vh || 1;
                 const wayDP = (wt - wayStart) / wayDistance;
                 const rangeScroll = wayDP<0 ? 0 : wayDP>1 ? 1 : wayDP;
@@ -786,9 +945,9 @@
     </section>
     <section class="layoutBook">
         <script display-source class="layoutBookFull">
-        // LAUNCH moutRangeSupersheep
+        //autorun moutRangeSupersheep
         (function moutRangeSupersheepObserver () {
-            const id = 'moutRangeSupersheepObservableRangearea';
+            const id ='moutRangeSupersheepObservableRangearea';
             const el = document.getElementById(id);
             runObservableRangearea(el);
         })();
@@ -802,77 +961,6 @@
         </ul>
     </section>
     <hr section-divider />
-</article>
-
-
-<!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~>> candy features -->
-<article class="articleSecondaryDesign layoutBook">
-    <section class="articleFeaturesGrid layoutBookFull">
-        <section>
-            <a class="textCandyCaption"
-               href="https://zlsheepcity.github.io/zlib/22-cssComponents/formGrowingTextarea.html">
-                <b row size-a tint-a laydown>
-                    <b size-a tint-m> Form</b>
-                    <b size-b tint-g> Growing</b>
-                </b>
-                <b row size-c tint-a>
-                    <b size-a tint-y> Textarea</b>
-                </b>
-                <b row size-a tint-a>
-                    <b size-a tint-a> Simple</b>
-                    <b size-a tint-a> Realisation</b>
-                </b>
-            </a>
-        </section>
-        <section>
-            <a class="textCandyCaption"
-               href="https://zlsheepcity.github.io/zlib/22-cssComponents/svgPathTrailProgress.html">
-                <b row size-a tint-a laydown>
-                    <b size-c tint-a> SVG</b>
-                    <b size-b tint-g> Path</b>
-                </b>
-                <b row size-c tint-a>
-                    <b size-z tint-g> Progress</b>
-                </b>
-                <b row size-a tint-a>
-                    <b size-z tint-y> Trail</b>
-                    <b size-a tint-m> Animation</b>
-                </b>
-            </a>
-        </section>
-        <section>
-            <a class="textCandyCaption"
-               href="https://zlsheepcity.github.io/zlib/22-cssComponents/textCandyCaption.html">
-                <b row size-a tint-a laydown>
-                    <b size-b tint-y> Any</b>
-                    <b size-z tint-a> Custom</b>
-                </b>
-                <b row size-a tint-a>
-                    <b size-b tint-y> Heading</b>
-                </b>
-                <b row size-a tint-c>
-                    <b size-a tint-a> Insert</b>
-                    <b size-a tint-a> Here</b>
-                </b>
-            </a>
-        </section>
-    </section>
-    <style>
-        .articleFeaturesGrid:is(.layoutBookFull),
-        .articleFeaturesGrid {
-            display: block;
-          --padding:  1em;
-            margin: 1em 0;
-          --grid-gap: 1em;
-          --grid-template-columns: repeat(3, 1fr);
-            font-size: min(4vw, 2em);
-        }
-        .articleFeaturesGrid >section {
-            display: inline-grid;
-            place-items: center;
-            padding: 1em;
-        }
-    </style>
 </article>
 
 
@@ -1050,162 +1138,7 @@
         </ul>
     </article>
 </details>
-<!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~>> layoutValley -->
-<details class="detailsWithSummaryHeader" --open>
-    <summary>
-        <header>
-            .layoutValley parallax scroll
-            <span class="detailsMarkerShowHide">
-                <span>[show]</span>
-                <span>[hide]</span>
-            </span>
-        </header>
-    </summary>
-    <article class="layoutBook articleSecondaryDesign">
-        <ul class="text-block-bigger">
-            <li>
-                <a href="22-cssComponents/layoutValley.html">
-                    Main article and demo
-                </a>
-            </li>
-        </ul>
-    </article>
-</details>
 
-<!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~>> JS EventDebouncer + DynamicVH -->
-<details class="detailsWithSummaryHeader" --open>
-    <summary>
-        <header>
-            JS EventDebouncer + DynamicVH
-            <span class="detailsMarkerShowHide">
-                <span>[show]</span>
-                <span>[hide]</span>
-            </span>
-        </header>
-    </summary>
-    <script display-source class="layoutBookWrap">
-    //~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ EventDebouncer
-    //v2024.2.4
-
-        function EventDebouncer (callback) {
-            this.callback = callback;
-            this.ticking = false;
-        };
-        EventDebouncer.prototype = {
-            constructor: EventDebouncer,
-            update:
-                function() {
-                    this.callback && this.callback();
-                    this.ticking = false;
-                },
-            requestTick:
-                function() {
-                    if(!this.ticking) {
-                        const action = this.rafCallback || (this.rafCallback = this.update.bind(this));
-                        requestAnimationFrame(action);
-                        this.ticking = true;
-                    }
-                },
-            handleEvent:
-                function() {
-                    this.requestTick();
-                }
-        };
-
-    /** USAGE:
-
-        (// autorun
-            function runEventDebouncerScrollWindowFor(f) {
-                const onEvent = new EventDebouncer(f);
-                window
-                    .addEventListener('scroll',onEvent);
-                onEvent.handleEvent();
-                return onEvent;
-            }
-        )(
-            f => console.log(window.pageYOffset)
-        );
-
-        **/
-
-    //~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ /EventDebouncer
-    </script>
-    <script display-source class="layoutBookWrap">
-    //~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ DynamicVH
-    //v2024.2.4
-
-        (function activateDynamicVH () {
-            const setVH = () => {
-                let vh = window.innerHeight * 0.01;
-                document.documentElement.style.setProperty('--vh', `${vh}px`);
-                };
-            const event = new EventDebouncer(setVH);
-            window.addEventListener('resize',event);
-            event.handleEvent();
-        })();
-
-    /** USAGE:
-
-        min-height: calc( var(--vh, 1vh) *100 );
-
-        **/
-
-    //~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ /DynamicVH
-    </script>
-</details>
-<!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~>> JS intersectionObserver-->
-<details class="detailsWithSummaryHeader" --open>
-    <summary>
-        <header>
-            JS intersectionObserver
-            <span class="detailsMarkerShowHide">
-                <span>[show]</span>
-                <span>[hide]</span>
-            </span>
-        </header>
-    </summary>
-    <div id="runObservationDemoTarget">
-        <style display-source>
-        #runObservationDemoTarget {
-            background:slategray;
-            display: grid;
-            place-items: center;
-        }
-        </style>
-    </div>
-    <script display-source class="layoutBookWrap">
-    //~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ intersectionObserver 2024
-
-        function runObservation () {
-            const target = document.getElementById('runObservationDemoTarget');
-            const action = entries => entries.forEach(entry => {
-                const {
-                    boundingClientRect,
-                    intersectionRatio,
-                    intersectionRect,
-                    isIntersecting,
-                    rootBounds,
-                    target,
-                    time,
-                } = entry;
-                // actions
-                if ( isIntersecting ) console.log('visible');
-                if (!isIntersecting ) console.log('hidden');
-            });
-            const option = {
-                root:       null,          // default window
-                rootMargin: '0% 0% 0% 0%', // margins
-                threshold:  [0,1]          // top and bottom line cross
-            };
-            const ObserverN1 = new IntersectionObserver(action, option);
-            ObserverN1.observe(target);
-        }
-
-        runObservation();
-
-    //~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ /intersectionObserver
-    </script>
-</details>
 <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~>> hr -->
 <article>
     <style display-source contenteditable>
@@ -1222,6 +1155,7 @@
     </style>
     <hr section-divider/>
 </article>
+
 <!-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ -->
 <footer class="layoutBook">
     <section class="articleCandyPageUpdated">
@@ -1263,10 +1197,6 @@
             .textCandyCaption * {
                 font-size: var(--font-size, inherit);
                 color:     var(--color,     inherit);
-            }
-            a.textCandyCaption:hover,
-            a:hover .textCandyCaption {
-                transform: translateY(-0.2em);
             }
 
             /** Model tint&size 2023 */
@@ -1311,7 +1241,7 @@
             <b row size-a tint-a>
                 <b size-c tint-y> 2 </b>
                 <b size-b tint-a> . </b>
-                <b size-d tint-m> 14 </b>
+                <b size-d tint-m> 15 </b>
             </b>
         </div>
     </section>

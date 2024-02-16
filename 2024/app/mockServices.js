@@ -1,6 +1,7 @@
 /** ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ mockAutofillParagraphs */
 /** 2024.2.15 */
 /** insert some lorem ipsum
+    <p mock-paragraph>
   */
 
 function mockAutofillParagraphs (selector='[mock-paragraph]') {

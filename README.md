@@ -1,16 +1,17 @@
-# App &amp; Art (appart)
+# appart
+
+Research project, nice frontend features
 
 Front-end components.
 Not a framework, but
 reusable code templates.
 
-Pure CSS, SCSS, Vanilla JS
+CSS, JS
 
 
-## components web-page
+## presentation web-page
 
 https://zlsheepcity.github.io/appart/
-https://zlsheepcity.github.io/appart/index-tests.html
 
 
 ## quick description (in russian)
